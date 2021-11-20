@@ -1,0 +1,239 @@
+Promotion_Calc = {
+	set_key = { lhs = SF_Promoted value = 0 }
+	set_key = { lhs = NM_Promoted value = 0 }
+	set_key = { lhs = RE_Promoted value = 0 }
+	set_key = { lhs = NO_Promoted value = 0 }
+	set_key = { lhs = BG_Promoted value = 0 }
+	set_key = { lhs = CL_Promoted value = 0 }
+	
+	set_key = { lhs = SF_Demoted value = 0 }
+	set_key = { lhs = NM_Demoted value = 0 }
+	set_key = { lhs = RE_Demoted value = 0 }
+	set_key = { lhs = NO_Demoted value = 0 }
+	set_key = { lhs = BG_Demoted value = 0 }
+	set_key = { lhs = CL_Demoted value = 0 }
+	Promotion_CalcShares = yes
+	Promotion_NOPro = yes
+	Promotion_NODe = yes
+	Promotion_BGPro = yes
+	Promotion_BGDe = yes
+	Promotion_CLPro = yes
+	Promotion_CLDe = yes
+}
+
+Promotion_CalcShares = {
+	# save % that is peasant, nomad and resident share
+	set_key = { lhs = Tmp_6 value = 0 }
+	if = {
+		limit = {
+			check_key = { lhs = SF_Total value = 0.1 }
+		}
+		change_key = { lhs = Tmp_6 which = SF_Total }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = NM_Total value = 0.1 }
+		}
+		change_key = { lhs = Tmp_6 which = NM_Total }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = RE_Total value = 0.1 }
+		}
+		change_key = { lhs = Tmp_6 which = RE_Total }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = SF_Total value = 0.1 }
+		}
+		set_key = { lhs = Tmp_7 which = SF_Total }
+		divide_key = { lhs = Tmp_7 which = Tmp_6 }
+	}
+	else = {
+		set_key = { lhs = Tmp_7 value = 0 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = NM_Total value = 0.1 }
+		}
+		set_key = { lhs = Tmp_8 which = NM_Total }
+		divide_key = { lhs = Tmp_8 which = Tmp_6 }
+	}
+	else = {
+		set_key = { lhs = Tmp_8 value = 0 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = RE_Total value = 0.1 }
+		}
+		set_key = { lhs = Tmp_9 which = RE_Total }
+		divide_key = { lhs = Tmp_9 which = Tmp_6 }
+	}
+	else = {
+		set_key = { lhs = Tmp_9 value = 0 }
+	}
+}
+Promotion_NOPro = {
+	if = { # Blood
+		limit = {
+			owner = { is_key_equal = { lhs = Pol_Nobility value = 0 } }
+		}
+		set_key = { lhs = Tmp_1 value = 0.01 }
+	}
+	else_if = { # Possession
+		limit = {
+			owner = { is_key_equal = { lhs = Pol_Nobility value = 1 } }
+		}
+		if = {
+			limit = {
+				check_key = { lhs = SF_FillLife value = 1 }
+			}
+			set_key = { lhs = Tmp_1 which = SF_FillLife }
+			multiply_key = { lhs = Tmp_1 value = 0.5 }
+			change_key = { lhs = Tmp_1 value = 0.5 }
+			set_key = { lhs = Tmp_2 which = NO_Ratio }
+			multiply_key = { lhs = Tmp_1 which = Tmp_2 }
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_1 value = 10 }
+				}
+				set_key = { lhs = Tmp_1 value = 10 }
+			}
+			else_if = {
+				limit = {
+					NOT = { check_key = { lhs = Tmp_1 value = 1 } }
+				}
+				set_key = { lhs = Tmp_1 value = 1 }
+			}
+			multiply_key = { lhs = Tmp_1 value = 0.01 }
+		}
+		else = {
+			set_key = { lhs = Tmp_1 value = 0.01 }
+		}
+	}
+	if = { # Office
+		limit = {
+			owner = { is_key_equal = { lhs = Pol_Nobility value = 2 } }
+		}
+		set_key = { lhs = Tmp_1 value = 0.5 }
+		multiply_key = { lhs = Tmp_1 which = Prov_BUPow }
+		change_key = { lhs = Tmp_1 value = 1 }
+		multiply_key = { lhs = Tmp_1 value = 0.01 }
+	}
+	else = { # None
+		set_key = { lhs = Tmp_1 value = 0.001 }
+	}
+	
+	# use their intended promotion %
+	set_key = { lhs = Tmp_0 which = Class_Total }
+	multiply_key = { lhs = Tmp_0 which = Tmp_1 }
+	
+	if = { # Check if NO_Total is at least this
+		limit = {
+			NOT = { check_key = { lhs = NO_Total which = Tmp_0 } }
+		}
+		set_key = { lhs = Tmp_2 which = Tmp_0 } # if not set it to that
+		subtract_key = { lhs = Tmp_2 which = NO_Total } # get the difference left
+		
+		set_key = { lhs = Tmp_0 which = Class_Total }
+		multiply_key = { lhs = Tmp_0 value = 0.001 } # save what 0.1% movement would be
+		if = {
+			limit = {
+				check_key = { lhs = Tmp_0 which = Tmp_2 } # if that is going to > then the target, cap at target
+			}
+			set_key = { lhs = Tmp_0 which = Tmp_2 }
+		}
+	}
+	change_key = { lhs = SF_Promoted which = Tmp_0 }
+	change_key = { lhs = NM_Promoted which = Tmp_0 }
+	change_key = { lhs = RE_Promoted which = Tmp_0 }
+	change_key = { lhs = NO_Promoted which = Tmp_0 }
+}
+Promotion_NODe = {
+	if = { # Blood
+		limit = {
+			owner = { is_key_equal = { lhs = Pol_Nobility value = 0 } }
+		}
+		set_key = { lhs = Tmp_1 value = 0.1 }
+	}
+	else_if = { # Possession
+		limit = {
+			owner = { is_key_equal = { lhs = Pol_Nobility value = 1 } }
+		}
+		if = {
+			limit = {
+				NOT = { check_key = { lhs = NO_FillLife value = 1 } }
+			}
+			set_key = { lhs = Tmp_1 which = NO_FillLife }
+			multiply_key = { lhs = Tmp_1 value = 0.5 }
+			change_key = { lhs = Tmp_1 value = 0.5 }
+			set_key = { lhs = Tmp_2 which = NO_Ratio }
+			multiply_key = { lhs = Tmp_1 which = Tmp_2 }
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_1 value = 10 }
+				}
+				set_key = { lhs = Tmp_1 value = 10 }
+			}
+			else_if = {
+				limit = {
+					NOT = { check_key = { lhs = Tmp_1 value = 1 } }
+				}
+				set_key = { lhs = Tmp_1 value = 1 }
+			}
+			multiply_key = { lhs = Tmp_1 value = 0.01 }
+		}
+		else = {
+			set_key = { lhs = Tmp_1 value = 0.1 }
+		}
+	}
+	if = { # Office
+		limit = {
+			owner = { is_key_equal = { lhs = Pol_Nobility value = 2 } }
+		}
+		set_key = { lhs = Tmp_1 value = 0.5 }
+		multiply_key = { lhs = Tmp_1 which = Prov_BUPow }
+		change_key = { lhs = Tmp_1 value = 1 }
+		multiply_key = { lhs = Tmp_1 value = 0.01 }
+	}
+	else = { # None
+		set_key = { lhs = Tmp_1 value = 0.1 }
+	}
+	
+	# use their intended demotion %
+	set_key = { lhs = Tmp_0 which = Class_Total }
+	multiply_key = { lhs = Tmp_0 which = Tmp_1 }
+	
+	if = { # Check if NO_Total is greater than this
+		limit = {
+			check_key = { lhs = NO_Total which = Tmp_0 }
+		}
+		set_key = { lhs = Tmp_2 which = NO_Total } # if not set it to that
+		subtract_key = { lhs = Tmp_2 which = Tmp_0 } # get the difference left
+		
+		set_key = { lhs = Tmp_0 which = Class_Total }
+		multiply_key = { lhs = Tmp_0 value = 0.002 } # save what 0.2% movement would be
+		if = {
+			limit = {
+				check_key = { lhs = Tmp_0 which = Tmp_2 } # if that is going to > then the target, cap at target
+			}
+			set_key = { lhs = Tmp_0 which = Tmp_2 }
+		}
+	}
+	change_key = { lhs = SF_Demoted which = Tmp_0 }
+	change_key = { lhs = NM_Demoted which = Tmp_0 }
+	change_key = { lhs = RE_Demoted which = Tmp_0 }
+	change_key = { lhs = NO_Demoted which = Tmp_0 }
+}
+Promotion_BGPro = {}
+Promotion_BGDe = {}
+Promotion_CLPro = {}
+Promotion_CLDe = {}
+Promotion_Handle = {
+	multiply_key = { lhs = SF_Promoted which = Tmp_7 }
+	multiply_key = { lhs = NM_Promoted which = Tmp_8 }
+	multiply_key = { lhs = RE_Promoted which = Tmp_9 }
+	multiply_key = { lhs = SF_Demoted which = Tmp_7 }
+	multiply_key = { lhs = NM_Demoted which = Tmp_8 }
+	multiply_key = { lhs = RE_Demoted which = Tmp_9 }
+}

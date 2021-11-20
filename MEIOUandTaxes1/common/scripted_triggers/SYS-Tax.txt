@@ -1,0 +1,162 @@
+Tax_FlowFeesCan = {
+	is_tribal = no
+}
+Tax_FlowCommerceBUCan = {
+	AND = {
+		OR = {
+			NOT = { Rights_BGCom5HasGreater = yes }
+			Rights_BGCom7Has = yes
+			Rights_BGCom8Has = yes
+			Rights_BGCom10Has = yes
+		}
+	}
+}
+Tax_FlowCommerceNOCan = {
+	AND = {
+		Rights_BGCom4HasGreater = yes
+		NOT = { Rights_BGCom7HasGreater = yes }
+	}
+}
+Tax_TaxLandCan = {
+	NOT = { check_key = { lhs = Prov_TRPow value = 100 } }
+	PREV = { NOT = { is_owned_by_trade_company = yes } }
+}
+Tax_TaxPropCan = {
+	Rights_BUDir2HasGreater = yes
+}
+Tax_TaxFeudalCan = {
+	NOT = { Rights_NOGov6HasGreater = yes }
+	PREV = { NOT = { is_owned_by_trade_company = yes } }
+}
+Tax_TaxChattelsCan = {
+	Rights_BUDir3HasGreater = yes
+}
+Tax_TaxInheritCan = {
+	Rights_BUDir2HasGreater = yes
+}
+Tax_TaxTollCanOwner = {
+	always = yes
+}
+Tax_TaxTollCan = {
+	PREV = { check_key = { lhs = Class_Urban value = 1 } }
+}
+Tax_TaxPollCan = {
+	AND = {
+		OR = {
+			ai = no
+			is_at_war = yes
+			num_of_loans = 3
+		}
+	}
+}
+# Feudal
+
+Tax_TaxNobleCan = {
+	AND = { 
+		NOT = { Rights_NOGov5HasGreater = yes }
+		PREV = { NOT = { is_owned_by_trade_company = yes } }
+	}
+}
+Tax_TaxCharterCanOwner = {
+    Rights_BGGov4HasGreater = yes
+}
+Tax_TaxCharterCan = {
+	AND = {
+		Rights_BGGov4HasGreater = yes
+		PREV = { check_key = { lhs = Class_Urban value = 1 } }
+	}
+}
+Tax_TaxTributeCanOwner = {
+	always = yes
+}
+Tax_TaxTributeCan = {
+	PREV = { check_key = { lhs = Prov_TRPow value = 1 } }
+}
+# Excise
+Tax_TaxSaltCan = {
+	Rights_BUTax2HasGreater = yes
+}
+Tax_TaxTimberCan = {
+	Rights_BUTax2HasGreater = yes
+}
+Tax_TaxSubstCan = {
+	Rights_BUInd2HasGreater = yes
+}
+Tax_TaxAlcoholCan = {
+	Rights_BUInd3HasGreater = yes
+}
+# Service
+Tax_LevyDraftCan = {
+	Rights_BUSer3HasGreater = yes
+	PREV = { NOT = { is_owned_by_trade_company = yes } }
+}
+Tax_LevyVoluntCan = {
+	Rights_BUSer2Has = yes
+	PREV = { NOT = { is_owned_by_trade_company = yes } }
+}
+Tax_LevyFeudalCan = {
+    NOT = { Rights_NOSer4HasGreater = yes }
+	NOT = { Rights_NOGov5HasGreater = yes }
+	PREV = { NOT = { is_owned_by_trade_company = yes } }
+}
+Tax_LevyNobleCan = {
+    NOT = { Rights_NOSer4HasGreater = yes }
+	NOT = { Rights_NOGov5HasGreater = yes }
+	PREV = { NOT = { is_owned_by_trade_company = yes } }
+}
+Tax_LevyUrbanCan = {
+    Rights_BGGov5HasGreater = yes
+	PREV = { NOT = { is_owned_by_trade_company = yes } }
+}
+Tax_LevyHordeCanOwner = {
+	always = yes
+}
+Tax_LevyHordeCan = {
+    NOT = { Rights_NOSer4HasGreater = yes }
+	NOT = { Rights_NOGov5HasGreater = yes }
+	PREV = { check_key = { lhs = Prov_TRPow value = 10 } }
+	PREV = { NOT = { is_owned_by_trade_company = yes } }
+}
+# Property
+Tax_PropAgricultureCan = {
+	PREV = {
+		NOT = { has_province_modifier = no_maint }
+		check_key = { lhs = BU_Agriculture value = 0.01 }
+	}
+}
+Tax_PropExtractionCan = {
+	PREV = {
+		NOT = { has_province_modifier = no_maint }
+		check_key = { lhs = BU_Extraction value = 0.01 }
+	}
+}
+Tax_PropForestryCan = {
+	PREV = {
+		NOT = { has_province_modifier = no_maint }
+		check_key = { lhs = BU_Forestry value = 0.01 }
+	}
+}
+Tax_PropFisheryCan = {
+	PREV = {
+		NOT = { has_province_modifier = no_maint }
+		check_key = { lhs = BU_Fishery value = 0.01 }
+	}
+}
+Tax_PropIndustrialCan = {
+	PREV = {
+		NOT = { has_province_modifier = no_maint }
+		check_key = { lhs = BU_Industrial value = 0.01 }
+	}
+}
+Tax_PropAcademicCan = {
+	PREV = {
+		NOT = { has_province_modifier = no_maint }
+		check_key = { lhs = BU_Academic value = 0.01 }
+	}
+}
+Tax_PropCommercialCan = {
+	PREV = {
+		NOT = { has_province_modifier = no_maint }
+		check_key = { lhs = BU_Commercial value = 0.01 }
+	}
+}

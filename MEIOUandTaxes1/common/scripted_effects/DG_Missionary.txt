@@ -1,0 +1,273 @@
+#Calculates the missionary strength for each group
+MN_MissionaryHelper = {
+	#No missionary strength for owner's religion
+	if = {
+		limit = {
+			is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 }
+		}
+		set_key = { lhs = MN_S$slot$MStrength value = 0 }
+	}
+	#Adds tolerance effect
+	else = {
+		set_key = { lhs = MN_S$slot$MStrength which = DG_Tmp2 }
+		if = {
+			limit = { is_owned_by_trade_company = no owner = { religion_group = christian } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ value = 42 } }
+				#set_key = { lhs = MN_S$slot$MStrength value = 0 }
+			}
+			else_if = {
+				limit = { NOT = { check_key = { lhs = MN_S$slot$ value = 22 } } }
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp4 }
+			}
+			else = {
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp5 }
+			}
+		}
+		else_if = {
+			limit = { is_owned_by_trade_company = no owner = { religion_group = muslim } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ value = 42 } }
+				#set_key = { lhs = MN_S$slot$MStrength value = 0 }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 22 } NOT = { check_key = { lhs = MN_S$slot$ value = 31 } } }
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp4 }
+			}
+			else = {
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp5 }
+			}
+		}
+		else_if = {
+			limit = { is_owned_by_trade_company = no owner = { religion_group = taoic } }
+			if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 31 } NOT = { check_key = { lhs = MN_S$slot$ value = 35 } } }
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp4 }
+			}
+			else = {
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp5 }
+			}
+		}
+		else_if = {
+			limit = { is_owned_by_trade_company = no owner = { religion_group = dharmic } }
+			if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 35 } NOT = { check_key = { lhs = MN_S$slot$ value = 38 } } }
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp4 }
+			}
+			else = {
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp5 }
+			}
+		}
+		else_if = {
+			limit = { is_owned_by_trade_company = no owner = { religion_group = zro_group } }
+			if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 38 } NOT = { check_key = { lhs = MN_S$slot$ value = 42 } } }
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp4 }
+			}
+			else = {
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp5 }
+			}
+		}
+		else_if = {
+			limit = { is_owned_by_trade_company = no owner = { religion_group = jewish_group } }
+			if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 42 } NOT = { check_key = { lhs = MN_S$slot$ value = 45 } } }
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp4 }
+			}
+			else = {
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp5 }
+			}
+		}
+		else_if = {
+			limit = { is_owned_by_trade_company = no owner = { religion_group = new_world_pagan } }
+			if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 45 } NOT = { check_key = { lhs = MN_S$slot$ value = 52 } } }
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp4 }
+			}
+			else = {
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp5 }
+			}
+		}
+		else_if = {
+			limit = { is_owned_by_trade_company = no owner = { religion_group = european_pagan } }
+			if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 52 } NOT = { check_key = { lhs = MN_S$slot$ value = 59 } } }
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp4 }
+			}
+			else = {
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp5 }
+			}
+		}
+		else = {
+			if = {
+				limit = { is_owned_by_trade_company = no check_key = { lhs = MN_S$slot$ value = 59 } }
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp4 }
+			}
+			else = {
+				subtract_key = { lhs = MN_S$slot$MStrength which = DG_Tmp5 }
+			}
+		}
+	}
+}
+
+MN_Missionary = {
+	#Export global data
+	export_to_key = {
+		 lhs = DG_Tmp1
+		 value = religion
+		 who = owner
+	}
+	export_to_key = {
+		lhs = DG_Tmp2
+		value = modifier:global_missionary_strength
+		who = owner
+	}
+	export_to_key = {
+		lhs = DG_Tmp3
+		value = nationalism
+	}
+	export_to_key = {
+		lhs = DG_Tmp4
+		value = modifier:tolerance_heretic
+		who = owner
+	}
+	export_to_key = {
+		lhs = DG_Tmp5
+		value = modifier:tolerance_heathen
+		who = owner
+	}
+	export_to_key = {
+		lhs = DG_Tmp6
+		value = unrest
+	}
+	export_to_key = {
+		lhs = DG_Tmp7
+		value = modifier:local_missionary_maintenance_cost
+	}
+	#Performs the common calculation
+	multiply_key = { lhs = DG_Tmp2 value = 100 }
+	divide_key = { lhs = DG_Tmp3 value = 5 }
+	subtract_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+	if = {
+		limit = {
+			OR = {
+				religion_group = new_world_pagan
+				religion_group = european_pagan
+				religion_group = pagan
+			}
+		}
+		change_key = { lhs = DG_Tmp2 value = 2.5 }
+	}
+	if = {
+		limit = { NOT = { controlled_by = owner } }
+		subtract_key = { lhs = DG_Tmp2 value = 5.0 }
+	}
+	if = {
+		limit = { NOT = { any_neighbor_province = { owned_by = ROOT } } }
+		subtract_key = { lhs = DG_Tmp2 value = 2.0 }
+	}
+	if = {
+		limit = { NOT = { check_key = { lhs = DG_Tmp6 value = 0 } } }
+		set_key = { lhs = DG_Tmp6 value = 0.0 }
+	}
+	if = {
+		limit = { is_owned_by_trade_company = yes }
+		subtract_key = { lhs = DG_Tmp2 value = 4.0 }
+	}
+	else = {
+		subtract_key = { lhs = DG_Tmp2 which = DG_Tmp6 }
+		if = {
+			limit = {
+				has_owner_accepted_culture = no
+				has_owner_culture = no
+			}
+			subtract_key = { lhs = DG_Tmp2 value = 6.0 }
+		}
+	}
+	MN_MissionaryHelper = { slot = 0 }
+	MN_MissionaryHelper = { slot = 1 }
+	MN_MissionaryHelper = { slot = 2 }
+	MN_MissionaryHelper = { slot = 3 }
+	MN_MissionaryHelper = { slot = 4 }
+	MN_MissionaryHelper = { slot = 5 }
+
+	#Cleans the temporary variables
+	set_key = { lhs = DG_Tmp1 value = 0 }
+	set_key = { lhs = DG_Tmp2 value = 0 }
+	set_key = { lhs = DG_Tmp3 value = 0 }
+	set_key = { lhs = DG_Tmp4 value = 0 }
+	set_key = { lhs = DG_Tmp5 value = 0 }
+	set_key = { lhs = DG_Tmp6 value = 0 }
+}
+
+AvailableMissionariesCount = {
+	if = {
+		limit = { num_of_missionaries = 10 }
+		set_key = { lhs = AvailableMissionaries value = 10 }
+	}
+	else_if = {
+		limit = { num_of_missionaries = 9 }
+		set_key = { lhs = AvailableMissionaries value = 9 }
+	}
+	else_if = {
+		limit = { num_of_missionaries = 8 }
+		set_key = { lhs = AvailableMissionaries value = 8 }
+	}
+	else_if = {
+		limit = { num_of_missionaries = 7 }
+		set_key = { lhs = AvailableMissionaries value = 7 }
+	}
+	else_if = {
+		limit = { num_of_missionaries = 6 }
+		set_key = { lhs = AvailableMissionaries value = 6 }
+	}
+	else_if = {
+		limit = { num_of_missionaries = 5 }
+		set_key = { lhs = AvailableMissionaries value = 5 }
+	}
+	else_if = {
+		limit = { num_of_missionaries = 4 }
+		set_key = { lhs = AvailableMissionaries value = 4 }
+	}
+	else_if = {
+		limit = { num_of_missionaries = 3 }
+		set_key = { lhs = AvailableMissionaries value = 3 }
+	}
+	else_if = {
+		limit = { num_of_missionaries = 2 }
+		set_key = { lhs = AvailableMissionaries value = 2 }
+	}
+	else_if = {
+		limit = { num_of_missionaries = 1 }
+		set_key = { lhs = AvailableMissionaries value = 1 }
+	}
+	else = {
+		set_key = { lhs = AvailableMissionaries value = 0 }
+	}
+	every_owned_province = {
+		limit = { OR = { has_missionary = yes has_province_modifier = minority_missionary } }
+		owner = { change_key = { lhs = AvailableMissionaries value = -1 } }
+	}
+}
+
+SendingAvailableMissionaries = {
+	if = {
+		limit = {
+			any_owned_province = { NOT = { religion = owner } OR = { has_province_flag = convert_50 has_province_flag = convert_90 } has_missionary = no }
+		}
+		random_owned_province = {
+			limit = { NOT = { religion = owner } OR = { has_province_flag = convert_50 has_province_flag = convert_90 } has_missionary = no }
+			send_missionary = yes
+		}
+	}
+	else_if = {
+		limit = {
+			any_owned_province = { religion = owner has_province_flag = convert_90 has_missionary = no NOT = { has_province_modifier = minority_missionary } }
+		}
+		random_owned_province = {
+			limit = { religion = owner has_province_flag = convert_90 has_missionary = no NOT = { has_province_modifier = minority_missionary } }
+			add_province_modifier = { name = minority_missionary duration = -1 hidden = yes }
+			clr_province_flag = convert_90
+		}
+	}
+}

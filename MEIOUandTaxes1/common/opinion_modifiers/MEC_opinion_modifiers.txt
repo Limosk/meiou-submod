@@ -1,0 +1,23 @@
+MEC_Expeditions_taken_province = {
+	opinion = -100
+	yearly_decay = 3
+}
+
+loot_scare = {
+	opinion = -1
+	min = -200
+	yearly_decay = 4
+}
+Teuton_Withdraw = {
+	opinion = -100
+	yearly_decay = 4
+}
+Knights_Withdraw = {
+	opinion = -100
+	yearly_decay = 4
+}
+Timur_Opinion = {
+	opinion = -100
+	yearly_decay = 2
+}
+

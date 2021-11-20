@@ -1,0 +1,25 @@
+UI_show_sector_highest_trigger = { #edit to whatever condition should be highlighted for showing sector centers
+	has_province_flag = TN_SectorCent
+}
+
+colonial_ideas_trigger = { #duplicate of 00_basic_ideas.txt \ exploration_ideas trigger
+	has_idea = exploration_ideas_2
+	OR = {
+		custom_trigger_tooltip = {
+			tooltip = naval_ideas_3_tooltip
+			AND = { has_idea_group = naval_ideas OR = { has_idea = naval_ideas_3 ai = yes } }
+		}
+		AND = { dip_tech = 23 naval_forcelimit = 50 }
+	}
+	has_institution = Banking
+	OR = {
+		dip_tech = 11
+		AND = { is_year = 1420  dip_tech = 10 }
+	}
+	NOT = { has_idea_group = expansion_ideas }
+	num_of_ports = 3
+	custom_trigger_tooltip = {
+		tooltip = max_sailors_tooltip
+		max_sailors = 1500
+	}
+}

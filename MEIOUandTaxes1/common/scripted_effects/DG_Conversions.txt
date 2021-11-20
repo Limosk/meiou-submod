@@ -1,0 +1,594 @@
+#A script that converts believers of one faith to another.
+#Has to go from one specific religion to another specific religion.
+#Requires religion to be present, so use MN_AddReligion first.
+#Example of use:
+#	MN_ConvertReligion = {
+#		typeFrom = which from = MN_S0	# From, as in the religion who is losing its believers
+#		typeTo = which to = DG_Tmp1   # To, as in the religion who is gaining new believers
+#		typeChange = value change = 15   # Change, as in how many people in absolute numbers are changing
+#		type = Rural	# Type, as in which type of people are being converted
+#	}
+MN_ConvertSlot = {
+	if = {
+		limit = { NOT = { check_key = { lhs = Class_$type$ value = 0.001 } } }
+		set_key = { lhs = MN_S$from$$type$ value = 0 }
+		set_key = { lhs = MN_S$to$$type$ value = 0 }
+	}
+	else = {
+		multiply_key = { lhs = MN_S$from$$type$ which = Class_$type$ }
+		multiply_key = { lhs = MN_S$to$$type$ which = Class_$type$ }
+
+		if = {
+			limit = { check_key = { lhs = MN_S$from$$type$ $typeChange$ = $change$ } }
+			change_key = { lhs = MN_S$to$$type$ $typeChange$ = $change$ }
+			subtract_key = { lhs = MN_S$from$$type$ $typeChange$ = $change$ }
+		}
+		else = {
+			change_key = { lhs = MN_S$to$$type$ which = MN_S$from$$type$ }
+			set_key = { lhs = MN_S$from$$type$ value = 0 }
+		}
+		
+		divide_key = { lhs = MN_S$from$$type$ which = Class_$type$ }
+		divide_key = { lhs = MN_S$to$$type$ which = Class_$type$ }
+	}
+}
+
+MN_ConvertReligion = {
+	MN_ConvertReligionHelper = { slot = 0 from = $from$ to = $to$ typeChange = $typeChange$ typeFrom = $typeFrom$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+	MN_ConvertReligionHelper = { slot = 1 from = $from$ to = $to$ typeChange = $typeChange$ typeFrom = $typeFrom$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+	MN_ConvertReligionHelper = { slot = 2 from = $from$ to = $to$ typeChange = $typeChange$ typeFrom = $typeFrom$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+	MN_ConvertReligionHelper = { slot = 3 from = $from$ to = $to$ typeChange = $typeChange$ typeFrom = $typeFrom$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+	MN_ConvertReligionHelper = { slot = 4 from = $from$ to = $to$ typeChange = $typeChange$ typeFrom = $typeFrom$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+	MN_ConvertReligionHelper = { slot = 5 from = $from$ to = $to$ typeChange = $typeChange$ typeFrom = $typeFrom$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+	[[ruralChange]MN_Regularize = { type = Rural }]
+	[[urbanChange]MN_Regularize = { type = Urban }]
+	[[notablesChange]MN_Regularize = { type = Notables }]
+}
+
+MN_ConvertReligionHelper = {
+	if = {
+		limit = {
+			is_key_equal = { lhs = MN_S$slot$ $typeFrom$ = $from$ }
+		}
+		MN_ConvertReligionHelper2 = { slot = 0 from = $slot$ to = $to$ typeChange = $typeChange$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+		MN_ConvertReligionHelper2 = { slot = 1 from = $slot$ to = $to$ typeChange = $typeChange$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+		MN_ConvertReligionHelper2 = { slot = 2 from = $slot$ to = $to$ typeChange = $typeChange$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+		MN_ConvertReligionHelper2 = { slot = 3 from = $slot$ to = $to$ typeChange = $typeChange$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+		MN_ConvertReligionHelper2 = { slot = 4 from = $slot$ to = $to$ typeChange = $typeChange$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+		MN_ConvertReligionHelper2 = { slot = 5 from = $slot$ to = $to$ typeChange = $typeChange$ typeTo = $typeTo$ [[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$] }
+	}
+}
+
+MN_ConvertReligionHelper2 = {
+	if = {
+		limit = {
+			is_key_equal = { lhs = MN_S$slot$ $typeTo$ = $to$ }
+		}
+		[[ruralChange]MN_ConvertSlot = { from = $from$ to = $slot$ type = Rural typeChange = $typeChange$ change = $ruralChange$ }]
+		[[urbanChange]MN_ConvertSlot = { from = $from$ to = $slot$ type = Urban typeChange = $typeChange$ change = $urbanChange$ }]
+		[[notablesChange]MN_ConvertSlot = { from = $from$ to = $slot$ type = Notables typeChange = $typeChange$ change = $notablesChange$ }]
+	}
+}
+
+# A much needed scripted effect to change the province religion when it gets highest proportion
+# not a metascript. when called, change province religion to highest proportion religion
+change_religion_effect = {
+    set_key = { lhs = DG_Tmp1 value = 0 }
+    set_key = { lhs = DG_Tmp2 value = 0 }
+	set_key = { lhs = DG_Tmp3 value = 0 }
+    set_key = { lhs = DG_Tmp4 value = 0 }
+    set_key = { lhs = DG_Tmp5 value = 0 }
+    set_key = { lhs = DG_Tmp6 value = 0 }
+    set_key = { lhs = DG_Tmp7 value = 0 }
+    set_key = { lhs = DG_Tmp8 value = 0 }
+    set_key = { lhs = DG_Tmp9 value = 0 }
+    set_key = { lhs = DG_Tmp10 value = 0 }
+    set_key = { lhs = DG_Tmp11 value = 0 }
+    set_key = { lhs = DG_Tmp12 value = 0 }
+    set_key = { lhs = DG_Tmp13 value = 0 }
+    set_key = { lhs = DG_Tmp14 value = 0 }
+
+	MN_GetSlot = { slot = 0 return = DG_Tmp3 }
+
+	if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+			}
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S0 }
+		set_key = { lhs = DG_Tmp4 which = MN_S0Rural }
+		set_key = { lhs = DG_Tmp5 which = MN_S0Urban }
+		set_key = { lhs = DG_Tmp6 which = MN_S0Notables }
+		set_key = { lhs = DG_Tmp7 which = MN_S0INF }
+		set_key = { lhs = DG_Tmp8 which = MN_S0ENT }
+		set_key = { lhs = DG_Tmp9 which = MN_S0Preach }
+		set_key = { lhs = DG_Tmp10 which = MN_S0Inquis }
+		set_key = { lhs = DG_Tmp11 which = MN_S0Tolerance }
+		set_key = { lhs = DG_Tmp12 which = MN_S0Bastion }
+		set_key = { lhs = DG_Tmp13 which = MN_S0MStrength }
+		set_key = { lhs = DG_Tmp14 value = 0 }
+
+		set_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+	}
+
+	MN_GetSlot = { slot = 1 return = DG_Tmp3 }
+
+	if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+			}
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S1 }
+		set_key = { lhs = DG_Tmp4 which = MN_S1Rural }
+		set_key = { lhs = DG_Tmp5 which = MN_S1Urban }
+		set_key = { lhs = DG_Tmp6 which = MN_S1Notables }
+		set_key = { lhs = DG_Tmp7 which = MN_S1INF }
+		set_key = { lhs = DG_Tmp8 which = MN_S1ENT }
+		set_key = { lhs = DG_Tmp9 which = MN_S1Preach }
+		set_key = { lhs = DG_Tmp10 which = MN_S1Inquis }
+		set_key = { lhs = DG_Tmp11 which = MN_S1Tolerance }
+		set_key = { lhs = DG_Tmp12 which = MN_S1Bastion }
+		set_key = { lhs = DG_Tmp13 which = MN_S1MStrength }
+		set_key = { lhs = DG_Tmp14 value = 1 }
+
+		set_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+	}
+
+	MN_GetSlot = { slot = 2 return = DG_Tmp3 }
+
+	if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+			}
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S2 }
+		set_key = { lhs = DG_Tmp4 which = MN_S2Rural }
+		set_key = { lhs = DG_Tmp5 which = MN_S2Urban }
+		set_key = { lhs = DG_Tmp6 which = MN_S2Notables }
+		set_key = { lhs = DG_Tmp7 which = MN_S2INF }
+		set_key = { lhs = DG_Tmp8 which = MN_S2ENT }
+		set_key = { lhs = DG_Tmp9 which = MN_S2Preach }
+		set_key = { lhs = DG_Tmp10 which = MN_S2Inquis }
+		set_key = { lhs = DG_Tmp11 which = MN_S2Tolerance }
+		set_key = { lhs = DG_Tmp12 which = MN_S2Bastion }
+		set_key = { lhs = DG_Tmp13 which = MN_S2MStrength }
+		set_key = { lhs = DG_Tmp14 value = 2 }
+
+		set_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+	}
+
+	MN_GetSlot = { slot = 3 return = DG_Tmp3 }
+
+	if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+			}
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S3 }
+		set_key = { lhs = DG_Tmp4 which = MN_S3Rural }
+		set_key = { lhs = DG_Tmp5 which = MN_S3Urban }
+		set_key = { lhs = DG_Tmp6 which = MN_S3Notables }
+		set_key = { lhs = DG_Tmp7 which = MN_S3INF }
+		set_key = { lhs = DG_Tmp8 which = MN_S3ENT }
+		set_key = { lhs = DG_Tmp9 which = MN_S3Preach }
+		set_key = { lhs = DG_Tmp10 which = MN_S3Inquis }
+		set_key = { lhs = DG_Tmp11 which = MN_S3Tolerance }
+		set_key = { lhs = DG_Tmp12 which = MN_S3Bastion }
+		set_key = { lhs = DG_Tmp13 which = MN_S3MStrength }
+		set_key = { lhs = DG_Tmp14 value = 3 }
+
+		set_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+	}
+
+	MN_GetSlot = { slot = 4 return = DG_Tmp3 }
+
+	if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+			}
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S4 }
+		set_key = { lhs = DG_Tmp4 which = MN_S4Rural }
+		set_key = { lhs = DG_Tmp5 which = MN_S4Urban }
+		set_key = { lhs = DG_Tmp6 which = MN_S4Notables }
+		set_key = { lhs = DG_Tmp7 which = MN_S4INF }
+		set_key = { lhs = DG_Tmp8 which = MN_S4ENT }
+		set_key = { lhs = DG_Tmp9 which = MN_S4Preach }
+		set_key = { lhs = DG_Tmp10 which = MN_S4Inquis }
+		set_key = { lhs = DG_Tmp11 which = MN_S4Tolerance }
+		set_key = { lhs = DG_Tmp12 which = MN_S4Bastion }
+		set_key = { lhs = DG_Tmp13 which = MN_S4MStrength }
+		set_key = { lhs = DG_Tmp14 value = 4 }
+
+		set_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+	}
+
+	MN_GetSlot = { slot = 5 return = DG_Tmp3 }
+
+	if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+			}
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S5 }
+		set_key = { lhs = DG_Tmp4 which = MN_S5Rural }
+		set_key = { lhs = DG_Tmp5 which = MN_S5Urban }
+		set_key = { lhs = DG_Tmp6 which = MN_S5Notables }
+		set_key = { lhs = DG_Tmp7 which = MN_S5INF }
+		set_key = { lhs = DG_Tmp8 which = MN_S5ENT }
+		set_key = { lhs = DG_Tmp9 which = MN_S5Preach }
+		set_key = { lhs = DG_Tmp10 which = MN_S5Inquis }
+		set_key = { lhs = DG_Tmp11 which = MN_S5Tolerance }
+		set_key = { lhs = DG_Tmp12 which = MN_S5Bastion }
+		set_key = { lhs = DG_Tmp13 which = MN_S5MStrength }
+		set_key = { lhs = DG_Tmp14 value = 5 }
+
+		set_key = { lhs = DG_Tmp2 which = DG_Tmp3 }
+	}
+
+	if = {
+		limit = {
+			check_key = { lhs = DG_Tmp1 value = 1 }
+			NOT = { is_key_equal = { lhs = DG_Tmp1 which = MN_S0 } }
+		}
+		set_var_from_key = { var = DG_Tmp1 key = DG_Tmp1 }
+		
+		change_religion = variable:DG_Tmp1
+		
+		if = {
+			limit = { is_key_equal = { lhs = DG_Tmp14 value = 1 } }
+			set_key = { lhs = MN_S1 which = MN_S0 }
+			set_key = { lhs = MN_S1Rural which = MN_S0Rural }
+			set_key = { lhs = MN_S1Urban which = MN_S0Urban }
+			set_key = { lhs = MN_S1Notables which = MN_S0Notables }
+			set_key = { lhs = MN_S1INF which = MN_S0INF }
+			set_key = { lhs = MN_S1ENT which = MN_S0ENT }
+			set_key = { lhs = MN_S1Preach which = MN_S0Preach }
+			set_key = { lhs = MN_S1Inquis which = MN_S0Inquis }
+			set_key = { lhs = MN_S1Tolerance which = MN_S0Tolerance }
+			set_key = { lhs = MN_S1Bastion which = MN_S0Bastion }
+			set_key = { lhs = MN_S1MStrength which = MN_S0MStrength }
+		}
+		else_if = {
+			limit = { is_key_equal = { lhs = DG_Tmp14 value = 2 } }
+			set_key = { lhs = MN_S2 which = MN_S0 }
+			set_key = { lhs = MN_S2Rural which = MN_S0Rural }
+			set_key = { lhs = MN_S2Urban which = MN_S0Urban }
+			set_key = { lhs = MN_S2Notables which = MN_S0Notables }
+			set_key = { lhs = MN_S2INF which = MN_S0INF }
+			set_key = { lhs = MN_S2ENT which = MN_S0ENT }
+			set_key = { lhs = MN_S2Preach which = MN_S0Preach }
+			set_key = { lhs = MN_S2Inquis which = MN_S0Inquis }
+			set_key = { lhs = MN_S2Tolerance which = MN_S0Tolerance }
+			set_key = { lhs = MN_S2Bastion which = MN_S0Bastion }
+			set_key = { lhs = MN_S2MStrength which = MN_S0MStrength }
+		}
+		else_if = {
+			limit = { is_key_equal = { lhs = DG_Tmp14 value = 3 } }
+			set_key = { lhs = MN_S3 which = MN_S0 }
+			set_key = { lhs = MN_S3Rural which = MN_S0Rural }
+			set_key = { lhs = MN_S3Urban which = MN_S0Urban }
+			set_key = { lhs = MN_S3Notables which = MN_S0Notables }
+			set_key = { lhs = MN_S3INF which = MN_S0INF }
+			set_key = { lhs = MN_S3ENT which = MN_S0ENT }
+			set_key = { lhs = MN_S3Preach which = MN_S0Preach }
+			set_key = { lhs = MN_S3Inquis which = MN_S0Inquis }
+			set_key = { lhs = MN_S3Tolerance which = MN_S0Tolerance }
+			set_key = { lhs = MN_S3Bastion which = MN_S0Bastion }
+			set_key = { lhs = MN_S3MStrength which = MN_S0MStrength }
+		}
+		else_if = {
+			limit = { is_key_equal = { lhs = DG_Tmp14 value = 4 } }
+			set_key = { lhs = MN_S4 which = MN_S0 }
+			set_key = { lhs = MN_S4Rural which = MN_S0Rural }
+			set_key = { lhs = MN_S4Urban which = MN_S0Urban }
+			set_key = { lhs = MN_S4Notables which = MN_S0Notables }
+			set_key = { lhs = MN_S4INF which = MN_S0INF }
+			set_key = { lhs = MN_S4ENT which = MN_S0ENT }
+			set_key = { lhs = MN_S4Preach which = MN_S0Preach }
+			set_key = { lhs = MN_S4Inquis which = MN_S0Inquis }
+			set_key = { lhs = MN_S4Tolerance which = MN_S0Tolerance }
+			set_key = { lhs = MN_S4Bastion which = MN_S0Bastion }
+			set_key = { lhs = MN_S4MStrength which = MN_S0MStrength }
+		}
+		else_if = {
+			limit = { is_key_equal = { lhs = DG_Tmp14 value = 5 } }
+			set_key = { lhs = MN_S5 which = MN_S0 }
+			set_key = { lhs = MN_S5Rural which = MN_S0Rural }
+			set_key = { lhs = MN_S5Urban which = MN_S0Urban }
+			set_key = { lhs = MN_S5Notables which = MN_S0Notables }
+			set_key = { lhs = MN_S5INF which = MN_S0INF }
+			set_key = { lhs = MN_S5ENT which = MN_S0ENT }
+			set_key = { lhs = MN_S5Preach which = MN_S0Preach }
+			set_key = { lhs = MN_S5Inquis which = MN_S0Inquis }
+			set_key = { lhs = MN_S5Tolerance which = MN_S0Tolerance }
+			set_key = { lhs = MN_S5Bastion which = MN_S0Bastion }
+			set_key = { lhs = MN_S5MStrength which = MN_S0MStrength }
+		}
+		
+		set_key = { lhs = MN_S0 which = DG_Tmp1 }
+		set_key = { lhs = MN_S0Rural which = DG_Tmp4 }
+		set_key = { lhs = MN_S0Urban which = DG_Tmp5 }
+		set_key = { lhs = MN_S0Notables which = DG_Tmp6 }
+		set_key = { lhs = MN_S0INF which = DG_Tmp7 }
+		set_key = { lhs = MN_S0ENT which = DG_Tmp8 }
+		set_key = { lhs = MN_S0Preach which = DG_Tmp9 }
+		set_key = { lhs = MN_S0Inquis which = DG_Tmp10 }
+		set_key = { lhs = MN_S0Tolerance which = DG_Tmp11 }
+		set_key = { lhs = MN_S0Bastion which = DG_Tmp12 }
+		set_key = { lhs = MN_S0MStrength which = DG_Tmp13 }
+		
+		MN_Regularize = { type = Rural }
+		MN_Regularize = { type = Urban }
+		MN_Regularize = { type = Notables }
+		MN_RlgShift = yes
+		MN_GetSlot_Class = yes
+		
+		set_key = { lhs = DG_Tmp1 value = 0 }
+	}
+
+	else_if = {
+		limit = {
+			has_province_flag = center_converted
+		}
+		set_var_from_key = { var = DG_Tmp1 key = MN_S0 }
+		change_religion = variable:DG_Tmp1
+		set_key = { lhs = DG_Tmp1 value = 0 }
+	}
+	trigger_switch = {
+		on_trigger = has_province_flag
+		convert_50 = {
+			if = {
+				limit = { religion = owner }
+				clr_province_flag = convert_50
+				if = {
+					limit = {
+						any_owned_province = {
+							NOT = { religion = owner }
+							check_key = { lhs = MN_S0MStrength value = 0.5 }
+							OR = {
+								has_province_flag = convert_50
+								has_province_flag = convert_90
+							}
+							has_missionary = no
+						}
+					}
+					random_owned_province = {
+						limit = {
+							NOT = { religion = owner }
+							check_key = { lhs = MN_S0MStrength value = 0.5 }
+							OR = {
+								has_province_flag = convert_50
+								has_province_flag = convert_90
+							}
+							has_missionary = no
+						}
+						send_missionary = yes
+					}
+				}
+				else = { owner = { country_event = { id = DG_Convert.007 } } }
+			}
+			else = {
+				send_missionary = yes
+			}
+		}
+		convert_90 = {
+			if = {
+				limit = { religion = owner  }
+				clr_province_flag = convert_90
+				add_province_modifier = { name = minority_missionary duration = -1 hidden = yes }
+				MN_RlgShift = yes
+			}
+			else = {
+				send_missionary = yes
+			}
+		}
+	}
+    set_key = { lhs = DG_Tmp1 value = 0 }
+    set_key = { lhs = DG_Tmp2 value = 0 }
+    set_key = { lhs = DG_Tmp3 value = 0 }
+    set_key = { lhs = DG_Tmp4 value = 0 }
+    set_key = { lhs = DG_Tmp5 value = 0 }
+    set_key = { lhs = DG_Tmp6 value = 0 }
+    set_key = { lhs = DG_Tmp7 value = 0 }
+    set_key = { lhs = DG_Tmp8 value = 0 }
+    set_key = { lhs = DG_Tmp9 value = 0 }
+    set_key = { lhs = DG_Tmp10 value = 0 }
+    set_key = { lhs = DG_Tmp11 value = 0 }
+    set_key = { lhs = DG_Tmp12 value = 0 }
+    set_key = { lhs = DG_Tmp13 value = 0 }
+    set_key = { lhs = DG_Tmp14 value = 0 }
+}
+
+#Every two years, some people convert to another religion
+MN_RlgConv_helper = {
+	if = {
+		limit = {
+			check_key = { lhs = MN_S$slot$ value = 1 }
+		}
+		if = {
+			limit = { NOT = { is_key_equal = { lhs = MN_S$slot$Rural value = 0 } } }
+			if = {
+				limit = { NOT = { is_key_equal = { lhs = MN_S$slot$Urban value = 0 } } }
+				if = {
+					limit = { NOT = { is_key_equal = { lhs = MN_S$slot$Notables value = 0 } } }
+					set_key = { lhs = DG_Tmp2 value = 0.35 }
+					set_key = { lhs = DG_Tmp3 value = 0.45 }
+					set_key = { lhs = DG_Tmp4 value = 0.20 }
+				}
+				else = {
+					set_key = { lhs = DG_Tmp2 value = 0.44 }
+					set_key = { lhs = DG_Tmp3 value = 0.56 }
+					set_key = { lhs = DG_Tmp4 value = 0.00 }
+				}
+			}
+			else = {
+				if = {
+					limit = { NOT = { is_key_equal = { lhs = MN_S$slot$Notables value = 0 } } }
+					set_key = { lhs = DG_Tmp2 value = 0.64 }
+					set_key = { lhs = DG_Tmp3 value = 0.00 }
+					set_key = { lhs = DG_Tmp4 value = 0.36 }
+				}
+				else = {
+					set_key = { lhs = DG_Tmp2 value = 1.00 }
+					set_key = { lhs = DG_Tmp3 value = 0.00 }
+					set_key = { lhs = DG_Tmp4 value = 0.00 }
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = { NOT = { is_key_equal = { lhs = MN_S$slot$Urban value = 0 } } }
+				if = {
+					limit = { NOT = { is_key_equal = { lhs = MN_S$slot$Notables value = 0 } } }
+					set_key = { lhs = DG_Tmp2 value = 0.00 }
+					set_key = { lhs = DG_Tmp3 value = 0.69 }
+					set_key = { lhs = DG_Tmp4 value = 0.31 }
+				}
+				else = {
+					set_key = { lhs = DG_Tmp2 value = 0.00 }
+					set_key = { lhs = DG_Tmp3 value = 1.00 }
+					set_key = { lhs = DG_Tmp4 value = 0.00 }
+				}
+			}
+			else = {
+				set_key = { lhs = DG_Tmp2 value = 0.00 }
+				set_key = { lhs = DG_Tmp3 value = 0.00 }
+				set_key = { lhs = DG_Tmp4 value = 1.00 }
+			}
+		}
+		
+		multiply_key = { lhs = DG_Tmp2 which = MN_S$slot$_Var }
+		multiply_key = { lhs = DG_Tmp3 which = MN_S$slot$_Var }
+		multiply_key = { lhs = DG_Tmp4 which = MN_S$slot$_Var }
+			
+		if = {
+			limit = {
+				check_key = { lhs = MN_S$slot$_Var value = 0.001 }
+			}
+			set_key = { lhs = DG_Tmp5 which = DG_Tmp1 }## from
+			set_key = { lhs = DG_Tmp6 which = MN_S$slot$ }## to
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_key = { lhs = MN_S$slot$_Var value = 0 }
+				}
+			}
+			set_key = { lhs = DG_Tmp5 which = MN_S$slot$ }## from
+			set_key = { lhs = DG_Tmp6 which = DG_Tmp1 }## to
+			
+			multiply_key = { lhs = DG_Tmp2 value = -1 }
+			multiply_key = { lhs = DG_Tmp3 value = -1 }
+			multiply_key = { lhs = DG_Tmp4 value = -1 }
+		}
+		MN_ConvertReligion = {
+			typeFrom = which from = DG_Tmp5	# From, as in the religion who is losing its believers
+			typeTo = which to = DG_Tmp6   # To, as in the religion who is gaining new believers
+			typeChange = which   # Change, as in how many people in absolute numbers are changing
+			ruralChange = DG_Tmp2 urbanChange = DG_Tmp3 notablesChange = DG_Tmp4
+		}
+		set_key = { lhs = DG_Tmp2 value = 0 }
+		set_key = { lhs = DG_Tmp3 value = 0 }
+		set_key = { lhs = DG_Tmp4 value = 0 }
+		set_key = { lhs = DG_Tmp5 value = 0 }
+	}
+}
+
+MN_RlgConv = {
+	#Conversion to the owner religion, exporting it as a key
+	export_to_key = {
+		 lhs = DG_Tmp1
+		 value = religion
+		 who = owner 
+	}
+	#Adds the religion in case it isn't there already
+	MN_AddReligion = {
+		type = which religion = DG_Tmp1
+	}
+	MN_RlgConv_helper = { slot = 0 }
+	MN_RlgConv_helper = { slot = 1 }
+	MN_RlgConv_helper = { slot = 2 }
+	MN_RlgConv_helper = { slot = 3 }
+	MN_RlgConv_helper = { slot = 4 }
+	MN_RlgConv_helper = { slot = 5 }
+	
+	if = {
+		limit = {
+			is_key_equal = { lhs = MN_S0 which = DG_Tmp1 }
+			check_key = { lhs = MN_S0TotP value = 90 }
+			has_province_modifier = minority_missionary
+		}
+		remove_province_modifier = minority_missionary
+		clr_province_flag = convert_50
+		clr_province_flag = convert_90
+		if = {
+			limit = {
+				any_owned_province = {
+					NOT = { religion = owner }
+					check_key = { lhs = MN_S0MStrength value = 0.5 }
+					OR = {
+						has_province_flag = convert_50
+						has_province_flag = convert_90
+					}
+					has_missionary = no
+				}
+			}
+			random_owned_province = {
+				limit = {
+					NOT = { religion = owner }
+					check_key = { lhs = MN_S0MStrength value = 0.5 }
+					OR = {
+						has_province_flag = convert_50
+						has_province_flag = convert_90
+					}
+					has_missionary = no
+				}
+				send_missionary = yes
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_province = {
+					check_key = { lhs = MN_S0MStrength value = 0.5 }
+					NOT = { check_key = { lhs = MN_S0TotP value = 90 } }
+					has_province_flag = convert_90
+					has_missionary = no
+				}
+			}
+			random_owned_province = {
+				limit = {
+					check_key = { lhs = MN_S0MStrength value = 0.5 }
+					NOT = { check_key = { lhs = MN_S0TotP value = 90 } }
+					has_province_flag = convert_90
+					has_missionary = no
+				}
+				add_province_modifier = { name = minority_missionary duration = -1 hidden = yes }
+			}
+		}
+		else = { owner = { country_event = { id = DG_Convert.007 } } }
+	}
+	
+	set_key = { lhs = DG_Tmp1 value = 0 }
+	MN_GetSlot_Class = yes
+	MN_Autonomy = yes
+	#Converts the religion if necessary, and switches slots between former and new religion
+	province_event = { id = DG_Convert.004 days = 1 } #change_religion_effect = yes
+	if = {
+		limit = {
+			owner = {
+				religion = catholic
+				is_excommunicated = no
+				NOT = { tag = PAP }
+			}
+		}
+		owner = { CardinalChanceC = yes }
+		CardinalChanceP = yes
+	}
+}

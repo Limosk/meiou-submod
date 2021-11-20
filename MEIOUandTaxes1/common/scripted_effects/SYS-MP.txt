@@ -1,0 +1,279 @@
+### Calculate new manpower percentage after recovery tick
+# Formular = (((PreviousMPPerc / MaxMPPercentage)^2 - 1) * -1) * RecoverySpeed
+# Output in $return$ = new manpower percentage
+MP_GetMPPercRecov = {
+    set_key = { lhs = $return$ which = $class$_MPPerc } # MP Fraction
+    divide_key = { lhs = $return$ which = MP_Tmp } # MP Fraction divided by $max$
+    multiply_key = { lhs = $return$ which = $return$ } # ^2 return
+    subtract_key = { lhs = $return$ value = 1 }
+    multiply_key = { lhs = $return$ value = -1 }
+    multiply_key = { lhs = $return$ value = $speed$ }
+    set_key = { lhs = MP_Tmp value = 0 }
+}
+
+### Calculate theoretical manpower pool of fighting age men
+# Inputs:
+# $class$ = Class to be calculated
+# $max$ = Maximum manpower percentage
+# $speed$ = Speed of manpower recovery
+# $capital$ = whether or not the capital familial estates are affected
+# Output:
+# $class$_MP: Capable manpower (fightning age men)
+MP_DoClass = {
+    if = { ## only calculate stuff if class exists and is large enough
+        limit = {
+            check_key = { lhs = $class$_Total value = 0.1 }
+        }
+		if = {
+			limit = { # Fraction of current MP / Total Pops in [0,100] - calculated in MP_Refresh
+				NOT = {	check_key = { lhs = $class$_MPPerc value = 0.01 } } # underflow prevention
+			}
+			set_key = { lhs = $class$_MPPerc value = 0.01 }
+		}
+		#else_if = {
+		#	limit = {
+		#		check_key = { lhs = $class$_MPPerc value = $max$ } # overflow prevention
+		#	}
+		#	set_key = { lhs = $class$_MPPerc value = $max$ }
+		#}
+
+   		set_key = { lhs = MP_Tmp value = $max$ } # Maximum MP Fraction
+		[[capital]
+		if = { ## If capital add familial estates MP to $max$
+			limit = {
+				is_capital = yes
+				check_key = { lhs = $class$_Total value = 4 }
+			}
+			set_key = { lhs = Tmp_9 value = 3 }
+			divide_key = { lhs = Tmp_9 which = $class$_Total }
+			multiply_key = { lhs = Tmp_9 value = 100 }
+			change_key = { lhs = MP_Tmp which = Tmp_9 }
+		}
+		]
+
+		# Calculate the change in manpower percentage after recovery tick
+		MP_GetMPPercRecov = {
+			class = $class$
+			speed = $speed$
+			return = Tmp_9
+		}
+
+		# Not sure why this is here
+		if = {
+			limit = { # Fraction of current MP / Total Pops in [0,1] - calculated in MP_Refresh
+				NOT = {	check_key = { lhs = $class$_MPPerc value = 0.01 } } # underflow prevention
+			}
+			set_key = { lhs = $class$_MPPerc value = 0.01 }
+		}
+		else_if = {
+			limit = {
+				check_key = { lhs = $class$_MPPerc value = 100 } # overflow prevention
+			}
+			set_key = { lhs = $class$_MPPerc value = 100 }
+		}
+		
+		change_key = { lhs = $class$_MPPerc which = Tmp_9 } # Change MP Percentage by the calculated recovery
+
+		# Calculate absolute $class$_MP value based on new percentage and total population
+		set_key = { lhs = $class$_MP which = $class$_Total }
+		multiply_key = { lhs = $class$_MP which = $class$_MPPerc }
+		multiply_key = { lhs = $class$_MP value = 0.01 }
+
+		if = {
+			limit = {
+				check_key = { lhs = $class$_MP which = $class$_Total } # overflow handling
+			}
+			set_key = { lhs = $class$_MP which = $class$_Total }
+		}
+
+		set_key = { lhs = Tmp_9 value = 0 }
+	}
+	else = {
+		set_key = { lhs = $class$_MP value = 0 }
+		set_key = { lhs = $class$_MPPerc value = 100 }
+	}
+}
+
+MP_DoProv = {
+    MP_DoClass = { class = SF max = 10 speed = 0.25 capital=yes }
+    MP_DoClass = { class = NM max = 20 speed = 0.25 }
+    MP_DoClass = { class = RE max = 10 speed = 0.25 }
+    MP_DoClass = { class = NO max = 25 speed = 0.25 }
+    MP_DoClass = { class = BG max = 10 speed = 0.25 }
+    MP_DoClass = { class = CL max = 10 speed = 0.25 }
+}
+
+MP_DistribHelper = {
+	set_key = { lhs = Public_Tmp1 which = $from$_MP$who$Cur }
+	multiply_key = { lhs = Public_Tmp1 which = $amount$ }
+	divide_key = { lhs = Public_Tmp1 which = Public_Tmp0 }
+	
+	change_key = { lhs = $who$_MP which = Public_Tmp1 }
+	change_key = { lhs = $from$_MP$who$Cur which = Public_Tmp1 }
+	Public_ChangeClassVal = { class = $who$ type = which inp = Public_Tmp1 }
+	
+	if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = $who$_MP value = 0 }
+			}
+		}
+		set_key = { lhs = $who$_MP value = 0 }
+	}
+	if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = $from$_MP$who$Cur value = 0 }
+			}
+		}
+		set_key = { lhs = $from$_MP$who$Cur value = 0 }
+	}
+}
+
+MP_Distrib = {
+	set_key = { lhs = Public_Tmp0 value = 0 }
+	
+	[[who0] change_key = { lhs = Public_Tmp0 which = $from$_MP$who0$Cur } ]
+	[[who1] change_key = { lhs = Public_Tmp0 which = $from$_MP$who1$Cur } ]
+	[[who2] change_key = { lhs = Public_Tmp0 which = $from$_MP$who2$Cur } ]
+	[[who3] change_key = { lhs = Public_Tmp0 which = $from$_MP$who3$Cur } ]
+	[[who4] change_key = { lhs = Public_Tmp0 which = $from$_MP$who4$Cur } ]
+	[[who5] change_key = { lhs = Public_Tmp0 which = $from$_MP$who5$Cur } ]
+	
+	if = {
+		limit = {
+			check_key = { lhs = Public_Tmp0 value = 0.1 }
+		}
+		[[who0] MP_DistribHelper = { from = $from$ who = $who0$ amount = $amount$ } ]
+		[[who1] MP_DistribHelper = { from = $from$ who = $who1$ amount = $amount$ } ]
+		[[who2] MP_DistribHelper = { from = $from$ who = $who2$ amount = $amount$ } ]
+		[[who3] MP_DistribHelper = { from = $from$ who = $who3$ amount = $amount$ } ]
+		[[who4] MP_DistribHelper = { from = $from$ who = $who4$ amount = $amount$ } ]
+		[[who5] MP_DistribHelper = { from = $from$ who = $who5$ amount = $amount$ } ]
+	}
+}
+
+MP_Refresh = {
+	if = {
+		limit = {
+			OR = {
+				NOT = { check_key = { lhs = $class$_MP value = 0.001 } }
+				NOT = { check_key = { lhs = $class$_Total value = 0.1 } }
+			}
+		}
+		set_key = { lhs = $class$_MP value = 0 }
+		set_key = { lhs = $class$_MPPerc value = 0 }
+	}
+	else = {
+		set_key = { lhs = $class$_MPPerc which = $class$_MP }
+		multiply_key = { lhs = $class$_MPPerc value = 100 }
+		divide_key = { lhs = $class$_MPPerc which = $class$_Total }
+	}
+
+}
+
+MP_AddHelper = {
+    if = {
+        limit = {
+            check_key = { lhs = MP_MPChange value = $val$ }
+        }
+        subtract_key = { lhs = MP_MPChange value = $val$ }
+
+        add_manpower = $val$
+    }
+}
+
+MP_Add = {
+    set_key = { lhs = MP_MPChange $type$ = $inp$ }
+
+    if = {
+        limit = {
+            NOT = {
+                has_country_flag = MP_Checked
+            }
+        }
+        export_to_key = {
+            lhs = MP_MP
+            value = manpower
+        }
+    }
+
+    change_key = { lhs = MP_MP which = MP_MPChange }
+
+    MP_AddHelper = { val = 1024 }
+    MP_AddHelper = { val = 512 }
+    MP_AddHelper = { val = 256 }
+    MP_AddHelper = { val = 128 }
+    MP_AddHelper = { val = 64 }
+    MP_AddHelper = { val = 32 }
+    MP_AddHelper = { val = 16 }
+    MP_AddHelper = { val = 8 }
+    MP_AddHelper = { val = 4 }
+    MP_AddHelper = { val = 2 }
+    MP_AddHelper = { val = 1 }
+}
+
+MP_SubtHelper = {
+    if = {
+        limit = {
+            check_key = { lhs = MP_MPChange value = $val$ }
+        }
+        subtract_key = { lhs = MP_MPChange value = $val$ }
+
+        add_manpower = -$val$
+    }
+}
+
+MP_Subt = {
+    set_key = { lhs = MP_MPChange $type$ = $inp$ }
+
+    if = {
+        limit = {
+            NOT = {
+                has_country_flag = MP_Checked
+            }
+        }
+        export_to_key = {
+            lhs = MP_MP
+            value = manpower
+        }
+    }
+
+    subtract_key = { lhs = MP_MP which = MP_MPChange }
+
+    MP_SubtHelper = { val = 1024 }
+    MP_SubtHelper = { val = 512 }
+    MP_SubtHelper = { val = 256 }
+    MP_SubtHelper = { val = 128 }
+    MP_SubtHelper = { val = 64 }
+    MP_SubtHelper = { val = 32 }
+    MP_SubtHelper = { val = 16 }
+    MP_SubtHelper = { val = 8 }
+    MP_SubtHelper = { val = 4 }
+    MP_SubtHelper = { val = 2 }
+    MP_SubtHelper = { val = 1 }
+}
+
+MP_RaisedCalc = {
+	export_to_key = {
+		lhs = MP_RaisedReg
+		value = army_size
+	}
+	export_to_key = {
+		lhs = MP_Tmp1
+		value = trigger_value:num_of_mercenaries
+	}
+	subtract_key = { lhs = MP_RaisedReg which = MP_Tmp1 }
+	
+	every_owned_province = { #yes this doesn't capture queued units but remember this system also redistributes gains in manpower
+		limit = {
+			has_construction = army #this includes mercs under construction but so does num_of_mercenaries, thank god
+			isValidProv = yes
+			controlled_by = owner
+		}
+		PREV = {
+			change_key = { lhs = MP_RaisedReg value = 1 }
+		}
+	}
+	set_key = { lhs = MP_Tmp1 value = 0 }
+}

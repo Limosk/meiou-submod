@@ -1,0 +1,58 @@
+namespace = flavor_uef
+country_event = {
+	id = flavor_uef.001
+	
+	title = "flavor_uef.001_title"
+	desc = "flavor_uef.001_desc"
+	picture = GREAT_BUILDING_eventPicture
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = "flavor_uef.001.opta"
+		trigger = {
+				owns_core_province = 183
+		}
+		ai_chance = {
+			factor = 30
+		}
+        Effect_set_capital = { target=183 }
+    }
+    option = {
+		name = "flavor_uef.001.optb"
+		trigger = {
+				owns_core_province = 3375
+		}
+		ai_chance = {
+			factor = 40
+		}
+        Effect_set_capital = { target=3375 }
+    }
+    option = {
+		name = "flavor_uef.001.optc"
+		trigger = {
+				owns_core_province = 176
+		}
+		ai_chance = {
+			factor = 5
+		}
+        Effect_set_capital = { target=176 }
+    }
+    option = {
+		name = "flavor_uef.001.optd"
+		trigger = {
+				owns_core_province = 178
+		}
+		ai_chance = {
+			factor = 10
+		}
+        name = "flavor_uef.001.optd"
+        Effect_set_capital = { target=178 }
+    }
+    option = {
+        name = "flavor_uef.001.opte"
+		ai_chance = {
+			factor = 15
+		}
+    }
+}

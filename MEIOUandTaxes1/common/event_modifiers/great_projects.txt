@@ -1,0 +1,150 @@
+# Great Project modifiers as replacement for those not using the Great Monument DLCs I & II
+forbidden_city_kaifeng = {
+	stability_cost_modifier = -0.025
+	prestige = 0.15
+	legitimacy = 0.1
+	
+	picture = "forbidden_city"
+}
+
+forbidden_city_beijing = {
+	stability_cost_modifier = -0.025
+	prestige = 0.15
+	legitimacy = 0.1
+	
+	picture = "forbidden_city"
+}
+
+forbidden_city_nanjing = {
+	stability_cost_modifier = -0.025
+	prestige = 0.15
+	legitimacy = 0.1
+	
+	picture = "forbidden_city"
+}
+
+forbidden_city_xian = {
+	stability_cost_modifier = -0.025
+	prestige = 0.15
+	legitimacy = 0.1
+	
+	picture = "forbidden_city"
+}
+
+forbidden_city_guangzhou = {
+	stability_cost_modifier = -0.025
+	prestige = 0.15
+	legitimacy = 0.1
+	
+	picture = "forbidden_city"
+}
+
+forbidden_city_luoyang = {
+	stability_cost_modifier = -0.025
+	prestige = 0.15
+	legitimacy = 0.1
+	
+	picture = "forbidden_city"
+}
+
+forbidden_city_chengdu = {
+	stability_cost_modifier = -0.025
+	prestige = 0.15
+	legitimacy = 0.1
+	
+	picture = "forbidden_city"
+}
+
+forbidden_city_hangzhou = {
+	stability_cost_modifier = -0.025
+	prestige = 0.15
+	legitimacy = 0.1
+	
+	picture = "forbidden_city"
+}
+
+hagia_sophia_minarets = {
+	stability_cost_modifier = -0.025
+	prestige = 0.15
+	legitimacy = 0.1
+	
+	picture = "hagia_sophia"
+}
+
+machu_picchu = {
+	local_defensiveness = 0.2
+	prestige = 0.15
+	legitimacy = 0.1
+	
+	picture = "machu_picchu"
+}
+
+kremlin_moscow = {
+	local_defensiveness = 0.2
+	local_unrest = -1
+	local_autonomy = -0.05
+	legitimacy = 0.1
+	prestige = 0.1
+
+	picture = "kremlin"
+}
+
+kremlin_astrakhan = {
+	local_defensiveness = 0.2
+	local_unrest = -1
+	local_autonomy = -0.05
+	legitimacy = 0.1
+	prestige = 0.1
+	
+	picture = "kremlin"
+}
+
+kremlin_novgorod = {
+	local_defensiveness = 0.2
+	local_unrest = -1
+	local_autonomy = -0.05
+	legitimacy = 0.1
+	prestige = 0.1
+	
+	picture = "kremlin"
+}
+
+kremlin_kazan = {
+	local_defensiveness = 0.2
+	local_unrest = -1
+	local_autonomy = -0.05
+	legitimacy = 0.1
+	prestige = 0.1
+	
+	picture = "kremlin"
+}
+
+kremlin_nizhny = {
+	local_defensiveness = 0.2
+	local_unrest = -1
+	local_autonomy = -0.05
+	legitimacy = 0.1
+	prestige = 0.1
+	
+	picture = "kremlin"
+}
+
+kremlin_smolensk = {
+	local_defensiveness = 0.2
+	local_unrest = -1
+	local_autonomy = -0.05
+	legitimacy = 0.1
+	prestige = 0.1
+	
+	picture = "kremlin"
+}
+
+kremlin_pskov = {
+	local_defensiveness = 0.2
+	local_unrest = -1
+	local_autonomy = -0.05
+	legitimacy = 0.1
+	prestige = 0.1
+	
+	picture = "kremlin"
+}

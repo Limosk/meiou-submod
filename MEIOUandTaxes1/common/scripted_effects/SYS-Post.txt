@@ -1,0 +1,254 @@
+### MODDERS USE THESE
+# Adds a trade post
+#Needs a ID var for the owner tag and a starting Influence var
+Post_Create = {
+	if = { limit = { NOT = { has_province_flag = Post_S0 } } Post_CreateSlot = { Slot=0 IDVar=$IDVar$ InfluenceVar=$InfluenceVar$ } }
+	else_if = { limit = { NOT = { has_province_flag = Post_S1 } } Post_CreateSlot = { Slot=1 IDVar=$IDVar$ InfluenceVar=$InfluenceVar$ } }
+	else_if = { limit = { NOT = { has_province_flag = Post_S2 } } Post_CreateSlot = { Slot=2 IDVar=$IDVar$ InfluenceVar=$InfluenceVar$ } }
+	else_if = { limit = { NOT = { has_province_flag = Post_S3 } } Post_CreateSlot = { Slot=3 IDVar=$IDVar$ InfluenceVar=$InfluenceVar$ } }
+	else_if = { limit = { NOT = { has_province_flag = Post_S4 } } Post_CreateSlot = { Slot=4 IDVar=$IDVar$ InfluenceVar=$InfluenceVar$ } }
+	Post_InfluenceUpdate = yes
+}
+# Removes a trade post
+#Needs a ID var for the owner tag
+Post_Destroy = {
+	if = { limit = { has_province_flag = Post_S0 is_key_equal = { lhs = Post_S0Owner which = $IDVar$ } } Post_GetFrom = { Slot=0 } Post_DestroySlot = { Slot=0 } }
+	else_if = { limit = { has_province_flag = Post_S1 is_key_equal = { lhs = Post_S1Owner which = $IDVar$ } } Post_GetFrom = { Slot=1 } Post_DestroySlot = { Slot=1 } }
+	else_if = { limit = { has_province_flag = Post_S2 is_key_equal = { lhs = Post_S2Owner which = $IDVar$ } } Post_GetFrom = { Slot=2 } Post_DestroySlot = { Slot=2 } }
+	else_if = { limit = { has_province_flag = Post_S3 is_key_equal = { lhs = Post_S3Owner which = $IDVar$ } } Post_GetFrom = { Slot=3 } Post_DestroySlot = { Slot=3 } }
+	else_if = { limit = { has_province_flag = Post_S4 is_key_equal = { lhs = Post_S4Owner which = $IDVar$ } } Post_GetFrom = { Slot=4 } Post_DestroySlot = { Slot=4 } }
+	if = {
+		limit = {
+			NOT = {
+				OR = {
+					has_province_flag = Post_S0
+					has_province_flag = Post_S1
+					has_province_flag = Post_S2
+					has_province_flag = Post_S3
+					has_province_flag = Post_S4
+				}
+			}
+		}
+		clr_province_flag = Post
+		remove_province_modifier = Post_Modifier
+	}
+}
+# Changes influence for a tag
+#Needs a ID var for the owner tag and an updated Influence var (0-100 scale)
+Post_InfluenceChange = {
+	if = { limit = { has_province_flag = Post_S0 is_key_equal = { lhs = Post_S0Owner which = $IDVar$ } } Post_InfluenceChangeSlot = { Slot=0 InfluenceVar=$InfluenceVar$ } }
+	else_if = { limit = { has_province_flag = Post_S1 is_key_equal = { lhs = Post_S1Owner which = $IDVar$ } } Post_InfluenceChangeSlot = { Slot=1 InfluenceVar=$InfluenceVar$ } }
+	else_if = { limit = { has_province_flag = Post_S2 is_key_equal = { lhs = Post_S2Owner which = $IDVar$ } } Post_InfluenceChangeSlot = { Slot=2 InfluenceVar=$InfluenceVar$ } }
+	else_if = { limit = { has_province_flag = Post_S3 is_key_equal = { lhs = Post_S3Owner which = $IDVar$ } } Post_InfluenceChangeSlot = { Slot=3 InfluenceVar=$InfluenceVar$ } }
+	else_if = { limit = { has_province_flag = Post_S4 is_key_equal = { lhs = Post_S4Owner which = $IDVar$ } } Post_InfluenceChangeSlot = { Slot=4 InfluenceVar=$InfluenceVar$ } }
+	Post_InfluenceUpdate = yes
+}
+
+
+### core code
+Post_InfluenceChangeSlot = {
+	change_key = { lhs = Post_S$Slot$Influence which = $InfluenceVar$ }
+}
+Post_InfluenceUpdate = {
+	Post_Effect = { Effect=Post_GetFrom }
+	Post_Influence = yes
+}
+Post_Main = {
+	every_country = {
+		limit = {
+			exists = yes
+		}
+		set_key = { lhs = Post_Fees value = 0 }
+		set_key = { lhs = Post_Merchants value = 0 }
+		clr_country_flag = Post
+	}
+	every_province = {
+		limit = {
+			has_province_flag = Post
+		}
+		Post_Effect = { Effect=Post_GetFrom }
+		Post_Effect = { Effect=Post_Pop }
+		
+		Post_Influence = yes
+		Post_Modi = yes
+		Post_TradePower = yes
+		Post_Effect = { Effect=Post_FeesC }
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						has_province_flag = Post_S0
+						has_province_flag = Post_S1
+						has_province_flag = Post_S2
+						has_province_flag = Post_S3
+						has_province_flag = Post_S4
+					}
+				}
+			}
+			clr_province_flag = Post
+			remove_province_modifier = Post_Modifier
+		}
+	}
+	every_country = {
+		limit = {
+			has_country_flag = Post
+		}
+		set_key = { lhs = Post_S0Owner which = ID_Tag }
+		set_key = { lhs = Post_S1Owner which = ID_Tag }
+		set_key = { lhs = Post_S2Owner which = ID_Tag }
+		set_key = { lhs = Post_S3Owner which = ID_Tag }
+		set_key = { lhs = Post_S4Owner which = ID_Tag }
+		save_event_target_as = PostCountry
+		tradenode_centers = {
+			TN_effect16 = yes
+		}
+	}
+}
+Post_Effect = {
+	if = { limit = { has_province_flag = Post_S0 } $Effect$ = { Slot=0 } }
+	if = { limit = { has_province_flag = Post_S1 } $Effect$ = { Slot=1 } }
+	if = { limit = { has_province_flag = Post_S2 } $Effect$ = { Slot=2 } }
+	if = { limit = { has_province_flag = Post_S3 } $Effect$ = { Slot=3 } }
+	if = { limit = { has_province_flag = Post_S4 } $Effect$ = { Slot=4 } }
+}
+
+Post_CreateSlot = {
+	set_province_flag = Post_S$Slot$
+	set_key = { lhs = Post_S$Slot$Owner which = $IDVar$ }
+	set_key = { lhs = Post_S$Slot$Influence which = $InfluenceVar$ }
+	Post_GetFrom = { Slot=$Slot$ }
+	event_target:Post_S$Slot$ = {
+		PREV = { set_province_flag = TradePost@PREV }
+	}
+	set_province_flag = Post
+	if = {
+		limit = {
+			NOT = { has_province_modifier = Post_Modifier }
+		}
+		add_permanent_province_modifier = { name = Post_Modifier duration = -1 }
+	}
+	event_target:Post_S$Slot$ = {
+		POP_GetTagName = { targetScope=PREV var=ID_Tag Key=Post_S$Slot$Name }
+	}
+}
+Post_DestroySlot = {
+	event_target:Post_S$Slot$ = {
+		PREV = { clr_province_flag = TradePost@PREV }
+	}
+	clr_province_flag = Post_S$Slot$
+	set_key = { lhs = Post_S$Slot$Influence value = 0 } # share of all influence in the prov
+	set_key = { lhs = Post_S$Slot$InfluenceF value = 0 } # share of all foreign influence in the prov
+	set_key = { lhs = Post_S$Slot$Owner value = 0 }
+	set_key = { lhs = Post_S$Slot$TradePower value = 0 }
+	set_key = { lhs = Post_S$Slot$Fees value = 0 }
+	clear_saved_name = Post_S$Slot$Name
+}
+Post_GetFrom = {
+	POP_GetTag = { var=Post_S$Slot$Owner return=Post_S$Slot$ }
+	event_target:Post_S$Slot$ = {
+		set_country_flag = Post
+	}
+}
+Post_Pop = {
+	if = {
+		limit = {
+			event_target:Post_S$Slot$ = { exists = no }
+		}
+		Post_DestroySlot = { Slot=$Slot$ }
+	}
+}
+Post_Influence = {
+	set_key = { lhs = Tmp_0 which = Post_LocalInfluence }
+	change_key = { lhs = Tmp_0 value = 1 }
+	set_key = { lhs = Post_ForeignInfluence value = 100 }
+	Post_Effect = { Effect=Post_Influence1 }
+	Post_Effect = { Effect=Post_Influence2 }
+	set_key = { lhs = Tmp_2 value = 0 }
+	Post_Effect = { Effect=Post_Influence3 }
+	Post_Effect = { Effect=Post_Influence4 }
+	
+	set_key = { lhs = Post_LocalInfluence value = 100 }
+	subtract_key = { lhs = Post_LocalInfluence which = Post_ForeignInfluence }
+}
+Post_Influence1 = {
+	change_key = { lhs = Post_S$Slot$Influence value = 1 }
+	change_key = { lhs = Tmp_0 which = Post_S$Slot$Influence }
+}
+Post_Influence2 = {
+	divide_key = { lhs = Post_S$Slot$Influence which = Tmp_0 }
+	multiply_key = { lhs = Post_S$Slot$Influence value = 100 }
+	subtract_key = { lhs = Post_ForeignInfluence which = Post_S$Slot$Influence }
+}
+Post_Influence3 = {
+	change_key = { lhs = Tmp_2 which = Post_S$Slot$Influence }
+}
+Post_Influence4 = {
+	if = {
+		limit = {
+			check_key = { lhs = Tax_TmpBase value = 0.001 }
+		}
+		set_key = { lhs = Post_S$Slot$InfluenceF which = Post_S$Slot$Influence }
+		divide_key = { lhs = Post_S$Slot$InfluenceF which = Tmp_2 }
+	}
+	else = {
+		set_key = { lhs = Post_S$Slot$InfluenceF value = 0 }
+	}
+}
+Post_Modi = {
+	owner = {
+		set_key = { lhs = Tmp_0 which = Modi_TradeOutput }
+		PREV = { set_key = { lhs = Tmp_0 which = PREV } }
+	}
+	set_key = { lhs = Tmp_1 value = 100 }
+	subtract_key = { lhs = Tmp_1 which = Post_ForeignInfluence }
+	multiply_key = { lhs = Tmp_1 value = 0.01 }
+	multiply_key = { lhs = Tmp_0 which = Tmp_1 }
+	Post_Effect = { Effect=Post_ModiSlot }
+	set_key = { lhs = Modi_TradeOutput which = Tmp_0 }
+}
+Post_ModiSlot = {
+	event_target:Post_S$Slot$ = {
+		set_key = { lhs = Tmp_1 which = Modi_TradeOutput }
+		PREV = { set_key = { lhs = Tmp_1 which = PREV } }
+	}
+	multiply_key = { lhs = Tmp_1 which = Post_S$Slot$Influence }
+	multiply_key = { lhs = Tmp_1 value = 0.01 }
+	change_key = { lhs = Tmp_0 which = Tmp_1 }
+}
+Post_TradePower = {
+	Post_Effect = { Effect=Post_TradePowerSlot }
+}
+Post_TradePowerSlot = {
+	set_key = { lhs = Post_S$Slot$TradePower which = Stat_TP }
+	multiply_key = { lhs = Post_S$Slot$TradePower which = Post_S$Slot$Influence }
+	multiply_key = { lhs = Post_S$Slot$TradePower value = 0.01 }
+}
+Post_FeesC = {
+	set_key = { lhs = Post_S$Slot$Fees which = Post_Fees }
+	multiply_key = { lhs = Post_S$Slot$Fees which = Post_S$Slot$InfluenceF }
+	event_target:Post_S$Slot$ = {
+		set_key = { lhs = Post_S$Slot$Fees which = PREV }
+		change_key = { lhs = Post_Fees which = Post_S$Slot$Fees }
+		set_key = { lhs = Post_S$Slot$Fees value = 0 }
+	}
+}
+Post_TmpInit = {
+	every_province = {
+		limit = {
+			isValidEmpty = yes
+		}
+		set_key = { lhs = Post_LocalInfluence value = 100 }
+	}
+}
+Post_Init = {
+	1402 = {
+		GEN = {
+			set_key = { lhs = Tmp_5 which = ID_Tag }
+			PREV = {
+				set_key = { lhs = Tmp_5 which = PREV }
+				set_key = { lhs = Tmp_6 value = 50 }
+				Post_Create = { IDVar=Tmp_5 InfluenceVar=Tmp_6 }
+			}
+		}
+	}
+}

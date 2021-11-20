@@ -1,0 +1,36 @@
+###########################
+####### Dei Gratia ########
+###########################
+
+MN_A_Spec.90 = { local_autonomy = 0.25 }
+MN_A_Spec.80 = { local_autonomy = 0.225 }
+MN_A_Spec.70 = { local_autonomy = 0.20 }
+MN_A_Spec.60 = { local_autonomy = 0.175 }
+MN_A_Spec.50 = { local_autonomy = 0.15 }
+MN_A_Spec.40 = { local_autonomy = 0.125 }
+MN_A_Spec.30 = { local_autonomy = 0.10 }
+MN_A_Spec.20 = { local_autonomy = 0.075 }
+MN_A_Spec.10 = { local_autonomy = 0.05 }
+MN_A_Spec.05 = { local_autonomy = 0.025 }
+
+MN_A_Here.90 = { local_autonomy = 0.25 }
+MN_A_Here.80 = { local_autonomy = 0.225 }
+MN_A_Here.70 = { local_autonomy = 0.20 }
+MN_A_Here.60 = { local_autonomy = 0.175 }
+MN_A_Here.50 = { local_autonomy = 0.15 }
+MN_A_Here.40 = { local_autonomy = 0.125 }
+MN_A_Here.30 = { local_autonomy = 0.10 }
+MN_A_Here.20 = { local_autonomy = 0.075 }
+MN_A_Here.10 = { local_autonomy = 0.05 }
+MN_A_Here.05 = { local_autonomy = 0.025 }
+
+MN_A_Heat.90 = { local_autonomy = 0.25 }
+MN_A_Heat.80 = { local_autonomy = 0.225 }
+MN_A_Heat.70 = { local_autonomy = 0.20 }
+MN_A_Heat.60 = { local_autonomy = 0.175 }
+MN_A_Heat.50 = { local_autonomy = 0.15 }
+MN_A_Heat.40 = { local_autonomy = 0.125 }
+MN_A_Heat.30 = { local_autonomy = 0.10 }
+MN_A_Heat.20 = { local_autonomy = 0.075 }
+MN_A_Heat.10 = { local_autonomy = 0.05 }
+MN_A_Heat.05 = { local_autonomy = 0.025 }

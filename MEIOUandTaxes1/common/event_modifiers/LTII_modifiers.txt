@@ -1,0 +1,9 @@
+trade_privileges_renewal_timer = { }
+
+constantinople_trade_privileges_modifier = {
+	center_of_trade_upgrade_cost = -0.05
+}
+
+castile_trade_privileges_modifier = {
+	center_of_trade_upgrade_cost = -0.05
+}

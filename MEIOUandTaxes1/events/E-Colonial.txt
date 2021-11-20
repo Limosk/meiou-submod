@@ -1,0 +1,2344 @@
+namespace = contact_natives
+namespace = colonial
+namespace = colonial_nation
+
+country_event = {
+	id = contact_natives.1
+	title = "contact_natives.1.n"
+	desc = "contact_natives.1.t"
+	picture = NATIVES_eventPicture
+	trigger = {
+		OR = {
+			technology_group = north_american
+			technology_group = mesoamerican
+			technology_group = south_american
+		}
+		any_neighbor_country = {
+			OR = {
+				technology_group = western
+				technology_group = eastern
+			}
+		}
+		NOT = {
+			has_country_flag = contact_with_white_man
+		}
+	}
+	mean_time_to_happen = {
+		months = 1
+	}
+	option = {
+		name = "contact_natives.1.a"
+		set_country_flag = contact_with_white_man
+		every_neighbor_country = {
+			limit = {
+				OR = {
+					technology_group = western
+					technology_group = eastern
+				}
+				NOT = {
+					has_country_flag = natives_policy_chosen
+				}
+				NOT = {
+					has_country_flag = ignore_natives
+				}
+				NOT = {
+					has_country_flag = ally_natives
+				}
+				NOT = {
+					has_country_flag = conquer_natives
+				}
+			}
+			country_event = {
+				id = contact_natives.2
+				days = 3
+			}
+		}
+	}
+}
+country_event = {
+	id = contact_natives.2
+	title = "contact_natives.2.n"
+	desc = "contact_natives.2.t"
+	picture = COLONIZATION_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "contact_natives.2.a"
+		ai_chance = {
+			factor = 30
+		}
+		set_country_flag = conquer_natives
+		set_country_flag = natives_policy_chosen
+		add_opinion = {
+			who = FROM
+			modifier = conquer_natives_opinion
+		}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = conquer_natives_opinion
+			}
+		}
+	}
+	option = {
+		name = "contact_natives.2.b"
+		ai_chance = {
+			factor = 10
+		}
+		set_country_flag = ignore_natives
+		set_country_flag = natives_policy_chosen
+		add_opinion = {
+			who = FROM
+			modifier = ignore_natives_opinion
+		}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = ignore_natives_opinion
+			}
+		}
+	}
+	option = {
+		name = "contact_natives.2.c"
+		ai_chance = {
+			factor = 20
+		}
+		set_country_flag = trade_natives
+		set_country_flag = natives_policy_chosen
+		add_opinion = {
+			who = FROM
+			modifier = trade_natives_opinion
+		}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = trade_natives_opinion
+			}
+		}
+	}
+	option = {
+		name = "contact_natives.2.d"
+		ai_chance = {
+			factor = 15
+		}
+		set_country_flag = ally_natives
+		set_country_flag = natives_policy_chosen
+		add_opinion = {
+			who = FROM
+			modifier = ally_natives_opinion
+		}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = ally_natives_opinion
+			}
+		}
+	}
+}
+province_event = {
+	id = colonial.12
+	title = "colonial.EVTNAME12"
+	desc = "colonial.EVTDESC12"
+	picture = NATIVES_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		any_empty_neighbor_province = {
+			NOT = {
+				has_province_modifier = fur_low
+				has_province_modifier = fur_medium
+				has_province_modifier = fur_large
+			}
+			native_size = 1000
+			OR = {
+				culture_group = west_algonquian
+				culture_group = east_algonquian
+				culture_group = athabascan_group
+				culture_group = caddoan
+				culture_group = plain_indians
+			}
+		}
+		OR = {
+			owner = {
+				has_country_flag = NF_ruthless
+			}
+			owner = {
+				has_country_flag = NF_peacenik
+			}
+			AND = {
+				owner = {
+					has_country_flag = NF_trader
+				}
+				has_port = yes
+			}
+		}
+		NOT = {
+			owned_by = AAA
+		}
+	}
+	option = {
+		name = "colonial.EVTOPTA12"
+		add_province_modifier = { #to review, as modifier is added to the already estabilished province instead of the colony. Could be added to one of neighboring empty provinces instead, making it more useful to start a colony there.
+			name = colonial_influx
+			duration = 3650
+		}
+	}
+	option = {
+		name = "colonial.EVTOPTB12"
+		random_province = {
+			limit = {
+				region = ROOT
+				NOT = { has_discovered = ROOT }
+				any_neighbor_province = { has_discovered = ROOT }
+			}
+			discover_country = ROOT
+			discover_country = colonial_parent
+		}
+		random_province = {
+			limit = {
+				region = ROOT
+				NOT = { has_discovered = ROOT }
+				any_neighbor_province = { has_discovered = ROOT }
+			}
+			discover_country = ROOT
+			discover_country = colonial_parent
+		}
+	}
+	option = {
+		name = "colonial.EVTOPTC12"
+		add_permanent_province_modifier = {
+			name = fur_low
+			duration = -1
+		}
+	}
+}
+# province_event = {
+# 	id = colonial.14
+# 	title = "colonial.EVTNAME14"
+# 	desc = "colonial.EVTDESC14"
+# 	picture = RELIGION_eventPicture
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		is_colony = yes
+# 		OR = {
+# 			continent = north_america
+# 			continent = south_america
+# 		}
+# 		owner = {
+# 			has_country_modifier = the_societas_jesu
+# 			religion = catholic
+# 		}
+# 		is_religion_enabled = protestant
+# 		NOT = {
+# 			is_year = 1650
+# 		}
+# 		NOT = {
+# 			has_province_modifier = jesuit_mission
+# 		}
+# 	}
+# 	option = {
+# 		name = "colonial.EVTOPTA14"
+# 		add_province_modifier = {
+# 			name = jesuit_mission
+# 			duration = -1
+# 		}
+# 	}
+# }
+province_event = {
+	id = colonial.17
+	title = "EVTNAME6401"
+	desc = "EVTDESC6401"
+	picture = COLONIZATION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_colony = yes
+		colonysize = 100
+		NOT = {
+			colonysize = 500
+		}
+		owner = {
+			any_owned_province = {
+				is_colony = yes
+				colonysize = 500
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTA6401"
+		ROOT = {add_colonysize = 200}
+		owner = {
+			random_owned_province = {
+				limit = {
+					is_colony = yes
+					colonysize = 500
+				}
+				add_colonysize = -200
+			}
+		}
+	}
+}
+
+
+namespace = colonial_nation
+country_event = {
+	id = colonial_nation.4
+	title = "colonial_nation.EVTNAME4"
+	desc = "colonial_nation.EVTDESC4"
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_colonial_nation = yes
+		liberty_desire = 50
+		NOT = {
+			has_country_flag = colonial_nation_freedom_fighter
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		set_country_flag = colonial_nation_freedom_fighter
+	}
+	option = {
+		name = "colonial_nation.EVTOPTA4"
+		ai_chance = {
+			factor = 75
+		}
+		create_general = {
+			tradition = 15
+		}
+		add_liberty_desire = 1
+		hidden_effect = {
+			colonial_parent = {
+				country_event = {
+					id = colonial_nation.5
+					days = 1
+				}
+			}
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTB4"
+		ai_chance = {
+			factor = 25
+		}
+		add_liberty_desire = 10
+		hidden_effect = {
+			colonial_parent = {
+				country_event = {
+					id = colonial_nation.6
+					days = 1
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = colonial_nation.5
+	title = "colonial_nation.EVTNAME5"
+	desc = "colonial_nation.EVTDESC5"
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "colonial_nation.EVTOPTA5"
+		tooltip = {
+			FROM = {
+				add_liberty_desire = 1
+			}
+		}
+	}
+}
+country_event = {
+	id = colonial_nation.6
+	title = "colonial_nation.EVTNAME6"
+	desc = "colonial_nation.EVTDESC6"
+	picture = STREET_SPEECH_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "colonial_nation.EVTOPTA6"
+		tooltip = {
+			FROM = {
+				add_liberty_desire = 10
+			}
+		}
+	}
+}
+country_event = {
+	id = colonial_nation.10
+	title = "colonial_nation.EVTNAME10"
+	desc = "colonial_nation.EVTDESC10"
+	picture = BORDER_TENSION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		any_subject_country = {
+			is_colonial_nation_of = ROOT
+			cb_on_primitives = yes
+			NOT = {
+				has_country_modifier = the_proclamation_of_year_timer
+			}
+			OR = {
+				NOT = {
+					has_country_flag = the_proclamation_of_year
+				}
+				had_country_flag = {
+					flag = the_proclamation_of_year
+					days = 10950
+				}
+			}
+			any_neighbor_country = {
+				primitives = yes
+				OR = {
+					alliance_with = ROOT
+					has_opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		random_country = {
+			limit = {
+				is_colonial_nation_of = ROOT
+				cb_on_primitives = yes
+				NOT = {
+					has_country_modifier = the_proclamation_of_year_timer
+				}
+				OR = {
+					NOT = {
+						has_country_flag = the_proclamation_of_year
+					}
+					had_country_flag = {
+						flag = the_proclamation_of_year
+						days = 10950
+					}
+				}
+				any_neighbor_country = {
+					primitives = yes
+					OR = {
+						alliance_with = ROOT
+						has_opinion = {
+							who = ROOT
+							value = 100
+						}
+					}
+				}
+			}
+			set_country_flag = the_proclamation_of_year_country
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTA10"
+		ai_chance = {
+			factor = 25
+		}
+		random_country = {
+			limit = {
+				has_country_flag = the_proclamation_of_year_country
+				is_colonial_nation_of = ROOT
+				cb_on_primitives = yes
+				NOT = {
+					has_country_modifier = the_proclamation_of_year_timer
+				}
+				OR = {
+					NOT = {
+						has_country_flag = the_proclamation_of_year
+					}
+					had_country_flag = {
+						flag = the_proclamation_of_year
+						days = 10950
+					}
+				}
+				any_neighbor_country = {
+					primitives = yes
+					OR = {
+						alliance_with = ROOT
+						has_opinion = {
+							who = ROOT
+							value = 100
+						}
+					}
+				}
+			}
+			tooltip = {
+				add_liberty_desire = 25
+				add_country_modifier = {
+					name = "proclamation_of_year_modifier"
+					duration = 3650
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = colonial_nation.11
+					days = 1
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				primitives = yes
+				OR = {
+					alliance_with = ROOT
+					has_opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+				any_neighbor_country = {
+					has_country_flag = the_proclamation_of_year_country
+					is_colonial_nation_of = ROOT
+					cb_on_primitives = yes
+					NOT = {
+						has_country_modifier = the_proclamation_of_year_timer
+					}
+					OR = {
+						NOT = {
+							has_country_flag = the_proclamation_of_year
+						}
+						had_country_flag = {
+							flag = the_proclamation_of_year
+							days = 10950
+						}
+					}
+				}
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = the_proclamation_of_year
+			}
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTB10"
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				any_subject_country = {
+					is_colonial_nation_of = ROOT
+					cb_on_primitives = yes
+					NOT = {
+						has_country_modifier = the_proclamation_of_year_timer
+					}
+					OR = {
+						NOT = {
+							has_country_flag = the_proclamation_of_year
+						}
+						had_country_flag = {
+							flag = the_proclamation_of_year
+							days = 10950
+						}
+					}
+					any_neighbor_country = {
+						primitives = yes
+						alliance_with = ROOT
+					}
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				primitives = yes
+				OR = {
+					alliance_with = ROOT
+					has_opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+				any_neighbor_country = {
+					has_country_flag = the_proclamation_of_year_country
+					is_colonial_nation_of = ROOT
+					cb_on_primitives = yes
+					NOT = {
+						has_country_modifier = the_proclamation_of_year_timer
+					}
+					OR = {
+						NOT = {
+							has_country_flag = the_proclamation_of_year
+						}
+						had_country_flag = {
+							flag = the_proclamation_of_year
+							days = 10950
+						}
+					}
+				}
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = non_restricted_colonial_wars
+			}
+		}
+		hidden_effect = {
+			random_country = {
+				limit = {
+					has_country_flag = the_proclamation_of_year_country
+					is_colonial_nation_of = ROOT
+					cb_on_primitives = yes
+					NOT = {
+						has_country_modifier = the_proclamation_of_year_timer
+					}
+					OR = {
+						NOT = {
+							has_country_flag = the_proclamation_of_year
+						}
+						had_country_flag = {
+							flag = the_proclamation_of_year
+							days = 10950
+						}
+					}
+					any_neighbor_country = {
+						primitives = yes
+						OR = {
+							alliance_with = ROOT
+							has_opinion = {
+								who = ROOT
+								value = 100
+							}
+						}
+					}
+				}
+				clr_country_flag = the_proclamation_of_year_country
+			}
+		}
+	}
+}
+country_event = {
+	id = colonial_nation.11
+	title = "colonial_nation.EVTNAME11"
+	desc = "colonial_nation.EVTDESC11"
+	picture = COURT_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "colonial_nation.EVTOPTA11"
+		add_liberty_desire = 25
+		add_country_modifier = {
+			name = "proclamation_of_year_modifier"
+			duration = 3650
+		}
+		clr_country_flag = the_proclamation_of_year_country
+		clr_country_flag = the_proclamation_of_year
+		set_country_flag = the_proclamation_of_year
+		add_country_modifier = {
+			name = "the_proclamation_of_year_timer"
+			duration = 3650
+			hidden = yes
+		}
+	}
+}
+country_event = {
+	id = colonial_nation.12
+	title = "colonial_nation.EVTNAME12"
+	desc = "colonial_nation.EVTDESC12"
+	picture = COLONIZATION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		any_subject_country = {
+			is_colonial_nation_of = ROOT
+			OR = {
+				NOT = {
+					has_country_flag = restricted_colonial_expansion
+				}
+				had_country_flag = {
+					flag = restricted_colonial_expansion
+					days = 10950
+				}
+			}
+			any_owned_province = {
+				is_colony = yes
+			}
+			any_neighbor_country = {
+				primitives = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		random_country = {
+			limit = {
+				is_colonial_nation_of = ROOT
+				OR = {
+					NOT = {
+						has_country_flag = restricted_colonial_expansion
+					}
+					had_country_flag = {
+						flag = restricted_colonial_expansion
+						days = 10950
+					}
+				}
+				any_owned_province = {
+					is_colony = yes
+				}
+				any_neighbor_country = {
+					primitives = yes
+				}
+			}
+			save_event_target_as = restricted_colonial_expansion_country
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTA12"
+		ai_chance = {
+			factor = 75
+		}
+		event_target:restricted_colonial_expansion_country = {
+			tooltip = {
+				add_liberty_desire = 25
+				add_country_modifier = {
+					name = "restricted_colonial_expansion"
+					duration = 1825
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = colonial_nation.13
+					days = 1
+				}
+			}
+			every_neighbor_country = {
+				limit = {
+					primitives = yes
+				}
+				add_opinion = {
+					who = ROOT
+					modifier = restricted_colonial_expansion_opinion
+				}
+			}
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTB12"
+		ai_chance = {
+			factor = 25
+		}
+		event_target:restricted_colonial_expansion_country = {
+			every_neighbor_country = {
+				limit = {
+					primitives = yes
+				}
+				add_opinion = {
+					who = ROOT
+					modifier = non_restricted_colonial_expansion_opinion
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = colonial_nation.13
+	title = "colonial_nation.EVTNAME13"
+	desc = "colonial_nation.EVTDESC13"
+	picture = COURT_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "colonial_nation.EVTOPTA13"
+		add_liberty_desire = 25
+		set_country_flag = restricted_colonial_expansion
+		add_country_modifier = {
+			name = "restricted_colonial_expansion"
+			duration = 1825
+		}
+	}
+}
+country_event = {
+	id = colonial_nation.14
+	title = "colonial_nation.EVTNAME14"
+	desc = "colonial_nation.EVTDESC14"
+	picture = WOUNDED_SOLDIERS_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		any_subject_country = {
+			is_colonial_nation_of = ROOT
+			OR = {
+				NOT = {
+					has_country_flag = the_burden_of_war
+				}
+				had_country_flag = {
+					flag = the_burden_of_war
+					days = 7300
+				}
+			}
+			any_neighbor_country = {
+				truce_with = ROOT
+			}
+		}
+		war_exhaustion = 4
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = "colonial_nation.EVTOPTA14"
+		ai_chance = {
+			factor = 50
+		}
+		add_war_exhaustion = -2
+		random_country = {
+			limit = {
+				is_colonial_nation_of = ROOT
+				OR = {
+					NOT = {
+						has_country_flag = the_burden_of_war
+					}
+					had_country_flag = {
+						flag = the_burden_of_war
+						days = 7300
+					}
+				}
+				any_neighbor_country = {
+					truce_with = ROOT
+				}
+			}
+			tooltip = {
+				add_liberty_desire = 10
+				add_adm_power = -25
+			}
+			hidden_effect = {
+				set_country_flag = the_burden_of_war
+				country_event = {
+					id = colonial_nation.15
+					days = 1
+				}
+			}
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTB14"
+		ai_chance = {
+			factor = 50
+		}
+		add_adm_power = -50
+	}
+}
+country_event = {
+	id = colonial_nation.15
+	title = "colonial_nation.EVTNAME14"
+	desc = "colonial_nation.EVTDESC15"
+	picture = WOUNDED_SOLDIER_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "colonial_nation.EVTOPTA13"
+		add_liberty_desire = 10
+		add_adm_power = -25
+	}
+}
+country_event = {
+	id = colonial_nation.75
+	title = "colonial_nation.EVTNAME75"
+	desc = "colonial_nation.EVTDESC75"
+	picture = REVOLUTION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_former_colonial_nation = yes
+		AND = {
+			OR = {
+				is_subject = no
+				is_subject_of_type = tributary_state
+				is_subject_of_type = close_tributary_state
+			}
+		}
+		is_at_war = no
+		manpower_percentage = 0.75
+		any_neighbor_country = {
+			is_colonial_nation = yes
+			liberty_desire = 50
+			is_at_war = no
+			NOT = {
+				has_country_flag = received_revolutionary_support
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = "colonial_nation.EVTOPTA75"
+		ai_chance = {
+			factor = 100
+		}
+		add_manpower = -2
+		random_neighbor_country = {
+			limit = {
+				is_colonial_nation = yes
+				liberty_desire = 50
+				is_at_war = no
+				NOT = {
+					has_country_flag = received_revolutionary_support
+				}
+			}
+			tooltip = {
+				add_manpower = 2
+				if = {
+					limit = {
+						ROOT = {
+							army_tradition = 25
+							NOT = {
+								army_tradition = 50
+							}
+						}
+					}
+					add_army_tradition = 5
+				}
+				if = {
+					limit = {
+						ROOT = {
+							army_tradition = 50
+							NOT = {
+								army_tradition = 75
+							}
+						}
+					}
+					add_army_tradition = 10
+				}
+				if = {
+					limit = {
+						ROOT = {
+							army_tradition = 75
+						}
+					}
+					add_army_tradition = 15
+				}
+				add_opinion = {
+					who = ROOT
+					modifier = supported_the_revolution
+				}
+			}
+			set_country_flag = received_revolutionary_support
+			country_event = {
+				id = colonial_nation.76
+				days = 1
+				tooltip = "viva_la_revolution"
+			}
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTB75"
+		ai_chance = {
+			factor = 0
+		}
+		add_prestige = -10
+	}
+}
+country_event = {
+	id = colonial_nation.76
+	title = "colonial_nation.EVTNAME76"
+	desc = "colonial_nation.EVTDESC76"
+	picture = REVOLUTION_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "colonial_nation.EVTOPTA76"
+		ai_chance = {
+			factor = 100
+		}
+		add_liberty_desire = 10
+		add_manpower = 2
+		if = {
+			limit = {
+				FROM = {
+					army_tradition = 25
+					NOT = {
+						army_tradition = 50
+					}
+				}
+			}
+			add_army_tradition = 5
+		}
+		if = {
+			limit = {
+				FROM = {
+					army_tradition = 50
+					NOT = {
+						army_tradition = 75
+					}
+				}
+			}
+			add_army_tradition = 10
+		}
+		if = {
+			limit = {
+				FROM = {
+					army_tradition = 75
+				}
+			}
+			add_army_tradition = 15
+		}
+		add_opinion = {
+			who = FROM
+			modifier = supported_the_revolution
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTB76"
+		ai_chance = {
+			factor = 0
+		}
+		add_liberty_desire = -5
+	}
+}
+country_event = {
+	id = colonial_nation.77
+	title = "colonial_nation.EVTNAME77"
+	desc = "colonial_nation.EVTDESC77"
+	picture = REVOLUTION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_colonial_nation = yes
+		liberty_desire = 75
+		is_at_war = no
+		NOT = {
+			has_country_flag = revolutionary_spirit
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		set_country_flag = revolutionary_spirit
+	}
+	option = {
+		name = "colonial_nation.EVTOPTA77"
+		ai_chance = {
+			factor = 100
+		}
+		add_liberty_desire = 10
+		add_country_modifier = {
+			name = "revolutionary_spirit"
+			duration = 9125
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTB77"
+		ai_chance = {
+			factor = 0
+		}
+		random_list = {
+			25 = {
+				Stab_Subtract1 = yes
+			}
+			50 = {}
+			25 = {
+				Stab_Add50Percent = yes
+			}
+		}
+	}
+}
+country_event = {
+	id = colonial_nation.90
+	title = "colonial_nation.EVTNAME90"
+	desc = "colonial_nation.EVTDESC90"
+	picture = REFORM_eventPicture
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			remove_country_modifier = jesuits_expelled
+			remove_country_modifier = valladolid_las_casas
+			remove_country_modifier = valladolid_sepulveda
+			remove_country_modifier = laws_of_the_burgos
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTA90"
+		ai_chance = {
+			factor = 40
+			modifier = {
+				factor = 2
+				colonial_parent = {
+					monarchy_or_harem_gov = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					adm_tech = 23
+				}
+			}
+			Pol_ChangeGovMonarchy = { Succession=1 Assembly=1 } 
+			add_government_reform = Pol_Nobility1
+			hidden_effect = {
+				set_legacy_government = despotic_monarchy
+			}
+			set_legacy_government = feudal_monarchy
+		}
+		if = {
+			limit = {
+				adm_tech = 23
+				NOT = {
+					adm_tech = 35
+				}
+			}
+			limit = {
+				adm_tech = 22
+			}
+			Pol_ChangeGovMonarchy = { Succession=1 Assembly=2 } 
+			add_government_reform = Pol_Nobility2
+		}
+		if = {
+			limit = {
+				adm_tech = 35
+				NOT = {
+					adm_tech = 39
+				}
+			}
+			Pol_ChangeGovMonarchy = { Succession=1 Assembly=3 } 
+			add_government_reform = Pol_Nobility3
+		}
+		# if = {
+		# 	limit = {
+		# 		adm_tech = 39
+		# 		NOT = {
+		# 			adm_tech = 47
+		# 		}
+		# 	}
+		# 	change_government = monarchy
+		# 	add_government_reform = parliamentary_monarchy
+		# 	add_government_reform = bureaucracy
+		# 	add_government_reform = appointed_elite
+		# 	set_legacy_government = constitutional_monarchy
+		# }
+		# if = {
+		# 	limit = {
+		# 		adm_tech = 47
+		# 	}
+		# 	change_government = monarchy
+		# 	add_government_reform = divine_right
+		# 	add_government_reform = bureaucracy
+		# 	add_government_reform = military_elite
+		# 	set_legacy_government = enlightened_despotism
+		# }
+		kill_ruler = yes
+	}
+	option = {
+		name = "colonial_nation.EVTOPTB90"
+		ai_chance = {
+			factor = 40
+			modifier = {
+				factor = 2
+				colonial_parent = {
+					government = republic
+				}
+			}
+			# modifier = {
+			# 	factor = 2
+			# 	colonial_parent = {
+			# 		has_reform = { 
+			# 			Pol_Assembly3
+			# 		}
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 2
+			# 	colonial_parent = {
+			# 		has_reform = {
+			# 			Pol_Nobility4
+			# 		}
+			# 	}
+			# }
+		}
+		Pol_ChangeGovRepublic = { Mandate=2 Stylings=1 ExtraPowers=1 Assembly=3 TermOfOffice=3 } 
+		add_government_reform = Pol_Nobility4
+		kill_ruler = yes
+	}
+}
+country_event = {
+	id = colonial_nation.91
+	title = "colonial_nation.EVTNAME91"
+	desc = "colonial_nation.EVTDESC91"
+	picture = DIPLOMACY_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "colonial_nation.EVTOPTA91"
+		FROM = {
+			tooltip = {
+				colonial_gov_effect = yes
+				kill_ruler = yes
+				add_liberty_desire = 10
+				add_adm_power = 25
+				add_dip_power = 25
+				add_mil_power = 25
+			}
+			hidden_effect = {
+				country_event = {
+					id = colonial_nation.92
+					days = 1
+				}
+			}
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTOPTB91"
+		add_prestige = -10
+		FROM = {
+			tooltip = {
+				colonial_gov_effect = yes
+			}
+			hidden_effect = {
+				country_event = {
+					id = colonial_nation.93
+					days = 1
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = colonial_nation.92
+	title = "colonial_nation.EVTNAME92"
+	desc = "colonial_nation.EVTDESC92"
+	picture = WOUNDED_SOLDIERS_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "colonial_nation.EVTOPTA92"
+		colonial_gov_effect = yes
+		kill_ruler = yes
+		add_liberty_desire = 10
+		add_adm_power = 25
+		add_dip_power = 25
+		add_mil_power = 25
+	}
+}
+country_event = {
+	id = colonial_nation.93
+	title = "colonial_nation.EVTNAME92"
+	desc = "colonial_nation.EVTDESC93"
+	picture = WOUNDED_SOLDIERS_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "colonial_nation.EVTOPTA93"
+		colonial_gov_effect = yes
+	}
+}
+
+###Choosing new capital###
+#Brazil
+country_event = {
+	id = colonial_nation.201
+	title = "colonial_nation.EVTNAME200"
+	desc = "colonial_nation.EVTDESC200"
+	picture = COLONIZATION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_colonial_nation = yes
+		ai = yes
+		capital_scope = {
+			colonial_region = colonial_brazil
+			is_core = ROOT
+		}
+		NOT = { #end-game capitals
+			capital = 761
+			capital = 1485
+		}
+	}
+
+	option = {
+		name = "colonial_nation.EVTNAME201a"
+		trigger = {
+			owns = 748
+			is_core = 748
+			NOT = {capital = 748}
+			controls = 748
+		}
+		
+		Effect_set_capital = { target= 748 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:748:Tupi/Gulf of Amazon:Brazil Region"
+		
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0.01
+				OR = {
+					capital = 784
+					capital = 1485
+					capital = 3476
+					capital = 761
+					capital = 764
+				}
+			}
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTNAME201b"
+		trigger = {
+			owns = 1485
+			is_core = 1485
+			NOT = {capital = 1485}
+			controls = 1485
+		}
+		
+		Effect_set_capital = { target= 1485 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:1485:Caruaru/Coast of Recife:Brazil Region"
+		
+		ai_chance = {
+			factor = 50
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME201c"
+		trigger = {
+			owns = 3476
+			is_core = 3476
+			NOT = {capital = 3476}
+			controls = 3476
+		}
+		
+		Effect_set_capital = { target= 3476 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:3476:Tupinamba/Salvador - Bahia:Brazil Region"
+		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0.01
+				OR = {
+					capital = 784
+					capital = 1485
+					capital = 3476
+					capital = 761
+					capital = 764
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME201d"
+		trigger = {
+			owns = 761
+			is_core = 761
+			NOT = {capital = 761}
+			controls = 761
+		}
+		
+		Effect_set_capital = { target= 761 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:761:Rio de Janeiro:Brazil Region"
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME201e"
+		trigger = {
+			owns = 764
+			is_core = 764
+			NOT = {capital = 764}
+			controls = 764
+		}
+		
+		Effect_set_capital = { target= 764 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:764:Sao Paulo:Brazil Region"
+		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0.01
+				OR = {
+					capital = 784
+					capital = 1485
+					capital = 3476
+					capital = 761
+					capital = 764
+				}
+			}
+		}	
+	}
+	
+	option = {
+		name = PTM_EXIT
+		highlight = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+#Canada
+country_event = {
+	id = colonial_nation.202
+	title = "colonial_nation.EVTNAME200"
+	desc = "colonial_nation.EVTDESC200"
+	picture = COLONIZATION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_colonial_nation = yes
+		ai = yes
+		capital_scope = {
+			colonial_region = colonial_canada
+			is_core = ROOT
+		}
+		NOT = { #end-game capitals
+			capital = 3637 #Quebeck
+		}
+	}
+
+	option = {
+		name = "colonial_nation.EVTNAME202a"
+		trigger = {
+			owns = 3637
+			is_core = 3637
+			NOT = {capital = 3637}
+			controls = 3637
+		}
+		
+		Effect_set_capital = { target= 3637 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:3637:Quebeck:Canada Region"
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTNAME202b"
+		trigger = {
+			owns = 984
+			is_core = 984
+			controls = 984
+			NOT = {
+				capital = 3637
+				capital = 984
+				capital = 990
+				capital = 1004
+				capital = 971
+			}
+		}
+		
+		Effect_set_capital = { target= 984 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:984:Icaria:Canada Region"
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME202c"
+		trigger = {
+			owns = 990
+			is_core = 990
+			controls = 990
+			NOT = {
+				capital = 3637
+				capital = 984
+				capital = 990
+				capital = 1004
+				capital = 971
+			}
+		}
+		
+		Effect_set_capital = { target= 990 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:990:Hochelaga:Canada Region"
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME202d"
+		trigger = {
+			owns = 1004
+			is_core = 1004
+			controls = 1004
+			NOT = {
+				capital = 3637
+				capital = 984
+				capital = 990
+				capital = 1004
+				capital = 971
+			}
+		}
+		
+		Effect_set_capital = { target= 1004 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:1004::Canada Region"
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME202e"
+		trigger = {
+			owns = 971
+			is_core = 971
+			controls = 971
+			NOT = {
+				capital = 3637
+				capital = 984
+				capital = 990
+				capital = 1004
+				capital = 971
+			}
+		}
+		
+		Effect_set_capital = { target= 971 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:971:Fundry Bay:Canada Region"
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = PTM_EXIT
+		highlight = yes
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 1000
+				OR = {
+					capital = 3637
+					capital = 984
+					capital = 990
+					capital = 1004
+				}
+			}
+		}
+	}
+}
+#La Plata
+country_event = {
+	id = colonial_nation.203
+	title = "colonial_nation.EVTNAME200"
+	desc = "colonial_nation.EVTDESC200"
+	picture = COLONIZATION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_colonial_nation = yes
+		ai = yes
+		capital_scope = {
+			colonial_region = colonial_la_plata
+			is_core = ROOT
+		}
+		NOT = { #end-game capitals
+			capital = 3454 #Buenos Aires
+			capital = 776  #Montevideo
+		}
+	}
+
+	option = {
+		name = "colonial_nation.EVTNAME203a"
+		trigger = {
+			owns = 3454
+			is_core = 3454
+			controls = 3454
+			NOT = {capital = 3454}			
+		}
+		
+		Effect_set_capital = { target= 3454 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:3454:Buenos Aires:La Plata Region"
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTNAME203b"
+		trigger = {
+			owns = 776
+			is_core = 776
+			controls = 776
+			NOT = {	capital = 776 }
+		}
+		
+		Effect_set_capital = { target= 776 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:776:Montevideo:La Plata Region"
+		
+		ai_chance = {
+			factor = 50
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME203c"
+		trigger = {
+			owns = 779
+			is_core = 779
+			controls = 779
+			NOT = {
+				capital = 3454
+				capital = 776
+				capital = 779
+			}
+		}
+		
+		Effect_set_capital = { target= 779 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:779:Southern Pampa (Bahia Blanca):La Plata Region"
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = PTM_EXIT
+		highlight = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+#California
+country_event = {
+	id = colonial_nation.204
+	title = "colonial_nation.EVTNAME200"
+	desc = "colonial_nation.EVTDESC200"
+	picture = COLONIZATION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_colonial_nation = yes
+		ai = yes
+		capital_scope = {
+			colonial_region = colonial_california
+			is_core = ROOT
+		}
+		NOT = { #end-game capitals
+			capital = 2186 #Vancouver
+			capital = 2185 #Seattle
+			capital = 871 #Los Angeles
+			capital = 868 #San Diego	
+		}
+	}
+
+	option = {
+		name = "colonial_nation.EVTNAME204a"
+		trigger = {
+			owns = 2186
+			is_core = 2186
+			NOT = {capital = 2186}
+			controls = 2186
+		}
+		
+		Effect_set_capital = { target= 2186 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:2186:Vancouver:California Region"
+		
+		ai_chance = {
+			factor = 100
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 10
+					OR = {
+						area = wintoon_area
+						area = oregon_area
+						area = n_central_valley_area
+					}
+				}
+			}
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 30
+					OR = {
+						area = wintoon_area
+						area = oregon_area
+						area = n_central_valley_area
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTNAME204b"
+		trigger = {
+			owns = 2185
+			is_core = 2185
+			controls = 2185
+			NOT = {	capital = 2185 }
+		}
+		
+		Effect_set_capital = { target= 2185 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:2185:Seattle:California Region"
+		
+		ai_chance = {
+			factor = 100
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 10
+					region = cascadia_region
+				}
+			}		
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 30
+					region = cascadia_region
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME204c"
+		trigger = {
+			owns = 871
+			is_core = 871
+			controls = 871
+			NOT = { capital = 871 }
+		}
+		
+		Effect_set_capital = { target= 871 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:871:San Francisco:California Region"
+		
+		ai_chance = {
+			factor = 100
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 10
+					OR = {
+						area = s_central_valley_area
+						area = california_area
+					}
+				}
+			}
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 30
+					OR = {
+						area = s_central_valley_area
+						area = california_area
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME204d"
+		trigger = {
+			owns = 868
+			is_core = 868
+			controls = 868
+			NOT = {	capital = 868 }
+		}
+		
+		Effect_set_capital = { target= 868 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:868:Los Angeles:California Region"
+		
+		ai_chance = {
+			factor = 100	
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 10
+					OR = {
+						area = mojave_area
+						area = baja_california_area
+					}
+				}
+			}
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 30
+					OR = {
+						area = mojave_area
+						area = baja_california_area
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME204e"
+		trigger = {
+			owns = 3676
+			is_core = 3676
+			controls = 3676
+			NOT = {	capital = 3676	}
+		}
+		
+		Effect_set_capital = { target= 3676 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:3676:Nevada:California Region"
+		
+		ai_chance = {
+			factor = 3
+		}
+	}
+	
+	option = {
+		name = PTM_EXIT
+		highlight = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+#Louisiana
+country_event = {
+	id = colonial_nation.205
+	title = "colonial_nation.EVTNAME200"
+	desc = "colonial_nation.EVTDESC200"
+	picture = COLONIZATION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_colonial_nation = yes
+		ai = yes
+		capital_scope = {
+			colonial_region = colonial_louisiana
+			is_core = ROOT
+		}
+	}
+
+	option = {
+		name = "colonial_nation.EVTNAME205a"
+		trigger = {
+			owns = 2174
+			is_core = 2174
+			controls = 2174
+			NOT = {
+				capital = 2174
+				capital = 928				
+			}			
+		}
+		
+		Effect_set_capital = { target= 2174 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:2174:Mobile:Louisiana Region"
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTNAME205b"
+		trigger = {
+			owns = 925
+			is_core = 925
+			controls = 925
+			NOT = {
+				capital = 925
+				capital = 928				
+			}
+		}
+		
+		Effect_set_capital = { target= 925 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:925:Missisipi:Louisiana Region"
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME205c"
+		trigger = {
+			owns = 928
+			is_core = 928
+			controls = 928
+			NOT = {	capital = 928 }
+		}
+		
+		Effect_set_capital = { target= 928 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:928:New Orleans:Louisiana Region"
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME205d"
+		trigger = {
+			owns = 3619
+			is_core = 3619
+			controls = 3619
+			NOT = {	capital = 3619 }
+		}
+		
+		Effect_set_capital = { target= 3619 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:3619:Pittsburgh:Louisiana Region"
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = PTM_EXIT
+		highlight = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+#Eastern America
+country_event = {
+	id = colonial_nation.206
+	title = "colonial_nation.EVTNAME200"
+	desc = "colonial_nation.EVTDESC200"
+	picture = COLONIZATION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_colonial_nation = yes
+		ai = yes
+		capital_scope = {
+			colonial_region = colonial_eastern_america
+			is_core = ROOT
+		}
+		NOT = { #end-game capitals
+			capital = 1452 #Philadelphia
+			capital = 952  #Virginia
+			capital = 2178 #Maryland
+			capital = 2197 #New York
+		}
+	}
+
+	option = {
+		name = "colonial_nation.EVTNAME206a"
+		trigger = {
+			owns = 1452
+			is_core = 1452
+			controls = 1452
+			NOT = {
+				capital = 1452
+				capital = 952
+				capital = 2178
+				capital = 2197
+			}			
+		}
+		
+		Effect_set_capital = { target= 1452 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:1452:Philadelphia:Eastern America Region"
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	option = {
+		name = "colonial_nation.EVTNAME206b"
+		trigger = {
+			owns = 952
+			is_core = 952
+			controls = 952
+			NOT = {
+				capital = 1452
+				capital = 952
+				capital = 2178
+				capital = 2197
+			}			
+		}
+		
+		Effect_set_capital = { target= 952 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:952:Virginia:Eastern America Region"
+		
+		ai_chance = {
+			factor = 100
+			
+			modifier = {
+				factor = 0.1
+				NOT = {
+					development_in_provinces = {
+						value = 30
+						region = northeast_america_region
+					}
+				}	
+			}
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME206c"
+		trigger = {
+			owns = 2178
+			is_core = 2178
+			controls = 2178
+			NOT = {
+				capital = 1452
+				capital = 952
+				capital = 2178
+				capital = 2197
+			}			
+		}
+		
+		Effect_set_capital = { target= 2178 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:2178:Maryland:Eastern America Region"
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME206d"
+		trigger = {
+			owns = 2197
+			is_core = 2197
+			controls = 2197
+			NOT = {
+				capital = 1452
+				capital = 952
+				capital = 2178
+				capital = 2197
+			}			
+		}
+		
+		Effect_set_capital = { target= 2197 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:2197:New York:Eastern America Region"
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME206e"
+		trigger = {
+			owns = 933
+			is_core = 933
+			controls = 933
+			NOT = {
+				capital = 1452
+				capital = 952
+				capital = 2178
+				capital = 2197
+				capital = 933
+				capital = 3598
+			}			
+		}
+		
+		Effect_set_capital = { target= 933 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:933:Charleston:Eastern America Region"
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME206f"
+		trigger = {
+			owns = 3598
+			is_core = 3598
+			controls = 3598
+			NOT = {
+				capital = 1452
+				capital = 952
+				capital = 2178
+				capital = 2197
+				capital = 933
+				capital = 3598
+			}			
+		}
+		
+		Effect_set_capital = { target= 3598 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:3598:St. Augustine:Eastern America Region"
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME206d"
+		trigger = {
+			owns = 3691
+			is_core = 3691
+			controls = 3691
+			NOT = {
+				capital = 1452
+				capital = 952
+				capital = 2178
+				capital = 2197
+				capital = 933
+				capital = 3598
+				capital = 3691
+			}			
+		}
+		
+		Effect_set_capital = { target= 3691 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:3691:Boston:Eastern America Region"
+		
+		ai_chance = {
+			factor = 2
+		}
+	}
+	
+	option = {
+		name = PTM_EXIT
+		highlight = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+#Hispaniola
+country_event = {
+	id = colonial_nation.207
+	title = "colonial_nation.EVTNAME200"
+	desc = "colonial_nation.EVTDESC200"
+	picture = COLONIZATION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_colonial_nation = yes
+		ai = yes
+		capital_scope = {
+			colonial_region = colonial_hispanola
+			is_core = ROOT
+		}
+		NOT = {
+			capital = 1540
+			capital = 486
+			capital = 488
+			capital = 1538
+		}
+	}
+
+	option = {
+		name = "colonial_nation.EVTNAME207a"
+		trigger = {
+			owns = 1540
+			is_core = 1540
+			NOT = {capital = 1540}
+			controls = 1540
+		}
+		
+		Effect_set_capital = { target= 1540 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:1540:Havana:Hispaniola Region"
+		
+		ai_chance = {
+			factor = 100
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 10
+					area = cuba_area
+				}
+			}
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 30
+					area = cuba_area
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME207b"
+		trigger = {
+			owns = 486
+			is_core = 486
+			NOT = {capital = 486}
+			controls = 486
+		}
+		
+		Effect_set_capital = { target= 486 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:486:Santiago de Cuba:Hispaniola Region"
+		
+		ai_chance = {
+			factor = 100
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 10
+					area = cuba_area
+				}
+			}
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 30
+					area = cuba_area
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME207c"
+		trigger = {
+			owns = 488
+			is_core = 488
+			NOT = {capital = 488}
+			controls = 488
+		}
+		
+		Effect_set_capital = { target= 488 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:488:Puerto Principe:Hispaniola Region"
+		
+		ai_chance = {
+			factor = 100
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 10
+					area = hispaniola_area
+				}
+			}
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 30
+					area = hispaniola_area
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME207d"
+		trigger = {
+			owns = 1538
+			is_core = 1538
+			NOT = {capital = 1538}
+			controls = 1538
+		}
+		
+		Effect_set_capital = { target= 1538 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:1538:La Espanola:Hispaniola Region"
+		
+		ai_chance = {
+			factor = 100
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 10
+					area = hispaniola_area
+				}
+			}
+			
+			modifier = {
+				factor = 2
+				development_in_provinces = {
+					value = 30
+					area = hispaniola_area
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "colonial_nation.EVTNAME207e"
+		trigger = {
+			owns = 487
+			is_core = 487
+			controls = 487
+			NOT = {	capital = 487 }
+			NOT = {
+				development_in_provinces = {
+					value = 20
+					OR = {
+						area = hispaniola_area
+						area = cuba_area
+					}
+				}
+			}
+		}
+		
+		Effect_set_capital = { target= 487 }
+		add_adm_power = -200
+		add_prestige = 10
+		#_#_log = "FE-Colonial:[GetYear]:[This.GetName]:moved capital to:487:Jamaica:Hispaniola Region"
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = PTM_EXIT
+		highlight = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}

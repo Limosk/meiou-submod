@@ -1,0 +1,198 @@
+##################
+### By Dezuman ###
+##################
+
+province_ai_timer = { }
+
+denied_soldiers_loot_bad = {
+	land_morale = -0.05
+}
+denied_soldiers_loot_worse = {
+	land_morale = -0.15
+}
+denied_soldiers_loot_prov_bad = {
+	local_unrest = 1
+}
+denied_soldiers_loot_prov_worse = {
+	local_unrest = 3
+}
+
+
+loot_policy_1 = {
+	war_exhaustion = 0.02
+	discipline = 0.05
+	land_morale = -0.1
+	loot_amount = -0.4
+	picture = loot_amount
+}
+loot_policy_2 = {
+	war_exhaustion = 0.01
+	discipline = 0.025
+	land_morale = -0.05
+	loot_amount = -0.2
+	picture = loot_amount
+}
+loot_policy_3 = {
+	picture = loot_amount
+}
+loot_policy_4 = {
+	war_exhaustion = -0.02
+	discipline = -0.02
+	land_morale = 0.05
+	siege_ability = -0.1
+	loot_amount = 0.2
+	picture = loot_amount
+}
+loot_policy_5 = {
+	war_exhaustion = -0.04
+	discipline = -0.04
+	land_morale = 0.1
+	siege_ability = -0.2
+	loot_amount = 0.4
+	picture = loot_amount
+}
+loot_policy_6 = {
+	war_exhaustion = -0.06
+	discipline = -0.06
+	land_morale = 0.15
+	siege_ability = -0.3
+	loot_amount = 0.6
+	picture = loot_amount
+}
+loot_policy_7 = {
+	war_exhaustion = -0.08
+	discipline = -0.06
+	land_morale = 0.15
+	siege_ability = -0.3
+	loot_amount = 0.8
+	picture = loot_amount
+}
+loot_policy_8 = {
+	war_exhaustion = -0.1
+	discipline = -0.06
+	land_morale = 0.20
+	siege_ability = -0.3
+	loot_amount = 1.0
+	picture = loot_amount
+}
+
+province_built_building = {
+#	local_autonomy = 0.05
+	trade_goods_size_modifier = 0.05
+	picture = "building_good"
+}
+province_couldnt_build = {
+	
+}
+
+ongoing_or_recent_construction = {
+	picture = "building_good"
+}
+
+development_build_cost_reduction_25 = {
+	local_build_cost = -0.025
+}
+development_build_cost_reduction_50 = {
+	local_build_cost = -0.05
+}
+development_build_cost_reduction_75 = {
+	local_build_cost = -0.075
+}
+development_build_cost_reduction_100 = {
+	local_build_cost = -0.1
+}
+development_build_cost_reduction_125 = {
+	local_build_cost = -0.125
+}
+development_build_cost_reduction_150 = {
+	local_build_cost = -0.15
+}
+development_build_cost_reduction_175 = {
+	local_build_cost = -0.175
+}
+development_build_cost_reduction_200 = {
+	local_build_cost = -0.2
+}
+
+development_build_cost_reduction_250 = {
+	local_build_cost = -0.25
+}
+development_build_cost_reduction_300 = {
+	local_build_cost = -0.3
+}
+development_build_cost_reduction_350 = {
+	local_build_cost = -0.35
+}
+development_build_cost_reduction_400 = {
+	local_build_cost = -0.4
+}
+development_build_cost_reduction_450 = {
+	local_build_cost = -0.45
+}
+development_build_cost_reduction_500 = {
+	local_build_cost = -0.5
+}
+development_build_cost_reduction_550 = {
+	local_build_cost = -0.55
+}
+development_build_cost_reduction_600 = {
+	local_build_cost = -0.6
+}
+
+development_build_cost_reduction_700 = {
+	local_build_cost = -0.7
+}
+development_build_cost_reduction_800 = {
+	local_build_cost = -0.8
+}
+development_build_cost_reduction_900 = {
+	local_build_cost = -0.9
+}
+development_build_cost_reduction_1000 = {
+	local_build_cost = -1.0
+}
+development_build_cost_reduction_1100 = {
+	local_build_cost = -1.1
+}
+development_build_cost_reduction_1200 = {
+	local_build_cost = -1.2
+}
+
+development_build_cost_reduction_1400 = {
+	local_build_cost = -1.4
+}
+development_build_cost_reduction_1600 = {
+	local_build_cost = -1.6
+}
+development_build_cost_reduction_1800 = {
+	local_build_cost = -1.8
+}
+development_build_cost_reduction_2000 = {
+	local_build_cost = -2
+}
+development_build_cost_reduction_2200 = {
+	local_build_cost = -2.2
+}
+development_build_cost_reduction_2400 = {
+	local_build_cost = -2.4
+}
+
+development_build_cost_reduction_2800 = {
+	local_build_cost = -2.8
+}
+development_build_cost_reduction_3200 = {
+	local_build_cost = -3.2
+}
+development_build_cost_reduction_3600 = {
+	local_build_cost = -3.6
+}
+development_build_cost_reduction_4000 = {
+	local_build_cost = -4
+}
+development_build_cost_reduction_4400 = {
+	local_build_cost = -4.4
+}
+development_build_cost_reduction_4800 = {
+	local_build_cost = -4.8
+}
+

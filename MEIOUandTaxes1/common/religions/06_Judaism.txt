@@ -1,0 +1,63 @@
+#Note: still to be re-ordered?
+
+#* jewish				42
+#* samaritan			43
+#* karaite				44
+
+jewish_group = {
+	flags_with_emblem_percentage = 33 # default == 0
+	flag_emblem_index_range = { 108 109 }
+	
+	jewish = {
+		color = { 0.8 0.1 0.5 } #Violet
+		icon = 26
+		province = {
+		}
+		country = {
+#			global_missionary_strength = 0.00 #strictures against conversion
+			#BONUSES
+			advisor_pool = 1 #highly educated, emphasis on education and law
+			interest = -2 #no compunction against usury; longstanding tradition of moneylending
+			merchants = 1 #well educated middle class with worldwide contacts
+			trade_efficiency = 0.10 #contacts throughout the world in Jewish communities
+			#PENALTIES
+			diplomatic_reputation = -1 #Suspicion of Jews in foreign courts
+		}
+		country_as_secondary = { #Same bonuses as above, but 1 lower tolerance_own and missionary_strength
+			advisor_pool = 1 #highly educated, emphasis on education and law
+			interest = -2 #no compunction against usury; longstanding tradition of moneylending
+			merchants = 1 #well educated middle class with worldwide contacts
+			trade_efficiency = 0.10 #contacts throughout the world in Jewish communities
+			diplomatic_reputation = -1 #Suspicion of Jews in foreign courts
+			tolerance_own = -1
+			global_missionary_strength = -0.01
+		}
+		
+#		holy_sites = {
+#			379 #Jerusalem
+#		}
+
+		uses_piety = yes
+		has_patriarchs = yes		# Uses patriarch authority
+		#fervor = yes
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+	}
+	
+	#Compatibility religions (will be replaced at game start, included only for compatibility with CK2 saves)
+	
+	samaritan = { #Becomes Jewish
+		color = { 0.8 0.1 0.5 } #Violet
+		icon = 26
+		date = 2000.1.1 #Sir Not Appearing In This Mod
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+	}
+	
+	karaite = { #Becomes Zoroastrian
+		color = { 0.8 0.1 0.5 } #Violet
+		icon = 26
+		date = 2000.1.1 #Sir Not Appearing In This Mod
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+	}
+	crusade_name = MILKHEMET_MITZVAH
+	defender_of_faith = no
+}

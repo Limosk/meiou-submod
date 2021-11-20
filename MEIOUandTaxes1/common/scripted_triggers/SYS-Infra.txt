@@ -1,0 +1,43 @@
+Infra_CanPathing = {
+    always = yes
+}
+Infra_CanHarbourage = {
+	AND = {
+		OR = {
+			has_port = yes
+			
+			check_key = { lhs = TN_River value = 1 }
+		}
+	}
+}
+Infra_CanAmenities = {
+    always = yes
+}
+Infra_CanIrrigation = {
+    always = yes
+}
+Infra_CanCapitol = {
+    always = yes
+}
+Infra_CanCourthouse = {
+    always = yes
+}
+Infra_CanGarrison = {
+    always = yes
+}
+Infra_CanConstruct = {
+	AND = {
+		OR = {
+			NOT = { has_province_flag = Infra_S0 }
+			NOT = { has_province_flag = Infra_S1 }
+			NOT = { has_province_flag = Infra_S2 }
+			NOT = { has_province_flag = Infra_S3 }
+			NOT = { has_province_flag = Infra_S4 }
+			NOT = { has_province_flag = Infra_S5 }
+			NOT = { has_province_flag = Infra_S6 }
+			NOT = { has_province_flag = Infra_S7 }
+			NOT = { has_province_flag = Infra_S8 }
+			NOT = { has_province_flag = Infra_S9 }
+		}
+	}
+}

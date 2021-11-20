@@ -1,0 +1,733 @@
+Growth_GetBirth = {
+    if = {
+        limit = {
+            check_key = { lhs = $class$_Total value = 0.001 }
+        }
+		if = {
+			limit = {
+				check_key = { lhs = $class$_FillLife value = 0.75 }
+			}
+			set_key = { lhs = Tmp_0 which = $class$_FillLife }
+			subtract_key = { lhs = Tmp_0 value = 0.75 }
+			
+			set_key = { lhs = Tmp_1 which = Tmp_0 }
+			change_key = { lhs = Tmp_1 value = 0.75 }
+			
+			set_key = { lhs = Growth_Birth which = Tmp_0 }
+			multiply_key = { lhs = Growth_Birth value = 1.6 }
+			divide_key = { lhs = Growth_Birth which = Tmp_1 }
+			multiply_key = { lhs = Growth_Birth which = Tmp_0 }
+			divide_key = { lhs = Growth_Birth value = 1.25 }
+			change_key = { lhs = Growth_Birth value = 1 }
+			multiply_key = { lhs = Growth_Birth value = $rBirth$ }
+			
+			set_key = { lhs = Growth_Death value = $rDeath$ }
+
+			[[urban]
+				if = {
+					limit = {
+						always = $urban$
+					}
+					set_key = { lhs = Tmp_0 value = 3 }
+
+                    Infra_GetAmenities_Cap = { inp = Tmp_0 }
+
+					if = {
+						limit = {
+							check_key = { lhs = RE_Total which = Tmp_0 }
+						}
+						set_key = { lhs = Growth_Death which = RE_Total }
+						subtract_key = { lhs = Growth_Death which = Tmp_0 }
+						divide_key = { lhs = Growth_Death which = RE_Total }
+						multiply_key = { lhs = Growth_Death value = $rDeath$ }
+						multiply_key = { lhs = Growth_Death value = 1.666 }
+						change_key = { lhs = Growth_Death value = $rDeath$ }
+					}
+				}
+			]
+		}
+		else = {
+			set_key = { lhs = Growth_Birth which = $class$_FillLife }
+			multiply_key = { lhs = Growth_Birth value = 0.782 }
+			change_key = { lhs = Growth_Birth value = 0.414 }
+			
+			set_key = { lhs = Growth_Death value = $rDeath$ }
+
+			[[urban]
+				if = {
+					limit = {
+						always = $urban$
+					}
+					set_key = { lhs = Tmp_0 value = 3 }
+
+					Infra_GetAmenities_Cap = { inp = Tmp_0 }
+
+					if = {
+						limit = {
+							check_key = { lhs = RE_Total which = Tmp_0 }
+						}
+						set_key = { lhs = Growth_Death which = RE_Total }
+						subtract_key = { lhs = Growth_Death which = Tmp_0 }
+						divide_key = { lhs = Growth_Death which = RE_Total }
+						multiply_key = { lhs = Growth_Death value = $rDeath$ }
+						multiply_key = { lhs = Growth_Death value = 1.5 }
+						change_key = { lhs = Growth_Death value = $rDeath$ }
+					}
+				}
+			]
+
+			divide_key = { lhs = Growth_Death which = Growth_Birth }
+
+			multiply_key = { lhs = Growth_Birth value = $rBirth$ }
+		}
+
+		multiply_key = { lhs = Growth_Birth which = Modi_Birth }
+		multiply_key = { lhs = Growth_Birth which = Modi_Birth$class$ }
+		multiply_key = { lhs = Growth_Death which = Modi_Death }
+
+		set_key = { lhs = $class$_Birth which = Growth_Birth }
+		subtract_key = { lhs = $class$_Birth which = Growth_Death }
+
+		multiply_key = { lhs = $class$_Birth which = $class$_Total }
+		multiply_key = { lhs = $class$_Birth value = 0.01 }  # Tweak
+
+		change_key = { lhs = $class$_Total which = $class$_Birth }
+
+		if = {
+			limit = {
+				NOT = {
+					check_key = { lhs = $class$_Total value = 0 }
+				}
+			}
+			set_key = { lhs = $class$_Total value = 0 }
+		}
+
+		set_key = { lhs = Growth_Birth value = 0 }
+		set_key = { lhs = Growth_Death value = 0 }
+	}
+	else = {
+		set_key = { lhs = $class$_Birth value = 0 }
+		set_key = { lhs = $class$_Total value = 0 }
+	}
+}
+
+Growth_GetBirthProv = {
+	set_province_flag = POP_ChangedPop
+	
+    Growth_GetBirth = { class = SF rBirth = 1.1 rDeath = 1 }
+    Growth_GetBirth = { class = NM rBirth = 1 rDeath = 1.2 }
+    Growth_GetBirth = { class = RE rBirth = 1 rDeath = 1.2 urban = yes }
+    Growth_GetBirth = { class = NO rBirth = 1 rDeath = 1.1 }
+    Growth_GetBirth = { class = BG rBirth = 1 rDeath = 1.6 }
+    Growth_GetBirth = { class = CL rBirth = 1 rDeath = 1.5 }
+
+    if = {
+        limit = {
+            check_key = { lhs = RE_Total value = 0.001 }
+        }
+        set_key = { lhs = LT_Total which = RE_Total }
+		multiply_key = { lhs = LT_Total value = 0.01 }
+
+        set_key = { lhs = LT_Ratio which = LT_Total }
+        multiply_key = { lhs = LT_Ratio value = 100 }
+        divide_key = { lhs = LT_Ratio which = RE_Total }
+    }
+    else = {
+        set_key = { lhs = LT_Total value = 0 }
+        set_key = { lhs = LT_Ratio value = 0 }
+    }
+
+    set_key = { lhs = Class_TotalBirth which = SF_Birth }
+    change_key = { lhs = Class_TotalBirth which = NM_Birth }
+
+    change_key = { lhs = Class_TotalBirth which = RE_Birth }
+
+    change_key = { lhs = Class_TotalBirth which = NO_Birth }
+    change_key = { lhs = Class_TotalBirth which = BG_Birth }
+    change_key = { lhs = Class_TotalBirth which = CL_Birth }
+}
+
+Growth_DoMove = {
+    every_province = {
+        limit = {
+            isValidProv = yes
+        }
+        Growth_SetPressure = { class = SF labor = R peasant=yes }
+        Growth_SetPressure = { class = NM labor = NM nomad=yes }
+        Growth_SetPressure = { class = RE labor = UL urban=yes }
+        Growth_SetPressure = { class = NO labor = NO }
+        Growth_SetPressure = { class = BG labor = BG burgher=yes }
+        Growth_SetPressure = { class = CL labor = CL }
+		
+		set_key = { lhs = Growth_PressureNO value = 0 }
+		set_key = { lhs = Growth_PressureCL value = 0 }
+        
+        set_key = { lhs = Tmp_2 which = SF_Total }
+        set_key = { lhs = Tmp_3 which = NM_Total }
+        set_key = { lhs = Tmp_4 which = RE_Total }
+        set_key = { lhs = Tmp_5 which = NO_Total }
+        set_key = { lhs = Tmp_6 which = BG_Total }
+        set_key = { lhs = Tmp_7 which = CL_Total }
+
+        multiply_key = { lhs = Tmp_2 which = Growth_PressureSF }
+        multiply_key = { lhs = Tmp_3 which = Growth_PressureNM }
+        multiply_key = { lhs = Tmp_4 which = Growth_PressureRE }
+        multiply_key = { lhs = Tmp_5 which = Growth_PressureNO }
+        multiply_key = { lhs = Tmp_6 which = Growth_PressureBG }
+        multiply_key = { lhs = Tmp_7 which = Growth_PressureCL }
+
+        set_key = { lhs = Tmp_0 which = Tmp_2 }
+        change_key = { lhs = Tmp_0 which = Tmp_3 }
+        change_key = { lhs = Tmp_0 which = Tmp_4 }
+        change_key = { lhs = Tmp_0 which = Tmp_5 }
+        change_key = { lhs = Tmp_0 which = Tmp_6 }
+        change_key = { lhs = Tmp_0 which = Tmp_7 }
+
+        set_key = { lhs = Tmp_1 which = Class_Total }
+		subtract_key = { lhs = Tmp_1 which = NO_Total }
+		subtract_key = { lhs = Tmp_1 which = CL_Total }
+
+        set_key = { lhs = SF_In value = 0 }
+        set_key = { lhs = NM_In value = 0 }
+        set_key = { lhs = RE_In value = 0 }
+        set_key = { lhs = NO_In value = 0 }
+        set_key = { lhs = BG_In value = 0 }
+        set_key = { lhs = CL_In value = 0 }
+
+        set_key = { lhs = SF_Out value = 0 }
+        set_key = { lhs = NM_Out value = 0 }
+        set_key = { lhs = RE_Out value = 0 }
+        set_key = { lhs = NO_Out value = 0 }
+        set_key = { lhs = BG_Out value = 0 }
+        set_key = { lhs = CL_Out value = 0 }
+    }
+
+    every_country = {
+        limit = {
+			is_free_or_tributary_trigger = yes
+            isValidCountry = yes
+        }
+        every_owned_province = {
+            limit = {
+                isValidProv = yes
+            }
+            set_province_flag = Growth_Zone
+        }
+
+        every_subject_country = {
+            limit = {
+                isValidCountry = yes
+				is_subject_other_than_tributary_trigger = yes
+            }
+            every_owned_province = {
+                limit = {
+                    isValidProv = yes
+                }
+                set_province_flag = Growth_Zone
+            }
+
+            every_subject_country = {
+                limit = {
+                    isValidCountry = yes
+					is_subject_other_than_tributary_trigger = yes
+                }
+                every_owned_province = {
+                    limit = {
+                        isValidProv = yes
+                    }
+                    set_province_flag = Growth_Zone
+                }
+
+                every_subject_country = {
+                    limit = {
+                        isValidCountry = yes
+						is_subject_other_than_tributary_trigger = yes
+                    }
+                    every_owned_province = {
+                        limit = {
+                            isValidProv = yes
+                        }
+                        set_province_flag = Growth_Zone
+                    }
+
+                    every_subject_country = {
+                        limit = {
+                            isValidCountry = yes
+							is_subject_other_than_tributary_trigger = yes
+                        }
+                        every_owned_province = {
+                            limit = {
+                                isValidProv = yes
+                            }
+                            set_province_flag = Growth_Zone
+                        }
+                    }
+                }
+            }
+        }
+	    
+		set_key = { lhs = Tmp_0 value = 0 }
+        set_key = { lhs = Tmp_1 value = 0 }
+
+        every_province = {
+            limit = {
+				has_province_flag = Growth_Zone
+            }
+            PREV = {
+                change_key = { lhs = Tmp_0 which = PREV }
+                change_key = { lhs = Tmp_1 which = PREV }
+            }
+        }
+
+        set_key = { lhs = Public_Tmp1 which = Tmp_0 }
+        divide_key = { lhs = Public_Tmp1 which = Tmp_1 }
+
+        if = {
+            limit = {
+                check_key = { lhs = Public_Tmp1 value = 0.001 }
+            }
+            set_key = { lhs = Public_Tmp2 value = 0 }
+            set_key = { lhs = Public_Tmp3 value = 0 }
+            set_key = { lhs = Public_Tmp4 value = 0 }
+            set_key = { lhs = Public_Tmp5 value = 0 }
+
+            every_province = {
+                limit = {
+					has_province_flag = Growth_Zone
+                }
+                set_key = { lhs = Public_Tmp1 which = PREV }
+                set_key = { lhs = Public_Tmp2 value = 0 }
+                set_key = { lhs = Public_Tmp3 value = 0 }
+                set_key = { lhs = Public_Tmp4 value = 0 }
+                set_key = { lhs = Public_Tmp5 value = 0 }
+
+                Growth_DoMoveHelper1 = { class = SF tmp = 2 }
+                Growth_DoMoveHelper1 = { class = NM tmp = 3 }
+                Growth_DoMoveHelper1 = { class = RE tmp = 4 }
+                Growth_DoMoveHelper1 = { class = NO tmp = 5 }
+                Growth_DoMoveHelper1 = { class = BG tmp = 6 factor = 2 }
+                Growth_DoMoveHelper1 = { class = CL tmp = 7 }
+
+                PREV = {
+                    change_key = { lhs = Public_Tmp2 which = PREV }
+                    change_key = { lhs = Public_Tmp3 which = PREV }
+                    change_key = { lhs = Public_Tmp4 which = PREV }
+                    change_key = { lhs = Public_Tmp5 which = PREV }
+                }
+            }
+
+            if = {
+                limit = {
+                    check_key = { lhs = Public_Tmp4 which = Public_Tmp5 }
+                }
+                set_key = { lhs = Public_Tmp4 which = Public_Tmp5 }
+            }
+
+            every_province = {
+                limit = {
+					has_province_flag = Growth_Zone
+                }
+                set_key = { lhs = Public_Tmp2 which = PREV }
+                set_key = { lhs = Public_Tmp3 which = PREV }
+                set_key = { lhs = Public_Tmp4 which = PREV }
+
+                Growth_DoMoveHelper2 = { class = SF tmp = 2 }
+                Growth_DoMoveHelper2 = { class = NM tmp = 3 }
+                Growth_DoMoveHelper2 = { class = RE tmp = 4 }
+                Growth_DoMoveHelper2 = { class = NO tmp = 5 }
+                Growth_DoMoveHelper2 = { class = BG tmp = 6 }
+                Growth_DoMoveHelper2 = { class = CL tmp = 7 }
+
+                clr_province_flag = Growth_Zone 
+
+                set_key = { lhs = Public_Tmp1 value = 0 }
+                set_key = { lhs = Public_Tmp2 value = 0 }
+                set_key = { lhs = Public_Tmp3 value = 0 }
+                set_key = { lhs = Public_Tmp4 value = 0 }
+                set_key = { lhs = Public_Tmp5 value = 0 }
+                set_key = { lhs = Public_Tmp9 value = 0 }
+            }
+
+            set_key = { lhs = Public_Tmp2 value = 0 }
+            set_key = { lhs = Public_Tmp3 value = 0 }
+            set_key = { lhs = Public_Tmp4 value = 0 }
+            set_key = { lhs = Public_Tmp5 value = 0 }
+        }
+
+        set_key = { lhs = Tmp_0 value = 0 }
+        set_key = { lhs = Tmp_1 value = 0 }
+
+        set_key = { lhs = Public_Tmp1 value = 0 }
+    }
+    #Holy Roman Empire
+    Growth_ZoneHelper = { scope=europe HRE=yes SF=yes RE=yes NO=yes BG=yes CL=yes }
+    #Italian States
+    Growth_ZoneHelper = { scope=italy_superregion cultg=latin SF=yes RE=yes NO=yes BG=yes CL=yes }
+    #Maya
+    Growth_ZoneHelper = { scope=central_america_region SF=yes RE=yes NM=yes NO=yes BG=yes CL=yes }
+    #Ireland
+    Growth_ZoneHelper = { scope=ireland_region SF=yes RE=yes NO=yes BG=yes CL=yes }
+    #Manchuria
+    Growth_ZoneHelper = { scope=asia flag=Manchu_Zone SF=yes RE=yes NM=yes NO=yes BG=yes CL=yes }
+    #Western Steppe
+    Growth_ZoneHelper = { scope=steppes_group flag=WestSteppe_Zone NM=yes }
+    #Eastern Steppe
+    Growth_ZoneHelper = { scope=steppes_group flag=EastSteppe_Zone NM=yes }
+    #Arabian Steppe
+    Growth_ZoneHelper = { scope=arabian_steppes_group NM=yes }
+    #Saharan Steppe
+    Growth_ZoneHelper = { scope=saharan_steppes_group NM=yes }
+    #Anatolian Nomads
+    Growth_ZoneHelper = { scope=anatolia_steppes_group NM=yes }
+
+    every_province = {
+        limit = {
+            isValidProv = yes
+        }
+		set_province_flag = POP_ChangedPop
+		
+        set_key = { lhs = Class_TotalIn which = SF_In }
+        change_key = { lhs = Class_TotalIn which = NM_In }
+        change_key = { lhs = Class_TotalIn which = RE_In }
+        change_key = { lhs = Class_TotalIn which = NO_In }
+        change_key = { lhs = Class_TotalIn which = BG_In }
+        change_key = { lhs = Class_TotalIn which = CL_In }
+
+        set_key = { lhs = Class_TotalOut which = SF_Out }
+        change_key = { lhs = Class_TotalOut which = NM_Out }
+        change_key = { lhs = Class_TotalOut which = RE_Out }
+        change_key = { lhs = Class_TotalOut which = NO_Out }
+        change_key = { lhs = Class_TotalOut which = BG_Out }
+        change_key = { lhs = Class_TotalOut which = CL_Out }
+
+        change_key = { lhs = SF_Total which = SF_In }
+        change_key = { lhs = NM_Total which = NM_In }
+        change_key = { lhs = RE_Total which = RE_In }
+        change_key = { lhs = NO_Total which = NO_In }
+        change_key = { lhs = BG_Total which = BG_In }
+        change_key = { lhs = CL_Total which = CL_In }
+
+        subtract_key = { lhs = SF_Total which = SF_Out }
+        subtract_key = { lhs = NM_Total which = NM_Out }
+        subtract_key = { lhs = RE_Total which = RE_Out }
+        subtract_key = { lhs = NO_Total which = NO_Out }
+        subtract_key = { lhs = BG_Total which = BG_Out }
+        subtract_key = { lhs = CL_Total which = CL_Out }
+
+        set_key = { lhs = Tmp_0 value = 0 }
+        set_key = { lhs = Tmp_1 value = 0 }
+        set_key = { lhs = Tmp_2 value = 0 }
+        set_key = { lhs = Tmp_3 value = 0 }
+        set_key = { lhs = Tmp_4 value = 0 }
+        set_key = { lhs = Tmp_5 value = 0 }
+        set_key = { lhs = Tmp_6 value = 0 }
+        set_key = { lhs = Tmp_7 value = 0 }
+    }
+}
+
+Growth_DoMoveHelper1 = {
+    if = {
+        limit = {
+            check_key = { lhs = Growth_Pressure$class$ value = 0.001 }
+        }
+        set_key = { lhs = Public_Tmp9 which = Growth_Pressure$class$ }
+        divide_key = { lhs = Public_Tmp9 which = Public_Tmp1 }
+        
+        if = {
+            limit = {
+                check_key = { lhs = Public_Tmp9 value = 3 }
+            }
+            set_key = { lhs = Public_Tmp9 value = 3 }
+        }
+
+        subtract_key = { lhs = Public_Tmp9 value = 1 }
+
+        if = {
+            limit = {
+                check_key = { lhs = Growth_Pressure$class$ which = Public_Tmp1 }
+            }
+			set_key = { lhs = Tmp_$tmp$ which = $class$_Total }
+			[[zone]multiply_key = { lhs = Tmp_$tmp$ value = 0.5 }]
+			multiply_key = { lhs = Tmp_$tmp$ which = Public_Tmp9 }
+			divide_key = { lhs = Tmp_$tmp$ value = 80 }
+			[[factor] divide_key = { lhs = Tmp_$tmp$ value = $factor$ } ]
+			
+            change_key = { lhs = Public_Tmp2 which = Tmp_$tmp$ }
+            change_key = { lhs = Public_Tmp4 which = Tmp_$tmp$ }
+        }
+        else = {
+            set_key = { lhs = Tmp_$tmp$ which = $class$_Total }
+			[[zone]multiply_key = { lhs = Tmp_$tmp$ value = 0.5 }]
+			change_key = { lhs = Tmp_$tmp$ value = 10 }
+			multiply_key = { lhs = Tmp_$tmp$ which = Public_Tmp9 }
+			divide_key = { lhs = Tmp_$tmp$ value = -40 }
+			[[factor] divide_key = { lhs = Tmp_$tmp$ value = $factor$ } ]
+			
+            change_key = { lhs = Public_Tmp3 which = Tmp_$tmp$ }
+            change_key = { lhs = Public_Tmp5 which = Tmp_$tmp$ }
+        }
+    }
+}
+Growth_DoMoveHelper2 = {
+    if = {
+        limit = {
+            check_key = { lhs = Growth_Pressure$class$ value = 0.001 }
+        }
+        if = {
+            limit = {
+                check_key = { lhs = Growth_Pressure$class$ which = Public_Tmp1 }
+            }
+            if = {
+                limit = {
+                    check_key = { lhs = Public_Tmp2 value = 0.001 }
+                }
+                set_key = { lhs = Public_Tmp9 which = Tmp_$tmp$ }
+				multiply_key = { lhs = Public_Tmp9 which = Public_Tmp4 }
+                divide_key = { lhs = Public_Tmp9 which = Public_Tmp2 }
+
+                change_key = { lhs = $class$_Out which = Public_Tmp9 }
+            }
+        }
+        else_if = {
+            limit = {
+                check_key = { lhs = Public_Tmp3 value = 0.001 }
+            }
+            set_key = { lhs = Public_Tmp9 which = Tmp_$tmp$ }
+			multiply_key = { lhs = Public_Tmp9 which = Public_Tmp4 }
+            divide_key = { lhs = Public_Tmp9 which = Public_Tmp3 }
+            
+            change_key = { lhs = $class$_In which = Public_Tmp9 }
+        }
+    }
+}
+
+Growth_SetPressure = {
+    if = {
+        limit = {
+            OR = {
+				check_key = { lhs = $class$_Total value = 0.001 }
+				check_key = { lhs = Class_P$labor$ value = 1.001 }
+			}
+			[[urban]
+			always = $urban$
+			has_province_flag = City_Present
+			]
+			[[burgher]
+			always = $burgher$
+			has_province_flag = Industry_32Present
+			]
+			[[peasant]
+			always = $peasant$
+			has_province_flag = Rural_Present
+			]
+			[[nomad]
+			always = $nomad$
+			has_province_flag = Industry_8Present
+			]
+        }
+		
+        set_key = { lhs = Growth_Pressure$class$ value = 40 }
+        divide_key = { lhs = Growth_Pressure$class$ which = Class_P$labor$ }
+        divide_key = { lhs = Growth_Pressure$class$ value = 400 }
+		
+		multiply_key = { lhs = Growth_Pressure$class$ which = Modi_PressureMulti$class$ }
+		change_key = { lhs = Growth_Pressure$class$ which = Modi_PressureAdd$class$ }
+		
+		if = {
+			limit = {
+				NOT = {
+					check_key = { lhs = Growth_Pressure$class$ value = 0.002 }
+				}
+			}
+			set_key = { lhs = Growth_Pressure$class$ value = 0.002 }
+		}
+		if = {
+			limit = {
+				check_key = { lhs = Growth_Pressure$class$ value = 0.1 }
+			}
+			set_key = { lhs = Growth_Pressure$class$ value = 0.1 }
+		}
+    }
+    else = {
+        set_key = { lhs = Growth_Pressure$class$ value = 0.1 }
+    }
+}
+
+Growth_ZoneHelper = {
+    set_key = { lhs = Tmp_0 value = 0 }
+    set_key = { lhs = Tmp_1 value = 0 }
+
+    $scope$ = {
+        limit = {
+            isValidProv = yes
+            [[flag]has_province_flag = $flag$]
+            [[HRE]is_part_of_hre = yes
+            OR = {
+                culture_group = low_germanic
+                culture_group = high_germanic
+                culture_group = low_frankish
+                culture_group = west_slavic
+            }
+            ]
+            [[cultg]culture_group = $cultg$]
+            [[cult]culture = $cult$]
+        }
+        set_key = { lhs = Tmp_0 value = 0 }
+        set_key = { lhs = Tmp_1 value = 0 }
+
+        [[SF]
+        Growth_SetPressure = { class = SF labor = R peasant=yes }
+        set_key = { lhs = Tmp_2 which = SF_Total }
+        multiply_key = { lhs = Tmp_2 value = 0.5 }
+        multiply_key = { lhs = Tmp_2 which = Growth_PressureSF }
+        change_key = { lhs = Tmp_0 which = Tmp_2 }
+		change_key = { lhs = Tmp_1 which = SF_Total }
+        ]
+        [[NM]
+        Growth_SetPressure = { class = NM labor = NM nomad=yes }
+        set_key = { lhs = Tmp_3 which = NM_Total }
+        multiply_key = { lhs = Tmp_3 value = 0.5 }
+        multiply_key = { lhs = Tmp_3 which = Growth_PressureNM }
+        change_key = { lhs = Tmp_0 which = Tmp_3 }
+		change_key = { lhs = Tmp_1 which = NM_Total }
+        ]
+        [[RE]
+        Growth_SetPressure = { class = RE labor = UL urban=yes }
+        set_key = { lhs = Tmp_4 which = RE_Total }
+        multiply_key = { lhs = Tmp_4 value = 0.5 }
+        multiply_key = { lhs = Tmp_4 which = Growth_PressureRE }
+        change_key = { lhs = Tmp_0 which = Tmp_4 }
+		change_key = { lhs = Tmp_1 which = RE_Total }
+        ]
+        [[NO]
+        Growth_SetPressure = { class = NO labor = NO }
+        set_key = { lhs = Tmp_5 which = NO_Total }
+        multiply_key = { lhs = Tmp_5 value = 0.5 }
+        multiply_key = { lhs = Tmp_5 which = Growth_PressureNO }
+        change_key = { lhs = Tmp_0 which = Tmp_5 }
+		change_key = { lhs = Tmp_1 which = NO_Total }
+        ]
+        [[BG]
+        Growth_SetPressure = { class = BG labor = BG burgher=yes }
+        set_key = { lhs = Tmp_6 which = BG_Total }
+        multiply_key = { lhs = Tmp_6 value = 0.5 }
+        multiply_key = { lhs = Tmp_6 which = Growth_PressureBG }
+		change_key = { lhs = Tmp_1 which = BG_Total }
+        change_key = { lhs = Tmp_0 which = Tmp_6 }
+        ]
+        [[CL]
+        Growth_SetPressure = { class = CL labor = CL }
+        set_key = { lhs = Tmp_7 which = CL_Total }
+        multiply_key = { lhs = Tmp_7 value = 0.5 }
+        multiply_key = { lhs = Tmp_7 which = Growth_PressureCL }
+        change_key = { lhs = Tmp_0 which = Tmp_7 }
+		change_key = { lhs = Tmp_1 which = CL_Total }
+        ]
+        multiply_key = { lhs = Tmp_1 value = 0.5 }
+        
+        PREV = {
+            change_key = { lhs = Tmp_0 which = PREV }
+            change_key = { lhs = Tmp_1 which = PREV }
+        }
+    }
+
+    set_key = { lhs = Public_Tmp1 which = Tmp_0 }
+    divide_key = { lhs = Public_Tmp1 which = Tmp_1 }
+
+    if = {
+        limit = {
+            check_key = { lhs = Public_Tmp1 value = 0.001 }
+        }
+        set_key = { lhs = Public_Tmp2 value = 0 }
+        set_key = { lhs = Public_Tmp3 value = 0 }
+        set_key = { lhs = Public_Tmp4 value = 0 }
+        set_key = { lhs = Public_Tmp5 value = 0 }
+
+        $scope$ = {
+            limit = {
+                isValidProv = yes
+                [[flag]has_province_flag = $flag$]
+                [[HRE]is_part_of_hre = yes
+                OR = {
+                    culture_group = low_germanic
+                    culture_group = high_germanic
+                    culture_group = low_frankish
+                    culture_group = west_slavic
+                }
+                ]
+                [[cultg]culture_group = $cultg$]
+                [[cult]culture = $cult$]
+            }
+            set_key = { lhs = Public_Tmp1 which = PREV }
+            set_key = { lhs = Public_Tmp2 value = 0 }
+            set_key = { lhs = Public_Tmp3 value = 0 }
+            set_key = { lhs = Public_Tmp4 value = 0 }
+            set_key = { lhs = Public_Tmp5 value = 0 }
+
+            [[SF]Growth_DoMoveHelper1 = { class = SF tmp = 2 zone=yes }]
+            [[NM] Growth_DoMoveHelper1 = { class = NM tmp = 3 zone=yes }]
+            [[RE] Growth_DoMoveHelper1 = { class = RE tmp = 4 zone=yes }]
+            [[NO] Growth_DoMoveHelper1 = { class = NO tmp = 5 zone=yes }]
+            [[BG] Growth_DoMoveHelper1 = { class = BG tmp = 6 zone=yes factor = 2 }]
+            [[CL] Growth_DoMoveHelper1 = { class = CL tmp = 7 zone=yes }]
+
+            PREV = {
+                change_key = { lhs = Public_Tmp2 which = PREV }
+                change_key = { lhs = Public_Tmp3 which = PREV }
+                change_key = { lhs = Public_Tmp4 which = PREV }
+                change_key = { lhs = Public_Tmp5 which = PREV }
+            }
+        }
+
+        if = {
+            limit = {
+                check_key = { lhs = Public_Tmp4 which = Public_Tmp5 }
+            }
+            set_key = { lhs = Public_Tmp4 which = Public_Tmp5 }
+        }
+
+        $scope$ = {
+            limit = {
+                isValidProv = yes
+                [[flag]has_province_flag = $flag$]
+                [[HRE]is_part_of_hre = yes
+                OR = {
+                    culture_group = low_germanic
+                    culture_group = high_germanic
+                    culture_group = low_frankish
+                    culture_group = west_slavic
+                }
+                ]
+                [[cultg]culture_group = $cultg$]
+                [[cult]culture = $cult$]
+            }
+            set_key = { lhs = Public_Tmp2 which = PREV }
+            set_key = { lhs = Public_Tmp3 which = PREV }
+            set_key = { lhs = Public_Tmp4 which = PREV }
+
+            [[SF]Growth_DoMoveHelper2 = { class = SF tmp = 2 }]
+            [[NM]Growth_DoMoveHelper2 = { class = NM tmp = 3 }]
+            [[RE]Growth_DoMoveHelper2 = { class = RE tmp = 4 }]
+            [[NO]Growth_DoMoveHelper2 = { class = NO tmp = 5 }]
+            [[BG]Growth_DoMoveHelper2 = { class = BG tmp = 6 }]
+            [[CL]Growth_DoMoveHelper2 = { class = CL tmp = 7 }]
+
+            set_key = { lhs = Public_Tmp1 value = 0 }
+            set_key = { lhs = Public_Tmp2 value = 0 }
+            set_key = { lhs = Public_Tmp3 value = 0 }
+            set_key = { lhs = Public_Tmp4 value = 0 }
+            set_key = { lhs = Public_Tmp5 value = 0 }
+            set_key = { lhs = Public_Tmp9 value = 0 }
+        }
+
+        set_key = { lhs = Public_Tmp2 value = 0 }
+        set_key = { lhs = Public_Tmp3 value = 0 }
+        set_key = { lhs = Public_Tmp4 value = 0 }
+        set_key = { lhs = Public_Tmp5 value = 0 }
+    }
+
+    set_key = { lhs = Tmp_0 value = 0 }
+    set_key = { lhs = Tmp_1 value = 0 }
+
+    set_key = { lhs = Public_Tmp1 value = 0 }
+}

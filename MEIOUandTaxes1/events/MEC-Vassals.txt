@@ -1,0 +1,1116 @@
+namespace = mec_vassals
+
+# Vassal Reversion Events #
+
+country_event = { # $Tag$ Reverts to the Crown, insp., Burgundy and France
+	id = mec_vassals.1
+	title = "mec_vassals_1_title"
+	desc = "mec_vassals_1_desc"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = mec_vassals.1.a
+		if = {
+			limit = {
+				FROM = {
+					is_overseas_subject = yes
+				}
+			}
+			#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:inherits their overseas fief [From.GetName]:mec_vassals.1"
+			create_subject = {
+				subject_type = overseas_fief
+				subject = FROM
+			}
+		}
+		else = {
+			#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:got their appanage ([From.GetName]) into PU:mec_vassals.1"
+			create_subject = {
+				subject_type = personal_union
+				subject = FROM
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = ANJ
+					}
+				}
+				FRA = {
+					country_event = {
+						id = flavor_anj.3 
+					}
+				}
+			}
+		}
+		reverse_add_opinion = {
+			who = FROM
+			modifier = union_appanage
+		}
+		ai_chance = {
+			factor = 2
+			modifier = { 
+				factor = 0.25
+				NOT = {
+					FROM = {
+						has_opinion = {
+							value = 80
+							who = PREV
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				personality = greedy_personality
+			}
+			modifier = {
+				factor = 2
+				personality = selfish_personality
+			}
+			modifier = {
+				factor = 1.5
+				personality = proud_personality
+			}
+			modifier = {
+				factor = 2
+				check_key = { lhs = Prov_BUPow value = 30 }
+			}
+			modifier = {
+				factor = 2
+				check_key = { lhs = Prov_BUPow value = 45 }
+			}
+			modifier = {
+				factor = 2
+				check_key = { lhs = Prov_BUPow value = 55 }
+			}
+		}
+	}
+	option = {
+		name = mec_vassals.1.b
+		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:continued treating [From.GetName] as appanage, refused PU:mec_vassals.1"
+
+		FROM = {
+			set_country_flag = Had_Heir
+			define_ruler = {
+				dynasty = PREV
+				culture = PREV
+				religion = PREV
+			}
+			define_heir = {
+				dynasty = PREV
+				culture = PREV
+				religion = PREV
+			}
+		}
+		reverse_add_opinion = {
+			who = FROM
+			modifier = continued_appanage
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				personality = weak_personality
+			}
+			modifier = {
+				factor = 1.5
+				personality = modest_personality
+			}
+			modifier = {
+				factor = 2
+				personality = kind_hearted_personality
+			}
+			modifier = {
+				factor = 2
+				personality = benevolent_personality
+			}
+			modifier = {
+				factor = 2
+				personality = generous_personality
+			}
+			modifier = {
+				factor = 2
+				personal_union  = 1
+				FROM = { total_development	= 30 } #it is safe to get them into PU, as annexation will be swift
+			}
+			modifier = {
+				factor = 2
+				personal_union = 2
+				FROM = { total_development	= 30 } #it is safe to get them into PU, as annexation will be swift
+			}			
+		}
+	}
+}
+
+# Realm Collapse #
+
+country_event = { # Dissolution of the Realm, insp Serbia c. 1371
+	id = mec_vassals.2
+	title = "mec_vassals_2_title"
+	desc = "mec_vassals_2_desc"
+	picture = BORDER_TENSION_eventPicture
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = mec_vassals.2.a
+		every_subject_country = {
+			limit = {
+				OR = {
+					is_subject_of_type = decentralized_vassal
+					is_subject_of_type = rebellious_decentralized_vassal
+				}
+			}
+			#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:granted independence to  its decentralized vassals:mec_vassals.2"
+			grant_independence = yes
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						is_core = THIS
+					}
+					add_claim = ROOT
+				}
+			}
+		}
+		add_prestige = -40
+		add_stability = 1
+		if = {
+			limit = {
+				OR = {
+					has_country_modifier = title_4
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = {
+				name = title_3
+				duration = -1
+			}				
+		}
+				
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				personality = weak_personality
+			}
+			modifier = {
+				factor = 1.5
+				personality = modest_personality
+			}
+			modifier = {
+				factor = 2
+				personality = coward_personality
+			}
+			modifier = {
+				factor = 1.5
+				personality = lazy_personality
+			}
+			modifier = {
+				factor = 1.5
+				personality = careful_personality
+			}
+			modifier = {
+				factor = 5
+				is_bankrupt = yes
+			}
+			modifier = {
+				factor = 1.5
+				num_of_loans = 3
+			}
+			modifier = {
+				factor = 1.5
+				num_of_loans = 5
+			}
+			modifier = {
+				factor = 1.5
+				num_of_loans = 7
+			}
+			modifier = {
+				factor = 1.5
+				war_exhaustion = 5
+			}
+			modifier = {
+				factor = 1.5
+				war_exhaustion = 10
+			}
+			modifier = {
+				factor = 1.1
+				is_at_war = yes
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { manpower_percentage = 0.1 }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { manpower_percentage = 0.2 }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { manpower_percentage = 0.3 }
+			}
+		}
+	}
+	option = {
+		name = mec_vassals.2.b
+		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:refused to give independence to its decentralized vassals, sent ultimatum:mec_vassals.2"
+
+		every_subject_country = {
+			limit = {
+				OR = {
+					is_subject_of_type = rebellious_decentralized_vassal
+					is_subject_of_type = decentralized_vassal
+				}
+			}
+			hidden_effect = {
+				grant_independence = yes
+			}
+			country_event = {
+				id = mec_vassals.3
+			}
+		}
+		
+		add_legitimacy = 20
+		
+		convert_ruler_to_general = yes
+		
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 2
+				personality = valorous_personality
+			}
+			modifier = {
+				factor = 2
+				personality = proud_personality
+			}
+			modifier = {
+				factor = 2
+				personality = aggressive_personality
+			}
+			modifier = {
+				factor = 2
+				personality = vengeful_personality
+			}
+			modifier = {
+				factor = 2
+				personality = reckless_personality
+			}
+		}
+	}
+}
+
+country_event = { # An Ultimatum
+	id = mec_vassals.3
+	title = "mec_vassals_3_title"
+	desc = "mec_vassals_3_desc"
+	picture = DIPLOMACY_eventPicture
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion = {
+				modifier = illegitimate_overlord
+				who = FROM
+			}
+			export_to_key = { lhs = Vassal_Tmp0 value = total_development }
+			export_to_key = { lhs = Vassal_Tmp1 value = total_development who = FROM }
+			divide_key = { lhs = Vassal_Tmp0 which = Vassal_Tmp1 }
+		}
+	}
+	
+	option = {
+		name = mec_vassals.3.a
+			add_prestige = -10
+			FROM = {
+				#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:was subjected back to the decentralized vassal of [From.GetName] status:mec_vassals.3"
+				create_subject = {
+					subject = ROOT
+					subject_type = decentralized_vassal
+				}
+			}
+			hidden_effect = {				
+				set_key = { lhs = Vassal_Tmp0 value = 0 }
+				set_key = { lhs = Vassal_Tmp1 value = 0 }
+			}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 2
+				personality = weak_personality
+			}
+			modifier = {
+				factor = 1.5
+				personality = modest_personality
+			}
+			modifier = {
+				factor = 2
+				personality = coward_personality
+			}
+			modifier = {
+				factor = 1.5
+				personality = lazy_personality
+			}
+			modifier = {
+				factor = 1.5
+				personality = careful_personality
+			}
+			modifier = {
+				factor = 5
+				is_bankrupt = yes
+			}
+			modifier = {
+				factor = 1.5
+				num_of_loans = 3
+			}
+			modifier = {
+				factor = 1.5
+				num_of_loans = 5
+			}
+			modifier = {
+				factor = 1.5
+				num_of_loans = 7
+			}
+			modifier = {
+				factor = 1.5
+				war_exhaustion = 5
+			}
+			modifier = {
+				factor = 1.5
+				war_exhaustion = 10
+			}
+			modifier = {
+				factor = 1.1
+				is_at_war = yes
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { manpower_percentage = 0.1 }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { manpower_percentage = 0.2 }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { manpower_percentage = 0.3 }
+			}
+		}
+	}
+	option = {
+		name = mec_vassals.3.b
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					is_core = THIS
+				}
+				add_claim = FROM
+			}
+			set_key = { lhs = Vassal_Tmp0 value = 0 }
+			set_key = { lhs = Vassal_Tmp1 value = 0 }
+		}
+		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:was attacked by [From.GetName] after rejecting to become theirs vassals:mec_vassals.3"
+
+		FROM = {
+			declare_war_with_cb = {
+				casus_belli = cb_annex
+				who = PREV
+			}
+		}
+			
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 2
+				has_opinion = {
+					value = 150
+					who = FROM
+				}
+			}
+			modifier = {
+				factor = 2
+				check_key = { lhs = Vassal_Tmp0 value = 0.33 }
+			}
+			modifier = {
+				factor = 2
+				personality = greedy_personality
+			}
+			modifier = {
+				factor = 2
+				personality = malevolent_personality
+			}
+			modifier = {
+				factor = 2
+				personality = selfish_personality
+			}
+			modifier = {
+				factor = 2
+				personality = proud_personality
+			}
+			modifier = {
+				factor = 2
+				personality = aggressive_personality
+			}
+			modifier = {
+				factor = 2
+				personality = vengeful_personality
+			}
+			modifier = {
+				factor = 2
+				personality = reckless_personality
+			}
+			modifier = {
+				factor = 2
+				any_owned_province = {
+					any_neighbor_province = {
+						NOT = {
+							owned_by = FROM
+						}
+					}
+				}
+			}
+		}					
+	}
+}
+
+
+
+country_event = { # Releasing $Tag$
+	id = mec_vassals.5
+	title = "mec_vassals_5_title"
+	desc = "mec_vassals_5_desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = mec_vassals.5.a
+		trigger = {
+			subject_centralisation_trigger = no
+			monarchy_or_harem_gov = yes
+		}
+		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:created an appanage from [From.GetName]:mec_vassals.5"
+		create_subject = {
+			subject_type = appanage_subject
+			subject = FROM
+		}
+		FROM = { 
+			define_ruler = {
+				dynasty = ROOT
+			}
+		}
+		add_absolutism = -10
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = mec_vassals.5.b
+		trigger = {
+			subject_centralisation_trigger = no
+		}
+		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:created feudatory from [From.GetName]:mec_vassals.5"
+		FROM = { hidden_effect = { set_key = { lhs = Vassal_Type value = 10 } } }
+		create_subject = {
+			subject_type = daimyo_vassal
+			subject = FROM
+		}
+		add_absolutism = -10
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = mec_vassals.5.c
+		trigger = {
+			OR = {
+				NOT = {
+					is_key_equal = { lhs = Pol_Structure value = 4 }
+				}
+                has_country_flag = centralised_japan
+			}
+		}
+		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:created division from [From.GetName]:mec_vassals.5"
+		create_subject = {
+			subject_type = decentralized_vassal
+			subject = FROM
+		}
+		add_absolutism = -10
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = mec_vassals.5.d
+		trigger = {
+			OR = {
+				NOT = { culture_group = japanese_g }
+				FROM = { NOT = { culture_group = japanese_g } }
+				AND = {
+					subject_centralisation_trigger = yes
+					is_key_equal = { lhs = Pol_Structure value = 4 }
+				}
+                has_country_flag = centralised_japan
+			}
+		}
+		create_subject = {
+			subject_type = custom_vassal
+			subject = FROM
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	after = {
+		FROM = {
+			subject_transition_effect = yes
+			vassal_type_tracking_effect = yes
+		}
+	}
+}
+
+#baby goes in the corner
+
+#country_event = { # Feudatories and Appanages chose whether to fight, I hated writing this whole event chain so much
+#	id = mec_vassals.4
+#	title = "mec_vassals_4_title"
+#	desc = "mec_vassals_4_desc"
+#	picture = LAND_MILITARY_eventPicture
+#	
+#	is_triggered_only = yes
+#
+#	option = {
+#		name = mec_vassals.4.a
+#		trigger = {
+#			OR = {
+#				is_subject_of_type = daimyo_vassal_war
+#				is_subject_of_type = appanage_subject_war
+#				is_subject_of_type = appanage_subject
+#				is_subject_of_type = daimyo_vassal
+#			}
+#		}
+#		if = {
+#			limit = {
+#				OR = {
+#					is_subject_of_type = daimyo_vassal_war
+#					is_subject_of_type = appanage_subject_war
+#				}
+#			}
+#			if = {
+#				limit = {
+#					overlord = {
+#						OR = {
+#							tag = event_target:overlord_attacker
+#							has_country_flag = overlord_attacker
+#						}
+#					}
+#				}
+#				trigger_switch = {
+#					on_trigger = is_subject_of_type
+#					daimyo_vassal_war = {
+#						if = {
+#							limit = {
+#								ai = yes
+#							}
+#							white_peace = event_target:overlord_defender
+#						}
+#						else = {
+#							every_enemy_country = {
+#								limit = {
+#									has_country_flag = overlord_defender
+#								}
+#								ROOT = {
+#									white_peace = PREV
+#								}
+#								clr_country_flag = overlord_defender
+#							}
+#						}
+#						custom_tooltip = vassal_peace_noprestige_tt
+#						hidden_effect = {
+#							add_prestige = 25 #if someone manages to somehow get -20 warscore before picking this option, frankly you deserve it
+#						}
+#					}
+#					appanage_subject_war = {
+#						if = {
+#							limit = {
+#								ai = yes
+#							}
+#							white_peace = event_target:overlord_defender
+#						}
+#						else = {
+#							every_enemy_country = {
+#								limit = {
+#									has_country_flag = overlord_defender
+#								}
+#								ROOT = {
+#									white_peace = PREV
+#								}
+#								clr_country_flag = overlord_defender
+#							}
+#						}
+#						custom_tooltip = vassal_peace_noprestige_tt
+#						hidden_effect = {
+#							add_prestige = 25
+#						}
+#					}
+#				}
+#			}
+#			else_if = {
+#				limit = {
+#					overlord = {
+#						OR = {
+#							tag = event_target:overlord_defender
+#							has_country_flag = overlord_defender
+#						}
+#					}
+#				}
+#				trigger_switch = {
+#					on_trigger = is_subject_of_type
+#					daimyo_vassal_war = {
+#						if = {
+#							limit = {
+#								ai = yes
+#							}
+#							white_peace = event_target:overlord_attacker
+#						}
+#						else = {
+#							every_enemy_country = {
+#								limit = {
+#									has_country_flag = overlord_attacker
+#								}
+#								ROOT = {
+#									white_peace = PREV
+#								}
+#								clr_country_flag = overlord_attacker
+#							}
+#						}
+#						custom_tooltip = vassal_peace_noprestige_tt
+#						hidden_effect = {
+#							add_prestige = 25
+#						}
+#					}
+#					appanage_subject_war = {
+#						if = {
+#							limit = {
+#								ai = yes
+#							}
+#							white_peace = event_target:overlord_attacker
+#						}
+#						else = {
+#							every_enemy_country = {
+#								limit = {
+#									has_country_flag = overlord_attacker
+#								}
+#								ROOT = {
+#									white_peace = PREV
+#								}
+#								clr_country_flag = overlord_attacker
+#							}
+#						}
+#						custom_tooltip = vassal_peace_noprestige_tt
+#						hidden_effect = {
+#							add_prestige = 25
+#						}
+#					}
+#				}
+#			}
+#		}
+#		else = {
+#			custom_tooltip = vassal_peace_tt
+#		}
+#		hidden_effect = { clr_country_flag = fuck_this_stupid_engine }
+#		ai_chance = {
+#			factor = 1
+#		}
+#	}
+#	
+#	option = { # join the war
+#		name = mec_vassals.4.b
+#		trigger = {
+#		}
+#		hidden_effect = {
+#			overlord = {
+#				every_enemy_country = {
+#					limit = {
+#						NOT = {
+#							war_with = ROOT
+#							tag = event_target:overlord_attacker
+#							tag = event_target:overlord_defender
+#							has_country_flag = overlord_attacker
+#							has_country_flag = overlord_defender
+#						}
+#					}
+#					set_country_flag = no_war_thx
+#				}
+#			}
+#			trigger_switch = {
+#				on_trigger = is_subject_of_type
+#				appanage_subject = {
+#					overlord = {
+#						create_subject = {
+#							subject_type = appanage_subject_war
+#							subject = ROOT
+#						}
+#					}
+#				}
+#				daimyo_vassal = {
+#					overlord = {
+#						create_subject = {
+#							subject_type = daimyo_vassal_war
+#							subject = ROOT
+#						}
+#					}
+#				}
+#			}
+#			overlord = {
+#				every_enemy_country = {
+#					limit = {
+#						has_country_flag = no_war_thx
+#					}
+#					ROOT = {
+#						white_peace = PREV
+#						prestige = 25
+#					}
+#					clr_country_flag = no_war_thx
+#				}
+#			}
+#			clr_country_flag = fuck_this_stupid_engine
+#			overlord = {
+#				country_event = {
+#					id = mec_vassals.7
+#				}
+#			}
+#		}
+#		custom_tooltip = vassal_war_tt
+#		ai_chance = {
+#			factor = 1
+#		}
+#	}
+#}
+#
+##country_event = { # God damn this is convoluted
+##	id = mec_vassals.7
+##	title = "mec_vassals_7_title"
+##	desc = "mec_vassals_7_desc"
+##	picture = aionly_eventPicture
+##	
+##	is_triggered_only = yes
+##	hidden = yes
+##	
+##	trigger = {
+##		event_target:overlord_attacker = {
+##			all_subject_country = {
+##				NOT = {
+##					has_country_flag = fuck_this_stupid_engine
+##				}
+##			}
+##		}
+##		event_target:overlord_defender = {
+##			all_subject_country = {
+##				NOT = {
+##					has_country_flag = fuck_this_stupid_engine
+##				}
+##			}
+##		}
+##	}
+##
+##	option = {
+##		name = mec_vassals.7.a
+##		clear_global_event_target = overlord_attacker
+##		clear_global_event_target = overlord_defender
+##		ai_chance = {
+##			factor = 1 #you better fuckin do it
+##		}
+##	}
+##}
+
+
+
+country_event = {
+	id = mec_vassals.8
+	title = "mec_vassals_8_title"
+	desc = "mec_vassals_8_desc"
+	picture = aionly_eventPicture
+	
+	is_triggered_only = yes
+	hidden = yes
+	
+	trigger = {
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				any_subject_country = {
+					OR = {
+						is_subject_of_type = vassal
+						is_subject_of_type = custom_vassal
+						is_subject_of_type = personal_union
+					}
+				}
+			}
+			country_event = { id = mec_vassals.9 days = 1 }
+		}
+	}
+	
+	option = {
+		name = mec_vassals.8.a
+				
+		ai_chance = {
+			factor = 1 
+		}
+	}
+}
+
+#ROOT = Overlord
+country_event = {
+	id = mec_vassals.9
+	title = "mec_vassals_9_title"
+	desc = "mec_vassals_9_desc"
+	picture = aionly_eventPicture
+	
+	is_triggered_only = yes
+	hidden = yes
+	
+	trigger = {
+	}
+	
+	immediate = {
+		every_subject_country = {
+			limit = {
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = custom_vassal
+					is_subject_of_type = personal_union
+				}
+			}
+			if = { limit = {
+					OR = {
+						is_subject_of_type = vassal
+						is_subject_of_type = custom_vassal
+					}
+					NOT = { subject_integrated_trigger = yes }
+				}	
+				calc_integration_progress = { type = vassal }
+				check_integration_progress = yes
+			}
+			else_if = { limit = { 
+					is_subject_of_type = personal_union 
+					NOT = { subject_integrated_trigger = yes }					
+				}
+				calc_integration_progress = { type = personal_union }
+				check_integration_progress = yes
+			}
+		}
+	}
+	
+	option = {
+		name = mec_vassals.8.a
+				
+		ai_chance = {
+			factor = 1 
+		}		
+	}
+}
+country_event = {
+	id = mec_vassals.10
+	title = no_localisation
+	desc = no_localisation
+	picture = aionly_eventPicture
+	
+	is_triggered_only = yes
+	hidden = yes
+	
+	trigger = {
+		is_subject = yes
+		isValidCountry = yes
+	}
+	
+	immediate = {
+		subject_transition_effect = yes
+	}
+	
+	option = {
+		name = no_localisation
+	}
+}
+#Notification events for subject status change
+country_event = {
+	id = mec_vassals.11
+	title = "mec_vassals.11.title"
+	desc = "mec_vassals.11.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.11.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.12
+	title = "mec_vassals.12.title"
+	desc = "mec_vassals.12.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.12.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.13
+	title = "mec_vassals.13.title"
+	desc = "mec_vassals.13.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.13.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.14
+	title = "mec_vassals.14.title"
+	desc = "mec_vassals.14.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.14.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.15
+	title = "mec_vassals.15.title"
+	desc = "mec_vassals.15.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.11.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.16
+	title = "mec_vassals.16.title"
+	desc = "mec_vassals.16.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.12.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.17
+	title = "mec_vassals.17.title"
+	desc = "mec_vassals.17.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.13.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.18
+	title = "mec_vassals.18.title"
+	desc = "mec_vassals.18.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.14.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.19
+	title = "mec_vassals.19.title"
+	desc = "mec_vassals.19.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.13.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.20
+	title = "mec_vassals.20.title"
+	desc = "mec_vassals.20.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.14.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.21
+	title = "mec_vassals.21.title"
+	desc = "mec_vassals.21.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.12.opta"
+		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:switched from their special status to regular PU with [Root.Overlord.GetName]:mec_vassals.21"
+	}
+}
+country_event = {
+	id = mec_vassals.22
+	title = "mec_vassals.22.title"
+	desc = "mec_vassals.22.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.11.opta"
+	}
+}
+country_event = {
+	id = mec_vassals.23
+	title = "mec_vassals.21.title"
+	desc = "mec_vassals.23.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.12.opta"
+		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:switched from their special status to regular PU with [Root.Overlord.GetName]:mec_vassals.21"
+	}
+}
+country_event = {
+	id = mec_vassals.24
+	title = "mec_vassals.22.title"
+	desc = "mec_vassals.24.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mec_vassals.11.opta"
+	}
+}

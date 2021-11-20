@@ -1,0 +1,1139 @@
+Nat_Update = {
+	if = {
+		limit = {
+			ai = yes
+		}
+		set_country_flag = Unrest_Update
+	}
+	else = {
+		hidden_effect = { country_event = { id = POP_Census.994 } }
+	}
+}
+Nat_SumDev = {
+	set_key = { lhs = Dev_Total value = 0 }
+	every_owned_province = {
+		limit = {
+			isValidProv = yes
+		}
+		PREV = { change_key = { lhs = Dev_Total which = PREV } }
+	}
+}
+Nat_MainHelper = {
+	set_key = { lhs = Tmp_1 value = 0 }
+	set_key = { lhs = Tmp_2 value = 0 }
+	set_key = { lhs = Tmp_7 value = 0 }
+	
+	[[LoyaltyChange]
+	if = {
+		limit = {
+			always = $LoyaltyChange$
+		}
+		set_key = { lhs = Tmp_3 value = 0 }
+		set_key = { lhs = Tmp_4 value = 0 }
+	}
+	]
+	[[Income]
+	if = {
+		limit = {
+			always = $Income$
+		}
+		set_key = { lhs = $type$_Income value = 0 }
+	}
+	]
+	[[Wealth]
+	if = {
+		limit = {
+			always = $Wealth$
+		}
+		set_key = { lhs = $type$_Wealth value = 0 }
+	}
+	]
+	[[IncomeTax]
+	if = {
+		limit = {
+			always = $IncomeTax$
+		}
+		set_key = { lhs = $type$_IncomeTax value = 0 }
+	}
+	]
+	[[Property]
+	if = {
+		limit = {
+			always = $Property$
+		}
+		set_key = { lhs = Tmp_5 value = 0 }
+		set_key = { lhs = Tmp_6 value = 0 }
+	}
+	]
+
+	every_owned_province = {
+		limit = {
+			isValidProv = yes
+		}
+		set_key = { lhs = Tmp_7 which = Dev_Total }
+		# Reduce the influence of trade company provinces
+		if = {
+			limit = {
+				is_owned_by_trade_company = yes
+			}
+			multiply_key = { lhs = Tmp_7 value = 0.1 }
+		}
+		
+		if = {
+			limit = {
+				check_key = { lhs = Prov_$type$Pow value = 1 }
+			}
+			set_key = { lhs = Tmp_8 which = Tmp_7 }
+			set_key = { lhs = Tmp_1 which = Prov_$type$Pow }
+			set_key = { lhs = Tmp_2 which = Prov_$type$Loy }
+			[[LoyaltyChange]
+			set_key = { lhs = Tmp_3 which = Prov_$type$PowChange }
+			set_key = { lhs = Tmp_4 which = Prov_$type$LoyChange }
+			]
+
+			multiply_key = { lhs = Tmp_1 which = Tmp_7 }
+			multiply_key = { lhs = Tmp_2 which = Tmp_7 }
+			[[LoyaltyChange]
+			multiply_key = { lhs = Tmp_3 which = Tmp_7 }
+			multiply_key = { lhs = Tmp_4 which = Tmp_7 }
+			]
+
+			# Prevent overflow
+			multiply_key = { lhs = Tmp_1 value = 0.1 }
+			multiply_key = { lhs = Tmp_2 value = 0.1 }
+			[[LoyaltyChange]
+			multiply_key = { lhs = Tmp_3 value = 0.1 }
+			multiply_key = { lhs = Tmp_4 value = 0.1 }
+			]
+			
+			
+			[[Property]
+			set_key = { lhs = Tmp_5 which = $type$_PrpResources }
+			set_key = { lhs = Tmp_6 which = $type$_PrpBuilding }
+			multiply_key = { lhs = Tmp_5 which = Tmp_7 }
+			multiply_key = { lhs = Tmp_6 which = Tmp_7 }
+			multiply_key = { lhs = Tmp_5 value = 0.1 }
+			multiply_key = { lhs = Tmp_6 value = 0.1 }
+			PREV = {
+				change_key = { lhs = Tmp_5 which = PREV }
+				change_key = { lhs = Tmp_6 which = PREV }
+			}
+			]
+
+			PREV = {
+				change_key = { lhs = Tmp_1 which = PREV }
+				change_key = { lhs = Tmp_2 which = PREV }
+				[[LoyaltyChange]
+				change_key = { lhs = Tmp_3 which = PREV }
+				change_key = { lhs = Tmp_4 which = PREV }
+				]
+				change_key = { lhs = Tmp_8 which = PREV }
+
+				[[Income]
+				if = {
+					limit = {
+						always = $Income$
+					}
+					change_key = { lhs = $type$_Income which = PREV }
+				}
+				]
+				[[Wealth]
+				if = {
+					limit = {
+						always = $Wealth$
+					}
+					change_key = { lhs = $type$_Wealth which = PREV }
+				}
+				]
+				[[IncomeTax]
+				if = {
+					limit = {
+						always = $IncomeTax$
+					}
+					change_key = { lhs = $type$_IncomeTax which = PREV }
+				}
+				]
+			}
+		}
+		
+		PREV = {
+			change_key = { lhs = Tmp_7 which = PREV }
+		}
+		
+		set_key = { lhs = Tmp_7 value = 0 }
+	}
+
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_7 value = 0.001 }
+		}
+		divide_key = { lhs = Tmp_1 which = Tmp_7 }
+		[[LoyaltyChange]
+		divide_key = { lhs = Tmp_3 which = Tmp_7 }
+		divide_key = { lhs = Tmp_4 which = Tmp_7 }
+		]
+
+		multiply_key = { lhs = Tmp_1 value = 10 }
+		[[LoyaltyChange]
+		multiply_key = { lhs = Tmp_3 value = 10 }
+		multiply_key = { lhs = Tmp_4 value = 10 }
+		]
+		
+		[[Property]
+		divide_key = { lhs = Tmp_5 which = Tmp_7 }
+		divide_key = { lhs = Tmp_6 which = Tmp_7 }
+		multiply_key = { lhs = Tmp_5 value = 10 }
+		multiply_key = { lhs = Tmp_6 value = 10 }
+		]
+		# Loyalty
+		if = {
+			limit = {
+				check_key = { lhs = Tmp_8 value = 0.001 }
+			}
+			divide_key = { lhs = Tmp_2 which = Tmp_8 }
+			multiply_key = { lhs = Tmp_2 value = 10 }
+		}
+		else = {
+			set_key = { lhs = Tmp_2 value = 0 }
+		}
+	}
+	else = {
+		set_key = { lhs = Tmp_1 value = 0 }
+		set_key = { lhs = Tmp_2 value = 0 }
+		[[LoyaltyChange]
+		set_key = { lhs = Tmp_3 value = 0 }
+		set_key = { lhs = Tmp_4 value = 0 }
+		]
+		[[Property]
+		set_key = { lhs = Tmp_5 value = 0 }
+		set_key = { lhs = Tmp_6 value = 0 }
+		]
+	}
+
+	set_key = { lhs = Prov_$type$Pow which = Tmp_1 }
+	set_key = { lhs = Prov_$type$Loy which = Tmp_2 }
+	[[LoyaltyChange]
+	set_key = { lhs = Prov_$type$PowChange which = Tmp_3 }
+	set_key = { lhs = Prov_$type$LoyChange which = Tmp_4 }
+	]
+	[[Property]
+	set_key = { lhs = $type$_PrpResources which = Tmp_5 }
+	set_key = { lhs = $type$_PrpBuilding which = Tmp_6 }
+	]
+	
+	[[LoyaltyBlock]
+	if = {
+		limit = {
+			always = $LoyaltyBlock$
+			NOT = {
+				check_key = { lhs = Prov_$type$Loy value = 0.1 }
+				
+				has_global_flag = POP_Sim
+			}
+		}
+		remove_country_modifier = Prov_$type$Block
+
+		add_country_modifier = {
+			name = Prov_$type$Block
+			duration = 1825
+			hidden = yes
+		}
+	}
+	]
+
+	set_key = { lhs = Tmp_1 value = 0 }
+	set_key = { lhs = Tmp_2 value = 0 }
+	[[LoyaltyChange]
+	set_key = { lhs = Tmp_3 value = 0 }
+	set_key = { lhs = Tmp_4 value = 0 }
+	]
+	[[Property]
+	set_key = { lhs = Tmp_5 value = 0 }
+	set_key = { lhs = Tmp_6 value = 0 }
+	]
+	set_key = { lhs = Tmp_7 value = 0 }
+	set_key = { lhs = Tmp_8 value = 0 }
+}
+
+Nat_SumStats = {
+	set_key = { lhs = TaxD_BUProperty value = 0 }
+	set_key = { lhs = Building_ProjectSpend value = 0 }
+	set_key = { lhs = State_SpendDole value = 0 }
+	set_key = { lhs = Admin_EfficUni value = 0 }
+	set_key = { lhs = Admin_EfficDir value = 0 }
+	set_key = { lhs = Admin_EfficInd value = 0 }
+	set_key = { lhs = Admin_DemandUni value = 0 }
+	set_key = { lhs = Admin_DemandDir value = 0 }
+	set_key = { lhs = Admin_DemandInd value = 0 }
+	set_key = { lhs = Admin_SupplyUni value = 0 }
+	set_key = { lhs = Admin_SupplyDir value = 0 }
+	set_key = { lhs = Admin_SupplyInd value = 0 }
+	set_key = { lhs = Admin_CostUni value = 0 }
+	set_key = { lhs = Admin_CostDir value = 0 }
+	set_key = { lhs = Admin_CostInd value = 0 }
+	set_key = { lhs = MP_RealTotal value = 0 }
+	if = {
+		limit = {
+			ai = no
+		}
+		set_key = { lhs = TaxD_SF value = 0 }
+		set_key = { lhs = TaxD_SFFees value = 0 }
+		set_key = { lhs = TaxD_SFFeesAdmin value = 0 }
+		set_key = { lhs = TaxD_SFPoll value = 0 }
+		set_key = { lhs = TaxD_SFSaltBU value = 0 }
+		set_key = { lhs = TaxD_SFSubstancesBU value = 0 }
+		set_key = { lhs = TaxD_SFTimberBU value = 0 }
+		set_key = { lhs = TaxD_SFAlcoholBU value = 0 }
+		set_key = { lhs = TaxD_SFExciseBU value = 0 }
+		set_key = { lhs = TaxD_SFLand value = 0 }
+		set_key = { lhs = TaxD_SFPropertyBU value = 0 }
+		set_key = { lhs = TaxD_SFChattel value = 0 }
+		set_key = { lhs = TaxD_SFInheritance value = 0 }
+		set_key = { lhs = TaxD_SFRents value = 0 }
+		set_key = { lhs = TaxD_RE value = 0 }
+		set_key = { lhs = TaxD_REFees value = 0 }
+		set_key = { lhs = TaxD_REFeesAdmin value = 0 }
+		set_key = { lhs = TaxD_REPoll value = 0 }
+		set_key = { lhs = TaxD_RESaltBU value = 0 }
+		set_key = { lhs = TaxD_RESubstancesBU value = 0 }
+		set_key = { lhs = TaxD_RETimberBU value = 0 }
+		set_key = { lhs = TaxD_REAlcoholBU value = 0 }
+		set_key = { lhs = TaxD_REExciseBU value = 0 }
+		set_key = { lhs = TaxD_RELand value = 0 }
+		set_key = { lhs = TaxD_REPropertyBU value = 0 }
+		set_key = { lhs = TaxD_REChattel value = 0 }
+		set_key = { lhs = TaxD_REInheritance value = 0 }
+		set_key = { lhs = TaxD_NO value = 0 }
+		set_key = { lhs = TaxD_NOFees value = 0 }
+		set_key = { lhs = TaxD_NOFeesAdmin value = 0 }
+		set_key = { lhs = TaxD_NOObligations value = 0 }
+		set_key = { lhs = TaxD_NOPoll value = 0 }
+		set_key = { lhs = TaxD_NOLand value = 0 }
+		set_key = { lhs = TaxD_NOSaltBU value = 0 }
+		set_key = { lhs = TaxD_NOSubstancesBU value = 0 }
+		set_key = { lhs = TaxD_NOTimberBU value = 0 }
+		set_key = { lhs = TaxD_NOAlcoholBU value = 0 }
+		set_key = { lhs = TaxD_NOExciseBU value = 0 }
+		set_key = { lhs = TaxD_NOPropertyBU value = 0 }
+		set_key = { lhs = TaxD_NOChattel value = 0 }
+		set_key = { lhs = TaxD_NOInheritance value = 0 }
+		set_key = { lhs = TaxD_BG value = 0 }
+		set_key = { lhs = TaxD_BGFees value = 0 }
+		set_key = { lhs = TaxD_BGFeesAdmin value = 0 }
+		set_key = { lhs = TaxD_BGObligations value = 0 }
+		set_key = { lhs = TaxD_BGPoll value = 0 }
+		set_key = { lhs = TaxD_BGLand value = 0 }
+		set_key = { lhs = TaxD_BGSaltBU value = 0 }
+		set_key = { lhs = TaxD_BGSubstancesBU value = 0 }
+		set_key = { lhs = TaxD_BGTimberBU value = 0 }
+		set_key = { lhs = TaxD_BGAlcoholBU value = 0 }
+		set_key = { lhs = TaxD_BGExciseBU value = 0 }
+		set_key = { lhs = TaxD_BGPropertyBU value = 0 }
+		set_key = { lhs = TaxD_BGChattel value = 0 }
+		set_key = { lhs = TaxD_BGInheritance value = 0 }
+		set_key = { lhs = TaxD_CL value = 0 }
+		set_key = { lhs = TaxD_CLFees value = 0 }
+		set_key = { lhs = TaxD_CLFeesAdmin value = 0 }
+		set_key = { lhs = TaxD_CLObligations value = 0 }
+		set_key = { lhs = TaxD_CLPoll value = 0 }
+		set_key = { lhs = TaxD_CLLand value = 0 }
+		set_key = { lhs = TaxD_CLSaltBU value = 0 }
+		set_key = { lhs = TaxD_CLSubstancesBU value = 0 }
+		set_key = { lhs = TaxD_CLTimberBU value = 0 }
+		set_key = { lhs = TaxD_CLAlcoholBU value = 0 }
+		set_key = { lhs = TaxD_CLExciseBU value = 0 }
+		set_key = { lhs = TaxD_CLPropertyBU value = 0 }
+		set_key = { lhs = TaxD_CLChattel value = 0 }
+		set_key = { lhs = TaxD_CLInheritance value = 0 }
+		set_key = { lhs = TaxD_TR value = 0 }
+		set_key = { lhs = TaxD_Industry value = 0 }
+		set_key = { lhs = TaxD_BUProperty value = 0 }
+		set_key = { lhs = TaxD_Fees value = 0 }
+		set_key = { lhs = TaxD_FeesAdmin value = 0 }
+		set_key = { lhs = TaxD_Obligations value = 0 }
+		set_key = { lhs = TaxD_Poll value = 0 }
+		set_key = { lhs = TaxD_Land value = 0 }
+		set_key = { lhs = TaxD_ExciseBU value = 0 }
+		set_key = { lhs = TaxD_PropertyBU value = 0 }
+		set_key = { lhs = TaxD_Chattel value = 0 }
+		set_key = { lhs = TaxD_Inheritance value = 0 }
+		set_key = { lhs = TaxD_TollBU value = 0 }
+		set_key = { lhs = TaxD_SaltBU value = 0 }
+		set_key = { lhs = TaxD_SubstancesBU value = 0 }
+		set_key = { lhs = TaxD_TimberBU value = 0 }
+		set_key = { lhs = TaxD_AlcoholBU value = 0 }
+		set_key = { lhs = TaxD_Corruption value = 0 }
+		set_key = { lhs = TaxD_Farming value = 0 }
+		set_key = { lhs = TaxD_Direct value = 0 }
+		set_key = { lhs = TaxD_Indirect value = 0 }
+		set_key = { lhs = TaxD_Revenue value = 0 }
+		set_key = { lhs = TaxD_SFSurplusBU value = 0 }
+		set_key = { lhs = TaxD_BGCommerce value = 0 }
+		set_key = { lhs = NO_PrpAgriculture value = 0 }
+		set_key = { lhs = NO_PrpExtraction value = 0 }
+		set_key = { lhs = NO_PrpForestry value = 0 }
+		set_key = { lhs = NO_PrpFishery value = 0 }
+		set_key = { lhs = NO_PrpIndustrial value = 0 }
+		set_key = { lhs = NO_PrpAcademic value = 0 }
+		set_key = { lhs = NO_PrpCommercial value = 0 }
+		set_key = { lhs = BG_PrpAgriculture value = 0 }
+		set_key = { lhs = BG_PrpExtraction value = 0 }
+		set_key = { lhs = BG_PrpForestry value = 0 }
+		set_key = { lhs = BG_PrpFishery value = 0 }
+		set_key = { lhs = BG_PrpIndustrial value = 0 }
+		set_key = { lhs = BG_PrpAcademic value = 0 }
+		set_key = { lhs = BG_PrpCommercial value = 0 }
+		set_key = { lhs = CL_PrpAgriculture value = 0 }
+		set_key = { lhs = CL_PrpExtraction value = 0 }
+		set_key = { lhs = CL_PrpForestry value = 0 }
+		set_key = { lhs = CL_PrpFishery value = 0 }
+		set_key = { lhs = CL_PrpIndustrial value = 0 }
+		set_key = { lhs = CL_PrpAcademic value = 0 }
+		set_key = { lhs = CL_PrpCommercial value = 0 }
+		set_key = { lhs = BU_PrpAgriculture value = 0 }
+		set_key = { lhs = BU_PrpExtraction value = 0 }
+		set_key = { lhs = BU_PrpForestry value = 0 }
+		set_key = { lhs = BU_PrpFishery value = 0 }
+		set_key = { lhs = BU_PrpIndustrial value = 0 }
+		set_key = { lhs = BU_PrpAcademic value = 0 }
+		set_key = { lhs = BU_PrpCommercial value = 0 }
+		set_key = { lhs = Crpt_NO value = 0 }
+		set_key = { lhs = Crpt_BG value = 0 }
+		set_key = { lhs = Crpt_CL value = 0 }
+		set_key = { lhs = Crpt_State value = 0 }
+		set_key = { lhs = Crpt_LA value = 0 }
+		set_key = { lhs = Crpt_Wages value = 0 }
+		set_key = { lhs = Crpt_Reform value = 0 }
+		set_key = { lhs = Crpt_Other value = 0 }
+	}
+	set_key = { lhs = TaxD_Total value = 0 }
+	set_key = { lhs = TaxD_BUProperty value = 0 }
+	set_key = { lhs = Class_IncomeDole value = 0 }
+	set_key = { lhs = Admin_CostUni value = 0 }
+	set_key = { lhs = Infra_StateSpend value = 0 }
+	set_key = { lhs = TaxD_BUPropertyNeg value = 0 }
+	set_key = { lhs = Concern_WelfareTreatR value = 0 }
+	set_key = { lhs = Concern_DiversionsTreatR value = 0 }
+	set_key = { lhs = Concern_SpiritualityTreatR value = 0 }
+	set_key = { lhs = Concern_ConsultationTreatR value = 0 }
+	set_key = { lhs = Concern_HierarchyTreatR value = 0 }
+	set_key = { lhs = Concern_UrbsTreatR value = 0 }
+	set_key = { lhs = Concern_CountrysideTreatR value = 0 }
+	set_key = { lhs = TaxD_PollHigh value = 0 }
+	set_key = { lhs = TaxD_LandHigh value = 0 }
+	set_key = { lhs = TaxD_SaltBUHigh value = 0 }
+	set_key = { lhs = TaxD_SubstancesBUHigh value = 0 }
+	set_key = { lhs = TaxD_TimberBUHigh value = 0 }
+	set_key = { lhs = TaxD_AlcoholBUHigh value = 0 }
+	set_key = { lhs = TaxD_ExciseBUHigh value = 0 }
+	set_key = { lhs = TaxD_PropertyBUHigh value = 0 }
+	set_key = { lhs = TaxD_ChattelHigh value = 0 }
+	set_key = { lhs = TaxD_InheritanceHigh value = 0 }
+	set_key = { lhs = TaxD_TollBUHigh value = 0 }
+	set_key = { lhs = TaxD_ObligationsNOHigh value = 0 }
+	set_key = { lhs = TaxD_ObligationsBGHigh value = 0 }
+	set_key = { lhs = TaxD_ObligationsCLHigh value = 0 }
+	set_key = { lhs = TaxD_RentsHigh value = 0 }
+	set_key = { lhs = TaxD_ForestBUHigh value = 0 }
+	set_key = { lhs = TaxD_ObligationsTRHigh value = 0 }
+	set_key = { lhs = TaxD_PollMed value = 0 }
+	set_key = { lhs = TaxD_LandMed value = 0 }
+	set_key = { lhs = TaxD_SaltBUMed value = 0 }
+	set_key = { lhs = TaxD_SubstancesBUMed value = 0 }
+	set_key = { lhs = TaxD_TimberBUMed value = 0 }
+	set_key = { lhs = TaxD_AlcoholBUMed value = 0 }
+	set_key = { lhs = TaxD_ExciseBUMed value = 0 }
+	set_key = { lhs = TaxD_PropertyBUMed value = 0 }
+	set_key = { lhs = TaxD_ChattelMed value = 0 }
+	set_key = { lhs = TaxD_InheritanceMed value = 0 }
+	set_key = { lhs = TaxD_TollBUMed value = 0 }
+	set_key = { lhs = TaxD_ObligationsNOMed value = 0 }
+	set_key = { lhs = TaxD_ObligationsBGMed value = 0 }
+	set_key = { lhs = TaxD_ObligationsCLMed value = 0 }
+	set_key = { lhs = TaxD_RentsMed value = 0 }
+	set_key = { lhs = TaxD_ForestBUMed value = 0 }
+	set_key = { lhs = TaxD_ObligationsTRMed value = 0 }
+	set_key = { lhs = TaxD_PollLow value = 0 }
+	set_key = { lhs = TaxD_LandLow value = 0 }
+	set_key = { lhs = TaxD_SaltBULow value = 0 }
+	set_key = { lhs = TaxD_SubstancesBULow value = 0 }
+	set_key = { lhs = TaxD_TimberBULow value = 0 }
+	set_key = { lhs = TaxD_AlcoholBULow value = 0 }
+	set_key = { lhs = TaxD_ExciseBULow value = 0 }
+	set_key = { lhs = TaxD_PropertyBULow value = 0 }
+	set_key = { lhs = TaxD_ChattelLow value = 0 }
+	set_key = { lhs = TaxD_InheritanceLow value = 0 }
+	set_key = { lhs = TaxD_TollBULow value = 0 }
+	set_key = { lhs = TaxD_ObligationsNOLow value = 0 }
+	set_key = { lhs = TaxD_ObligationsBGLow value = 0 }
+	set_key = { lhs = TaxD_ObligationsCLLow value = 0 }
+	set_key = { lhs = TaxD_RentsLow value = 0 }
+	set_key = { lhs = TaxD_ForestBULow value = 0 }
+	set_key = { lhs = TaxD_ObligationsTRLow value = 0 }
+
+	every_owned_province = {
+		limit = {
+			isValidProv = yes
+		}
+		set_key = { lhs = Tmp_1 value = 0 }
+		Nat_SumAdminHelper1 = { inp=Admin_EfficUni overflow=yes }
+		Nat_SumAdminHelper1 = { inp=Admin_EfficDir overflow=yes }
+		Nat_SumAdminHelper1 = { inp=Admin_EfficInd overflow=yes }
+		PREV = {
+			change_key = { lhs = MP_RealTotal which = PREV }
+			change_key = { lhs = Admin_DemandUni which = PREV }
+			change_key = { lhs = Admin_DemandDir which = PREV }
+			change_key = { lhs = Admin_DemandInd which = PREV }
+			change_key = { lhs = Admin_SupplyUni which = PREV }
+			change_key = { lhs = Admin_SupplyDir which = PREV }
+			change_key = { lhs = Admin_SupplyInd which = PREV }
+			change_key = { lhs = Admin_CostUni which = PREV }
+			change_key = { lhs = Admin_CostDir which = PREV }
+			change_key = { lhs = Admin_CostInd which = PREV }
+			change_key = { lhs = TaxD_BUProperty which = PREV }
+			change_key = { lhs = Class_IncomeDole which = PREV }
+			change_key = { lhs = Admin_CostUni which = PREV }
+			change_key = { lhs = Infra_StateSpend which = PREV }
+			change_key = { lhs = TaxD_BUPropertyNeg which = PREV }
+			change_key = { lhs = TaxD_PollHigh which = PREV }
+			change_key = { lhs = TaxD_LandHigh which = PREV }
+			change_key = { lhs = TaxD_SaltBUHigh which = PREV }
+			change_key = { lhs = TaxD_SubstancesBUHigh which = PREV }
+			change_key = { lhs = TaxD_TimberBUHigh which = PREV }
+			change_key = { lhs = TaxD_AlcoholBUHigh which = PREV }
+			change_key = { lhs = TaxD_ExciseBUHigh which = PREV }
+			change_key = { lhs = TaxD_PropertyBUHigh which = PREV }
+			change_key = { lhs = TaxD_ChattelHigh which = PREV }
+			change_key = { lhs = TaxD_InheritanceHigh which = PREV }
+			change_key = { lhs = TaxD_TollBUHigh which = PREV }
+			change_key = { lhs = TaxD_ObligationsNOHigh which = PREV }
+			change_key = { lhs = TaxD_ObligationsBGHigh which = PREV }
+			change_key = { lhs = TaxD_ObligationsCLHigh which = PREV }
+			change_key = { lhs = TaxD_RentsHigh which = PREV }
+			change_key = { lhs = TaxD_ForestBUHigh which = PREV }
+			change_key = { lhs = TaxD_ObligationsTRHigh which = PREV }
+			change_key = { lhs = TaxD_PollMed which = PREV }
+			change_key = { lhs = TaxD_LandMed which = PREV }
+			change_key = { lhs = TaxD_SaltBUMed which = PREV }
+			change_key = { lhs = TaxD_SubstancesBUMed which = PREV }
+			change_key = { lhs = TaxD_TimberBUMed which = PREV }
+			change_key = { lhs = TaxD_AlcoholBUMed which = PREV }
+			change_key = { lhs = TaxD_ExciseBUMed which = PREV }
+			change_key = { lhs = TaxD_PropertyBUMed which = PREV }
+			change_key = { lhs = TaxD_ChattelMed which = PREV }
+			change_key = { lhs = TaxD_InheritanceMed which = PREV }
+			change_key = { lhs = TaxD_TollBUMed which = PREV }
+			change_key = { lhs = TaxD_ObligationsNOMed which = PREV }
+			change_key = { lhs = TaxD_ObligationsBGMed which = PREV }
+			change_key = { lhs = TaxD_ObligationsCLMed which = PREV }
+			change_key = { lhs = TaxD_RentsMed which = PREV }
+			change_key = { lhs = TaxD_ForestBUMed which = PREV }
+			change_key = { lhs = TaxD_ObligationsTRMed which = PREV }
+			change_key = { lhs = TaxD_PollLow which = PREV }
+			change_key = { lhs = TaxD_LandLow which = PREV }
+			change_key = { lhs = TaxD_SaltBULow which = PREV }
+			change_key = { lhs = TaxD_SubstancesBULow which = PREV }
+			change_key = { lhs = TaxD_TimberBULow which = PREV }
+			change_key = { lhs = TaxD_AlcoholBULow which = PREV }
+			change_key = { lhs = TaxD_ExciseBULow which = PREV }
+			change_key = { lhs = TaxD_PropertyBULow which = PREV }
+			change_key = { lhs = TaxD_ChattelLow which = PREV }
+			change_key = { lhs = TaxD_InheritanceLow which = PREV }
+			change_key = { lhs = TaxD_TollBULow which = PREV }
+			change_key = { lhs = TaxD_ObligationsNOLow which = PREV }
+			change_key = { lhs = TaxD_ObligationsBGLow which = PREV }
+			change_key = { lhs = TaxD_ObligationsCLLow which = PREV }
+			change_key = { lhs = TaxD_RentsLow which = PREV }
+			change_key = { lhs = TaxD_ForestBULow which = PREV }
+			change_key = { lhs = TaxD_ObligationsTRLow which = PREV }
+			change_key = { lhs = TaxD_Total which = PREV }
+			if = {
+				limit = {
+					ai = no
+				}
+				change_key = { lhs = TaxD_SF which = PREV }
+				change_key = { lhs = TaxD_SFFees which = PREV }
+				change_key = { lhs = TaxD_SFFeesAdmin which = PREV }
+				change_key = { lhs = TaxD_SFPoll which = PREV }
+				change_key = { lhs = TaxD_SFSaltBU which = PREV }
+				change_key = { lhs = TaxD_SFSubstancesBU which = PREV }
+				change_key = { lhs = TaxD_SFTimberBU which = PREV }
+				change_key = { lhs = TaxD_SFAlcoholBU which = PREV }
+				change_key = { lhs = TaxD_SFExciseBU which = PREV }
+				change_key = { lhs = TaxD_SFLand which = PREV }
+				change_key = { lhs = TaxD_SFPropertyBU which = PREV }
+				change_key = { lhs = TaxD_SFChattel which = PREV }
+				change_key = { lhs = TaxD_SFInheritance which = PREV }
+				change_key = { lhs = TaxD_SFRents which = PREV }
+				change_key = { lhs = TaxD_RE which = PREV }
+				change_key = { lhs = TaxD_REFees which = PREV }
+				change_key = { lhs = TaxD_REFeesAdmin which = PREV }
+				change_key = { lhs = TaxD_REPoll which = PREV }
+				change_key = { lhs = TaxD_RESaltBU which = PREV }
+				change_key = { lhs = TaxD_RESubstancesBU which = PREV }
+				change_key = { lhs = TaxD_RETimberBU which = PREV }
+				change_key = { lhs = TaxD_REAlcoholBU which = PREV }
+				change_key = { lhs = TaxD_REExciseBU which = PREV }
+				change_key = { lhs = TaxD_RELand which = PREV }
+				change_key = { lhs = TaxD_REPropertyBU which = PREV }
+				change_key = { lhs = TaxD_REChattel which = PREV }
+				change_key = { lhs = TaxD_REInheritance which = PREV }
+				change_key = { lhs = TaxD_NO which = PREV }
+				change_key = { lhs = TaxD_NOFees which = PREV }
+				change_key = { lhs = TaxD_NOFeesAdmin which = PREV }
+				change_key = { lhs = TaxD_NOObligations which = PREV }
+				change_key = { lhs = TaxD_NOPoll which = PREV }
+				change_key = { lhs = TaxD_NOLand which = PREV }
+				change_key = { lhs = TaxD_NOSaltBU which = PREV }
+				change_key = { lhs = TaxD_NOSubstancesBU which = PREV }
+				change_key = { lhs = TaxD_NOTimberBU which = PREV }
+				change_key = { lhs = TaxD_NOAlcoholBU which = PREV }
+				change_key = { lhs = TaxD_NOExciseBU which = PREV }
+				change_key = { lhs = TaxD_NOPropertyBU which = PREV }
+				change_key = { lhs = TaxD_NOChattel which = PREV }
+				change_key = { lhs = TaxD_NOInheritance which = PREV }
+				change_key = { lhs = TaxD_BG which = PREV }
+				change_key = { lhs = TaxD_BGFees which = PREV }
+				change_key = { lhs = TaxD_BGFeesAdmin which = PREV }
+				change_key = { lhs = TaxD_BGObligations which = PREV }
+				change_key = { lhs = TaxD_BGPoll which = PREV }
+				change_key = { lhs = TaxD_BGLand which = PREV }
+				change_key = { lhs = TaxD_BGSaltBU which = PREV }
+				change_key = { lhs = TaxD_BGSubstancesBU which = PREV }
+				change_key = { lhs = TaxD_BGTimberBU which = PREV }
+				change_key = { lhs = TaxD_BGAlcoholBU which = PREV }
+				change_key = { lhs = TaxD_BGExciseBU which = PREV }
+				change_key = { lhs = TaxD_BGPropertyBU which = PREV }
+				change_key = { lhs = TaxD_BGChattel which = PREV }
+				change_key = { lhs = TaxD_BGInheritance which = PREV }
+				change_key = { lhs = TaxD_CL which = PREV }
+				change_key = { lhs = TaxD_CLFees which = PREV }
+				change_key = { lhs = TaxD_CLFeesAdmin which = PREV }
+				change_key = { lhs = TaxD_CLObligations which = PREV }
+				change_key = { lhs = TaxD_CLPoll which = PREV }
+				change_key = { lhs = TaxD_CLLand which = PREV }
+				change_key = { lhs = TaxD_CLSaltBU which = PREV }
+				change_key = { lhs = TaxD_CLSubstancesBU which = PREV }
+				change_key = { lhs = TaxD_CLTimberBU which = PREV }
+				change_key = { lhs = TaxD_CLAlcoholBU which = PREV }
+				change_key = { lhs = TaxD_CLExciseBU which = PREV }
+				change_key = { lhs = TaxD_CLPropertyBU which = PREV }
+				change_key = { lhs = TaxD_CLChattel which = PREV }
+				change_key = { lhs = TaxD_CLInheritance which = PREV }
+				change_key = { lhs = TaxD_TR which = PREV }
+				change_key = { lhs = TaxD_Industry which = PREV }
+				change_key = { lhs = TaxD_Fees which = PREV }
+				change_key = { lhs = TaxD_FeesAdmin which = PREV }
+				change_key = { lhs = TaxD_Obligations which = PREV }
+				change_key = { lhs = TaxD_Poll which = PREV }
+				change_key = { lhs = TaxD_Land which = PREV }
+				change_key = { lhs = TaxD_ExciseBU which = PREV }
+				change_key = { lhs = TaxD_PropertyBU which = PREV }
+				change_key = { lhs = TaxD_Chattel which = PREV }
+				change_key = { lhs = TaxD_Inheritance which = PREV }
+				change_key = { lhs = TaxD_TollBU which = PREV }
+				change_key = { lhs = TaxD_SaltBU which = PREV }
+				change_key = { lhs = TaxD_SubstancesBU which = PREV }
+				change_key = { lhs = TaxD_TimberBU which = PREV }
+				change_key = { lhs = TaxD_AlcoholBU which = PREV }
+				change_key = { lhs = TaxD_Corruption which = PREV }
+				change_key = { lhs = TaxD_Farming which = PREV }
+				change_key = { lhs = TaxD_Direct which = PREV }
+				change_key = { lhs = TaxD_Indirect which = PREV }
+				change_key = { lhs = TaxD_Revenue which = PREV }
+				change_key = { lhs = TaxD_SFSurplusBU which = PREV }
+				change_key = { lhs = TaxD_BGCommerce which = PREV }
+			}
+		}
+		if = {
+			limit = {
+				check_key = { lhs = Building_ProjectSpend value = 0.001 }
+			}
+			PREV = {
+				change_key = { lhs = Building_ProjectSpend which = PREV }
+			}
+		}
+
+		if = {
+			limit = {
+				PREV = { ai = no }
+			}
+			Nat_SumAdminHelper1 = { inp=NO_PrpAgriculture overflow=yes }
+			Nat_SumAdminHelper1 = { inp=NO_PrpExtraction overflow=yes }
+			Nat_SumAdminHelper1 = { inp=NO_PrpForestry overflow=yes }
+			Nat_SumAdminHelper1 = { inp=NO_PrpFishery overflow=yes }
+			Nat_SumAdminHelper1 = { inp=NO_PrpIndustrial overflow=yes }
+			Nat_SumAdminHelper1 = { inp=NO_PrpAcademic overflow=yes }
+			Nat_SumAdminHelper1 = { inp=NO_PrpCommercial overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BG_PrpAgriculture overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BG_PrpExtraction overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BG_PrpForestry overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BG_PrpFishery overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BG_PrpIndustrial overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BG_PrpAcademic overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BG_PrpCommercial overflow=yes }
+			Nat_SumAdminHelper1 = { inp=CL_PrpAgriculture overflow=yes }
+			Nat_SumAdminHelper1 = { inp=CL_PrpExtraction overflow=yes }
+			Nat_SumAdminHelper1 = { inp=CL_PrpForestry overflow=yes }
+			Nat_SumAdminHelper1 = { inp=CL_PrpFishery overflow=yes }
+			Nat_SumAdminHelper1 = { inp=CL_PrpIndustrial overflow=yes }
+			Nat_SumAdminHelper1 = { inp=CL_PrpAcademic overflow=yes }
+			Nat_SumAdminHelper1 = { inp=CL_PrpCommercial overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BU_PrpAgriculture overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BU_PrpExtraction overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BU_PrpForestry overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BU_PrpFishery overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BU_PrpIndustrial overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BU_PrpAcademic overflow=yes }
+			Nat_SumAdminHelper1 = { inp=BU_PrpCommercial overflow=yes }
+			Nat_SumAdminHelper1 = { inp=Crpt_NO overflow=yes }
+			Nat_SumAdminHelper1 = { inp=Crpt_BG overflow=yes }
+			Nat_SumAdminHelper1 = { inp=Crpt_CL overflow=yes }
+			Nat_SumAdminHelper1 = { inp=Crpt_State overflow=yes }
+			Nat_SumAdminHelper1 = { inp=Crpt_Reform overflow=yes }
+			Nat_SumAdminHelper1 = { inp=Crpt_Wages overflow=no }
+			Nat_SumAdminHelper1 = { inp=Crpt_LA overflow=no }
+			Nat_SumAdminHelper1 = { inp=Crpt_Other overflow=no }
+		}
+
+		Nat_SumAdminHelper1 = { inp=Concern_WelfareTreatR overflow=yes }
+		Nat_SumAdminHelper1 = { inp=Concern_DiversionsTreatR overflow=yes }
+		Nat_SumAdminHelper1 = { inp=Concern_SpiritualityTreatR overflow=yes }
+		Nat_SumAdminHelper1 = { inp=Concern_ConsultationTreatR overflow=yes }
+		Nat_SumAdminHelper1 = { inp=Concern_HierarchyTreatR overflow=yes }
+		Nat_SumAdminHelper1 = { inp=Concern_UrbsTreatR overflow=yes }
+		Nat_SumAdminHelper1 = { inp=Concern_CountrysideTreatR overflow=yes }
+	}
+
+	if = {
+		limit = {
+			check_key = { lhs = Dev_Total value = 0.001 }
+		}
+		Nat_SumAdminHelper2 = { inp=Admin_EfficUni overflow=yes }
+		Nat_SumAdminHelper2 = { inp=Admin_EfficDir overflow=yes }
+		Nat_SumAdminHelper2 = { inp=Admin_EfficInd overflow=yes }
+		Nat_SumAdminHelper2 = { inp=Concern_WelfareTreatR overflow=yes }
+		Nat_SumAdminHelper2 = { inp=Concern_DiversionsTreatR overflow=yes }
+		Nat_SumAdminHelper2 = { inp=Concern_SpiritualityTreatR overflow=yes }
+		Nat_SumAdminHelper2 = { inp=Concern_ConsultationTreatR overflow=yes }
+		Nat_SumAdminHelper2 = { inp=Concern_HierarchyTreatR overflow=yes }
+		Nat_SumAdminHelper2 = { inp=Concern_UrbsTreatR overflow=yes }
+		Nat_SumAdminHelper2 = { inp=Concern_CountrysideTreatR overflow=yes }
+		if = {
+			limit = {
+				ai = no
+			}
+			Nat_SumAdminHelper2 = { inp=NO_PrpAgriculture overflow=yes }
+			Nat_SumAdminHelper2 = { inp=NO_PrpExtraction overflow=yes }
+			Nat_SumAdminHelper2 = { inp=NO_PrpForestry overflow=yes }
+			Nat_SumAdminHelper2 = { inp=NO_PrpFishery overflow=yes }
+			Nat_SumAdminHelper2 = { inp=NO_PrpIndustrial overflow=yes }
+			Nat_SumAdminHelper2 = { inp=NO_PrpAcademic overflow=yes }
+			Nat_SumAdminHelper2 = { inp=NO_PrpCommercial overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BG_PrpAgriculture overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BG_PrpExtraction overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BG_PrpForestry overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BG_PrpFishery overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BG_PrpIndustrial overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BG_PrpAcademic overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BG_PrpCommercial overflow=yes }
+			Nat_SumAdminHelper2 = { inp=CL_PrpAgriculture overflow=yes }
+			Nat_SumAdminHelper2 = { inp=CL_PrpExtraction overflow=yes }
+			Nat_SumAdminHelper2 = { inp=CL_PrpForestry overflow=yes }
+			Nat_SumAdminHelper2 = { inp=CL_PrpFishery overflow=yes }
+			Nat_SumAdminHelper2 = { inp=CL_PrpIndustrial overflow=yes }
+			Nat_SumAdminHelper2 = { inp=CL_PrpAcademic overflow=yes }
+			Nat_SumAdminHelper2 = { inp=CL_PrpCommercial overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BU_PrpAgriculture overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BU_PrpExtraction overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BU_PrpForestry overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BU_PrpFishery overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BU_PrpIndustrial overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BU_PrpAcademic overflow=yes }
+			Nat_SumAdminHelper2 = { inp=BU_PrpCommercial overflow=yes }
+			Nat_SumAdminHelper2 = { inp=Crpt_NO overflow=yes }
+			Nat_SumAdminHelper2 = { inp=Crpt_BG overflow=yes }
+			Nat_SumAdminHelper2 = { inp=Crpt_CL overflow=yes }
+			Nat_SumAdminHelper2 = { inp=Crpt_State overflow=yes }
+			Nat_SumAdminHelper2 = { inp=Crpt_Reform overflow=yes }
+			divide_key = { lhs = Crpt_LA which = Dev_Total }
+			divide_key = { lhs = Crpt_Wages which = Dev_Total }
+			divide_key = { lhs = Crpt_Other which = Dev_Total }
+		}
+	}
+	else = {
+		set_key = { lhs = Admin_EfficUni value = 0 }
+		set_key = { lhs = Admin_EfficDir value = 0 }
+		set_key = { lhs = Admin_EfficInd value = 0 }
+		set_key = { lhs = Concern_WelfareTreatR value = 0 }
+		set_key = { lhs = Concern_DiversionsTreatR value = 0 }
+		set_key = { lhs = Concern_SpiritualityTreatR value = 0 }
+		set_key = { lhs = Concern_ConsultationTreatR value = 0 }
+		set_key = { lhs = Concern_HierarchyTreatR value = 0 }
+		set_key = { lhs = Concern_UrbsTreatR value = 0 }
+		set_key = { lhs = Concern_CountrysideTreatR value = 0 }
+		if = {
+			limit = {
+				ai = no
+			}
+			set_key = { lhs = NO_PrpAgriculture value = 0 }
+			set_key = { lhs = NO_PrpExtraction value = 0 }
+			set_key = { lhs = NO_PrpForestry value = 0 }
+			set_key = { lhs = NO_PrpFishery value = 0 }
+			set_key = { lhs = NO_PrpIndustrial value = 0 }
+			set_key = { lhs = NO_PrpAcademic value = 0 }
+			set_key = { lhs = NO_PrpCommercial value = 0 }
+			set_key = { lhs = BG_PrpAgriculture value = 0 }
+			set_key = { lhs = BG_PrpExtraction value = 0 }
+			set_key = { lhs = BG_PrpForestry value = 0 }
+			set_key = { lhs = BG_PrpFishery value = 0 }
+			set_key = { lhs = BG_PrpIndustrial value = 0 }
+			set_key = { lhs = BG_PrpAcademic value = 0 }
+			set_key = { lhs = BG_PrpCommercial value = 0 }
+			set_key = { lhs = CL_PrpAgriculture value = 0 }
+			set_key = { lhs = CL_PrpExtraction value = 0 }
+			set_key = { lhs = CL_PrpForestry value = 0 }
+			set_key = { lhs = CL_PrpFishery value = 0 }
+			set_key = { lhs = CL_PrpIndustrial value = 0 }
+			set_key = { lhs = CL_PrpAcademic value = 0 }
+			set_key = { lhs = CL_PrpCommercial value = 0 }
+			set_key = { lhs = BU_PrpAgriculture value = 0 }
+			set_key = { lhs = BU_PrpExtraction value = 0 }
+			set_key = { lhs = BU_PrpForestry value = 0 }
+			set_key = { lhs = BU_PrpFishery value = 0 }
+			set_key = { lhs = BU_PrpIndustrial value = 0 }
+			set_key = { lhs = BU_PrpAcademic value = 0 }
+			set_key = { lhs = BU_PrpCommercial value = 0 }
+			set_key = { lhs = Crpt_NO value = 0 }
+			set_key = { lhs = Crpt_BG value = 0 }
+			set_key = { lhs = Crpt_CL value = 0 }
+			set_key = { lhs = Crpt_State value = 0 }
+			set_key = { lhs = Crpt_Reform value = 0 }
+			set_key = { lhs = Crpt_LA value = 0 }
+			set_key = { lhs = Crpt_Wages value = 0 }
+			set_key = { lhs = Crpt_Other value = 0 }
+		}
+	}
+	set_key = { lhs = Tmp_1 value = 0 }
+	change_key = { lhs = TaxD_Revenue which = Tax_Teuton }
+	change_key = { lhs = TaxD_Revenue which = Tax_Emperor }
+	change_key = { lhs = TaxD_Revenue which = Tax_Knights }
+	change_key = { lhs = TaxD_Revenue which = Post_Fees }
+	change_key = { lhs = TaxD_Total which = Tax_Teuton }
+	change_key = { lhs = TaxD_Total which = Tax_Emperor }
+	change_key = { lhs = TaxD_Total which = Tax_Knights }
+	change_key = { lhs = TaxD_Total which = Post_Fees }
+}
+Nat_CalcRealmExpenses = {
+	set_key = { lhs = Realm_Expenses value = 0 }
+	change_key = { lhs = Realm_Expenses which = Mil_ManpowerExpenses }
+	change_key = { lhs = Realm_Expenses which = TaxD_BUPropertyNeg }
+	change_key = { lhs = Realm_Expenses which = Class_IncomeDole }
+	change_key = { lhs = Realm_Expenses which = Admin_CostUni }
+	change_key = { lhs = Realm_Expenses which = Infra_StateSpend }
+}
+Nat_SumAdminHelper1 = {
+	set_key = { lhs = Tmp_1 which = $inp$ }
+	multiply_key = { lhs = Tmp_1 which = Dev_Total }
+
+	# Prevent overflow
+	[[overflow]
+	if = {
+		limit = {
+			always = $overflow$
+		}
+		multiply_key = { lhs = Tmp_1 value = 0.1 }
+	}
+	]
+
+	PREV = {
+		set_key = { lhs = Tmp_1 which = PREV }
+		change_key = { lhs = $inp$ which = Tmp_1 }
+		set_key = { lhs = Tmp_1 value = 0 }
+	}
+	set_key = { lhs = Tmp_1 value = 0 }
+}
+Nat_SumAdminHelper2 = {
+	divide_key = { lhs = $inp$ which = Dev_Total }
+	if = {
+		limit = {
+			always = $overflow$
+		}
+		multiply_key = { lhs = $inp$ value = 10 }
+	}
+	else = {
+		multiply_key = { lhs = $inp$ value = 100 }
+	}
+}
+
+Nat_Fast = {
+	Nat_SumDev = yes
+	
+	Nat_MainHelper = { type = NO LoyaltyBlock=yes }
+	Nat_MainHelper = { type = BG LoyaltyBlock=yes }
+	Nat_MainHelper = { type = CL LoyaltyBlock=yes }
+	Nat_MainHelper = { type = TR LoyaltyBlock=yes }
+	Nat_MainHelper = { type = BU }
+}
+
+Nat_Main = {
+	Nat_SumDev = yes
+	
+	Nat_MainHelper = { type = NO LoyaltyChange=yes Income=yes Property=yes Wealth=yes LoyaltyBlock=yes }
+	Nat_MainHelper = { type = BG LoyaltyChange=yes Income=yes Property=yes Wealth=yes LoyaltyBlock=yes }
+	Nat_MainHelper = { type = CL LoyaltyChange=yes Income=yes Property=yes Wealth=yes LoyaltyBlock=yes }
+	Nat_MainHelper = { type = TR LoyaltyChange=yes LoyaltyBlock=yes }
+	Nat_MainHelper = { type = BU LoyaltyChange=yes Income=yes Property=yes }
+	
+	multiply_key = { lhs = NO_Wealth value = 0.1 }
+	multiply_key = { lhs = NO_Wealth value = 10 }
+	multiply_key = { lhs = BG_Wealth value = 0.1 }
+	multiply_key = { lhs = BG_Wealth value = 10 }
+	multiply_key = { lhs = CL_Wealth value = 0.1 }
+	multiply_key = { lhs = CL_Wealth value = 10 }
+	multiply_key = { lhs = BU_Wealth value = 0.1 }
+	multiply_key = { lhs = BU_Wealth value = 10 }
+	
+	multiply_key = { lhs = NO_Income value = 0.1 }
+	multiply_key = { lhs = NO_Income value = 10 }
+	multiply_key = { lhs = BG_Income value = 0.1 }
+	multiply_key = { lhs = BG_Income value = 10 }
+	multiply_key = { lhs = CL_Income value = 0.1 }
+	multiply_key = { lhs = CL_Income value = 10 }
+	multiply_key = { lhs = BU_Income value = 0.1 }
+	multiply_key = { lhs = BU_Income value = 10 }
+	
+	if = {
+		limit = {
+			ai = no
+		}
+		Nat_Display = yes
+		country_event = { id = POP_Census.992 }
+	}
+}
+
+Nat_Display = {
+	#Nat_EstateInf = { Estate=NO }
+	#Nat_EstateInf = { Estate=BG }
+	#Nat_EstateInf = { Estate=CL }
+	#Nat_EstateInf = { Estate=TR }
+	#Nat_EstateInf = { Estate=BU }
+#	Nat_LoySet = { Prov=NO Estate=NO_A Inverse=no }
+#	Nat_LoySet = { Prov=NO Estate=NO_G Inverse=no }
+#	Nat_LoySet = { Prov=NO Estate=NO_L Inverse=no }
+	export_to_key = {
+		lhs = Public_Tmp1
+		value = trigger_value:average_home_autonomy
+	}
+
+	# Elites Loyalty Display
+	Nat_LoyDispSet = { Input=Prov_NO Estate=no_placeholder_1 Disp=Loy Inverse=no }
+	Nat_LoyDispSet = { Input=Prov_BG Estate=bg_placeholder_1 Disp=Loy Inverse=no }
+	Nat_LoyDispSet = { Input=Prov_CL Estate=cl_placeholder_1 Disp=Loy Inverse=no }
+	Nat_LoyDispSet = { Input=Prov_TR Estate=tr_placeholder_1 Disp=Loy Inverse=no }
+	Nat_LoyDispSet = { Input=Prov_BU Estate=bu 			   	 Disp=Loy Inverse=yes }
+	Nat_LoyDispSet = { Input=Prov_BU Estate=bu_placeholder_2 Disp=Loy Inverse=no }
+
+	# Elites Power Display
+	Nat_LoyDispSet = { Input=Prov_BU Estate=ph1 Disp=Pow Inverse=no }
+	Nat_LoyDispSet = { Input=Prov_NO Estate=ph3 Disp=Pow Inverse=no }
+	Nat_LoyDispSet = { Input=Prov_BG Estate=ph4 Disp=Pow Inverse=no }
+	Nat_LoyDispSet = { Input=Prov_TR Estate=ph5 Disp=Pow Inverse=no }
+	Nat_LoyDispSet = { Input=Prov_CL Estate=ph6 Disp=Pow Inverse=no }
+
+	# Non Monthly Variable display
+	Nat_LoyDispSet = { Input=Public_ Estate=ph2 Disp=Tmp1 Inverse=no }
+
+	Nat_Disply_Monthly = yes
+
+	set_key = { lhs = Public_Tmp1 value = 0 }
+}
+
+Nat_Disply_Monthly = { # triggered by POP_Census.0023 / pulse system
+	# Variable Display
+	Nat_LoyDispSet = { Input=Stab_ Estate=bu_placeholder_3 Disp=Disp Inverse=no }
+}
+Nat_EstateInf = {
+	set_key = { lhs = Tmp_0 which = Prov_$Estate$Pow }
+	Nat_Flag = { varname = Tmp_0 flagname = $Estate$Inf value = 100 }
+	Nat_Flag = { varname = Tmp_0 flagname = $Estate$Inf value = 50 }
+	Nat_Flag = { varname = Tmp_0 flagname = $Estate$Inf value = 25 }
+	Nat_Flag = { varname = Tmp_0 flagname = $Estate$Inf value = 13 }
+	Nat_Flag = { varname = Tmp_0 flagname = $Estate$Inf value = 6 }
+	Nat_Flag = { varname = Tmp_0 flagname = $Estate$Inf value = 3 }
+	Nat_Flag = { varname = Tmp_0 flagname = $Estate$Inf value = 2 }
+	Nat_Flag = { varname = Tmp_0 flagname = $Estate$Inf value = 1 }
+	set_key = { lhs = Tmp_0 value = 0 }
+}
+
+Nat_Flag = {
+	if = {
+		limit = {
+			check_key = { lhs = $varname$ value = $value$ }
+		}
+		subtract_key = { lhs = $varname$ value = $value$ }
+		
+		if = {
+			limit = {
+				NOT = { 
+                    has_country_flag = $flagname$_$value$ 
+                }
+			}
+			set_country_flag = $flagname$_$value$
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = $flagname$_$value$
+		}
+		clr_country_flag = $flagname$_$value$
+	}
+}
+
+Nat_LoyDispSet = {
+	if = {
+		limit = {
+			always = $Inverse$
+		}
+		set_key = { lhs = Tmp_0 value = 100 }
+		subtract_key = { lhs = Tmp_0 which = $Input$$Disp$ }
+	}
+	else = {
+		set_key = { lhs = Tmp_0 which = $Input$$Disp$ }
+	}
+	add_estate_loyalty = { estate = estate_$Estate$ loyalty = -100 }
+	if = {
+		limit = {
+			is_key_equal = { lhs = Tmp_0 value = 0 }
+		}
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 0 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 64 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 64 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 64 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 32 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 32 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 32 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 16 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 16 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 16 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 8 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 8 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 8 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 4 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 4 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 4 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 2 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 2 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 2 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 1 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 1 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 1 }
+	}
+	set_key = { lhs = Tmp_0 value = 0 }
+}
+
+Nat_LoySet = {
+	if = {
+		limit = {
+			always = $Inverse$
+		}
+		set_key = { lhs = Tmp_0 value = 100 }
+		subtract_key = { lhs = Tmp_0 which = Prov_$Prov$Loy }
+	}
+	else = {
+		set_key = { lhs = Tmp_0 which = Prov_$Prov$Loy }
+	}
+	add_estate_loyalty = { estate = estate_$Estate$ loyalty = -100 }
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 64 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 64 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 64 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 32 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 32 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 32 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 16 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 16 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 16 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 8 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 8 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 8 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 4 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 4 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 4 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 2 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 2 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 2 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 1 }
+		}
+		subtract_key = { lhs = Tmp_0 value = 1 }
+
+		add_estate_loyalty = { estate = estate_$Estate$ loyalty = 1 }
+	}
+	set_key = { lhs = Tmp_0 value = 0 }
+}

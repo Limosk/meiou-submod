@@ -1,0 +1,5565 @@
+namespace = DG_Protestant
+
+# 001     - Starting the heresy
+# 002-099 - 
+# 100-200 - Spreading heresy
+# 201-300 - Inquisition results
+# 301-400 - Unrest events
+# 901     - Protestants become Protestant
+
+#Birth of the Heresy
+province_event = {
+	id = DG_Protestant.001
+	title = "DG_Protestant.001.title"
+	desc = "DG_Protestant.001.desc"
+	picture = all_church_state
+
+	#major = yes
+	fire_only_once = yes
+	
+	trigger = {
+		#has_province_flag = printing_press_p
+		#NOT = { Global_Trade = 1 }
+		owner = { adm_tech = 15 }
+		NOT = { is_religion_enabled = protestant }
+		can_be_religious_craddle = yes
+		owner = {
+			reform_desire = 1.00
+			religion = catholic
+			is_emperor = no
+			capital_scope = {
+				OR = {
+					superregion = france_superregion
+#					superregion = iberia_superregion
+					superregion = germany_superregion
+#					superregion = greater_austrian_circle_superregion
+#					superregion = balkan_superregion
+#					superregion = commonwealth_superregion
+#					superregion = scandinavian_superregion
+				}
+			}
+		}
+		western_christian = yes
+	}
+	
+	mean_time_to_happen = {
+		years = 75 #testing, was years = 100
+		
+		modifier = {
+			factor = 0.50
+			owner = { capital_scope = { is_part_of_hre = yes } }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { reform_desire = 1.10 }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { reform_desire = 1.20 }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { reform_desire = 1.30 }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { reform_desire = 1.40 }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { reform_desire = 1.50 }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { reform_desire = 1.60 }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { reform_desire = 1.70 }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { reform_desire = 1.80 }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { reform_desire = 1.90 }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { reform_desire = 2.00 }
+		}
+		modifier = {
+			factor = 0.90
+			owner = {
+				is_elector = yes
+			}
+		}
+		modifier = {
+			factor = 1.25
+			has_cardinal = yes
+		}
+		modifier = {
+			factor = 1.10
+			is_capital = yes
+		}
+		modifier = {
+			factor = 0.90
+			owner = { is_year = 1515 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { is_year = 1525 }
+		}
+		modifier = {
+			factor = 0.50
+			owner = { is_year = 1530 }
+		}
+		modifier = {
+			owner = { NOT = { capital_distance = { who = PAP distance = 260 } } }
+			factor = 3.00
+		}
+		modifier = {
+			owner = { NOT = { capital_distance = { who = PAP distance = 390 } } }
+			factor = 3.00
+		}
+		modifier = {
+			owner = { NOT = { capital_distance = { who = PAP distance = 130 } } }
+			factor = 3.00
+		}
+		modifier = {
+			factor = 0.90
+			owner = { is_religion_enabled = lollard }
+		}
+		modifier = {
+			factor = 0.90
+			owner = { is_religion_enabled = hussite }
+		}
+		modifier = {
+			factor = 3.00
+			owner = { capital_scope = { superregion = france_superregion } }
+		}
+		modifier = {
+			factor = 5.00
+			owner = { capital_scope = { superregion = italy_superregion } }
+		}
+		modifier = {
+			factor = 4.00
+			owner = { capital_scope = { superregion = iberia_superregion } }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { capital_scope = { superregion = germany_superregion } }
+		}
+		modifier = {
+			factor = 3.00
+			owner = { capital_scope = { superregion = greater_austrian_circle_superregion } }
+		}
+		modifier = {
+			factor = 2.00
+			owner = { capital_scope = { superregion = balkan_superregion } }
+		}
+		modifier = {
+			factor = 3.00
+			owner = { capital_scope = { superregion = commonwealth_superregion } }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { capital_scope = { superregion = scandinavian_superregion } }
+		}
+	}
+	
+	immediate = {
+		enable_religion = protestant
+		log = "DG:[GetYear]:[This.aab.GetValue]:Lutheran:Birth:[This.GetName]:[This.Owner.GetName]"
+		#log = "DG:[GetYear]:[This.aab.GetValue]:Lutheran:Spread:[This.GetName]:[This.Owner.GetName]"
+		hidden_effect = {
+			set_province_flag = pro_craddle
+			save_global_event_target_as = pro_origins
+			if = {
+				limit = { owner = { is_part_of_hre = yes } }
+				owner = { set_country_flag = imperial_protestantism }
+			}
+			else_if = {
+				limit = { owner = { is_part_of_hre = no capital_scope = { superregion = france_superregion } } }
+				owner = { set_country_flag = french_protestantism }
+			}
+			else_if = {
+				limit = { owner = { is_part_of_hre = no capital_scope = { superregion = iberia_superregion } } }
+				owner = { set_country_flag = iberian_protestantism }
+			}
+			else_if = {
+				limit = { owner = { is_part_of_hre = no capital_scope = { superregion = germany_superregion } } }
+				owner = { set_country_flag = german_protestantism }
+			}
+			else_if = {
+				limit = { owner = { is_part_of_hre = no capital_scope = { superregion = greater_austrian_circle_superregion } } }
+				owner = { set_country_flag = german_protestantism }
+			}
+			else_if = {
+				limit = { owner = { is_part_of_hre = no capital_scope = { superregion = balkan_superregion } } }
+				owner = { set_country_flag = balkan_protestantism }
+			}
+			else_if = {
+				limit = { owner = { is_part_of_hre = no capital_scope = { superregion = commonwealth_superregion } } }
+				owner = { set_country_flag = eastern_protestantism }
+			}
+			else_if = {
+				limit = { owner = { is_part_of_hre = no capital_scope = { superregion = scandinavian_superregion } } }
+				owner = { set_country_flag = scandinavian_protestantism }
+			}
+			MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.10 typeIncr = value }
+			MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 5 }
+			#MN_RlgConv = yes
+			every_neighbor_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.05 typeIncr = value }
+				MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 3 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.opta" #Support him
+		trigger = { NOT = { owned_by = PAP } }
+		ai_chance = {
+			factor = 30
+			modifier = {
+				owner = { capital_distance = { who = PAP distance = 260 } }
+				factor = 2
+			}
+			modifier = {
+				owner = { capital_distance = { who = PAP distance = 390 } }
+				factor = 2
+			}
+			modifier = {
+				owner = { NOT = { capital_distance = { who = PAP distance = 130 } } }
+				factor = 0.5
+			}
+			modifier = {
+				owner = { 
+					OR = {
+						is_emperor = yes
+						any_known_country = { is_elector = yes preferred_emperor = ROOT }
+					}
+					NOT = { any_known_country = { is_elector = yes religion = protestant } }
+				}
+				factor = 0.2
+			}
+			modifier = {
+				owner = { is_papal_controller = yes}
+				factor = 0.5
+			}
+			modifier = {
+				owner = { num_of_loans = 1 }
+				factor = 1.4
+			}
+			modifier = {
+				owner = { num_of_loans = 2 }
+				factor = 1.4
+			}
+			modifier = {
+				owner = { any_neighbor_country = { NOT = { religion_group = christian } } }
+				factor = 0.5
+			}
+			modifier = {
+				owner = { any_neighbor_country = { NOT = { religion = catholic religion = protestant religion = reformed } } }
+				factor = 0.5
+			}
+			modifier = {
+				owner = { any_known_country = { OR = { religion = hussite religion = gnostic religion = protestant religion = reformed } } }
+				factor = 1.4
+			}
+			modifier = {
+				owner = { dominant_religion = protestant }
+				factor = 2
+			}
+			modifier = {
+				owner = { government = republic }
+				factor = 0.5
+			}
+			modifier = {
+				factor = 0.1
+				owner = { capital_scope = { superregion = france_superregion } }
+			}
+			modifier = {
+				factor = 0
+				owner = { capital_scope = { superregion = italy_superregion } }
+			}
+			modifier = {
+				factor = 0
+				owner = { capital_scope = { superregion = iberia_superregion } }
+			}
+			modifier = {
+				factor = 2.75
+				owner = { capital_scope = { superregion = germany_superregion } }
+			}
+			modifier = {
+				factor = 0
+				owner = { capital_scope = { superregion = greater_austrian_circle_superregion } }
+			}
+			modifier = {
+				factor = 1.1
+				owner = { capital_scope = { superregion = balkan_superregion } }
+			}
+			modifier = {
+				factor = 3.00
+				owner = { government = theocracy capital_scope = { superregion = commonwealth_superregion } }
+			}
+			modifier = {
+				factor = 0.5
+				owner = { NOT = { government = theocracy  } capital_scope = { superregion = commonwealth_superregion } }
+			}
+			modifier = {
+				factor = 2.75
+				owner = { capital_scope = { superregion = scandinavian_superregion } }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = support_02
+				add_ruler_modifier = { name = "heretic_tolerance" }
+				MN_conv_resist_c = { strength = -10 }
+				reverse_add_opinion = { who = PAP modifier = opinion_pope_religious_tolerance }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optb" #Let him speak
+		trigger = { NOT = { owned_by = PAP } }
+		ai_chance = {
+			factor = 30
+			modifier = {
+				owner = { capital_distance = { who = PAP distance = 260 } }
+				factor = 1.4
+			}
+			modifier = {
+				owner = { capital_distance = { who = PAP distance = 390 } }
+				factor = 1.4
+			}
+			modifier = {
+				owner = { NOT = { capital_distance = { who = PAP distance = 130 } } }
+				factor = 0.7
+			}
+			modifier = {
+				owner = { num_of_cities = 5 }
+				factor = 0.7
+			}
+			modifier = {
+				owner = { num_of_cities = 10 }
+				factor = 0.7
+			}
+			modifier = {
+				owner = { num_of_cities = 20 }
+				factor = 0.7
+			}
+			modifier = {
+				owner = { num_of_cities = 40 }
+				factor = 0.7
+			}
+			modifier = {
+				owner = { num_of_cities = 80 }
+				factor = 0.7
+			}
+			modifier = {
+				owner = { 
+					any_known_country = {
+						junior_union_with = ROOT
+						religion = catholic
+						NOT = { has_country_flag = humanism }
+					}
+				}
+				factor = 0.5
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = accept_02
+				add_ruler_modifier = { name = "tolerant_society" }
+				MN_conv_resist_c = { strength = -5 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optc" #Silence him
+		ai_chance = {
+			factor = 30
+			modifier = {
+				owner = { has_global_flag = reformation_luther_martyred }
+				factor = 1.4
+			}
+			modifier = {
+				owner = { government = republic }
+				factor = 2
+			}
+			modifier = {
+				owner = { capital_distance = { who = PAP distance = 260 } }
+				factor = 0.7
+			}
+			modifier = {
+				owner = { capital_distance = { who = PAP distance = 390 } }
+				factor = 0.7
+			}
+			modifier = {
+				owner = { NOT = { capital_distance = { who = PAP distance = 130 } } }
+				factor = 1.4
+			}
+			modifier = {
+				owner = { 
+					exists = AVI
+					AVI = { papal_trigger = yes }
+				}
+				factor = 0.5
+			}
+			modifier = {
+				owner = { is_papal_controller = yes }
+				factor = 2
+			}
+			modifier = {
+				owner = { any_neighbor_country = { NOT = { religion_group = christian } } }
+				factor = 2
+			}
+			modifier = {
+				owner = { 
+					any_neighbor_country = {
+						NOT = {
+							OR = {
+								religion = catholic
+								religion = reformed
+								religion = protestant
+							}
+						}
+					}
+				}
+				factor = 2
+			}
+			modifier = {
+				owner = { 
+					OR = {
+						is_elector = yes
+						is_emperor = yes
+					}
+				}
+				factor = 2
+			}
+			modifier = {
+				factor = 2.00
+				owner = { capital_scope = { superregion = france_superregion } }
+			}
+			modifier = {
+				factor = 5.00
+				owner = { capital_scope = { superregion = italy_superregion } }
+			}
+			modifier = {
+				factor = 4.00
+				owner = { capital_scope = { superregion = iberia_superregion } }
+			}
+			modifier = {
+				factor = 0.75
+				owner = { capital_scope = { superregion = germany_superregion } }
+			}
+			modifier = {
+				factor = 2.00
+				owner = { capital_scope = { superregion = greater_austrian_circle_superregion } }
+			}
+			modifier = {
+				factor = 2.00
+				owner = { capital_scope = { superregion = balkan_superregion } }
+			}
+			modifier = {
+				factor = 0.50
+				owner = { government = theocracy capital_scope = { superregion = commonwealth_superregion } }
+			}
+			modifier = {
+				factor = 3.00
+				owner = { NOT = { government = theocracy  } capital_scope = { superregion = commonwealth_superregion } }
+			}
+			modifier = {
+				factor = 0.75
+				owner = { capital_scope = { superregion = scandinavian_superregion } }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = silence_02
+				add_ruler_modifier = { name = "religious_intolerance" }
+				MN_conv_resist_c = { strength = 10 }
+			}
+		}
+	}
+	
+	after = {
+		owner = {
+			country_event = { id = DG_Protestant.002 }
+		}
+		hidden_effect = {
+			random_province = {
+				limit = { religion = catholic }
+				province_event = { id = DG_Protestant.003 days = 3650 }
+			}
+		}
+	}
+}
+
+#Choice of Notifications
+country_event = {
+	id = DG_Protestant.002
+	title = "DG_Protestant.002.title"
+	desc = "DG_Protestant.002.desc"
+	picture = all_church_state
+	
+	trigger = {
+		NOT = { has_country_flag = protestant_presence }
+		ai = no
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "DG_Protestant.002.opta"
+		trigger = { ai = no }
+		hidden_effect = {
+			set_country_flag = pro_spread_info
+			set_country_flag = pro_inquis_info
+			set_country_flag = pro_convert_info
+			set_country_flag = pro_unrest_info
+			set_country_flag = pro_end_info
+		}
+	}
+
+	option = {
+		name = "DG_Protestant.002.optb"
+		trigger = { ai = no }
+		hidden_effect = {
+			clr_country_flag = pro_spread_info
+			clr_country_flag = pro_inquis_info
+			clr_country_flag = pro_convert_info
+			clr_country_flag = pro_unrest_info
+			clr_country_flag = pro_end_info
+		}
+	}
+
+	option = {
+		name = "DG_Protestant.002.optc"
+		trigger = { ai = no }
+		country_event = { id = DG_Notification.021 }
+	}
+
+	option = {
+		name = "EVT_AI"
+		trigger = { ai = yes }
+	}
+	
+	after = {
+		if = {
+			limit = { NOT = { has_country_flag = protestant_presence } }
+			hidden_effect = {
+				set_country_flag = protestant_presence
+			}
+		}
+	}
+}
+
+#Site of the Synod regarding the Heresy
+province_event = {
+	id = DG_Protestant.003
+	title = "DG_Protestant.003.title"
+	desc = "DG_Protestant.003.desc"
+	picture = all_church_state
+
+	hidden = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "DG_Protestant.003.opta"
+		save_global_event_target_as = pro_synod_site
+		PAP = {
+			export_to_variable = { which = pro_synode_year value = trigger_value:is_year }
+			country_event = { id = DG_Synod.201 }
+		}
+	}
+}
+
+#Papal Decision during Synod
+country_event = {
+	id = DG_Protestant.004
+	title = "DG_Protestant.004.title"
+	desc = "DG_Protestant.004.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes
+	hidden = yes
+
+	option = {
+		name = "DG_Protestant.004.opta"
+		set_country_flag = PAP_condemn_02
+		every_known_country = {
+			limit = { has_country_flag = protestant_presence }
+			country_event = { id = DG_Protestant.006 }
+		}
+	}
+}
+
+#Condemnation of the Heresy
+country_event = {
+	id = DG_Protestant.005
+	title = "DG_Protestant.005.title"
+	desc = {
+		trigger = {
+			has_country_flag = silence_02
+		}
+		desc = "DG_Protestant.005.des1"
+	}
+	desc = {
+		trigger = {
+			NOT = { has_country_flag = silence_02 }
+		}
+		desc = "DG_Protestant.005.des2"
+	}
+	picture = all_church_state
+
+	is_triggered_only = yes
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	immediate = {
+		hidden_effect = {
+			every_owned_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.01 typeIncr = value }
+			}
+		}
+	}
+
+	option = {
+		name = "DG_Protestant.005.opta" #Support him
+		trigger = {
+			NOT = { tag = PAP }
+			NOT = { has_ruler_modifier = tolerant_society }
+			NOT = { has_ruler_modifier = religious_intolerance }
+		}
+		ai_chance = {
+			factor = 15
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.5
+			}
+			modifier = {
+				is_lesser_in_union = yes
+				any_country = {
+					overlord_of = ROOT
+					religion = catholic
+				}
+				factor = 0
+			}
+			modifier = {
+				any_neighbor_country = {
+					culture_group = ROOT
+					religion = protestant
+				}
+				factor = 1.4
+			}
+			modifier = {
+				OR = {
+					is_emperor = yes
+					any_known_country = { is_elector = yes preferred_emperor = ROOT }
+				}
+				NOT = { any_known_country = { is_elector = yes religion = protestant } }
+				factor = 0.2
+			}
+			modifier = {
+				is_papal_controller = yes
+				factor = 0.5
+			}
+			modifier = {
+				num_of_loans = 1
+				factor = 1.4
+			}
+			modifier = {
+				num_of_loans = 2
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 0.5
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion = catholic religion = protestant religion = reformed } }
+				factor = 0.5
+			}
+			modifier = {
+				any_known_country = { OR = { religion = hussite religion = gnostic religion = protestant religion = reformed } }
+				factor = 1.4
+			}
+			modifier = {
+				dominant_religion = protestant
+				factor = 2
+			}
+			modifier = {
+				government = republic #Prefers Reformed
+				factor = 0.5
+			}
+			modifier = {
+				factor = 0.1
+				owner = { capital_scope = { superregion = france_superregion } }
+			}
+			modifier = {
+				factor = 0
+				owner = { capital_scope = { superregion = italy_superregion } }
+			}
+			modifier = {
+				factor = 0
+				owner = { capital_scope = { superregion = iberia_superregion } }
+			}
+			modifier = {
+				factor = 2.75
+				owner = { capital_scope = { superregion = germany_superregion } }
+			}
+			modifier = {
+				factor = 0
+				owner = { capital_scope = { superregion = greater_austrian_circle_superregion } }
+			}
+			modifier = {
+				factor = 1.1
+				owner = { capital_scope = { superregion = balkan_superregion } }
+			}
+			modifier = {
+				factor = 3.00
+				owner = { government = theocracy capital_scope = { superregion = commonwealth_superregion } }
+			}
+			modifier = {
+				factor = 0.5
+				owner = { NOT = { government = theocracy  } capital_scope = { superregion = commonwealth_superregion } }
+			}
+			modifier = {
+				factor = 2.75
+				owner = { capital_scope = { superregion = scandinavian_superregion } }
+			}
+		}
+		hidden_effect = {
+			change_religion = protestant
+			force_converted = yes
+			set_country_flag = support_02
+			clr_country_flag = accept_02
+			clr_country_flag = silence_02
+			add_ruler_modifier = { name = "heretic_tolerance" }
+			MN_conv_resist_c = { strength = -10 }
+			remove_country_modifier = "tolerant_society"
+			remove_country_modifier = "religious_intolerance"
+			add_opinion = { who = PAP modifier = papacy_bad }
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.005.optb" #Let him speak
+		trigger = {
+			NOT = { tag = PAP }
+			NOT = { has_ruler_modifier = heretic_tolerance }
+			NOT = { has_ruler_modifier = religious_intolerance }
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 1.4
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.7
+			}
+			modifier = {
+				is_lesser_in_union = yes
+				any_country = {
+					overlord_of = ROOT
+					religion = catholic
+				}
+				factor = 0
+			}
+			modifier = {
+				num_of_cities = 5
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 10
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 20
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 40
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 80
+				factor = 0.7
+			}
+			modifier = {
+				any_known_country = {
+					junior_union_with = ROOT
+					religion = catholic
+				}
+				factor = 0.5
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = support_02
+			set_country_flag = accept_02
+			clr_country_flag = silence_02
+			remove_country_modifier = "heretic_tolerance"
+			add_ruler_modifier = { name = "tolerant_society" }
+			MN_conv_resist_c = { strength = -5 }
+			remove_country_modifier = "religious_intolerance"
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.005.optc" #Silence him
+		trigger = {
+			NOT = { has_ruler_modifier = heretic_tolerance }
+			NOT = { has_ruler_modifier = tolerant_society }
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				government = republic
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 0.7
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 0.7
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 1.4
+			}
+			modifier = {
+				exists = AVI
+				AVI = { papal_trigger = yes }
+				factor = 0.5
+			}
+			modifier = {
+				is_papal_controller = yes
+				factor = 2
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 2
+			}
+			modifier = {
+				any_neighbor_country = {
+					NOT = {
+						OR = {
+							religion = catholic
+							religion = reformed
+							religion = protestant
+						}
+					}
+				}
+				factor = 2
+			}
+			modifier = {
+				OR = {
+					is_elector = yes
+					is_emperor = yes
+				}
+				factor = 2
+			}
+			modifier = {
+				factor = 2.00
+				owner = { capital_scope = { superregion = france_superregion } }
+			}
+			modifier = {
+				factor = 5.00
+				owner = { capital_scope = { superregion = italy_superregion } }
+			}
+			modifier = {
+				factor = 4.00
+				owner = { capital_scope = { superregion = iberia_superregion } }
+			}
+			modifier = {
+				factor = 0.75
+				owner = { capital_scope = { superregion = germany_superregion } }
+			}
+			modifier = {
+				factor = 2.00
+				owner = { capital_scope = { superregion = greater_austrian_circle_superregion } }
+			}
+			modifier = {
+				factor = 2.00
+				owner = { capital_scope = { superregion = balkan_superregion } }
+			}
+			modifier = {
+				factor = 0.50
+				owner = { government = theocracy capital_scope = { superregion = commonwealth_superregion } }
+			}
+			modifier = {
+				factor = 3.00
+				owner = { NOT = { government = theocracy  } capital_scope = { superregion = commonwealth_superregion } }
+			}
+			modifier = {
+				factor = 0.75
+				owner = { capital_scope = { superregion = scandinavian_superregion } }
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = support_02
+			clr_country_flag = accept_02
+			set_country_flag = silence_02
+			remove_country_modifier = "heretic_tolerance"
+			remove_country_modifier = "tolerant_society"
+			add_ruler_modifier = { name = "religious_intolerance" }
+			MN_conv_resist_c = { strength = 10 }
+			add_opinion = { who = PAP modifier = papacy_good }
+		}
+	}
+}
+
+#Condemnation and Martyrdom of Luther
+country_event = {
+	id = DG_Protestant.006
+	title = "DG_Protestant.004.title"
+	desc = "DG_Protestant.006.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	option = {
+		name = "DG_Protestant.006.opta" #Support him
+		trigger = { NOT = { tag = PAP } }
+		ai_chance = {
+			factor = 15
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.5
+			}
+			modifier = {
+				is_lesser_in_union = yes
+				any_country = {
+					overlord_of = ROOT
+					religion = catholic
+				}
+				factor = 0
+			}
+			modifier = {
+				any_neighbor_country = {
+					culture_group = ROOT
+					religion = protestant
+				}
+				factor = 1.4
+			}
+			modifier = {
+				OR = {
+					is_emperor = yes
+					any_known_country = { is_elector = yes preferred_emperor = ROOT }
+				}
+				NOT = { any_known_country = { is_elector = yes religion = protestant } }
+				factor = 0.2
+			}
+			modifier = {
+				is_papal_controller = yes
+				factor = 0.5
+			}
+			modifier = {
+				num_of_loans = 1
+				factor = 1.4
+			}
+			modifier = {
+				num_of_loans = 2
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 0.5
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion = catholic religion = protestant religion = reformed } }
+				factor = 0.5
+			}
+			modifier = {
+				any_known_country = { OR = { religion = hussite religion = gnostic religion = protestant religion = reformed } }
+				factor = 1.4
+			}
+			modifier = {
+				dominant_religion = protestant
+				factor = 2
+			}
+			modifier = {
+				government = republic #Prefers Reformed
+				factor = 0.5
+			}
+			modifier = {
+				factor = 0.1
+				capital_scope = { superregion = france_superregion }
+			}
+			modifier = {
+				factor = 0
+				capital_scope = { superregion = italy_superregion }
+			}
+			modifier = {
+				factor = 0
+				capital_scope = { superregion = iberia_superregion }
+			}
+			modifier = {
+				factor = 2.75
+				capital_scope = { superregion = germany_superregion }
+			}
+			modifier = {
+				factor = 0
+				capital_scope = { superregion = greater_austrian_circle_superregion }
+			}
+			modifier = {
+				factor = 1.1
+				capital_scope = { superregion = balkan_superregion }
+			}
+			modifier = {
+				factor = 3.00
+				government = theocracy capital_scope = { superregion = commonwealth_superregion }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { government = theocracy  } capital_scope = { superregion = commonwealth_superregion }
+			}
+			modifier = {
+				factor = 2.75
+				capital_scope = { superregion = scandinavian_superregion }
+			}
+			modifier = {
+				factor = 0.0
+				tag = PAP
+			}
+		}
+		hidden_effect = {
+			country_event = { id = DG_Protestant.007 days = 1825 }
+			change_religion = protestant
+			force_converted = yes
+			set_country_flag = support_02
+			clr_country_flag = accept_02
+			clr_country_flag = silence_02
+			every_owned_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.20 typeIncr = value }
+				MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 3 }
+			}
+			add_opinion = { who = PAP modifier = papacy_bad }
+			MN_conv_resist_c = { strength = -10 }
+		}
+		log = "DG:[GetYear]:[This.GetName]:Lutheran:Spearhead"
+	}
+	
+	option = {
+		name = "DG_Protestant.006.optb" #Let him speak
+		trigger = { NOT = { tag = PAP } }
+		ai_chance = {
+			factor = 25
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 1.4
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.7
+			}
+			modifier = {
+				is_lesser_in_union = yes
+				any_country = {
+					overlord_of = ROOT
+					religion = catholic
+				}
+				factor = 0
+			}
+			modifier = {
+				num_of_cities = 5
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 10
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 20
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 40
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 80
+				factor = 0.7
+			}
+			modifier = {
+				any_known_country = {
+					junior_union_with = ROOT
+					religion = catholic
+				}
+				factor = 0.5
+			}
+		}
+		hidden_effect = {
+			country_event = { id = DG_Protestant.008 days = 1095 }
+			clr_country_flag = support_02
+			set_country_flag = accept_02
+			clr_country_flag = silence_02
+			every_owned_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.05 typeIncr = value }
+				MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 3 }
+			}
+			Stab_Subtract10Percent = yes
+			MN_conv_resist_c = { strength = -5 }
+		}
+		log = "DG - Sthg went wrong"
+	}
+	
+	option = {
+		name = "DG_Protestant.006.optc" #Silence him
+		ai_chance = {
+			factor = 25
+			modifier = {
+				government = republic
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 0.7
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 0.7
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 1.4
+			}
+			modifier = {
+				exists = AVI
+				AVI = { papal_trigger = yes }
+				factor = 0.5
+			}
+			modifier = {
+				is_papal_controller = yes
+				factor = 2
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 2
+			}
+			modifier = {
+				any_neighbor_country = {
+					NOT = {
+						OR = {
+							religion = catholic
+							religion = reformed
+							religion = protestant
+						}
+					}
+				}
+				factor = 2
+			}
+			modifier = {
+				OR = {
+					is_elector = yes
+					is_emperor = yes
+				}
+				factor = 2
+			}
+			modifier = {
+				factor = 2.00
+				capital_scope = { superregion = france_superregion }
+			}
+			modifier = {
+				factor = 5.00
+				capital_scope = { superregion = italy_superregion }
+			}
+			modifier = {
+				factor = 4.00
+				capital_scope = { superregion = iberia_superregion }
+			}
+			modifier = {
+				factor = 0.75
+				capital_scope = { superregion = germany_superregion }
+			}
+			modifier = {
+				factor = 2.00
+				capital_scope = { superregion = greater_austrian_circle_superregion }
+			}
+			modifier = {
+				factor = 2.00
+				capital_scope = { superregion = balkan_superregion }
+			}
+			modifier = {
+				factor = 0.50
+				government = theocracy capital_scope = { superregion = commonwealth_superregion }
+			}
+			modifier = {
+				factor = 3.00
+				NOT = { government = theocracy  } capital_scope = { superregion = commonwealth_superregion }
+			}
+			modifier = {
+				factor = 0.75
+				capital_scope = { superregion = scandinavian_superregion }
+			}
+		}
+		hidden_effect = {
+			country_event = { id = DG_Protestant.008 days = 1095 }
+			clr_country_flag = support_02
+			clr_country_flag = accept_02
+			set_country_flag = silence_02
+			add_opinion = { who = PAP modifier = papacy_good }
+			MN_conv_resist_c = { strength = 10 }
+			every_owned_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.03 typeIncr = value }
+				MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 3 }
+				add_or_extend_province_modifier_hidden_effect = { NAME = MN_imp_U.16 DURATION = 3650 }
+			}
+		}
+		log = "DG - Sthg went wrong"
+	}
+}
+
+#Papal Legate Arrives
+country_event = {
+	id = DG_Protestant.007
+	title = "DG_Protestant.007.title"
+	desc = "DG_Protestant.007.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	immediate = {
+		hidden_effect = {
+			every_owned_province = {
+				BastionAssessment = { heresy = 2 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.007.opta"
+		trigger = { OR = { ai = no has_country_flag = silence_02 } }
+		hidden_effect = {
+			set_country_flag = pro_lean_01
+			every_owned_province = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = Preach prop = 10 }
+					}
+					MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = -10 }
+				}
+				else_if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = Preach prop = 5 }
+					}
+					MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = -5 }
+				}
+				else_if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = Preach prop = 2 }
+					}
+					MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = -2 }
+				}
+			}
+			if = {
+				limit = { dominant_religion = protestant }
+				Stab_Subtract1 = yes
+			}
+			Stab_Subtract1 = yes
+			every_owned_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = -0.05 typeIncr = value }
+				MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = -3 }
+			}
+			add_opinion = { who = PAP modifier = papacy_good }
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.007.optb"
+		trigger = { OR =  { ai = no has_country_flag = accept_02 } }
+		hidden_effect = {
+			set_country_flag = pro_hesi_16
+			every_owned_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.03 typeIncr = value }
+				MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 1 }
+			}
+			Stab_Subtract10Percent = yes
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.007.optc"
+		trigger = { OR =  { ai = no has_country_flag = support_02 } }
+		hidden_effect = {
+			set_country_flag = pro_lean_16
+			every_owned_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.05 typeIncr = value }
+				MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 3 }
+			}
+			if = {
+				limit = { dominant_religion = catholic }
+				Stab_Subtract1 = yes
+			}
+			Stab_Subtract1 = yes
+			add_opinion = { who = PAP modifier = papacy_bad }
+		}
+	}
+}
+
+#Protestant League
+country_event = {
+	id = DG_Protestant.008
+	title = "DG_Protestant.008.title"
+	desc = "DG_Protestant.008.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	immediate = {
+		hidden_effect = {
+			every_owned_province = {
+				BastionAssessment = { heresy = 2 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.008.opta"
+		ai_chance = {
+			factor = 25
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 1.4
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.7
+			}
+			modifier = {
+				is_lesser_in_union = yes
+				any_country = {
+					overlord_of = ROOT
+					religion = catholic
+				}
+				factor = 0
+			}
+			modifier = {
+				num_of_cities = 5
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 10
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 20
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 40
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 80
+				factor = 0.7
+			}
+			modifier = {
+				any_known_country = {
+					junior_union_with = ROOT
+					religion = catholic
+				}
+				factor = 0.5
+			}
+		}
+		hidden_effect = {
+			country_event = { id = DG_Protestant.007 days = 1825 }
+			clr_country_flag = support_02
+			set_country_flag = accept_02
+			clr_country_flag = silence_02
+			add_country_modifier = { name = religious_tolerance duration = 1000 }
+			every_owned_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = -0.05 typeIncr = value }
+				MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = -3 }
+				add_or_extend_province_modifier_hidden_effect = { NAME = MN_max_U.16 DURATION = 3650 }
+			}
+			Stab_Subtract10Percent = yes
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.008.optb"
+		ai_chance = {
+			factor = 15
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.5
+			}
+			modifier = {
+				is_lesser_in_union = yes
+				any_country = {
+					overlord_of = ROOT
+					religion = catholic
+				}
+				factor = 0
+			}
+			modifier = {
+				any_neighbor_country = {
+					culture_group = ROOT
+					religion = protestant
+				}
+				factor = 1.4
+			}
+			modifier = {
+				OR = {
+					is_emperor = yes
+					any_known_country = { is_elector = yes preferred_emperor = ROOT }
+				}
+				NOT = { any_known_country = { is_elector = yes religion = protestant } }
+				factor = 0.2
+			}
+			modifier = {
+				is_papal_controller = yes
+				factor = 0.5
+			}
+			modifier = {
+				num_of_loans = 1
+				factor = 1.4
+			}
+			modifier = {
+				num_of_loans = 2
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 0.5
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion = catholic religion = protestant religion = reformed } }
+				factor = 0.5
+			}
+			modifier = {
+				any_known_country = { OR = { religion = hussite religion = gnostic religion = protestant religion = reformed } }
+				factor = 1.4
+			}
+			modifier = {
+				dominant_religion = protestant
+				factor = 2
+			}
+			modifier = {
+				government = republic #Prefers Reformed
+				factor = 0.5
+			}
+			modifier = {
+				num_of_cities = 5
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 10
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 20
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 40
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 80
+				factor = 0.7
+			}
+			modifier = {
+				factor = 0.1
+				capital_scope = { superregion = france_superregion }
+			}
+			modifier = {
+				factor = 0
+				capital_scope = { superregion = italy_superregion }
+			}
+			modifier = {
+				factor = 0
+				capital_scope = { superregion = iberia_superregion }
+			}
+			modifier = {
+				factor = 2.75
+				capital_scope = { superregion = germany_superregion }
+			}
+			modifier = {
+				factor = 0
+				capital_scope = { superregion = greater_austrian_circle_superregion }
+			}
+			modifier = {
+				factor = 1.1
+				capital_scope = { superregion = balkan_superregion }
+			}
+			modifier = {
+				factor = 3.00
+				government = theocracy capital_scope = { superregion = commonwealth_superregion }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { government = theocracy  } capital_scope = { superregion = commonwealth_superregion }
+			}
+			modifier = {
+				factor = 2.75
+				capital_scope = { superregion = scandinavian_superregion }
+			}
+			modifier = {
+				factor = 0.0
+				tag = PAP
+			}
+		}
+		change_religion = protestant
+		hidden_effect = {
+			country_event = { id = DG_Protestant.007 days = 1825 }
+			force_converted = yes
+			set_country_flag = support_02
+			clr_country_flag = accept_02
+			clr_country_flag = silence_02
+			if = {
+				limit = { piety = 0.60 }
+				add_legitimacy = -4
+				add_prestige = -8
+			}
+			else_if = {
+				limit = { piety = 0.20 }
+				add_legitimacy = -3
+				add_prestige = -6
+			}
+			else_if = {
+				limit = { piety = -0.20 }
+				add_legitimacy = -2
+				add_prestige = -4
+			}
+			else_if = {
+				limit = { piety = -0.60 }
+				add_legitimacy = -1
+				add_prestige = -2
+			}
+			every_owned_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.05 typeIncr = value }
+				MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 3 }
+				add_or_extend_province_modifier_hidden_effect = { NAME = MN_imp_U.16 DURATION = 3650 }
+			}
+			add_opinion = { who = PAP modifier = papacy_bad }
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.008.optc"
+		ai_chance = {
+			factor = 25
+			modifier = {
+				government = republic
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 0.7
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 0.7
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 1.4
+			}
+			modifier = {
+				exists = AVI
+				AVI = { papal_trigger = yes }
+				factor = 0.5
+			}
+			modifier = {
+				is_papal_controller = yes
+				factor = 2
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 2
+			}
+			modifier = {
+				any_neighbor_country = {
+					NOT = {
+						OR = {
+							religion = catholic
+							religion = reformed
+							religion = protestant
+						}
+					}
+				}
+				factor = 2
+			}
+			modifier = {
+				OR = {
+					is_elector = yes
+					is_emperor = yes
+				}
+				factor = 2
+			}
+			modifier = {
+				num_of_cities = 5
+				factor = 1.2
+			}
+			modifier = {
+				num_of_cities = 10
+				factor = 1.2
+			}
+			modifier = {
+				num_of_cities = 20
+				factor = 1.2
+			}
+			modifier = {
+				num_of_cities = 40
+				factor = 1.2
+			}
+			modifier = {
+				num_of_cities = 80
+				factor = 1.2
+			}
+			modifier = {
+				factor = 2.00
+				capital_scope = { superregion = france_superregion }
+			}
+			modifier = {
+				factor = 5.00
+				capital_scope = { superregion = italy_superregion }
+			}
+			modifier = {
+				factor = 4.00
+				capital_scope = { superregion = iberia_superregion }
+			}
+			modifier = {
+				factor = 0.75
+				capital_scope = { superregion = germany_superregion }
+			}
+			modifier = {
+				factor = 2.00
+				capital_scope = { superregion = greater_austrian_circle_superregion }
+			}
+			modifier = {
+				factor = 2.00
+				capital_scope = { superregion = balkan_superregion }
+			}
+			modifier = {
+				factor = 0.50
+				government = theocracy capital_scope = { superregion = commonwealth_superregion }
+			}
+			modifier = {
+				factor = 3.00
+				NOT = { government = theocracy  } capital_scope = { superregion = commonwealth_superregion }
+			}
+			modifier = {
+				factor = 0.75
+				capital_scope = { superregion = scandinavian_superregion }
+			}
+		}
+		change_religion = catholic
+		hidden_effect = {
+			force_converted = yes
+			clr_country_flag = support_02
+			clr_country_flag = accept_02
+			set_country_flag = silence_02
+			add_opinion = { who = PAP modifier = papacy_good }
+			if = {
+				limit = { piety = 0.60 }
+				add_legitimacy = -4
+				add_prestige = -8
+			}
+			else_if = {
+				limit = { piety = 0.20 }
+				add_legitimacy = -3
+				add_prestige = -6
+			}
+			else_if = {
+				limit = { piety = -0.20 }
+				add_legitimacy = -2
+				add_prestige = -4
+			}
+			else_if = {
+				limit = { piety = -0.60 }
+				add_legitimacy = -1
+				add_prestige = -2
+			}
+			every_owned_province = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = -0.05 typeIncr = value }
+				MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = -3 }
+				add_or_extend_province_modifier_hidden_effect = { NAME = MN_imp_U.16 DURATION = 3650 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = DG_Protestant.011
+	title = "DG_Protestant.011.title"
+	desc = {
+		trigger = {
+			has_country_flag = support_02
+		}
+		desc = "DG_Protestant.011.des1"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = accept_02
+		}
+		desc = "DG_Protestant.011.des2"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = silence_02
+		}
+		desc = "DG_Protestant.011.des3"
+	}
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_religion_enabled = protestant
+		NOT = { religion = protestant }
+		OR = {
+			has_country_flag = support_02
+			has_country_flag = accept_02
+			has_country_flag = silence_02
+		}
+		NOT = { has_ruler_modifier = tolerant_society }
+		NOT = { has_ruler_modifier = religious_intolerance }
+		NOT = { has_ruler_modifier = heretic_tolerance }
+	}
+	
+	option = {
+		name = "DG_Protestant.001.opta" #Support him
+		trigger = {
+			NOT = { has_ruler_modifier = tolerant_society }
+			NOT = { has_ruler_modifier = religious_intolerance }
+		}
+		hidden_effect = {
+			set_country_flag = support_02
+			clr_country_flag = accept_02
+			clr_country_flag = silence_02
+			add_ruler_modifier = { name = "heretic_tolerance" }
+			MN_conv_resist_c = { strength = -10 }
+			reverse_add_opinion = { who = PAP modifier = opinion_pope_religious_tolerance }
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optb" #Let him speak
+		trigger = {
+			NOT = { has_ruler_modifier = heretic_tolerance }
+			NOT = { has_ruler_modifier = religious_intolerance }
+		}
+		hidden_effect = {
+			clr_country_flag = support_02
+			set_country_flag = accept_02
+			clr_country_flag = silence_02
+			add_ruler_modifier = { name = "tolerant_society" }
+			MN_conv_resist_c = { strength = -5 }
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optc" #Silence him
+		trigger = {
+			NOT = { has_ruler_modifier = heretic_tolerance }
+			NOT = { has_ruler_modifier = tolerant_society }
+		}
+		hidden_effect = {
+			clr_country_flag = support_02
+			clr_country_flag = accept_02
+			set_country_flag = silence_02
+			add_ruler_modifier = { name = "religious_intolerance" }
+			MN_conv_resist_c = { strength = 10 }
+		}
+	}
+}
+
+country_event = {
+	id = DG_Protestant.021
+	title = "DG_Protestant.021.title"
+	desc = "DG_Protestant.021.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	option = {
+		name = "DG_Protestant.041.opta"
+		trigger = { always = no }
+		change_religion = holyleague
+	}
+	
+	option = {
+		name = "DG_Protestant.021.optb"
+		custom_tooltip = SetProtestantCompromiseAspects_tt
+		hidden_effect = { SetProtestantCompromiseAspects = yes }
+	}
+}
+
+country_event = {
+	id = DG_Protestant.031
+	title = "DG_Protestant.031.title"
+	desc = "DG_Protestant.031.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	option = {
+		name = "DG_Protestant.031.opta"
+	}
+	
+	option = {
+		name = "DG_Protestant.031.optb"
+		change_religion = catholic
+	}
+}
+
+country_event = {
+	id = DG_Protestant.041
+	title = "DG_Protestant.041.title"
+	desc = "DG_Protestant.041.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	option = {
+		name = "DG_Protestant.041.opta"
+		trigger = { always = no }
+		change_religion = holyleague
+	}
+	
+	option = {
+		name = "DG_Protestant.041.optb"
+		custom_tooltip = SetProtestantAspects_tt
+		hidden_effect = { SetProtestantAspects = yes }
+	}
+}
+
+country_event = {
+	id = DG_Protestant.051
+	title = "DG_Protestant.051.title"
+	desc = "DG_Protestant.051.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	option = {
+		name = "DG_Protestant.051.opta"
+		change_religion = catholic
+	}
+}
+	
+#Spread of the Heresy
+country_event = {
+	id = DG_Protestant.100
+	title = "DG_Protestant.100.title"
+	desc = "DG_Protestant.100.desc"
+	picture = all_church_state
+
+	hidden = yes
+	is_triggered_only = yes #triggered by four_year_pulse_4
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	option = {
+		if = {
+			limit = { NOT = { has_country_flag = protestant_presence } }
+			country_event = { id = DG_Protestant.101 }
+			set_country_flag = protestant_presence
+		}
+		else_if = {
+			limit = { had_country_flag = { flag = protestant_presence days = 36500 } }
+			random_list = {
+				5 = { country_event = { id = DG_Protestant.101 } }
+				95 = {}
+			}
+		}
+		else_if = {
+			limit = { had_country_flag = { flag = protestant_presence days = 27375 } }
+			random_list = {
+				10 = { country_event = { id = DG_Protestant.101 } }
+				90 = {}
+			}
+		}
+		else_if = {
+			limit = { had_country_flag = { flag = protestant_presence days = 21900 } }
+			random_list = {
+				25 = { country_event = { id = DG_Protestant.101 } }
+				75 = {}
+			}
+		}
+		else_if = {
+			limit = { had_country_flag = { flag = protestant_presence days = 18250 } }
+			random_list = {
+				50 = { country_event = { id = DG_Protestant.101 } }
+				50 = {}
+			}
+		}
+		else_if = {
+			limit = { had_country_flag = { flag = protestant_presence days = 14600 } }
+			random_list = {
+				75 = { country_event = { id = DG_Protestant.101 } }
+				25 = {}
+			}
+		}
+		else_if = {
+			limit = { had_country_flag = { flag = protestant_presence days = 10950 } }
+			random_list = {
+				90 = { country_event = { id = DG_Protestant.101 } }
+				10 = {}
+			}
+		}
+		else_if = {
+			limit = { had_country_flag = { flag = protestant_presence days = 7300 } }
+			random_list = {
+				95 = { country_event = { id = DG_Protestant.101 } }
+				5 = {}
+			}
+		}
+		else_if = {
+			limit = { had_country_flag = { flag = protestant_presence days = 3650 } }
+			random_list = {
+				99 = { country_event = { id = DG_Protestant.101 } }
+				1 = {}
+			}
+		}
+		else = {
+			country_event = { id = DG_Protestant.101 }
+		}
+	}
+}
+
+country_event = {
+	id = DG_Protestant.101
+	title = "DG_Protestant.101.title"
+	desc = "DG_Protestant.101.desc"
+	picture = all_church_state
+
+	hidden = yes
+	is_triggered_only = yes 
+	
+	trigger = { is_religion_enabled = protestant }
+
+	option = {
+		name = "DG_Protestant.101.opta"
+		random_list = {
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = iberia_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = italy_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = france_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			4 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = france_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			5 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = greater_austrian_circle_superregion_superregion
+						owner = { NOT = { is_emperor = yes } }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = greater_austrian_circle_superregion_superregion
+						owner = { is_emperor = yes }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			10 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = british_isles_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			20 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = germany_superregion
+						owner = { NOT = { is_emperor = yes } }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			5 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = germany_superregion
+						owner = { is_emperor = yes }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			20 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = scandinavian_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			20 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = commonwealth_superregion
+						owner = { government = theocracy }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			5 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = balkan_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						superregion = commonwealth_superregion
+						owner = { NOT = { government = theocracy } }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+		}
+		random_list = {
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = iberia_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = italy_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			5 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = france_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			5 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = greater_austrian_circle_superregion_superregion
+						owner = { NOT = { is_emperor = yes } }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = greater_austrian_circle_superregion_superregion
+						owner = { is_emperor = yes }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			10 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = british_isles_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			20 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = germany_superregion
+						owner = { NOT = { is_emperor = yes } }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			5 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = germany_superregion
+						owner = { is_emperor = yes }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			20 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = germany_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			20 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = scandinavian_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			20 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = commonwealth_superregion
+						owner = { government = theocracy }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			5 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = balkan_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = commonwealth_superregion
+						owner = { NOT = { government = theocracy } }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+		}
+		random_list = {
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = iberia_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = italy_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			5 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = france_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			5 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = greater_austrian_circle_superregion_superregion
+						owner = { NOT = { is_emperor = yes } }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = greater_austrian_circle_superregion_superregion
+						owner = { is_emperor = yes }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			10 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = british_isles_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			30 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = germany_superregion
+						owner = { NOT = { is_emperor = yes } }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = germany_superregion
+						owner = { is_emperor = yes }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			30 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = scandinavian_superregion
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			30 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = commonwealth_superregion
+						owner = { government = theocracy }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			5 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = balkan_superregion
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+			1 = {
+				random_province = {
+					limit = {
+						western_christian = yes
+						OR = {
+							any_neighbor_province = { MN_CheckMinority = { Religion = 2 } }
+							any_neighbor_province = { any_neighbor_province = { MN_CheckMinority = { Religion = 2 } } }
+						}
+						superregion = commonwealth_superregion
+						owner = { NOT = { government = theocracy } }
+						OR = {
+							NOT = { owner = { num_of_cities = 10 } }
+							AND = { owner = { num_of_cities = 10 } NOT = { culture_group = owner } owner = { NOT = { religion = protestant } } }
+							AND = { owner = { num_of_cities = 10 } culture_group = owner owner = { religion = protestant } }
+						}
+					}
+					province_event = { id = DG_Protestant.102 }
+				}
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.102
+	title = "DG_Protestant.101.title"
+	desc = "DG_Protestant.101.desc"
+	picture = all_church_state
+
+	hidden = yes
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	immediate = {
+		#log = "DG:[GetYear]:[This.aab.GetValue]:Lutheran:Spread:[This.GetName]:[This.Owner.GetName]"
+	}
+
+	option = {
+		name = "DG_Protestant.101.opta"
+		hidden_effect = {
+			random_list = {
+				10 = {
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.01 typeIncr = value }
+					MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 1 }
+					if = {
+						limit = {
+							owner = {
+								OR = {
+									NOT = { has_country_flag = protestant_presence }
+									AND = {
+										has_country_flag = protestant_presence
+										has_country_flag = pro_spread_info
+									}
+								}
+							}
+						}
+						province_event = { id = DG_Protestant.103 }
+					}
+				}
+				10 = {
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.03 typeIncr = value }
+					MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 1 }
+					if = {
+						limit = {
+							owner = {
+								OR = {
+									NOT = { has_country_flag = protestant_presence }
+									AND = {
+										has_country_flag = protestant_presence
+										has_country_flag = pro_spread_info
+									}
+								}
+							}
+						}
+						province_event = { id = DG_Protestant.104 }
+					}
+				}
+				10 = {
+					trigger = { check_key = { lhs = DG_conv_resist value = 10 } }
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.05 typeIncr = value }
+					MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 1 }
+					if = {
+						limit = {
+							owner = {
+								OR = {
+									NOT = { has_country_flag = protestant_presence }
+									AND = {
+										has_country_flag = protestant_presence
+										has_country_flag = pro_spread_info
+									}
+								}
+							}
+						}
+						province_event = { id = DG_Protestant.105 }
+					}
+				}
+				10 = {
+					trigger = { check_key = { lhs = DG_conv_resist value = 10 } }
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.01 typeIncr = value }
+					MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 5 }
+					if = {
+						limit = {
+							owner = {
+								OR = {
+									NOT = { has_country_flag = protestant_presence }
+									AND = {
+										has_country_flag = protestant_presence
+										has_country_flag = pro_spread_info
+									}
+								}
+							}
+						}
+						province_event = { id = DG_Protestant.106 }
+					}
+				}
+				10 = {
+					trigger = { check_key = { lhs = DG_conv_resist value = 25 } }
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.03 typeIncr = value }
+					MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 5 }
+					if = {
+						limit = {
+							owner = {
+								OR = {
+									NOT = { has_country_flag = protestant_presence }
+									AND = {
+										has_country_flag = protestant_presence
+										has_country_flag = pro_spread_info
+									}
+								}
+							}
+						}
+						province_event = { id = DG_Protestant.107 }
+					}
+				}
+				10 = {
+					trigger = { check_key = { lhs = DG_conv_resist value = 25 } }
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.05 typeIncr = value }
+					MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = 5 }
+					if = {
+						limit = {
+							owner = {
+								OR = {
+									NOT = { has_country_flag = protestant_presence }
+									AND = {
+										has_country_flag = protestant_presence
+										has_country_flag = pro_spread_info
+									}
+								}
+							}
+						}
+						province_event = { id = DG_Protestant.108 }
+					}
+				}
+				#30 = { }
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.103
+	title = "DG_Protestant.101.title"
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			NOT = { PAP = { has_country_flag = PAP_condemn_02 } }
+		}
+		desc = "DG_Protestant.103.des1"
+	}
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			PAP = { has_country_flag = PAP_condemn_02 }
+		}
+		desc = "DG_Protestant.103.des2"
+	}
+	desc = {
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+		desc = "DG_Protestant.103.des3"
+	}
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Protestant.001.opta" #Support him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = support_02
+				add_opinion = { who = PAP modifier = papacy_bad }
+				MN_conv_resist_c = { strength = -10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optb" #Let him speak
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = accept_02
+				MN_conv_resist_c = { strength = -5 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optc" #Silence him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = silence_02
+				add_opinion = { who = PAP modifier = papacy_good }
+				MN_conv_resist_c = { strength = 10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optd" #I see
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+	}
+	
+	after = {
+		owner = {
+			if = {
+				limit = { NOT = { has_country_flag = protestant_presence } }
+				hidden_effect = {
+					country_event = { id = DG_Protestant.002 }
+				}
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.104
+	title = "DG_Protestant.101.title"
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			NOT = { owner = { has_country_flag = PAP_condemn_02 } }
+		}
+		desc = "DG_Protestant.104.des1"
+	}
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			owner = { has_country_flag = PAP_condemn_02 }
+		}
+		desc = "DG_Protestant.104.des2"
+	}
+	desc = {
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+		desc = "DG_Protestant.104.des3"
+	}
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	trigger = { is_religion_enabled = protestant }
+
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Protestant.001.opta" #Support him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = support_02
+				add_opinion = { who = PAP modifier = papacy_bad }
+				MN_conv_resist_c = { strength = -10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optb" #Let him speak
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = accept_02
+				MN_conv_resist_c = { strength = -5 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optc" #Silence him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = silence_02
+				add_opinion = { who = PAP modifier = papacy_good }
+				MN_conv_resist_c = { strength = 10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optd" #I see
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+	}
+	
+	after = {
+		owner = {
+			if = {
+				limit = { NOT = { has_country_flag = protestant_presence } }
+				hidden_effect = {
+					country_event = { id = DG_Protestant.002 }
+				}
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.105
+	title = "DG_Protestant.101.title"
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			NOT = { owner = { has_country_flag = PAP_condemn_02 } }
+		}
+		desc = "DG_Protestant.105.des1"
+	}
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			owner = { has_country_flag = PAP_condemn_02 }
+		}
+		desc = "DG_Protestant.105.des2"
+	}
+	desc = {
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+		desc = "DG_Protestant.105.des3"
+	}
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	trigger = { is_religion_enabled = protestant }
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Protestant.001.opta" #Support him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = support_02
+				add_opinion = { who = PAP modifier = papacy_bad }
+				MN_conv_resist_c = { strength = -10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optb" #Let him speak
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = accept_02
+				MN_conv_resist_c = { strength = -5 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optc" #Silence him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = silence_02
+				add_opinion = { who = PAP modifier = papacy_good }
+				MN_conv_resist_c = { strength = 10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optd" #I see
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+	}
+	
+	after = {
+		owner = {
+			if = {
+				limit = { NOT = { has_country_flag = protestant_presence } }
+				hidden_effect = {
+					country_event = { id = DG_Protestant.002 }
+				}
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.106
+	title = "DG_Protestant.101.title"
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			NOT = { owner = { has_country_flag = PAP_condemn_02 } }
+		}
+		desc = "DG_Protestant.106.des1"
+	}
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			owner = { has_country_flag = PAP_condemn_02 }
+		}
+		desc = "DG_Protestant.106.des2"
+	}
+	desc = {
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+		desc = "DG_Protestant.106.des3"
+	}
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Protestant.001.opta" #Support him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = support_02
+				add_opinion = { who = PAP modifier = papacy_bad }
+				MN_conv_resist_c = { strength = -10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optb" #Let him speak
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = accept_02
+				MN_conv_resist_c = { strength = -5 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optc" #Silence him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = silence_02
+				add_opinion = { who = PAP modifier = papacy_good }
+				MN_conv_resist_c = { strength = 10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optd" #I see
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+	}
+	
+	after = {
+		owner = {
+			if = {
+				limit = { NOT = { has_country_flag = protestant_presence } }
+				hidden_effect = {
+					country_event = { id = DG_Protestant.002 }
+				}
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.107
+	title = "DG_Protestant.101.title"
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			NOT = { owner = { has_country_flag = PAP_condemn_02 } }
+		}
+		desc = "DG_Protestant.107.des1"
+	}
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			owner = { has_country_flag = PAP_condemn_02 }
+		}
+		desc = "DG_Protestant.107.des2"
+	}
+	desc = {
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+		desc = "DG_Protestant.107.des3"
+	}
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Protestant.001.opta" #Support him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = support_02
+				add_opinion = { who = PAP modifier = papacy_bad }
+				MN_conv_resist_c = { strength = -10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optb" #Let him speak
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = accept_02
+				MN_conv_resist_c = { strength = -5 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optc" #Silence him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = silence_02
+				add_opinion = { who = PAP modifier = papacy_good }
+				MN_conv_resist_c = { strength = 10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optd" #I see
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+	}
+	
+	after = {
+		owner = {
+			if = {
+				limit = { NOT = { has_country_flag = protestant_presence } }
+				hidden_effect = {
+					country_event = { id = DG_Protestant.002 }
+				}
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.108
+	title = "DG_Protestant.101.title"
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			NOT = { owner = { has_country_flag = PAP_condemn_02 } }
+		}
+		desc = "DG_Protestant.108.des1"
+	}
+	desc = {
+		trigger = {
+			NOT = { owner = { has_country_flag = protestant_presence } }
+			owner = { has_country_flag = PAP_condemn_02 }
+		}
+		desc = "DG_Protestant.108.des2"
+	}
+	desc = {
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+		desc = "DG_Protestant.108.des3"
+	}
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Protestant.001.opta" #Support him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = support_02
+				add_opinion = { who = PAP modifier = papacy_bad }
+				MN_conv_resist_c = { strength = -10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optb" #Let him speak
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = accept_02
+				MN_conv_resist_c = { strength = -5 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optc" #Silence him
+		trigger = {
+			NOT = {
+				owner = { has_country_flag = protestant_presence }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				set_country_flag = silence_02
+				add_opinion = { who = PAP modifier = papacy_good }
+				MN_conv_resist_c = { strength = 10 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.001.optd" #I see
+		trigger = {
+			owner = { has_country_flag = protestant_presence }
+		}
+	}
+	
+	after = {
+		owner = {
+			if = {
+				limit = { NOT = { has_country_flag = protestant_presence } }
+				hidden_effect = {
+					country_event = { id = DG_Protestant.002 }
+				}
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.111
+	title = "DG_Protestant.111.title"
+	desc = "DG_Protestant.111.desc"
+	picture = all_church_state
+
+	hidden = yes
+	
+	trigger = {
+		is_religion_enabled = protestant
+		MN_CheckMinority = { Religion = 2 }
+	}
+	
+	mean_time_to_happen = {
+		years = 5
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = Bastion prop = 1 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = Bastion prop = 2 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = Bastion prop = 3 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = Bastion prop = 4 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = Bastion prop = 5 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { has_country_flag = support_02 }
+		}
+		modifier = {
+			factor = 1.25
+			owner = { has_country_flag = silence_02 }
+		}
+		modifier = {
+			factor = 1.50
+			owner = { had_country_flag = { flag = protestant_presence days = 3650 } }
+		}
+		modifier = {
+			factor = 2.00
+			owner = { had_country_flag = { flag = protestant_presence days = 7300 } }
+		}
+		modifier = {
+			factor = 3.00
+			owner = { had_country_flag = { flag = protestant_presence days = 18250 } }
+		}
+		modifier = {
+			factor = 5.00
+			owner = { had_country_flag = { flag = protestant_presence days = 36500 } }
+		}
+	}
+	
+	immediate = {
+		#log = "DG:[GetYear]:[This.aab.GetValue]:Lutheran:Spread:[This.GetName]:[This.Owner.GetName]"
+	}
+
+	option = {
+		name = "DG_Protestant.101.opta"
+		hidden_effect = {
+			random_list = {
+				10 = {
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.01 typeIncr = value }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_spread_info }
+						}
+						province_event = { id = DG_Protestant.112 }
+					}
+				}
+				10 = {
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.03 typeIncr = value }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_spread_info }
+						}
+						province_event = { id = DG_Protestant.113 }
+					}
+				}
+				10 = {
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.05 typeIncr = value }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_spread_info }
+						}
+						province_event = { id = DG_Protestant.114 }
+					}
+				}
+				10 = {
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.10 typeIncr = value }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_spread_info }
+						}
+						province_event = { id = DG_Protestant.115 }
+					}
+				}
+				10 = {
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.15 typeIncr = value }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_spread_info }
+						}
+						province_event = { id = DG_Protestant.116 }
+					}
+				}
+				10 = {
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.20 typeIncr = value }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_spread_info }
+						}
+						province_event = { id = DG_Protestant.117 }
+					}
+				}
+				#30 = { }
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.112
+	title = "DG_Protestant.111.title"
+	desc = "DG_Protestant.112.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	immediate = {
+	}
+
+	option = {
+		name = "DG_Protestant.111.opta"
+	}
+}
+
+province_event = {
+	id = DG_Protestant.113
+	title = "DG_Protestant.111.title"
+	desc = "DG_Protestant.113.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	immediate = {
+	}
+
+	option = {
+		name = "DG_Protestant.111.opta"
+	}
+}
+
+province_event = {
+	id = DG_Protestant.114
+	title = "DG_Protestant.111.title"
+	desc = "DG_Protestant.114.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	immediate = {
+	}
+
+	option = {
+		name = "DG_Protestant.111.opta"
+	}
+}
+
+province_event = {
+	id = DG_Protestant.115
+	title = "DG_Protestant.111.title"
+	desc = "DG_Protestant.115.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	immediate = {
+	}
+
+	option = {
+		name = "DG_Protestant.111.opta"
+	}
+}
+
+province_event = {
+	id = DG_Protestant.116
+	title = "DG_Protestant.111.title"
+	desc = "DG_Protestant.116.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	immediate = {
+	}
+
+	option = {
+		name = "DG_Protestant.111.opta"
+	}
+}
+
+province_event = {
+	id = DG_Protestant.117
+	title = "DG_Protestant.111.title"
+	desc = "DG_Protestant.117.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes #triggered by DG_Protestant.101
+	
+	immediate = {
+	}
+
+	option = {
+		name = "DG_Protestant.111.opta"
+	}
+}
+
+#Spawn a center of reformation
+province_event = {
+	id = DG_Protestant.118
+	title = "DG_Protestant.118.title"
+	desc = "DG_Protestant.118.desc"
+	picture = ANGLICAN_SERMON_eventPicture
+	
+	#major = yes
+	
+	trigger = {
+		#always = no
+		#has_province_flag = pro_craddle
+		is_religion_enabled = protestant
+		has_province_flag = printing_press_p
+		NOT = { is_institution_enabled = Global_Trade }
+		can_have_center_of_reformation_trigger = {
+			CenterReligion = protestant
+		}
+	}
+	mean_time_to_happen = {
+		months = 180
+		modifier = {
+			factor = 0.5
+			has_province_flag = pro_craddle
+		}
+		modifier = {
+			factor = 1.75
+			superregion = france_superregion
+		}
+		modifier = {
+			factor = 2.50
+			superregion = italy_superregion
+		}
+		modifier = {
+			factor = 2.50
+			superregion = iberia_superregion
+		}
+		modifier = {
+			factor = 0.75
+			superregion = germany_superregion
+		}
+		modifier = {
+			factor = 2.70
+			superregion = greater_austrian_circle_superregion
+		}
+		modifier = {
+			factor = 2.00
+			superregion = balkan_superregion
+		}
+		modifier = {
+			factor = 1.80
+			superregion = commonwealth_superregion
+		}
+		modifier = {
+			factor = 0.75
+			superregion = scandinavian_superregion
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.118.opta"
+		trigger = { owner = { religion = protestant } }
+		add_reform_center = protestant
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+	}
+	
+	option = {
+		name = "DG_Protestant.118.optb"
+		trigger = { owner = { NOT = { religion = protestant } } }
+		add_reform_center = protestant
+		add_or_extend_province_modifier_hidden_effect = { NAME = heretic_centre DURATION = 3650 }
+	}
+}
+
+#Removes center of reformation
+province_event = {
+	id = DG_Protestant.119
+	title = "DG_Protestant.119.title"
+	desc = "DG_Protestant.119.desc"
+	picture = ANGLICAN_SERMON_eventPicture
+	
+	#major = yes
+	
+	trigger = {
+		religion = protestant
+		is_reformation_center = yes
+		is_institution_enabled = Global_Trade
+	}
+	mean_time_to_happen = {
+		years = 100
+		modifier = {
+			factor = 0.25
+			Global_Trade = 1
+		}
+		modifier = {
+			factor = 0.5
+			Global_Trade = 50
+		}
+		modifier = {
+			factor = 0.5
+			Global_Trade = 100
+		}
+	}
+	
+	option = {
+		name = "DG_Protestant.119.opta"
+		remove_reform_center = protestant
+	}
+}
+
+#Church of $COUNTRY$
+country_event = { 
+	
+	id = DG_Protestant.120
+	title = DG_Protestant.120.title
+	desc = DG_Protestant.120.desc
+	picture = protestant_state_church
+	
+	trigger = {
+		is_religion_enabled = protestant
+		religion_years = { protestant = 5 }
+		NOT = { religion_years = { protestant = 60 } }
+		NOT = { has_country_flag = reaction_to_reformation }
+		is_colonial_nation = no
+		religion = catholic
+		NOT = { tag = PAP }
+		OR = {
+			#Spreads from one country to another
+			any_neighbor_country = {
+				OR = {
+					religion = lollard
+					religion = hussite
+					religion = protestant
+					religion = reformed
+				}
+			}
+			#If the first country with the reformation is conquered immediately, it will still continue (more slowly)
+			any_owned_province = { has_province_flag = lol_craddle }
+			any_owned_province = { has_province_flag = hus_craddle }
+			any_owned_province = { has_province_flag = pro_craddle }
+			#To allow the Reformation to spread to and from islands (Britain, Ireland, Majorica, Cyprus, etc.)
+			any_active_trade_node = {
+				strongest_trade_power = {
+					OR = {
+						religion = lollard
+						religion = hussite
+						religion = protestant
+						religion = reformed
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		
+		months = 120
+		
+		modifier = {
+			any_owned_province = { has_province_flag = pro_craddle }
+			factor = 0.10
+		}
+		modifier = {
+			any_owned_province = { has_province_flag = hus_craddle }
+			factor = 0.75
+		}
+		modifier = {
+			any_owned_province = { has_province_flag = lol_craddle }
+			factor = 0.90
+		}
+		modifier = {
+			any_known_country = { religion = hussite }
+			factor = 0.7
+		}
+		modifier = {
+			any_known_country = { religion = lollard }
+			factor = 0.7
+		}
+		modifier = {
+			any_known_country = { religion = protestant }
+			factor = 0.7
+		}
+		modifier = {
+			any_known_country = { religion = reformed }
+			factor = 0.7
+		}
+		modifier = {
+			NOT = {
+				any_neighbor_country = {
+					OR = {
+						religion = lollard
+						religion = hussite
+						religion = protestant
+						religion = reformed
+					}
+				}
+			}
+			factor = 3
+		}
+	}
+	
+	immediate = {
+		set_country_flag = reaction_to_reformation
+	}
+	
+	option = {
+		name = "DG_Protestant.120.opta" #Ban reformer propaganda from $COUNTRY$
+		ai_chance = {
+			factor = 25
+			modifier = {
+				has_global_flag = reformation_luther_martyred
+				factor = 1.4
+			}
+			modifier = {
+				government = republic
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 0.7
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 0.7
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 1.4
+			}
+			modifier = {
+				is_excommunicated = yes
+				factor = 0.5
+			}
+			modifier = {
+				exists = AVI
+				AVI = { papal_trigger = yes }
+				factor = 0.5
+			}
+			modifier = {
+				is_papal_controller = yes
+				factor = 2
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 2
+			}
+			#modifier = {
+			#	any_neighbor_country = { MN_CheckMinority = { Religion = orthodox } }
+			#	factor = 1.4
+			#}
+			modifier = {
+				any_neighbor_country = { MN_CheckMinority = { Religion = 2 } }
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { MN_CheckMinority = { Religion = 3 } }
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { MN_CheckMinority = { Religion = 4 } }
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { MN_CheckMinority = { Religion = 5 } }
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { MN_CheckMinority = { Religion = 6 } }
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 230 }
+				factor = 0.7
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 0.7
+			}
+			modifier = {
+				num_of_owned_provinces_with = {
+					has_cardinal = yes
+					value = 3
+				}
+				factor = 1.4
+			}
+			modifier = {
+				num_of_owned_provinces_with = {
+					has_cardinal = yes
+					value = 6
+				}
+				factor = 1.4
+			}
+			modifier = {
+				OR = {
+					is_elector = yes
+					is_emperor = yes
+				}
+				factor = 2
+			}
+		}
+		custom_tooltip = reformed_10
+		hidden_effect = {
+			every_owned_province = {
+				limit = { religion = catholic }
+				random = {
+					chance = 70
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 3 incr = 0.05 typeIncr = value }
+				}
+			}
+			every_owned_province = {
+				limit = { event_target:pro_origins = { culture_group = PREV } religion = catholic }
+				random = {
+					chance = 30
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 3 incr = 0.05 typeIncr = value }
+				}
+			}
+		}
+		if = {
+			limit = {
+				piety = 0.60
+				stability = 3
+			}
+			add_prestige = 12
+		}
+		else_if = {
+			limit = { piety = 0.20 }
+			add_prestige = 9
+		}
+		else_if = {
+			limit = { piety = -0.20 }
+			add_prestige = 6
+		}
+		else_if = {
+			limit = { piety = -0.60 }
+			add_prestige = 3
+		}
+		add_country_modifier = { name = religious_intolerance duration = 6000 }
+	}
+	option = {
+		name = "DG_Protestant.120.optb" #Demand concessions from the church
+		trigger = {
+			ADM = 4
+			government = monarchy
+		}
+		ai_chance = {
+			factor = 20
+			#big countries should choose extreme options to avoid the AI changing its mind
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 0.7
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 0.7
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 1.4
+			}
+			modifier = {
+				num_of_cities = 5
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 10
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 20
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 40
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 80
+				factor = 0.7
+			}
+			modifier = {
+				num_of_loans = 1
+				factor = 1.4
+			}
+			modifier = {
+				num_of_loans = 2
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 2
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { western_christian = yes } }
+				factor = 2
+			}
+			modifier = {
+				any_known_country = { western_christian = yes NOT = { religion = catholic } }
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.5
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 230 }
+				factor = 1.4
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 1.4
+			}
+		}
+		custom_tooltip = protestant_10
+		hidden_effect = {
+			every_owned_province = {
+				limit = { religion = catholic }
+				random = {
+					chance = 70
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.05 typeIncr = value }
+				}
+			}
+			every_owned_province = {
+				limit = { event_target:pro_origins = { culture_group = PREV } religion = catholic }
+				random = {
+					chance = 30
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.05 typeIncr = value }
+				}
+			}
+		}
+	}
+	option = {
+		name = DG_Protestant.120.optc #Allow nobles to choose their own faith
+		trigger = {
+			NOT = { ADM = 4 }
+			NOT = { government = theocracy }
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 1.4
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.7
+			}
+			#big countries should choose extreme options to avoid the AI changing its mind
+			modifier = {
+				num_of_cities = 5
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 10
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 20
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 40
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 80
+				factor = 0.7
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 2
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { western_christian = yes } }
+				factor = 2
+			}
+			modifier = {
+				any_known_country = { western_christian = yes NOT = { religion = catholic } }
+				factor = 1.4
+			}
+			modifier = {
+				factor = 0
+				is_elector = yes
+				government = theocracy
+			}
+			#modifier = {
+			#	any_neighbor_country = { MN_CheckMinority = { Religion = orthodox } }
+			#	factor = 1.4
+			#}
+			modifier = {
+				any_neighbor_country = { MN_CheckMinority = { Religion = 2 } }
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { MN_CheckMinority = { Religion = 3 } }
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { MN_CheckMinority = { Religion = 4 } }
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { MN_CheckMinority = { Religion = 5 } }
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { MN_CheckMinority = { Religion = 6 } }
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { religious_unity = 0.80 }
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { religious_unity = 0.60 }
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { religious_unity = 0.40 }
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { religious_unity = 0.20 }
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion = catholic } }
+				factor = 1.4
+			}
+		}
+		custom_tooltip = reformed_20
+		custom_tooltip = protestant_20
+		hidden_effect = {
+			every_owned_province = {
+				limit = { religion = catholic }
+				random = {
+					chance = 70
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.15 typeIncr = value }
+				}
+			}
+			every_owned_province = {
+				limit = { event_target:pro_origins = { culture_group = PREV } religion = catholic }
+				random = {
+					chance = 30
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.10 typeIncr = value }
+				}
+			}
+			custom_tooltip = cannot_expel
+			add_country_modifier = { name = religious_tolerance duration = 6000 }
+			if = {
+				limit = { piety = 0.20 }
+				Stab_Add2 = yes
+			}
+		}
+	}
+	option = {
+		name = "DG_Protestant.120.optd" #Allow the heresy to be openly taught
+		ai_chance = {
+			factor = 25
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.5
+			}
+			modifier = {
+				is_lesser_in_union = yes
+				any_country = {
+					overlord_of = ROOT
+					religion = catholic
+					OR = {
+						has_country_flag = renaissance
+						has_country_flag = refused_reformation
+					}
+				}
+				factor = 0
+			}
+			#big countries should choose extreme options to avoid the AI changing its mind
+			modifier = {
+				num_of_cities = 5
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 10
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 20
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 40
+				factor = 0.7
+			}
+			modifier = {
+				num_of_cities = 80
+				factor = 0.7
+			}
+			modifier = {
+				any_known_country = {
+					junior_union_with = ROOT
+					religion = catholic
+				}
+				factor = 0.5
+			}
+			modifier = {
+				is_excommunicated = yes
+				factor = 0.5
+			}
+			modifier = {
+				exists = AVI
+				factor = 2
+			}
+			modifier = {
+				factor = 2
+				government = theocracy
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 0.5
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { western_christian = yes } }
+				factor = 0.5
+			}
+			#HRE members who are likely to be elected emperor will not openly convert unless there are Protestant electors
+			modifier = {
+				OR = {
+					is_emperor = yes
+					any_known_country = { is_elector = yes preferred_emperor = ROOT }
+				}
+				NOT = { any_known_country = { is_elector = yes religion = protestant } }
+				factor = 0.7
+			}
+			modifier = {
+				OR = {
+					culture_group = west_slavic
+					primary_culture = polish #M&T not included in west_slavic
+					primary_culture = hungarian
+				}
+				factor = 2
+			}
+		}
+		custom_tooltip = protestant_20
+		hidden_effect = {
+			every_owned_province = {
+				limit = { religion = catholic }
+				random = {
+					chance = 70
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.10 typeIncr = value }
+				}
+			}
+			every_owned_province = {
+				limit = { event_target:pro_origins = { culture_group = PREV } religion = catholic }
+				random = {
+					chance = 30
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.10 typeIncr = value }
+				}
+			}
+			add_country_modifier = { name = religious_tolerance duration = 6000 }
+			Stab_Subtract1 = yes
+			custom_tooltip = cannot_expel
+		}
+	}
+	option = {
+		name = "DG_Protestant.120.opte" #Take control of the church of $COUNTRY$
+		trigger = {
+			ADM = 3
+			NOT = { num_of_cities = 35 }
+			NOT = { government = republic }
+			NOT = { is_force_converted = yes }
+			is_religion_enabled = protestant
+		}
+		ai_chance = {
+			factor = 15
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.5
+			}
+			modifier = {
+				is_lesser_in_union = yes
+				any_country = {
+					overlord_of = ROOT
+					religion = catholic
+				}
+				factor = 0
+			}
+			modifier = {
+				any_neighbor_country = {
+					culture_group = ROOT
+					religion = protestant
+				}
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { any_known_country = { religion = protestant } }
+				factor = 0.5
+			}
+			modifier = {
+				any_known_country = {
+					junior_union_with = ROOT
+					religion = catholic
+				}
+				factor = 0.5
+			}
+			#HRE members who are likely to be elected emperor will not openly convert unless there are Protestant electors
+			modifier = {
+				OR = {
+					is_emperor = yes
+					any_known_country = { is_elector = yes preferred_emperor = ROOT }
+				}
+				NOT = { any_known_country = { is_elector = yes religion = protestant } }
+				factor = 0.2
+			}
+			modifier = {
+				is_excommunicated = yes
+				factor = 2
+			}
+			modifier = {
+				exists = AVI
+				factor = 2
+			}
+			modifier = {
+				is_papal_controller = yes
+				factor = 0.5
+			}
+			modifier = {
+				num_of_loans = 1
+				factor = 1.4
+			}
+			modifier = {
+				num_of_loans = 2
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 0.5
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { western_christian = yes } }
+				factor = 0.5
+			}
+			modifier = {
+				any_known_country = { western_christian = yes NOT = { religion = catholic } }
+				factor = 1.4
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+			}
+			modifier = {
+				factor = 1.4
+				capital_distance = { who = PAP distance = 260 }
+			}
+			modifier = {
+				factor = 1.4
+				capital_distance = { who = PAP distance = 390 }
+			}
+			modifier = {
+				advisor = theologian
+				factor = 1.4
+			}
+			modifier = {
+				ADM = 5
+				factor = 1.4
+			}
+			modifier = {
+				dominant_religion = protestant
+				factor = 2
+			}
+			modifier = {
+				factor = 0.1
+				owner = { capital_scope = { superregion = france_superregion } }
+			}
+			modifier = {
+				factor = 0
+				owner = { capital_scope = { superregion = italy_superregion } }
+			}
+			modifier = {
+				factor = 0
+				owner = { capital_scope = { superregion = iberia_superregion } }
+			}
+			modifier = {
+				factor = 2.75
+				owner = { capital_scope = { superregion = germany_superregion } }
+			}
+			modifier = {
+				factor = 0
+				owner = { capital_scope = { superregion = greater_austrian_circle_superregion } }
+			}
+			modifier = {
+				factor = 1.1
+				owner = { capital_scope = { superregion = balkan_superregion } }
+			}
+			modifier = {
+				factor = 3.00
+				owner = { government = theocracy capital_scope = { superregion = commonwealth_superregion } }
+			}
+			modifier = {
+				factor = 0.5
+				owner = { NOT = { government = theocracy  } capital_scope = { superregion = commonwealth_superregion } }
+			}
+			modifier = {
+				factor = 2.75
+				owner = { capital_scope = { superregion = scandinavian_superregion } }
+			}
+		}
+		custom_tooltip = protestant_20
+		hidden_effect = {
+			every_owned_province = {
+				limit = { religion = catholic }
+				random = {
+					chance = 70
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.10 typeIncr = value }
+				}
+			}
+			every_owned_province = {
+				limit = { event_target:pro_origins = { culture_group = PREV } religion = catholic }
+				random = {
+					chance = 30
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.10 typeIncr = value }
+				}
+			}
+			add_country_modifier = { name = religious_intolerance duration = 6000 }
+			custom_tooltip = cannot_expel
+			capital_scope = {
+				custom_tooltip = protestant_50
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.10 typeIncr = value }
+				add_province_modifier = { name = conversion_tensions duration = 1825 }
+			}
+			set_country_flag = voluntary_conversion
+			if = {
+				limit = { NOT = { is_religion_enabled = protestant } }
+				custom_tooltip = convert_dangerous_religion
+				Stab_Subtract1 = yes
+			}
+			if = {
+				limit = { patriarch_authority = 0.75 }
+				custom_tooltip = convert_church_strong
+				Stab_Subtract2 = yes
+			}
+			else_if = {
+				limit = { patriarch_authority = 0.50 }
+				custom_tooltip = convert_piety_moderate
+				Stab_Subtract1 = yes
+			}
+			else_if = {
+				limit = { patriarch_authority = 0.25 }
+				custom_tooltip = convert_church_weak
+			}
+			else = {
+				custom_tooltip = convert_church_insignificant
+			}
+			if = {
+				limit = { ADM = 5 }
+				if = {
+					limit = {
+						capital_scope = { religion = protestant }
+					}
+					custom_tooltip = convert_ruler_strong
+					Stab_Add3 = yes
+				}
+				else = {
+					custom_tooltip = convert_ruler_moderate
+					Stab_Add2 = yes
+				}
+			}
+			else_if = {
+				limit = { ADM = 3 }
+				if = {
+					limit = {
+						capital_scope = { religion = protestant }
+					}
+					custom_tooltip = convert_ruler_moderate
+					Stab_Add2 = yes
+				}
+				else = {
+					custom_tooltip = convert_ruler_weak
+					Stab_Add1 = yes
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						capital_scope = { religion = protestant }
+					}
+					custom_tooltip = convert_ruler_weak
+					Stab_Add1 = yes
+				}
+				else = {
+					custom_tooltip = convert_ruler_incompetent
+				}
+			}
+		}
+		change_religion = protestant
+		force_converted = yes
+	}
+	option = {
+		name = "DG_Protestant.120.optf" #Invite a reformer to come to $COUNTRY$
+		trigger = {
+			NOT = { ADM = 3 }
+			is_religion_enabled = protestant
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				capital_distance = { who = PAP distance = 260 }
+				factor = 2
+			}
+			modifier = {
+				capital_distance = { who = PAP distance = 390 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { capital_distance = { who = PAP distance = 130 } }
+				factor = 0.5
+			}
+			modifier = {
+				is_lesser_in_union = yes
+				any_country = {
+					overlord_of = ROOT
+					religion = catholic
+					OR = {
+						has_country_flag = renaissance
+						has_country_flag = refused_reformation
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				government = republic #Prefers Reformed
+				factor = 0.5
+			}
+			modifier = {
+				any_neighbor_country = {
+					culture_group = ROOT
+					religion = protestant
+				}
+				factor = 1.4
+			}
+			modifier = {
+				NOT = { any_known_country = { religion = protestant } }
+				factor = 0.5
+			}
+			modifier = {
+				any_known_country = {
+					junior_union_with = ROOT
+					religion = catholic
+				}
+				factor = 0.5
+			}
+			#HRE members who are likely to be elected emperor will not openly convert unless there are Protestant electors
+			modifier = {
+				OR = {
+					is_emperor = yes
+					any_known_country = { is_elector = yes preferred_emperor = ROOT }
+				}
+				NOT = { any_known_country = { is_elector = yes religion = protestant } }
+				factor = 0.2
+			}
+			modifier = {
+				is_excommunicated = yes
+				factor = 2
+			}
+			modifier = {
+				exists = AVI
+				factor = 2
+			}
+			modifier = {
+				is_papal_controller = yes
+				factor = 0.5
+			}
+			modifier = {
+				num_of_loans = 1
+				factor = 1.4
+			}
+			modifier = {
+				num_of_loans = 2
+				factor = 1.4
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { religion_group = christian } }
+				factor = 0.5
+			}
+			modifier = {
+				any_neighbor_country = { NOT = { western_christian = yes } }
+				factor = 0.5
+			}
+			modifier = {
+				any_known_country = { western_christian = yes NOT = { religion = catholic } }
+				factor = 1.4
+			}
+		}
+		custom_tooltip = protestant_20
+		hidden_effect = {
+			every_owned_province = {
+				limit = { religion = catholic }
+				random = {
+					chance = 70
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.10 typeIncr = value }
+				}
+			}
+			every_owned_province = {
+				limit = { event_target:pro_origins = { culture_group = PREV } religion = catholic }
+				random = {
+					chance = 30
+					MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.20 typeIncr = value }
+				}
+			}
+			capital_scope = {
+				MN_HeresySpread = { typefrom = which from = MN_S0 to = 2 incr = 0.10 typeIncr = value }
+			}
+			custom_tooltip = cannot_expel
+			Stab_Subtract2 = yes
+			define_advisor = { religion = protestant type = theologian discount = yes }
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.201
+	title = "DG_Protestant.201.title"
+	desc = "DG_Protestant.201.desc"
+	picture = all_church_state
+	
+	hidden = yes
+	
+	trigger = {
+		is_religion_enabled = protestant
+		owner = { NOT = { religion = protestant } }
+		MN_CheckProp = { religion = 2 type = Preach prop = 1 }
+	}
+	
+	mean_time_to_happen = {
+		years = 20
+		
+		modifier = {
+			factor = 0.20
+			MN_CheckProp = { religion = 2 type = Inquis prop = 0.1 }
+		}
+	}
+		
+	option = {
+		name = "DG_Protestant.201.opta"
+		custom_tooltip = protestant_inquisition_tt
+		MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = Preach typeStrength = value strength = -1 }
+		if = {
+			limit = {
+				owner = { has_country_flag = pro_inquis_info }
+			}
+			province_event = { id = DG_Protestant.202 }
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.202
+	title = "DG_Protestant.201.title"
+	desc = "DG_Protestant.201.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = "DG_Protestant.201.opta"
+	}
+}
+
+province_event = {
+	id = DG_Protestant.203
+	title = "DG_Protestant.203.title"
+	desc = "DG_Protestant.203.desc"
+	picture = all_church_state
+
+	hidden = yes
+	
+	trigger = {
+		is_religion_enabled = protestant
+		owner = { NOT = { religion = protestant } }
+		MN_CheckProp = { religion = 2 type = ENT prop = 0.1 }
+	}
+	
+	mean_time_to_happen = {
+		years = 50
+		
+		modifier = {
+			factor = 0.20
+			MN_CheckProp = { religion = 2 type = Inquis prop = 0.1 }
+		}
+	}
+		
+	option = {
+		name = "DG_Protestant.201.opta"
+		MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = ENT typeStrength = value strength = 5 }
+		if = {
+			limit = {
+				owner = { has_country_flag = pro_inquis_info }
+			}
+			province_event = { id = DG_Protestant.204 }
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.204
+	title = "DG_Protestant.203.title"
+	desc = "DG_Protestant.203.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes
+		
+	option = {
+		name = "DG_Protestant.201.opta"
+	}
+}
+
+province_event = {
+	id = DG_Protestant.205
+	title = "DG_Protestant.205.title"
+	desc = "DG_Protestant.205.desc"
+	picture = all_church_state
+
+	hidden = yes
+	
+	trigger = {
+		is_religion_enabled = protestant
+		owner = { NOT = { religion = protestant } }
+		MN_CheckProp = { religion = 2 type = INF prop = 2 }
+	}
+	
+	mean_time_to_happen = {
+		years = 25
+		
+		modifier = {
+			factor = 0.20
+			MN_CheckProp = { religion = 2 type = Inquis prop = 0.1 }
+		}
+	}
+		
+	option = {
+		name = "DG_Protestant.205.opta"
+		MN_Attribute_Effect = { reltype = value religion = 2 typeEffect = INF typeStrength = value strength = -2 }
+		if = {
+			limit = {
+				owner = { has_country_flag = pro_inquis_info }
+			}
+			province_event = { id = DG_Protestant.206 }
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.206
+	title = "DG_Protestant.205.title"
+	desc = "DG_Protestant.205.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes
+		
+	option = {
+		name = "DG_Protestant.201.opta"
+	}
+}
+
+#Unrest Events
+province_event = {
+	id = DG_Protestant.301
+	title = "DG_Protestant.301.title"
+	desc = "DG_Protestant.301.desc"
+	picture = all_church_state
+	
+	hidden = yes
+	
+	trigger = {
+		is_religion_enabled = protestant
+		owner = { NOT = { religion = protestant } }
+		MN_CheckProp = { religion = 2 type = TotP prop = 10 }
+	}
+	
+	mean_time_to_happen = {
+		months = 300
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 30 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 40 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 50 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 60 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 70 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 80 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 90 }
+		}
+		modifier = {
+			factor = 2.00
+			owner = { has_country_flag = support_02 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { has_country_flag = silence_02 }
+		}
+	}
+	
+	immediate = {
+		#log = "DG:[GetYear]:[This.aab.GetValue]:Lutheran:Uprising:[This.GetName]:[This.Owner.GetName]"
+	}
+	
+	option = {
+		random_list = {
+			10 = {
+				MinorityTrauma = { religion = 2 strength = 0.10 }
+				if = {
+					limit = {
+						owner = { has_country_flag = pro_unrest_info }
+					}
+					province_event = { id = DG_Protestant.302 }
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 15 }
+					}
+					MinorityTrauma = { religion = 2 strength = 0.20 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.303 }
+					}
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 30 }
+					}
+					MinorityTrauma = { religion = 2 strength = 0.30 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.304 }
+					}
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 40 }
+					}
+					MinorityTrauma = { religion = 2 strength = 0.40 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.305 }
+					}
+				}
+			}
+			20 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 50 }
+					}
+					MinorityTrauma = { religion = 2 strength = 0.50 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.306 }
+					}
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 60 }
+					}
+					MinorityTrauma = { religion = 2 strength = 0.60 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.307 }
+					}
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 70 }
+					}
+					MinorityTrauma = { religion = 2 strength = 0.70 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.308 }
+					}
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 80 }
+					}
+					MinorityTrauma = { religion = 2 strength = 0.80 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.309 }
+					}
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 90 }
+					}
+					MinorityTrauma = { religion = 2 strength = 0.90 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.310 }
+					}
+				}
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.302
+	title = "DG_Protestant.301.title"
+	desc = "DG_Protestant.301.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.301.opta"
+		custom_tooltip = mn_trauma_10_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.303
+	title = "DG_Protestant.301.title"
+	desc = "DG_Protestant.301.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.301.opta"
+		custom_tooltip = mn_trauma_20_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.304
+	title = "DG_Protestant.301.title"
+	desc = "DG_Protestant.301.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.301.opta"
+		custom_tooltip = mn_trauma_30_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.305
+	title = "DG_Protestant.301.title"
+	desc = "DG_Protestant.301.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.301.opta"
+		custom_tooltip = mn_trauma_40_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.306
+	title = "DG_Protestant.301.title"
+	desc = "DG_Protestant.301.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.301.opta"
+		custom_tooltip = mn_trauma_50_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.307
+	title = "DG_Protestant.301.title"
+	desc = "DG_Protestant.301.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.301.opta"
+		custom_tooltip = mn_trauma_60_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.308
+	title = "DG_Protestant.301.title"
+	desc = "DG_Protestant.301.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.301.opta"
+		custom_tooltip = mn_trauma_70_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.309
+	title = "DG_Protestant.301.title"
+	desc = "DG_Protestant.301.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.301.opta"
+		custom_tooltip = mn_trauma_80_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.310
+	title = "DG_Protestant.301.title"
+	desc = "DG_Protestant.301.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.301.opta"
+		custom_tooltip = mn_trauma_90_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.311
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	hidden = yes
+	
+	trigger = {
+		is_religion_enabled = protestant
+		owner = { NOT = { religion = protestant } }
+		MN_CheckProp = { religion = 2 type = TotP prop = 10 }
+	}
+	
+	mean_time_to_happen = {
+		months = 300
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 30 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 40 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 50 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 60 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 70 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 80 }
+		}
+		modifier = {
+			factor = 0.90
+			MN_CheckProp = { religion = 2 type = TotP prop = 90 }
+		}
+		modifier = {
+			factor = 2.00
+			owner = { has_country_flag = support_02 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { has_country_flag = silence_02 }
+		}
+	}
+	
+	immediate = {
+		#log = "DG:[GetYear]:[This.aab.GetValue]:Lutheran:Unrest:[This.GetName]:[This.Owner.GetName]"
+	}
+	
+	option = {
+		random_list = {
+			5 = {
+				add_or_extend_province_modifier_hidden_effect = { NAME = MN_min_U.16 DURATION = 365 }
+				if = {
+					limit = {
+						owner = { has_country_flag = pro_unrest_info }
+					}
+					province_event = { id = DG_Protestant.312 }
+				}
+			}
+			10 = {
+				add_or_extend_province_modifier_hidden_effect = { NAME = MN_min_U.16 DURATION = 1825 }
+				if = {
+					limit = {
+						owner = { has_country_flag = pro_unrest_info }
+					}
+					province_event = { id = DG_Protestant.313 }
+				}
+			}
+			5 = {
+				add_or_extend_province_modifier_hidden_effect = { NAME = MN_min_U.16 DURATION = 3650 }
+				if = {
+					limit = {
+						owner = { has_country_flag = pro_unrest_info }
+					}
+					province_event = { id = DG_Protestant.314 }
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_low_U.16 DURATION = 365 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.315 }
+					}
+				}
+			}
+			15 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_low_U.16 DURATION = 1825 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.316 }
+					}
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_low_U.16 DURATION = 3650 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.317 }
+					}
+				}
+			}
+			15 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 40 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_mid_U.16 DURATION = 365 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.318 }
+					}
+				}
+			}
+			20 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 40 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_mid_U.16 DURATION = 1825 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.319 }
+					}
+				}
+			}
+			15 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 40 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_mid_U.16 DURATION = 3650 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.320 }
+					}
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 60 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_imp_U.16 DURATION = 365 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.321 }
+					}
+				}
+			}
+			15 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 60 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_imp_U.16 DURATION = 1825 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.322 }
+					}
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 60 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_imp_U.16 DURATION = 3650 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.323 }
+					}
+				}
+			}
+			5 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 80 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_max_U.16 DURATION = 365 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.324 }
+					}
+				}
+			}
+			10 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 80 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_max_U.16 DURATION = 1825 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.325 }
+					}
+				}
+			}
+			5 = {
+				if = {
+					limit = {
+						MN_CheckProp = { religion = 2 type = TotP prop = 80 }
+					}
+					add_or_extend_province_modifier_hidden_effect = { NAME = MN_max_U.16 DURATION = 3650 }
+					if = {
+						limit = {
+							owner = { has_country_flag = pro_unrest_info }
+						}
+						province_event = { id = DG_Protestant.326 }
+					}
+				}
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Protestant.312
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_min_1_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.313
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_min_2_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.314
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_min_3_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.315
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_low_1_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.316
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_low_2_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.317
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_lown_3_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.318
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_mid_1_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.319
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_mid_2_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.320
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_mid_3_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.321
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_imp_1_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.322
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_imp_2_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.323
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_imp_3_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.324
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_max_1_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.325
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_max_2_tt
+	}
+}
+
+province_event = {
+	id = DG_Protestant.326
+	title = "DG_Protestant.311.title"
+	desc = "DG_Protestant.311.desc"
+	picture = all_church_state
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Protestant.311.opta"
+		custom_tooltip = mn_unrest_max_3_tt
+	}
+}

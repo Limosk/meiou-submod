@@ -1,0 +1,12 @@
+################################################
+#          Run file for MEIOU & Taxes          #
+################################################
+#                                              #
+#            write your effects here           #
+#                                              #
+#           run apply_scripts_run.py           #
+#                                              #
+#       do 'run meiou.txt' in the console      #
+#                                              #
+################################################
+

@@ -1,0 +1,63 @@
+namespace = Empty_Province
+
+province_event = {
+    id = Empty_Province.001
+    title = no_localisation
+    desc = no_localisation
+    picture = MEIOU_AND_TAXES_eventPicture
+
+    hidden = yes
+
+    is_triggered_only = yes
+    
+    immediate = {
+
+
+    }
+
+    option = {
+		name = no_localisation 
+		clr_province_flag = storage 
+		POP_GetProv = { var=Cleanup_Search return=Prov } 
+		event_target:Prov = {
+			if = {
+				limit = {
+					is_city = no
+				}
+				Cleanup_Wipe = yes 
+				Cleanup_From = { Storage=ROOT type=province } 
+			}
+		} 
+		set_key = { lhs = Cleanup_Search value = 0 } 
+    }
+}
+
+province_event = {
+    id = Empty_Province.002
+    title = no_localisation
+    desc = no_localisation
+    picture = MEIOU_AND_TAXES_eventPicture
+
+    hidden = yes
+
+    is_triggered_only = yes
+    
+    immediate = {
+
+
+    }
+
+    option = {
+		name = no_localisation 
+		
+		2455 = {
+			save_event_target_as = Prov
+		}
+		
+		Cleanup_To = { Storage = event_target:Prov type = province }
+		
+		Cleanup_Wipe = yes
+		
+		Cleanup_From = { Storage = event_target:Prov type = province }
+    }
+}

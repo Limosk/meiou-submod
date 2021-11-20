@@ -1,0 +1,74 @@
+HasBuildingOrBetter = { #b1 #b2 #b3 #b4 #b5 #b6
+	OR = {
+		has_building = $b1$
+		custom_trigger_tooltip = {
+			tooltip = hasbuildingorbetter_tooltip
+			OR = {
+				has_building = $b2$
+				[[b3] has_building = $b3$ ]
+				[[b4] has_building = $b4$ ]
+				[[b5] has_building = $b5$ ]
+				[[b6] has_building = $b6$ ]
+				[[b7] has_building = $b7$ ]
+				[[b8] has_building = $b8$ ]
+				[[b9] has_building = $b9$ ]
+			}
+		}
+	}
+}
+
+isValidProv = {
+    OR = {
+        is_city = yes
+        is_colony = yes
+    }
+	has_province_flag = Data
+}
+isValidProvOR = {
+	AND = {
+		OR = {
+			is_city = yes
+			is_colony = yes
+		}
+		has_province_flag = Data
+	}
+}
+
+isValidEmpty = {
+	has_province_flag = Data
+}
+
+isValidCountry = {
+    num_of_cities = 1
+
+    NOT = {
+        tag = AAA
+    }
+}
+isValidCountryOR = {
+	AND = {
+		num_of_cities = 1
+
+		NOT = {
+			tag = AAA
+		}
+	}
+}
+
+isLargeCity = {
+	AND = {
+		is_city = yes
+
+		OR = {
+			AND = {
+				is_capital = yes
+
+				check_key = { lhs = Dev_Urban value = 2 }
+			}
+
+			check_key = { lhs = TN_ProvSply51 value = 8 }
+
+			check_key = { lhs = Dev_Urban value = 4 }
+		}
+	}
+}

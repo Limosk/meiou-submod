@@ -1,0 +1,249 @@
+Loot_Main = {
+    set_key = { lhs = Loot_1 value = 0 }
+    set_key = { lhs = Loot_2 value = 0 }
+    set_key = { lhs = Loot_4 value = 0 }
+    set_key = { lhs = Loot_5 value = 0 }
+    set_key = { lhs = Loot_6 value = 0 }
+    set_key = { lhs = Loot_9 value = 0 }
+    set_key = { lhs = Loot_10 value = 0 }
+    set_key = { lhs = Loot_21 value = 0 }
+    set_key = { lhs = Loot_22 value = 0 }
+    set_key = { lhs = Loot_23 value = 0 }
+    set_key = { lhs = Loot_24 value = 0 }
+    set_key = { lhs = Loot_25 value = 0 }
+    set_key = { lhs = Loot_41 value = 0 }
+
+    set_key = { lhs = Loot_Rate which = $from$ }
+    set_key = { lhs = Loot_Effic which = $from$ }
+    change_key = { lhs = Loot_Rate value = 0.05 }
+	
+	set_key = { lhs = Tmp_0 value = 0 }
+	export_to_key = { lhs = Tmp_0 value = modifier:available_province_loot }
+    change_key = { lhs = Tmp_0 value = 1 }
+	multiply_key = { lhs = Loot_Rate which = Tmp_0 }
+	set_key = { lhs = Tmp_0 value = 0 }
+	if = {
+		limit = { check_key = { lhs = Loot_Rate value = 1 } }
+		set_key = { lhs = Loot_Rate value = 1 }
+	}
+	else_if = {
+		limit = { NOT = { check_key = { lhs = Loot_Rate value = 0 } } }
+		set_key = { lhs = Loot_Rate value = 0 }
+	}	
+	
+	set_key = { lhs = Tmp_0 value = 0 }
+	export_to_key = { lhs = Tmp_0 value = modifier:loot_amount }
+	change_key = { lhs = Loot_Effic which = Tmp_0 }
+	set_key = { lhs = Tmp_0 value = 0 }
+	if = {
+		limit = { check_key = { lhs = Loot_Effic value = 1 } }
+		set_key = { lhs = Loot_Effic value = 1 }
+	}
+	else_if = {
+		limit = { NOT = { check_key = { lhs = Loot_Effic value = 0 } } }
+		set_key = { lhs = Loot_Effic value = 0 }
+	}
+	
+
+    POP_GetDevastation = {
+        return = Loot_Dev
+    }
+    subtract_key = { lhs = Loot_Dev value = 100 }
+    divide_key = { lhs = Loot_Dev value = -1 }
+
+    multiply_key = { lhs = Loot_Rate which = Loot_Dev }
+
+    POP_SetDevastation = {
+        type = which
+        inp = Loot_Rate
+    }
+
+	multiply_key = { lhs = Loot_Rate value = 0.01 }
+
+    set_key = { lhs = Loot_Dev which = Loot_Rate }
+    divide_key = { lhs = Loot_Dev value = 1.5 }
+
+    Public_LootUrban = {
+        type11 = which type12 = which type2 = which
+        rateWealth = Loot_Rate effic = Loot_Effic rateDeath = Loot_Dev
+        return = Tmp_1
+    }
+
+    set_key = { lhs = Tmp_2 value = 1 }
+    subtract_key = { lhs = Tmp_2 which = Loot_Rate }
+
+    multiply_key = { lhs = Infra_Amenities which = Tmp_2 }
+    multiply_key = { lhs = Infra_Capitol which = Tmp_2 }
+    multiply_key = { lhs = Infra_Courthouse which = Tmp_2 }
+    multiply_key = { lhs = Infra_Garrison which = Tmp_2 }
+	
+	multiply_key = { lhs = Building_Commercial which = Tmp_2 }
+    multiply_key = { lhs = Building_Industrial which = Tmp_2 }
+    multiply_key = { lhs = Building_Academic which = Tmp_2 }
+
+	multiply_key = { lhs = Infra_Amenities value = 0.001 }
+	multiply_key = { lhs = Infra_Capitol value = 0.001 }
+	multiply_key = { lhs = Infra_Courthouse value = 0.001 }
+	multiply_key = { lhs = Infra_Garrison value = 0.001 }
+
+    multiply_key = { lhs = Infra_Amenities value = 1000 }
+    multiply_key = { lhs = Infra_Capitol value = 1000 }
+    multiply_key = { lhs = Infra_Courthouse value = 1000 }
+    multiply_key = { lhs = Infra_Garrison value = 1000 }
+
+    $from$ = {
+        set_key = { lhs = Tmp_1 which = PREV }
+    }
+
+    divide_key = { lhs = Loot_Rate value = 2 }
+    divide_key = { lhs = Loot_Dev value = 1.5 }
+
+    Public_LootRural = {
+        type11 = which type12 = which type2 = which
+        rateWealth = Loot_Rate effic = Loot_Effic rateDeath = Loot_Dev
+        return = Tmp_1
+    }
+
+    set_key = { lhs = Tmp_2 value = 1 }
+    subtract_key = { lhs = Tmp_2 which = Loot_Rate }
+
+    multiply_key = { lhs = Infra_Pathing which = Tmp_2 }
+    multiply_key = { lhs = Infra_Harbourage which = Tmp_2 }
+    multiply_key = { lhs = Infra_Irrigation which = Tmp_2 }
+	
+	multiply_key = { lhs = Building_Agriculture which = Tmp_2 }
+    multiply_key = { lhs = Building_Forestry which = Tmp_2 }
+    multiply_key = { lhs = Building_Extraction which = Tmp_2 }
+	multiply_key = { lhs = Building_Fishery which = Tmp_2 }
+
+	multiply_key = { lhs = Infra_Pathing value = 0.001 }
+	multiply_key = { lhs = Infra_Harbourage value = 0.001 }
+	multiply_key = { lhs = Infra_Irrigation value = 0.001 }
+
+    multiply_key = { lhs = Infra_Pathing value = 1000 }
+    multiply_key = { lhs = Infra_Harbourage value = 1000 }
+    multiply_key = { lhs = Infra_Irrigation value = 1000 }
+
+    $from$ = {
+        change_key = { lhs = Tmp_1 which = PREV }
+        divide_key = { lhs = Tmp_1 value = 8 } # state share
+        
+        POP_GetDucat = {
+            type = which
+            inp = Tmp_1
+        }
+        change_key = { lhs = Loot_StateGain which = Tmp_1 }
+
+        multiply_key = { lhs = Tmp_1 value = 7 } # their share
+        change_key = { lhs = Loot_Pool which = Tmp_1 }
+
+        change_key = { lhs = Loot_1 which = PREV }
+        change_key = { lhs = Loot_2 which = PREV }
+        change_key = { lhs = Loot_4 which = PREV }
+        change_key = { lhs = Loot_5 which = PREV }
+        change_key = { lhs = Loot_6 which = PREV }
+        change_key = { lhs = Loot_9 which = PREV }
+        change_key = { lhs = Loot_10 which = PREV }
+        change_key = { lhs = Loot_21 which = PREV }
+        change_key = { lhs = Loot_22 which = PREV }
+        change_key = { lhs = Loot_23 which = PREV }
+        change_key = { lhs = Loot_24 which = PREV }
+        change_key = { lhs = Loot_25 which = PREV }
+        change_key = { lhs = Loot_41 which = PREV }
+
+        set_key = { lhs = Tmp_1 value = 0 }
+    }
+
+    set_key = { lhs = Loot_Rate value = 0 }
+    set_key = { lhs = Loot_Effic value = 0 }
+    set_key = { lhs = Loot_Dev value = 0 }
+    set_key = { lhs = Tmp_1 value = 0 }
+    set_key = { lhs = Tmp_2 value = 0 }
+
+    set_key = { lhs = Loot_1 value = 0 }
+    set_key = { lhs = Loot_2 value = 0 }
+    set_key = { lhs = Loot_4 value = 0 }
+    set_key = { lhs = Loot_5 value = 0 }
+    set_key = { lhs = Loot_6 value = 0 }
+    set_key = { lhs = Loot_9 value = 0 }
+    set_key = { lhs = Loot_10 value = 0 }
+    set_key = { lhs = Loot_21 value = 0 }
+    set_key = { lhs = Loot_22 value = 0 }
+    set_key = { lhs = Loot_23 value = 0 }
+    set_key = { lhs = Loot_24 value = 0 }
+    set_key = { lhs = Loot_25 value = 0 }
+    set_key = { lhs = Loot_41 value = 0 }
+
+    Infra_SetRankInfra = { type = Pathing }
+    Infra_SetRankInfra = { type = Harbourage }
+    Infra_SetRankInfra = { type = Amenities }
+    Infra_SetRankInfra = { type = Irrigation }
+    Infra_SetRankInfra = { type = Capitol }
+    Infra_SetRankInfra = { type = Courthouse }
+    Infra_SetRankInfra = { type = Garrison }
+
+    Infra_RefreshIndustry = { type = Agriculture }
+    Infra_RefreshIndustry = { type = Forestry }
+    Infra_RefreshIndustry = { type = Fishery }
+    Infra_RefreshIndustry = { type = Extraction }
+    Infra_RefreshIndustry = { type = Commercial }
+    Infra_RefreshIndustry = { type = Industrial }
+    Infra_RefreshIndustry = { type = Academic }
+}
+
+Loot_DistribHelper = {
+	set_key = { lhs = Tmp_2 which = $from$_MP$who$Cur }
+	multiply_key = { lhs = Tmp_2 which = Tmp_0 }
+	divide_key = { lhs = Tmp_2 which = Tmp_1 }
+	change_key = { lhs = $who$_Wealth which = Tmp_2 }
+}
+
+Loot_Distrib = {
+    set_key = { lhs = Tmp_0 which = $mp$ }
+	multiply_key = { lhs = Tmp_0 which = Loot_Pool }
+	divide_key = { lhs = Tmp_0 which = Loot_Tmp0 }
+	
+	[[wealth]
+		set_key = { lhs = Tmp_1 which = Tmp_0 }
+		divide_key = { lhs = Tmp_1 value = 3 }
+		subtract_key = { lhs = Tmp_0 which = Tmp_1 }
+		change_key = { lhs = $wealth$ which = Tmp_0 }
+	]
+	
+	set_key = { lhs = Tmp_1 value = 0 }
+	
+	[[who0] change_key = { lhs = Tmp_1 which = $from$_MP$who0$Cur } ]
+	[[who1] change_key = { lhs = Tmp_1 which = $from$_MP$who1$Cur } ]
+	[[who2] change_key = { lhs = Tmp_1 which = $from$_MP$who2$Cur } ]
+	[[who3] change_key = { lhs = Tmp_1 which = $from$_MP$who3$Cur } ]
+	[[who4] change_key = { lhs = Tmp_1 which = $from$_MP$who4$Cur } ]
+	[[who5] change_key = { lhs = Tmp_1 which = $from$_MP$who5$Cur } ]
+	
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_1 value = 0.001 }
+		}
+		[[who0] Loot_DistribHelper = { from = $from$ who = $who0$ } ]
+		[[who1] Loot_DistribHelper = { from = $from$ who = $who1$ } ]
+		[[who2] Loot_DistribHelper = { from = $from$ who = $who2$ } ]
+		[[who3] Loot_DistribHelper = { from = $from$ who = $who3$ } ]
+		[[who4] Loot_DistribHelper = { from = $from$ who = $who4$ } ]
+		[[who5] Loot_DistribHelper = { from = $from$ who = $who5$ } ]
+	}
+	else = {
+		[[wealth]
+			change_key = { lhs = $wealth$ which = Tmp_0 }
+			
+			set_key = { lhs = Tmp_0 value = 0 }
+		]
+		
+		owner = {
+			set_key = { lhs = Tmp_0 which = PREV }
+			
+			POP_GetDucat = {
+				type = which
+				inp = Tmp_0
+			}
+		}
+	}
+}

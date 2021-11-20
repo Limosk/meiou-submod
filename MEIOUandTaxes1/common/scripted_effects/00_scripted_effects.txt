@@ -1,0 +1,9 @@
+change_government_to_republic = {
+	if = {
+		limit = {
+			NOT = { government = republic }
+		}
+		change_government = republic
+		lose_reforms = 2
+	}
+}

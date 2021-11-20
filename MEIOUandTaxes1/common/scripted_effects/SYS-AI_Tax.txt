@@ -1,0 +1,3345 @@
+AI_TaxSet = {
+    if = {
+        limit = {
+			always = yes
+		}
+		clr_country_flag = AI_TaxAdmFull
+		clr_country_flag = AI_TaxDipFull
+		clr_country_flag = AI_TaxMilFull
+		AI_MaintBaseCalc = yes
+		
+		POP_GetAdminEffic = { return = Tax_AdminEffic }
+		
+		every_owned_province = {
+			limit = {
+				isValidProv = yes
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							is_state = yes
+							is_state_core = owner
+						}
+						is_owned_by_trade_company = yes
+						AND = {
+							OR = {
+								owner = { NOT = { has_country_flag = POP_Init } }
+								has_global_flag = POP_Sim
+							}
+							is_core = owner
+						}
+						has_global_flag = POP_Sim
+					}
+					
+					[[flag]
+						OR = {
+							NOT = {
+								always = $flag$
+							}
+							
+							has_province_flag = Tax_CostFlag
+						}
+					]
+				}
+				set_province_flag = AI_Tax
+			
+				if = {
+					limit = {
+						OR = {
+							owner = { 
+								OR = {
+									ai = yes
+									has_country_flag = Automatic_Maint 
+								}
+							}
+							has_province_modifier = no_maint
+							has_global_flag = POP_Sim
+						}
+						NOT = { has_global_flag = POP_Sim10 }
+					}
+			
+					AI_Property_Maint = { type = Agriculture }
+					AI_Property_Maint = { type = Extraction }
+					AI_Property_Maint = { type = Forestry }
+					AI_Property_Maint = { type = Fishery }
+					AI_Property_Maint = { type = Industrial }
+					AI_Property_Maint = { type = Academic }
+					AI_Property_Maint = { type = Commercial }
+				}
+				else = {
+					set_key = { lhs = Ai_Prp_MaintAgriculture value = 5 }
+					set_key = { lhs = Ai_Prp_MaintExtraction value = 5 }
+					set_key = { lhs = Ai_Prp_MaintForestry value = 5 }
+					set_key = { lhs = Ai_Prp_MaintFishery value = 5 }
+					set_key = { lhs = Ai_Prp_MaintIndustrial value = 5 }
+					set_key = { lhs = Ai_Prp_MaintAcademic value = 5 }
+					set_key = { lhs = Ai_Prp_MaintCommercial value = 5 }
+				}
+				AI_TaxSetHelper0 = { namePoint = TaxLand isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxProp isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxChattels isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxInherit isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxPoll isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxToll isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxSalt isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxTimber isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxSubst isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxAlcohol isTribal = no }
+				
+				AI_TaxSetHelper0 = { namePoint = TaxNoble isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxCharter isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxTribute isTribal = yes }
+				AI_TaxSetHelper0 = { namePoint = LevyNoble isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = LevyUrban isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = TaxFeudal isTribal = no }
+						
+				AI_TaxSetHelper0 = { namePoint = PropAgriculture isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = PropExtraction isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = PropForestry isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = PropFishery isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = PropIndustrial isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = PropAcademic isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = PropCommercial isTribal = no }
+
+				AI_TaxSetHelper0 = { namePoint = LevyDraft isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = LevyVolunt isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = LevyFeudal isTribal = no }
+				AI_TaxSetHelper0 = { namePoint = LevyHorde isTribal = yes }
+				
+				Tax_ClearFlag = { name=levy_draft }
+				Tax_ClearFlag = { name=levy_volunt }
+				Tax_ClearFlag = { name=levy_feudal }
+				Tax_ClearFlag = { name=levy_noble }
+				Tax_ClearFlag = { name=levy_urban }
+				Tax_ClearFlag = { name=levy_horde }
+				Tax_ClearFlag = { name=tax_land }
+				Tax_ClearFlag = { name=tax_prop }
+				Tax_ClearFlag = { name=tax_poll }
+				Tax_ClearFlag = { name=tax_toll }
+				Tax_ClearFlag = { name=tax_inherit }
+				Tax_ClearFlag = { name=tax_chattels }
+				Tax_ClearFlag = { name=tax_salt }
+				Tax_ClearFlag = { name=tax_timber }
+				Tax_ClearFlag = { name=tax_subst }
+				Tax_ClearFlag = { name=tax_alcohol }
+				Tax_ClearFlag = { name=obli_feudal }
+				Tax_ClearFlag = { name=obli_noble }
+				Tax_ClearFlag = { name=obli_charter }
+				Tax_ClearFlag = { name=obli_tribute }
+			}
+			else = {
+				clr_province_flag = AI_Tax
+			}
+		}
+
+
+		##########
+		# Evaluate how much tax mana the AI spends
+		##########
+		if = {
+			limit = {
+				OR  = {
+					ai = yes
+					[[base]
+					always = $base$
+					]
+				}
+			}
+
+			# Export ruler mana
+			export_to_key = { lhs = Tmp_1 value = ADM }
+			export_to_key = { lhs = Tmp_2 value = DIP }
+			export_to_key = { lhs = Tmp_3 value = MIL }
+			
+			# Add base mana
+			change_key = { lhs = Tmp_1 value = 3 }
+			change_key = { lhs = Tmp_2 value = 3 }
+			change_key = { lhs = Tmp_3 value = 3 }
+			
+			## Add advisor mana
+			if = { 
+				limit = {
+					has_global_flag = POP_Sim # if sim assume lvl 2 advisor
+				}
+				change_key = { lhs = Tmp_1 value = 2 }
+				change_key = { lhs = Tmp_2 value = 2 }
+				change_key = { lhs = Tmp_3 value = 2 }
+			}
+			else = {
+				change_key = { lhs = Tmp_1 which = Advisor_ADM }
+				change_key = { lhs = Tmp_2 which = Advisor_DIP }
+				change_key = { lhs = Tmp_3 which = Advisor_MIL }
+			}
+
+			# Get yearly mana generation
+			multiply_key = { lhs = Tmp_1 value = 12 }
+			multiply_key = { lhs = Tmp_2 value = 12 }
+			multiply_key = { lhs = Tmp_3 value = 12 }
+		
+			### Calculate mana budget ratio of yearly mana based on total Dev
+			# Dev+1 / ((Dev+1)*2+200)
+			set_key = { lhs = Tmp_4 value = 0 }
+
+			export_to_key = { lhs = Public_Tmp4 value = total_development } 
+			change_key = { lhs = Public_Tmp4 value = 1 }
+			change_key = { lhs = Tmp_4 which = Public_Tmp4 }
+			
+			multiply_key = { lhs = Public_Tmp4 value = 2 }
+			change_key = { lhs = Public_Tmp4 value = 200 }		
+			divide_key = { lhs = Tmp_4 which = Public_Tmp4 }
+
+			set_key = { lhs = Tmp_5 which = Tmp_4 } # dip ratio
+			set_key = { lhs = Tmp_6 which = Tmp_4 } # mil ratio
+
+			#set_key = { lhs = Public_Tmp4 which = Tmp_4 }
+			
+			### Calculate multiplier on mana budget ratio on average_autonomy
+			# Avg Autonomy * 0.01 + 1
+			export_to_key = { lhs = Public_Tmp9 value = average_autonomy }
+			if = {
+				limit = {
+					NOT = { check_key = { lhs = Public_Tmp9 value = 0.1 } }
+				}
+				set_key = { lhs = Public_Tmp9 value = 0.1 }
+			}
+			multiply_key = { lhs = Public_Tmp9 value = 0.01 } # Average Autonomy * 0.01
+
+			change_key = { lhs = Public_Tmp9 value = 1 }
+
+			# modify Dev based budget ratio by autonomy
+			multiply_key = { lhs = Tmp_4 which = Public_Tmp9 } 
+			multiply_key = { lhs = Tmp_5 which = Public_Tmp9 } 
+			multiply_key = { lhs = Tmp_6 which = Public_Tmp9 }
+
+			set_key = { lhs = Public_Tmp9 value = 0 }
+			
+
+			####
+			# Modify adm and diplo fraction fraction based on treasury to development ratio
+			# -> decrease mana tax spending when treasury is super high, because no money is needed (mainly a China fix)
+			if = {
+				limit = {
+					monthly_income = 0.001
+					years_of_income = 2.5
+					check_key = { lhs = Tmp_4 value = 0.01 }
+				}
+				export_to_key = { lhs = Public_Tmp6 value = total_development  }
+				export_to_key = { lhs = Public_Tmp7 value = treasury }
+				divide_key = { lhs = Public_Tmp7 which = Public_Tmp6 }
+				if = {
+					limit = {
+						check_key = { lhs = Public_Tmp7 value = 240 }
+					}
+					set_key = { lhs = Public_Tmp7 value = 240 }
+				}
+				if = {
+					limit = {
+						check_key = { lhs = Public_Tmp7 value = 30 }
+					}
+					divide_key = { lhs = Public_Tmp7 value = 24 }
+
+					divide_key = { lhs = Tmp_4 which = Public_Tmp7 }
+					divide_key = { lhs = Tmp_5 which = Public_Tmp7 }
+				}
+				set_key = { lhs = Public_Tmp6 value = 0 }
+				set_key = { lhs = Public_Tmp7 value = 0 }
+			}
+			if = {
+				limit = {
+					treasury = 125000
+					check_key = { lhs = Tmp_4 value = 0.01 }
+				}
+				export_to_key = { lhs = Public_Tmp6 value = treasury }
+				divide_key = { lhs = Public_Tmp6 value = 9999 }
+				multiply_key = { lhs = Public_Tmp6 value = 0.1 }
+
+				divide_key = { lhs = Tmp_4 which = Public_Tmp6 }
+				divide_key = { lhs = Tmp_5 which = Public_Tmp6 }
+
+				set_key = { lhs = Public_Tmp6 value = 0 }
+			}
+
+			# This decreases the ratio when above 7.5% and at peace for non rebellious subjects, non militarist nations
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_4 value = 0.075 }
+					is_at_war = no
+					NOT = {
+						AND = {
+							personality = ai_militarist
+							OR = {
+								is_free_or_tributary_trigger = yes
+								is_subject_of_type = rebellious_decentralized_vassal
+							}
+						}
+					}
+				}
+				export_to_key = { lhs = Public_Tmp4 value = trigger_value:liberty_desire }
+				multiply_key = { lhs = Public_Tmp4 value = 0.01 }
+				set_key = { lhs = Public_Tmp5 value = 1 }
+				subtract_key = { lhs = Public_Tmp5 which = Public_Tmp4 }
+
+				multiply_key = { lhs = Tmp_6 which = Public_Tmp5 }
+
+				set_key = { lhs = Public_Tmp5 value = 0 }
+			}
+	
+			set_key = { lhs = Public_Tmp4 value = 0 }
+			
+			# Lower Cap -> Dont spend nothing!
+			if = {
+				limit = {
+					NOT = { check_key = { lhs = Tmp_4 value = 0.001 } }
+				}
+				set_key = { lhs = Tmp_4 value = 0.001 }
+			}
+
+
+			get_global_define = { define = DEFINE_AI_YEARLY_MANA_SPEND_RATIO_CAP }
+
+			# Upper cap for mana spending fraction: 35%
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_4 which = DEFINE_AI_YEARLY_MANA_SPEND_RATIO_CAP }
+				}
+				set_key = { lhs = Tmp_4 which = DEFINE_AI_YEARLY_MANA_SPEND_RATIO_CAP }
+			}
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_5 which = DEFINE_AI_YEARLY_MANA_SPEND_RATIO_CAP }
+				}
+				set_key = { lhs = Tmp_5 which = DEFINE_AI_YEARLY_MANA_SPEND_RATIO_CAP }
+			}
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_6 which = DEFINE_AI_YEARLY_MANA_SPEND_RATIO_CAP }
+				}
+				set_key = { lhs = Tmp_6 which = DEFINE_AI_YEARLY_MANA_SPEND_RATIO_CAP }
+			}
+
+			clear_global_define = { define = DEFINE_AI_YEARLY_MANA_SPEND_RATIO_CAP }
+
+			#####
+			# FRACTION ADJUSTMENTS AFTER CAP
+			#####
+
+			# Nudge fractions
+			[[adm] change_key = { lhs = Tmp_4 which = $adm$ } ]
+			[[dip] change_key = { lhs = Tmp_5 which = $dip$ } ]
+			[[mil] change_key = { lhs = Tmp_6 which = $mil$ } ]
+
+
+			# Adjustments to balance China in sim
+			if = {
+				limit = {
+					has_global_flag = POP_Sim
+					tag = YUA
+				}
+				multiply_key = { lhs = Tmp_4 value = 6.5 }
+				multiply_key = { lhs = Tmp_5 value = 4 }
+			}
+
+			# Increase fraction by 5% for free militarist nations (or colonial/rebellious subjects) as long as they earn enough points
+			if = {
+				limit = {
+					personality = ai_militarist
+					adm_power = 156 # 156 = 13 times 12 -> Theoretical maximum mana earned yearly
+					dip_power = 156
+					mil_power = 156
+					OR = {
+						is_free_or_tributary_trigger = yes
+						is_colonial_nation = yes
+						is_subject_of_type = rebellious_decentralized_vassal
+					}
+				}
+				change_key = { lhs = Tmp_4 value = 0.025 }
+				change_key = { lhs = Tmp_5 value = 0.025 }
+				change_key = { lhs = Tmp_6 value = 0.075 }
+			}
+
+			# Increase fraction by 5% when being at war
+			if = {
+				limit = {
+					is_at_war = yes
+				}
+				change_key = { lhs = Tmp_4 value = 0.025 }
+				change_key = { lhs = Tmp_5 value = 0.025 }
+				change_key = { lhs = Tmp_6 value = 0.075 }
+			}
+
+			# Multiply yearly mana generation with calculated budget fractions
+			multiply_key = { lhs = Tmp_4 which = Modi_TaxAI_RatioSpendingMulti } # adm budget fraction
+			multiply_key = { lhs = Tmp_5 which = Modi_TaxAI_RatioSpendingMulti } # dip budget fraction
+			multiply_key = { lhs = Tmp_6 which = Modi_TaxAI_RatioSpendingMulti } # mil budget fraction
+
+			# Multiply yearly mana generation with calculated budget fractions
+			multiply_key = { lhs = Tmp_1 which = Tmp_4 } # adm budget fraction
+			multiply_key = { lhs = Tmp_2 which = Tmp_5 } # dip budget fraction
+			multiply_key = { lhs = Tmp_3 which = Tmp_6 } # mil budget fraction
+
+			get_global_define = { define = DEFINE_AI_BASE_MANA_TAX_SPENDING }
+			get_global_define = { define = DEFINE_AI_YEARLY_MANA_SPEND_RATIO_CAP }
+			get_global_define = { define = DEFINE_AI_MANA_TAX_SPENDING_UPPER_CAP }
+			get_global_define = { define = DEFINE_AI_MANA_TAX_SPENDING_LOWER_CAP }
+
+			# Base mana spending = 1 mana per category
+			change_key = { lhs = Tmp_1 which = DEFINE_AI_BASE_MANA_TAX_SPENDING }
+			change_key = { lhs = Tmp_2 which = DEFINE_AI_BASE_MANA_TAX_SPENDING }
+			change_key = { lhs = Tmp_3 which = DEFINE_AI_BASE_MANA_TAX_SPENDING }
+
+			## Upper absolute cap for mana spending = 45
+			## Lower absolute cap for mana spending = 2.5
+			if = {
+				limit = { check_key = { lhs = Tmp_1 which = DEFINE_AI_MANA_TAX_SPENDING_UPPER_CAP } }
+
+				set_key = { lhs = Tmp_1 which = DEFINE_AI_MANA_TAX_SPENDING_UPPER_CAP }
+			}
+			else_if = {
+				limit = { NOT = { check_key = { lhs = Tmp_1 which = DEFINE_AI_MANA_TAX_SPENDING_LOWER_CAP } } }
+				set_key = { lhs = Tmp_1 which = DEFINE_AI_MANA_TAX_SPENDING_UPPER_CAP }
+			}
+			if = {
+				limit = { check_key = { lhs = Tmp_2 which = DEFINE_AI_MANA_TAX_SPENDING_UPPER_CAP } }
+
+				set_key = { lhs = Tmp_2 which = DEFINE_AI_MANA_TAX_SPENDING_UPPER_CAP }
+			}
+			else_if = {
+				limit = { NOT = { check_key = { lhs = Tmp_2 which = DEFINE_AI_MANA_TAX_SPENDING_LOWER_CAP } } }
+				set_key = { lhs = Tmp_2 which = DEFINE_AI_MANA_TAX_SPENDING_LOWER_CAP }
+			}
+			if = {
+				limit = { check_key = { lhs = Tmp_3 which = DEFINE_AI_MANA_TAX_SPENDING_UPPER_CAP } }
+
+				set_key = { lhs = Tmp_3 which = DEFINE_AI_MANA_TAX_SPENDING_UPPER_CAP }
+			}
+			else_if = {
+				limit = { NOT = { check_key = { lhs = Tmp_3 which = DEFINE_AI_MANA_TAX_SPENDING_LOWER_CAP } } }
+				set_key = { lhs = Tmp_3 which = DEFINE_AI_MANA_TAX_SPENDING_LOWER_CAP }
+			}
+
+			clear_global_define = { define = DEFINE_AI_BASE_MANA_TAX_SPENDING }
+			clear_global_define = { define = DEFINE_AI_YEARLY_MANA_SPEND_RATIO_CAP }
+			clear_global_define = { define = DEFINE_AI_MANA_TAX_SPENDING_UPPER_CAP }
+			clear_global_define = { define = DEFINE_AI_MANA_TAX_SPENDING_LOWER_CAP }
+
+
+			### WIP - for proper tag-switching ###
+			#set_key = { lhs = Tax_CostAdmInp which = Tmp_1 }
+			#set_key = { lhs = Tax_CostDipInp which = Tmp_2 }
+			#set_key = { lhs = Tax_CostMilInp which = Tmp_3 }
+			###	
+
+			set_key = { lhs = Tmp_4 value = 0 }
+			set_key = { lhs = Tmp_5 value = 0 }
+			set_key = { lhs = Tmp_6 value = 0 }
+			
+		}
+		else = {
+			set_key = { lhs = Tmp_1 value = 0 }
+			set_key = { lhs = Tmp_2 value = 0 }
+			set_key = { lhs = Tmp_3 value = 0 }
+			
+			[[adm] set_key = { lhs = Tmp_1 which = $adm$ } ]
+			[[dip] set_key = { lhs = Tmp_2 which = $dip$ } ]
+			[[mil] set_key = { lhs = Tmp_3 which = $mil$ } ]
+		}
+
+		every_owned_province = {
+			limit = {
+				has_province_flag = AI_Tax
+			}
+			set_key = { lhs = Tmp_4 value = -1 }
+			set_key = { lhs = Tmp_5 value = -1 }
+			set_key = { lhs = Tmp_6 value = -1 }
+			
+			AI_TaxSetHelper2 = { nameTax = tax_land namePoint = TaxLand id = 1 type = 1 }
+			AI_TaxSetHelper2 = { nameTax = tax_prop namePoint = TaxProp id = 2 type = 1 }
+			AI_TaxSetHelper2 = { nameTax = tax_chattels namePoint = TaxChattels id = 3 type = 1 }
+			AI_TaxSetHelper2 = { nameTax = tax_inherit namePoint = TaxInherit id = 4 type = 1 }
+			AI_TaxSetHelper2 = { nameTax = tax_poll namePoint = TaxPoll id = 5 type = 1 }
+			AI_TaxSetHelper2 = { nameTax = tax_toll namePoint = TaxToll id = 6 type = 1 }
+			AI_TaxSetHelper2 = { nameTax = tax_salt namePoint = TaxSalt id = 7 type = 1 }
+			AI_TaxSetHelper2 = { nameTax = tax_subst namePoint = TaxSubst id = 8 type = 1 }
+		}
+
+		while = {
+			limit = {
+				check_key = { lhs = Tmp_1 value = 0.001 }
+			}
+			set_key = { lhs = Tmp_4 value = -1 }
+
+			save_event_target_as = SC_Targ
+
+			every_owned_province = {
+				limit = {
+					has_province_flag = AI_Tax
+					
+					check_key = { lhs = Tmp_4 which = event_target:SC_Targ }
+				}
+				save_event_target_as = SC_Targ
+			}
+
+			event_target:SC_Targ = {
+				if = {
+					limit = {
+						NOT = {
+							is_key_equal = { lhs = Tmp_4 value = -1 }
+						}
+					}
+					AI_TaxSetHelper3 = { nameTax = tax_land namePoint = TaxLand type = 1 id = 1 }
+					AI_TaxSetHelper3 = { nameTax = tax_prop namePoint = TaxProp type = 1 id = 2 }
+					AI_TaxSetHelper3 = { nameTax = tax_chattels namePoint = TaxChattels type = 1 id = 3 }
+					AI_TaxSetHelper3 = { nameTax = tax_inherit namePoint = TaxInherit type = 1 id = 4 }
+					AI_TaxSetHelper3 = { nameTax = tax_poll namePoint = TaxPoll type = 1 id = 5 }
+					AI_TaxSetHelper3 = { nameTax = tax_toll namePoint = TaxToll type = 1 id = 6 }
+					AI_TaxSetHelper3 = { nameTax = tax_salt namePoint = TaxSalt type = 1 id = 7 }
+					AI_TaxSetHelper3 = { nameTax = tax_subst namePoint = TaxSubst type = 1 id = 8 }
+					
+					set_key = { lhs = Tmp_4 value = -1 }
+					set_key = { lhs = Tmp_5 value = -1 }
+					set_key = { lhs = Tmp_6 value = -1 }
+					
+					AI_TaxSetHelper2 = { nameTax = tax_land namePoint = TaxLand id = 1 type = 1 }
+					AI_TaxSetHelper2 = { nameTax = tax_prop namePoint = TaxProp id = 2 type = 1 }
+					AI_TaxSetHelper2 = { nameTax = tax_chattels namePoint = TaxChattels id = 3 type = 1 }
+					AI_TaxSetHelper2 = { nameTax = tax_inherit namePoint = TaxInherit id = 4 type = 1 }
+					AI_TaxSetHelper2 = { nameTax = tax_poll namePoint = TaxPoll id = 5 type = 1 }
+					AI_TaxSetHelper2 = { nameTax = tax_toll namePoint = TaxToll id = 6 type = 1 }
+					AI_TaxSetHelper2 = { nameTax = tax_salt namePoint = TaxSalt id = 7 type = 1 }
+					AI_TaxSetHelper2 = { nameTax = tax_subst namePoint = TaxSubst id = 8 type = 1 }
+				}
+				else = {
+					PREV = {
+						set_country_flag = AI_TaxAdmFull
+						
+						set_key = { lhs = Tmp_1 value = 0 }
+					}
+				}
+			}
+		}
+
+		every_owned_province = {
+			limit = {
+				has_province_flag = AI_Tax
+			}
+			set_key = { lhs = Tmp_4 value = -1 }
+			set_key = { lhs = Tmp_5 value = -1 }
+			set_key = { lhs = Tmp_6 value = -1 }
+			
+			AI_TaxSetHelper2 = { nameTax = obli_noble namePoint = TaxNoble id = 1 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = obli_charter namePoint = TaxCharter id = 2 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = obli_tribute namePoint = TaxTribute id = 3 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = tax_timber namePoint = TaxTimber id = 4 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = tax_alcohol namePoint = TaxAlcohol id = 5 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = obli_feudal namePoint = TaxFeudal id = 6 type = 2 }
+			
+			AI_TaxSetHelper2 = { nameTax = maint_Agriculture namePoint = PropAgriculture id = 7 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = maint_Extraction namePoint = PropExtraction id = 8 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = maint_Forestry namePoint = PropForestry id = 9 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = maint_Fishery namePoint = PropFishery id = 10 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = maint_Industrial namePoint = PropIndustrial id = 11 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = maint_Academic namePoint = PropAcademic id = 12 type = 2 }
+			AI_TaxSetHelper2 = { nameTax = maint_Commercial namePoint = PropCommercial id = 13 type = 2 }
+		}
+
+		while = {
+			limit = {
+				check_key = { lhs = Tmp_2 value = 0.001 }
+			}
+			set_key = { lhs = Tmp_4 value = -1 }
+
+			save_event_target_as = SC_Targ
+
+			every_owned_province = {
+				limit = {
+					has_province_flag = AI_Tax
+					
+					check_key = { lhs = Tmp_4 which = event_target:SC_Targ }
+				}
+				save_event_target_as = SC_Targ
+			}
+
+			event_target:SC_Targ = {
+				if = {
+					limit = {
+						NOT = {
+							is_key_equal = { lhs = Tmp_4 value = -1 }
+						}
+					}
+					AI_TaxSetHelper3 = { nameTax = obli_noble namePoint = TaxNoble type = 2 id = 1 }
+					AI_TaxSetHelper3 = { nameTax = obli_charter namePoint = TaxCharter  type = 2 id = 2 }
+					AI_TaxSetHelper3 = { nameTax = obli_tribute namePoint = TaxTribute type = 2 id = 3 }
+					AI_TaxSetHelper3 = { nameTax = tax_timber namePoint = TaxTimber type = 2 id = 4 }
+					AI_TaxSetHelper3 = { nameTax = tax_alcohol namePoint = TaxAlcohol type = 2 id = 5 }
+					AI_TaxSetHelper3 = { nameTax = obli_feudal namePoint = TaxFeudal type = 2 id = 6 }
+					
+					AI_TaxSetHelper3 = { nameTax = maint_Agriculture namePoint = PropAgriculture type = 2 id = 7 }
+					AI_TaxSetHelper3 = { nameTax = maint_Extraction namePoint = PropExtraction type = 2 id = 8 }
+					AI_TaxSetHelper3 = { nameTax = maint_Forestry namePoint = PropForestry type = 2 id = 9 }
+					AI_TaxSetHelper3 = { nameTax = maint_Fishery namePoint = PropFishery type = 2 id = 10 }
+					AI_TaxSetHelper3 = { nameTax = maint_Industrial namePoint = PropIndustrial type = 2 id = 11 }
+					AI_TaxSetHelper3 = { nameTax = maint_Academic namePoint = PropAcademic type = 2 id = 12 }
+					AI_TaxSetHelper3 = { nameTax = maint_Commercial namePoint = PropCommercial type = 2 id = 13 }
+
+					set_key = { lhs = Tmp_4 value = -1 }
+					set_key = { lhs = Tmp_5 value = -1 }
+					set_key = { lhs = Tmp_6 value = -1 }
+					
+					AI_TaxSetHelper2 = { nameTax = obli_noble namePoint = TaxNoble id = 1 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = obli_charter namePoint = TaxCharter id = 2 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = obli_tribute namePoint = TaxTribute id = 3 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = tax_timber namePoint = TaxTimber id = 4 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = tax_alcohol namePoint = TaxAlcohol id = 5 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = obli_feudal namePoint = TaxFeudal id = 6 type = 2 }
+					
+					AI_TaxSetHelper2 = { nameTax = maint_Agriculture namePoint = PropAgriculture id = 7 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = maint_Extraction namePoint = PropExtraction id = 8 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = maint_Forestry namePoint = PropForestry id = 9 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = maint_Fishery namePoint = PropFishery id = 10 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = maint_Industrial namePoint = PropIndustrial id = 11 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = maint_Academic namePoint = PropAcademic id = 12 type = 2 }
+					AI_TaxSetHelper2 = { nameTax = maint_Commercial namePoint = PropCommercial id = 13 type = 2 }
+				}
+				else = {
+					PREV = {
+						set_country_flag = AI_TaxDipFull
+						
+						set_key = { lhs = Tmp_2 value = 0 }
+					}
+				}
+			}
+		}
+
+		every_owned_province = {
+			limit = {
+				has_province_flag = AI_Tax
+			}
+			set_key = { lhs = Tmp_4 value = -1 }
+			set_key = { lhs = Tmp_5 value = -1 }
+			set_key = { lhs = Tmp_6 value = -1 }
+			
+			AI_TaxSetHelper2 = { nameTax = levy_draft namePoint = LevyDraft id = 1 type = 3 }
+			AI_TaxSetHelper2 = { nameTax = levy_volunt namePoint = LevyVolunt id = 2 type = 3 }
+			AI_TaxSetHelper2 = { nameTax = levy_feudal namePoint = LevyFeudal id = 3 type = 3 }
+			AI_TaxSetHelper2 = { nameTax = levy_horde namePoint = LevyHorde id = 4 type = 3 }
+			AI_TaxSetHelper2 = { nameTax = levy_noble namePoint = LevyNoble id = 5 type = 3 }
+			AI_TaxSetHelper2 = { nameTax = levy_urban namePoint = LevyUrban id = 6 type = 3 }
+		}
+
+		while = {
+			limit = {
+				check_key = { lhs = Tmp_3 value = 0.001 }
+			}
+			set_key = { lhs = Tmp_4 value = -1 }
+
+			save_event_target_as = SC_Targ
+
+			every_owned_province = {
+				limit = {
+					has_province_flag = AI_Tax
+					
+					check_key = { lhs = Tmp_4 which = event_target:SC_Targ }
+				}
+				save_event_target_as = SC_Targ
+			}
+
+			event_target:SC_Targ = {
+				if = {
+					limit = {
+						NOT = {
+							is_key_equal = { lhs = Tmp_4 value = -1 }
+						}
+					}
+					AI_TaxSetHelper3 = { nameTax = levy_draft namePoint = LevyDraft type = 3 id = 1 }
+					AI_TaxSetHelper3 = { nameTax = levy_volunt namePoint = LevyVolunt type = 3 id = 2 }
+					AI_TaxSetHelper3 = { nameTax = levy_feudal namePoint = LevyFeudal type = 3 id = 3 }
+					AI_TaxSetHelper3 = { nameTax = levy_horde namePoint = LevyHorde type = 3 id = 4 }
+					AI_TaxSetHelper3 = { nameTax = levy_noble namePoint = LevyNoble type = 3 id = 5 }
+					AI_TaxSetHelper3 = { nameTax = levy_urban namePoint = LevyUrban type = 3 id = 6 }
+					
+					set_key = { lhs = Tmp_4 value = -1 }
+					set_key = { lhs = Tmp_5 value = -1 }
+					set_key = { lhs = Tmp_6 value = -1 }
+					
+					AI_TaxSetHelper2 = { nameTax = levy_draft namePoint = LevyDraft id = 1 type = 3 }
+					AI_TaxSetHelper2 = { nameTax = levy_volunt namePoint = LevyVolunt id = 2 type = 3 }
+					AI_TaxSetHelper2 = { nameTax = levy_feudal namePoint = LevyFeudal id = 3 type = 3 }
+					AI_TaxSetHelper2 = { nameTax = levy_horde namePoint = LevyHorde id = 4 type = 3 }
+					AI_TaxSetHelper2 = { nameTax = levy_noble namePoint = LevyNoble id = 5 type = 3 }
+					AI_TaxSetHelper2 = { nameTax = levy_urban namePoint = LevyUrban id = 6 type = 3 }
+			   }
+				else = {
+					PREV = {
+						set_country_flag = AI_TaxMilFull
+						
+						set_key = { lhs = Tmp_3 value = 0 }
+					}
+				}
+			}
+		}
+
+		set_key = { lhs = Tmp_1 value = 0 }
+		set_key = { lhs = Tmp_2 value = 0 }
+		set_key = { lhs = Tmp_3 value = 0 }
+		set_key = { lhs = Tmp_4 value = 0 }
+		
+		set_key = { lhs = Tax_AdminEffic value = 0 }
+
+		every_owned_province = {
+			limit = {
+				has_province_flag = AI_Tax
+			}
+			if = {
+				limit = {
+					owner = { tag = YUA }
+					has_global_flag = POP_Sim
+					NOT = { culture_group = altaic }
+					NOT = { culture_group = tartar_group }
+					NOT = { culture_group = old_turkic }
+					NOT = { culture_group = jurchen_group }
+				}
+				AI_TaxSetHelper6 = { name = levy_draft }
+			}
+			else = {
+				AI_TaxSetHelper4 = { name = levy_draft }
+			}
+			AI_TaxSetHelper4 = { name = levy_volunt }
+			AI_TaxSetHelper4 = { name = levy_feudal }
+			AI_TaxSetHelper4 = { name = levy_noble }
+			AI_TaxSetHelper4 = { name = levy_urban }
+			AI_TaxSetHelper4 = { name = levy_horde }
+
+			AI_TaxSetHelper4 = { name = tax_land }
+			AI_TaxSetHelper4 = { name = tax_prop }
+			AI_TaxSetHelper4 = { name = tax_chattels }
+			AI_TaxSetHelper4 = { name = tax_inherit }
+			AI_TaxSetHelper4 = { name = tax_poll }
+			AI_TaxSetHelper4 = { name = tax_toll }
+			AI_TaxSetHelper4 = { name = tax_salt }
+			AI_TaxSetHelper4 = { name = tax_timber }
+			AI_TaxSetHelper4 = { name = tax_subst }
+			AI_TaxSetHelper4 = { name = tax_alcohol }
+
+			AI_TaxSetHelper4 = { name = obli_feudal }
+			AI_TaxSetHelper4 = { name = obli_noble }
+			AI_TaxSetHelper4 = { name = obli_charter }
+			AI_TaxSetHelper4 = { name = obli_tribute }
+			
+			AI_TaxSetHelper5 = { type = Agriculture }
+			AI_TaxSetHelper5 = { type = Extraction }
+			AI_TaxSetHelper5 = { type = Forestry }
+			AI_TaxSetHelper5 = { type = Fishery }
+			AI_TaxSetHelper5 = { type = Industrial }
+			AI_TaxSetHelper5 = { type = Academic }
+			AI_TaxSetHelper5 = { type = Commercial }
+		
+			AI_TaxSetHelper4 = { name = maint_Agriculture }
+			AI_TaxSetHelper4 = { name = maint_Extraction }
+			AI_TaxSetHelper4 = { name = maint_Forestry }
+			AI_TaxSetHelper4 = { name = maint_Fishery }
+			AI_TaxSetHelper4 = { name = maint_Industrial }
+			AI_TaxSetHelper4 = { name = maint_Academic }
+			AI_TaxSetHelper4 = { name = maint_Commercial }
+			
+			set_key = { lhs = Tmp_0 value = 0 }
+			set_key = { lhs = Tmp_1 value = 0 }
+			set_key = { lhs = Tmp_2 value = 0 }
+			set_key = { lhs = Tmp_3 value = 0 }
+			set_key = { lhs = Tmp_4 value = 0 }
+			set_key = { lhs = Tmp_5 value = 0 }
+			set_key = { lhs = Tmp_6 value = 0 }
+			set_key = { lhs = Tmp_7 value = 0 }
+			set_key = { lhs = Tmp_8 value = 0 }
+			
+			set_key = { lhs = Tax_AdminEffic value = 0 }
+		}
+	}
+}
+
+# I think this gets the costs of each level of tax
+AI_TaxSetHelper0 = {
+	if = {
+        limit = {
+            owner = {
+                Tax_$namePoint$Can = yes
+            }
+        }
+		AI_TaxPoint$namePoint$High = { return = Tax_Cost$namePoint$HighAI }
+		AI_TaxPoint$namePoint$Med = { return = Tax_Cost$namePoint$MedAI }
+		AI_TaxPoint$namePoint$Low = { return = Tax_Cost$namePoint$LowAI }
+		if = {
+			limit = {
+				always = $isTribal$
+			}
+			set_key = { lhs = Tmp_8 which = Prov_TRPow }
+		}
+		else = {
+			set_key = { lhs = Tmp_8 value = 100 }
+			subtract_key = { lhs = Tmp_8 which = Prov_TRPow }
+		}
+		multiply_key = { lhs = Tmp_8 value = 0.01 }
+		if = {
+			limit = {
+				check_key = { lhs = Tax_Cost$namePoint$HighAI value = 0.001 }
+			}
+			multiply_key = { lhs = Tax_Cost$namePoint$HighAI which = Tmp_8 }
+		}
+		else = {
+			set_key = { lhs = Tax_Cost$namePoint$HighAI value = -1 }
+		}
+		if = {
+			limit = {
+				check_key = { lhs = Tax_Cost$namePoint$MedAI value = 0.001 }
+			}
+			multiply_key = { lhs = Tax_Cost$namePoint$MedAI which = Tmp_8 }
+		}
+		else = {
+			set_key = { lhs = Tax_Cost$namePoint$MedAI value = -1 }
+		}
+		if = {
+			limit = {
+				check_key = { lhs = Tax_Cost$namePoint$LowAI value = 0.001 }
+			}
+			multiply_key = { lhs = Tax_Cost$namePoint$LowAI which = Tmp_8 }
+		}
+		else = {
+			set_key = { lhs = Tax_Cost$namePoint$LowAI value = -1 }
+		}
+	}
+	else = {
+		set_key = { lhs = Tax_Cost$namePoint$HighAI value = -1 }
+		set_key = { lhs = Tax_Cost$namePoint$MedAI value = -1 }
+		set_key = { lhs = Tax_Cost$namePoint$LowAI value = -1 }
+	}
+}
+
+# I think this decides which level to choose
+AI_TaxSetHelper2 = {
+	set_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$Low }
+	if = {
+		limit = {
+			check_key = { lhs = Tax_Cost$namePoint$LowAI which = Tmp_4 }
+			PREV = { check_key = { lhs = Tmp_$type$ which = PREV } }
+		}
+		set_key = { lhs = Tmp_4 which = Tax_Cost$namePoint$LowAI }
+		set_key = { lhs = Tmp_5 value = $id$ }
+		set_key = { lhs = Tmp_6 value = 0 }
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tax_Cost$namePoint$MedAI which = Tmp_4 }
+		}
+		set_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$Med }
+		if = {
+			limit = {
+				has_province_flag = $nameTax$_low
+			}
+			subtract_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$Low }
+			if = {
+				limit = {
+					PREV = { check_key = { lhs = Tmp_$type$ which = PREV } }
+				}
+				set_key = { lhs = Tmp_4 which = Tax_Cost$namePoint$MedAI }
+				set_key = { lhs = Tmp_5 value = $id$ }
+				set_key = { lhs = Tmp_6 value = 1 }
+			}
+		}
+		else_if = {
+			limit = {
+				PREV = { check_key = { lhs = Tmp_$type$ which = PREV } }
+			}
+			set_key = { lhs = Tmp_4 which = Tax_Cost$namePoint$MedAI }
+			set_key = { lhs = Tmp_5 value = $id$ }
+			set_key = { lhs = Tmp_6 value = 1 }
+		}
+	}
+	if = {
+		limit = {
+			check_key = { lhs = Tax_Cost$namePoint$HighAI which = Tmp_4 }
+		}
+		set_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$High  }
+		if = {
+			limit = {
+				has_province_flag = $nameTax$_med
+			}
+			subtract_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$Med }
+			if = {
+				limit = {
+					PREV = { check_key = { lhs = Tmp_$type$ which = PREV } }
+				}
+				set_key = { lhs = Tmp_4 which = Tax_Cost$namePoint$HighAI }
+				set_key = { lhs = Tmp_5 value = $id$ }
+				set_key = { lhs = Tmp_6 value = 2 }
+			}
+		}
+		else_if = {
+			limit = {
+				has_province_flag = $nameTax$_low
+			}
+			subtract_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$Low }
+			if = {
+				limit = {
+					PREV = { check_key = { lhs = Tmp_$type$ which = PREV } }
+				}
+				set_key = { lhs = Tmp_4 which = Tax_Cost$namePoint$HighAI }
+				set_key = { lhs = Tmp_5 value = $id$ }
+				set_key = { lhs = Tmp_6 value = 2 }
+			}
+		}
+		else_if = {
+			limit = {
+				PREV = { check_key = { lhs = Tmp_$type$ which = PREV } }
+			}
+			set_key = { lhs = Tmp_4 which = Tax_Cost$namePoint$HighAI }
+			set_key = { lhs = Tmp_5 value = $id$ }
+			set_key = { lhs = Tmp_6 value = 2 }
+		}
+	}
+	set_key = { lhs = Tmp_$type$ value = 0  }
+}
+# No clue
+AI_TaxSetHelper3 = {
+    if = {
+        limit = {
+            is_key_equal = { lhs = Tmp_5 value = $id$ }
+        }
+		if = {
+			limit = {
+				is_key_equal = { lhs = Tmp_6 value = 2 }
+			}
+			set_province_flag = $nameTax$_high
+			set_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$High }
+			if = {
+				limit = {
+					has_province_flag = $nameTax$_med
+				}
+				subtract_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$Med }
+				clr_province_flag = $nameTax$_med
+			}
+			else_if = {
+				limit = {
+					has_province_flag = $nameTax$_low
+				}
+				subtract_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$Low }
+				clr_province_flag = $nameTax$_low
+			}
+			set_key = { lhs = Tax_Cost$namePoint$LowAI value = -1 }
+			set_key = { lhs = Tax_Cost$namePoint$MedAI value = -1 }
+			set_key = { lhs = Tax_Cost$namePoint$HighAI value = -1 }
+		}
+		else_if = {
+			limit = {
+				is_key_equal = { lhs = Tmp_6 value = 1 }
+			}
+			set_province_flag = $nameTax$_med
+			set_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$Med }
+			if = {
+				limit = {
+					has_province_flag = $nameTax$_low
+				}
+				subtract_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$Low }
+				clr_province_flag = $nameTax$_low
+			}
+			set_key = { lhs = Tax_Cost$namePoint$LowAI value = -1 }
+			set_key = { lhs = Tax_Cost$namePoint$MedAI value = -1 }
+		}
+		else = {
+			set_province_flag = $nameTax$_low
+			set_key = { lhs = Tmp_$type$ which = Tax_Cost$namePoint$Low }
+			set_key = { lhs = Tax_Cost$namePoint$LowAI value = -1 }
+		}
+
+        PREV = {
+            subtract_key = { lhs = Tmp_$type$ which = PREV }
+        }
+    }
+}
+
+# Set actual tax/maintenance buildings
+AI_TaxSetHelper4 = {
+    trigger_switch = {
+        on_trigger = has_province_flag
+
+        $name$_low = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_building = $name$_low
+                    }
+                }
+                remove_building = $name$_high
+                remove_building = $name$_med
+                remove_building = $name$_no
+
+                add_building = $name$_low
+            }
+        }
+        $name$_med = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_building = $name$_med
+                    }
+                }
+                remove_building = $name$_high
+                remove_building = $name$_low
+                remove_building = $name$_no
+
+                add_building = $name$_med
+            }
+        }
+        $name$_high = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_building = $name$_high
+                    }
+                }
+                remove_building = $name$_med
+                remove_building = $name$_low
+                remove_building = $name$_no
+
+                add_building = $name$_high
+            }
+        }
+    }
+
+    if = {
+        limit = {
+            NOT = {
+                has_province_flag = $name$_high
+                has_province_flag = $name$_med
+                has_province_flag = $name$_low
+
+                has_building = $name$_no
+            }
+        }
+        remove_building = $name$_high
+        remove_building = $name$_med
+        remove_building = $name$_low
+
+        add_building = $name$_no
+    }
+    
+    clr_province_flag = $name$_high
+    clr_province_flag = $name$_med
+    clr_province_flag = $name$_low
+}
+
+# Set property maintenance flags for building setting
+AI_TaxSetHelper5 = {
+	if = {
+		limit = {
+			OR = {
+				owner = { 
+					OR = {
+						ai = yes
+						has_country_flag = Automatic_Maint 
+					}
+				}
+				has_province_modifier = no_maint
+				has_global_flag = POP_Sim
+			}
+			NOT = { has_global_flag = POP_Sim10 }
+		}
+		if = {
+			limit = {
+				NOT = { check_key = { lhs = Ai_Prp_Maint$type$ value = 4 } }
+				check_key = { lhs = Ai_Prp_Maint$type$ value = 2 }
+				has_province_flag = maint_$type$_high
+			}
+			set_province_flag = maint_$type$_med
+		}
+		else_if = {
+			limit = {
+				NOT = { check_key = { lhs = Ai_Prp_Maint$type$ value = 2 } }
+				check_key = { lhs = Ai_Prp_Maint$type$ value = 1 }
+				OR = {
+					has_province_flag = maint_$type$_high
+					has_province_flag = maint_$type$_med
+				}
+			}
+			set_province_flag = maint_$type$_low
+		}
+		else_if = {
+			limit = {
+				NOT = { check_key = { lhs = Ai_Prp_Maint$type$ value = 1 } }
+			}
+			clr_province_flag = maint_$type$_high
+			clr_province_flag = maint_$type$_med
+			clr_province_flag = maint_$type$_low
+		}
+	} 
+	else = { # keep whatever the player has manually set
+		trigger_switch = {
+			on_trigger = has_building
+			maint_$type$_high = { set_province_flag = maint_$type$_high }
+			maint_$type$_med = { set_province_flag = maint_$type$_med }
+			maint_$type$_no = { set_province_flag = maint_$type$_low }
+		}
+	}
+}
+
+AI_TaxSetHelper6 = {
+	if = {
+		limit = {
+			OR = {
+				region = jiangnan_region
+				province_id = 5393
+				region = zhejiang_region
+				region = jiangxi_region
+				region = shanxi_region
+				region = jiaoliao_region
+				province_id = 708 # Dadu
+				province_id = 701 # Kaifeng
+				province_id = 2252 # Xian
+				province_id = 2121 # Guangdong
+				province_id = 724
+			}
+			NOT = { area = liaoning_area }
+			NOT = { province_id = 5384 }
+			NOT = { province_id = 2491 }
+			NOT = { province_id = 5406 }
+			NOT = { province_id = 2613 }
+			NOT = { province_id = 663 }
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = $name$_low
+				}
+			}
+			remove_building = $name$_high
+			remove_building = $name$_med
+			remove_building = $name$_no
+
+			add_building = $name$_low
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				region = zhongyuan_region
+				region = sichuan_region
+				region = yunnan_region
+				region = guangxi_region
+				area = liaoning_area
+				province_id = 5121
+				province_id = 2170
+				province_id = 5488
+				province_id = 687
+				province_id = 688
+				province_id = 5463
+				province_id = 5468
+				province_id = 684
+				province_id = 702
+				province_id = 5471
+				province_id = 663
+			}
+			NOT = {
+				province_id = 2252 # Chongqing
+				province_id = 2121 # Chengdu
+				province_id = 672 # Guilin
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = $name$_high
+				}
+			}
+			remove_building = $name$_med
+			remove_building = $name$_low
+			remove_building = $name$_no
+
+			add_building = $name$_high
+		}
+	}
+	else = {
+		if = {
+			limit = {
+				NOT = {
+					has_building = $name$_med
+				}
+			}
+			remove_building = $name$_high
+			remove_building = $name$_low
+			remove_building = $name$_no
+
+			add_building = $name$_med
+		}
+	}
+    
+    clr_province_flag = $name$_high
+    clr_province_flag = $name$_med
+    clr_province_flag = $name$_low
+}
+
+AI_TaxClean = {
+    remove_building = levy_draft_high
+    remove_building = levy_draft_med
+    remove_building = levy_draft_low
+    add_building = levy_draft_no
+
+    remove_building = levy_volunt_high
+    remove_building = levy_volunt_med
+    remove_building = levy_volunt_low
+    add_building = levy_volunt_no
+
+    remove_building = levy_feudal_high
+    remove_building = levy_feudal_med
+    remove_building = levy_feudal_low
+    add_building = levy_feudal_no
+
+    remove_building = levy_noble_high
+    remove_building = levy_noble_med
+    remove_building = levy_noble_low
+    add_building = levy_noble_no
+
+    remove_building = levy_urban_high
+    remove_building = levy_urban_med
+    remove_building = levy_urban_low
+    add_building = levy_urban_no
+
+    remove_building = levy_horde_high
+    remove_building = levy_horde_med
+    remove_building = levy_horde_low
+    add_building = levy_horde_no
+
+
+    remove_building = tax_land_high
+    remove_building = tax_land_med
+    remove_building = tax_land_low
+    add_building = tax_land_no
+
+    remove_building = tax_prop_high
+    remove_building = tax_prop_med
+    remove_building = tax_prop_low
+    add_building = tax_prop_no
+
+    remove_building = obli_feudal_high
+    remove_building = obli_feudal_med
+    remove_building = obli_feudal_low
+    add_building = obli_feudal_no
+
+    remove_building = tax_poll_high
+    remove_building = tax_poll_med
+    remove_building = tax_poll_low
+    add_building = tax_poll_no
+
+    remove_building = tax_toll_high
+    remove_building = tax_toll_med
+    remove_building = tax_toll_low
+    add_building = tax_toll_no
+
+    remove_building = tax_inherit_high
+    remove_building = tax_inherit_med
+    remove_building = tax_inherit_low
+    add_building = tax_inherit_no
+
+    remove_building = tax_chattels_high
+    remove_building = tax_chattels_med
+    remove_building = tax_chattels_low
+    add_building = tax_chattels_no
+
+    remove_building = tax_salt_high
+    remove_building = tax_salt_med
+    remove_building = tax_salt_low
+    add_building = tax_salt_no
+
+    remove_building = tax_timber_high
+    remove_building = tax_timber_med
+    remove_building = tax_timber_low
+    add_building = tax_timber_no
+
+    remove_building = tax_subst_high
+    remove_building = tax_subst_med
+    remove_building = tax_subst_low
+    add_building = tax_subst_no
+
+    remove_building = tax_alcohol_high
+    remove_building = tax_alcohol_med
+    remove_building = tax_alcohol_low
+    add_building = tax_alcohol_no
+
+    remove_building = obli_noble_high
+    remove_building = obli_noble_med
+    remove_building = obli_noble_low
+    add_building = obli_noble_no
+
+    remove_building = obli_charter_high
+    remove_building = obli_charter_med
+    remove_building = obli_charter_low
+    add_building = obli_charter_no
+
+    remove_building = obli_tribute_high
+    remove_building = obli_tribute_med
+    remove_building = obli_tribute_low
+    add_building = obli_tribute_no
+}
+
+AI_MaintClean = {
+	remove_building = maint_Agriculture_high
+    remove_building = maint_Agriculture_med
+    remove_building = maint_Agriculture_low
+    add_building = maint_Agriculture_no
+	
+	remove_building = maint_Forestry_high
+    remove_building = maint_Forestry_med
+    remove_building = maint_Forestry_low
+    add_building = maint_Forestry_no
+	
+	remove_building = maint_Extraction_high
+    remove_building = maint_Extraction_med
+    remove_building = maint_Extraction_low
+    add_building = maint_Extraction_no
+	
+	remove_building = maint_Fishery_high
+    remove_building = maint_Fishery_med
+    remove_building = maint_Fishery_low
+    add_building = maint_Fishery_no
+	
+	remove_building = maint_Commercial_high
+    remove_building = maint_Commercial_med
+    remove_building = maint_Commercial_low
+    add_building = maint_Commercial_no
+	
+	remove_building = maint_Industrial_high
+    remove_building = maint_Industrial_med
+    remove_building = maint_Industrial_low
+    add_building = maint_Industrial_no
+	
+	remove_building = maint_Academic_high
+    remove_building = maint_Academic_med
+    remove_building = maint_Academic_low
+    add_building = maint_Academic_no
+}
+
+AI_TaxPointLevyDraftLow = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_ConscriptLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_ConscriptLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyDraftLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		if = {
+			limit = {
+				OR = {
+					has_global_flag = POP_Sim10
+					AND = {
+						has_global_flag = POP_Sim
+						owner = { tag = YUA }
+					}
+				}
+			}
+			multiply_key = { lhs = $return$ value = 4 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyDraftMed = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_ConscriptMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_ConscriptMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyDraftMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		if = {
+			limit = {
+                has_global_flag = POP_Sim10
+			}
+			multiply_key = { lhs = $return$ value = 3 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyDraftHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_ConscriptHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_ConscriptHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyDraftHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		if = {
+			limit = {
+                has_global_flag = POP_Sim10
+			}
+			multiply_key = { lhs = $return$ value = 3 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+AI_TaxPointLevyVoluntLow = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_VolunteerLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_VolunteerLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyVoluntLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		if = {
+			limit = {
+                has_global_flag = POP_Sim10
+			}
+			multiply_key = { lhs = $return$ value = 3 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyVoluntMed = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_VolunteerMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_VolunteerMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyVoluntMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		if = {
+			limit = {
+                has_global_flag = POP_Sim10
+			}
+			multiply_key = { lhs = $return$ value = 3 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyVoluntHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_VolunteerHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_VolunteerHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyVoluntHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		if = {
+			limit = {
+                has_global_flag = POP_Sim10
+			}
+			multiply_key = { lhs = $return$ value = 3 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+AI_TaxPointLevyFeudalLow = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_LevyLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_LevyLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyFeudalLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyFeudalMed = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_LevyMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_LevyMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyFeudalMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyFeudalHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_LevyHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_LevyHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyFeudalHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+AI_TaxPointLevyNobleLow = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_NobleLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_NobleLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyNobleLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyNobleMed = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_NobleMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_NobleMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyNobleMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyNobleHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_NobleHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_NobleHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyNobleHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+AI_TaxPointTaxNobleLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ObligationsNOLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ObligationsNOLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxNobleLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxNobleMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ObligationsNOMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ObligationsNOMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxNobleMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxNobleHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ObligationsNOHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ObligationsNOHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxNobleHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+AI_TaxPointLevyUrbanLow = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_BurgherLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_BurgherLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyUrbanLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyUrbanMed = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_BurgherMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_BurgherMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyUrbanMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyUrbanHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_BurgherHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_BurgherHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyUrbanHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+AI_TaxPointTaxCharterLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ObligationsBGLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ObligationsBGLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxCharterLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxCharterMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ObligationsBGMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ObligationsBGMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxCharterMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxCharterHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ObligationsBGHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ObligationsBGHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxCharterHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+AI_TaxPointLevyHordeLow = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_ClanLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_ClanLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyHordeLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyHordeMed = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_ClanMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_ClanMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyHordeMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointLevyHordeHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = Mil_ClanHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = Mil_ClanHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostLevyHordeHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+AI_TaxPointTaxTributeLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ObligationsTRLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ObligationsTRLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxTributeLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxTributeMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ObligationsTRMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ObligationsTRMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxTributeMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxTributeHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ObligationsTRHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ObligationsTRHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxTributeHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+AI_TaxPointTaxLandLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_LandLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_LandLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxLandLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxLandMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_LandMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_LandMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxLandMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxLandHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_LandHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_LandHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxLandHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+AI_TaxPointTaxPropLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_PropertyBULow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_PropertyBULow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxPropLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxPropMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_PropertyBUMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_PropertyBUMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxPropMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxPropHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_PropertyBUHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_PropertyBUHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxPropHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxPropLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_PropertyBULow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_PropertyBULow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxPropLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxPropMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_PropertyBUMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_PropertyBUMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxPropMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxPropHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_PropertyBUHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_PropertyBUHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxPropHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointTaxInheritLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_InheritanceLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_InheritanceLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxInheritLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxInheritMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_InheritanceMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_InheritanceMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxInheritMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxInheritHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_InheritanceHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_InheritanceHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxInheritHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointTaxChattelsLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ChattelLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ChattelLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxChattelsLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxChattelsMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ChattelMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ChattelMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxChattelsMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxChattelsHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_ChattelHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_ChattelHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxChattelsHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointTaxPollLow = {
+	if = {
+		limit = {
+			is_at_war = no
+			NOT = { num_of_loans = 3 }
+		}
+		set_key = { lhs = $return$ value = 0 }
+	}
+	else = {
+		if = {
+			limit = {
+				check_key = { lhs = TaxD_PollLow value = 0.001 }
+			}
+			set_key = { lhs = $return$ which = TaxD_PollLow }
+			multiply_key = { lhs = $return$ value = 0.25 }
+			multiply_key = { lhs = $return$ value = 1.666 }
+			multiply_key = { lhs = $return$ value = 100 } # Scalar
+			set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxPollLow }
+			multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+			if = {
+				limit = {
+					check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+				}
+				divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+			}
+			else = {
+				divide_key = { lhs = $return$ value = 0.1 }
+			}
+			change_key = { lhs = $return$ value = 0.001 }
+		}
+		else = { set_key = { lhs = $return$ value = 0 } }
+	}
+}
+AI_TaxPointTaxPollMed = {
+	if = {
+		limit = {
+			is_at_war = no
+			NOT = { num_of_loans = 3 }
+		}
+		set_key = { lhs = $return$ value = 0 }
+	}
+	else = {
+		if = {
+			limit = {
+				check_key = { lhs = TaxD_PollMed value = 0.001 }
+			}
+			set_key = { lhs = $return$ which = TaxD_PollMed }
+			multiply_key = { lhs = $return$ value = 0.25 }
+			multiply_key = { lhs = $return$ value = 1.333 }
+			multiply_key = { lhs = $return$ value = 100 } # Scalar
+			set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxPollMed }
+			multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+			if = {
+				limit = {
+					check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+				}
+				divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+			}
+			else = {
+				divide_key = { lhs = $return$ value = 0.1 }
+			}
+			change_key = { lhs = $return$ value = 0.001 }
+		}
+		else = { set_key = { lhs = $return$ value = 0 } }
+	}
+}
+AI_TaxPointTaxPollHigh = {
+	if = {
+		limit = {
+			is_at_war = no
+			NOT = { num_of_loans = 3 }
+		}
+		set_key = { lhs = $return$ value = 0 }
+	}
+	else = {
+		if = {
+			limit = {
+				check_key = { lhs = TaxD_PollHigh value = 0.001 }
+			}
+			set_key = { lhs = $return$ which = TaxD_PollHigh }
+			multiply_key = { lhs = $return$ value = 0.25 }
+			multiply_key = { lhs = $return$ value = 100 } # Scalar
+			set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxPollHigh }
+			multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+			if = {
+				limit = {
+					check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+				}
+				divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+			}
+			else = {
+				divide_key = { lhs = $return$ value = 0.1 }
+			}
+			change_key = { lhs = $return$ value = 0.001 }
+		}
+		else = { set_key = { lhs = $return$ value = 0 } }
+	}
+}
+
+
+AI_TaxPointTaxFeudalLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_RentsLow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_RentsLow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxFeudalLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxFeudalMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_RentsMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_RentsMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxFeudalMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxFeudalHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_RentsHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_RentsHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxFeudalHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointTaxTollLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_TollBULow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_TollBULow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxTollLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxTollMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_TollBUMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_TollBUMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxTollMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxTollHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_TollBUHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_TollBUHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxTollHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointTaxSaltLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_SaltBULow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_SaltBULow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxSaltLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxSaltMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_SaltBUMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_SaltBUMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxSaltMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxSaltHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_SaltBUHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_SaltBUHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxSaltHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointTaxTimberLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_TimberBULow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_TimberBULow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxTimberLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxTimberMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_TimberBUMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_TimberBUMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxTimberMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxTimberHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_TimberBUHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_TimberBUHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxTimberHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointTaxSubstLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_SubstancesBULow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_SubstancesBULow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxSubstLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxSubstMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_SubstancesBUMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_SubstancesBUMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxSubstMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxSubstHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_SubstancesBUHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_SubstancesBUHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxSubstHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointTaxAlcoholLow = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_AlcoholBULow value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_AlcoholBULow }
+		multiply_key = { lhs = $return$ value = 1.666 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxAlcoholLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxAlcoholMed = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_AlcoholBUMed value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_AlcoholBUMed }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxAlcoholMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointTaxAlcoholHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = TaxD_AlcoholBUHigh value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = TaxD_AlcoholBUHigh }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostTaxAlcoholHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointPropAgricultureLow = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossAgriculture value = 0 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossAgriculture }
+		change_key = { lhs = $return$ value = 0.01 }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.25 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropAgricultureLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropAgricultureMed = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossAgriculture value = 0 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossAgriculture }
+		change_key = { lhs = $return$ value = 0.01 }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.5 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropAgricultureMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropAgricultureHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossAgriculture value = 0 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossAgriculture }
+		change_key = { lhs = $return$ value = 0.01 }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropAgricultureHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointPropExtractionLow = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossExtraction value = 0.004 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossExtraction }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.25 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropExtractionLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropExtractionMed = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossExtraction value = 0.002 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossExtraction }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.5 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropExtractionMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropExtractionHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossExtraction value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossExtraction }
+		multiply_key = { lhs = $return$ value = 1.333 }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropExtractionHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointPropForestryLow = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossForestry value = 0.004 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossForestry }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.25 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropForestryLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropForestryMed = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossForestry value = 0.002 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossForestry }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.5 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropForestryMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropForestryHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossForestry value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossForestry }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropForestryHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointPropFisheryLow = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossFishery value = 0.004 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossFishery }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.25 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropFisheryLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropFisheryMed = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossFishery value = 0.002 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossFishery }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.5 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropFisheryMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropFisheryHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossFishery value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossFishery }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropFisheryHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointPropIndustrialLow = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossIndustrial value = 0.004 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossIndustrial }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.25 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropIndustrialLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropIndustrialMed = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossIndustrial value = 0.002 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossIndustrial }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.5 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropIndustrialMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropIndustrialHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossIndustrial value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossIndustrial }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropIndustrialHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointPropAcademicLow = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossAcademic value = 0.004 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossAcademic }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.25 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropAcademicLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropAcademicMed = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossAcademic value = 0.002 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossAcademic }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.5 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropAcademicMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropAcademicHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossAcademic value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossAcademic }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropAcademicHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+
+
+AI_TaxPointPropCommercialLow = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossCommercial value = 0.004 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossCommercial }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.25 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropCommercialLow }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropCommercialMed = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossCommercial value = 0.002 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossCommercial }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		multiply_key = { lhs = $return$ value = 0.5 }
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropCommercialMed }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}
+AI_TaxPointPropCommercialHigh = {
+	if = {
+		limit = {
+			check_key = { lhs = BU_GrossCommercial value = 0.001 }
+		}
+		set_key = { lhs = $return$ which = BU_GrossCommercial }
+		multiply_key = { lhs = $return$ value = 100 } # Scalar + 100% down for prop
+		set_key = { lhs = TaxMana_Tmp0 which = Tax_CostPropCommercialHigh }
+		multiply_key = { lhs = TaxMana_Tmp0 value = 100 } # Scalar
+		if = {
+			limit = {
+				check_key = { lhs = TaxMana_Tmp0 value = 0.1 }
+			}
+			divide_key = { lhs = $return$ which = TaxMana_Tmp0 }
+		}
+		else = {
+			divide_key = { lhs = $return$ value = 0.1 }
+		}
+		change_key = { lhs = $return$ value = 0.001 }
+	}
+	else = { set_key = { lhs = $return$ value = 0 } }
+}

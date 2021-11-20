@@ -1,0 +1,69 @@
+
+MN_CheckCuria = {
+	OR = {
+		AND = {
+			PAP = { has_country_flag = restricted_curia }
+			NOT = { total_number_of_cardinals = 25 }
+		}
+		AND = {
+			PAP = { has_country_flag = enlarged_curia }
+			NOT = { total_number_of_cardinals = 40 }
+		}
+		AND = {
+			PAP = { has_country_flag = extended_curia }
+			NOT = { total_number_of_cardinals = 55 }
+		}
+		AND = {
+			PAP = { has_country_flag = unrestricted_curia }
+			NOT = { total_number_of_cardinals = 80 }
+		}
+	}
+}
+
+MN_CheckCardinals = {
+	OR = {
+		AND = {
+			num_of_cities = 3
+			NOT = { num_of_cardinals = 2 }
+		}
+		AND = {
+			num_of_cities = 5
+			NOT = { num_of_cardinals = 3 }
+		}
+		AND = {
+			num_of_cities = 10
+			NOT = { num_of_cardinals = 4 }
+		}
+		AND = {
+			num_of_cities = 15
+			NOT = { num_of_cardinals = 5 }
+		}
+		AND = {
+			num_of_cities = 20
+			NOT = { num_of_cardinals = 6 }
+		}
+	}
+}
+
+MN_CuriaPotential = {
+	OR = {
+		AND = {
+			religion = catholic
+			owner = { religion = catholic }
+		}
+		AND = {
+			religion = holyleague
+			owner = { religion = holyleague }
+		}
+	}
+}
+
+babylonian_captivity = {
+	OR = {
+		has_country_flag = french_curia
+		has_country_flag = italian_curia
+		has_country_flag = iberian_curia
+		has_country_flag = imperial_curia
+		has_country_flag = english_curia
+	}
+}

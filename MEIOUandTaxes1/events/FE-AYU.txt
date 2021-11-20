@@ -1,0 +1,453 @@
+namespace = flavor_ayu
+
+country_event = {
+	id = flavor_ayu.1
+	title = "flavor_ayu.EVTNAME1"
+	desc = "flavor_ayu.EVTDESC1"
+	picture = REFORM_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = AYU
+		NOT = {
+			is_year = 1500
+		}
+	}
+	mean_time_to_happen = {
+		years = 16
+	}
+	option = {
+		ai_chance = {
+			factor = 95 
+		}
+		name = "flavor_ayu.EVTOPTA1"
+		add_mil_power = 400
+		add_adm_power = 400
+		add_dip_power = 400
+		add_inflation = -2
+	}
+	option = {
+		ai_chance = {
+			factor = 5
+		}
+		name = "flavor_ayu.EVTOPTB1"
+		Stab_Add50Percent = yes
+	}
+}
+country_event = {
+	id = flavor_ayu.2
+	title = "flavor_ayu.EVTNAME2"
+	desc = "flavor_ayu.EVTDESC2"
+	picture = LAND_MILITARY_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = AYU
+		is_year = 1500
+		NOT = {
+			is_year = 1600
+		}
+	}
+	mean_time_to_happen = {
+		years = 16
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTA2"
+		ai_chance = {
+			factor = 95
+		}
+		add_mil_power = 300
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTB2"
+		ai_chance = {
+			factor = 95
+		}
+		Stab_Add50Percent = yes
+	}
+}
+country_event = {
+	id = flavor_ayu.3
+	title = "flavor_ayu.EVTNAME3"
+	desc = "flavor_ayu.EVTDESC3"
+	picture = REFORM_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = AYU
+		is_year = 1600
+		NOT = {
+			is_year = 1700
+		}
+	}
+	mean_time_to_happen = {
+		years = 16
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					is_core = AYU
+				}
+				set_province_flag = AYU_eco_reform_flag1
+			}
+			random_owned_province = {
+				limit = {
+					NOT = {
+						has_province_flag = AYU_eco_reform_flag1
+					}
+				}
+				set_province_flag = AYU_eco_reform_flag2
+			}
+			random_owned_province = {
+				limit = {
+					NOT = {
+						has_province_flag = AYU_eco_reform_flag1
+					}
+					NOT = {
+						has_province_flag = AYU_eco_reform_flag2
+					}
+				}
+				set_province_flag = AYU_eco_reform_flag3
+			}
+		}
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTA3"
+		ai_chance = {
+			factor = 95
+		}
+		random_list = {
+			30 = {}
+			40 = {
+				Stab_Subtract50Percent = yes
+			}
+			30 = {
+				Stab_Subtract1 = yes
+			}
+		}
+		add_mercantilism = 15
+		add_inflation = -5
+		random_owned_province = {
+			limit = {
+				has_province_flag = AYU_eco_reform_flag1
+			}
+			add_province_modifier = {
+				name = "industrious_ruler_gravity"
+				duration = 3650
+			}
+			clr_province_flag = AYU_eco_reform_flag1
+		}
+		random_owned_province = {
+			limit = {
+				has_province_flag = AYU_eco_reform_flag2
+			}
+			add_province_modifier = {
+				name = "industrious_ruler_gravity"
+				duration = 3650
+			}
+			clr_province_flag = AYU_eco_reform_flag2
+		}
+		random_owned_province = {
+			limit = {
+				has_province_flag = AYU_eco_reform_flag3
+			}
+			add_province_modifier = {
+				name = "industrious_ruler_gravity"
+				duration = 3650
+			}
+			clr_province_flag = AYU_eco_reform_flag3
+		}
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTB3"
+		ai_chance = {
+			factor = 5
+		}
+		Stab_Add50Percent = yes
+	}
+}
+country_event = {
+	id = flavor_ayu.4
+	title = "flavor_ayu.EVTNAME4"
+	desc = "flavor_ayu.EVTDESC4"
+	picture = DEBATE_REPUBLICAN_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = AYU
+		is_year = 1700
+		NOT = {
+			is_year = 1800
+		}
+		OR = {
+			NOT = {
+				DIP = 2
+			}
+			NOT = {
+				MIL = 2
+			}
+			NOT = {
+				ADM = 2
+			}
+		}
+		NOT = {
+			DIP = 4
+		}
+		NOT = {
+			MIL = 4
+		}
+		NOT = {
+			ADM = 4
+		}
+		OR = {
+			has_regency = no
+			has_consort_regency = yes
+		}
+	}
+	mean_time_to_happen = {
+		years = 16
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTA4"
+		Stab_Subtract2 = yes
+		add_adm_power = -200
+	}
+}
+country_event = {
+	id = flavor_ayu.5
+	title = "flavor_ayu.EVTNAME5"
+	desc = "flavor_ayu.EVTDESC5"
+	picture = COURT_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = AYU
+		is_year = 1750
+		NOT = {
+			is_year = 1800
+		}
+	}
+	mean_time_to_happen = {
+		years = 166
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					is_core = AYU
+				}
+				set_province_flag = AYU_foundation_flag1
+			}
+			random_owned_province = {
+				limit = {
+					NOT = {
+						has_province_flag = AYU_foundation_flag1
+					}
+				}
+				set_province_flag = AYU_foundation_flag2
+			}
+			random_owned_province = {
+				limit = {
+					NOT = {
+						has_province_flag = AYU_foundation_flag1
+					}
+					NOT = {
+						has_province_flag = AYU_foundation_flag2
+					}
+				}
+				set_province_flag = AYU_foundation_flag3
+			}
+		}
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTA5"
+		Stab_Add50Percent = yes
+		random_owned_province = {
+			limit = {
+				has_province_flag = AYU_foundation_flag1
+			}
+			clr_province_flag = AYU_foundation_flag1
+		}
+		random_owned_province = {
+			limit = {
+				has_province_flag = AYU_foundation_flag2
+			}
+			clr_province_flag = AYU_foundation_flag2
+		}
+		random_owned_province = {
+			limit = {
+				has_province_flag = AYU_foundation_flag3
+			}
+			clr_province_flag = AYU_foundation_flag3
+		}
+	}
+}
+country_event = {
+	id = flavor_ayu.6
+	title = "flavor_ayu.EVTNAME6"
+	desc = "flavor_ayu.EVTDESC6"
+	picture = BUDDHA_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = AYU
+		is_year = 1625
+		NOT = {
+			is_year = 1675
+		}
+		OR = {
+			has_regency = no
+			has_consort_regency = yes
+		}
+		OR = {
+			dip = 4
+			mil = 4
+			adm = 4
+		}
+		NOT = {
+			has_ruler_modifier = ayu_wat_ratchaburan_temple
+		}
+	}
+	mean_time_to_happen = {
+		years = 16
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTA6"
+		add_years_of_income = -0.2
+		add_ruler_modifier = {
+			name = ayu_wat_chaiwatthanaram_temple
+		}
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTB6"
+		add_adm_power = -20
+		add_prestige = 10
+	}
+}
+# country_event = {
+# 	id = flavor_ayu.7
+# 	title = "flavor_ayu.EVTNAME7"
+# 	desc = "flavor_ayu.EVTDESC7"
+# 	picture = IMPORTANT_STATUE_eventPicture
+# 	fire_only_once = yes
+# 	trigger = {
+# 		tag = AYU
+# 		is_year = 1600
+# 		trade_efficiency = 0.5
+# 		OR = {
+# 			has_regency = no
+# 			has_consort_regency = yes
+# 		}
+# 		OR = {
+# 			dip = 4
+# 			adm = 4
+# 		}
+# 	}
+# 	mean_time_to_happen = {
+# 		years = 16
+# 	}
+# 	option = {
+# 		name = "flavor_ayu.EVTOPTA7"
+# 		add_mercantilism = 20
+# 	}
+# }
+country_event = {
+	id = flavor_ayu.8
+	title = "flavor_ayu.EVTNAME8"
+	desc = "flavor_ayu.EVTDESC8"
+	picture = BUDDHA_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = AYU
+		is_year = 1600
+		NOT = {
+			is_year = 1700
+		}
+		OR = {
+			has_regency = no
+			has_consort_regency = yes
+		}
+	}
+	mean_time_to_happen = {
+		years = 16
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTA8"
+		add_years_of_income = -0.2
+		add_ruler_modifier = {
+			name = ayu_buddha_footprint_temple
+		}
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTB8"
+		add_prestige = -1
+	}
+}
+country_event = {
+	id = flavor_ayu.9
+	title = "flavor_ayu.EVTNAME9"
+	desc = "flavor_ayu.EVTDESC9"
+	picture = ADVISOR_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = AYU
+		is_year = 1675
+		NOT = {
+			is_year = 1700
+		}
+	}
+	mean_time_to_happen = {
+		years = 16
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTA9"
+		define_advisor = {
+			type = statesman_NO
+			name = "Constantine Phaulkon"
+			culture = greek
+			religion = orthodox
+			skill = 3
+			discount = yes
+		}
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTB9"
+		add_prestige = -1
+	}
+}
+country_event = {
+	id = flavor_ayu.10
+	title = "flavor_ayu.EVTNAME10"
+	desc = "flavor_ayu.EVTDESC10"
+	picture = BUDDHA_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = AYU
+		is_year = 1625
+		NOT = {
+			is_year = 1675
+		}
+		OR = {
+			has_regency = no
+			has_consort_regency = yes
+		}
+		OR = {
+			mil = 4
+			dip = 4
+			adm = 4
+		}
+		NOT = {
+			has_ruler_modifier = ayu_wat_chaiwatthanaram_temple
+		}
+	}
+	mean_time_to_happen = {
+		years = 16
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTA10"
+		add_years_of_income = -0.2
+		add_ruler_modifier = {
+			name = ayu_wat_ratchaburan_temple
+		}
+	}
+	option = {
+		name = "flavor_ayu.EVTOPTB10"
+		add_adm_power = -20
+		add_prestige = 10
+	}
+}

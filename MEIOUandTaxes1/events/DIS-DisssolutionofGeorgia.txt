@@ -1,0 +1,373 @@
+namespace = flavor_geo
+
+country_event = {
+	id = flavor_geo.001
+	title = "flavor_geo.EVTNAME001"
+	desc = "flavor_geo.EVTDESC001"
+	picture = DIPLOMACY_eventPicture
+	is_triggered_only = yes 
+	trigger = {
+		tag = GEO
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		hidden_effect = {
+			set_global_flag = end_of_georgia
+			1300 = {				#Abkhazia
+				add_core = ABK
+				remove_core = GEO
+			}
+			2549 = {
+				add_core = ABK
+				remove_core = GEO
+			}
+			if = {
+				limit = {
+					NOT = { exists = ABK }
+				}
+				release = ABK
+				free_vassal = ABK
+				ABK = { clr_country_flag = POP_Init }
+				ABK = {
+					define_ruler = {
+						dynasty = "Shervashidze"
+					}
+					define_heir = {
+						dynasty = "Shervashidze"
+					}
+				}
+			}
+			every_owned_province = {
+				limit = {
+					is_core = ABK
+				}
+				cede_and_release = { scope = ABK }
+			}
+			422 = {					#Kakheti
+				add_core = KAK
+				remove_core = GEO
+			}
+			2576 = {
+				add_core = KAK
+				remove_core = GEO
+			}
+			if = {
+				limit = {
+					NOT = { exists = KAK }
+				}
+				release = KAK
+				free_vassal = KAK
+				KAK = { clr_country_flag = POP_Init }
+				KAK = {
+					define_ruler = {
+						dynasty = "Bagrationi"
+					}
+					define_heir = {
+						dynasty = "Bagrationi"
+					}
+				}
+			}
+			every_owned_province = {
+				limit = {
+					is_core = KAK
+				}
+				cede_and_release = { scope = KAK }
+			}	
+			1301 = { 				#Imereti
+				add_core = IME
+				remove_core = GEO
+			}
+			3798 = {
+				add_core = IME
+				remove_core = GEO
+			}
+			3799 = {
+				add_core = IME
+				remove_core = GEO
+			}
+			3800 = {
+				add_core = IME
+				remove_core = GEO
+			}
+			if = {
+				limit = {
+					NOT = { exists = IME }
+				}
+				release = IME
+				free_vassal = IME
+				IME = { clr_country_flag = POP_Init }
+				IME = {
+					define_ruler = {
+						dynasty = "Bagrationi"
+					}
+					define_heir = {
+						dynasty = "Bagrationi"
+					}
+				}
+			}
+			every_owned_province = {
+				limit = {
+					is_core = IME
+				}
+				cede_and_release = { scope = IME }
+			}
+			1449 = {			#Samtskhe 
+				add_core = SMT
+				remove_core = GEO
+			}
+			2581 = {			 
+				add_core = SMT
+				remove_core = GEO
+			}
+			3801 = {			 
+				add_core = SMT
+				remove_core = GEO
+			}
+			3802 = {			 
+				add_core = SMT
+				remove_core = GEO
+			}
+			4027 = {			 
+				add_core = SMT
+				remove_core = GEO
+			}
+			5073 = {			 
+				add_core = SMT
+				remove_core = GEO
+			}
+			if = {
+				limit = {
+					NOT = { exists = SMT }
+				}
+				release = SMT
+				free_vassal = SMT
+				SMT = { clr_country_flag = POP_Init }
+				SMT = {
+					define_ruler = {
+						dynasty = "Jaqeli"
+					}
+					define_heir = {
+						dynasty = "Jaqeli"
+					}
+				}
+			}
+			every_owned_province = {
+				limit = {
+					is_core = SMT
+				}
+				cede_and_release = { scope = SMT }
+			}
+			every_owned_province = {				#Kurdistan
+				limit = {
+					culture = kurdish
+				}
+				add_core = KRD
+				remove_core = GEO
+			}
+			if = { 
+				limit = {
+					NOT = {
+						exists = KRD
+					}
+				}
+				release = KRD
+				free_vassal = KRD
+				KRD = { clr_country_flag = POP_Init } 
+			}
+			every_owned_province = {
+				limit = {
+					is_core = KRD
+				}
+				cede_and_release = { scope = KRD }
+			}
+			if = {				#Only release Armenia if AI to prevent too much of a noobtrap for the player
+				limit = {
+					ai = yes
+				} 
+				every_owned_province = {
+					limit = {
+						culture = eastern_armenian
+					}
+					add_core = ARM
+					remove_core = GEO
+				}
+				if = { 
+					limit = {
+						NOT = {
+							exists = ARM
+						}
+					}
+					release = ARM
+					free_vassal = ARM
+					ARM = { clr_country_flag = POP_Init }
+				}
+				every_owned_province = {
+					limit = {
+						is_core = ARM
+					}
+					cede_and_release = { scope = ARM }
+				}
+			}
+			every_owned_province = {			#Give back cores of neighbours
+				limit = {
+					is_core = TRE
+				}
+				remove_core = GEO
+				cede_and_release = { scope = TRE }
+			}
+			every_owned_province = {
+				limit = {
+					is_core = CIR
+				}
+				remove_core = GEO
+				cede_and_release = { scope = CIR }
+			}
+			every_owned_province = {
+				limit = {
+					is_core = SHI
+				}
+				remove_core = GEO
+				cede_and_release = { scope = SHI }
+			}
+			every_owned_province = {
+				limit = {
+					is_core = GAZ
+				}
+				remove_core = GEO
+				cede_and_release = { scope = GAZ }
+			}
+		}
+	}
+	option = {
+		name = "flavor_geo.EVTOPTA001"
+		Stab_Add1 = yes
+		add_legitimacy = 10
+		if = {
+			limit = {
+				AND = {
+					NOT = {
+						calc_true_if = {
+							all_country = {
+								ai = no
+							}
+							amount = 2
+						}
+					}
+				}
+			}
+			change_tag = KRT
+		}
+	}
+	option = {
+		name = "flavor_geo.EVTOPTB001"
+		Stab_Subtract6 = yes
+		declare_war = ABK
+		declare_war = IME
+		declare_war = KAK
+		declare_war = SMT
+	}
+	after = {
+		if = {
+			limit = {
+				exists = GEO
+			}
+			GEO = { save_event_target_as = Adapt }
+		}
+		else = {
+			KRT = { save_event_target_as = Adapt }
+		}
+		ABK = { 
+			hidden_effect = {
+				Pol_AdaptFromScope = yes
+				add_government_reform = Pol_Privileges1
+                if = {
+                    limit = {
+                        NOT = { has_country_flag = POP_Init }
+                    }
+                    country_event = { id = Init.1 }
+                }
+            }
+		}
+		IME = { 
+			hidden_effect = {
+				Pol_AdaptFromScope = yes
+				add_government_reform = Pol_Privileges1
+                if = {
+                    limit = {
+                        NOT = { has_country_flag = POP_Init }
+                    }
+                    country_event = { id = Init.1 }
+                }
+            }
+		}
+		KAK = { 
+			hidden_effect = {
+				Pol_AdaptFromScope = yes
+				add_government_reform = Pol_Privileges1
+                if = {
+                    limit = {
+                        NOT = { has_country_flag = POP_Init }
+                    }
+                    country_event = { id = Init.1 }
+                }
+            }
+		}
+		SMT = { 
+			hidden_effect = {
+				Pol_AdaptFromScope = yes
+				add_government_reform = Pol_Privileges1
+                if = {
+                    limit = {
+                        NOT = { has_country_flag = POP_Init }
+                    }
+                    country_event = { id = Init.1 }
+                }
+            }
+		}
+		KRD = { 
+			hidden_effect = {
+				Pol_AdaptFromScope = yes
+				add_government_reform = Pol_Privileges1
+                if = {
+                    limit = {
+                        NOT = { has_country_flag = POP_Init }
+                    }
+                    country_event = { id = Init.1 }
+                }
+            }
+		}
+		ARM = { 
+			hidden_effect = {
+				Pol_AdaptFromScope = yes
+				add_government_reform = Pol_Privileges1
+                if = {
+                    limit = {
+                        NOT = { has_country_flag = POP_Init }
+                    }
+                    country_event = { id = Init.1 }
+                }
+            }
+		}
+	}
+}
+country_event = {
+	id = flavor_geo.002
+	title = "missing_localization"
+	desc = "missing_localization"
+	picture = DIPLOMACY_eventPicture
+	hidden = yes
+	is_triggered_only = yes 
+	trigger = {
+		tag = GEO
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = "missing_locaization"
+	}
+}	

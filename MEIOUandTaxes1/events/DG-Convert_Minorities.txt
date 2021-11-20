@@ -1,0 +1,2001 @@
+namespace = DG_Convert
+
+country_event = {
+	id = DG_Convert.001
+	title = "DG_Convert.001.title"
+	desc = "DG_Convert.001.desc"
+	picture = MEIOU_AND_TAXES_eventPicture
+
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+
+	option = {
+		name = "DG_Convert.001.opta"
+		hidden_effect = {
+			add_country_modifier = { name = evangel_cm duration = 7300 hidden = yes }
+			every_owned_province = {
+				limit = {
+					has_province_flag = UI_Select
+					isValidEmpty = yes
+				}
+				set_province_flag = evangelisation
+				MN_RlgConv = yes
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = PTM_BACK
+		highlight = yes
+		hidden_effect = { country_event = { id = Prov_UI.436 } }
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = PTM_EXIT
+		highlight = yes
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = DG_Convert.002
+	title = "DG_Convert.002.title"
+	desc = "DG_Convert.002.desc"
+	picture = MEIOU_AND_TAXES_eventPicture
+
+	hidden = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		every_owned_province = {
+			limit = {
+				isValidEmpty = yes
+			}
+			export_to_key = { lhs = DG_Tmp15 value = religion }
+			if = {
+				limit = { NOT = { is_key_equal = { lhs = DG_Tmp15 which = MN_S0 } } }
+				MN_AddReligion = { type = which religion = DG_Tmp15 }
+				set_key = { lhs = DG_Tmp1 which = MN_S0RurN }
+				set_key = { lhs = DG_Tmp2 which = MN_S0UrbN }
+				set_key = { lhs = DG_Tmp3 which = MN_S0NotN }
+				multiply_key = { lhs = DG_Tmp1 value = 0.05 }
+				multiply_key = { lhs = DG_Tmp2 value = 0.15 }
+				multiply_key = { lhs = DG_Tmp3 value = 0.10 }
+				MN_ConvertReligion = {
+					typeFrom = which from = MN_S0	# From, as in the religion who is losing its believers
+					typeTo = which to = DG_Tmp15   # To, as in the religion who is gaining new believers
+					typeChange = which   # Change, as in how many people in absolute numbers are changing
+					ruralChange = DG_Tmp1 urbanChange = DG_Tmp2 notablesChange = DG_Tmp3
+				}
+				set_key = { lhs = DG_Tmp1 value = 0 }
+				set_key = { lhs = DG_Tmp2 value = 0 }
+				set_key = { lhs = DG_Tmp3 value = 0 }
+				MN_Attribute_Effect = { reltype = which religion = DG_Tmp15 typeEffect = ENT typeStrength = value strength = 100 }
+				MN_Attribute_Effect = { reltype = which religion = DG_Tmp15 typeEffect = INF typeStrength = value strength = 5 }
+				MN_Attribute_Effect = { reltype = which religion = DG_Tmp15 typeEffect = Preach typeStrength = value strength = 3 }
+				set_var_from_key = { var = MN_S0 key = MN_S0 }
+				change_religion = variable:MN_S0
+				#log = "DG:[GetYear]:[This.aab.GetValue]:Center of Reformation:Spread:[This.GetName]:[This.Owner.GetName]"
+			}
+			MN_RlgConv = yes
+			MN_RlgShift = yes
+		}
+	}
+
+	option = {
+		name = "DG_Convert.002.opta"
+	}
+}
+
+province_event = {
+	id = DG_Convert.003
+	title = "DG_Convert.003.title"
+	desc = "DG_Convert.003.desc"
+	picture = MEIOU_AND_TAXES_eventPicture
+
+	hidden = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		MN_AddOwnerRel = yes
+#		if = {
+#			limit = { is_colony = yes }
+			MN_ConvColo = yes
+#		}
+#		else = {
+#			MN_ConvMConq = yes
+#		}
+		MN_GetInfrast = yes
+		MN_RlgShift = yes
+#		change_religion = variable:MN_S0
+	}
+
+	option = {
+		name = "DG_Convert.003.opta"
+	}
+}
+
+province_event = {
+	id = DG_Convert.004
+	title = "DG_Convert.004.title"
+	desc = "DG_Convert.004.desc"
+	picture = MEIOU_AND_TAXES_eventPicture
+
+	hidden = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { religion = catholic has_cardinal = yes }
+			set_province_flag = had_cardinal
+		}
+		change_religion_effect = yes
+		MN_Autonomy = yes
+		clr_province_flag = center_converted		
+	}
+
+	option = {
+		name = "DG_Convert.004.opta"
+	}
+	
+	after = {
+		if = {
+			limit = { has_province_flag = had_cardinal }
+			if = {
+				limit = { religion = catholic has_cardinal = no }
+				add_cardinal = yes
+			}
+			else_if = {
+				limit = { NOT = { religion = catholic } }
+				clr_province_flag = cardinal_1_year
+				clr_province_flag = cardinal_5_years
+				clr_province_flag = cardinal_10_years
+				clr_province_flag = cardinal_15_years
+				clr_province_flag = cardinal_20_years
+				random_province = {
+					limit = {
+						religion = catholic check_key = { lhs = MN_Cardinal value = 50 }
+						owner = { religion = catholic check_key = { lhs = MN_Cardinal value = 50 } }
+					}
+					AddCardinal = yes
+				}
+			}
+			clr_province_flag = had_cardinal
+		}
+	}
+}
+
+province_event = {
+	id = DG_Convert.005
+	title = "DG_Convert.004.title"
+	desc = "DG_Convert.004.desc"
+	picture = MEIOU_AND_TAXES_eventPicture
+
+	hidden = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		DG_on_province_religion_converted_effect = yes
+	}
+
+	option = {
+		name = "DG_Convert.004.opta"
+	}
+}
+
+province_event = {
+	id = DG_Convert.006
+	title = "DG_Convert.004.title"
+	desc = "DG_Convert.004.desc"
+	picture = MEIOU_AND_TAXES_eventPicture
+
+	hidden = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		DG_on_convert_by_trade_policy_effect = yes
+	}
+
+	option = {
+		name = "DG_Convert.004.opta"
+	}
+}
+
+country_event = {
+	id = DG_Convert.007
+	title = "DG_Convert.007.title"
+	desc = "DG_Convert.007.desc"
+	picture = MEIOU_AND_TAXES_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+	}
+
+	option = {
+		name = "DG_Convert.007.opta"
+		if = {
+			limit = {
+				any_owned_province = {
+					NOT = { religion = owner }
+					check_key = { lhs = MN_S0MStrength value = 0.5 }
+					OR = {
+						has_province_flag = convert_50
+						has_province_flag = convert_90
+					}
+					has_missionary = no
+				}
+			}
+			random_owned_province = {
+				limit = {
+					NOT = { religion = owner }
+					check_key = { lhs = MN_S0MStrength value = 0.5 }
+					OR = {
+						has_province_flag = convert_50
+						has_province_flag = convert_90
+					}
+					has_missionary = no
+				}
+				send_missionary = yes
+			}
+		}
+		else = { country_event = { id = DG_Convert.008 } }
+	}
+}
+
+country_event = {
+	id = DG_Convert.008
+	title = "DG_Convert.007.title"
+	desc = "DG_Convert.007.desc"
+	picture = MEIOU_AND_TAXES_eventPicture
+
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+
+	option = {
+		name = "DG_Convert.007.opta"
+		#failsafe cleanup
+		hidden_effect = { 
+			every_owned_province = {
+				limit = { religion = owner }
+				clr_province_flag = convert_50
+			}
+			every_owned_province = {
+				limit = { religion = owner check_key = { lhs = MN_S0TotP value = 90 } }
+				clr_province_flag = convert_90
+				remove_province_modifier = minority_missionary
+			}
+		}
+	}
+}
+
+#Organise the Missionaries - triggered by Prov_UI.436
+country_event = {
+	id = DG_Convert.101
+	title = DG_Convert.101.title
+	desc = DG_Convert.101.desc
+	picture = all_church_state
+
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			AvailableMissionariesCount = yes
+			every_owned_province = {
+				MN_Missionary = yes
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Convert.101.opta"
+		trigger = { any_owned_province = { has_missionary = yes NOT = { has_province_modifier = minority_missionary } } }
+		every_owned_province = {
+			limit = { has_missionary = yes }
+			set_province_flag = convert_50
+			clr_province_flag = convert_90
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = "DG_Convert.101.optb"
+		trigger = { any_owned_province = { has_missionary = yes NOT = { has_province_modifier = minority_missionary } } }
+		every_owned_province = {
+			limit = { has_missionary = yes }
+			clr_province_flag = convert_50
+			set_province_flag = convert_90
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = "DG_Convert.101.optc"
+		trigger = { any_owned_province = { isValidProv = yes has_province_flag = UI_Select NOT = { has_province_modifier = minority_missionary } } }
+		every_owned_province = {
+			limit = { has_province_flag = UI_Select }
+			set_province_flag = convert_50
+			clr_province_flag = convert_90
+		}
+		hidden_effect = { country_event = { id = DG_Convert.102 } }
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = "DG_Convert.101.optd"
+		trigger = { any_owned_province = { isValidProv = yes has_province_flag = UI_Select NOT = { has_province_modifier = minority_missionary } } }
+		every_owned_province = {
+			limit = { has_province_flag = UI_Select }
+			clr_province_flag = convert_50
+			set_province_flag = convert_90
+		}
+		hidden_effect = { country_event = { id = DG_Convert.102 } }
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = "DG_Convert.101.opte"
+		trigger = { any_owned_province = { OR = { has_province_flag = convert_50 has_province_flag = convert_90 has_province_modifier = minority_missionary } } }
+		every_owned_province = {
+			clr_province_flag = convert_50
+			clr_province_flag = convert_90
+			remove_province_modifier = minority_missionary
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = PTM_BACK
+		highlight = yes
+		hidden_effect = { country_event = { id = Prov_UI.436 } }
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = PTM_EXIT
+		highlight = yes
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = DG_Convert.102
+	title = DG_Convert.102.title
+	desc = DG_Convert.102.desc
+	picture = all_church_state
+
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "DG_Convert.102.opta"
+		trigger = {
+			check_key = { lhs = AvailableMissionaries value = 1 }
+		}
+		SendingAvailableMissionaries = yes
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "DG_Convert.102.optb"
+		trigger = {
+			check_key = { lhs = AvailableMissionaries value = 2 }
+		}
+		SendingAvailableMissionaries = yes
+		SendingAvailableMissionaries = yes
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = {
+		name = "DG_Convert.102.optc"
+		trigger = {
+			check_key = { lhs = AvailableMissionaries value = 3 }
+		}
+		SendingAvailableMissionaries = yes
+		SendingAvailableMissionaries = yes
+		SendingAvailableMissionaries = yes
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = {
+		name = "DG_Convert.102.optd"
+		trigger = {
+			check_key = { lhs = AvailableMissionaries value = 4 }
+		}
+		SendingAvailableMissionaries = yes
+		SendingAvailableMissionaries = yes
+		SendingAvailableMissionaries = yes
+		SendingAvailableMissionaries = yes
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = {
+		name = "DG_Convert.102.opte"
+		trigger = {
+			check_key = { lhs = AvailableMissionaries value = 5 }
+		}
+		SendingAvailableMissionaries = yes
+		SendingAvailableMissionaries = yes
+		SendingAvailableMissionaries = yes
+		SendingAvailableMissionaries = yes
+		SendingAvailableMissionaries = yes
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = {
+		name = "DG_Convert.102.optz"
+		trigger = {
+			NOT = {
+				check_key = { lhs = AvailableMissionaries value = 1 }
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#Beacon of the [Root.Religion.GetName] Faith - Prov_UI.436
+country_event = {
+	id = DG_Convert.201
+	title = DG_Convert.201.title
+	desc = DG_Convert.201.desc
+	picture = all_church_state
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		capital_scope = {
+			if = {
+				limit = { can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+				save_event_target_as = pot_cor_cap
+				set_province_flag = CoR_Selected
+			}
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes has_province_flag = UI_Select NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_s01
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes has_province_flag = UI_Select NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_s02
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes has_province_flag = UI_Select NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_s03
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes has_province_flag = UI_Select NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_s04
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes has_province_flag = UI_Select NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_s05
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_r01
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_r02
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_r03
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_r04
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_r05
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_r06
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_r07
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_r08
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_r09
+			set_province_flag = CoR_Selected
+		}
+		random_owned_province = { 
+			limit = { isValidProv = yes NOT = { has_province_flag = CoR_Selected } can_have_center_of_reformation_trigger = { CenterReligion = owner } }
+			save_event_target_as = pot_cor_r10
+			set_province_flag = CoR_Selected
+		}
+	}
+	
+	option = {
+		name = "DG_Convert.101.opte"
+		country_event = { id = DG_Convert.202 }
+	}
+}
+
+country_event = {
+	id = DG_Convert.202
+	title = DG_Convert.201.title
+	desc = DG_Convert.201.desc
+	picture = all_church_state
+
+	is_triggered_only = yes
+
+	option = {
+		name = "DG_Convert.201.opta"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_cap } }
+		event_target:pot_cor_cap = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optb"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_s01 } }
+		event_target:pot_cor_s01 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optc"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_s02 } }
+		event_target:pot_cor_s02 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optd"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_s03 } }
+		event_target:pot_cor_s03 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.opte"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_s04 } }
+		event_target:pot_cor_s04 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optf"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_s05 } }
+		event_target:pot_cor_s05 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optg"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_r01 } }
+		event_target:pot_cor_r01 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.opth"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_r02 } }
+		event_target:pot_cor_r02 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.opti"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_r03 } }
+		event_target:pot_cor_r03 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optj"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_r04 } }
+		event_target:pot_cor_r04 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optk"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_r05 } }
+		event_target:pot_cor_r05 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optl"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_r06 } }
+		event_target:pot_cor_r06 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optm"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_r07 } }
+		event_target:pot_cor_r07 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optn"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_r08 } }
+		event_target:pot_cor_r08 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.opto"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_r09 } }
+		event_target:pot_cor_r09 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+	option = {
+		name = "DG_Convert.201.optp"
+		trigger = { any_owned_province = { province_id = event_target:pot_cor_r10 } }
+		event_target:pot_cor_r10 = { add_reform_center = ROOT }
+		add_or_extend_province_modifier_hidden_effect = { NAME = religious_enthusiasm DURATION = 3650 }
+		owner = { add_adm_power = -50 add_dip_power = -50 }
+	}
+}
+
+#Religion of the Realm - triggered by Prov_UI.436 for the player, by xxxxx for the AI 
+country_event = {
+	id = DG_Convert.301
+	title = DG_Convert.301.title
+	desc = DG_Convert.301.desc
+	picture = all_church_state
+
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	trigger = {
+		western_christian = yes
+		OR = {
+			ai = no  
+			AND = { NOT = { dominant_religion = ROOT } OR = { is_subject = no NOT = { overlord = { religion = ROOT } } } }
+		}
+	}
+	
+	option = {
+		name = "DG_Convert.301.opta"
+		trigger = { western_christian = yes NOT = { religion = catholic } OR = { ai = no is_subject = no overlord = { religion = catholic } } }
+		if = {
+			limit = { religion = waldensian }
+			UnrestPerSize = { religion = 5 }
+			if = {
+				limit = { ai = no has_country_flag = catholic_revival }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = religious_compromise }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = lollard }
+			UnrestPerSize = { religion = 6 }
+			if = {
+				limit = { ai = no has_country_flag = support_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = hussite }
+			UnrestPerSize = { religion = 4 }
+			if = {
+				limit = { ai = no has_country_flag = support_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = protestant }
+			UnrestPerSize = { religion = 2 }
+			if = {
+				limit = { ai = no has_country_flag = support_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = reformed }
+			UnrestPerSize = { religion = 3 }
+			if = {
+				limit = { ai = no has_country_flag = support_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		change_religion = catholic
+		if = {
+			limit = { ai = no dominant_religion = catholic }
+			if = {
+				limit = { has_country_flag = catholic_revival }
+				Stab_Add1 = yes
+				add_adm_power = -100
+			}
+			else = {
+				Stab_Subtract1 = yes
+				add_adm_power = -150
+			}
+		}
+		else_if = {
+			limit = { ai = no }
+			if = {
+				limit = { has_country_flag = catholic_revival }
+				Stab_Subtract1 = yes
+				add_adm_power = -150
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -250
+			}
+		}
+		if = { limit = { ai = yes } log = "DG - Religion of the Realm:[GetYear]:[This.GetName]: as AI went Papist" }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				NOT = { dominant_religion = catholic }
+				factor = 0
+			}
+			modifier = {
+				capital_scope = { religion = catholic }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 0 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 2 }
+				factor = 2
+			}
+		}
+	}
+	option = {
+		name = "DG_Convert.301.optb"
+		trigger = { western_christian = yes NOT = { religion = waldensian } is_religion_enabled = waldensian OR = { ai = no is_subject = no overlord = { religion = waldensian } } }
+		if = {
+			limit = { religion = catholic }
+			UnrestPerSize = { religion = 1 }
+			if = {
+				limit = { ai = no has_country_flag = catholic_revival }
+				if = {
+					limit = { dominant_religion = catholic }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = religious_compromise }
+				if = {
+					limit = { dominant_religion = catholic }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = lollard }
+			UnrestPerSize = { religion = 6 }
+			if = {
+				limit = { ai = no has_country_flag = support_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = hussite }
+			UnrestPerSize = { religion = 4 }
+			if = {
+				limit = { ai = no has_country_flag = support_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = protestant }
+			UnrestPerSize = { religion = 2 }
+			if = {
+				limit = { ai = no has_country_flag = support_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = reformed }
+			UnrestPerSize = { religion = 3 }
+			if = {
+				limit = { ai = no has_country_flag = support_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		change_religion = waldensian
+		if = {
+			limit = { ai = no dominant_religion = waldensian }
+			if = {
+				limit = { has_country_flag = support_05 }
+				Stab_Add1 = yes
+				add_adm_power = -75
+			}
+			else_if = {
+				limit = { has_country_flag = accept_05 }
+				Stab_Subtract1 = yes
+				add_adm_power = -100
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -150
+			}
+		}
+		else_if = {
+			limit = { ai = no }
+			if = {
+				limit = { has_country_flag = support_05 }
+				add_adm_power = -150
+			}
+			else_if = {
+				limit = { has_country_flag = accept_05 }
+				Stab_Subtract1 = yes
+				add_adm_power = -200
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -300
+			}
+		}
+		if = { limit = { ai = yes } log = "DG - Religion of the Realm:[GetYear]:[This.GetName]: as AI went Waldensian" }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				NOT = { dominant_religion = waldensian }
+				factor = 0
+			}
+			modifier = {
+				capital_scope = { religion = waldensian }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 0 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 2 }
+				factor = 2
+			}
+		}
+	}
+	option = {
+		name = "DG_Convert.301.optc"
+		trigger = { western_christian = yes NOT = { religion = lollard } is_religion_enabled = lollard OR = { ai = no is_subject = no overlord = { religion = lollard } } }
+		if = {
+			limit = { religion = catholic }
+			UnrestPerSize = { religion = 1 }
+			if = {
+				limit = { ai = no has_country_flag = catholic_revival }
+				if = {
+					limit = { dominant_religion = catholic }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = religious_compromise }
+				if = {
+					limit = { dominant_religion = catholic }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = waldensian }
+			UnrestPerSize = { religion = 5 }
+			if = {
+				limit = { ai = no has_country_flag = support_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = hussite }
+			UnrestPerSize = { religion = 4 }
+			if = {
+				limit = { ai = no has_country_flag = support_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = protestant }
+			UnrestPerSize = { religion = 2 }
+			if = {
+				limit = { ai = no has_country_flag = support_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = reformed }
+			UnrestPerSize = { religion = 3 }
+			if = {
+				limit = { ai = no has_country_flag = support_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		change_religion = lollard
+		if = {
+			limit = { ai = no dominant_religion = lollard }
+			if = {
+				limit = { has_country_flag = support_06 }
+				Stab_Add1 = yes
+				add_adm_power = -75
+			}
+			else_if = {
+				limit = { has_country_flag = accept_06 }
+				Stab_Subtract1 = yes
+				add_adm_power = -100
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -150
+			}
+		}
+		else_if = {
+			limit = { ai = no }
+			if = {
+				limit = { has_country_flag = support_06 }
+				add_adm_power = -150
+			}
+			else_if = {
+				limit = { has_country_flag = accept_06 }
+				Stab_Subtract1 = yes
+				add_adm_power = -200
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -300
+			}
+		}
+		if = { limit = { ai = yes } log = "DG - Religion of the Realm:[GetYear]:[This.GetName]: as AI went Wycliffite" }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				NOT = { dominant_religion = lollard }
+				factor = 0
+			}
+			modifier = {
+				capital_scope = { religion = lollard }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 0 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 2 }
+				factor = 2
+			}
+		}
+	}
+	option = {
+		name = "DG_Convert.301.optd"
+		trigger = { western_christian = yes NOT = { religion = hussite } is_religion_enabled = hussite OR = { ai = no is_subject = no overlord = { religion = hussite } } }
+		if = {
+			limit = { religion = catholic }
+			UnrestPerSize = { religion = 1 }
+			if = {
+				limit = { ai = no has_country_flag = catholic_revival }
+				if = {
+					limit = { dominant_religion = catholic }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = religious_compromise }
+				if = {
+					limit = { dominant_religion = catholic }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = waldensian }
+			UnrestPerSize = { religion = 5 }
+			if = {
+				limit = { ai = no has_country_flag = support_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = lollard }
+			UnrestPerSize = { religion = 6 }
+			if = {
+				limit = { ai = no has_country_flag = support_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = protestant }
+			UnrestPerSize = { religion = 2 }
+			if = {
+				limit = { ai = no has_country_flag = support_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = reformed }
+			UnrestPerSize = { religion = 3 }
+			if = {
+				limit = { ai = no has_country_flag = support_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		change_religion = hussite
+		if = {
+			limit = { ai = no dominant_religion = hussite }
+			if = {
+				limit = { has_country_flag = support_04 }
+				Stab_Add1 = yes
+				add_adm_power = -75
+			}
+			else_if = {
+				limit = { has_country_flag = accept_04 }
+				Stab_Subtract1 = yes
+				add_adm_power = -100
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -150
+			}
+		}
+		else_if = {
+			limit = { ai = no }
+			if = {
+				limit = { has_country_flag = support_04 }
+				add_adm_power = -150
+			}
+			else_if = {
+				limit = { has_country_flag = accept_04 }
+				Stab_Subtract1 = yes
+				add_adm_power = -200
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -300
+			}
+		}
+		if = { limit = { ai = yes } log = "DG - Religion of the Realm:[GetYear]:[This.GetName]: as AI went Hussite" }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				NOT = { dominant_religion = hussite }
+				factor = 0
+			}
+			modifier = {
+				capital_scope = { religion = hussite }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 0 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 2 }
+				factor = 2
+			}
+		}
+	}
+	option = {
+		name = "DG_Convert.301.opte"
+		trigger = { western_christian = yes NOT = { religion = protestant } is_religion_enabled = protestant OR = { ai = no is_subject = no overlord = { religion = protestant } } }
+		if = {
+			limit = { religion = catholic }
+			UnrestPerSize = { religion = 1 }
+			if = {
+				limit = { ai = no has_country_flag = catholic_revival }
+				if = {
+					limit = { dominant_religion = catholic }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = religious_compromise }
+				if = {
+					limit = { dominant_religion = catholic }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = waldensian }
+			UnrestPerSize = { religion = 5 }
+			if = {
+				limit = { ai = no has_country_flag = support_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = lollard }
+			UnrestPerSize = { religion = 6 }
+			if = {
+				limit = { ai = no has_country_flag = support_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = hussite }
+			UnrestPerSize = { religion = 4 }
+			if = {
+				limit = { ai = no has_country_flag = support_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = reformed }
+			UnrestPerSize = { religion = 3 }
+			if = {
+				limit = { ai = no has_country_flag = support_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_03 }
+				if = {
+					limit = { dominant_religion = reformed }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		change_religion = protestant
+		if = {
+			limit = { ai = no dominant_religion = protestant }
+			if = {
+				limit = { has_country_flag = support_02 }
+				Stab_Add1 = yes
+				add_adm_power = -75
+			}
+			else_if = {
+				limit = { has_country_flag = accept_02 }
+				Stab_Subtract1 = yes
+				add_adm_power = -100
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -150
+			}
+		}
+		else_if = {
+			limit = { ai = no }
+			if = {
+				limit = { has_country_flag = support_02 }
+				add_adm_power = -150
+			}
+			else_if = {
+				limit = { has_country_flag = accept_02 }
+				Stab_Subtract1 = yes
+				add_adm_power = -200
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -300
+			}
+		}
+		if = { limit = { ai = yes } log = "DG - Religion of the Realm:[GetYear]:[This.GetName]: as AI went Lutheran" }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				NOT = { dominant_religion = protestant }
+				factor = 0
+			}
+			modifier = {
+				capital_scope = { religion = protestant }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 0 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 2 }
+				factor = 2
+			}
+		}
+	}
+	option = {
+		name = "DG_Convert.301.optf"
+		trigger = { western_christian = yes NOT = { religion = reformed } is_religion_enabled = reformed OR = { ai = no is_subject = no overlord = { religion = reformed } } }
+		if = {
+			limit = { religion = catholic }
+			UnrestPerSize = { religion = 1 }
+			if = {
+				limit = { ai = no has_country_flag = catholic_revival }
+				if = {
+					limit = { dominant_religion = catholic }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = religious_compromise }
+				if = {
+					limit = { dominant_religion = catholic }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = waldensian }
+			UnrestPerSize = { religion = 5 }
+			if = {
+				limit = { ai = no has_country_flag = support_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_05 }
+				if = {
+					limit = { dominant_religion = waldensian }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = lollard }
+			UnrestPerSize = { religion = 6 }
+			if = {
+				limit = { ai = no has_country_flag = support_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_06 }
+				if = {
+					limit = { dominant_religion = lollard }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = hussite }
+			UnrestPerSize = { religion = 4 }
+			if = {
+				limit = { ai = no has_country_flag = support_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_04 }
+				if = {
+					limit = { dominant_religion = hussite }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { religion = protestant }
+			UnrestPerSize = { religion = 2 }
+			if = {
+				limit = { ai = no has_country_flag = support_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract4 = yes
+				}
+				else = {
+					Stab_Subtract2 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = accept_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract2 = yes
+				}
+				else = {
+					Stab_Subtract1 = yes
+				}
+			}
+			else_if = {
+				limit = { ai = no has_country_flag = silence_02 }
+				if = {
+					limit = { dominant_religion = protestant }
+					Stab_Subtract1 = yes
+				}
+			}
+		}
+		change_religion = reformed
+		if = {
+			limit = { ai = no dominant_religion = reformed }
+			if = {
+				limit = { has_country_flag = support_03 }
+				Stab_Add1 = yes
+				add_adm_power = -75
+			}
+			else_if = {
+				limit = { has_country_flag = accept_03 }
+				Stab_Subtract1 = yes
+				add_adm_power = -100
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -150
+			}
+		}
+		else_if = {
+			limit = { ai = no }
+			if = {
+				limit = { has_country_flag = support_03 }
+				add_adm_power = -150
+			}
+			else_if = {
+				limit = { has_country_flag = accept_03 }
+				Stab_Subtract1 = yes
+				add_adm_power = -200
+			}
+			else = {
+				Stab_Subtract2 = yes
+				add_adm_power = -300
+			}
+		}
+		if = { limit = { ai = yes } log = "DG - Religion of the Realm:[GetYear]:[This.GetName]: as AI went Calvinist" }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				NOT = { dominant_religion = reformed }
+				factor = 0
+			}
+			modifier = {
+				capital_scope = { religion = reformed }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 0 }
+				factor = 2
+			}
+			modifier = {
+				NOT = { stability = 2 }
+				factor = 2
+			}
+		}
+	}
+	option = {
+		name = PTM_BACK
+		highlight = yes
+		country_event = { id = Prov_UI.436 }
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = PTM_EXIT
+		highlight = yes
+		#if = { limit = { ai = yes } log = "DG - Religion of the Realm:[GetYear]:[This.GetName]: as AI went for not changing" }
+		ai_chance = {
+			factor = 100
+			modifier = {
+				NOT = { dominant_religion = ROOT }
+				factor = 0.5
+			}
+			modifier = {
+				NOT = { dominant_religion_plus = yes }
+				factor = 0.5
+			}
+			modifier = {
+				NOT = { stability = 0 }
+				factor = 0.5
+			}
+			modifier = {
+				NOT = { stability = 2 }
+				factor = 0.5
+			}
+		}
+	}
+}
+
+province_event = {
+	id = DG_Convert.901
+	title = "DG_Convert.901.title"
+	desc = "DG_Convert.901.desc"
+	picture = MEIOU_AND_TAXES_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	trigger = { NOT = { tag = PAP } }
+	
+	immediate = {
+	}
+
+	option = {
+		name = "DG_Convert.007.opta"
+		#failsafe cleanup
+		owner = {
+			change_religion = ROOT
+			force_converted = yes
+		}
+	}
+}

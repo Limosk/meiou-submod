@@ -1,0 +1,69 @@
+#Sets minoritiesin new provinces
+#Example:
+#	MN_StartUpProv = {
+#		rural0 = 0.70 urban0 = 0.85 notables0 = 0.99
+#		religion1 = 67 rural1 = 0.20 urban1 = 0.10 notables1 = 0.01
+#		religion2 = 3  rural2 = 0.10 urban2 = 0.05 notables2 = 0.00
+#	}
+MN_StartUpProv = {
+	export_to_key = {
+		lhs = MN_S0
+		value = religion
+	}
+	set_key = { lhs = MN_S0Rural value = $rural0$ }
+	set_key = { lhs = MN_S0Urban value = $urban0$ }
+	set_key = { lhs = MN_S0Notables value = $notables0$ }
+
+[[religion1]
+	set_key = { lhs = MN_S1 value = $religion1$ }
+	set_key = { lhs = MN_S1Rural value = $rural1$ }
+	set_key = { lhs = MN_S1Urban value = $urban1$ }
+	set_key = { lhs = MN_S1Notables value = $notables1$ }
+]
+[[religion2]
+	set_key = { lhs = MN_S2 value = $religion2$ }
+	set_key = { lhs = MN_S2Rural value = $rural2$ }
+	set_key = { lhs = MN_S2Urban value = $urban2$ }
+	set_key = { lhs = MN_S2Notables value = $notables2$ }
+]
+[[religion3]
+	set_key = { lhs = MN_S3 value = $religion3$ }
+	set_key = { lhs = MN_S3Rural value = $rural3$ }
+	set_key = { lhs = MN_S3Urban value = $urban3$ }
+	set_key = { lhs = MN_S3Notables value = $notables3$ }
+]
+[[religion4]
+	set_key = { lhs = MN_S4 value = $religion4$ }
+	set_key = { lhs = MN_S4Rural value = $rural4$ }
+	set_key = { lhs = MN_S4Urban value = $urban4$ }
+	set_key = { lhs = MN_S4Notables value = $notables4$ }
+]
+[[religion5]
+	set_key = { lhs = MN_S5 value = $religion5$ }
+	set_key = { lhs = MN_S5Rural value = $rural5$ }
+	set_key = { lhs = MN_S5Urban value = $urban5$ }
+	set_key = { lhs = MN_S5Notables value = $notables5$ }
+]
+}
+
+MN_StartUp = {
+	every_province = {
+		limit = {
+			isValidEmpty = yes
+		}
+		MN_StartUpProv = {
+			rural0 = 1 urban0 = 1 notables0 = 1
+		}
+	}
+}
+MN_PostStartUp = {
+	MN_Regularize = { type = Rural }
+	MN_Regularize = { type = Urban }
+	MN_Regularize = { type = Notables }
+	MN_GetSlot_Class = yes
+	MN_GetInfrast = yes
+	if = {
+		limit = { check_key = { lhs = MN_S1 value = 1 } }
+		MN_RlgShift = yes
+	}
+}

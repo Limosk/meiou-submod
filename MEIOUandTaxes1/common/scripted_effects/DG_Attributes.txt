@@ -1,0 +1,1700 @@
+#Calculates Entrenchment and Infrastructure
+#Entrenchment is how much a religion resists conversion
+#Infrastructure is the local clergy and buildings in that province
+MN_GetInfrast_Helper = {
+	if = {
+		limit = { check_key = { lhs = MN_S$slot$ value = 1 } }
+		#Starting infrastructure corresponds to 25% of the proportion of the religion in the province
+		set_key = { lhs = MN_S$slot$INF which = MN_S$slot$TotP }
+		divide_key = { lhs = MN_S$slot$INF value = 4 }
+		#Owner's religion gets 5% bonus
+		if = {
+			limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			change_key = { lhs = MN_S$slot$INF value = 5 }
+		}
+		else = {
+			change_key = { lhs = MN_S$slot$INF value = 1 }
+		}
+		
+		#Entrenchment starts at 50%
+		set_key = { lhs = MN_S$slot$ENT value = 50 }
+		#The fewer the number, the more zealot they are
+#		set_key = { lhs = DG_Tmp1 value = 100 }
+#		subtract_key = { lhs = DG_Tmp1 which = MN_S$slot$TotP }
+#		multiply_key = { lhs = MN_S$slot$ENT which = DG_Tmp1 }
+#		divide_key = { lhs = MN_S$slot$ENT value = 100 }
+		#Effect of harsh terrains
+		if = {
+			limit = { forest_trigger = yes }
+			multiply_key = { lhs = MN_S$slot$ENT value = 1.05 }
+		}
+		if = {
+			limit = { jungle_trigger = yes }
+			multiply_key = { lhs = MN_S$slot$ENT value = 1.10 }
+		}
+		if = {
+			limit = { mountains_trigger = yes }
+			multiply_key = { lhs = MN_S$slot$ENT value = 1.15 }
+		}
+		if = {
+			limit = { highlands_trigger = yes }
+			multiply_key = { lhs = MN_S$slot$ENT value = 1.05 }
+		}
+		#25% added depending based on subcontinent
+		#Christians in Europe and Anatolia superregion
+		if = {
+			limit = {
+				check_key = { lhs = MN_S$slot$ value = 1 }
+				NOT = { check_key = { lhs = MN_S$slot$ value = 22 } }
+				OR = {
+					continent = europe
+					superregion = anatolia_superregion
+					region = harar_region
+					region = abyssinia_region
+				}
+			}
+			change_key = { lhs = MN_S$slot$ENT value = 25 }
+		}
+		#Muslims in MENA and central Asia
+		else_if = {
+			limit = {
+				check_key = { lhs = MN_S$slot$ value = 22 }
+				NOT = { check_key = { lhs = MN_S$slot$ value = 31 } }
+				OR = {
+					continent = mena
+					continent = central_asia
+				}
+			}
+			change_key = { lhs = MN_S$slot$ENT value = 25 }
+		}
+		#Taoic in East Indies superregion and central Asia
+		else_if = {
+			limit = {
+				check_key = { lhs = MN_S$slot$ value = 31 }
+				NOT = { check_key = { lhs = MN_S$slot$ value = 35 } }
+				OR = {
+					superregion = east_indies_superregion
+					continent = asia
+					superregion = japan_superregion
+				}
+			}
+			change_key = { lhs = MN_S$slot$ENT value = 25 }
+		}
+		#Dharmic in India and central Asia
+		else_if = {
+			limit = {
+				check_key = { lhs = MN_S$slot$ value = 35 }
+				NOT = { check_key = { lhs = MN_S$slot$ value = 42 } }
+				OR = {
+					superregion = southeast_asia_superregion
+					continent = indian_continent
+				}
+			}
+			change_key = { lhs = MN_S$slot$ENT value = 25 }
+		}
+		#Jews in Semien and Palestine, and in Europe and MENA
+		else_if = {
+			limit = {
+				check_key = { lhs = MN_S$slot$ value = 42 }
+				NOT = { check_key = { lhs = MN_S$slot$ value = 44 } }
+			}
+			if = {
+				limit = {
+					OR = {
+						area = semien_area
+						area = palestine_area
+					}
+				}
+				change_key = { lhs = MN_S$slot$ENT value = 25 }
+			}
+			else_if = {
+				limit = {
+					check_key = { lhs = MN_S$slot$ value = 42 }
+					NOT = { check_key = { lhs = MN_S$slot$ value = 44 } }
+					OR = {
+						continent = mena
+						continent = europe
+					}
+				}
+				change_key = { lhs = MN_S$slot$ENT value = 40 }
+			}
+		}
+		#Additional 25% for owner religion
+		if = {
+			limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			change_key = { lhs = MN_S$slot$ENT value = 25 }
+		}
+		#Entrenchment should be between 0.01 and 100
+		if = {
+			limit = { NOT = { check_key = { lhs = MN_S$slot$ENT value = 0.01 } } }
+			set_key = { lhs = MN_S$slot$ENT value = 0.01 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_S$slot$ENT value = 100 } }
+			set_key = { lhs = MN_S$slot$ENT value = 100 }
+		}
+		if = {
+			limit = { owner = { religion_group = christian } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ value = 42 } }
+				set_key = { lhs = MN_S$slot$Tolerance value = 0 }
+				#export_to_key = {
+				#	 lhs = MN_S$slot$Tolerance
+				#	 value = modifier:tolerance_heathen
+				#	 who = owner
+				#}
+			}
+			else_if = {
+				limit = { NOT = { check_key = { lhs = MN_S$slot$ value = 22 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = muslim } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ value = 42 } }
+				set_key = { lhs = MN_S$slot$Tolerance value = 0 }
+				#export_to_key = {
+				#	 lhs = MN_S$slot$Tolerance
+				#	 value = modifier:tolerance_heathen
+				#	 who = owner
+				#}
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 22 } NOT = { check_key = { lhs = MN_S$slot$ value = 31 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = taoic } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 31 } NOT = { check_key = { lhs = MN_S$slot$ value = 35 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = dharmic } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 35 } NOT = { check_key = { lhs = MN_S$slot$ value = 38 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$_Var
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$_Var
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = zro_group } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+				export_to_key = {
+					 lhs = MN_S$slot$_Var
+					 value = modifier:tolerance_own
+					 who = owner
+				}
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 38 } NOT = { check_key = { lhs = MN_S$slot$ value = 42 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = jewish_group } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 42 } NOT = { check_key = { lhs = MN_S$slot$ value = 45 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = new_world_pagan } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 45 } NOT = { check_key = { lhs = MN_S$slot$ value = 52 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = european_pagan } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 52 } NOT = { check_key = { lhs = MN_S$slot$ value = 59 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 59 } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+			}
+		}
+		set_key = { lhs = DG_Tmp1 value = 0 }
+	}
+}
+
+MN_GetInfrast = {
+	export_to_key = {
+		 lhs = DG_Tmp1
+		 value = religion
+		 who = owner
+	}
+	MN_GetInfrast_Helper = { slot = 0 }
+	MN_GetInfrast_Helper = { slot = 1 }
+	MN_GetInfrast_Helper = { slot = 2 }
+	MN_GetInfrast_Helper = { slot = 3 }
+	MN_GetInfrast_Helper = { slot = 4 }
+	MN_GetInfrast_Helper = { slot = 5 }
+}
+
+
+#Calculates by how much a minority is expected to change every other year.
+#Primary factor is tolerance to said religion
+#Impacted by entrenchment and infrastructure
+MN_RlgShift_Helper = {
+	if = {
+		limit = {
+			check_key = { lhs = MN_S$slot$ value = 1 }
+			NOT = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+		}
+		set_key = { lhs = MN_S$slot$_Var which = MN_S$slot$Tolerance }
+		if = {
+			limit  = {
+				NOT = { is_key_equal = { lhs = MN_S$slot$ value = 42 } }
+				is_key_equal = { lhs = MN_S$slot$_Var value = 0 }
+			}
+			set_key = { lhs = MN_S$slot$_Var value = -0.001 }
+		}
+		if = {
+			limit = { NOT = { check_key = { lhs = MN_S$slot$_Var value = 0 } } }
+			set_key = { lhs = DG_Tmp2 value = 100 }
+			subtract_key = { lhs = DG_Tmp2 which = MN_S$slot$ENT }
+			multiply_key = { lhs = MN_S$slot$_Var which = DG_Tmp2 }
+			divide_key = { lhs = MN_S$slot$_Var value = 100 }
+			set_key = { lhs = DG_Tmp2 value = 100 }
+			subtract_key = { lhs = DG_Tmp2 which = MN_S$slot$INF }
+			multiply_key = { lhs = MN_S$slot$_Var which = DG_Tmp2 }
+			divide_key = { lhs = MN_S$slot$_Var value = 100 }
+		}
+		else = {
+			multiply_key = { lhs = MN_S$slot$_Var which = MN_S$slot$ENT }
+			divide_key = { lhs = MN_S$slot$_Var value = 100 }
+			multiply_key = { lhs = MN_S$slot$_Var which = MN_S$slot$INF }
+			divide_key = { lhs = MN_S$slot$_Var value = 100 }
+		}
+		divide_key = { lhs = MN_S$slot$_Var value = 100 }
+		
+		set_key = { lhs = DG_Tmp3 which = MN_S$slot$Preach }
+		divide_key = { lhs = DG_Tmp3 value = 100 }
+		if = {
+			limit = {
+				is_key_equal = { lhs = MN_S$slot$ value = 1 }
+			}
+			if = {
+				limit = { owner = { has_country_flag = catholic_revival } }
+				multiply_key = { lhs = DG_Tmp3 value = 1.5 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = religious_compromise } }
+				multiply_key = { lhs = DG_Tmp3 value = 1.2 }
+			}
+			if = {
+				limit = { owner = { religion = catholic } NOT = { culture_group = owner } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.9 }
+			}
+			if = {
+				limit = { owner = { religion = baltic_pagan_reformed } }
+				if = {
+					limit = { owner = { overlord = { religion = catholic } } }
+					set_key = { lhs = MN_S$slot$_Var value = 0.005 }
+				}
+				else = {
+					set_key = { lhs = MN_S$slot$_Var value = 0.001 }
+				}
+			}	
+		}
+		else_if = {
+			limit = {
+				is_religion_enabled = protestant
+				is_key_equal = { lhs = MN_S$slot$ value = 2 }
+			}
+			if = {
+				limit = { owner = { has_country_flag = support_02 } }
+				multiply_key = { lhs = DG_Tmp3 value = 1.5 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = silence_02 } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = catholic_revival } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			else_if = {
+				limit = { NOT = { religion = protestant } owner = { has_country_flag = religious_compromise } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			if = {
+				limit = { owner = { religion = protestant } NOT = { culture_group = owner } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.9 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_religion_enabled = reformed
+				is_key_equal = { lhs = MN_S$slot$ value = 3 }
+			}
+			if = {
+				limit = { owner = { has_country_flag = support_03 } }
+				multiply_key = { lhs = DG_Tmp3 value = 1.5 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = silence_03 } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = catholic_revival } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			else_if = {
+				limit = { NOT = { religion = reformed } owner = { has_country_flag = religious_compromise } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			if = {
+				limit = { owner = { religion = reformed } NOT = { culture_group = owner } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.9 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_religion_enabled = hussite
+				is_key_equal = { lhs = MN_S$slot$ value = 4 }
+			}
+			if = {
+				limit = { owner = { has_country_flag = support_04 } }
+				multiply_key = { lhs = DG_Tmp3 value = 1.5 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = silence_04 } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = catholic_revival } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			else_if = {
+				limit = { NOT = { religion = hussite } owner = { has_country_flag = religious_compromise } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			if = {
+				limit = { owner = { religion = hussite } NOT = { culture_group = owner } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.9 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_religion_enabled = waldensian
+				is_key_equal = { lhs = MN_S$slot$ value = 5 }
+			}
+			if = {
+				limit = { owner = { has_country_flag = support_05 } }
+				multiply_key = { lhs = DG_Tmp3 value = 1.5 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = silence_05 } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = catholic_revival } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			else_if = {
+				limit = { NOT = { religion = waldensian } owner = { has_country_flag = religious_compromise } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			if = {
+				limit = { owner = { religion = waldensian } NOT = { culture_group = owner } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.9 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_religion_enabled = lollard
+				is_key_equal = { lhs = MN_S$slot$ value = 6 }
+			}
+			if = {
+				limit = { owner = { has_country_flag = support_06 } }
+				multiply_key = { lhs = DG_Tmp3 value = 1.5 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = silence_06 } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = catholic_revival } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			else_if = {
+				limit = { NOT = { religion = lollard } owner = { has_country_flag = religious_compromise } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.75 }
+			}
+			if = {
+				limit = { owner = { religion = lollard } NOT = { culture_group = owner } }
+				multiply_key = { lhs = DG_Tmp3 value = 0.9 }
+			}
+		}
+		if = {
+			limit = {
+				is_key_equal = { lhs = MN_S$slot$ value = 9 }
+			}
+			if = {
+				limit = { owner = { religion = baltic_pagan_reformed } }
+				if = {
+					limit = { OR = { owner = { overlord = { religion = orthodox } secondary_religion = orthodox } } }
+					set_key = { lhs = MN_S$slot$_Var value = 0.005 }
+				}
+				else = {
+					set_key = { lhs = MN_S$slot$_Var value = 0.001 }
+				}
+			}	
+		}
+		change_key = { lhs = MN_S$slot$_Var which = DG_Tmp3 }
+		
+		set_key = { lhs = DG_Tmp4 which = MN_S$slot$Inquis }
+		divide_key = { lhs = DG_Tmp4 value = 100 }
+		subtract_key = { lhs = MN_S$slot$_Var which = DG_Tmp4 }
+		
+		if = {
+			limit = { has_province_flag = evangelisation owner = { has_country_modifier = evangel_cm } }
+			multiply_key = { lhs = MN_S$slot$_Var value = 50 }
+		}
+		else = {
+			clr_province_flag = evangelisation
+		}
+		
+		if = {
+			limit = { has_global_flag = historical_religion }
+			divide_key = { lhs = MN_S$slot$_Var value = 2 }
+		}
+
+		if = {
+			limit = { has_province_modifier = minority_missionary }
+			set_key = { lhs = DG_Tmp5 value = 1.0 }
+			if = {
+				limit = { check_key = { lhs = MN_S$slot$MStrength value = 0 } }
+				change_key = { lhs = DG_Tmp5 which = MN_S$slot$MStrength }
+			}
+			subtract_key = { lhs = MN_S$slot$_Var which = DG_Tmp5 }
+		}
+
+		if = {
+			limit = { NOT = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } } is_colony = yes }
+			change_key = { lhs = MN_S$slot$_Var value = -0.050 }
+		}
+
+		if = {
+			limit = { owner = { has_country_modifier = wc_aspect_04_3_em } } #Vernacular Bible
+			change_key = { lhs = MN_S$slot$_Var value = -0.050 }
+		}
+		
+		set_key = { lhs = DG_Tmp2 value = 0 }
+		set_key = { lhs = DG_Tmp3 value = 0 }
+		set_key = { lhs = DG_Tmp4 value = 0 }
+		set_key = { lhs = DG_Tmp5 value = 0 }
+	}
+}
+
+MN_RlgShift = {
+	export_to_key = {
+		 lhs = DG_Tmp1
+		 value = religion
+		 who = owner
+	}
+	MN_RlgShift_Helper = { slot = 0 }
+	MN_RlgShift_Helper = { slot = 1 }
+	MN_RlgShift_Helper = { slot = 2 }
+	MN_RlgShift_Helper = { slot = 3 }
+	MN_RlgShift_Helper = { slot = 4 }
+	MN_RlgShift_Helper = { slot = 5 }
+	
+	if = {
+		limit = { is_key_equal = { lhs = MN_S0 which = DG_Tmp1 } }
+		set_key = { lhs = MN_S0_Var value = 0 }
+		subtract_key = { lhs = MN_S0_Var which = MN_S1_Var }
+		subtract_key = { lhs = MN_S0_Var which = MN_S2_Var }
+		subtract_key = { lhs = MN_S0_Var which = MN_S3_Var }
+		subtract_key = { lhs = MN_S0_Var which = MN_S4_Var }
+		subtract_key = { lhs = MN_S0_Var which = MN_S5_Var }
+	}
+	else_if = {
+		limit = { is_key_equal = { lhs = MN_S1 which = DG_Tmp1 } }
+		set_key = { lhs = MN_S1_Var value = 0 }
+		subtract_key = { lhs = MN_S1_Var which = MN_S0_Var }
+		subtract_key = { lhs = MN_S1_Var which = MN_S2_Var }
+		subtract_key = { lhs = MN_S1_Var which = MN_S3_Var }
+		subtract_key = { lhs = MN_S1_Var which = MN_S4_Var }
+		subtract_key = { lhs = MN_S1_Var which = MN_S5_Var }
+	}
+	else_if = {
+		limit = { is_key_equal = { lhs = MN_S2 which = DG_Tmp1 } }
+		set_key = { lhs = MN_S2_Var value = 0 }
+		subtract_key = { lhs = MN_S2_Var which = MN_S0_Var }
+		subtract_key = { lhs = MN_S2_Var which = MN_S1_Var }
+		subtract_key = { lhs = MN_S2_Var which = MN_S3_Var }
+		subtract_key = { lhs = MN_S2_Var which = MN_S4_Var }
+		subtract_key = { lhs = MN_S2_Var which = MN_S5_Var }
+	}
+	else_if = {
+		limit = { is_key_equal = { lhs = MN_S3 which = DG_Tmp1 } }
+		set_key = { lhs = MN_S3_Var value = 0 }
+		subtract_key = { lhs = MN_S3_Var which = MN_S0_Var }
+		subtract_key = { lhs = MN_S3_Var which = MN_S1_Var }
+		subtract_key = { lhs = MN_S3_Var which = MN_S2_Var }
+		subtract_key = { lhs = MN_S3_Var which = MN_S4_Var }
+		subtract_key = { lhs = MN_S3_Var which = MN_S5_Var }
+	}
+	else_if = {
+		limit = { is_key_equal = { lhs = MN_S4 which = DG_Tmp1 } }
+		set_key = { lhs = MN_S4_Var value = 0 }
+		subtract_key = { lhs = MN_S4_Var which = MN_S0_Var }
+		subtract_key = { lhs = MN_S4_Var which = MN_S1_Var }
+		subtract_key = { lhs = MN_S4_Var which = MN_S2_Var }
+		subtract_key = { lhs = MN_S4_Var which = MN_S3_Var }
+		subtract_key = { lhs = MN_S4_Var which = MN_S5_Var }
+	}
+	else_if = {
+		limit = { is_key_equal = { lhs = MN_S5 which = DG_Tmp1 } }
+		set_key = { lhs = MN_S5_Var value = 0 }
+		subtract_key = { lhs = MN_S5_Var which = MN_S0_Var }
+		subtract_key = { lhs = MN_S5_Var which = MN_S1_Var }
+		subtract_key = { lhs = MN_S5_Var which = MN_S2_Var }
+		subtract_key = { lhs = MN_S5_Var which = MN_S3_Var }
+		subtract_key = { lhs = MN_S5_Var which = MN_S4_Var }
+	}	
+	set_key = { lhs = DG_Tmp1 value = 0 }
+	MN_Autonomy = yes
+}
+
+#Impact on minority attributes
+#Can use ENT, INF, Preach, Inquis or Tolerance
+#DO NOT use the Rural, Urban or Notables
+MN_Attribute_Effect = {
+	if = {
+		limit = {
+			is_key_equal = { lhs = MN_S0 $reltype$ = $religion$ }
+		}
+		change_key = { lhs = MN_S0$typeEffect$ $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S1 $reltype$ = $religion$ }
+		}
+		change_key = { lhs = MN_S1$typeEffect$ $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S2 $reltype$ = $religion$ }
+		}
+		change_key = { lhs = MN_S2$typeEffect$ $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S3 $reltype$ = $religion$ }
+		}
+		change_key = { lhs = MN_S3$typeEffect$ $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S4 $reltype$ = $religion$ }
+		}
+		change_key = { lhs = MN_S4$typeEffect$ $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S5 $reltype$ = $religion$ }
+		}
+		change_key = { lhs = MN_S5$typeEffect$ $typeStrength$ = $strength$ }
+	}
+}
+
+MN_Attribute_Reset = {
+	if = {
+		limit = {
+			is_key_equal = { lhs = MN_S0 $reltype$ = $religion$ }
+		}
+		set_key = { lhs = MN_S0$typeEffect$ $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S1 $reltype$ = $religion$ }
+		}
+		set_key = { lhs = MN_S1$typeEffect$ $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S2 $reltype$ = $religion$ }
+		}
+		set_key = { lhs = MN_S2$typeEffect$ $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S3 $reltype$ = $religion$ }
+		}
+		set_key = { lhs = MN_S3$typeEffect$ $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S4 $reltype$ = $religion$ }
+		}
+		set_key = { lhs = MN_S4$typeEffect$ $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S5 $reltype$ = $religion$ }
+		}
+		set_key = { lhs = MN_S5$typeEffect$ $typeStrength$ = $strength$ }
+	}
+}
+
+#Calculation of the minority effect on autonomy
+MN_Autonomy_Helper = {
+	set_key = { lhs = MN_S$slot$Tolerance value = 0 }
+	if = {
+		limit = {
+			check_key = { lhs = MN_S$slot$ value = 1 }
+		}
+		if = {
+			limit = { owner = { religion_group = christian } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ value = 42 } }
+				set_key = { lhs = MN_S$slot$Tolerance value = 0 }
+				#export_to_key = {
+				#	 lhs = MN_S$slot$Tolerance
+				#	 value = modifier:tolerance_heathen
+				#	 who = owner
+				#}
+				set_key = { lhs = DG_Tmp7 value = 3 }
+			}
+			else_if = {
+				limit = { NOT = { check_key = { lhs = MN_S$slot$ value = 22 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp8 value = 3 }
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp9 value = 3 }
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = muslim } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ value = 42 } }
+				set_key = { lhs = MN_S$slot$Tolerance value = 0 }
+				#export_to_key = {
+				#	 lhs = MN_S$slot$Tolerance
+				#	 value = modifier:tolerance_heathen
+				#	 who = owner
+				#}
+				set_key = { lhs = DG_Tmp7 value = 3 }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 22 } NOT = { check_key = { lhs = MN_S$slot$ value = 31 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp8 value = 3 }
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp9 value = 3 }
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = taoic } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 31 } NOT = { check_key = { lhs = MN_S$slot$ value = 35 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp8 value = 3 }
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp9 value = 3 }
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = dharmic } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 35 } NOT = { check_key = { lhs = MN_S$slot$ value = 42 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp8 value = 3 }
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp9 value = 3 }
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = jewish_group } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 42 } NOT = { check_key = { lhs = MN_S$slot$ value = 45 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp8 value = 3 }
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp9 value = 3 }
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = new_world_pagan } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 45 } NOT = { check_key = { lhs = MN_S$slot$ value = 52 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp8 value = 3 }
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp9 value = 3 }
+			}
+		}
+		else_if = {
+			limit = { owner = { religion_group = european_pagan } }
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 52 } NOT = { check_key = { lhs = MN_S$slot$ value = 59 } } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp8 value = 3 }
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp9 value = 3 }
+			}
+		}
+		else = {
+			if = {
+				limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			}
+			else_if = {
+				limit = { check_key = { lhs = MN_S$slot$ value = 59 } }
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heretic
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp8 value = 3 }
+			}
+			else = {
+				export_to_key = {
+					 lhs = MN_S$slot$Tolerance
+					 value = modifier:tolerance_heathen
+					 who = owner
+				}
+				set_key = { lhs = DG_Tmp9 value = 3 }
+			}
+		}
+	}
+	if = {
+		limit = { is_key_equal = { lhs = DG_Tmp7 value = 3 } }
+		subtract_key = { lhs = DG_Tmp7 which = MN_S$slot$Tolerance }
+		divide_key = { lhs = DG_Tmp7 value = 6 }
+		multiply_key = { lhs = DG_Tmp7 which = MN_S$slot$TotP }
+		change_key = { lhs = MN_Autonomy_Special which = DG_Tmp7 }
+	}
+	else_if = {
+		limit = { is_key_equal = { lhs = DG_Tmp8 value = 3 } }
+		subtract_key = { lhs = DG_Tmp8 which = MN_S$slot$Tolerance }
+		divide_key = { lhs = DG_Tmp8 value = 6 }
+		multiply_key = { lhs = DG_Tmp8 which = MN_S$slot$TotP }
+		change_key = { lhs = MN_Autonomy_Heretic which = DG_Tmp8 }
+	}
+	else_if = {
+		limit = { is_key_equal = { lhs = DG_Tmp9 value = 3 } }
+		subtract_key = { lhs = DG_Tmp9 which = MN_S$slot$Tolerance }
+		divide_key = { lhs = DG_Tmp9 value = 6 }
+		multiply_key = { lhs = DG_Tmp9 which = MN_S$slot$TotP }
+		change_key = { lhs = MN_Autonomy_Heathen which = DG_Tmp9 }
+	}
+	set_key = { lhs = DG_Tmp7 value = 0 }
+	set_key = { lhs = DG_Tmp8 value = 0 }
+	set_key = { lhs = DG_Tmp9 value = 0 }
+}
+
+MN_Autonomy = {
+	export_to_key = {
+		 lhs = DG_Tmp1
+		 value = religion
+		 who = owner
+	}
+	set_key = { lhs = MN_Autonomy_Special value = 0 }
+	set_key = { lhs = MN_Autonomy_Heretic value = 0 }
+	set_key = { lhs = MN_Autonomy_Heathen value = 0 }
+	MN_Autonomy_Helper = { slot = 0 }
+	MN_Autonomy_Helper = { slot = 1 }
+	MN_Autonomy_Helper = { slot = 2 }
+	MN_Autonomy_Helper = { slot = 3 }
+	MN_Autonomy_Helper = { slot = 4 }
+	MN_Autonomy_Helper = { slot = 5 }
+	set_key = { lhs = DG_Tmp1 value = 0 }
+	if = {
+		limit = { check_key = { lhs = MN_Autonomy_Special value = 0.01 } }
+		if = {
+			limit = { check_key = { lhs = MN_Autonomy_Special value = 90 } }
+			add_province_modifier = { name = MN_A_Spec.90 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.70 } remove_province_modifier = MN_A_Spec.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.60 } remove_province_modifier = MN_A_Spec.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.50 } remove_province_modifier = MN_A_Spec.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.40 } remove_province_modifier = MN_A_Spec.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Special value = 80 } }
+			add_province_modifier = { name = MN_A_Spec.80 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.70 } remove_province_modifier = MN_A_Spec.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.60 } remove_province_modifier = MN_A_Spec.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.50 } remove_province_modifier = MN_A_Spec.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.40 } remove_province_modifier = MN_A_Spec.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Special value = 70 } }
+			add_province_modifier = { name = MN_A_Spec.70 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.60 } remove_province_modifier = MN_A_Spec.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.50 } remove_province_modifier = MN_A_Spec.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.40 } remove_province_modifier = MN_A_Spec.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Special value = 60 } }
+			add_province_modifier = { name = MN_A_Spec.60 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.70 } remove_province_modifier = MN_A_Spec.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.50 } remove_province_modifier = MN_A_Spec.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.40 } remove_province_modifier = MN_A_Spec.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Special value = 50 } }
+			add_province_modifier = { name = MN_A_Spec.50 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.70 } remove_province_modifier = MN_A_Spec.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.60 } remove_province_modifier = MN_A_Spec.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.40 } remove_province_modifier = MN_A_Spec.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Special value = 40 } }
+			add_province_modifier = { name = MN_A_Spec.40 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.70 } remove_province_modifier = MN_A_Spec.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.60 } remove_province_modifier = MN_A_Spec.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.50 } remove_province_modifier = MN_A_Spec.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Special value = 30 } }
+			add_province_modifier = { name = MN_A_Spec.30 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.70 } remove_province_modifier = MN_A_Spec.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.60 } remove_province_modifier = MN_A_Spec.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.50 } remove_province_modifier = MN_A_Spec.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.40 } remove_province_modifier = MN_A_Spec.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Special value = 20 } }
+			add_province_modifier = { name = MN_A_Spec.20 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.70 } remove_province_modifier = MN_A_Spec.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.60 } remove_province_modifier = MN_A_Spec.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.50 } remove_province_modifier = MN_A_Spec.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.40 } remove_province_modifier = MN_A_Spec.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Special value = 10 } }
+			add_province_modifier = { name = MN_A_Spec.10 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.70 } remove_province_modifier = MN_A_Spec.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.60 } remove_province_modifier = MN_A_Spec.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.50 } remove_province_modifier = MN_A_Spec.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.40 } remove_province_modifier = MN_A_Spec.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
+		}
+		else = {
+			add_province_modifier = { name = MN_A_Spec.05 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.70 } remove_province_modifier = MN_A_Spec.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.60 } remove_province_modifier = MN_A_Spec.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.50 } remove_province_modifier = MN_A_Spec.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.40 } remove_province_modifier = MN_A_Spec.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+		}
+	}
+	if = {
+		limit = { check_key = { lhs = MN_Autonomy_Heretic value = 0.01 } }
+		if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heretic value = 90 } }
+			add_province_modifier = { name = MN_A_Here.90 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.70 } remove_province_modifier = MN_A_Here.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.60 } remove_province_modifier = MN_A_Here.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.50 } remove_province_modifier = MN_A_Here.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.40 } remove_province_modifier = MN_A_Here.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heretic value = 80 } }
+			add_province_modifier = { name = MN_A_Here.80 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.70 } remove_province_modifier = MN_A_Here.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.60 } remove_province_modifier = MN_A_Here.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.50 } remove_province_modifier = MN_A_Here.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.40 } remove_province_modifier = MN_A_Here.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heretic value = 70 } }
+			add_province_modifier = { name = MN_A_Here.70 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.60 } remove_province_modifier = MN_A_Here.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.50 } remove_province_modifier = MN_A_Here.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.40 } remove_province_modifier = MN_A_Here.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heretic value = 60 } }
+			add_province_modifier = { name = MN_A_Here.60 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.70 } remove_province_modifier = MN_A_Here.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.50 } remove_province_modifier = MN_A_Here.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.40 } remove_province_modifier = MN_A_Here.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heretic value = 50 } }
+			add_province_modifier = { name = MN_A_Here.50 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.70 } remove_province_modifier = MN_A_Here.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.60 } remove_province_modifier = MN_A_Here.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.40 } remove_province_modifier = MN_A_Here.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heretic value = 40 } }
+			add_province_modifier = { name = MN_A_Here.40 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.70 } remove_province_modifier = MN_A_Here.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.60 } remove_province_modifier = MN_A_Here.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.50 } remove_province_modifier = MN_A_Here.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heretic value = 30 } }
+			add_province_modifier = { name = MN_A_Here.30 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.70 } remove_province_modifier = MN_A_Here.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.60 } remove_province_modifier = MN_A_Here.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.50 } remove_province_modifier = MN_A_Here.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.40 } remove_province_modifier = MN_A_Here.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heretic value = 20 } }
+			add_province_modifier = { name = MN_A_Here.20 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.70 } remove_province_modifier = MN_A_Here.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.60 } remove_province_modifier = MN_A_Here.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.50 } remove_province_modifier = MN_A_Here.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.40 } remove_province_modifier = MN_A_Here.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heretic value = 10 } }
+			add_province_modifier = { name = MN_A_Here.10 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.70 } remove_province_modifier = MN_A_Here.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.60 } remove_province_modifier = MN_A_Here.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.50 } remove_province_modifier = MN_A_Here.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.40 } remove_province_modifier = MN_A_Here.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
+		}
+		else = {
+			add_province_modifier = { name = MN_A_Here.05 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.70 } remove_province_modifier = MN_A_Here.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.60 } remove_province_modifier = MN_A_Here.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.50 } remove_province_modifier = MN_A_Here.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.40 } remove_province_modifier = MN_A_Here.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+		}
+	}
+	if = {
+		limit = { check_key = { lhs = MN_Autonomy_Heathen value = 0.01 } }
+		if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heathen value = 90 } }
+			add_province_modifier = { name = MN_A_Heat.90 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.70 } remove_province_modifier = MN_A_Heat.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.60 } remove_province_modifier = MN_A_Heat.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.50 } remove_province_modifier = MN_A_Heat.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.40 } remove_province_modifier = MN_A_Heat.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heathen value = 80 } }
+			add_province_modifier = { name = MN_A_Heat.80 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.70 } remove_province_modifier = MN_A_Heat.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.60 } remove_province_modifier = MN_A_Heat.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.50 } remove_province_modifier = MN_A_Heat.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.40 } remove_province_modifier = MN_A_Heat.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heathen value = 70 } }
+			add_province_modifier = { name = MN_A_Heat.70 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.60 } remove_province_modifier = MN_A_Heat.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.50 } remove_province_modifier = MN_A_Heat.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.40 } remove_province_modifier = MN_A_Heat.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heathen value = 60 } }
+			add_province_modifier = { name = MN_A_Heat.60 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.70 } remove_province_modifier = MN_A_Heat.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.50 } remove_province_modifier = MN_A_Heat.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.40 } remove_province_modifier = MN_A_Heat.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heathen value = 50 } }
+			add_province_modifier = { name = MN_A_Heat.50 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.70 } remove_province_modifier = MN_A_Heat.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.60 } remove_province_modifier = MN_A_Heat.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.40 } remove_province_modifier = MN_A_Heat.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heathen value = 40 } }
+			add_province_modifier = { name = MN_A_Heat.40 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.70 } remove_province_modifier = MN_A_Heat.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.60 } remove_province_modifier = MN_A_Heat.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.50 } remove_province_modifier = MN_A_Heat.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heathen value = 30 } }
+			add_province_modifier = { name = MN_A_Heat.30 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.70 } remove_province_modifier = MN_A_Heat.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.60 } remove_province_modifier = MN_A_Heat.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.50 } remove_province_modifier = MN_A_Heat.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.40 } remove_province_modifier = MN_A_Heat.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heathen value = 20 } }
+			add_province_modifier = { name = MN_A_Heat.20 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.70 } remove_province_modifier = MN_A_Heat.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.60 } remove_province_modifier = MN_A_Heat.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.50 } remove_province_modifier = MN_A_Heat.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.40 } remove_province_modifier = MN_A_Heat.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
+		}
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heathen value = 10 } }
+			add_province_modifier = { name = MN_A_Heat.10 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.70 } remove_province_modifier = MN_A_Heat.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.60 } remove_province_modifier = MN_A_Heat.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.50 } remove_province_modifier = MN_A_Heat.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.40 } remove_province_modifier = MN_A_Heat.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
+		}
+		else = {
+			add_province_modifier = { name = MN_A_Heat.05 duration = -1 hidden = yes }
+			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.70 } remove_province_modifier = MN_A_Heat.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.60 } remove_province_modifier = MN_A_Heat.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.50 } remove_province_modifier = MN_A_Heat.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.40 } remove_province_modifier = MN_A_Heat.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+		}
+	}
+}
+
+#Adds a trauma corresponding to the size of the minority, impacted by the strength set by event.
+MinorityTrauma = {
+	if = {
+		limit = {
+			is_key_equal = { lhs = MN_S0 value = $religion$ }
+		}
+		MinorityTrauma_Helper = { slot = 0 strength = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S1 value = $religion$ }
+		}
+		MinorityTrauma_Helper = { slot = 1 strength = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S2 value = $religion$ }
+		}
+		MinorityTrauma_Helper = { slot = 2 strength = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S3 value = $religion$ }
+		}
+		MinorityTrauma_Helper = { slot = 3 strength = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S4 value = $religion$ }
+		}
+		MinorityTrauma_Helper = { slot = 4 strength = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S5 value = $religion$ }
+		}
+		MinorityTrauma_Helper = { slot = 5 strength = $strength$ }
+	}
+}
+
+MinorityTrauma_Helper = {
+	set_key = { lhs = DG_Tmp1 which = MN_S$slot$TotP }
+	#divide_key = { lhs = DG_Tmp1 value = 100 }
+	multiply_key = { lhs = DG_Tmp1 value = $strength$ }
+	divide_key = { lhs = DG_Tmp1 value = 10 }
+	POP_SetDevastation = {
+		type = which
+		inp = DG_Tmp1
+	}
+	set_key = { lhs = DG_Tmp1 value = 0 }
+}
+
+#Calculates if province is romanist bastion or a heresy bastion
+BastionAssessment_Helper = {
+	if = {
+		limit = {
+			OR = {
+				is_key_equal = { lhs = MN_S$slot$ value = 1 }
+				is_key_equal = { lhs = MN_S$slot$ value = $heresy$ }
+			}
+		}
+		set_key = { lhs = MN_S$slot$Bastion which = MN_S$slot$ENT }
+		divide_key = { lhs = MN_S$slot$Bastion value = 10 }
+		if = {
+			limit = { is_key_equal = { lhs = MN_S$slot$ which = DG_Tmp1 } }
+			if = {
+				limit = { is_core = ROOT }
+				change_key = { lhs = MN_S$slot$Bastion value = 2 }
+			}
+			else = {
+				change_key = { lhs = MN_S$slot$Bastion value = -2 }
+			}
+			if = {
+				limit = {
+					OR = {
+						culture_group = ROOT
+						has_owner_accepted_culture = yes
+					}
+				}
+				change_key = { lhs = MN_S$slot$Bastion value = 1 }
+			}
+			else = {
+				change_key = { lhs = MN_S$slot$Bastion value = -1 }
+			}
+			if = {
+				limit = {
+					any_neighbor_province = { NOT = { owned_by = ROOT } NOT = { is_key_equal = { lhs = MN_S0 value = $heresy$ } } }
+				}
+				change_key = { lhs = MN_S$slot$Bastion value = -2 }
+			}
+		}
+		else = {
+			if = {
+				limit = { is_core = ROOT }
+				change_key = { lhs = MN_S$slot$Bastion value = -2 }
+			}
+			else = {
+				change_key = { lhs = MN_S$slot$Bastion value = 2 }
+			}
+			if = {
+				limit = {
+					OR = {
+						culture_group = ROOT
+						has_owner_accepted_culture = yes
+					}
+				}
+				change_key = { lhs = MN_S$slot$Bastion value = -1 }
+			}
+			else = {
+				change_key = { lhs = MN_S$slot$Bastion value = 1 }
+			}
+			if = {
+				limit = {
+					any_neighbor_province = { NOT = { owned_by = ROOT } NOT = { is_key_equal = { lhs = MN_S0 value = $heresy$ } } }
+				}
+				change_key = { lhs = MN_S$slot$Bastion value = 2 }
+			}
+		}
+	}
+}
+
+BastionAssessment = {
+	export_to_key = {
+		 lhs = DG_Tmp1
+		 value = religion
+		 who = owner
+	}
+	BastionAssessment_Helper = { slot = 0 heresy = $heresy$ }
+	BastionAssessment_Helper = { slot = 1 heresy = $heresy$ }
+	BastionAssessment_Helper = { slot = 2 heresy = $heresy$ }
+	BastionAssessment_Helper = { slot = 3 heresy = $heresy$ }
+	BastionAssessment_Helper = { slot = 4 heresy = $heresy$ }
+	BastionAssessment_Helper = { slot = 5 heresy = $heresy$ }
+	if = {
+		limit = {
+			check_key = { lhs = MN_S0Bastion which = MN_S1Bastion }
+			check_key = { lhs = MN_S0Bastion which = MN_S2Bastion }
+			check_key = { lhs = MN_S0Bastion which = MN_S3Bastion }
+			check_key = { lhs = MN_S0Bastion which = MN_S4Bastion }
+			check_key = { lhs = MN_S0Bastion which = MN_S5Bastion }
+		}
+		set_key = { lhs = MN_S1Bastion value = 0 }
+		set_key = { lhs = MN_S2Bastion value = 0 }
+		set_key = { lhs = MN_S3Bastion value = 0 }
+		set_key = { lhs = MN_S4Bastion value = 0 }
+		set_key = { lhs = MN_S5Bastion value = 0 }
+	}
+	else_if = {
+		limit = {
+			check_key = { lhs = MN_S1Bastion which = MN_S0Bastion }
+			check_key = { lhs = MN_S1Bastion which = MN_S2Bastion }
+			check_key = { lhs = MN_S1Bastion which = MN_S3Bastion }
+			check_key = { lhs = MN_S1Bastion which = MN_S4Bastion }
+			check_key = { lhs = MN_S1Bastion which = MN_S5Bastion }
+		}
+		set_key = { lhs = MN_S0Bastion value = 0 }
+		set_key = { lhs = MN_S2Bastion value = 0 }
+		set_key = { lhs = MN_S3Bastion value = 0 }
+		set_key = { lhs = MN_S4Bastion value = 0 }
+		set_key = { lhs = MN_S5Bastion value = 0 }
+	}
+	else_if = {
+		limit = {
+			check_key = { lhs = MN_S2Bastion which = MN_S0Bastion }
+			check_key = { lhs = MN_S2Bastion which = MN_S1Bastion }
+			check_key = { lhs = MN_S2Bastion which = MN_S3Bastion }
+			check_key = { lhs = MN_S2Bastion which = MN_S4Bastion }
+			check_key = { lhs = MN_S2Bastion which = MN_S5Bastion }
+		}
+		set_key = { lhs = MN_S0Bastion value = 0 }
+		set_key = { lhs = MN_S1Bastion value = 0 }
+		set_key = { lhs = MN_S3Bastion value = 0 }
+		set_key = { lhs = MN_S4Bastion value = 0 }
+		set_key = { lhs = MN_S5Bastion value = 0 }
+	}
+	else_if = {
+		limit = {
+			check_key = { lhs = MN_S3Bastion which = MN_S0Bastion }
+			check_key = { lhs = MN_S3Bastion which = MN_S1Bastion }
+			check_key = { lhs = MN_S3Bastion which = MN_S2Bastion }
+			check_key = { lhs = MN_S3Bastion which = MN_S4Bastion }
+			check_key = { lhs = MN_S3Bastion which = MN_S5Bastion }
+		}
+		set_key = { lhs = MN_S0Bastion value = 0 }
+		set_key = { lhs = MN_S1Bastion value = 0 }
+		set_key = { lhs = MN_S2Bastion value = 0 }
+		set_key = { lhs = MN_S4Bastion value = 0 }
+		set_key = { lhs = MN_S5Bastion value = 0 }
+	}
+	else_if = {
+		limit = {
+			check_key = { lhs = MN_S4Bastion which = MN_S0Bastion }
+			check_key = { lhs = MN_S4Bastion which = MN_S1Bastion }
+			check_key = { lhs = MN_S4Bastion which = MN_S2Bastion }
+			check_key = { lhs = MN_S4Bastion which = MN_S3Bastion }
+			check_key = { lhs = MN_S4Bastion which = MN_S5Bastion }
+		}
+		set_key = { lhs = MN_S0Bastion value = 0 }
+		set_key = { lhs = MN_S1Bastion value = 0 }
+		set_key = { lhs = MN_S2Bastion value = 0 }
+		set_key = { lhs = MN_S3Bastion value = 0 }
+		set_key = { lhs = MN_S5Bastion value = 0 }
+	}
+	else = {
+		set_key = { lhs = MN_S0Bastion value = 0 }
+		set_key = { lhs = MN_S1Bastion value = 0 }
+		set_key = { lhs = MN_S2Bastion value = 0 }
+		set_key = { lhs = MN_S3Bastion value = 0 }
+		set_key = { lhs = MN_S4Bastion value = 0 }
+	}
+	set_key = { lhs = DG_Tmp1 value = 0 }
+}
+
+#Adds preachers for new religions  
+#MN_Preacher = { typeClass = Rural from = 2 to = 5 change = 10 typeFrom = value typeTo = value typeChange = value }
+MN_Preacher = {
+	MN_AddReligion = { type = $typeTo$ religion = $to$ }
+	MN_ConvertReligion = {
+		typeFrom = $typeFrom$ from = $from$	# From, as in the religion who is losing its believers
+		typeTo = $typeTo$ to = $to$   # To, as in the religion who is gaining new believers
+		typeChange = $typeChange$   # Change, as in how many people in absolute numbers are changing
+		[[ruralChange]ruralChange = $ruralChange$] [[urbanChange]urbanChange = $urbanChange$] [[notablesChange]notablesChange = $notablesChange$]
+	}
+	[[ruralChange]
+	MN_Preacher2 = { type = $typeTo$ religion = $to$ typeStrength = $typeStrength$ strength = $strength$ }
+	]
+	[[urbanChange]
+	MN_Preacher2 = { type = $typeTo$ religion = $to$ typeStrength = $typeStrength$ strength = $strength$ }
+	]
+	[[notablesChange]
+	MN_Preacher2 = { type = $typeTo$ religion = $to$ typeStrength = $typeStrength$ strength = $strength$ }
+	]
+	MN_GetSlot_Class = yes
+	MN_GetInfrast = yes
+	MN_RlgShift = yes
+	MN_CheckSlot = yes
+}
+
+MN_Preacher2 = {
+	if = {
+		limit = {
+			is_key_equal = { lhs = MN_S0 $type$ = $religion$ }
+		}
+		change_key = { lhs = MN_S0Preach $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S1 $type$ = $religion$ }
+		}
+		change_key = { lhs = MN_S1Preach $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S2 $type$ = $religion$ }
+		}
+		change_key = { lhs = MN_S2Preach $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S3 $type$ = $religion$ }
+		}
+		change_key = { lhs = MN_S3Preach $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S4 $type$ = $religion$ }
+		}
+		change_key = { lhs = MN_S4Preach $typeStrength$ = $strength$ }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S5 $type$ = $religion$ }
+		}
+		change_key = { lhs = MN_S5Preach $typeStrength$ = $strength$ }
+	}
+}

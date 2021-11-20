@@ -1,0 +1,484 @@
+namespace = dg_knights
+namespace = flavor_kni
+country_event = {
+	id = dg_knights.001
+	title = dg_knights.001.t
+	desc = dg_knights.001.d
+	picture = BATTLE_eventPicture
+	trigger = {
+		AND = {
+			OR = {
+				owns = 126
+				owns = 320
+				owns = 2358
+				owns = 3367
+				owns = 333
+				owns = 142
+				owns = 1436
+				owns = 2572
+				owns = 164
+				owns = 1435
+				owns = 3875
+			}
+		}
+		num_of_cities = 8
+		religion = catholic
+		KNI = {
+			NOT = {
+				num_of_cities = 2
+			}
+			OR = {
+				AND = {
+					capital_scope = {
+						has_siege = yes
+					}
+					KNI = {
+						at_war_with_religious_enemy = yes
+					}
+				}
+				NOT = {
+					exists = KNI
+				}
+			}
+			religion = catholic
+			government = theocracy
+		}
+		NOT = {
+			has_global_flag = knights_in_trouble
+		}
+		piety = -0.20
+		is_excommunicated = no
+		NOT = {
+			has_country_flag = knights_abandoned
+		}
+		OR = {
+			NOT = {
+				government = republic
+			}
+			piety = 0.60
+		}
+	}
+	mean_time_to_happen = {
+		months = 6
+		modifier = {
+			piety = 0.20
+			factor = 0.7
+		}
+		modifier = {
+			piety = 0.60
+			factor = 0.7
+		}
+		modifier = {
+			owns = 320
+			factor = 0.5
+		}
+	}
+	immediate = {
+		set_global_flag = knights_in_trouble
+	}
+	option = {
+		name = dg_knights.001.a
+		ai_chance = {
+			factor = 70
+			# modifier = {
+			# 	PAP = {
+			# 		NOT = {
+			# 			check_variable = {
+			# 				which = papal_authority
+			# 				value = 500
+			# 			}
+			# 		}
+			# 	}
+			# 	factor = 0.7
+			# }
+			# modifier = {
+			# 	PAP = {
+			# 		NOT = {
+			# 			check_variable = {
+			# 				which = papal_authority
+			# 				value = 400
+			# 			}
+			# 		}
+			# 	}
+			# 	factor = 0.7
+			# }
+			# modifier = {
+			# 	PAP = {
+			# 		NOT = {
+			# 			check_variable = {
+			# 				which = papal_authority
+			# 				value = 300
+			# 			}
+			# 		}
+			# 	}
+			# 	factor = 0.7
+			# }
+			modifier = {
+				government = republic
+				factor = 0.5
+			}
+			modifier = {
+				government = theocracy
+				factor = 2
+			}
+			modifier = {
+				piety = 0.60
+				factor = 1.4
+			}
+			modifier = {
+				has_country_flag = helped_the_knights
+				factor = 0.5
+			}
+		}
+		add_papal_influence = 70
+		if = {
+			limit = {
+				piety = 0.60
+			}
+			add_prestige = 15
+		}
+		else_if = {
+			limit = {
+				piety = 0.20
+			}
+			add_prestige = 12
+		}
+		else_if = {
+			limit = {
+				piety = -0.20
+			}
+			add_prestige = 9
+		}
+		else_if = {
+			limit = {
+				piety = -0.60
+			}
+			add_prestige = 6
+		}
+		else = {
+			add_prestige = 3
+		}
+		if = {
+			limit = {
+				NOT = {
+					owns = 320
+				}
+				NOT = {
+					any_owned_province = {
+						AND = {
+							OR = {
+								province_id = 126
+								province_id = 320
+								province_id = 2358
+								province_id = 3367
+								province_id = 333
+								province_id = 142
+								province_id = 1436
+								province_id = 2572
+								province_id = 164
+								province_id = 1435
+								province_id = 3875
+							}
+						}
+						NOT = {
+							culture_group = ROOT
+						}
+						has_owner_accepted_culture = no
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					AND = {
+						OR = {
+							province_id = 126
+							province_id = 320
+							province_id = 2358
+							province_id = 3367
+							province_id = 333
+							province_id = 142
+							province_id = 1436
+							province_id = 2572
+							province_id = 164
+							province_id = 1435
+							province_id = 3875
+						}
+					}
+				}
+				set_province_flag = knights_new_home
+				add_core = KNI
+				cede_province = KNI
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					owns = 320
+				}
+				any_owned_province = {
+					AND = {
+						OR = {
+							province_id = 126
+							province_id = 320
+							province_id = 2358
+							province_id = 3367
+							province_id = 333
+							province_id = 142
+							province_id = 1436
+							province_id = 2572
+							province_id = 164
+							province_id = 1435
+							province_id = 3875
+						}
+					}
+					NOT = {
+						culture_group = ROOT
+					}
+					has_owner_accepted_culture = no
+				}
+			}
+			random_owned_province = {
+				limit = {
+					AND = {
+						OR = {
+							province_id = 126
+							province_id = 320
+							province_id = 2358
+							province_id = 3367
+							province_id = 333
+							province_id = 142
+							province_id = 1436
+							province_id = 2572
+							province_id = 164
+							province_id = 1435
+							province_id = 3875
+						}
+					}
+					NOT = {
+						culture_group = ROOT
+					}
+					has_owner_accepted_culture = no
+				}
+				set_province_flag = knights_new_home
+				add_core = KNI
+				cede_province = KNI
+			}
+		}
+		if = {
+			limit = {
+				owns = 320
+			}
+			320 = {
+				set_province_flag = knights_new_home
+				add_core = KNI
+				cede_province = KNI
+			}
+		}
+		KNI = {
+			country_event = {
+				id = dg_knights.002
+				days = 0
+			}
+		}
+	}
+	option = {
+		name = dg_knights.001.b
+		ai_chance = {
+			factor = 30
+		}
+		set_country_flag = knights_abandoned
+		clr_global_flag = knights_in_trouble
+		if = {
+			limit = {
+				piety = 0.60
+			}
+			add_prestige = -5
+		}
+		else_if = {
+			limit = {
+				piety = 0.20
+			}
+			add_prestige = -4
+		}
+		else = {
+			add_prestige = -3
+		}
+		add_papal_influence = -5
+	}
+}
+country_event = {
+	id = dg_knights.002
+	title = dg_knights.002.t
+	desc = dg_knights.002.d
+	picture = BATTLE_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = dg_knights.002.a
+		ai_chance = {
+			factor = 90
+		}
+		if = {
+			limit = {
+				num_of_cities = 2
+			}
+			capital_scope = {
+				set_province_flag = abandoned_KNI_home
+			}
+			random_country = {
+				limit = {
+					war_with = ROOT
+					NOT = {
+						religion = catholic
+					}
+					num_of_cities = 1
+					all_country = {
+						OR = {
+							NOT = {
+								war_with = ROOT
+							}
+							religion = catholic
+							NOT = {
+								army_size = PREV
+							}
+							NOT = {
+								num_of_cities = PREV
+							}
+						}
+					}
+				}
+				country_event = {
+					id = dg_knights.003
+					days = 1
+				}
+			}
+			every_country = {
+				limit = {
+					war_with = ROOT
+					num_of_cities = 1
+				}
+				white_peace = ROOT
+			}
+		}
+		random_owned_province = {
+			limit = {
+				has_province_flag = knights_new_home
+			}
+			clr_province_flag = knights_new_home
+			add_core = ROOT
+			KNI = { 
+				Effect_set_capitalPREV = yes
+				country_event = { id = Init.1 }
+			}
+		}
+	}
+	option = {
+		name = dg_knights.002.b
+		ai_chance = {
+			factor = 10
+		}
+		random_owned_province = {
+			limit = {
+				has_province_flag = knights_new_home
+			}
+			clr_province_flag = knights_new_home
+			add_claim = ROOT
+		}
+	}
+}
+country_event = {
+	id = dg_knights.003
+	title = dg_knights.002.t
+	desc = dg_knights.003.d
+	picture = BATTLE_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = dg_knights.003.a
+		FROM = {
+			random_owned_province = {
+				limit = {
+					has_province_flag = abandoned_KNI_home
+				}
+				clr_province_flag = abandoned_KNI_home
+				cede_province = ROOT
+			}
+		}
+	}
+}
+province_event = {
+	id = flavor_kni.6
+	title = "flavor_kni.6.n"
+	desc = "flavor_kni.6.t"
+	picture = BATTLE_eventPicture
+	fire_only_once = yes
+	trigger = {
+		province_id = 126
+		NOT = {
+			exists = KNI
+		}
+		NOT = {
+			is_year = 1700
+		}
+		is_capital = no
+		owner = {
+			religion = catholic
+		}
+	}
+	mean_time_to_happen = {
+		years = 5
+	}
+	immediate = {
+		owner = {
+			save_event_target_as = former_owner
+		}
+	}
+	option = {
+		name = "flavor_kni.6.a"
+		ai_chance = {
+			factor = 60
+			modifier = {
+				factor = 1.4
+				owner = {
+					is_papal_controller = yes
+				}
+			}
+			modifier = {
+				factor = 0.5
+				owner = {
+					has_country_flag = excommunicated
+				}
+			}
+			modifier = {
+				factor = 1.2
+				owner = {
+					has_opinion = {
+						who = PAP
+						value = 100
+					}
+				}
+			}
+		}
+		add_core = KNI
+		cede_province = KNI
+		remove_core = ROOT
+		event_target:former_owner = {
+			create_subject = {
+				subject_type = march
+				subject = KNI
+			}
+			add_prestige = 30
+			add_papal_influence = 15
+		}
+		KNI = { country_event = { id = Init.1 } }
+	}
+	option = {
+		name = "flavor_kni.6.b"
+		ai_chance = {
+			factor = 40
+		}
+		event_target:former_owner = {
+			set_country_flag = knight_refuse_home
+			add_prestige = -10
+			add_papal_influence = -5
+		}
+	}
+}

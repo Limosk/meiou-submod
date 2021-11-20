@@ -1,0 +1,70 @@
+Order_DoMain = {
+	every_province = {
+		limit = {
+			isValidProv = yes
+		}
+		set_key = { lhs = Tmp_0 value = 0 }
+	}
+
+	every_country = {
+		limit = {
+			isValidCountry = yes
+		}
+		export_to_key = { lhs = Tmp_0 value = stability }
+		export_to_key = { lhs = Tmp_1 value = modifier:yearly_harmony }
+
+		capital_scope = {
+			save_event_target_as = Prov
+
+			set_key = { lhs = Tmp_0 which = Infra_CapitolSize }
+		}
+
+		every_owned_province = {
+			limit = {
+				isValidProv = yes
+			}
+			set_key = { lhs = Tmp_0 which = event_target:Prov }
+			set_key = { lhs = Tmp_1 which = Tmp_0 }
+
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_1 which = Infra_CourthouseSize }
+				}
+				set_key = { lhs = Tmp_1 which = Infra_CourthouseSize }
+			}
+		}
+
+		every_owned_province = {
+			limit = {
+				isValidProv = yes
+			}
+			set_key = { lhs = Tmp_0 which = Tmp_1 }
+			change_key = { lhs = Tmp_0 which = PREV }
+			change_key = { lhs = Tmp_0 which = Infra_CourthouseSize }
+
+			set_key = { lhs = Tmp_1 which = Infra_Garrison }
+			multiply_key = { lhs = Tmp_1 value = 0.5 }
+			change_key = { lhs = Tmp_0 which = Tmp_1 }
+
+			set_key = { lhs = Tmp_1 which = owner }
+
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_0 which = Tmp_1 }
+				}
+				set_key = { lhs = Tmp_0 which = Tmp_1 }
+			}
+
+			set_key = { lhs = Order_Max which = Tmp_1 }
+			set_key = { lhs = Order_Change which = Tmp_0 }
+
+			subtract_key = { lhs = Order_Change which = Order_Cur }
+			multiply_key = { lhs = Order_Change value = 0.05 }
+
+			change_key = { lhs = Order_Cur which = Order_Change }
+
+			set_key = { lhs = Tmp_0 value = 0 }
+			set_key = { lhs = Tmp_1 value = 0 }
+		}
+	}
+}

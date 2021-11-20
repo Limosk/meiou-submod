@@ -1,0 +1,74 @@
+
+#Converts to heresy
+MN_HeresySpread = {
+	MN_AddReligion = { type = value religion = $to$ }
+	MN_HeresyHelper = { typefrom = $typefrom$ from = $from$ to = $to$ typeIncr = $typeIncr$ incr = $incr$ } 
+	MN_GetSlot_Class = yes
+	MN_GetInfrast = yes
+	MN_RlgShift = yes
+	MN_CheckSlot = yes
+}
+
+MN_HeresyHelper = {
+	if = {
+		limit = {
+			is_key_equal = { lhs = MN_S0 $typefrom$ = $from$ }
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S0RurN }
+		set_key = { lhs = DG_Tmp2 which = MN_S0UrbN }
+		set_key = { lhs = DG_Tmp3 which = MN_S0NotN }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S1 $typefrom$ = $from$ }
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S1RurN }
+		set_key = { lhs = DG_Tmp2 which = MN_S1UrbN }
+		set_key = { lhs = DG_Tmp3 which = MN_S1NotN } 
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S2 $typefrom$ = $from$ }
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S2RurN }
+		set_key = { lhs = DG_Tmp2 which = MN_S2UrbN }
+		set_key = { lhs = DG_Tmp3 which = MN_S2NotN }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S3 $typefrom$ = $from$ }
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S3RurN }
+		set_key = { lhs = DG_Tmp2 which = MN_S3UrbN }
+		set_key = { lhs = DG_Tmp3 which = MN_S3NotN }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S4 $typefrom$ = $from$ }
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S4RurN }
+		set_key = { lhs = DG_Tmp2 which = MN_S4UrbN }
+		set_key = { lhs = DG_Tmp3 which = MN_S4NotN }
+	}
+	else_if = {
+		limit = {
+			is_key_equal = { lhs = MN_S5 $typefrom$ = $from$ }
+		}
+		set_key = { lhs = DG_Tmp1 which = MN_S5RurN }
+		set_key = { lhs = DG_Tmp2 which = MN_S5UrbN }
+		set_key = { lhs = DG_Tmp3 which = MN_S5NotN }
+	}
+	multiply_key = { lhs = DG_Tmp1 $typeIncr$ = $incr$ }
+	multiply_key = { lhs = DG_Tmp2 $typeIncr$ = $incr$ }
+	multiply_key = { lhs = DG_Tmp3 $typeIncr$ = $incr$ }
+	
+	MN_ConvertReligion = {
+		typeFrom = $typefrom$ from = $from$	# From, as in the religion who is losing its believers
+		typeTo = value to = $to$   # To, as in the religion who is gaining new believers
+		typeChange = which   # Change, as in how many people in absolute numbers are changing
+		ruralChange = DG_Tmp1 urbanChange = DG_Tmp2 notablesChange = DG_Tmp3
+	}
+	set_key = { lhs = DG_Tmp1 value = 0 }
+	set_key = { lhs = DG_Tmp2 value = 0 }
+	set_key = { lhs = DG_Tmp3 value = 0 }
+}

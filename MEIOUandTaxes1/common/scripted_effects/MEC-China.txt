@@ -1,0 +1,9 @@
+yua_degeneration = {
+	change_technology_group = steppestech
+	change_unit_type = steppestech
+	remove_country_modifier = mongol_xingsheng
+	clr_country_flag = mandate_of_heaven_claimed
+	clr_country_flag = barbarian_claimant_china
+	add_prestige = -15
+	add_legitimacy = -5
+}

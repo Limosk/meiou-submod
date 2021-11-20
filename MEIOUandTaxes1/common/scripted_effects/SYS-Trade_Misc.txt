@@ -1,0 +1,901 @@
+#by Shiro, Beosferth and Seelowe
+# Trade display system
+
+doDisplay = {
+	tradenode_centers = {
+        limit = {
+            has_province_flag = TN_SectorCentReachContain
+		}
+		set_key = { lhs = Public_Tmp9 value = 0 }		
+		set_key = { lhs = Public_Tmp8 value = 0 }
+		
+		every_trade_node_member_province = {
+            if = {
+                limit = {
+                    has_province_flag = TN_SectorCentReachWithin
+					NOT = {
+						province_id = event_target:Prov
+					}					
+				}
+				
+				if = {
+					limit = {
+						owned_by = event_target:ProvOwner 
+					}
+					tradeDisplayConductee_noOthers = { amount = temp_sold   type = Internal type2 = Export expand = no }					
+					tradeDisplayConductee_noOthers = { amount = temp_bought type = Internal type2 = Import expand = no }
+					
+					set_key = { lhs = Tmp_0 which = temp_sold }   #conductee exported
+					set_key = { lhs = Tmp_1 which = temp_bought } #conductee imported
+					
+					event_target:Prov = {
+						set_key = { lhs = Tmp_0 which = PREV } # conductor import
+						set_key = { lhs = Tmp_1 which = PREV } # conductor export
+						
+						tradeDisplayConductor_noOthers = { amount = Tmp_1 type = Internal type2 = Export expand = no }						
+						tradeDisplayConductor_noOthers = { amount = Tmp_0 type = Internal type2 = Import expand = no }
+
+						subtract_key = { lhs = temp_sold which = Tmp_1 }   #reduce the weight for external calcs
+						subtract_key = { lhs = temp_bought which = Tmp_0 } #reduce the weight for external calcs
+					}
+				}
+				
+				else = {			
+					set_key = { lhs = Tmp_0 which = temp_sold }
+					set_key = { lhs = Tmp_1 which = temp_bought }
+					
+					tradeDisplayConductee = { amount = temp_sold   type = External type2 = Export weight = Total_External_Export expand = yes }					
+					tradeDisplayConductee = { amount = temp_bought type = External type2 = Import weight = Total_External_Import expand = yes  }		
+					
+					PREV = { 
+						set_key = { lhs = Tmp_0 which = PREV }
+						set_key = { lhs = Tmp_1 which = PREV }
+						change_key = { lhs = Public_Tmp9 which = Tmp_0 } # sold
+						change_key = { lhs = Public_Tmp8 which = Tmp_1 } # bought
+					}
+				}
+				set_key = { lhs = temp_bought value = 0 }
+				set_key = { lhs = temp_sold value = 0 }
+			}			
+		}		
+		
+		set_key = { lhs = Tmp_0 which = Public_Tmp9 } #conductee exported
+		set_key = { lhs = Tmp_1 which = Public_Tmp8 } #conductee imported					
+		
+		event_target:Prov = {
+			set_key = { lhs = Tmp_0 which = PREV } # conductor imported
+			set_key = { lhs = Tmp_1 which = PREV } # conductor exported
+			
+			tradeDisplayConductor = { amount = Tmp_1 type = External type2 = Export weight = temp_sold	 expand = yes }						
+			tradeDisplayConductor = { amount = Tmp_0 type = External type2 = Import weight = temp_bought expand = yes }					
+		}				
+	}
+	set_key = { lhs = temp_bought value = 0 }
+	set_key = { lhs = temp_sold value = 0 }		
+}
+
+tradeDisplayConductee_noOthers = {
+    if = {
+        limit = {
+            check_key = { lhs = $amount$ value = 1 }
+        }
+        event_target:Prov = { set_key = { lhs = Plague_Tmp0 which = ID_TN } } #TN ID of conductor
+        set_key = { lhs = Plague_Tmp0 which = event_target:Prov } # Store conductor's ID
+        tradeDisplayHelper = { amount = $amount$ type = $type$ type2 = $type2$ Node = Plague_Tmp0 expand = $expand$ }        
+    }
+}
+tradeDisplayConductor_noOthers = { 
+    if = {
+        limit = {
+            check_key = { lhs = $amount$ value = 1 }
+        }
+		PREV = { set_key = { lhs = Plague_Tmp1 which = ID_TN } }
+		set_key = { lhs = Plague_Tmp1 which = PREV } # Store conductee's ID
+        tradeDisplayHelper = { amount = $amount$ type = $type$ type2 = $type2$ Node = Plague_Tmp1 expand = $expand$ }  
+    }
+}
+
+
+tradeDisplayConductee = {
+    if = {
+        limit = {
+            check_key = { lhs = $amount$ value = 1 }
+			
+        }
+		
+		set_key = { lhs = Plague_Tmp1 which = $amount$ } 
+		set_key = { lhs = Plague_Tmp0 which = $amount$ }		
+		
+		if = { 
+			limit = {
+				check_key = { lhs = Prev_Total_$type$_$type2$ value = 1 } 
+			}			
+			divide_key = { lhs = Plague_Tmp1 which = Prev_Total_$type$_$type2$ } #weight against previous records
+		}
+		else = {
+			set_key = { lhs = Plague_Tmp1 value = 0 }
+		}       
+		
+		
+		if = { 
+			limit = {
+				check_key = { lhs = $weight$ value = 1 } 
+			}
+			divide_key = { lhs = Plague_Tmp0 which = $weight$ } # weight against current record
+		}
+		else = {
+			set_key = { lhs = Plague_Tmp0 value = 0 }
+		}
+		
+		event_target:Prov = { set_key = { lhs = Tmp_9 which = ID_TN } } #TN ID of conductor
+		set_key = { lhs = Tmp_9 which = event_target:Prov } # Store conductor's ID
+		
+		if = {
+			limit = { 
+				check_key = { lhs = Plague_Tmp1 value = 0.01 }
+				check_key = { lhs = Plague_Tmp0 value = 0.01 }
+				OR = {
+					is_key_equal = { lhs = $type$Id_$type2$_Slot1 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot2 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot3 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot4 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot5 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot6 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot7 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot8 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot9 which = Tmp_9 }
+					
+					is_key_equal = { lhs = $type$Id_$type2$_Slot2 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot3 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot4 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot5 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot6 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot7 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot8 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot9 value = 0 }				
+				}
+			}			
+			tradeDisplayHelper = { amount = $amount$ type = $type$ type2 = $type2$ Node = Tmp_9 expand = $expand$ }        
+		}
+        else = {
+            set_key = { lhs = Tmp_9 value = 999 } #999 = Others
+            tradeDisplayHelper = { amount = $amount$ type = $type$ type2 = $type2$ Node = Tmp_9 expand = $expand$ }
+        }
+    }
+	else = {
+		set_key = { lhs = Tmp_9 value = 999 } #999 = Others
+        tradeDisplayHelper = { amount = $amount$ type = $type$ type2 = $type2$ Node = Tmp_9 expand = $expand$ }
+	}
+}
+tradeDisplayConductor = { 
+    if = {
+        limit = {
+            check_key = { lhs = $amount$ value = 1 }
+        }
+        set_key = { lhs = Plague_Tmp1 which = $amount$ } 
+        divide_key = { lhs = Plague_Tmp1 which = Prev_Total_$type$_$type2$ } #weight against previous records
+		
+		set_key = { lhs = Plague_Tmp0 which = $amount$ } 
+		divide_key = { lhs = Plague_Tmp0 which = $weight$ } # weight against current record
+		
+		PREV = { set_key = { lhs = Tmp_9 which = ID_TN } }
+        set_key = { lhs = Tmp_9 which = PREV } # Store conductee's ID
+        if = {
+            limit = { 
+				check_key = { lhs = Plague_Tmp1 value = 0.04 } # Weight against previous records
+                check_key = { lhs = Plague_Tmp0 value = 0.04 } # Check if the current amount is at least 4% of the total
+				OR = {
+					is_key_equal = { lhs = $type$Id_$type2$_Slot2 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot3 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot4 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot5 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot6 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot7 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot8 value = 0 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot9 value = 0 }	
+					
+					is_key_equal = { lhs = $type$Id_$type2$_Slot1 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot2 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot3 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot4 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot5 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot6 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot7 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot8 which = Tmp_9 }
+					is_key_equal = { lhs = $type$Id_$type2$_Slot9 which = Tmp_9 }							
+				}
+            }
+			tradeDisplayHelper = { amount = $amount$ type = $type$ type2 = $type2$ Node = Tmp_9 expand = $expand$ }
+        }
+        else = {
+            set_key = { lhs = Tmp_9 value = 999 } #999 = Others
+            tradeDisplayHelper = { amount = $amount$ type = $type$ type2 = $type2$ Node = Tmp_9 expand = $expand$ }
+        }
+    }
+}
+volumeDisplayConductorLocal_Sold = { 
+    set_key = { lhs = InternalId_$type2$_Slot1 which = ID_TN }
+    change_key = { lhs = InternalVolume_$type2$_Slot1 which = $amount$ }    
+    change_key = { lhs = Total_Internal_$type2$ which = $amount$ }
+}
+volumeDisplayConductorLocal_Bought = { 
+    set_key = { lhs = InternalId_$type2$_Slot1 which = ID_TN }
+    change_key = { lhs = InternalVolume_$type2$_Slot1 which = $amount$ }    
+    change_key = { lhs = Total_Internal_$type2$ which = $amount$ }
+}
+tradeDisplayHelper = { 
+    change_key = { lhs = Total_$type$_$type2$ which = $amount$ }
+    if = {
+        limit = {
+			always = $expand$			
+            OR = {
+                is_key_equal = { lhs = $type$Id_$type2$_Slot1 value = 0 }
+                is_key_equal = { lhs = $type$Id_$type2$_Slot1 which = $Node$ }
+            }
+        }
+        set_key = { lhs = $type$Id_$type2$_Slot1 which = $Node$ }
+        volumeHelper = { type = $type$ type2 = $type2$ slot = 1 amount = $amount$ }
+    }
+    else_if = {
+        limit = {
+            OR = {
+                is_key_equal = { lhs = $type$Id_$type2$_Slot2 value = 0 }
+                is_key_equal = { lhs = $type$Id_$type2$_Slot2 which = $Node$ }
+            }
+        }
+        set_key = { lhs = $type$Id_$type2$_Slot2 which = $Node$ }
+        volumeHelper = { type = $type$ type2 = $type2$ slot = 2 amount = $amount$ }
+    }
+    else_if = {
+        limit = {
+            OR = {
+                is_key_equal = { lhs = $type$Id_$type2$_Slot3 value = 0 }
+                is_key_equal = { lhs = $type$Id_$type2$_Slot3 which = $Node$ }
+            }
+        }
+        set_key = { lhs = $type$Id_$type2$_Slot3 which = $Node$ }
+        volumeHelper = { type = $type$ type2 = $type2$ slot = 3 amount = $amount$ }
+    }
+    else_if = {
+        limit = {
+            OR = {
+                is_key_equal = { lhs = $type$Id_$type2$_Slot4 value = 0 }
+                is_key_equal = { lhs = $type$Id_$type2$_Slot4 which = $Node$ }
+            }
+        }
+        set_key = { lhs = $type$Id_$type2$_Slot4 which = $Node$ }
+        volumeHelper = { type = $type$ type2 = $type2$ slot = 4 amount = $amount$ }
+    }
+    else_if = {
+        limit = {
+            OR = {
+                is_key_equal = { lhs = $type$Id_$type2$_Slot5 value = 0 }
+                is_key_equal = { lhs = $type$Id_$type2$_Slot5 which = $Node$ }
+            }
+        }
+        set_key = { lhs = $type$Id_$type2$_Slot5 which = $Node$ }
+        volumeHelper = { type = $type$ type2 = $type2$ slot = 5 amount = $amount$ }
+    }
+    else_if = {
+        limit = {
+            OR = {
+                is_key_equal = { lhs = $type$Id_$type2$_Slot6 value = 0 }
+                is_key_equal = { lhs = $type$Id_$type2$_Slot6 which = $Node$ }
+            }
+        }
+        set_key = { lhs = $type$Id_$type2$_Slot6 which = $Node$ }
+        volumeHelper = { type = $type$ type2 = $type2$ slot = 6 amount = $amount$ }
+    }
+    else_if = {
+        limit = {
+            OR = {
+                is_key_equal = { lhs = $type$Id_$type2$_Slot7 value = 0 }
+                is_key_equal = { lhs = $type$Id_$type2$_Slot7 which = $Node$ }
+            }
+        }
+        set_key = { lhs = $type$Id_$type2$_Slot7 which = $Node$ }
+        volumeHelper = { type = $type$ type2 = $type2$ slot = 7 amount = $amount$ }
+    }
+    else_if = {
+        limit = {
+            OR = {
+                is_key_equal = { lhs = $type$Id_$type2$_Slot8 value = 0 }
+                is_key_equal = { lhs = $type$Id_$type2$_Slot8 which = $Node$ }
+            }
+        }
+        set_key = { lhs = $type$Id_$type2$_Slot8 which = $Node$ }
+        volumeHelper = { type = $type$ type2 = $type2$ slot = 8 amount = $amount$ }
+    }
+	else = {
+		if = {
+			limit = {
+				always = $expand$
+			}
+			if = {
+				limit = {
+					OR = {
+						is_key_equal = { lhs = $type$Id_$type2$_Slot9 value = 0 }
+						is_key_equal = { lhs = $type$Id_$type2$_Slot9 which = $Node$ }
+					}
+				}
+				set_key = { lhs = $type$Id_$type2$_Slot9 which = $Node$ }
+				volumeHelper = { type = $type$ type2 = $type2$ slot = 9 amount = $amount$ }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						is_key_equal = { lhs = $type$Id_$type2$_Slot10 value = 0 }
+						is_key_equal = { lhs = $type$Id_$type2$_Slot10 which = $Node$ }
+					}						
+				}
+				set_key = { lhs = $type$Id_$type2$_Slot10 which = $Node$ }
+				volumeHelper = { type = $type$ type2 = $type2$ slot = 10 amount = $amount$ }
+			}
+		}		
+	}
+}
+volumeHelper = {
+    change_key = { lhs = $type$Volume_$type2$_Slot$slot$ which = $amount$ }
+}
+
+superTradeDisplay = {
+	if = {
+		limit = {
+			has_province_flag = TN_SectorCentDisplay
+		}
+		add_permanent_province_modifier = { name = Disp_Trade_Cent duration = -1 }
+	}
+
+    superTradeDisplayHelper1 = yes # format variables / remove decimals	
+	
+	# sorting algorithm
+	superTradeDisplayHelper4 = { type = Internal type2 = Import }
+    superTradeDisplayHelper4 = { type = Internal type2 = Export }
+    superTradeDisplayHelper4 = { type = External type2 = Import }
+    superTradeDisplayHelper4 = { type = External type2 = Export }
+}
+
+superTradeDisplayHelper1 = {    
+    set_key = { lhs = Local_Volume which = InternalVolume_Export_Slot1 }
+    subtract_key = { lhs = Local_Volume which = InternalVolume_Import_Slot1 }    
+	
+    divide_key   = { lhs = Local_Volume value = 100 }
+    multiply_key = { lhs = Local_Volume value = 100 }
+
+    divide_key   = { lhs = Intermediary_Income value = 100 }
+    multiply_key = { lhs = Intermediary_Income value = 100 }
+
+    superTradeDisplayHelper2 = { slot = 1 }
+    superTradeDisplayHelper2 = { slot = 2 }
+    superTradeDisplayHelper2 = { slot = 3 }
+    superTradeDisplayHelper2 = { slot = 4 }
+    superTradeDisplayHelper2 = { slot = 5 }
+    superTradeDisplayHelper2 = { slot = 6 }
+    superTradeDisplayHelper2 = { slot = 7 }
+    superTradeDisplayHelper2 = { slot = 8 }
+    superTradeDisplayHelper2 = { slot = 9 }
+    superTradeDisplayHelper2 = { slot = 10 }
+  
+    superTradeDisplayHelper3 = yes
+    superTradeDisplayHelper5 = yes
+}
+
+superTradeDisplayHelper2 = {
+    divide_key   = { lhs = InternalVolume_Import_Slot$slot$ value = 100 }
+    multiply_key = { lhs = InternalVolume_Import_Slot$slot$ value = 100 }
+    
+    divide_key   = { lhs = InternalVolume_Export_Slot$slot$ value = 100 }
+    multiply_key = { lhs = InternalVolume_Export_Slot$slot$ value = 100 }
+    
+    divide_key   = { lhs = ExternalVolume_Import_Slot$slot$ value = 100 }
+    multiply_key = { lhs = ExternalVolume_Import_Slot$slot$ value = 100 }
+    
+    divide_key   = { lhs = ExternalVolume_Export_Slot$slot$ value = 100 }
+    multiply_key = { lhs = ExternalVolume_Export_Slot$slot$ value = 100 }
+}
+
+superTradeDisplayHelper3 = {          
+    # fixed point decimals
+    divide_key = { lhs = Total_Internal_Import value = 100 }
+    divide_key = { lhs = Total_External_Import value = 100 }
+    
+    divide_key = { lhs = Total_Internal_Export value = 100 }     
+    divide_key = { lhs = Total_External_Export value = 100 }
+    
+    multiply_key = { lhs = Total_Internal_Import value = 100 }     
+    multiply_key = { lhs = Total_External_Import value = 100 }
+    
+    multiply_key = { lhs = Total_Internal_Export value = 100 }     
+    multiply_key = { lhs = Total_External_Export value = 100 }
+    
+    # Calc total imports & exports
+    change_key = { lhs = Total_Imported which = Total_Internal_Import }
+    change_key = { lhs = Total_Imported which = Total_External_Import }
+	    
+    change_key = { lhs = Total_Exported which = Total_Internal_Export }
+    change_key = { lhs = Total_Exported which = Total_External_Export }
+    
+    # Calc share of Imported
+    set_key = { lhs = Total_Internal_Import_Share which = Total_Internal_Import }
+    set_key = { lhs = Total_External_Import_Share which = Total_External_Import }  
+    
+    divide_key = { lhs = Total_Internal_Import_Share which = Total_Imported }
+    divide_key = { lhs = Total_External_Import_Share which = Total_Imported }
+    
+    multiply_key = { lhs = Total_Internal_Import_Share value = 100 }
+    multiply_key = { lhs = Total_External_Import_Share value = 100 } 
+    # Calc share of Exported
+    set_key = { lhs = Total_Internal_Export_Share which = Total_Internal_Export }
+    set_key = { lhs = Total_External_Export_Share which = Total_External_Export }  
+    
+    divide_key = { lhs = Total_Internal_Export_Share which = Total_Exported }
+    divide_key = { lhs = Total_External_Export_Share which = Total_Exported }   
+    
+    multiply_key = { lhs = Total_Internal_Export_Share value = 100 }
+    multiply_key = { lhs = Total_External_Export_Share value = 100 }  
+    
+    # Trade Balance
+	subtract_key = { lhs = Total_Imported which = InternalVolume_Import_Slot1 }
+	subtract_key = { lhs = Total_Exported which = InternalVolume_Export_Slot1 }
+	
+    set_key = { lhs = Trade_Balance which = Total_Exported }
+    subtract_key = { lhs = Trade_Balance which = Total_Imported }
+	change_key = { lhs = Trade_Balance which = Local_Volume }
+}
+
+superTradeDisplayHelper5 = {
+    calcBalance = { prod = 1 }
+    calcBalance = { prod = 2 }
+    calcBalance = { prod = 4 }
+    calcBalance = { prod = 5 }
+    calcBalance = { prod = 6 }
+    calcBalance = { prod = 9 }
+    calcBalance = { prod = 10 }
+    calcBalance = { prod = 21 }
+    calcBalance = { prod = 22 }
+    calcBalance = { prod = 23 }
+    calcBalance = { prod = 24 }
+    calcBalance = { prod = 25 }
+    calcBalance = { prod = 41 }
+}
+
+calcBalance = {
+    set_key = { lhs = Balance_Good$prod$ which = TradeDisplay_SectorSubsistEarn$prod$ }
+    change_key = { lhs = Balance_Good$prod$ which = TradeDisplay_SectorEarn$prod$ }
+    subtract_key = { lhs = Balance_Good$prod$ which = TradeDisplay_SectorSpend$prod$ }
+}
+
+
+# Variables cleaner 
+refreshSuperDisplay = {
+    if = { 
+        limit = {
+            AND = {
+                has_province_modifier = Disp_Trade_Cent
+                NOT = {
+			        has_province_flag = TN_SectorCentDisplay
+			        has_province_flag = TN_SectorCent
+                }
+            }
+        }
+	    remove_province_modifier = Disp_Trade_Cent
+    }
+
+    refreshSuperDisplayHelper = { slot = 1 }
+    refreshSuperDisplayHelper = { slot = 2 }
+    refreshSuperDisplayHelper = { slot = 3 }
+    refreshSuperDisplayHelper = { slot = 4 }
+    refreshSuperDisplayHelper = { slot = 5 }
+    refreshSuperDisplayHelper = { slot = 6 }
+    refreshSuperDisplayHelper = { slot = 7 }
+    refreshSuperDisplayHelper = { slot = 8 }
+    refreshSuperDisplayHelper = { slot = 9 }
+    refreshSuperDisplayHelper = { slot = 10 }
+    
+    refreshSuperDisplayHelper2 = { prod = 1 }
+    refreshSuperDisplayHelper2 = { prod = 2 }
+    refreshSuperDisplayHelper2 = { prod = 4 }
+    refreshSuperDisplayHelper2 = { prod = 5 }
+    refreshSuperDisplayHelper2 = { prod = 6 }
+    refreshSuperDisplayHelper2 = { prod = 9 }
+    refreshSuperDisplayHelper2 = { prod = 10 }
+    refreshSuperDisplayHelper2 = { prod = 21 }
+    refreshSuperDisplayHelper2 = { prod = 22 }
+    refreshSuperDisplayHelper2 = { prod = 23 }
+    refreshSuperDisplayHelper2 = { prod = 24 }
+    refreshSuperDisplayHelper2 = { prod = 25 }
+    refreshSuperDisplayHelper2 = { prod = 41 }
+
+    set_key = { lhs = Total_Internal_Import_Share value = 0 }
+    set_key = { lhs = Total_External_Import_Share value = 0 }
+    set_key = { lhs = Total_Internal_Export_Share value = 0 }
+    set_key = { lhs = Total_External_Export_Share value = 0 } 
+	
+	# Record previous values 
+	set_key = { lhs = Prev_Total_External_Export which = Total_External_Export }
+	set_key = { lhs = Prev_Total_External_Import which = Total_External_Import }
+    
+    set_key = { lhs = Total_Internal_Import value = 0 }
+    set_key = { lhs = Total_External_Import value = 0 } 
+    
+    set_key = { lhs = Total_Internal_Export value = 0 }
+    set_key = { lhs = Total_External_Export value = 0 } 
+    
+    set_key = { lhs = Intermediary_Income value = 0 }
+    set_key = { lhs = Local_Volume value = 0 }
+    set_key = { lhs = Total_Imported value = 0 }
+    set_key = { lhs = Total_Exported value = 0 }  
+    set_key = { lhs = Trade_Balance value = 0 }
+    
+    set_key = { lhs = TN_SectorImported1   value = 0 }
+    set_key = { lhs = TN_SectorImported2   value = 0 }
+    set_key = { lhs = TN_SectorImported4   value = 0 }
+    set_key = { lhs = TN_SectorImported5   value = 0 }
+    set_key = { lhs = TN_SectorImported6   value = 0 }
+    set_key = { lhs = TN_SectorImported9   value = 0 }
+    set_key = { lhs = TN_SectorImported10  value = 0 }
+    set_key = { lhs = TN_SectorImported21  value = 0 }
+    set_key = { lhs = TN_SectorImported22  value = 0 }
+    set_key = { lhs = TN_SectorImported23  value = 0 }
+    set_key = { lhs = TN_SectorImported24  value = 0 }
+    set_key = { lhs = TN_SectorImported25  value = 0 }
+    set_key = { lhs = TN_SectorImported41  value = 0 }
+    
+    set_key = { lhs = TN_SectorExported1   value = 0 }
+    set_key = { lhs = TN_SectorExported2   value = 0 }
+    set_key = { lhs = TN_SectorExported4   value = 0 }
+    set_key = { lhs = TN_SectorExported5   value = 0 }
+    set_key = { lhs = TN_SectorExported6   value = 0 }
+    set_key = { lhs = TN_SectorExported9   value = 0 }
+    set_key = { lhs = TN_SectorExported10  value = 0 }
+    set_key = { lhs = TN_SectorExported21  value = 0 }
+    set_key = { lhs = TN_SectorExported22  value = 0 }
+    set_key = { lhs = TN_SectorExported23  value = 0 }
+    set_key = { lhs = TN_SectorExported24  value = 0 }
+    set_key = { lhs = TN_SectorExported25  value = 0 }
+    set_key = { lhs = TN_SectorExported41  value = 0 } 
+}
+
+refreshSuperDisplayHelper = {
+    set_key = { lhs = InternalVolume_Export_Slot$slot$ value = 0 }
+    set_key = { lhs = InternalVolume_Import_Slot$slot$ value = 0 }
+
+    set_key = { lhs = ExternalVolume_Export_Slot$slot$ value = 0 }
+    set_key = { lhs = ExternalVolume_Import_Slot$slot$ value = 0 }
+    
+    set_key = { lhs = InternalId_Export_Slot$slot$ value = 0 }
+    set_key = { lhs = InternalId_Import_Slot$slot$ value = 0 }
+    
+    set_key = { lhs = ExternalId_Export_Slot$slot$ value = 0 }
+    set_key = { lhs = ExternalId_Import_Slot$slot$ value = 0 }
+}
+refreshSuperDisplayHelper2 = {
+    set_key = { lhs = TradeDisplay_SectorSubsistEarn$prod$ value = 0 }
+    set_key = { lhs = TradeDisplay_SectorEarn$prod$ value = 0 }
+    set_key = { lhs = TradeDisplay_SectorSpend$prod$ value = 0 }
+
+}
+
+# calls the sorting algorithm
+superTradeDisplayHelper4 = {
+	if = {
+		limit = {
+			check_key = { lhs = $type$Id_$type2$_Slot6 value = 0.001 }
+		}
+		if = {
+			limit = {
+				check_key = { lhs = $type$Id_$type2$_Slot8 value = 0.001 }
+			}
+			if = {
+				limit = {
+					check_key = { lhs = $type$Id_$type2$_Slot9 value = 0.001 }
+				}
+				if = {
+					limit = {
+						check_key = { lhs = $type$Id_$type2$_Slot10 value = 0.001 }
+					}
+					sortNodes = { type = $type$ type2 = $type2$ var1 = var1 var2 = var2 var3 = var3 var4 = var4 var5 = var5 var6 = var6 var7 = var7 var8 = var8 var9 = var9 var10 = var10 }
+				}
+				else = {
+					sortNodes = { type = $type$ type2 = $type2$ var1 = var1 var2 = var2 var3 = var3 var4 = var4 var5 = var5 var6 = var6 var7 = var7 var8 = var8 var9 = var9 }
+				}
+			}
+			else = {
+				sortNodes = { type = $type$ type2 = $type2$ var1 = var1 var2 = var2 var3 = var3 var4 = var4 var5 = var5 var6 = var6 var7 = var7 var8 = var8 }
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					check_key = { lhs = $type$Id_$type2$_Slot7 value = 0.001 }
+				}
+				sortNodes = { type = $type$ type2 = $type2$ var1 = var1 var2 = var2 var3 = var3 var4 = var4 var5 = var5 var6 = var6 var7 = var7 }
+			}
+			else = {
+				sortNodes = { type = $type$ type2 = $type2$ var1 = var1 var2 = var2 var3 = var3 var4 = var4 var5 = var5 var6 = var6 }
+			}
+		}
+	}
+	else = {
+		if = {
+			limit = {
+				check_key = { lhs = $type$Id_$type2$_Slot3 value = 0.001 }
+			}
+			if = {
+				limit = {
+					check_key = { lhs = $type$Id_$type2$_Slot4 value = 0.001 }
+				}
+				if = {
+					limit = {
+						check_key = { lhs = $type$Id_$type2$_Slot5 value = 0.001 }
+					}
+					sortNodes = { type = $type$ type2 = $type2$ var1 = var1 var2 = var2 var3 = var3 var4 = var4 var5 = var5 }
+				}
+				else = {
+					sortNodes = { type = $type$ type2 = $type2$ var1 = var1 var2 = var2 var3 = var3 var4 = var4 }
+				}
+			}
+			else = {
+				sortNodes = { type = $type$ type2 = $type2$ var1 = var1 var2 = var2 var3 = var3 }
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					check_key = { lhs = $type$Id_$type2$_Slot2 value = 0.001 }
+				}
+				sortNodes = { type = $type$ type2 = $type2$ var1 = var1 var2 = var2 }
+			}
+		}
+	}
+}
+
+sortNodes = {
+    sorting_8 = {
+        temp = Tmp_1
+        temp2 = Tmp_2
+        [[var1] 
+            $var1$ = $type$Volume_$type2$_Slot1
+            vvar1 = $type$Id_$type2$_Slot1
+        ]
+        
+        [[var2] 
+            $var2$ = $type$Volume_$type2$_Slot2        
+            vvar2 = $type$Id_$type2$_Slot2      
+        ]
+        
+        [[var3] 
+            $var3$ = $type$Volume_$type2$_Slot3
+            vvar3 = $type$Id_$type2$_Slot3
+        ]
+        [[var4] 
+            $var4$ = $type$Volume_$type2$_Slot4
+            vvar4 = $type$Id_$type2$_Slot4
+        ]
+        [[var5] 
+            $var5$ = $type$Volume_$type2$_Slot5
+            vvar5 = $type$Id_$type2$_Slot5
+        ]
+        [[var6] 
+            $var6$ = $type$Volume_$type2$_Slot6
+            vvar6 = $type$Id_$type2$_Slot6
+        ]       
+        [[var7] 
+            $var7$ = $type$Volume_$type2$_Slot7           
+            vvar7 = $type$Id_$type2$_Slot7
+        ]
+        [[var8] 
+            $var8$ = $type$Volume_$type2$_Slot8           
+            vvar8 = $type$Id_$type2$_Slot8   
+        ] 
+        [[var9] 
+            $var9$ = $type$Volume_$type2$_Slot9     
+            vvar9 = $type$Id_$type2$_Slot9
+        ]
+        [[var10] 
+            $var10$ = $type$Volume_$type2$_Slot10           
+            vvar10 = $type$Id_$type2$_Slot10   
+        ]        
+    }
+}
+
+sorting_8 = { #temp #var1 #var2...
+    [[var1] sorting_setup_h = { prov = 1599 temp = $temp$ var = $var1$ temp2 = $temp2$ vvar = $vvar1$ } ]
+    [[var2] sorting_setup_h = { prov = 1600 temp = $temp$ var = $var2$ temp2 = $temp2$ vvar = $vvar2$ } ]
+    [[var3] sorting_setup_h = { prov = 1598 temp = $temp$ var = $var3$ temp2 = $temp2$ vvar = $vvar3$ } ]
+    [[var4] sorting_setup_h = { prov = 2060 temp = $temp$ var = $var4$ temp2 = $temp2$ vvar = $vvar4$ } ]
+    [[var5] sorting_setup_h = { prov = 2058 temp = $temp$ var = $var5$ temp2 = $temp2$ vvar = $vvar5$ } ]
+    [[var6] sorting_setup_h = { prov = 2056 temp = $temp$ var = $var6$ temp2 = $temp2$ vvar = $vvar6$ } ]
+    [[var7] sorting_setup_h = { prov = 1665 temp = $temp$ var = $var7$ temp2 = $temp2$ vvar = $vvar7$ } ]
+    [[var8] sorting_setup_h = { prov = 1670 temp = $temp$ var = $var8$ temp2 = $temp2$ vvar = $vvar8$ } ]
+    [[var9] sorting_setup_h = { prov = 1667 temp = $temp$ var = $var9$ temp2 = $temp2$ vvar = $vvar9$ } ]
+    [[var10] sorting_setup_h = { prov = 1684 temp = $temp$ var = $var10$ temp2 = $temp2$ vvar = $vvar10$ } ]
+    
+    [[var1] sorting_sort_h = { group = sorting_group_10 var = $var1$ temp = $temp$ vvar = $vvar1$ temp2 = $temp2$ } ]
+    [[var2] sorting_sort_h = { group = sorting_group_10 var = $var2$ temp = $temp$ vvar = $vvar2$ temp2 = $temp2$ } ]
+    [[var3] sorting_sort_h = { group = sorting_group_10 var = $var3$ temp = $temp$ vvar = $vvar3$ temp2 = $temp2$ } ]
+    [[var4] sorting_sort_h = { group = sorting_group_10 var = $var4$ temp = $temp$ vvar = $vvar4$ temp2 = $temp2$ } ]
+    [[var5] sorting_sort_h = { group = sorting_group_10 var = $var5$ temp = $temp$ vvar = $vvar5$ temp2 = $temp2$ } ]
+    [[var6] sorting_sort_h = { group = sorting_group_10 var = $var6$ temp = $temp$ vvar = $vvar6$ temp2 = $temp2$ } ]
+    [[var7] sorting_sort_h = { group = sorting_group_10 var = $var7$ temp = $temp$ vvar = $vvar7$ temp2 = $temp2$ } ]
+    [[var8] sorting_sort_h = { group = sorting_group_10 var = $var8$ temp = $temp$ vvar = $vvar8$ temp2 = $temp2$ } ]
+    [[var9] sorting_sort_h = { group = sorting_group_10 var = $var9$ temp = $temp$ vvar = $vvar9$ temp2 = $temp2$ } ]
+    [[var10] sorting_sort_h = { group = sorting_group_10 var = $var10$ temp = $temp$ vvar = $vvar10$ temp2 = $temp2$ } ]
+}
+sorting_setup_h = { #prov #temp #var
+    set_key = { lhs = $temp$ which = $var$ }
+    set_key = { lhs = $temp2$ which = $vvar$ }
+    $prov$ = {
+        set_key = { lhs = $temp$ which = PREV }
+        set_key = { lhs = $temp2$ which = PREV }
+    }
+}
+sorting_sort_h = { #group #temp #var
+    set_key = { lhs = $temp$ value = 0 }
+    set_key = { lhs = $temp2$ value = 0 }
+    save_event_target_as = Prov
+    $group$ = {
+        if = {
+            limit = {
+                check_key = { lhs = $temp$ which = event_target:Prov }
+            }
+            save_event_target_as = Prov
+        }
+    }    
+    set_key = { lhs = $temp$ which = event_target:Prov }
+    set_key = { lhs = $temp2$ which = event_target:Prov }
+    set_key = { lhs = $var$ which = $temp$ }
+    set_key = { lhs = $vvar$ which = $temp2$ }
+    event_target:Prov = { set_key = { lhs = $temp$ value = 0 } set_key = { lhs = $temp2$ value = 0 } }
+}
+
+
+#Mapping of keys from system SectorCent to Display Sector Cent
+
+mapKeysFromPrev = {
+	add_permanent_province_modifier = { name = Disp_Trade_Cent duration = -1 }
+	
+	set_key = { lhs = Local_Volume 				   which = PREV }	
+	set_key = { lhs = Total_Imported 		       which = PREV }
+	set_key = { lhs = Total_Exported 		       which = PREV }
+	set_key = { lhs = Total_Internal_Export        which = PREV }
+	set_key = { lhs = Total_Internal_Import        which = PREV }
+	set_key = { lhs = Total_External_Export        which = PREV }
+	set_key = { lhs = Total_External_Import        which = PREV }	
+	set_key = { lhs = Intermediary_Income 		   which = PREV }
+	#set_key = { lhs = TN_SectorImported1           which = PREV }
+	#set_key = { lhs = TN_SectorImported2           which = PREV }
+	#set_key = { lhs = TN_SectorImported4           which = PREV }
+	#set_key = { lhs = TN_SectorImported5           which = PREV }
+	#set_key = { lhs = TN_SectorImported6           which = PREV }
+	#set_key = { lhs = TN_SectorImported9           which = PREV }
+	#set_key = { lhs = TN_SectorImported10          which = PREV }
+	#set_key = { lhs = TN_SectorImported21          which = PREV }
+	#set_key = { lhs = TN_SectorImported22          which = PREV }
+	#set_key = { lhs = TN_SectorImported23          which = PREV }
+	#set_key = { lhs = TN_SectorImported24          which = PREV }
+	#set_key = { lhs = TN_SectorImported25          which = PREV }
+	#set_key = { lhs = TN_SectorImported41          which = PREV }
+	#set_key = { lhs = TN_SectorExported1           which = PREV }
+	#set_key = { lhs = TN_SectorExported2           which = PREV }
+	#set_key = { lhs = TN_SectorExported4           which = PREV }
+	#set_key = { lhs = TN_SectorExported5           which = PREV }
+	#set_key = { lhs = TN_SectorExported6           which = PREV }
+	#set_key = { lhs = TN_SectorExported9           which = PREV }
+	#set_key = { lhs = TN_SectorExported10          which = PREV }
+	#set_key = { lhs = TN_SectorExported21          which = PREV }
+	#set_key = { lhs = TN_SectorExported22          which = PREV }
+	#set_key = { lhs = TN_SectorExported23          which = PREV }
+	#set_key = { lhs = TN_SectorExported24          which = PREV }
+	#set_key = { lhs = TN_SectorExported25          which = PREV }
+	#set_key = { lhs = TN_SectorExported41          which = PREV }
+	set_key = { lhs = Trade_Balance                which = PREV }
+	set_key = { lhs = Total_Internal_Export_Share  which = PREV }
+	set_key = { lhs = Total_Internal_Import_Share  which = PREV }
+	set_key = { lhs = Total_External_Export_Share  which = PREV }
+	set_key = { lhs = Total_External_Import_Share  which = PREV }	
+	set_key = { lhs = Balance_Good1 	           which = PREV }
+	set_key = { lhs = Balance_Good2 	           which = PREV }
+	set_key = { lhs = Balance_Good4 	           which = PREV }
+	set_key = { lhs = Balance_Good5 	           which = PREV }
+	set_key = { lhs = Balance_Good6 	           which = PREV }
+	set_key = { lhs = Balance_Good9 	           which = PREV }
+	set_key = { lhs = Balance_Good10	           which = PREV }
+	set_key = { lhs = Balance_Good21	           which = PREV }
+	set_key = { lhs = Balance_Good22	           which = PREV }
+	set_key = { lhs = Balance_Good23	           which = PREV }
+	set_key = { lhs = Balance_Good24	           which = PREV }
+	set_key = { lhs = Balance_Good25	           which = PREV }
+	set_key = { lhs = Balance_Good41	           which = PREV }	
+	
+	mapHelper = { slot = 1 }
+    mapHelper = { slot = 2 }
+    mapHelper = { slot = 3 }
+    mapHelper = { slot = 4 }
+    mapHelper = { slot = 5 }
+    mapHelper = { slot = 6 }
+    mapHelper = { slot = 7 }
+    mapHelper = { slot = 8 }
+    mapHelper = { slot = 9 }
+    mapHelper = { slot = 10 }	
+
+	mapHelper2 = { prod = 1 }
+    mapHelper2 = { prod = 2 }
+    mapHelper2 = { prod = 4 }
+    mapHelper2 = { prod = 5 }
+    mapHelper2 = { prod = 6 }
+    mapHelper2 = { prod = 9 }
+    mapHelper2 = { prod = 10 }
+    mapHelper2 = { prod = 21 }
+    mapHelper2 = { prod = 22 }
+    mapHelper2 = { prod = 23 }
+    mapHelper2 = { prod = 24 }
+    mapHelper2 = { prod = 25 }
+    mapHelper2 = { prod = 41 }
+}
+mapHelper = {
+    set_key = { lhs = InternalVolume_Export_Slot$slot$ which = PREV  }
+    set_key = { lhs = InternalVolume_Import_Slot$slot$ which = PREV  }
+	
+    set_key = { lhs = ExternalVolume_Export_Slot$slot$ which = PREV  }
+    set_key = { lhs = ExternalVolume_Import_Slot$slot$ which = PREV  }
+	
+    set_key = { lhs = InternalId_Export_Slot$slot$ 	   which = PREV  }
+    set_key = { lhs = InternalId_Import_Slot$slot$     which = PREV  }
+	
+    set_key = { lhs = ExternalId_Export_Slot$slot$     which = PREV  }
+    set_key = { lhs = ExternalId_Import_Slot$slot$     which = PREV  }	
+}
+mapHelper2 = {
+    set_key = { lhs = TradeDisplay_SectorEarn$prod$          which = PREV }
+	set_key = { lhs = TradeDisplay_SectorSpend$prod$         which = PREV }
+	set_key = { lhs = TradeDisplay_SectorSubsistEarn$prod$   which = PREV }	
+	set_key = { lhs = TN_SectorOffer$prod$ 					 which = PREV }
+}
+
+
+mapKeysFromPrev2 = {
+	set_key = { lhs = TN_SectorExported1   which  = PREV }
+	set_key = { lhs = TN_SectorExported2   which  = PREV }
+	set_key = { lhs = TN_SectorExported4   which  = PREV }
+	set_key = { lhs = TN_SectorExported5   which  = PREV }
+	set_key = { lhs = TN_SectorExported6   which  = PREV }
+	set_key = { lhs = TN_SectorExported9   which  = PREV }
+	set_key = { lhs = TN_SectorExported10  which  = PREV }
+	set_key = { lhs = TN_SectorExported21  which  = PREV }
+	set_key = { lhs = TN_SectorExported22  which  = PREV }
+	set_key = { lhs = TN_SectorExported23  which  = PREV }
+	set_key = { lhs = TN_SectorExported24  which  = PREV }
+	set_key = { lhs = TN_SectorExported25  which  = PREV }
+	set_key = { lhs = TN_SectorExported41  which  = PREV }
+	
+	set_key = { lhs = TN_SectorImported1   which  = PREV }
+	set_key = { lhs = TN_SectorImported2   which  = PREV }
+	set_key = { lhs = TN_SectorImported4   which  = PREV }
+	set_key = { lhs = TN_SectorImported5   which  = PREV }
+	set_key = { lhs = TN_SectorImported6   which  = PREV }
+	set_key = { lhs = TN_SectorImported9   which  = PREV }
+	set_key = { lhs = TN_SectorImported10  which  = PREV }
+	set_key = { lhs = TN_SectorImported21  which  = PREV }
+	set_key = { lhs = TN_SectorImported22  which  = PREV }
+	set_key = { lhs = TN_SectorImported23  which  = PREV }
+	set_key = { lhs = TN_SectorImported24  which  = PREV }
+	set_key = { lhs = TN_SectorImported25  which  = PREV }
+	set_key = { lhs = TN_SectorImported41  which  = PREV }
+	
+	set_key = { lhs = Display_TN_SectorStockpile1 which = PREV }
+    set_key = { lhs = Display_TN_SectorStockpile2 which = PREV }
+    set_key = { lhs = Display_TN_SectorStockpile4 which = PREV }
+    set_key = { lhs = Display_TN_SectorStockpile5 which = PREV }
+    set_key = { lhs = Display_TN_SectorStockpile6 which = PREV }
+    set_key = { lhs = Display_TN_SectorStockpile9 which = PREV }
+    set_key = { lhs = Display_TN_SectorStockpile10 which = PREV } 
+
+	set_key = { lhs = Display_TN_SectorStockpile21 which = PREV } 
+    set_key = { lhs = Display_TN_SectorStockpile22 which = PREV } 
+    set_key = { lhs = Display_TN_SectorStockpile23 which = PREV } 
+    set_key = { lhs = Display_TN_SectorStockpile24 which = PREV } 
+    set_key = { lhs = Display_TN_SectorStockpile25 which = PREV } 
+
+    set_key = { lhs = Display_TN_SectorStockpile41 which = PREV } 
+}

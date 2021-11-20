@@ -1,0 +1,27 @@
+country_decisions = { 
+	dg_testing = { 
+		potential = { 
+			always = no
+			ai = no
+		}
+		allow = { }
+		effect = { 
+			if = {
+				limit = { has_country_flag = baltic_crus_west }
+				set_country_flag = baltic_crus_east
+				set_country_flag = baltic_crus_secul
+				clr_country_flag = baltic_crus_west
+				swap_non_generic_missions = yes
+			}
+			else = {
+				set_country_flag = baltic_crus_west
+				set_country_flag = baltic_crus_secul
+				clr_country_flag = baltic_crus_east
+				swap_non_generic_missions = yes
+			}
+		}
+		ai_will_do = { 
+			factor = 0
+		}
+	}
+}

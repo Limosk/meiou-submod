@@ -1,0 +1,19 @@
+namespace = DG_Doctrine
+
+#Synod on Lollardy
+country_event = {
+	id = DG_Doctrine.001
+	title = "DG_Doctrine.001.title"
+	desc = "DG_Doctrine.001.desc"
+	picture = all_church_state
+
+	is_triggered_only = yes
+
+	option = {
+		name = "PTM_EXIT"
+		highlight = yes
+		ai_chance = {
+			factor = 1
+		}
+	}
+}

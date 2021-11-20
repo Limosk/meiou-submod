@@ -1,0 +1,632 @@
+# Author: Phlopsi
+
+compare_and_set_travel_time = {
+	if = {
+		limit = {
+			check_key = { lhs = tv_tt value = 0.001 }
+		}
+		event_target:runner_dispatching_province = {
+			set_key = { lhs = tv_tt_new which = tv_tt }
+		}
+
+		set_key = { lhs = tv_tt_new which = event_target:runner_dispatching_province }
+		change_key = { lhs = tv_tt_new which = $value$ }
+
+		if = {
+			limit = {
+				NOT = {
+					check_key = { lhs = tv_tt_new which = tv_tt }
+				}
+			}
+			clr_province_flag = tf_river
+			
+			set_key = { lhs = tv_tt which = tv_tt_new }
+
+			event_target:runner_dispatching_province = {
+				if = {
+					limit = {
+						is_sea = yes
+					}
+					set_key = { lhs = tv_id which = $prev$ }
+				}
+				else = {
+					set_key = { lhs = tv_id which = ID_Prov }
+				}
+			}
+
+			set_key = { lhs = tv_id which = event_target:runner_dispatching_province }
+
+			set_key = { lhs = $prev$ which = tv_id }
+		}
+	}
+	else = {
+		clr_province_flag = tf_river
+		
+		event_target:runner_dispatching_province = {
+			if = {
+				limit = {
+					is_sea = yes
+				}
+				set_key = { lhs = tv_id which = $prev$ }
+			}
+			else = {
+				set_key = { lhs = tv_id which = ID_Prov }
+			}
+		}
+
+		set_key = { lhs = tv_tt which = event_target:runner_dispatching_province }
+		set_key = { lhs = tv_id which = event_target:runner_dispatching_province }
+
+		change_key = { lhs = tv_tt which = $value$ }
+		set_key = { lhs = $prev$ which = tv_id }
+	}
+}
+
+ce_finalize_effect = {
+	$scope$ = {
+		if = {
+			limit = {
+				has_province_flag = tf_communication_efficiency_final
+			}
+			set_key = { lhs = $time$ value = 960 }
+			subtract_key = { lhs = $time$ which = tv_tt }
+
+			if = {
+				limit = {
+					NOT = {
+						check_key = { lhs = $time$ value = 0 }
+					}
+				}
+				set_key = { lhs = $time$ value = 0 }
+			}
+			else = {
+				divide_key = { lhs = $time$ value = 9.6 }
+			}
+		}
+		else_if = {
+			limit = {
+				always = $clean$
+			}
+			set_key = { lhs = $time$ value = 0 }
+		}
+	}
+}
+
+ce_cleanup = {
+	set_key = { lhs = tv_owned_provinces_in_state_in_progress value = 0 }
+	set_key = { lhs = tv_ship value = 0 }
+	set_key = { lhs = tv_port value = 0 }
+	
+	every_province = {
+		limit = {
+			check_key = { lhs = tv_cost_land value = 0.001 }
+		}
+		clr_province_flag = tf_communication_efficiency_final
+
+		set_key = { lhs = tv_tt value = 0 }
+		set_key = { lhs = tv_id value = 0 }
+		set_key = { lhs = tv_city_x_other value = 0 }
+		set_key = { lhs = tv_city_z_other value = 0 }
+		set_key = { lhs = tv_province_distance value = 0 }
+		set_key = { lhs = tv_tt_new value = 0 }
+		set_key = { lhs = tv_cost_land value = 0 }
+		
+		set_key = { lhs = tv_ship value = 0 }
+		set_key = { lhs = tv_cost_port_embark value = 0 }
+		set_key = { lhs = tv_cost_port_to value = 0 }
+		set_key = { lhs = tv_sea_zone_x_other value = 0 }
+		set_key = { lhs = tv_sea_zone_z_other value = 0 }
+		set_key = { lhs = tv_port_x_other value = 0 }
+		set_key = { lhs = tv_port_z_other value = 0 }
+	}
+
+	sea_starts = {
+		limit = {
+			OR = {
+				has_province_flag = tf_communication_efficiency_final
+
+				check_key = { lhs = tv_tt value = 0.001 }
+			}
+		}
+		clr_province_flag = tf_communication_efficiency_final
+
+		set_key = { lhs = tv_tt value = 0 }
+		set_key = { lhs = tv_id value = 0 }
+		set_key = { lhs = tv_sea_zone_x_other value = 0 }
+		set_key = { lhs = tv_sea_zone_z_other value = 0 }
+		set_key = { lhs = tv_port_x_other value = 0 }
+		set_key = { lhs = tv_port_z_other value = 0 }
+		set_key = { lhs = tv_cost_port_embark value = 0 }
+		set_key = { lhs = tv_cost_port_to value = 0 }
+		set_key = { lhs = tv_province_distance value = 0 }
+		set_key = { lhs = tv_tt_new value = 0 }
+	}
+}
+
+ce_set_runner_dispatching_province_land = {
+	if = {
+		limit = {
+			always = $overlord$
+		}
+		overlord = {
+			every_owned_province = {
+				limit = {
+					has_lowest_travel_time = { max = $max$ }
+					isValidEmpty = yes
+				}
+				save_event_target_as = runner_dispatching_province
+			}
+
+			overlord = {
+				every_owned_province = {
+					limit = {
+						has_lowest_travel_time = { max = $max$ }
+						isValidEmpty = yes
+					}
+					save_event_target_as = runner_dispatching_province
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			always = $subject$
+		}
+		every_subject_country = {
+			limit = {
+				isValidCountry = yes
+			}
+			every_owned_province = {
+				limit = {
+					has_lowest_travel_time = { max = $max$ }
+					isValidEmpty = yes
+				}
+				save_event_target_as = runner_dispatching_province
+			}
+
+			every_subject_country = {
+				limit = {
+					isValidCountry = yes
+				}
+				every_owned_province = {
+					limit = {
+						has_lowest_travel_time = { max = $max$ }
+						isValidEmpty = yes
+					}
+					save_event_target_as = runner_dispatching_province
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			always = $hre$
+		}
+		if = {
+			limit = {
+				is_part_of_hre = yes
+			}
+			every_country = {
+				limit = {
+					isValidCountry = yes
+					is_part_of_hre = yes
+				}
+				every_owned_province = {
+					limit = {
+						has_lowest_travel_time = { max = $max$ }
+						isValidEmpty = yes
+					}
+					save_event_target_as = runner_dispatching_province
+				}
+			}
+		}
+		if = {
+			limit = {
+				daimyo_trigger = yes
+			}
+			every_country = {
+				limit = {
+					daimyo_trigger = yes
+					isValidCountry = yes
+				}
+				every_owned_province = {
+					limit = {
+						has_lowest_travel_time = { max = $max$ }
+						isValidEmpty = yes
+					}
+					save_event_target_as = runner_dispatching_province
+				}
+			}
+		}
+	}
+
+	$scope$ = {
+		limit = {
+			has_lowest_travel_time = { max = $max$ }
+			isValidProv = yes
+		}
+		save_event_target_as = runner_dispatching_province
+	}
+}
+ce_set_runner_disptaching_province_sea = {
+	sea_starts = {
+		limit = {
+			has_lowest_travel_time = { max = $max$ }
+		}
+		save_event_target_as = runner_dispatching_province
+	}
+}
+
+ce_do_sea = {
+	if = {
+		limit = {
+			is_sea = yes
+		}
+		every_neighbor_sea_zone = {
+			limit = {
+				province_group = sea_starts
+
+				NOT = { 
+					has_province_flag = tf_communication_efficiency_final 
+				}
+			}
+			export_province_distance_sea_zone_effect = {
+				which = tv_province_distance
+				who = event_target:runner_dispatching_province
+			}
+
+			compare_and_set_travel_time = {
+				prev = $prev$
+				value = tv_province_distance
+			}
+		}
+
+		every_neighbor_province = {
+			limit = {
+				NOT = { 
+					has_province_flag = tf_communication_efficiency_final 
+
+					is_key_equal = { lhs = tv_ship value = 0 }
+				}
+				isValidEmpty = yes
+			}
+			export_province_distance_land_province_effect = {
+				which = tv_province_distance
+				who = event_target:runner_dispatching_province
+			}
+
+			compare_and_set_travel_time = {
+				prev = $prev$
+				value = tv_province_distance
+			}
+			if = {
+				limit = {
+					province_id = 359
+					has_province_flag = TN_SpecialCanal
+				}
+				PREV = {
+					if = {
+						limit = {
+							province_id = 1909
+						}
+						1922 = {
+							if = {
+								limit = {
+									NOT = {
+										has_province_flag = tf_communication_efficiency_final 
+									}
+								}
+								export_province_distance_sea_zone_effect = {
+									which = tv_province_distance
+									who = event_target:runner_dispatching_province
+								}
+
+								compare_and_set_travel_time = {
+									prev = $prev$
+									value = tv_province_distance
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							province_id = 1922
+						}
+						1909 = {
+							if = {
+								limit = {
+									NOT = {
+										has_province_flag = tf_communication_efficiency_final 
+									}
+								}
+								export_province_distance_sea_zone_effect = {
+									which = tv_province_distance
+									who = event_target:runner_dispatching_province
+								}
+
+								compare_and_set_travel_time = {
+									prev = $prev$
+									value = tv_province_distance
+								}
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					province_id = 835
+					has_province_flag = TN_SpecialCanal
+				}
+				PREV = {
+					if = {
+						limit = {
+							province_id = 1617
+						}
+						1650 = {
+							if = {
+								limit = {
+									NOT = {
+										has_province_flag = tf_communication_efficiency_final 
+									}
+								}
+								export_province_distance_sea_zone_effect = {
+									which = tv_province_distance
+									who = event_target:runner_dispatching_province
+								}
+
+								compare_and_set_travel_time = {
+									prev = $prev$
+									value = tv_province_distance
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							province_id = 1650
+						}
+						1617 = {
+							if = {
+								limit = {
+									NOT = {
+										has_province_flag = tf_communication_efficiency_final 
+									}
+								}
+								export_province_distance_sea_zone_effect = {
+									which = tv_province_distance
+									who = event_target:runner_dispatching_province
+								}
+
+								compare_and_set_travel_time = {
+									prev = $prev$
+									value = tv_province_distance
+								}
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						province_id = 977
+						province_id = 1252
+					}
+					has_province_flag = TN_SpecialCanal
+				}
+				PREV = {
+					if = {
+						limit = {
+							province_id = 1856
+						}
+						1866 = {
+							if = {
+								limit = {
+									NOT = {
+										has_province_flag = tf_communication_efficiency_final 
+									}
+								}
+								export_province_distance_sea_zone_effect = {
+									which = tv_province_distance
+									who = event_target:runner_dispatching_province
+								}
+
+								compare_and_set_travel_time = {
+									prev = $prev$
+									value = tv_province_distance
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							province_id = 1866
+						}
+						1856 = {
+							if = {
+								limit = {
+									NOT = {
+										has_province_flag = tf_communication_efficiency_final 
+									}
+								}
+								export_province_distance_sea_zone_effect = {
+									which = tv_province_distance
+									who = event_target:runner_dispatching_province
+								}
+
+								compare_and_set_travel_time = {
+									prev = $prev$
+									value = tv_province_distance
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_port = yes
+
+			NOT = {
+				is_key_equal = { lhs = tv_ship value = 0 }
+			}
+		}
+		sea_zone = {
+			if = {
+				limit = {
+					NOT = {
+						has_province_flag = tf_communication_efficiency_final 
+					}
+				}
+				export_province_distance_sea_zone_effect = {
+					which = tv_province_distance
+					who = event_target:runner_dispatching_province
+				}
+
+				compare_and_set_travel_time = {
+					prev = $prev$
+					value = tv_province_distance
+				}
+			}
+		}
+	}
+}
+ce_do_land = {
+	if = {
+		limit = {
+			is_sea = no
+		}
+		every_neighbor_province = {
+			limit = {
+				NOT = { 
+					has_province_flag = tf_communication_efficiency_final 
+
+					is_key_equal = { lhs = tv_cost_land value = 0 }
+				}
+				isValidEmpty = yes
+			}
+			export_province_distance_land_province_effect = {
+				which = tv_province_distance
+				who = event_target:runner_dispatching_province
+			}
+			
+			change_key = { lhs = tv_province_distance which = PREV }
+
+			compare_and_set_travel_time = {
+				prev = $prev$
+				value = tv_province_distance
+			}
+		}
+	}
+}
+
+ce_do_river = {
+	if = {
+		limit = {
+			check_key = { lhs = TN_River value = 1 }
+			
+			NOT = {
+				has_province_flag = tf_river
+			}
+		}
+		save_event_target_as = Prov
+		
+		set_key = { lhs = tv_ts which = tv_tt }
+		change_key = { lhs = tv_ts which = tv_cost_port_embark }
+		
+		set_global_flag = tf_river
+		set_province_flag = tf_river_done
+		
+		while = {
+			limit = {
+				has_global_flag = tf_river
+			}
+			clr_global_flag = tf_river
+			
+			event_target:Prov = {
+				every_neighbor_province = {
+					limit = {
+						check_key = { lhs = TN_River value = 1 }
+						
+						NOT = { 
+							has_province_flag = tf_river_done 
+							
+							is_key_equal = { lhs = tv_cost_land value = 0 }
+						}
+				
+						OR = {
+							is_key_equal = { lhs = TN_River which = PREV }
+							
+							has_province_flag = TN_RiverJoint
+							
+							PREV = { has_province_flag = TN_RiverJoint }
+						}
+					}
+					set_province_flag = tf_river_cand
+					set_province_flag = tf_river_done
+					
+					set_key = { lhs = tv_ts which = PREV }
+					
+					export_province_distance_river_province_effect = {
+						which = tv_province_distance
+						who = event_target:Prov
+					}
+					
+					change_key = { lhs = tv_ts which = tv_province_distance }
+					
+					set_key = { lhs = tv_tt_new which = tv_ts }
+					change_key = { lhs = tv_tt_new which = tv_cost_port_embark }
+					
+					if = {
+						limit = {
+							OR = {
+								AND = {
+									is_key_equal = { lhs = tv_tt value = 0 }
+									
+									is_capital = no
+								}
+								
+								NOT = {
+									check_key = { lhs = tv_tt_new which = tv_tt }
+								}
+							}
+						}
+						set_province_flag = tf_river
+						
+						set_key = { lhs = tv_tt which = tv_tt_new }
+						
+						event_target:runner_dispatching_province = {
+							set_key = { lhs = tv_id which = ID_Prov }
+						}
+
+						set_key = { lhs = tv_id which = event_target:runner_dispatching_province }
+						set_key = { lhs = $prev$ which = tv_id }
+					}
+				}
+			}
+			
+			random_province = {
+				limit = {
+					has_province_flag = tf_river_cand
+				}
+				clr_province_flag = tf_river_cand
+				
+				set_global_flag = tf_river
+				
+				save_event_target_as = Prov
+			}
+		}
+		
+		every_province = {
+			limit = {
+				has_province_flag = tf_river_done
+			}
+			clr_province_flag = tf_river_done
+			
+			set_key = { lhs = tv_ts value = 0 }
+		}
+	}
+}

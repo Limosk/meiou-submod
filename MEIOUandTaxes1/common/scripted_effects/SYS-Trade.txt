@@ -1,0 +1,4591 @@
+# Economy \ Trade 
+# By KJH
+# Shirokuma gets an honorable mention
+
+# Refresh 'TN_ProvDmnd$prod$' and 'TN_ProvSply$prod$' variables in each province
+# Those variables represent province's supply and demand for each trade goods,
+# Which other effects later reference for trade, fulfillment, and income calculations
+TN_DoSupplyDemand = {
+    # Start by setting all demand and supply variables to 0
+    # Edit for new produce
+    set_key = { lhs = TN_ProvDmnd1 value = 0 }
+    set_key = { lhs = TN_ProvDmnd2 value = 0 }
+    set_key = { lhs = TN_ProvDmnd4 value = 0 }
+    set_key = { lhs = TN_ProvDmnd5 value = 0 }
+    set_key = { lhs = TN_ProvDmnd6 value = 0 }
+    set_key = { lhs = TN_ProvDmnd9 value = 0 }
+    set_key = { lhs = TN_ProvDmnd10 value = 0 }
+
+    set_key = { lhs = TN_ProvDmnd21 value = 0 }
+    set_key = { lhs = TN_ProvDmnd22 value = 0 }
+    set_key = { lhs = TN_ProvDmnd23 value = 0 }
+    set_key = { lhs = TN_ProvDmnd24 value = 0 }
+    set_key = { lhs = TN_ProvDmnd25 value = 0 }
+
+    set_key = { lhs = TN_ProvDmnd41 value = 0 }
+
+    # Edit for new produce
+    set_key = { lhs = TN_ProvSply1 value = 0 }
+    set_key = { lhs = TN_ProvSply2 value = 0 }
+    set_key = { lhs = TN_ProvSply4 value = 0 }
+    set_key = { lhs = TN_ProvSply5 value = 0 }
+    set_key = { lhs = TN_ProvSply6 value = 0 }
+    set_key = { lhs = TN_ProvSply9 value = 0 }
+    set_key = { lhs = TN_ProvSply10 value = 0 }
+    
+    set_key = { lhs = TN_ProvSply21 value = 0 }
+    set_key = { lhs = TN_ProvSply22 value = 0 }
+    set_key = { lhs = TN_ProvSply23 value = 0 }
+    set_key = { lhs = TN_ProvSply24 value = 0 }
+    set_key = { lhs = TN_ProvSply25 value = 0 }
+
+    set_key = { lhs = TN_ProvSply41 value = 0 }
+    set_key = { lhs = TN_ProvSply51 value = 0.001 }
+
+    # Get level of over/under consumption based on wealth
+    TN_GetDmnd = { class = SF div = 6 edu = 0.01 }
+    TN_GetDmnd = { class = NM div = 6 edu = 0.005 }
+    TN_GetDmnd = { class = RE div = 9 edu = 0.01 }
+    TN_GetDmnd = { class = NO div = 22 edu = 0.005 }
+    TN_GetDmnd = { class = BG div = 22 edu = 0.005 }
+    TN_GetDmnd = { class = CL div = 22 edu = 0.005 }
+
+    # Get class demand for each trade goods
+    # Edit for new produce
+    TN_GetProdClass = { prod = 1 type = Life }
+    TN_GetProdClass = { prod = 2 type = Life }
+    TN_GetProdClass = { prod = 4 type = Life }
+    TN_GetProdClass = { prod = 5 type = Life }
+    TN_GetProdClass = { prod = 9 type = Luxury }
+    TN_GetProdClass = { prod = 10 type = Luxury }
+
+    TN_GetProdClass = { prod = 21 type = Comfort }
+    TN_GetProdClass = { prod = 23 type = Comfort }
+    TN_GetProdClass = { prod = 25 type = Luxury }
+    
+    TN_GetProdClass = { prod = 41 type = Knowledge }
+
+    # Get supply and demand from slots for each trade good
+    # Edit for new produce
+    TN_GetProdSlot = { prod = 1 }
+    TN_GetProdSlot = { prod = 2 }
+    TN_GetProdSlot = { prod = 4 }
+    TN_GetProdSlot = { prod = 5 }
+    TN_GetProdSlot = { prod = 6 }
+    TN_GetProdSlot = { prod = 9 }
+    TN_GetProdSlot = { prod = 10 }
+    
+    TN_GetProdSlot = { prod = 21 }
+    TN_GetProdSlot = { prod = 22 }
+    TN_GetProdSlot = { prod = 23 }
+    TN_GetProdSlot = { prod = 24 }
+    TN_GetProdSlot = { prod = 25 }
+
+    TN_GetProdSlot = { prod = 41 }
+    TN_GetProdSlot = { prod = 51 }
+
+    # Edit for new produce
+	change_key = { lhs = TN_ProvDmnd1 which = Building_Agriculture1 }
+    change_key = { lhs = TN_ProvDmnd1 which = Building_Forestry1 }
+    change_key = { lhs = TN_ProvDmnd1 which = Building_Extraction1 }
+    change_key = { lhs = TN_ProvDmnd1 which = Building_Fishery1 }
+    change_key = { lhs = TN_ProvDmnd1 which = Building_Commercial1 }
+    change_key = { lhs = TN_ProvDmnd1 which = Building_Industrial1 }
+    change_key = { lhs = TN_ProvDmnd1 which = Building_Academic1 }
+	
+    change_key = { lhs = TN_ProvDmnd6 which = Building_Agriculture6 }
+    change_key = { lhs = TN_ProvDmnd6 which = Building_Forestry6 }
+    change_key = { lhs = TN_ProvDmnd6 which = Building_Extraction6 }
+    change_key = { lhs = TN_ProvDmnd6 which = Building_Fishery6 }
+    change_key = { lhs = TN_ProvDmnd6 which = Building_Commercial6 }
+    change_key = { lhs = TN_ProvDmnd6 which = Building_Industrial6 }
+    change_key = { lhs = TN_ProvDmnd6 which = Building_Academic6 }
+	
+	change_key = { lhs = TN_ProvDmnd24 which = Building_Agriculture24 }
+    change_key = { lhs = TN_ProvDmnd24 which = Building_Forestry24 }
+    change_key = { lhs = TN_ProvDmnd24 which = Building_Extraction24 }
+    change_key = { lhs = TN_ProvDmnd24 which = Building_Fishery24 }
+    change_key = { lhs = TN_ProvDmnd24 which = Building_Commercial24 }
+    change_key = { lhs = TN_ProvDmnd24 which = Building_Industrial24 }
+    change_key = { lhs = TN_ProvDmnd24 which = Building_Academic24 }
+        #Demanded goods from Buildings Maintenance
+    change_key = { lhs = TN_ProvDmnd6 which = Infra_6 }
+    change_key = { lhs = TN_ProvDmnd22 which = Infra_22 }
+    change_key = { lhs = TN_ProvDmnd23 which = Infra_23 }
+    change_key = { lhs = TN_ProvDmnd24 which = Infra_24 }
+    change_key = { lhs = TN_ProvDmnd41 which = Infra_41 }
+
+    change_key = { lhs = TN_ProvDmnd6 which = Infra_State6 }
+    change_key = { lhs = TN_ProvDmnd22 which = Infra_State22 }
+    change_key = { lhs = TN_ProvDmnd23 which = Infra_State23 }
+    change_key = { lhs = TN_ProvDmnd24 which = Infra_State24 }
+    change_key = { lhs = TN_ProvDmnd41 which = Infra_State41 }
+
+        #Demanded Goods from ongoing constructions
+    change_key = { lhs = TN_ProvDmnd6 which = Infra_Building6 }
+    change_key = { lhs = TN_ProvDmnd22 which = Infra_Building22 }
+    change_key = { lhs = TN_ProvDmnd23 which = Infra_Building23 }
+    change_key = { lhs = TN_ProvDmnd24 which = Infra_Building24 }
+    change_key = { lhs = TN_ProvDmnd41 which = Infra_Building41 }
+        #Demanded goods from Military training
+	change_key = { lhs = TN_ProvDmnd1 which = Mil_Maint1 }
+	change_key = { lhs = TN_ProvDmnd2 which = Mil_Maint2 }
+	change_key = { lhs = TN_ProvDmnd5 which = Mil_Maint5 }
+	change_key = { lhs = TN_ProvDmnd21 which = Mil_Maint21 }
+	change_key = { lhs = TN_ProvDmnd22 which = Mil_Maint22 }
+	change_key = { lhs = TN_ProvDmnd24 which = Mil_Maint24 }
+	change_key = { lhs = TN_ProvDmnd41 which = Mil_Maint41 }
+        #Demanded goods from Military recruitment
+	change_key = { lhs = TN_ProvDmnd1 which = Mil_Build1 }
+	change_key = { lhs = TN_ProvDmnd2 which = Mil_Build2 }
+	change_key = { lhs = TN_ProvDmnd5 which = Mil_Build5 }
+	change_key = { lhs = TN_ProvDmnd21 which = Mil_Build21 }
+	change_key = { lhs = TN_ProvDmnd22 which = Mil_Build22 }
+	change_key = { lhs = TN_ProvDmnd24 which = Mil_Build24 }
+	change_key = { lhs = TN_ProvDmnd41 which = Mil_Build41 }
+        #Demanded goods from Navy
+	change_key = { lhs = TN_ProvDmnd5 which = Mil_Navy5 }
+	change_key = { lhs = TN_ProvDmnd22 which = Mil_Navy22 }
+	change_key = { lhs = TN_ProvDmnd23 which = Mil_Navy23 }
+	change_key = { lhs = TN_ProvDmnd24 which = Mil_Navy24 }
+	
+	# Refresh sector score variable 
+    set_key = { lhs = Sector_ScoreDisp value = 0 }
+	
+	set_key = { lhs = Prev_Total_External_Export which = Total_External_Export }
+	set_key = { lhs = Prev_Total_External_Import which = Total_External_Import }
+    if = {
+        limit = {
+			OR = {
+				has_province_flag = TN_SectorCentDisplay
+				has_province_flag = TN_SectorCent
+                AND = {
+                    has_province_modifier = Disp_Trade_Cent
+                    NOT = {
+				        has_province_flag = TN_SectorCentDisplay
+				        has_province_flag = TN_SectorCent
+                    }
+                }
+			}
+        }
+        refreshSuperDisplay = yes
+    }    
+}
+
+# Prepare sectors by cleaning sector variables from all provinces
+# Also refresh which sector each provinces belong to
+TN_PrepSector = {
+    regiongroup = {
+        region = {
+            limit = {
+                has_province_flag = TN_SectorPart
+            }
+            clr_province_flag = TN_SectorPart
+			
+			# Record previous export / import
+            set_key = { lhs = TN_SectorStockpileOutRec1 which = TN_SectorStockpileOut1 }
+            set_key = { lhs = TN_SectorStockpileOutRec2 which = TN_SectorStockpileOut2 }
+            set_key = { lhs = TN_SectorStockpileOutRec4 which = TN_SectorStockpileOut4 }
+            set_key = { lhs = TN_SectorStockpileOutRec5 which = TN_SectorStockpileOut5 }
+            set_key = { lhs = TN_SectorStockpileOutRec6 which = TN_SectorStockpileOut6 }
+            set_key = { lhs = TN_SectorStockpileOutRec9 which = TN_SectorStockpileOut9 }
+            set_key = { lhs = TN_SectorStockpileOutRec10 which = TN_SectorStockpileOut10 }
+            set_key = { lhs = TN_SectorStockpileOutRec21 which = TN_SectorStockpileOut21 }
+            set_key = { lhs = TN_SectorStockpileOutRec22 which = TN_SectorStockpileOut22 }
+            set_key = { lhs = TN_SectorStockpileOutRec23 which = TN_SectorStockpileOut23 }
+            set_key = { lhs = TN_SectorStockpileOutRec24 which = TN_SectorStockpileOut24 }
+            set_key = { lhs = TN_SectorStockpileOutRec25 which = TN_SectorStockpileOut25 }
+            set_key = { lhs = TN_SectorStockpileOutRec41 which = TN_SectorStockpileOut41 }
+
+            multiply_key = { lhs = TN_SectorStockpileOutRec1 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec2 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec4 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec5 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec6 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec9 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec10 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec21 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec22 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec23 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec24 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec25 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileOutRec41 value = -1 }
+
+            set_key = { lhs = TN_SectorStockpileInRec1 which = TN_SectorStockpileIn1 }
+            set_key = { lhs = TN_SectorStockpileInRec2 which = TN_SectorStockpileIn2 }
+            set_key = { lhs = TN_SectorStockpileInRec4 which = TN_SectorStockpileIn4 }
+            set_key = { lhs = TN_SectorStockpileInRec5 which = TN_SectorStockpileIn5 }
+            set_key = { lhs = TN_SectorStockpileInRec6 which = TN_SectorStockpileIn6 }
+            set_key = { lhs = TN_SectorStockpileInRec9 which = TN_SectorStockpileIn9 }
+            set_key = { lhs = TN_SectorStockpileInRec10 which = TN_SectorStockpileIn10 }
+            set_key = { lhs = TN_SectorStockpileInRec21 which = TN_SectorStockpileIn21 }
+            set_key = { lhs = TN_SectorStockpileInRec22 which = TN_SectorStockpileIn22 }
+            set_key = { lhs = TN_SectorStockpileInRec23 which = TN_SectorStockpileIn23 }
+            set_key = { lhs = TN_SectorStockpileInRec24 which = TN_SectorStockpileIn24 }
+            set_key = { lhs = TN_SectorStockpileInRec25 which = TN_SectorStockpileIn25 }
+            set_key = { lhs = TN_SectorStockpileInRec41 which = TN_SectorStockpileIn41 }
+
+            multiply_key = { lhs = TN_SectorStockpileInRec1 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec2 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec4 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec5 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec6 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec9 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec10 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec21 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec22 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec23 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec24 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec25 value = -1 }
+            multiply_key = { lhs = TN_SectorStockpileInRec41 value = -1 }
+
+            # Edit for new produce
+            set_key = { lhs = TN_SectorStockpileOut1 value = 0 }
+            set_key = { lhs = TN_SectorStockpileOut2 value = 0 }
+            set_key = { lhs = TN_SectorStockpileOut4 value = 0 }
+            set_key = { lhs = TN_SectorStockpileOut5 value = 0 }
+            set_key = { lhs = TN_SectorStockpileOut6 value = 0 }
+            set_key = { lhs = TN_SectorStockpileOut9 value = 0 }
+            set_key = { lhs = TN_SectorStockpileOut10 value = 0 }
+
+            set_key = { lhs = TN_SectorStockpileOut21 value = 0 }
+            set_key = { lhs = TN_SectorStockpileOut22 value = 0 }
+            set_key = { lhs = TN_SectorStockpileOut23 value = 0 }
+            set_key = { lhs = TN_SectorStockpileOut24 value = 0 }
+            set_key = { lhs = TN_SectorStockpileOut25 value = 0 }
+
+            set_key = { lhs = TN_SectorStockpileOut41 value = 0 }
+
+            # Edit for new produce
+            set_key = { lhs = TN_SectorStockpileIn1 value = 0 }
+            set_key = { lhs = TN_SectorStockpileIn2 value = 0 }
+            set_key = { lhs = TN_SectorStockpileIn4 value = 0 }
+            set_key = { lhs = TN_SectorStockpileIn5 value = 0 }
+            set_key = { lhs = TN_SectorStockpileIn6 value = 0 }
+            set_key = { lhs = TN_SectorStockpileIn9 value = 0 }
+            set_key = { lhs = TN_SectorStockpileIn10 value = 0 }
+
+            set_key = { lhs = TN_SectorStockpileIn21 value = 0 }
+            set_key = { lhs = TN_SectorStockpileIn22 value = 0 }
+            set_key = { lhs = TN_SectorStockpileIn23 value = 0 }
+            set_key = { lhs = TN_SectorStockpileIn24 value = 0 }
+            set_key = { lhs = TN_SectorStockpileIn25 value = 0 }
+
+            set_key = { lhs = TN_SectorStockpileIn41 value = 0 }
+
+            set_key = { lhs = Prod_S0SpendProd value = 0 }
+            set_key = { lhs = Prod_S1SpendProd value = 0 }
+            set_key = { lhs = Prod_S2SpendProd value = 0 }
+            set_key = { lhs = Prod_S3SpendProd value = 0 }
+            set_key = { lhs = Prod_S4SpendProd value = 0 }
+            set_key = { lhs = Prod_S5SpendProd value = 0 }
+            set_key = { lhs = Prod_S6SpendProd value = 0 }
+            set_key = { lhs = Prod_S7SpendProd value = 0 }
+            set_key = { lhs = Prod_S8SpendProd value = 0 }
+            set_key = { lhs = Prod_S9SpendProd value = 0 }
+            set_key = { lhs = Prod_S10SpendProd value = 0 }
+			set_key = { lhs = Prod_S11SpendProd value = 0 }
+            set_key = { lhs = Prod_S12SpendProd value = 0 }
+            set_key = { lhs = Prod_S13SpendProd value = 0 }
+            set_key = { lhs = Prod_S14SpendProd value = 0 }
+            set_key = { lhs = Prod_S15SpendProd value = 0 }
+
+            set_key = { lhs = Prod_S0IncomeProd value = 0 }
+            set_key = { lhs = Prod_S1IncomeProd value = 0 }
+            set_key = { lhs = Prod_S2IncomeProd value = 0 }
+            set_key = { lhs = Prod_S3IncomeProd value = 0 }
+            set_key = { lhs = Prod_S4IncomeProd value = 0 }
+            set_key = { lhs = Prod_S5IncomeProd value = 0 }
+            set_key = { lhs = Prod_S6IncomeProd value = 0 }
+            set_key = { lhs = Prod_S7IncomeProd value = 0 }
+            set_key = { lhs = Prod_S8IncomeProd value = 0 }
+            set_key = { lhs = Prod_S9IncomeProd value = 0 }
+            set_key = { lhs = Prod_S10IncomeProd value = 0 }
+            set_key = { lhs = Prod_S11IncomeProd value = 0 }
+            set_key = { lhs = Prod_S12IncomeProd value = 0 }
+            set_key = { lhs = Prod_S13IncomeProd value = 0 }
+            set_key = { lhs = Prod_S14IncomeProd value = 0 }
+            set_key = { lhs = Prod_S15IncomeProd value = 0 }
+
+            set_key = { lhs = SF_SpendProd value = 0 }
+            set_key = { lhs = NM_SpendProd value = 0 }
+            set_key = { lhs = RE_SpendProd value = 0 }
+            set_key = { lhs = NO_SpendProd value = 0 }
+            set_key = { lhs = BG_SpendProd value = 0 }
+            set_key = { lhs = CL_SpendProd value = 0 }
+
+            set_key = { lhs = SF_IncomeDole value = 0 }
+            set_key = { lhs = NM_IncomeDole value = 0 }
+            set_key = { lhs = RE_IncomeDole value = 0 }
+            set_key = { lhs = NO_IncomeDole value = 0 }
+            set_key = { lhs = BG_IncomeDole value = 0 }
+            set_key = { lhs = CL_IncomeDole value = 0 }
+
+            set_key = { lhs = SF_Dole value = 0 }
+            set_key = { lhs = NM_Dole value = 0 }
+            set_key = { lhs = RE_Dole value = 0 }
+            set_key = { lhs = NO_Dole value = 0 }
+            set_key = { lhs = BG_Dole value = 0 }
+            set_key = { lhs = CL_Dole value = 0 }
+
+            if = {
+                limit = {
+                    has_province_flag = TN_SectorCent
+                }
+                clr_province_flag = TN_SectorCent
+                
+
+                # Edit for new produce
+                set_key = { lhs = TN_SectorDmnd1 value = 0 }
+                set_key = { lhs = TN_SectorDmnd2 value = 0 }
+                set_key = { lhs = TN_SectorDmnd4 value = 0 }
+                set_key = { lhs = TN_SectorDmnd5 value = 0 }
+                set_key = { lhs = TN_SectorDmnd6 value = 0 }
+                set_key = { lhs = TN_SectorDmnd9 value = 0 }
+                set_key = { lhs = TN_SectorDmnd10 value = 0 }
+
+                set_key = { lhs = TN_SectorDmnd21 value = 0 }
+                set_key = { lhs = TN_SectorDmnd22 value = 0 }
+                set_key = { lhs = TN_SectorDmnd23 value = 0 }
+                set_key = { lhs = TN_SectorDmnd24 value = 0 }
+                set_key = { lhs = TN_SectorDmnd25 value = 0 }
+
+                set_key = { lhs = TN_SectorDmnd41 value = 0 }
+
+                # Edit for new produce
+                set_key = { lhs = TN_SectorSply1 value = 0 }
+                set_key = { lhs = TN_SectorSply2 value = 0 }
+                set_key = { lhs = TN_SectorSply4 value = 0 }
+                set_key = { lhs = TN_SectorSply5 value = 0 }
+                set_key = { lhs = TN_SectorSply6 value = 0 }
+                set_key = { lhs = TN_SectorSply9 value = 0 }
+                set_key = { lhs = TN_SectorSply10 value = 0 }
+                
+                set_key = { lhs = TN_SectorSply21 value = 0 }
+                set_key = { lhs = TN_SectorSply22 value = 0 }
+                set_key = { lhs = TN_SectorSply23 value = 0 }
+                set_key = { lhs = TN_SectorSply24 value = 0 }
+                set_key = { lhs = TN_SectorSply25 value = 0 }
+
+                set_key = { lhs = TN_SectorSply41 value = 0 }
+                set_key = { lhs = TN_SectorSply51 value = 0 }
+
+                # Edit for new produce
+                set_key = { lhs = TN_SectorSubsistSply1 value = 0 }
+                set_key = { lhs = TN_SectorSubsistSply2 value = 0 }
+                set_key = { lhs = TN_SectorSubsistSply4 value = 0 }
+                set_key = { lhs = TN_SectorSubsistSply5 value = 0 }
+                set_key = { lhs = TN_SectorSubsistSply6 value = 0 }
+                set_key = { lhs = TN_SectorSubsistSply9 value = 0 }
+                set_key = { lhs = TN_SectorSubsistSply10 value = 0 }
+                
+                set_key = { lhs = TN_SectorSubsistSply21 value = 0 }
+                set_key = { lhs = TN_SectorSubsistSply22 value = 0 }
+                set_key = { lhs = TN_SectorSubsistSply23 value = 0 }
+                set_key = { lhs = TN_SectorSubsistSply24 value = 0 }
+                set_key = { lhs = TN_SectorSubsistSply25 value = 0 }
+
+                set_key = { lhs = TN_SectorSubsistSply41 value = 0 }
+
+                set_key = { lhs = TN_SectorTrade value = 0 }
+                set_key = { lhs = TN_SectorScore value = 0 }
+
+                # Edit for new produce
+                set_key = { lhs = TN_SectorStockpileBid1 value = 0 }
+                set_key = { lhs = TN_SectorStockpileBid2 value = 0 }
+                set_key = { lhs = TN_SectorStockpileBid4 value = 0 }
+                set_key = { lhs = TN_SectorStockpileBid5 value = 0 }
+                set_key = { lhs = TN_SectorStockpileBid6 value = 0 }
+                set_key = { lhs = TN_SectorStockpileBid9 value = 0 }
+                set_key = { lhs = TN_SectorStockpileBid10 value = 0 }
+
+                set_key = { lhs = TN_SectorStockpileBid21 value = 0 }
+                set_key = { lhs = TN_SectorStockpileBid22 value = 0 }
+                set_key = { lhs = TN_SectorStockpileBid23 value = 0 }
+                set_key = { lhs = TN_SectorStockpileBid24 value = 0 }
+                set_key = { lhs = TN_SectorStockpileBid25 value = 0 }
+
+                set_key = { lhs = TN_SectorStockpileBid41 value = 0 }
+
+                # Edit for new produce
+                set_key = { lhs = TN_SectorStockpileOffer1 value = 0 }
+                set_key = { lhs = TN_SectorStockpileOffer2 value = 0 }
+                set_key = { lhs = TN_SectorStockpileOffer4 value = 0 }
+                set_key = { lhs = TN_SectorStockpileOffer5 value = 0 }
+                set_key = { lhs = TN_SectorStockpileOffer6 value = 0 }
+                set_key = { lhs = TN_SectorStockpileOffer9 value = 0 }
+                set_key = { lhs = TN_SectorStockpileOffer10 value = 0 }
+
+                set_key = { lhs = TN_SectorStockpileOffer21 value = 0 }
+                set_key = { lhs = TN_SectorStockpileOffer22 value = 0 }
+                set_key = { lhs = TN_SectorStockpileOffer23 value = 0 }
+                set_key = { lhs = TN_SectorStockpileOffer24 value = 0 }
+                set_key = { lhs = TN_SectorStockpileOffer25 value = 0 }
+
+                set_key = { lhs = TN_SectorStockpileOffer41 value = 0 }
+            }
+        }
+    }
+	
+	# Redesignate sectors
+	every_province = {
+		limit = {
+			NOT = {
+				has_province_flag = TN_SectorPart
+			}
+			isValidProv = yes
+		}
+		set_province_flag = TN_SectorCent
+	
+		every_trade_node_member_province = {
+			limit = {
+				isValidProv = yes
+				owned_by = PREV
+				NOT = {
+					has_province_flag = TN_SectorPart
+				}
+			}
+			set_province_flag = TN_SectorPart
+		}
+    }
+	
+	every_province = {
+		clr_province_flag = TN_SectorPartDisplay
+		clr_province_flag = TN_SectorCentDisplay
+	}
+	
+	every_province = {
+		limit = {
+			NOT = {
+				has_province_flag = TN_SectorPartDisplay
+			}
+			isValidProv = yes
+		}
+	
+		set_key = { lhs = Plague_Tmp0 which = TN_ProvSply51 } # Commerce Output 1
+		change_key = { lhs = Plague_Tmp0 value = 0.01 } # Commerce Output 1
+		save_event_target_as = ProvDisplay # Save 1. Center option as event target		
+		
+		every_trade_node_member_province = {
+			limit = {
+				isValidProv = yes
+				owned_by = PREV
+				NOT = {
+					has_province_flag = TN_SectorPartDisplay
+				}
+			}
+			set_province_flag = TN_SectorPartDisplay
+			set_key = { lhs = Plague_Tmp1 which = TN_ProvSply51 } # Commerce Output 2			
+			PREV = { 
+				set_key = { lhs = Plague_Tmp1 which = PREV } # Get variable into province 1
+				
+				if = {
+					limit = {
+						check_key = { lhs = Plague_Tmp1 which = Plague_Tmp0 } #if commerce > province 1 -> province 2 is new center
+					}
+					set_key = { lhs = Plague_Tmp0 which = Plague_Tmp1 } # store latest highest commerce value in the original value					
+					PREV = { save_event_target_as = ProvDisplay } # save 2. center as event target
+				}
+			}
+		}
+		event_target:ProvDisplay = {
+			set_province_flag = TN_SectorCentDisplay
+		}
+	}
+}
+
+# Refresh sector price by getting weighted average
+TN_RefreshPrice = {
+	# Set weighted price in every provinces to be later summed up in their sectors
+    regiongroup = {
+        region = {
+            limit = {
+                has_province_flag = TN_SectorPart
+            }
+			# Weight is arithmetic mean between total dev and 1
+            set_key = { lhs = Public_Tmp1 which = Dev_Total }
+            change_key = { lhs = Public_Tmp1 value = 1 }
+            divide_key = { lhs = Public_Tmp1 value = 2 }
+
+            multiply_key = { lhs = TN_ProvPrc1 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc2 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc4 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc5 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc6 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc9 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc10 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc21 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc22 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc23 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc24 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc25 which = Public_Tmp1 }
+            multiply_key = { lhs = TN_ProvPrc41 which = Public_Tmp1 }
+        }
+    }
+	
+	# Main deal
+    regiongroup = {
+        region = {
+            limit = {
+                has_province_flag = TN_SectorCent
+            }
+			# Sum up weight and weighted price from member provinces
+			every_trade_node_member_province = {
+				if = {	
+					limit = {
+						owned_by = PREV
+						has_province_flag = TN_SectorPart
+
+						NOT = {
+							has_province_flag = TN_SectorCent
+						}
+						NOT = {
+							province_id = PREV
+						}
+					}
+					PREV = {
+						# Edit for new produce
+						change_key = { lhs = Public_Tmp1 which = PREV }
+
+						change_key = { lhs = TN_ProvPrc1 which = PREV }
+						change_key = { lhs = TN_ProvPrc2 which = PREV }
+						change_key = { lhs = TN_ProvPrc4 which = PREV }
+						change_key = { lhs = TN_ProvPrc5 which = PREV }
+						change_key = { lhs = TN_ProvPrc6 which = PREV }
+						change_key = { lhs = TN_ProvPrc9 which = PREV }
+						change_key = { lhs = TN_ProvPrc10 which = PREV }
+						change_key = { lhs = TN_ProvPrc21 which = PREV }
+						change_key = { lhs = TN_ProvPrc22 which = PREV }
+						change_key = { lhs = TN_ProvPrc23 which = PREV }
+						change_key = { lhs = TN_ProvPrc24 which = PREV }
+						change_key = { lhs = TN_ProvPrc25 which = PREV }
+						change_key = { lhs = TN_ProvPrc41 which = PREV }
+					}
+				}
+			}
+			
+			# Divide the sum by weight to get weighted average
+            # Edit for new produce
+            divide_key = { lhs = TN_ProvPrc1 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc2 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc4 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc5 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc6 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc9 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc10 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc21 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc22 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc23 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc24 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc25 which = Public_Tmp1 }
+            divide_key = { lhs = TN_ProvPrc41 which = Public_Tmp1 }
+			
+			# Assign weight averaged price in all member provinces
+			every_trade_node_member_province = {
+				if = {
+					limit = {
+						owned_by = PREV
+						has_province_flag = TN_SectorPart
+					}
+					if = {
+						limit = {
+							NOT = {
+								province_id = PREV
+							}
+						}
+						# Edit for new produce
+						set_key = { lhs = TN_ProvPrc1 which = PREV }
+						set_key = { lhs = TN_ProvPrc2 which = PREV }
+						set_key = { lhs = TN_ProvPrc4 which = PREV }
+						set_key = { lhs = TN_ProvPrc5 which = PREV }
+						set_key = { lhs = TN_ProvPrc6 which = PREV }
+						set_key = { lhs = TN_ProvPrc9 which = PREV }
+						set_key = { lhs = TN_ProvPrc10 which = PREV }
+						set_key = { lhs = TN_ProvPrc21 which = PREV }
+						set_key = { lhs = TN_ProvPrc22 which = PREV }
+						set_key = { lhs = TN_ProvPrc23 which = PREV }
+						set_key = { lhs = TN_ProvPrc24 which = PREV }
+						set_key = { lhs = TN_ProvPrc25 which = PREV }
+						set_key = { lhs = TN_ProvPrc41 which = PREV }
+					}
+					set_key = { lhs = Public_Tmp1 value = 0 }
+				}
+			}
+        }
+    }
+}
+
+# Sum province level supply and demand in sector level
+# Also sum up each province's stockpile of goods
+TN_SumSector = {
+    regiongroup = {
+        region = {
+            limit = {
+                has_province_flag = TN_SectorCent
+            }
+            # Edit for new produce
+            set_key = { lhs = TN_SectorDmnd1 which = TN_ProvDmnd1 }
+            set_key = { lhs = TN_SectorDmnd2 which = TN_ProvDmnd2 }
+            set_key = { lhs = TN_SectorDmnd4 which = TN_ProvDmnd4 }
+            set_key = { lhs = TN_SectorDmnd5 which = TN_ProvDmnd5 }
+            set_key = { lhs = TN_SectorDmnd6 which = TN_ProvDmnd6 }
+            set_key = { lhs = TN_SectorDmnd9 which = TN_ProvDmnd9 }
+            set_key = { lhs = TN_SectorDmnd10 which = TN_ProvDmnd10 }
+
+            set_key = { lhs = TN_SectorDmnd21 which = TN_ProvDmnd21 }
+            set_key = { lhs = TN_SectorDmnd22 which = TN_ProvDmnd22 }
+            set_key = { lhs = TN_SectorDmnd23 which = TN_ProvDmnd23 }
+            set_key = { lhs = TN_SectorDmnd24 which = TN_ProvDmnd24 }
+            set_key = { lhs = TN_SectorDmnd25 which = TN_ProvDmnd25 }
+
+            set_key = { lhs = TN_SectorDmnd41 which = TN_ProvDmnd41 }
+
+            # Edit for new produce
+            set_key = { lhs = TN_SectorSply1 which = TN_ProvSply1 }
+            set_key = { lhs = TN_SectorSply2 which = TN_ProvSply2 }
+            set_key = { lhs = TN_SectorSply4 which = TN_ProvSply4 }
+            set_key = { lhs = TN_SectorSply5 which = TN_ProvSply5 }
+            set_key = { lhs = TN_SectorSply6 which = TN_ProvSply6 }
+            set_key = { lhs = TN_SectorSply9 which = TN_ProvSply9 }
+            set_key = { lhs = TN_SectorSply10 which = TN_ProvSply10 }
+            
+            set_key = { lhs = TN_SectorSply21 which = TN_ProvSply21 }
+            set_key = { lhs = TN_SectorSply22 which = TN_ProvSply22 }
+            set_key = { lhs = TN_SectorSply23 which = TN_ProvSply23 }
+            set_key = { lhs = TN_SectorSply24 which = TN_ProvSply24 }
+            set_key = { lhs = TN_SectorSply25 which = TN_ProvSply25 }
+
+            set_key = { lhs = TN_SectorSply41 which = TN_ProvSply41 }
+            set_key = { lhs = TN_SectorSply51 which = TN_ProvSply51 }
+
+            # Edit for new produce
+            #set_key = { lhs = TN_SectorSubsistSply1 which = TN_ProvSubsistSply1 }
+            #set_key = { lhs = TN_SectorSubsistSply2 which = TN_ProvSubsistSply2 }
+            #set_key = { lhs = TN_SectorSubsistSply4 which = TN_ProvSubsistSply4 }
+            #set_key = { lhs = TN_SectorSubsistSply5 which = TN_ProvSubsistSply5 }
+            #set_key = { lhs = TN_SectorSubsistSply6 which = TN_ProvSubsistSply6 }
+            #set_key = { lhs = TN_SectorSubsistSply9 which = TN_ProvSubsistSply9 }
+            #set_key = { lhs = TN_SectorSubsistSply10 which = TN_ProvSubsistSply10 }
+            #
+            #set_key = { lhs = TN_SectorSubsistSply21 which = TN_ProvSubsistSply21 }
+            #set_key = { lhs = TN_SectorSubsistSply22 which = TN_ProvSubsistSply22 }
+            #set_key = { lhs = TN_SectorSubsistSply23 which = TN_ProvSubsistSply23 }
+            #set_key = { lhs = TN_SectorSubsistSply24 which = TN_ProvSubsistSply24 }
+            #set_key = { lhs = TN_SectorSubsistSply25 which = TN_ProvSubsistSply25 }
+            #
+            #set_key = { lhs = TN_SectorSubsistSply41 which = TN_ProvSubsistSply41 }
+
+			every_trade_node_member_province = {
+				if = {
+					limit = {
+						owned_by = PREV
+						has_province_flag = TN_SectorPart
+						NOT = {
+							province_id = PREV
+						}
+					}
+					# Edit for new produce
+					TN_SumSectorHelper = { type = Dmnd prod = 1 }
+					TN_SumSectorHelper = { type = Dmnd prod = 2 }
+					TN_SumSectorHelper = { type = Dmnd prod = 4 }
+					TN_SumSectorHelper = { type = Dmnd prod = 5 }
+					TN_SumSectorHelper = { type = Dmnd prod = 6 }
+					TN_SumSectorHelper = { type = Dmnd prod = 9 }
+					TN_SumSectorHelper = { type = Dmnd prod = 10 }
+					TN_SumSectorHelper = { type = Dmnd prod = 21 }
+					TN_SumSectorHelper = { type = Dmnd prod = 22 }
+					TN_SumSectorHelper = { type = Dmnd prod = 23 }
+					TN_SumSectorHelper = { type = Dmnd prod = 24 }
+					TN_SumSectorHelper = { type = Dmnd prod = 25 }
+					TN_SumSectorHelper = { type = Dmnd prod = 41 }
+
+					# Edit for new produce
+					TN_SumSectorHelper = { type = Sply prod = 1 }
+					TN_SumSectorHelper = { type = Sply prod = 2 }
+					TN_SumSectorHelper = { type = Sply prod = 4 }
+					TN_SumSectorHelper = { type = Sply prod = 5 }
+					TN_SumSectorHelper = { type = Sply prod = 6 }
+					TN_SumSectorHelper = { type = Sply prod = 9 }
+					TN_SumSectorHelper = { type = Sply prod = 10 }
+					TN_SumSectorHelper = { type = Sply prod = 21 }
+					TN_SumSectorHelper = { type = Sply prod = 22 }
+					TN_SumSectorHelper = { type = Sply prod = 23 }
+					TN_SumSectorHelper = { type = Sply prod = 24 }
+					TN_SumSectorHelper = { type = Sply prod = 25 }
+					TN_SumSectorHelper = { type = Sply prod = 41 }
+					TN_SumSectorHelper = { type = Sply prod = 51 }
+					
+					PREV = {
+						# Edit for new produce
+						#change_key = { lhs = TN_SectorTraffic1 which = PREV }
+						#change_key = { lhs = TN_SectorTraffic2 which = PREV }
+						#change_key = { lhs = TN_SectorTraffic4 which = PREV }
+						#change_key = { lhs = TN_SectorTraffic5 which = PREV }
+						#change_key = { lhs = TN_SectorTraffic6 which = PREV }
+						#change_key = { lhs = TN_SectorTraffic9 which = PREV }
+						#change_key = { lhs = TN_SectorTraffic10 which = PREV }
+                        #
+						#change_key = { lhs = TN_SectorTraffic21 which = PREV }
+						#change_key = { lhs = TN_SectorTraffic22 which = PREV }
+						#change_key = { lhs = TN_SectorTraffic23 which = PREV }
+						#change_key = { lhs = TN_SectorTraffic24 which = PREV }
+						#change_key = { lhs = TN_SectorTraffic25 which = PREV }
+                        #
+						#change_key = { lhs = TN_SectorTraffic41 which = PREV }
+
+						# Edit for new produce
+						change_key = { lhs = TN_SectorStockpile1 which = PREV }
+						change_key = { lhs = TN_SectorStockpile2 which = PREV }
+						change_key = { lhs = TN_SectorStockpile4 which = PREV }
+						change_key = { lhs = TN_SectorStockpile5 which = PREV }
+						change_key = { lhs = TN_SectorStockpile6 which = PREV }
+						change_key = { lhs = TN_SectorStockpile9 which = PREV }
+						change_key = { lhs = TN_SectorStockpile10 which = PREV }
+
+						change_key = { lhs = TN_SectorStockpile21 which = PREV }
+						change_key = { lhs = TN_SectorStockpile22 which = PREV }
+						change_key = { lhs = TN_SectorStockpile23 which = PREV }
+						change_key = { lhs = TN_SectorStockpile24 which = PREV }
+						change_key = { lhs = TN_SectorStockpile25 which = PREV }
+
+						change_key = { lhs = TN_SectorStockpile41 which = PREV }
+
+						# Edit for new produce
+						change_key = { lhs = TN_SectorStockpileSize1 which = PREV }
+						change_key = { lhs = TN_SectorStockpileSize2 which = PREV }
+						change_key = { lhs = TN_SectorStockpileSize4 which = PREV }
+						change_key = { lhs = TN_SectorStockpileSize5 which = PREV }
+						change_key = { lhs = TN_SectorStockpileSize6 which = PREV }
+						change_key = { lhs = TN_SectorStockpileSize9 which = PREV }
+						change_key = { lhs = TN_SectorStockpileSize10 which = PREV }
+
+						change_key = { lhs = TN_SectorStockpileSize21 which = PREV }
+						change_key = { lhs = TN_SectorStockpileSize22 which = PREV }
+						change_key = { lhs = TN_SectorStockpileSize23 which = PREV }
+						change_key = { lhs = TN_SectorStockpileSize24 which = PREV }
+						change_key = { lhs = TN_SectorStockpileSize25 which = PREV }
+
+						change_key = { lhs = TN_SectorStockpileSize41 which = PREV }
+					}
+
+					set_key = { lhs = Public_Tmp1 value = 0 }
+				}
+			}
+			set_key = { lhs = TN_SectorSubsistSply1 which = TN_Subsistence1 }
+			set_key = { lhs = TN_SectorSubsistSply2 which = TN_Subsistence2 }
+			set_key = { lhs = TN_SectorSubsistSply4 which = TN_Subsistence4 }
+			set_key = { lhs = TN_SectorSubsistSply5 which = TN_Subsistence5 }
+			set_key = { lhs = TN_SectorSubsistSply6 which = TN_Subsistence6 }
+			set_key = { lhs = TN_SectorSubsistSply9 which = TN_Subsistence9 }
+			set_key = { lhs = TN_SectorSubsistSply10 which = TN_Subsistence10 }
+			set_key = { lhs = TN_SectorSubsistSply21 which = TN_Subsistence21 }
+			set_key = { lhs = TN_SectorSubsistSply22 which = TN_Subsistence22 }
+			set_key = { lhs = TN_SectorSubsistSply23 which = TN_Subsistence23 }
+			set_key = { lhs = TN_SectorSubsistSply24 which = TN_Subsistence24 }
+			set_key = { lhs = TN_SectorSubsistSply25 which = TN_Subsistence25 }
+			set_key = { lhs = TN_SectorSubsistSply41 which = TN_Subsistence41 }
+			
+			multiply_key = { lhs = TN_SectorSubsistSply1 which = TN_SectorSply1 }
+			multiply_key = { lhs = TN_SectorSubsistSply2 which = TN_SectorSply2 }
+			multiply_key = { lhs = TN_SectorSubsistSply4 which = TN_SectorSply4 }
+			multiply_key = { lhs = TN_SectorSubsistSply5 which = TN_SectorSply5 }
+			multiply_key = { lhs = TN_SectorSubsistSply6 which = TN_SectorSply6 }
+			multiply_key = { lhs = TN_SectorSubsistSply9 which = TN_SectorSply9 }
+			multiply_key = { lhs = TN_SectorSubsistSply10 which = TN_SectorSply10 }
+			multiply_key = { lhs = TN_SectorSubsistSply21 which = TN_SectorSply21 }
+			multiply_key = { lhs = TN_SectorSubsistSply22 which = TN_SectorSply22 }
+			multiply_key = { lhs = TN_SectorSubsistSply23 which = TN_SectorSply23 }
+			multiply_key = { lhs = TN_SectorSubsistSply24 which = TN_SectorSply24 }
+			multiply_key = { lhs = TN_SectorSubsistSply25 which = TN_SectorSply25 }
+			multiply_key = { lhs = TN_SectorSubsistSply41 which = TN_SectorSply41 }
+			
+			subtract_key = { lhs = TN_SectorSply1 which = TN_SectorSubsistSply1 }
+			subtract_key = { lhs = TN_SectorSply2 which = TN_SectorSubsistSply2 }
+			subtract_key = { lhs = TN_SectorSply4 which = TN_SectorSubsistSply4 }
+			subtract_key = { lhs = TN_SectorSply5 which = TN_SectorSubsistSply5 }
+			subtract_key = { lhs = TN_SectorSply6 which = TN_SectorSubsistSply6 }
+			subtract_key = { lhs = TN_SectorSply9 which = TN_SectorSubsistSply9 }
+			subtract_key = { lhs = TN_SectorSply10 which = TN_SectorSubsistSply10 }
+			subtract_key = { lhs = TN_SectorSply21 which = TN_SectorSubsistSply21 }
+			subtract_key = { lhs = TN_SectorSply22 which = TN_SectorSubsistSply22 }
+			subtract_key = { lhs = TN_SectorSply23 which = TN_SectorSubsistSply23 }
+			subtract_key = { lhs = TN_SectorSply24 which = TN_SectorSubsistSply24 }
+			subtract_key = { lhs = TN_SectorSply25 which = TN_SectorSubsistSply25 }
+			subtract_key = { lhs = TN_SectorSply41 which = TN_SectorSubsistSply41 }
+			
+			# Set stockpile size + goods decay system
+            TN_SumSectorHelper2 = { prod = 1 }
+            TN_SumSectorHelper2 = { prod = 2 }
+            TN_SumSectorHelper2 = { prod = 4 }
+            TN_SumSectorHelper2 = { prod = 5 }
+            TN_SumSectorHelper2 = { prod = 6 }
+            TN_SumSectorHelper2 = { prod = 9 }
+            TN_SumSectorHelper2 = { prod = 10 }
+            TN_SumSectorHelper2 = { prod = 21 }
+            TN_SumSectorHelper2 = { prod = 22 }
+            TN_SumSectorHelper2 = { prod = 23 }
+            TN_SumSectorHelper2 = { prod = 24 }
+            TN_SumSectorHelper2 = { prod = 25 }
+            TN_SumSectorHelper2 = { prod = 41 }
+
+            set_key = { lhs = Public_Tmp1 value = 0 }
+            set_key = { lhs = Public_Tmp2 value = 0 }
+        }
+    }
+}
+
+# Spread sector level stockpile to each member provinces
+TN_SpreadStockpile = {
+    regiongroup = {
+        region = {
+            limit = {
+                has_province_flag = TN_SectorCent
+            }
+            # Edit for new produce
+            #multiply_key = { lhs = TN_SectorTraffic1 value = 0.8 }
+            #multiply_key = { lhs = TN_SectorTraffic2 value = 0.8 }
+            #multiply_key = { lhs = TN_SectorTraffic4 value = 0.8 }
+            #multiply_key = { lhs = TN_SectorTraffic5 value = 0.8 }
+            #multiply_key = { lhs = TN_SectorTraffic6 value = 0.8 }
+            #multiply_key = { lhs = TN_SectorTraffic9 value = 0.8 }
+            #multiply_key = { lhs = TN_SectorTraffic10 value = 0.8 }
+			#
+            #multiply_key = { lhs = TN_SectorTraffic21 value = 0.8 }
+            #multiply_key = { lhs = TN_SectorTraffic22 value = 0.8 }
+            #multiply_key = { lhs = TN_SectorTraffic23 value = 0.8 }
+            #multiply_key = { lhs = TN_SectorTraffic24 value = 0.8 }
+            #multiply_key = { lhs = TN_SectorTraffic25 value = 0.8 }
+			#
+            #multiply_key = { lhs = TN_SectorTraffic41 value = 0.8 }
+			
+			# Modify desired stockpile size based on how much was sold
+            # Edit for new produce
+            TN_SpreadStockpileHelper1 = { prod = 1 }
+            TN_SpreadStockpileHelper1 = { prod = 2 }
+            TN_SpreadStockpileHelper1 = { prod = 4 }
+            TN_SpreadStockpileHelper1 = { prod = 5 }
+            TN_SpreadStockpileHelper1 = { prod = 6 }
+            TN_SpreadStockpileHelper1 = { prod = 9 }
+            TN_SpreadStockpileHelper1 = { prod = 10 }
+            TN_SpreadStockpileHelper1 = { prod = 21 }
+            TN_SpreadStockpileHelper1 = { prod = 22 }
+            TN_SpreadStockpileHelper1 = { prod = 23 }
+            TN_SpreadStockpileHelper1 = { prod = 24 }
+            TN_SpreadStockpileHelper1 = { prod = 25 }
+            TN_SpreadStockpileHelper1 = { prod = 41 } 
+			
+			# Desired stockpile size is capped by total commerce production
+            set_key = { lhs = Public_Tmp1 which = TN_SectorSply51 }
+            change_key = { lhs = Public_Tmp1 value = 1 }
+            multiply_key = { lhs = Public_Tmp1 value = 55 } # Stockpile size
+            multiply_key = { lhs = Public_Tmp1 which = Modi_StockpileSize } # Stockpile size modi
+            
+            # Edit for new produce
+            TN_SpreadStockpileHelper2 = { prod = 1 }
+            TN_SpreadStockpileHelper2 = { prod = 2 }
+            TN_SpreadStockpileHelper2 = { prod = 4 }
+            TN_SpreadStockpileHelper2 = { prod = 5 }
+            TN_SpreadStockpileHelper2 = { prod = 6 }
+            TN_SpreadStockpileHelper2 = { prod = 9 }
+            TN_SpreadStockpileHelper2 = { prod = 10 }
+            TN_SpreadStockpileHelper2 = { prod = 21 }
+            TN_SpreadStockpileHelper2 = { prod = 22 }
+            TN_SpreadStockpileHelper2 = { prod = 23 }
+            TN_SpreadStockpileHelper2 = { prod = 24 }
+            TN_SpreadStockpileHelper2 = { prod = 25 }
+            TN_SpreadStockpileHelper2 = { prod = 41 }
+
+            set_key = { lhs = Public_Tmp1 value = 0 }
+            set_key = { lhs = Public_Tmp2 value = 0 }
+            set_key = { lhs = Public_Tmp3 value = 0 }
+			
+			# Minimum desired stockpile size
+            # Edit for new produce
+            change_key = { lhs = TN_SectorStockpileSize1 value = 1 }
+            change_key = { lhs = TN_SectorStockpileSize2 value = 1 }
+            change_key = { lhs = TN_SectorStockpileSize4 value = 1 }
+            change_key = { lhs = TN_SectorStockpileSize5 value = 1 }
+            change_key = { lhs = TN_SectorStockpileSize6 value = 1 }
+            change_key = { lhs = TN_SectorStockpileSize9 value = 1 }
+            change_key = { lhs = TN_SectorStockpileSize10 value = 1 }
+
+            change_key = { lhs = TN_SectorStockpileSize21 value = 1 }
+            change_key = { lhs = TN_SectorStockpileSize22 value = 1 }
+            change_key = { lhs = TN_SectorStockpileSize23 value = 1 }
+            change_key = { lhs = TN_SectorStockpileSize24 value = 1 }
+            change_key = { lhs = TN_SectorStockpileSize25 value = 1 }
+
+            change_key = { lhs = TN_SectorStockpileSize41 value = 1 }
+			
+			# Divide sector level values by total commerce production
+			# Because sector level values are distributed to provinces based on their commerce share
+            # Edit for new produce
+            #divide_key = { lhs = TN_SectorTraffic1 which = TN_SectorSply51 }
+            #divide_key = { lhs = TN_SectorTraffic2 which = TN_SectorSply51 }
+            #divide_key = { lhs = TN_SectorTraffic4 which = TN_SectorSply51 }
+            #divide_key = { lhs = TN_SectorTraffic5 which = TN_SectorSply51 }
+            #divide_key = { lhs = TN_SectorTraffic6 which = TN_SectorSply51 }
+            #divide_key = { lhs = TN_SectorTraffic9 which = TN_SectorSply51 }
+            #divide_key = { lhs = TN_SectorTraffic10 which = TN_SectorSply51 }
+            #
+            #divide_key = { lhs = TN_SectorTraffic21 which = TN_SectorSply51 }
+            #divide_key = { lhs = TN_SectorTraffic22 which = TN_SectorSply51 }
+            #divide_key = { lhs = TN_SectorTraffic23 which = TN_SectorSply51 }
+            #divide_key = { lhs = TN_SectorTraffic24 which = TN_SectorSply51 }
+            #divide_key = { lhs = TN_SectorTraffic25 which = TN_SectorSply51 }
+            #
+            #divide_key = { lhs = TN_SectorTraffic41 which = TN_SectorSply51 }
+            
+            # Edit for new produce
+			
+			
+			set_key = { lhs = Display_TN_SectorStockpile1 which = TN_SectorStockpile1 }
+            set_key = { lhs = Display_TN_SectorStockpile2 which = TN_SectorStockpile2 }
+            set_key = { lhs = Display_TN_SectorStockpile4 which = TN_SectorStockpile4 }
+            set_key = { lhs = Display_TN_SectorStockpile5 which = TN_SectorStockpile5 }
+            set_key = { lhs = Display_TN_SectorStockpile6 which = TN_SectorStockpile6 }
+            set_key = { lhs = Display_TN_SectorStockpile9 which = TN_SectorStockpile9 }
+            set_key = { lhs = Display_TN_SectorStockpile10 which = TN_SectorStockpile10 }
+			
+            set_key = { lhs = Display_TN_SectorStockpile21 which = TN_SectorStockpile21 }
+            set_key = { lhs = Display_TN_SectorStockpile22 which = TN_SectorStockpile22 }
+            set_key = { lhs = Display_TN_SectorStockpile23 which = TN_SectorStockpile23 }
+            set_key = { lhs = Display_TN_SectorStockpile24 which = TN_SectorStockpile24 }
+            set_key = { lhs = Display_TN_SectorStockpile25 which = TN_SectorStockpile25 }
+			
+            set_key = { lhs = Display_TN_SectorStockpile41 which = TN_SectorStockpile41 }
+			
+			
+            divide_key = { lhs = TN_SectorStockpile1 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpile2 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpile4 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpile5 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpile6 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpile9 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpile10 which = TN_SectorSply51 }
+
+            divide_key = { lhs = TN_SectorStockpile21 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpile22 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpile23 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpile24 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpile25 which = TN_SectorSply51 }
+
+            divide_key = { lhs = TN_SectorStockpile41 which = TN_SectorSply51 }
+
+            # Edit for new produce
+            divide_key = { lhs = TN_SectorStockpileSize1 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileSize2 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileSize4 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileSize5 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileSize6 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileSize9 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileSize10 which = TN_SectorSply51 }
+
+            divide_key = { lhs = TN_SectorStockpileSize21 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileSize22 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileSize23 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileSize24 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileSize25 which = TN_SectorSply51 }
+
+            divide_key = { lhs = TN_SectorStockpileSize41 which = TN_SectorSply51 }
+
+            # Edit for new produce
+			set_key = { lhs = TN_SectorImported1   which  = TN_SectorStockpileIn1 }
+			set_key = { lhs = TN_SectorImported2   which  = TN_SectorStockpileIn2 }
+			set_key = { lhs = TN_SectorImported4   which  = TN_SectorStockpileIn4 }
+			set_key = { lhs = TN_SectorImported5   which  = TN_SectorStockpileIn5 }
+			set_key = { lhs = TN_SectorImported6   which  = TN_SectorStockpileIn6 }
+			set_key = { lhs = TN_SectorImported9   which  = TN_SectorStockpileIn9 }
+			set_key = { lhs = TN_SectorImported10  which  = TN_SectorStockpileIn10 }
+			set_key = { lhs = TN_SectorImported21  which  = TN_SectorStockpileIn21 }
+			set_key = { lhs = TN_SectorImported22  which  = TN_SectorStockpileIn22 }
+			set_key = { lhs = TN_SectorImported23  which  = TN_SectorStockpileIn23 }
+			set_key = { lhs = TN_SectorImported24  which  = TN_SectorStockpileIn24 }
+			set_key = { lhs = TN_SectorImported25  which  = TN_SectorStockpileIn25 }
+			set_key = { lhs = TN_SectorImported41  which  = TN_SectorStockpileIn41 }
+			
+            divide_key = { lhs = TN_SectorStockpileIn1 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileIn2 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileIn4 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileIn5 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileIn6 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileIn9 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileIn10 which = TN_SectorSply51 }
+
+            divide_key = { lhs = TN_SectorStockpileIn21 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileIn22 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileIn23 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileIn24 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileIn25 which = TN_SectorSply51 }
+
+            divide_key = { lhs = TN_SectorStockpileIn41 which = TN_SectorSply51 }
+
+            # Edit for new produce
+			
+			set_key = { lhs = TN_SectorExported1   which  = TN_SectorStockpileOut1 }
+			set_key = { lhs = TN_SectorExported2   which  = TN_SectorStockpileOut2 }
+			set_key = { lhs = TN_SectorExported4   which  = TN_SectorStockpileOut4 }
+			set_key = { lhs = TN_SectorExported5   which  = TN_SectorStockpileOut5 }
+			set_key = { lhs = TN_SectorExported6   which  = TN_SectorStockpileOut6 }
+			set_key = { lhs = TN_SectorExported9   which  = TN_SectorStockpileOut9 }
+			set_key = { lhs = TN_SectorExported10  which  = TN_SectorStockpileOut10 }
+			set_key = { lhs = TN_SectorExported21  which  = TN_SectorStockpileOut21 }
+			set_key = { lhs = TN_SectorExported22  which  = TN_SectorStockpileOut22 }
+			set_key = { lhs = TN_SectorExported23  which  = TN_SectorStockpileOut23 }
+			set_key = { lhs = TN_SectorExported24  which  = TN_SectorStockpileOut24 }
+			set_key = { lhs = TN_SectorExported25  which  = TN_SectorStockpileOut25 }
+			set_key = { lhs = TN_SectorExported41  which  = TN_SectorStockpileOut41 }
+			
+            divide_key = { lhs = TN_SectorStockpileOut1 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileOut2 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileOut4 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileOut5 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileOut6 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileOut9 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileOut10 which = TN_SectorSply51 }
+
+            divide_key = { lhs = TN_SectorStockpileOut21 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileOut22 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileOut23 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileOut24 which = TN_SectorSply51 }
+            divide_key = { lhs = TN_SectorStockpileOut25 which = TN_SectorSply51 }
+
+            divide_key = { lhs = TN_SectorStockpileOut41 which = TN_SectorSply51 }
+
+            divide_key = { lhs = Tariff_Income which = TN_SectorSply51 }
+			
+			# Distribute
+			every_trade_node_member_province = {
+				if = {
+					limit = {
+						owned_by = PREV
+						has_province_flag = TN_SectorPart
+						NOT = {
+							province_id = PREV
+						}
+					}
+					
+					if = {
+						limit = {
+							has_province_flag = TN_SectorCentDisplay
+						}
+						mapKeysFromPrev2 = yes
+					}
+					# Edit for new produce
+					#set_key = { lhs = TN_SectorTraffic1 which = PREV }
+					#set_key = { lhs = TN_SectorTraffic2 which = PREV }
+					#set_key = { lhs = TN_SectorTraffic4 which = PREV }
+					#set_key = { lhs = TN_SectorTraffic5 which = PREV }
+					#set_key = { lhs = TN_SectorTraffic6 which = PREV }
+					#set_key = { lhs = TN_SectorTraffic9 which = PREV }
+					#set_key = { lhs = TN_SectorTraffic10 which = PREV }
+                    #
+					#set_key = { lhs = TN_SectorTraffic21 which = PREV }
+					#set_key = { lhs = TN_SectorTraffic22 which = PREV }
+					#set_key = { lhs = TN_SectorTraffic23 which = PREV }
+					#set_key = { lhs = TN_SectorTraffic24 which = PREV }
+					#set_key = { lhs = TN_SectorTraffic25 which = PREV }
+                    #
+					#set_key = { lhs = TN_SectorTraffic41 which = PREV }
+					
+					# Edit for new produce
+					set_key = { lhs = TN_SectorStockpile1 which = PREV }
+					set_key = { lhs = TN_SectorStockpile2 which = PREV }
+					set_key = { lhs = TN_SectorStockpile4 which = PREV }
+					set_key = { lhs = TN_SectorStockpile5 which = PREV }
+					set_key = { lhs = TN_SectorStockpile6 which = PREV }
+					set_key = { lhs = TN_SectorStockpile9 which = PREV }
+					set_key = { lhs = TN_SectorStockpile10 which = PREV }
+
+					set_key = { lhs = TN_SectorStockpile21 which = PREV }
+					set_key = { lhs = TN_SectorStockpile22 which = PREV }
+					set_key = { lhs = TN_SectorStockpile23 which = PREV }
+					set_key = { lhs = TN_SectorStockpile24 which = PREV }
+					set_key = { lhs = TN_SectorStockpile25 which = PREV }
+
+					set_key = { lhs = TN_SectorStockpile41 which = PREV }
+
+					# Edit for new produce
+					set_key = { lhs = TN_SectorStockpileSize1 which = PREV }
+					set_key = { lhs = TN_SectorStockpileSize2 which = PREV }
+					set_key = { lhs = TN_SectorStockpileSize4 which = PREV }
+					set_key = { lhs = TN_SectorStockpileSize5 which = PREV }
+					set_key = { lhs = TN_SectorStockpileSize6 which = PREV }
+					set_key = { lhs = TN_SectorStockpileSize9 which = PREV }
+					set_key = { lhs = TN_SectorStockpileSize10 which = PREV }
+
+					set_key = { lhs = TN_SectorStockpileSize21 which = PREV }
+					set_key = { lhs = TN_SectorStockpileSize22 which = PREV }
+					set_key = { lhs = TN_SectorStockpileSize23 which = PREV }
+					set_key = { lhs = TN_SectorStockpileSize24 which = PREV }
+					set_key = { lhs = TN_SectorStockpileSize25 which = PREV }
+
+					set_key = { lhs = TN_SectorStockpileSize41 which = PREV }
+
+					# Edit for new produce
+					set_key = { lhs = TN_SectorStockpileIn1 which = PREV }
+					set_key = { lhs = TN_SectorStockpileIn2 which = PREV }
+					set_key = { lhs = TN_SectorStockpileIn4 which = PREV }
+					set_key = { lhs = TN_SectorStockpileIn5 which = PREV }
+					set_key = { lhs = TN_SectorStockpileIn6 which = PREV }
+					set_key = { lhs = TN_SectorStockpileIn9 which = PREV }
+					set_key = { lhs = TN_SectorStockpileIn10 which = PREV }
+
+					set_key = { lhs = TN_SectorStockpileIn21 which = PREV }
+					set_key = { lhs = TN_SectorStockpileIn22 which = PREV }
+					set_key = { lhs = TN_SectorStockpileIn23 which = PREV }
+					set_key = { lhs = TN_SectorStockpileIn24 which = PREV }
+					set_key = { lhs = TN_SectorStockpileIn25 which = PREV }
+
+					set_key = { lhs = TN_SectorStockpileIn41 which = PREV }
+
+					# Edit for new produce
+					set_key = { lhs = TN_SectorStockpileOut1 which = PREV }
+					set_key = { lhs = TN_SectorStockpileOut2 which = PREV }
+					set_key = { lhs = TN_SectorStockpileOut4 which = PREV }
+					set_key = { lhs = TN_SectorStockpileOut5 which = PREV }
+					set_key = { lhs = TN_SectorStockpileOut6 which = PREV }
+					set_key = { lhs = TN_SectorStockpileOut9 which = PREV }
+					set_key = { lhs = TN_SectorStockpileOut10 which = PREV }
+
+					set_key = { lhs = TN_SectorStockpileOut21 which = PREV }
+					set_key = { lhs = TN_SectorStockpileOut22 which = PREV }
+					set_key = { lhs = TN_SectorStockpileOut23 which = PREV }
+					set_key = { lhs = TN_SectorStockpileOut24 which = PREV }
+					set_key = { lhs = TN_SectorStockpileOut25 which = PREV }
+
+					set_key = { lhs = TN_SectorStockpileOut41 which = PREV }
+
+					set_key = { lhs = Tariff_Income which = PREV }
+				}
+			}
+			every_trade_node_member_province = {
+				if = {
+					limit = {
+						owned_by = PREV
+						has_province_flag = TN_SectorPart
+					}
+                    
+					# Edit for new produce
+					#multiply_key = { lhs = TN_SectorTraffic1 which = TN_ProvSply51 }
+					#multiply_key = { lhs = TN_SectorTraffic2 which = TN_ProvSply51 }
+					#multiply_key = { lhs = TN_SectorTraffic4 which = TN_ProvSply51 }
+					#multiply_key = { lhs = TN_SectorTraffic5 which = TN_ProvSply51 }
+					#multiply_key = { lhs = TN_SectorTraffic6 which = TN_ProvSply51 }
+					#multiply_key = { lhs = TN_SectorTraffic9 which = TN_ProvSply51 }
+					#multiply_key = { lhs = TN_SectorTraffic10 which = TN_ProvSply51 }
+                    #
+					#multiply_key = { lhs = TN_SectorTraffic21 which = TN_ProvSply51 }
+					#multiply_key = { lhs = TN_SectorTraffic22 which = TN_ProvSply51 }
+					#multiply_key = { lhs = TN_SectorTraffic23 which = TN_ProvSply51 }
+					#multiply_key = { lhs = TN_SectorTraffic24 which = TN_ProvSply51 }
+					#multiply_key = { lhs = TN_SectorTraffic25 which = TN_ProvSply51 }
+                    #
+					#multiply_key = { lhs = TN_SectorTraffic41 which = TN_ProvSply51 }
+
+					# Edit for new produce
+					#set_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic1 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic2 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic4 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic5 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic6 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic9 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic10 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic21 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic22 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic23 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic24 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic25 }
+					#change_key = { lhs = TN_SectorTraffic which = TN_SectorTraffic41 }
+
+					# Edit for new produce
+					multiply_key = { lhs = TN_SectorStockpile1 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpile2 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpile4 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpile5 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpile6 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpile9 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpile10 which = TN_ProvSply51 }
+
+					multiply_key = { lhs = TN_SectorStockpile21 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpile22 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpile23 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpile24 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpile25 which = TN_ProvSply51 }
+
+					multiply_key = { lhs = TN_SectorStockpile41 which = TN_ProvSply51 }
+
+					# Edit for new produce
+					multiply_key = { lhs = TN_SectorStockpileSize1 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileSize2 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileSize4 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileSize5 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileSize6 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileSize9 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileSize10 which = TN_ProvSply51 }
+
+					multiply_key = { lhs = TN_SectorStockpileSize21 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileSize22 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileSize23 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileSize24 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileSize25 which = TN_ProvSply51 }
+
+					multiply_key = { lhs = TN_SectorStockpileSize41 which = TN_ProvSply51 }
+
+					# Edit for new produce
+					multiply_key = { lhs = TN_SectorStockpileIn1 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileIn2 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileIn4 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileIn5 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileIn6 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileIn9 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileIn10 which = TN_ProvSply51 }
+
+					multiply_key = { lhs = TN_SectorStockpileIn21 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileIn22 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileIn23 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileIn24 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileIn25 which = TN_ProvSply51 }
+
+					multiply_key = { lhs = TN_SectorStockpileIn41 which = TN_ProvSply51 }
+
+					# Edit for new produce
+					multiply_key = { lhs = TN_SectorStockpileOut1 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileOut2 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileOut4 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileOut5 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileOut6 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileOut9 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileOut10 which = TN_ProvSply51 }
+
+					multiply_key = { lhs = TN_SectorStockpileOut21 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileOut22 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileOut23 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileOut24 which = TN_ProvSply51 }
+					multiply_key = { lhs = TN_SectorStockpileOut25 which = TN_ProvSply51 }
+
+					multiply_key = { lhs = TN_SectorStockpileOut41 which = TN_ProvSply51 }
+
+					change_key = { lhs = TN_SectorStockpileOutRec1 which = TN_SectorStockpileOut1 }
+					change_key = { lhs = TN_SectorStockpileOutRec2 which = TN_SectorStockpileOut2 }
+					change_key = { lhs = TN_SectorStockpileOutRec4 which = TN_SectorStockpileOut4 }
+					change_key = { lhs = TN_SectorStockpileOutRec5 which = TN_SectorStockpileOut5 }
+					change_key = { lhs = TN_SectorStockpileOutRec6 which = TN_SectorStockpileOut6 }
+					change_key = { lhs = TN_SectorStockpileOutRec9 which = TN_SectorStockpileOut9 }
+					change_key = { lhs = TN_SectorStockpileOutRec10 which = TN_SectorStockpileOut10 }
+					change_key = { lhs = TN_SectorStockpileOutRec21 which = TN_SectorStockpileOut21 }
+					change_key = { lhs = TN_SectorStockpileOutRec22 which = TN_SectorStockpileOut22 }
+					change_key = { lhs = TN_SectorStockpileOutRec23 which = TN_SectorStockpileOut23 }
+					change_key = { lhs = TN_SectorStockpileOutRec24 which = TN_SectorStockpileOut24 }
+					change_key = { lhs = TN_SectorStockpileOutRec25 which = TN_SectorStockpileOut25 }
+					change_key = { lhs = TN_SectorStockpileOutRec41 which = TN_SectorStockpileOut41 }
+
+					change_key = { lhs = TN_SectorStockpileInRec1 which = TN_SectorStockpileIn1 }
+					change_key = { lhs = TN_SectorStockpileInRec2 which = TN_SectorStockpileIn2 }
+					change_key = { lhs = TN_SectorStockpileInRec4 which = TN_SectorStockpileIn4 }
+					change_key = { lhs = TN_SectorStockpileInRec5 which = TN_SectorStockpileIn5 }
+					change_key = { lhs = TN_SectorStockpileInRec6 which = TN_SectorStockpileIn6 }
+					change_key = { lhs = TN_SectorStockpileInRec9 which = TN_SectorStockpileIn9 }
+					change_key = { lhs = TN_SectorStockpileInRec10 which = TN_SectorStockpileIn10 }
+					change_key = { lhs = TN_SectorStockpileInRec21 which = TN_SectorStockpileIn21 }
+					change_key = { lhs = TN_SectorStockpileInRec22 which = TN_SectorStockpileIn22 }
+					change_key = { lhs = TN_SectorStockpileInRec23 which = TN_SectorStockpileIn23 }
+					change_key = { lhs = TN_SectorStockpileInRec24 which = TN_SectorStockpileIn24 }
+					change_key = { lhs = TN_SectorStockpileInRec25 which = TN_SectorStockpileIn25 }
+					change_key = { lhs = TN_SectorStockpileInRec41 which = TN_SectorStockpileIn41 }
+
+					multiply_key = { lhs = Tariff_Income which = TN_ProvSply51 }
+				}
+			}
+        }
+    }
+}
+
+TN_SpreadStockpileHelper1 = {
+	multiply_key = { lhs = TN_SectorStockpileSize$prod$ value = 0.8 }
+	change_key = { lhs = TN_SectorStockpileSize$prod$ which = TN_SectorStockpileOut$prod$ }
+}
+
+TN_SpreadStockpileHelper2 = {
+    set_key = { lhs = Public_Tmp2 which = Public_Tmp1 }
+
+    set_key = { lhs = Public_Tmp3 which = TN_ProvPrc$prod$ }
+    change_key = { lhs = Public_Tmp3 value = 4 }
+    divide_key = { lhs = Public_Tmp3 value = 5 }
+
+    divide_key = { lhs = Public_Tmp2 which = Public_Tmp3 }
+
+    if = {
+        limit = {
+            check_key = { lhs = TN_SectorStockpileSize$prod$ which = Public_Tmp2 }
+        }
+        set_key = { lhs = TN_SectorStockpileSize$prod$ which = Public_Tmp2 }
+    }
+}
+
+# Set a score for each country and sectors 
+# This score determines who gets to trade first
+TN_ScoreSector = {
+        # All sectors have at least 1 score
+        # This is for no-owner sectors
+    regiongroup = {
+        region = {
+            limit = {
+                has_province_flag = TN_SectorCent
+            }
+            set_key = { lhs = TN_SectorScore value = 1 }
+        }
+    }
+
+        # Country score is number of merchants + 1
+        # Sector score is owner score, +1 if is capital
+    every_country = {
+        limit = {
+            isValidCountry = yes
+        }
+        POP_GetMerchant = { return = TN_SectorScore }
+        multiply_key = { lhs = TN_SectorScore value = 0.5 } # balancing
+        change_key = { lhs = TN_SectorScore value = 1 }
+        if = {
+            limit = {
+                Rights_BGCom6HasGreater = yes
+            }
+            change_key = { lhs = TN_SectorScore value = 1 }
+        }
+        if = {
+            limit = {
+                is_key_equal = { lhs = Pol_Mandate value = 2 }
+            }
+            change_key = { lhs = TN_SectorScore value = 2 }
+        }
+        if = {
+            limit = {
+                has_idea_group = free_trade_ideas
+            }
+            change_key = { lhs = TN_SectorScore value = 3 }
+        }
+        else_if = {
+            limit = {
+                has_idea_group = mercantilism_ideas
+            }
+            change_key = { lhs = TN_SectorScore value = 2 }
+        }
+        else_if = {
+            limit = {
+                has_idea_group = trade_ideas
+            }
+            change_key = { lhs = TN_SectorScore value = 1 }
+        }
+
+        capital_scope = {
+            save_event_target_as = Prov
+        }
+
+        every_owned_province = {
+            limit = {
+                has_province_flag = TN_SectorCent
+            }
+            set_key = { lhs = TN_SectorScore which = PREV }
+            if = {
+                limit = {
+                    is_key_equal = { lhs = ID_TN which = event_target:Prov }
+                }
+                change_key = { lhs = TN_SectorScore value = 3 }
+            }
+            if = { 
+                limit = {
+                    is_strongest_trade_power = PREV
+                }
+                change_key = { lhs = TN_SectorScore value = 3 }
+            }
+            if = {
+                limit = {
+                    NOT = { check_key = { lhs = TN_SectorScore value = 1 } }
+                }
+                set_key = { lhs = TN_SectorScore value = 1 }
+			}
+            
+            set_key = { lhs = Sector_ScoreDisp which = TN_SectorScore }
+            
+            
+            # If has no center of trade within a sector, set score to 0
+            # That prevents the sector from trading with other sectors
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = POP_Sim4
+                    }
+                    
+                    NOT = {
+                        any_trade_node_member_province = {
+                            owned_by = PREV
+                            has_province_flag = TN_COT
+                            has_province_flag = TN_SectorPart
+                        }
+                    }
+                }
+                set_key = { lhs = TN_SectorScore value = 0 }
+            }
+        }
+    }
+}
+
+# Do trade by resolving bids and offers in each sectors
+TN_DoTrade = {
+        # Set bids and offers
+        # Each sectors set 2 types of bid/offer
+        # One type is for the sector, the other is for sector's merchants
+        # Sector bids/offers are for selling what the sector produced or fulfilling what the sector demands
+        # Merchant bids/offers are for making profit by buying low and selling high
+    regiongroup = {
+        region = {
+            limit = {
+                has_province_flag = TN_SectorCent
+            }
+            if = {
+				limit = {
+					is_key_equal = { lhs = TN_SectorScore value = 0 }
+				}
+				set_province_flag = TN_SectorCentNoTC
+			}
+			
+                    # Sector bid/offer
+            # Edit for new produce
+            set_key = { lhs = TN_SectorBid1 which = TN_SectorDmnd1 }
+            set_key = { lhs = TN_SectorBid2 which = TN_SectorDmnd2 }
+            set_key = { lhs = TN_SectorBid4 which = TN_SectorDmnd4 }
+            set_key = { lhs = TN_SectorBid5 which = TN_SectorDmnd5 }
+            set_key = { lhs = TN_SectorBid6 which = TN_SectorDmnd6 }
+            set_key = { lhs = TN_SectorBid9 which = TN_SectorDmnd9 }
+            set_key = { lhs = TN_SectorBid10 which = TN_SectorDmnd10 }
+            set_key = { lhs = TN_SectorBid21 which = TN_SectorDmnd21 }
+            set_key = { lhs = TN_SectorBid22 which = TN_SectorDmnd22 }
+            set_key = { lhs = TN_SectorBid23 which = TN_SectorDmnd23 }
+            set_key = { lhs = TN_SectorBid24 which = TN_SectorDmnd24 }
+            set_key = { lhs = TN_SectorBid25 which = TN_SectorDmnd25 }
+            set_key = { lhs = TN_SectorBid41 which = TN_SectorDmnd41 }
+
+            # Edit for new produce
+            set_key = { lhs = TN_SectorOffer1 which = TN_SectorSply1 }
+            set_key = { lhs = TN_SectorOffer2 which = TN_SectorSply2 }
+            set_key = { lhs = TN_SectorOffer4 which = TN_SectorSply4 }
+            set_key = { lhs = TN_SectorOffer5 which = TN_SectorSply5 }
+            set_key = { lhs = TN_SectorOffer6 which = TN_SectorSply6 }
+            set_key = { lhs = TN_SectorOffer9 which = TN_SectorSply9 }
+            set_key = { lhs = TN_SectorOffer10 which = TN_SectorSply10 }
+            set_key = { lhs = TN_SectorOffer21 which = TN_SectorSply21 }
+            set_key = { lhs = TN_SectorOffer22 which = TN_SectorSply22 }
+            set_key = { lhs = TN_SectorOffer23 which = TN_SectorSply23 }
+            set_key = { lhs = TN_SectorOffer24 which = TN_SectorSply24 }
+            set_key = { lhs = TN_SectorOffer25 which = TN_SectorSply25 }
+            set_key = { lhs = TN_SectorOffer41 which = TN_SectorSply41 }
+
+            # Edit for new produce
+            set_key = { lhs = TN_SectorSpend1 value = 0 }
+            set_key = { lhs = TN_SectorSpend2 value = 0 }
+            set_key = { lhs = TN_SectorSpend4 value = 0 }
+            set_key = { lhs = TN_SectorSpend5 value = 0 }
+            set_key = { lhs = TN_SectorSpend6 value = 0 }
+            set_key = { lhs = TN_SectorSpend9 value = 0 }
+            set_key = { lhs = TN_SectorSpend10 value = 0 }
+            set_key = { lhs = TN_SectorSpend21 value = 0 }
+            set_key = { lhs = TN_SectorSpend22 value = 0 }
+            set_key = { lhs = TN_SectorSpend23 value = 0 }
+            set_key = { lhs = TN_SectorSpend24 value = 0 }
+            set_key = { lhs = TN_SectorSpend25 value = 0 }
+            set_key = { lhs = TN_SectorSpend41 value = 0 }
+
+            # Edit for new produce
+            set_key = { lhs = TN_SectorEarn1 value = 0 }
+            set_key = { lhs = TN_SectorEarn2 value = 0 }
+            set_key = { lhs = TN_SectorEarn4 value = 0 }
+            set_key = { lhs = TN_SectorEarn5 value = 0 }
+            set_key = { lhs = TN_SectorEarn6 value = 0 }
+            set_key = { lhs = TN_SectorEarn9 value = 0 }
+            set_key = { lhs = TN_SectorEarn10 value = 0 }
+            set_key = { lhs = TN_SectorEarn21 value = 0 }
+            set_key = { lhs = TN_SectorEarn22 value = 0 }
+            set_key = { lhs = TN_SectorEarn23 value = 0 }
+            set_key = { lhs = TN_SectorEarn24 value = 0 }
+            set_key = { lhs = TN_SectorEarn25 value = 0 }
+            set_key = { lhs = TN_SectorEarn41 value = 0 }
+
+            # Edit for new produce
+            set_key = { lhs = TN_SectorSubsistEarn1 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn2 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn4 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn5 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn6 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn9 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn10 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn21 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn22 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn23 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn24 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn25 value = 0 }
+            set_key = { lhs = TN_SectorSubsistEarn41 value = 0 }
+
+            set_key = { lhs = TN_SectorTV value = 0 }
+
+            # Merchant bid/offer
+            # Edit for new produce
+            set_key = { lhs = TN_SectorStockpileOffer1 which = TN_SectorStockpile1 }
+            set_key = { lhs = TN_SectorStockpileOffer2 which = TN_SectorStockpile2 }
+            set_key = { lhs = TN_SectorStockpileOffer4 which = TN_SectorStockpile4 }
+            set_key = { lhs = TN_SectorStockpileOffer5 which = TN_SectorStockpile5 }
+            set_key = { lhs = TN_SectorStockpileOffer6 which = TN_SectorStockpile6 }
+            set_key = { lhs = TN_SectorStockpileOffer9 which = TN_SectorStockpile9 }
+            set_key = { lhs = TN_SectorStockpileOffer10 which = TN_SectorStockpile10 }
+            set_key = { lhs = TN_SectorStockpileOffer21 which = TN_SectorStockpile21 }
+            set_key = { lhs = TN_SectorStockpileOffer22 which = TN_SectorStockpile22 }
+            set_key = { lhs = TN_SectorStockpileOffer23 which = TN_SectorStockpile23 }
+            set_key = { lhs = TN_SectorStockpileOffer24 which = TN_SectorStockpile24 }
+            set_key = { lhs = TN_SectorStockpileOffer25 which = TN_SectorStockpile25 }
+            set_key = { lhs = TN_SectorStockpileOffer41 which = TN_SectorStockpile41 }
+
+            # Edit for new produce
+            multiply_key = { lhs = TN_SectorStockpileOffer1 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer2 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer4 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer5 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer6 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer9 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer10 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer21 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer22 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer23 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer24 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer25 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileOffer41 value = 0.5 }
+
+            # Edit for new produce
+            set_key = { lhs = TN_SectorStockpileBid1 which = TN_SectorStockpileSize1 }
+            set_key = { lhs = TN_SectorStockpileBid2 which = TN_SectorStockpileSize2 }
+            set_key = { lhs = TN_SectorStockpileBid4 which = TN_SectorStockpileSize4 }
+            set_key = { lhs = TN_SectorStockpileBid5 which = TN_SectorStockpileSize5 }
+            set_key = { lhs = TN_SectorStockpileBid6 which = TN_SectorStockpileSize6 }
+            set_key = { lhs = TN_SectorStockpileBid9 which = TN_SectorStockpileSize9 }
+            set_key = { lhs = TN_SectorStockpileBid10 which = TN_SectorStockpileSize10 }
+            set_key = { lhs = TN_SectorStockpileBid21 which = TN_SectorStockpileSize21 }
+            set_key = { lhs = TN_SectorStockpileBid22 which = TN_SectorStockpileSize22 }
+            set_key = { lhs = TN_SectorStockpileBid23 which = TN_SectorStockpileSize23 }
+            set_key = { lhs = TN_SectorStockpileBid24 which = TN_SectorStockpileSize24 }
+            set_key = { lhs = TN_SectorStockpileBid25 which = TN_SectorStockpileSize25 }
+            set_key = { lhs = TN_SectorStockpileBid41 which = TN_SectorStockpileSize41 }
+
+            # Edit for new produce
+            subtract_key = { lhs = TN_SectorStockpileBid1 which = TN_SectorStockpile1 }
+            subtract_key = { lhs = TN_SectorStockpileBid2 which = TN_SectorStockpile2 }
+            subtract_key = { lhs = TN_SectorStockpileBid4 which = TN_SectorStockpile4 }
+            subtract_key = { lhs = TN_SectorStockpileBid5 which = TN_SectorStockpile5 }
+            subtract_key = { lhs = TN_SectorStockpileBid6 which = TN_SectorStockpile6 }
+            subtract_key = { lhs = TN_SectorStockpileBid9 which = TN_SectorStockpile9 }
+            subtract_key = { lhs = TN_SectorStockpileBid10 which = TN_SectorStockpile10 }
+            subtract_key = { lhs = TN_SectorStockpileBid21 which = TN_SectorStockpile21 }
+            subtract_key = { lhs = TN_SectorStockpileBid22 which = TN_SectorStockpile22 }
+            subtract_key = { lhs = TN_SectorStockpileBid23 which = TN_SectorStockpile23 }
+            subtract_key = { lhs = TN_SectorStockpileBid24 which = TN_SectorStockpile24 }
+            subtract_key = { lhs = TN_SectorStockpileBid25 which = TN_SectorStockpile25 }
+            subtract_key = { lhs = TN_SectorStockpileBid41 which = TN_SectorStockpile41 }
+
+            # Edit for new produce
+            multiply_key = { lhs = TN_SectorStockpileBid1 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid2 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid4 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid5 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid6 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid9 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid10 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid21 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid22 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid23 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid24 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid25 value = 0.5 }
+            multiply_key = { lhs = TN_SectorStockpileBid41 value = 0.5 }
+            
+            
+                # Merchant bids/offers are first matched with the bids/offers of the sector they're located in
+            # Edit for new produce
+            
+            TN_DoTradeHelper1 = { prod = 1 }
+            TN_DoTradeHelper1 = { prod = 2 }
+            TN_DoTradeHelper1 = { prod = 4 }
+            TN_DoTradeHelper1 = { prod = 5 }
+            TN_DoTradeHelper1 = { prod = 6 }
+            TN_DoTradeHelper1 = { prod = 9 }
+            TN_DoTradeHelper1 = { prod = 10 }
+            TN_DoTradeHelper1 = { prod = 21 }
+            TN_DoTradeHelper1 = { prod = 22 }
+            TN_DoTradeHelper1 = { prod = 23 }
+            TN_DoTradeHelper1 = { prod = 24 }
+            TN_DoTradeHelper1 = { prod = 25 }
+            TN_DoTradeHelper1 = { prod = 41 }
+        }
+    }
+        
+        # Begin the main loop
+        # Loop ends when there's no country left with score higher than or equal to 1
+    set_global_flag = TN_Loop1
+        
+        # Grabs best sector of each node
+    tradenode_centers = {
+        save_event_target_as = Prov
+
+        if = {
+            limit = {
+                NOT = {
+                    has_province_flag = TN_SectorCent
+                }
+            }
+            set_key = { lhs = TN_SectorScore value = 0 }
+        }
+
+        every_trade_node_member_province = {
+            if = {
+                limit = {
+                    has_province_flag = TN_SectorCent
+                    
+                    check_key = { lhs = TN_SectorScore which = event_target:Prov }
+                }
+                save_event_target_as = Prov
+            }
+        }
+        # Flags the best sector of each node
+        event_target:Prov = {
+            set_province_flag = TN_SectorCentNodeBest
+        }
+    }
+    while = {
+        limit = {
+            has_global_flag = TN_Loop1
+        }
+        set_key = { lhs = TN_SectorScore value = 0 }
+        
+        save_event_target_as = Prov
+        # Playoffs competition between all the bests sectors of each node
+        
+        every_province = {
+            limit = {
+                has_province_flag = TN_SectorCentNodeBest
+                check_key = { lhs = TN_SectorScore which = event_target:Prov }
+            }
+            save_event_target_as = Prov # This is the winner, highest sector score of the world
+        }
+
+
+        event_target:Prov = {
+            if = {
+                limit = {
+                    is_key_equal = { lhs = TN_SectorScore value = 0 }
+                }
+                clr_global_flag = TN_Loop1
+            }
+            else = {
+                # Set which sectors are within reach and how far they are
+                TN_SetReach = yes
+                
+				owner = {
+					save_event_target_as = ProvOwner
+                }                    
+				
+                # Flag all tradenodes that contain at least one sector that is within Prov's reach
+                tradenode_centers = {
+                    limit = {
+                        any_trade_node_member_province = {
+                            has_province_flag = TN_SectorCentReachWithin
+                        }
+                    }
+                    set_province_flag = TN_SectorCentReachContain
+					  
+					every_trade_node_member_province = {
+						if = {
+							limit = {
+								has_province_flag = TN_SectorCentReachWithin
+								NOT = {
+									province_id = event_target:Prov
+								}
+                                NOT = {
+                                    owned_by = event_target:ProvOwner 
+                                }
+							}
+							set_key = { lhs = Public_Tmp8 which = Modi_TradeScoreExternal }
+							owner = {
+								sectorCalcHelper = { return = Public_Tmp8 }
+							}
+						}
+						set_key = { lhs = Public_Tmp9 value = 0 }
+					}
+                }
+                    
+                # Resolve bids and offers with sectors that are within reach
+                # Edit for new produce
+                TN_DoTradeHelper2 = { type = Import prod = 1 }
+                TN_DoTradeHelper2 = { type = Import prod = 2 }
+                TN_DoTradeHelper2 = { type = Import prod = 4 }
+                TN_DoTradeHelper2 = { type = Import prod = 5 }
+                TN_DoTradeHelper2 = { type = Import prod = 6 }
+                TN_DoTradeHelper2 = { type = Import prod = 9 }
+                TN_DoTradeHelper2 = { type = Import prod = 10 }
+                TN_DoTradeHelper2 = { type = Import prod = 21 }
+                TN_DoTradeHelper2 = { type = Import prod = 22 }
+                TN_DoTradeHelper2 = { type = Import prod = 23 }
+                TN_DoTradeHelper2 = { type = Import prod = 24 }
+                TN_DoTradeHelper2 = { type = Import prod = 25 }
+                TN_DoTradeHelper2 = { type = Import prod = 41 }
+				
+				TN_DoTradeHelper2 = { type = Export prod = 1 }
+                TN_DoTradeHelper2 = { type = Export prod = 2 }
+                TN_DoTradeHelper2 = { type = Export prod = 4 }
+                TN_DoTradeHelper2 = { type = Export prod = 5 }
+                TN_DoTradeHelper2 = { type = Export prod = 6 }
+                TN_DoTradeHelper2 = { type = Export prod = 9 }
+                TN_DoTradeHelper2 = { type = Export prod = 10 }
+                TN_DoTradeHelper2 = { type = Export prod = 21 }
+                TN_DoTradeHelper2 = { type = Export prod = 22 }
+                TN_DoTradeHelper2 = { type = Export prod = 23 }
+                TN_DoTradeHelper2 = { type = Export prod = 24 }
+                TN_DoTradeHelper2 = { type = Export prod = 25 }
+                TN_DoTradeHelper2 = { type = Export prod = 41 }
+				
+				# Long distance trade 
+				if = { 
+					limit = {
+						check_key = { lhs = Public_Tmp9 value = 0.001 }
+					}	
+					
+					# Jumpers and Conductees long distance trade distribution
+					
+						# Loop through conductees 
+					tradenode_centers = {
+						limit = {
+							has_province_flag = TN_SectorCentReachContain
+							NOT = { is_key_equal = { lhs = ID_TN which = event_target:Prov } }
+						}
+						
+						every_trade_node_member_province = { 
+							if = {
+								limit = {
+									has_province_flag = conductee_target
+									check_key = { lhs = Public_Tmp9 value = 0.001 }
+								}
+								set_key = { lhs = Tmp_0 which = Public_Tmp9 }
+								save_event_target_as = ProvNew # save current Conductee
+									
+									# Loop and find all 'jumpers' for this Conductee
+								tradenode_centers = {
+									limit = {
+										has_province_flag = TN_SectorCentReachContain
+									}
+									every_trade_node_member_province = {
+										if = {
+											limit = {
+												has_province_flag = jumped_success # must be a jumper 
+												
+												NOT = { check_key = { lhs = Public_Tmp3 which = event_target:ProvNew } } # distance of conductor->jumper has to be smaller than conductor->conductee
+												NOT = { province_id = event_target:ProvNew } # not the conductee											
+											}
+											
+											set_key = { lhs = Tmp_0 which = event_target:ProvNew } # Trade money to be distributed from the Conductee
+											
+											change_key = { lhs = TN_SectorTrade which = Tmp_0 }
+											change_key = { lhs = Intermediary_Income which = Tmp_0 }
+										
+											if = {
+												limit = {
+													check_key = { lhs = Tmp_0 value = 1 }
+												}
+												divide_key = { lhs = Tmp_0 value = 50 }
+												change_key = { lhs = TN_SectorTV which = Tmp_0 }
+											}
+											else = {
+												change_key = { lhs = TN_SectorTV value = 0.01 }
+											}			
+										}
+									}
+								}
+								divide_key = { lhs = Public_Tmp9 value = 2 }
+								change_key = { lhs = TN_SectorTrade which = Public_Tmp9 }																
+								if = {
+									limit = {
+										check_key = { lhs = Public_Tmp9 value = 1 }
+									}
+									divide_key = { lhs = Public_Tmp9 value = 50 }
+									change_key = { lhs = TN_SectorTV which = Public_Tmp9 }
+								}
+								else = {
+									change_key = { lhs = TN_SectorTV value = 0.01 }
+								}
+							}
+						}
+					}
+					event_target:Prov = {
+						divide_key = { lhs = Public_Tmp9 value = 2 }
+						change_key = { lhs = TN_SectorTrade which = Public_Tmp9 }			
+			
+						if = {
+							limit = {
+								check_key = { lhs = Public_Tmp9 value = 0.5 }
+							}
+							divide_key = { lhs = Public_Tmp9 value = 50 }
+							change_key = { lhs = TN_SectorTV which = Public_Tmp9 }
+						}
+						else = {
+							change_key = { lhs = TN_SectorTV value = 0.01 }
+						}
+					}
+				}
+				
+				
+				# OLD DEPRECATED SYSTEM 
+				#tradenode_centers = {
+                #    limit = {
+                #        has_province_flag = TN_SectorCentReachContain
+                #    }
+                #    every_trade_node_member_province = {
+                #        if = {
+                #            limit = {
+                #                has_province_flag = TN_SectorCentReachWithin
+                #                 
+				#				check_key = { lhs = Public_Tmp9 value = 0.001 } # This checks if at the end of 1 trade iteration there exists a Sector that was Jumped. Inverse djikistra so to speak
+                #            }
+				#			set_key = { lhs = Public_Tmp0 which = Public_Tmp9 }
+				#			
+                #            
+				#			save_event_target_as = ProvNew
+				#
+				#			while = { # Distribute money on sectors where trade passed through
+				#				limit = {
+				#					event_target:ProvNew = {
+				#						NOT = {
+				#							province_id = event_target:Prov
+				#						}
+				#					}
+				#				}
+				#				event_target:ProvNew = { #
+				#					change_key = { lhs = TN_SectorTrade which = Public_Tmp0 }
+                #                    change_key = { lhs = Intermediary_Income which = Public_Tmp0 }
+				#
+				#					POP_GetProv = { var = Public_Tmp2 return = ProvNew }
+				#
+				#					event_target:ProvNew = {
+				#						set_key = { lhs = Public_Tmp0 which = PREV }
+				#					}
+				#
+				#					if = {
+				#						limit = {
+				#							check_key = { lhs = Public_Tmp0 value = 1 }
+				#						}
+				#						divide_key = { lhs = Public_Tmp0 value = 100 }
+				#						change_key = { lhs = TN_SectorTV which = Public_Tmp0 }
+				#					}
+				#					else = {
+				#						change_key = { lhs = TN_SectorTV value = 0.01 }
+				#					}
+				#				}
+				#			}
+				#
+				#			event_target:Prov = {
+				#				change_key = { lhs = TN_SectorTrade which = Public_Tmp0 }
+				#
+				#				if = {
+				#					limit = {
+				#						check_key = { lhs = Public_Tmp0 value = 0.5 }
+				#					}
+				#					divide_key = { lhs = Public_Tmp0 value = 50 }
+				#					change_key = { lhs = TN_SectorTV which = Public_Tmp0 }
+				#				}
+				#				else = {
+				#					change_key = { lhs = TN_SectorTV value = 0.01 }
+				#				}
+				#			}
+				#			
+				#			change_key = { lhs = TN_SectorTV which = Public_Tmp0 }
+                #        }
+                #    }
+                #}
+				
+				if = {
+					limit = {
+						OR = {
+							owner = { ai = no }
+							has_global_flag = AI_Trade_Display
+						}						
+					}
+					doDisplay = yes
+				}
+				                    
+                # Clean
+                tradenode_centers = {
+                    limit = {
+                        has_province_flag = TN_SectorCentReachContain
+                    }
+                    clr_province_flag = TN_SectorCentReachContain
+                      
+                    every_trade_node_member_province = {
+                        clr_province_flag = TN_SectorCentReachWithin
+						clr_province_flag = jumper_cand
+						clr_province_flag = jumped_success
+						clr_province_flag = conductee_target
+                    }
+                }
+
+                # Find the next high-scored sector inside that winner.
+                clr_province_flag = TN_SectorCentNodeBest
+                
+                set_key = { lhs = TN_SectorScore value = 0 }
+                
+                save_event_target_as = Prov
+                
+                every_trade_node_member_province = {
+                    if = {
+                        limit = {
+                            has_province_flag = TN_SectorCent
+                            
+                            check_key = { lhs = TN_SectorScore which = event_target:Prov }
+                        }
+                        save_event_target_as = Prov
+                    }
+                }
+                # This is to compare it to the previous winners in the loop -> it goes on top to be matched against the previous winners again.
+                event_target:Prov = {
+                    set_province_flag = TN_SectorCentNodeBest
+                }
+            }
+        }
+    }   
+
+    # Clean
+    regiongroup = {
+        region = {
+            limit = {
+                isValidProv = yes
+            }
+            set_key = { lhs = Tmp_0 value = 0 }
+            set_key = { lhs = Tmp_1 value = 0 }
+            set_key = { lhs = Tmp_2 value = 0 }
+    
+            set_key = { lhs = Public_Tmp1 value = 0 }
+            set_key = { lhs = Public_Tmp2 value = 0 }
+            set_key = { lhs = Public_Tmp3 value = 0 }
+            set_key = { lhs = Public_Tmp4 value = 0 }
+            set_key = { lhs = Public_Tmp5 value = 0 }
+            set_key = { lhs = Public_Tmp6 value = 0 }
+            set_key = { lhs = Public_Tmp7 value = 0 }
+            set_key = { lhs = Public_Tmp8 value = 0 }
+            set_key = { lhs = Public_Tmp9 value = 0 }    
+            clr_province_flag = TN_Pass2
+			clr_province_flag = TN_SectorCentNodeBest
+			clr_province_flag = TN_SectorCentNoTC
+			
+        }
+    }
+}
+
+# Set which sectors are within reach and how far they are
+TN_SetReach = {
+	# Itself is always within reach
+    set_province_flag = TN_SectorCentReachWithin
+    set_province_flag = TN_SectorCentReachSpread
+	
+	# Later used in TN_effect11 triggers
+	owner = {
+		save_event_target_as = ProvNew
+	}
+	
+	# Node distance in origin
+    set_key = { lhs = Public_Tmp1 value = 1 }
+	
+	# Each sectors with TN_SectorCentReachSpread flag will spread its reach to other connected sectors
+    set_global_flag = TN_Loop2
+
+    while = {
+        limit = {
+            has_global_flag = TN_Loop2
+        }
+        clr_global_flag = TN_Loop2
+
+        regiongroup = {
+            region = {
+                limit = { # If it can spread trade, apply spreading effect.
+                    has_province_flag = TN_SectorCentReachSpread
+                }
+                clr_province_flag = TN_SectorCentReachSpread
+                # Sets distance for each Sector that gets connected
+                TN_effect11 = yes
+                TN_effect = { 
+                    effect = TN_effect20
+                }
+            }
+        }
+
+        regiongroup = { # If it found another spreading candidate, give flag to spread and apply global flag to keep spreading trade and re set the while.
+            region = {
+                limit = {
+                    has_province_flag = TN_SectorCentReachSpreadCand
+                }
+                set_global_flag = TN_Loop2
+
+                clr_province_flag = TN_SectorCentReachSpreadCand
+                set_province_flag = TN_SectorCentReachSpread
+            }
+        }
+    }
+	
+	# Set distance value. Trade passing through each sectors will drop 10% of its value as commerce industry income
+    regiongroup = {
+        region = {
+            limit = {
+                has_province_flag = TN_SectorCentReachWithin
+            }
+            set_key = { lhs = Public_Tmp3 value = 2 }
+            multiply_key = { lhs = Public_Tmp3 which = Public_Tmp1 }
+            multiply_key = { lhs = Public_Tmp3 value = 0.01 } #0-1 scale
+            change_key = { lhs = Public_Tmp3 value = 1 }
+        }
+    }
+}
+
+# Set how much of sector's supply and demand were satisfied
+# Also update sector price
+TN_SetPrcFill = {
+	# Set fulfillment
+    if = {
+        limit = {
+            check_key = { lhs = TN_SectorDmnd$prod$ value = 0.001 }
+        }
+        set_key = { lhs = TN_ProvFill$prod$ which = TN_SectorDmnd$prod$ } 
+        subtract_key = { lhs = TN_ProvFill$prod$ which = TN_SectorBid$prod$ } 
+        multiply_key = { lhs = TN_ProvFill$prod$ value = 100 }
+        divide_key = { lhs = TN_ProvFill$prod$ which = TN_SectorDmnd$prod$ }
+    }
+    else = {
+        set_key = { lhs = TN_ProvFill$prod$ value = 100 }
+    }
+	
+	# Record previous price
+    set_key = { lhs = TN_ProvPrcRec$prod$ which = TN_ProvPrc$prod$ }
+    multiply_key = { lhs = TN_ProvPrcRec$prod$ value = -1 }
+	
+	# Update price
+    if = {
+        limit = {
+            check_key = { lhs = TN_SectorStockpileSize$prod$ value = 0.001 }
+        }
+        set_key = { lhs = Public_Tmp1 which = TN_SectorStockpileBid$prod$ }  #unresolved bids ->how much of what it wanted to buy remained unbought 
+        change_key = { lhs = Public_Tmp1 which = TN_SectorStockpileOut$prod$ } #how much it sold
+        subtract_key = { lhs = Public_Tmp1 which = TN_SectorStockpileOffer$prod$ } #how much it remained to sell
+        subtract_key = { lhs = Public_Tmp1 which = TN_SectorStockpileIn$prod$ } #how much it bought
+        divide_key = { lhs = Public_Tmp1 which = TN_SectorStockpileSize$prod$ }
+        multiply_key = { lhs = Public_Tmp1 value = 2 } # divide by 0.5, reinflate
+		
+		# If positive, 1 + that becomes the multiplier
+		# If negative, 1 - that becomes the divisor
+        if = {
+            limit = {
+                check_key = { lhs = Public_Tmp1 value = 0 }
+            }
+            change_key = { lhs = Public_Tmp1 value = 100 }
+            multiply_key = { lhs = TN_ProvPrc$prod$ which = Public_Tmp1 }
+			multiply_key = { lhs = TN_ProvPrc$prod$ value = 0.01 }
+        }
+        else = {
+            multiply_key = { lhs = Public_Tmp1 value = -1 }
+            change_key = { lhs = Public_Tmp1 value = 100 }
+			multiply_key = { lhs = TN_ProvPrc$prod$ value = 100 }
+            divide_key = { lhs = TN_ProvPrc$prod$ which = Public_Tmp1 }
+        }
+
+        # Cap price belief
+        if = {
+            limit = {
+                check_key = { lhs = TN_ProvPrc$prod$ value = 100 }
+            }
+            set_key = { lhs = TN_ProvPrc$prod$ value = 100 }
+        }
+        else_if = {
+            limit = {
+                NOT = {
+                    check_key = { lhs = TN_ProvPrc$prod$ value = 0.25 }
+                }
+            }
+            set_key = { lhs = TN_ProvPrc$prod$ value = 0.25 }
+        }
+
+        set_key = { lhs = Public_Tmp1 value = 0 }
+    }
+	
+    change_key = { lhs = TN_ProvPrcRec$prod$ which = TN_ProvPrc$prod$ }
+}
+
+# Assign income and spending after bids/offers are resolved
+TN_DoTradeAfter = {
+    set_key = { lhs = TN_ProvFill$prod$ which = PREV }
+    set_key = { lhs = TN_ProvPrc$prod$ which = PREV }
+    set_key = { lhs = TN_ProvPrcRec$prod$ which = PREV }
+	
+	# Industry spending
+    TN_DoTradeAfterHelper1 = { slot = 0 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 1 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 2 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 3 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 4 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 5 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 6 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 7 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 8 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 9 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 10 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 11 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 12 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 13 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 14 prod = $prod$ }
+    TN_DoTradeAfterHelper1 = { slot = 15 prod = $prod$ }
+	
+	# Class spending
+    [[type]
+        TN_DoTradeAfterHelper2 = { class = SF prod = $prod$ type = $type$ }
+        TN_DoTradeAfterHelper2 = { class = NM prod = $prod$ type = $type$ }
+        TN_DoTradeAfterHelper2 = { class = RE prod = $prod$ type = $type$ }
+        TN_DoTradeAfterHelper2 = { class = NO prod = $prod$ type = $type$ }
+        TN_DoTradeAfterHelper2 = { class = BG prod = $prod$ type = $type$ }
+        TN_DoTradeAfterHelper2 = { class = CL prod = $prod$ type = $type$ }
+    ]
+	
+	# Industry income
+    TN_DoTradeAfterHelper3 = { slot = 0 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 1 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 2 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 3 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 4 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 5 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 6 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 7 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 8 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 9 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 10 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 11 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 12 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 13 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 14 prod = $prod$ }
+    TN_DoTradeAfterHelper3 = { slot = 15 prod = $prod$ }
+}
+
+# Helper for resolving sector bids/offers with those of their merchant
+TN_DoTradeHelper1 = {
+	# Subsistence supply cannot be exported, so it is the first that is used to resolve its own bid
+    if = {
+        limit = {
+            check_key = { lhs = TN_SectorSubsistSply$prod$ value = 0.001 }
+            check_key = { lhs = TN_SectorBid$prod$ value = 0.001 }
+        }
+        set_key = { lhs = Public_Tmp4 which = TN_SectorSubsistSply$prod$ }
+
+        if = {
+            limit = {
+                check_key = { lhs = Public_Tmp4 which = TN_SectorBid$prod$ }
+            }
+            set_key = { lhs = Public_Tmp4 which = TN_SectorBid$prod$ }
+        }
+
+        subtract_key = { lhs = TN_SectorBid$prod$ which = Public_Tmp4 }
+
+        multiply_key = { lhs = Public_Tmp4 which = TN_ProvPrc$prod$ }
+
+        change_key = { lhs = TN_SectorSubsistEarn$prod$ which = Public_Tmp4 }
+        change_key = { lhs = TN_SectorSpend$prod$ which = Public_Tmp4 }
+		
+		set_key = { lhs = TradeDisplay_SectorSubsistEarn$prod$ which = Public_Tmp4 }
+		set_key = { lhs = TradeDisplay_SectorSpend$prod$ which = Public_Tmp4 }
+    }
+	
+	# Resolve merchant bid
+    # The sector sells it's produced goods to the merchants
+    # Whatever they can't sell just gets wasted
+    if = {
+        limit = {
+            check_key = { lhs = TN_SectorStockpileBid$prod$ value = 0.001 } # Merchant bid
+        }
+		# Sector offer
+        if = {
+            limit = {
+                check_key = { lhs = TN_SectorOffer$prod$ value = 0.001 } # TN_SectorOffer$prod$ = Total amount of supplied goods industries that year
+            }
+            set_key = { lhs = Public_Tmp4 which = TN_SectorStockpileBid$prod$ } # how much merchants want to buy
+
+            if = {
+                limit = {
+                    check_key = { lhs = Public_Tmp4 which = TN_SectorOffer$prod$ }
+                }
+                set_key = { lhs = Public_Tmp4 which = TN_SectorOffer$prod$ }
+            }
+
+            change_key = { lhs = TN_SectorStockpile$prod$ which = Public_Tmp4 }
+            change_key = { lhs = TN_SectorStockpileIn$prod$ which = Public_Tmp4 }
+            subtract_key = { lhs = TN_SectorStockpileBid$prod$ which = Public_Tmp4 }
+            subtract_key = { lhs = TN_SectorOffer$prod$ which = Public_Tmp4 }              
+
+            multiply_key = { lhs = Public_Tmp4 which = TN_ProvPrc$prod$ }            
+            multiply_key = { lhs = Public_Tmp4 value = 0.99 }
+            subtract_key = { lhs = TN_SectorTrade which = Public_Tmp4 } # merchants lose
+			
+            change_key = { lhs = TN_SectorEarn$prod$ which = Public_Tmp4 } # sector wins. Distributed on provinces per output
+            volumeDisplayConductorLocal_Bought = { amount = Public_Tmp4 type2 = Import }
+			
+			set_key = { lhs = TradeDisplay_SectorEarn$prod$ which = Public_Tmp4 }
+			
+			if = {
+				limit = {
+					check_key = { lhs = Public_Tmp4 value = 0.99 }
+				}
+				divide_key = { lhs = Public_Tmp4 value = 195 }
+				change_key = { lhs = TN_SectorTV which = Public_Tmp4 }
+			}
+			else = {
+				change_key = { lhs = TN_SectorTV value = 0.01 }
+			}
+        }
+    }
+	
+	# Resolve merchant offer
+    # Sector buys what they need from the merchants from their stockpile.
+    if = {
+        limit = {
+            check_key = { lhs = TN_SectorStockpileOffer$prod$ value = 0.001 }
+        }
+		# Sector bid
+        if = {
+            limit = {
+                check_key = { lhs = TN_SectorBid$prod$ value = 0.001 } # Sector bid. It's basically what the sector demanded.
+            }
+            set_key = { lhs = Public_Tmp4 which = TN_SectorStockpileOffer$prod$ }
+
+            if = {
+                limit = {
+                    check_key = { lhs = Public_Tmp4 which = TN_SectorBid$prod$ }
+                }
+                set_key = { lhs = Public_Tmp4 which = TN_SectorBid$prod$ }
+            }
+
+            subtract_key = { lhs = TN_SectorStockpile$prod$ which = Public_Tmp4 }
+            change_key = { lhs = TN_SectorStockpileOut$prod$ which = Public_Tmp4 }
+            subtract_key = { lhs = TN_SectorStockpileOffer$prod$ which = Public_Tmp4 }
+            subtract_key = { lhs = TN_SectorBid$prod$ which = Public_Tmp4 }
+            
+
+            multiply_key = { lhs = Public_Tmp4 which = TN_ProvPrc$prod$ }
+            multiply_key = { lhs = Public_Tmp4 value = 1.01 }
+            volumeDisplayConductorLocal_Sold = { amount = Public_Tmp4 type2 = Export }
+
+            change_key = { lhs = TN_SectorTrade which = Public_Tmp4 } # distributed just to commercial industries
+            change_key = { lhs = TN_SectorSpend$prod$ which = Public_Tmp4 }
+			
+			set_key = { lhs = TradeDisplay_SectorSpend$prod$ which = Public_Tmp4 }
+
+			if = {
+				limit = {
+					check_key = { lhs = Public_Tmp4 value = 1.01 }
+				}
+				divide_key = { lhs = Public_Tmp4 value = 205 }
+				change_key = { lhs = TN_SectorTV which = Public_Tmp4 }
+			}
+			else = {
+				change_key = { lhs = TN_SectorTV value = 0.01 }
+			}
+        }
+    }
+}
+
+
+TN_DoTradeSetScoreImport = {
+	#save_event_target_as = Prov
+	
+	set_key = { lhs = Public_Tmp0 which = $tariff$ } ## Tarrifs
+	set_key = { lhs = Public_Tmp1 which = $price$ } ## Price
+	
+	tradenode_centers = {
+		limit = {
+			has_province_flag = TN_SectorCentReachContain
+		}
+		every_trade_node_member_province = {
+			if = {
+				limit = {
+					has_province_flag = TN_SectorCentReachWithin
+					
+					NOT = {
+						province_id = event_target:Prov
+					}
+				}
+				set_key = { lhs = $return$ which = Public_Tmp3 }	# Distance
+				multiply_key = { lhs = $return$ which = $price$ } ## Price
+				
+				if = {
+					limit = {
+						NOT = { owned_by = event_target:ProvOwner }
+					}
+					set_key = { lhs = Public_Tmp0 which = event_target:Prov } ## Tarrifs
+					set_key = { lhs = Public_Tmp1 which = event_target:Prov } ## Price
+					
+					change_key = { lhs = Public_Tmp1 which = $price$ } ## Price
+					divide_key = { lhs = Public_Tmp1 value = 2 } # average
+					multiply_key = { lhs = Public_Tmp1 which = Public_Tmp0 } # tarriffs
+                    
+					
+					change_key = { lhs = $return$ which = Public_Tmp1 }
+				}
+				
+				set_key = { lhs = Public_Tmp1 which = event_target:Prov } # Price
+				subtract_key = { lhs = $return$ which = Public_Tmp1 } # Price
+				multiply_key = { lhs = $return$ value = -1 } # Invert
+				
+				if = {
+					limit = {
+						NOT = {
+							check_key = { lhs = $return$ value = 0.001 } # min value
+						}
+					}
+					set_key = { lhs = $return$ value = 0 } # min value
+				}
+				else = {
+                    
+					# Exponential falloff for sector score
+					# in desmos, z=5000
+					#f=1-\left(\frac{z}{15000}\right)
+					#x=\left(\left(f\cdot f\right)\right)\cdot z\cdot0.45
+					## removed
+					change_key = { lhs = $return$ value = 0.1 }
+					if = {
+						limit = {
+							owned_by = event_target:ProvOwner
+						}
+                        
+						multiply_key = { lhs = $return$ which = Modi_TradeScoreInternal } # API
+					}
+					else = {
+						multiply_key = { lhs = $return$ which = Public_Tmp8 }
+					}
+				}
+			}
+		}
+	}
+}
+TN_DoTradeSetScoreExport = {
+	#save_event_target_as = Prov
+	
+	set_key = { lhs = Public_Tmp0 which = $price$ }
+	
+	tradenode_centers = {
+		limit = {
+			has_province_flag = TN_SectorCentReachContain
+		}
+		every_trade_node_member_province = {
+			if = {
+				limit = {
+					has_province_flag = TN_SectorCentReachWithin
+					
+					NOT = {
+						province_id = event_target:Prov
+					}
+				}
+				set_key = { lhs = Public_Tmp0 which = event_target:Prov }
+				
+				set_key = { lhs = $return$ which = Public_Tmp3 }	# Distance
+				subtract_key = { lhs = $return$ value = 1 }
+				multiply_key = { lhs = $return$ which = Public_Tmp0 }
+				subtract_key = { lhs = $return$ which = $price$ }
+				multiply_key = { lhs = $return$ value = -1 }
+				subtract_key = { lhs = $return$ which = Public_Tmp0 }
+				
+				if = {
+					limit = {
+						NOT = { owned_by = event_target:ProvOwner }
+					}
+                    
+					change_key = { lhs = Public_Tmp0 which = $price$ }
+					divide_key = { lhs = Public_Tmp0 value = 2 }
+					multiply_key = { lhs = Public_Tmp0 which = $tariff$ }
+					subtract_key = { lhs = $return$ which = Public_Tmp0 }
+					
+				}				
+				if = {
+					limit = {
+						NOT = {
+							check_key = { lhs = $return$ value = 0.001 } # min value
+						}
+					}
+					set_key = { lhs = $return$ value = 0 }
+				}
+				else = {
+                    
+					# Exponential falloff for sector score
+					# in desmos, z=5000
+					#f=1-\left(\frac{z}{15000}\right)
+					#x=\left(\left(f\cdot f\right)\right)\cdot z\cdot0.45
+					## removed
+					change_key = { lhs = $return$ value = 0.1 }
+					if = {
+						limit = {
+							owned_by = event_target:ProvOwner
+						}
+                        
+						multiply_key = { lhs = $return$ which = Modi_TradeScoreInternal }
+					}
+					else = {
+						multiply_key = { lhs = $return$ which = Public_Tmp8 } # score
+					}
+				}
+			}
+		}
+	}
+}
+sectorCalcHelper = {
+    if = {
+		limit = {
+			is_colonial_nation = yes
+			is_colonial_nation_of = event_target:ProvOwner
+		}
+		if = {
+			limit = {
+				has_opinion = {
+					who = event_target:ProvOwner
+					value = 0
+				}
+				event_target:ProvOwner = {
+					has_opinion = {
+						who = PREV
+						value = 0
+					}
+				}
+			}
+			PREV = { multiply_key = { lhs = $return$ value = 2 } }
+		}
+		else = {
+			PREV = { multiply_key = { lhs = $return$ value = 1.5 } }
+		}
+    }
+	else_if = {
+		limit = {
+			has_opinion = { who = event_target:ProvOwner value = 99 }
+		}
+		PREV = { multiply_key = { lhs = $return$ value = 1.25 } }
+	}
+	else_if = {
+		limit = {
+			has_opinion = { who = event_target:ProvOwner value = 49 }
+		}
+		PREV = { multiply_key = { lhs = $return$ value = 1.125 } }
+	}
+	else = {
+        if = {
+            limit = {
+                has_opinion = { who = event_target:ProvOwner value = -99 }
+            }
+            if = {
+                limit = {
+                    has_opinion = { who = event_target:ProvOwner value = -49 }
+                }
+                if = {
+                    limit = {
+                        has_opinion = { who = event_target:ProvOwner value = 0 }
+                    }
+                    PREV = { multiply_key = { lhs = $return$ value = 1.0 } }
+                }
+                else = {
+                    PREV = { multiply_key = { lhs = $return$ value = 0.875 } }
+                }
+            }
+            else = {
+                PREV = { multiply_key = { lhs = $return$ value = 0.75 } }
+            }
+        }
+        else = {
+            if = {
+                limit = {
+                    has_opinion = { who = event_target:ProvOwner value = -149 } 
+                }
+                PREV = { multiply_key = { lhs = $return$ value = 0.625 } }
+            }
+            else = {
+                PREV = { multiply_key = { lhs = $return$ value = 0.5 } }
+            }
+        }
+        if = {
+            limit = {
+                event_target:ProvOwner = { has_opinion = { who = PREV value = -99 } }
+            }
+            if = {
+                limit = {
+                    event_target:ProvOwner = { has_opinion = { who = PREV value = -49 } }
+                }
+                if = {
+                    limit = {
+                        event_target:ProvOwner = { has_opinion = { who = PREV value = 0 } } 
+                    }
+                    PREV = { multiply_key = { lhs = $return$ value = 1.0 } }
+                }
+                else = {
+                    PREV = { multiply_key = { lhs = $return$ value = 0.875 } }
+                }
+            }
+            else = {
+                PREV = { multiply_key = { lhs = $return$ value = 0.75 } }
+            }
+        }
+        else = {
+            if = {
+                limit = {
+                    event_target:ProvOwner = { has_opinion = { who = PREV value = -149 } }
+                }
+                PREV = { multiply_key = { lhs = $return$ value = 0.625 } }
+            }
+            else = {
+                PREV = { multiply_key = { lhs = $return$ value = 0.5 } }
+            }
+        }
+    }
+    if = {
+        limit = {
+            has_opinion_modifier = {
+                who = event_target:ProvOwner
+                modifier = transfers_trade_power
+            }
+        }
+        PREV = { multiply_key = { lhs = $return$ value = 1.5 } }
+    }
+}
+
+TN_DoTradeSetAmountImport = {
+	#save_event_target_as = Prov
+	
+	tradenode_centers = {
+		limit = {
+			has_province_flag = TN_SectorCentReachContain
+		}
+		every_trade_node_member_province = {
+			if = {
+				limit = {
+					has_province_flag = TN_SectorCentReachWithin
+					
+					NOT = {
+						province_id = event_target:Prov
+					}
+				}
+                set_key = { lhs = $return$ which = $offer$ }
+			}
+		}
+	}
+	
+	set_key = { lhs = $return$ which = $bid$ }
+}
+TN_DoTradeSetAmountExport = {
+	#save_event_target_as = Prov
+	
+	tradenode_centers = {
+		limit = {
+			has_province_flag = TN_SectorCentReachContain
+		}        
+		every_trade_node_member_province = {
+			if = {
+				limit = {
+					has_province_flag = TN_SectorCentReachWithin
+					
+					NOT = {
+						province_id = event_target:Prov
+					}
+				}
+                set_key = { lhs = $return$ which = $bid$ }
+			}
+		}
+	}
+	
+	set_key = { lhs = $return$ which = $offer$ }
+}
+
+TN_DoTradeDistrib = {
+	#save_event_target_as = Prov
+	
+	set_key = { lhs = $return$ value = 0 }
+	
+	
+	
+	tradenode_centers = {
+		limit = {
+			has_province_flag = TN_SectorCentReachContain
+		}
+		every_trade_node_member_province = {
+			if = {
+				limit = {
+					has_province_flag = TN_SectorCentReachWithin
+					
+					NOT = {
+						province_id = event_target:Prov
+					}
+				}
+				
+				if = {
+					limit = {
+						check_key = { lhs = $score$ value = 0.001 }
+					}
+					set_key = { lhs = $return$ which = $amount$ }
+					
+					event_target:Prov = {
+						change_key = { lhs = $return$ which = PREV }
+					}
+				}
+				else = {
+					set_key = { lhs = $return$ value = 0 }
+				}
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = $amount$ which = $return$ }
+			}
+		}
+		set_key = { lhs = Public_Tmp0 value = 210000 }
+		
+		tradenode_centers = {
+			limit = {
+				has_province_flag = TN_SectorCentReachContain
+			}
+			every_trade_node_member_province = {
+				if = {
+					limit = {
+						has_province_flag = TN_SectorCentReachWithin
+						
+						check_key = { lhs = $return$ value = 0.001 }
+						
+						NOT = {
+							province_id = event_target:Prov
+						}
+					}
+					set_key = { lhs = Public_Tmp0 which = $score$ }
+					
+					if = {
+						limit = {
+							NOT = {
+								check_key = { lhs = Public_Tmp0 which = event_target:Prov }
+							}
+						}
+						event_target:Prov = {
+							set_key = { lhs = Public_Tmp0 which = PREV }
+						}
+					}
+				}
+			}
+		}
+		
+		set_key = { lhs = Public_Tmp1 which = $amount$ }
+		multiply_key = { lhs = Public_Tmp1 value = 100 }
+		divide_key = { lhs = Public_Tmp1 which = $return$ }
+		
+		set_key = { lhs = $return$ value = 0 }
+		
+		tradenode_centers = {
+			limit = {
+				has_province_flag = TN_SectorCentReachContain
+			}
+			every_trade_node_member_province = {
+				if = {
+					limit = {
+						has_province_flag = TN_SectorCentReachWithin
+						
+						check_key = { lhs = $return$ value = 0.001 }
+						
+						NOT = {
+							province_id = event_target:Prov
+						}
+					}
+					set_key = { lhs = Public_Tmp0 which = event_target:Prov }
+					
+					set_key = { lhs = Public_Tmp1 value = 100 }
+					subtract_key = { lhs = Public_Tmp1 which = event_target:Prov }
+					multiply_key = { lhs = Public_Tmp1 which = Public_Tmp0 }
+					divide_key = { lhs = Public_Tmp1 which = $score$ }
+					multiply_key = { lhs = Public_Tmp1 value = -1 }
+					change_key = { lhs = Public_Tmp1 value = 100 }
+					
+					set_key = { lhs = $return$ which = $amount$ }
+					multiply_key = { lhs = $return$ which = Public_Tmp1 }
+					divide_key = { lhs = $return$ value = 100 }
+					
+					event_target:Prov = {
+						change_key = { lhs = $return$ which = PREV }
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				check_key = { lhs = $return$ value = 0.001 }
+			}
+			set_key = { lhs = Public_Tmp0 which = $amount$ }
+			multiply_key = { lhs = Public_Tmp0 value = 100 }
+			divide_key = { lhs = Public_Tmp0 which = $return$ }
+			
+			tradenode_centers = {
+				limit = {
+					has_province_flag = TN_SectorCentReachContain
+				}
+				every_trade_node_member_province = {
+					if = {
+						limit = {
+							has_province_flag = TN_SectorCentReachWithin
+							
+							check_key = { lhs = $return$ value = 0.001 }
+							
+							NOT = {
+								province_id = event_target:Prov
+							}
+						}
+						set_key = { lhs = Public_Tmp0 which = event_target:Prov }
+						
+						multiply_key = { lhs = $return$ which = Public_Tmp0 }
+						divide_key = { lhs = $return$ value = 100 }
+					}
+				}
+			}
+		}
+	}
+}
+
+
+TN_DoTradeByAmountImport = {
+	#save_event_target_as = Prov
+	
+	set_key = { lhs = Public_Tmp0 which = Tariff_Rate$prod$ }
+	set_key = { lhs = Public_Tmp1 which = TN_ProvPrc$prod$ }
+	
+	tradenode_centers = {
+		limit = {
+			has_province_flag = TN_SectorCentReachContain
+		}
+		every_trade_node_member_province = {
+			if = {
+				limit = {
+					has_province_flag = TN_SectorCentReachWithin
+					
+					check_key = { lhs = $amount$ value = 0.001 }
+					
+					NOT = {
+						province_id = event_target:Prov
+					}
+				}
+				set_key = { lhs = Public_Tmp1 which = event_target:Prov }
+                set_key = { lhs = Tmp_9 which = $amount$ }
+				
+				if = {
+					limit = {
+						NOT = {
+							owned_by = event_target:ProvOwner
+						}
+					}
+					set_key = { lhs = Public_Tmp0 which = Public_Tmp1 }
+					change_key = { lhs = Public_Tmp0 which = TN_ProvPrc$prod$ }
+					divide_key = { lhs = Public_Tmp0 value = 2 }
+					multiply_key = { lhs = Public_Tmp0 which = event_target:Prov }                    
+                    
+                    
+				}
+				else = {
+					set_key = { lhs = Public_Tmp0 value = 0 }                   
+				}
+                
+                set_key = { lhs = Public_Tmp4 which = Public_Tmp3 } # distance converted to a multiplier
+                multiply_key = { lhs = Public_Tmp4 which = TN_ProvPrc$prod$ } # distance * prod prc conductee
+                change_key = { lhs = Public_Tmp4 which = Public_Tmp0 } # + tariff
+                
+                set_key = { lhs = Public_Tmp7 which = Public_Tmp1 } # conductor prod prc
+                subtract_key = { lhs = Public_Tmp7 which = Public_Tmp4 } # difference 
+                divide_key = { lhs = Public_Tmp7 value = 2 } 
+                
+                set_key = { lhs = Public_Tmp5 which = TN_ProvPrc$prod$ }
+                change_key = { lhs = Public_Tmp5 which = Public_Tmp7 } # cost per good
+                
+                multiply_key = { lhs = Public_Tmp5 which = $amount$ } # total cost
+                
+                subtract_key = { lhs = TN_SectorStockpileOffer$prod$ which = $amount$ }
+                subtract_key = { lhs = TN_SectorStockpile$prod$ which = $amount$ }
+                change_key = { lhs = TN_SectorStockpileOut$prod$ which = $amount$ }
+                change_key = { lhs = TN_SectorExported$prod$ which = $amount$ }
+                change_key = { lhs = TN_SectorTrade which = Public_Tmp5 }
+				
+				change_key = { lhs = temp_sold which = Public_Tmp5 }
+				
+				event_target:Prov = {
+					
+					
+					set_key = { lhs = Public_Tmp4 which = PREV }
+					set_key = { lhs = Public_Tmp7 which = PREV }
+					set_key = { lhs = $amount$ which = PREV }
+                    
+					set_key = { lhs = Public_Tmp5 which = Public_Tmp4 }
+					change_key = { lhs = Public_Tmp5 which = Public_Tmp7 }
+                    
+					multiply_key = { lhs = Public_Tmp5 which = $amount$ }
+					
+					change_key = { lhs = TN_SectorStockpile$prod$ which = $amount$ }
+					change_key = { lhs = TN_SectorStockpileIn$prod$ which = $amount$ }
+					subtract_key = { lhs = TN_SectorStockpileBid$prod$ which = $amount$ }
+                    
+					subtract_key = { lhs = TN_SectorTrade which = Public_Tmp5 }
+					change_key = { lhs = temp_bought which = Public_Tmp5 } 
+					
+
+					if = {
+						limit = {
+							NOT = {
+								owned_by = PREV
+								has_province_flag = TradePost@PREV
+							}
+						}                       
+                        set_key = { lhs = Public_Tmp7 which = PREV }
+						multiply_key = { lhs = Public_Tmp7 which = $amount$ }
+						change_key = { lhs = Tariff_Income which = Public_Tmp7 }
+					}
+                    else = {
+                        
+                    }
+                }
+				
+				
+				set_key = { lhs = Public_Tmp7 which = $amount$ }
+				multiply_key = { lhs = Public_Tmp7 which = TN_ProvPrc$prod$ }
+				multiply_key = { lhs = Public_Tmp7 value = 0.02 } # 2% of generated worth trade is distributed between the sectors that were 'jumped' for the transaction to happen
+				
+				if = {
+					limit = { # If it belongs to the same Node or is right next to it just distributed inside.
+						is_key_equal = { lhs = ID_TN which = event_target:Prov }						
+					}
+					change_key = { lhs = TN_SectorTrade which = Public_Tmp7 }
+					
+					event_target:Prov = { 
+						set_key = { lhs = Public_Tmp7 which = PREV }
+						change_key = { lhs = TN_SectorTrade which = Public_Tmp7 }
+
+						if = {
+							limit = {
+								check_key = { lhs = Public_Tmp7 value = 1 }
+							}
+							divide_key = { lhs = Public_Tmp7 value = 100 }
+							change_key = { lhs = TN_SectorTV which = Public_Tmp7 }
+						}
+						else = {
+							change_key = { lhs = TN_SectorTV value = 0.01 }
+						}
+					}
+					
+					if = {
+						limit = {
+							check_key = { lhs = Public_Tmp7 value = 1 }
+						}
+						divide_key = { lhs = Public_Tmp7 value = 100 }
+						change_key = { lhs = TN_SectorTV which = Public_Tmp7 }
+					}
+					else = {
+						change_key = { lhs = TN_SectorTV value = 0.01 }
+					}
+				}
+				else = { # If not then it gets stored 
+					set_province_flag = conductee_target
+					
+					divide_key = { lhs = Public_Tmp7 value = 2.75 } # deflate
+					multiply_key = { lhs = Public_Tmp7 which = Public_Tmp3 } #increase by distance
+					change_key = { lhs = Public_Tmp9 which = Public_Tmp7 }
+					
+					set_key = { lhs = Plague_Tmp1 which = Public_Tmp7 }					
+					
+					event_target:Prov = { 
+						set_key = { lhs = Plague_Tmp1 which = PREV }					
+						change_key = { lhs = Public_Tmp9 which = Plague_Tmp1 } #store to be distributed
+					}				
+				}                     
+			}
+		}
+	}
+}
+
+TN_DoTradeByAmountExport = {
+	#save_event_target_as = Prov
+	
+	set_key = { lhs = Public_Tmp0 which = TN_ProvPrc$prod$ }
+	
+	tradenode_centers = {
+		limit = {
+			has_province_flag = TN_SectorCentReachContain
+		}
+		every_trade_node_member_province = {
+			if = {
+				limit = {
+					has_province_flag = TN_SectorCentReachWithin
+					
+					check_key = { lhs = $amount$ value = 0.001 }
+					
+					NOT = {
+						province_id = event_target:Prov
+					}
+				}
+				set_key = { lhs = Public_Tmp0 which = event_target:Prov }
+				
+				set_key = { lhs = Public_Tmp4 which = Public_Tmp3 }	# Distance
+				subtract_key = { lhs = Public_Tmp4 value = 1 }
+				multiply_key = { lhs = Public_Tmp4 which = Public_Tmp0 }
+				subtract_key = { lhs = Public_Tmp4 which = TN_ProvPrc$prod$ }
+				multiply_key = { lhs = Public_Tmp4 value = -1 }
+                
+                set_key = { lhs = Tmp_9 which = $amount$ }
+				
+				if = {
+					limit = {
+						NOT = {
+							owned_by = event_target:ProvOwner
+						}
+					}
+					set_key = { lhs = Public_Tmp1 which = Public_Tmp0 }
+					change_key = { lhs = Public_Tmp1 which = TN_ProvPrc$prod$ }
+					divide_key = { lhs = Public_Tmp1 value = 2 }
+					multiply_key = { lhs = Public_Tmp1 which = Tariff_Rate$prod$ }
+					subtract_key = { lhs = Public_Tmp4 which = Public_Tmp1 }
+					multiply_key = { lhs = Public_Tmp1 which = $amount$ }
+					change_key = { lhs = Tariff_Income which = Public_Tmp1 }
+                    
+                   
+				}
+                else = {                     
+                    
+                }
+				
+				set_key = { lhs = Public_Tmp7 which = Public_Tmp4 }
+				subtract_key = { lhs = Public_Tmp7 which = Public_Tmp0 }
+				divide_key = { lhs = Public_Tmp7 value = 2 }
+				
+				set_key = { lhs = Public_Tmp5 which = TN_ProvPrc$prod$ }
+				subtract_key = { lhs = Public_Tmp5 which = Public_Tmp7 }
+				multiply_key = { lhs = Public_Tmp5 which = $amount$ }
+				
+				change_key = { lhs = TN_SectorStockpile$prod$ which = $amount$ }
+				change_key = { lhs = TN_SectorStockpileIn$prod$ which = $amount$ }
+				subtract_key = { lhs = TN_SectorStockpileBid$prod$ which = $amount$ }
+                #change_key = { lhs = TN_SectorImported$prod$ which = $amount$ }
+				subtract_key = { lhs = TN_SectorTrade which = Public_Tmp5 }
+				change_key = { lhs = temp_bought which = Public_Tmp5 }
+                
+				event_target:Prov = {					
+					
+					set_key = { lhs = Public_Tmp4 which = PREV }
+					set_key = { lhs = Public_Tmp7 which = PREV }
+					set_key = { lhs = $amount$ which = PREV }
+					
+					set_key = { lhs = Public_Tmp5 which = Public_Tmp4 }
+					subtract_key = { lhs = Public_Tmp5 which = Public_Tmp7 }
+					multiply_key = { lhs = Public_Tmp5 which = $amount$ }
+					
+					subtract_key = { lhs = TN_SectorStockpileOffer$prod$ which = $amount$ }
+					subtract_key = { lhs = TN_SectorStockpile$prod$ which = $amount$ }
+					change_key = { lhs = TN_SectorStockpileOut$prod$ which = $amount$ }
+                    change_key = { lhs = TN_SectorExported$prod$ which = $amount$ }
+					change_key = { lhs = TN_SectorTrade which = Public_Tmp5 }
+					change_key = { lhs = temp_sold which = Public_Tmp5 }					
+                }
+                
+				
+				set_key = { lhs = Public_Tmp7 which = $amount$ }
+				multiply_key = { lhs = Public_Tmp7 which = Public_Tmp0 }
+				multiply_key = { lhs = Public_Tmp7 value = 0.02 }
+				
+				if = {
+					limit = {
+						is_key_equal = { lhs = ID_TN which = event_target:Prov }						
+					}
+					change_key = { lhs = TN_SectorTrade which = Public_Tmp7 }
+					
+					event_target:Prov = {
+						set_key = { lhs = Public_Tmp7 which = PREV }
+						change_key = { lhs = TN_SectorTrade which = Public_Tmp7 }
+
+						if = {
+							limit = {
+								check_key = { lhs = Public_Tmp7 value = 1 }
+							}
+							divide_key = { lhs = Public_Tmp7 value = 100 }
+							change_key = { lhs = TN_SectorTV which = Public_Tmp7 }
+						}
+						else = {
+							change_key = { lhs = TN_SectorTV value = 0.01 }
+						}
+					}
+					
+					if = {
+						limit = {
+							check_key = { lhs = Public_Tmp7 value = 1 }
+						}
+						divide_key = { lhs = Public_Tmp7 value = 100 }
+						change_key = { lhs = TN_SectorTV which = Public_Tmp7 }
+					}
+					else = {
+						change_key = { lhs = TN_SectorTV value = 0.01 }
+					}
+				}
+				else = { # If not then it gets stored 
+					set_province_flag = conductee_target
+					
+					divide_key = { lhs = Public_Tmp7 value = 2.75 } # deflate
+					multiply_key = { lhs = Public_Tmp7 which = Public_Tmp3 } #increase by distance
+					change_key = { lhs = Public_Tmp9 which = Public_Tmp7 }
+					
+					set_key = { lhs = Plague_Tmp1 which = Public_Tmp7 }					
+					
+					event_target:Prov = { 
+						set_key = { lhs = Plague_Tmp1 which = PREV }					
+						change_key = { lhs = Public_Tmp9 which = Plague_Tmp1 } #store to be distributed
+					}				
+				}           
+			}
+		}
+	}
+}
+
+TN_DoTradeHelper2 = {
+	TN_DoTradeSetAmount$type$ = { bid = TN_SectorStockpileBid$prod$ offer = TN_SectorStockpileOffer$prod$ return = Tmp_1 }
+	
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_1 value = 0.001 }
+		}
+		TN_DoTradeSetScore$type$ = { price = TN_ProvPrc$prod$ tariff = Tariff_Rate$prod$ return = Tmp_0 }
+		TN_DoTradeDistrib = { score = Tmp_0 amount = Tmp_1 return = Tmp_2 }
+		TN_DoTradeByAmount$type$ = { prod = $prod$ amount = Tmp_2 }
+	}
+}
+
+# Distribute commerce income generated from trade margins, and trade value generated from trade volume, from sector to its member provinces
+TN_SetTradeIncome = {
+    # go through each sector
+    regiongroup = {
+        region = {
+            limit = {
+                has_province_flag = TN_SectorCent
+            }
+            
+            if = {
+                limit = {
+					NOT = { is_key_equal = { lhs = TN_SectorTrade value = 0 } } # Amount of money from trade
+				}
+				divide_key = { lhs = TN_SectorTrade which = TN_SectorSply51 } # total money / commerce supply -> normalize money vs. 1 commerce output
+			}
+            if = {
+                limit = {
+					NOT = { is_key_equal = { lhs = TN_SectorTV value = 0 } } # Trade value used for vanilla trade
+				}
+				divide_key = { lhs = TN_SectorTV which = TN_SectorSply51 } # trade value / commerce supply
+			}
+
+            # go through all sector member provinces. where commerce supply > 0
+			every_trade_node_member_province = {
+				if = {
+					limit = {
+						owned_by = PREV
+						has_province_flag = TN_SectorPart
+						check_key = { lhs = TN_ProvSply51 value = 0.001 }
+					}
+                                        
+					if = {
+						limit = {
+							NOT = { province_id = PREV }
+						}
+						set_key = { lhs = TN_SectorTrade which = PREV }
+						set_key = { lhs = TN_SectorTV which = PREV }
+					}
+
+					# Distribute trade money over all provinces for all slots
+                    TN_SetTradeIncomeHelper = { slot = 0 }
+					TN_SetTradeIncomeHelper = { slot = 1 }
+					TN_SetTradeIncomeHelper = { slot = 2 }
+					TN_SetTradeIncomeHelper = { slot = 3 }
+					TN_SetTradeIncomeHelper = { slot = 4 }
+					TN_SetTradeIncomeHelper = { slot = 5 }
+					TN_SetTradeIncomeHelper = { slot = 6 }
+					TN_SetTradeIncomeHelper = { slot = 7 }
+					TN_SetTradeIncomeHelper = { slot = 8 }
+					TN_SetTradeIncomeHelper = { slot = 9 }
+					TN_SetTradeIncomeHelper = { slot = 10 }
+					TN_SetTradeIncomeHelper = { slot = 11 }
+					TN_SetTradeIncomeHelper = { slot = 12 }
+					TN_SetTradeIncomeHelper = { slot = 13 }
+					TN_SetTradeIncomeHelper = { slot = 14 }
+					TN_SetTradeIncomeHelper = { slot = 15 }
+
+					set_key = { lhs = Stat_Inp which = TN_SectorTV }
+					multiply_key = { lhs = Stat_Inp which = TN_ProvSply51 }
+			
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 819.2 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 409.6 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 204.8 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 102.4 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 51.2 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 25.6 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 12.8 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 6.4 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 3.2 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 1.6 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 0.8 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 0.4 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 0.2 }
+					POP_SetMod = { varname = Stat_Inp modname = TN_TradeVal type = province value = 0.1 }
+
+					set_key = { lhs = Stat_Inp value = 0 }
+					
+					set_key = { lhs = Public_Tmp1 value = 0 }
+
+					if = {
+						limit = {
+							NOT = {
+								province_id = PREV
+							}
+						}
+						set_key = { lhs = TN_SectorTrade value = 0 }
+						set_key = { lhs = TN_SectorTV value = 0 }
+					}
+				}
+			}
+        }
+    }
+}
+
+TN_SumSectorHelper = {
+    set_key = { lhs = Public_Tmp1 which = TN_Prov$type$$prod$ }
+
+    PREV = {
+        set_key = { lhs = Public_Tmp1 which = PREV }
+        change_key = { lhs = TN_Sector$type$$prod$ which = Public_Tmp1 }
+    }
+
+    [[subsistence]
+        if = {
+            limit = {
+                always = $subsistence$
+            }
+            set_key = { lhs = Public_Tmp1 which = TN_ProvSubsist$type$$prod$ }
+
+            PREV = {
+                set_key = { lhs = Public_Tmp1 which = PREV }
+                change_key = { lhs = TN_SectorSubsist$type$$prod$ which = Public_Tmp1 }
+            }
+        }
+    ]
+}
+TN_SumSectorHelper2 = {
+    if = {
+        limit = {
+            check_key = { lhs = TN_SectorDmnd$prod$ which = TN_SectorSply$prod$ } # if demand > supply 
+        }
+        set_key = { lhs = Public_Tmp2 which = TN_SectorDmnd$prod$ }
+    }
+    else = {
+        set_key = { lhs = Public_Tmp2 which = TN_SectorSply$prod$ } # if supply > demand
+    }
+
+    multiply_key = { lhs = Public_Tmp2 value = 4 }
+    
+    if = {
+        limit = {
+            NOT = {
+                check_key = { lhs = TN_SectorStockpileSize$prod$ which = Public_Tmp2 } # TN_SectorStockpileSize = desired stockpile for bid 
+            }
+        }
+        set_key = { lhs = TN_SectorStockpileSize$prod$ which = Public_Tmp2 }
+    }
+
+    if = {
+        limit = {
+            NOT = {
+                check_key = { lhs = TN_SectorStockpileSize$prod$ which = TN_SectorStockpile$prod$ } # if desired stockpile < total stockpile then get rid of goods that the merchants don't want.
+            }
+        }
+        set_key = { lhs = TN_SectorStockpile$prod$ which = TN_SectorStockpileSize$prod$ }
+    }
+}
+
+# Distribute trade money over all provinces
+TN_SetTradeIncomeHelper = {
+    if = {
+        limit = {
+            check_key = { lhs = Prod_S$slot$Sply51 value = 0.001 }
+        }
+        set_key = { lhs = Public_Tmp1 which = TN_SectorTrade } # TN_SectorTrade = Normalized Value per 1 commerce supply
+        multiply_key = { lhs = Public_Tmp1 which = Prod_S$slot$Sply51 } #commerce output - multiply TN_SectorTrade with commerce sipply
+
+        change_key = { lhs = Prod_S$slot$IncomeProd which = Public_Tmp1 } # change income of slot by trade income
+        change_key = { lhs = Prod_S$slot$SplyC51 which = Public_Tmp1 } # not sure what this does?
+    }
+}
+
+TN_DoTradeAfterHelper1 = {
+    if = {
+        limit = {
+            check_key = { lhs = Prod_S$slot$Dmnd$prod$ value = 0.001 }
+        }
+        set_key = { lhs = Public_Tmp1 which = Prod_S$slot$Dmnd$prod$ }
+        multiply_key = { lhs = Public_Tmp1 which = TN_SectorSpend$prod$ }
+
+        change_key = { lhs = Prod_S$slot$SpendProd which = Public_Tmp1 }
+    }
+}
+TN_DoTradeAfterHelper2 = {
+    if = {
+        limit = {
+            check_key = { lhs = $class$_Total value = 0.001 }
+            check_key = { lhs = $class$_Fill$type$ value = 0.001 }
+        }
+        TN_GetDmnd$class$$prod$ = { return = Public_Tmp1 }
+
+        if = {
+            limit = {
+                check_key = { lhs = Public_Tmp1 value = 0.01 }
+            }
+            multiply_key = { lhs = Public_Tmp1 which = $class$_Fill$type$ }
+            multiply_key = { lhs = Public_Tmp1 which = TN_SectorSpend$prod$ }
+
+            change_key = { lhs = $class$_SpendProd which = Public_Tmp1 }
+        }
+    }
+}
+
+TN_DoTradeAfterHelper3 = {
+    if = {
+        limit = {
+            check_key = { lhs = Prod_S$slot$Sply$prod$ value = 0.001 }
+        }
+        set_key = { lhs = Public_Tmp1 which = TN_SectorSubsistEarn$prod$ } # Amount of income made by selling 1 supply of subsistence goods
+        change_key = { lhs = Public_Tmp1 which = TN_SectorEarn$prod$ } # Amount of income based on the selling of 1 supply of NON subsistence goods
+        
+        multiply_key = { lhs = Public_Tmp1 which = Prod_S$slot$Sply$prod$ } # Multiplied by the output of the good
+
+        change_key = { lhs = Prod_S$slot$IncomeProd which = Public_Tmp1 } # set as income in the specific slot
+        change_key = { lhs = Prod_S$slot$SplyC$prod$ which = Public_Tmp1 } # supply cost ?? idk what this is
+    }
+}
+
+### 
+# THIS FUNCTION NORMALIZES THE PROFIT AGAINST 1 UNIT OF GOOD produced
+###
+TN_DoTradeAfterHelper4 = { # new
+    if = {
+        limit = {
+            check_key = { lhs = TN_Sector$type$$prod$ value = 0.001 } # if supply of good in province > 0
+        }
+
+		divide_key = { lhs = TN_Sector$moneyVar$$prod$ which = TN_Sector$type$$prod$ } # normalize total profit against total supply (includes subsistance)
+
+		set_key = { lhs = Public_Tmp1 value = 1 } ## scale profit by either subsistence or non subsistence
+
+        ## Remove subsistance from total supply to get normalized cost
+		[[subsistence]
+		if = {
+			limit = {
+				always = $subsistence$
+			}
+			multiply_key = { lhs = Public_Tmp1 which = TN_Subsistence$prod$ } ## 1*Subsistence - this should be a fraction
+		}
+		else = {
+			subtract_key = { lhs = Public_Tmp1 which = TN_Subsistence$prod$ } ## 1-Subsistence - this should be a fraction
+		}
+		]
+ 		multiply_key = { lhs = TN_Sector$moneyVar$$prod$ which = Public_Tmp1 } # scale moneyvar by subsistance multiplier
+   }
+}
+
+# Calculate income, spending, and class fulfillments for each fulfillment types
+TN_DoIncomeSpending = {
+    # Used for excises
+    TN_SetHowMuchBought = { class = SF prod = 2 type = Life }
+    TN_SetHowMuchBought = { class = NM prod = 2 type = Life }
+    TN_SetHowMuchBought = { class = RE prod = 2 type = Life }
+    TN_SetHowMuchBought = { class = NO prod = 2 type = Life }
+    TN_SetHowMuchBought = { class = BG prod = 2 type = Life }
+    TN_SetHowMuchBought = { class = CL prod = 2 type = Life }
+
+    TN_SetHowMuchBought = { class = SF prod = 9 type = Luxury }
+    TN_SetHowMuchBought = { class = NM prod = 9 type = Luxury }
+    TN_SetHowMuchBought = { class = RE prod = 9 type = Luxury }
+    TN_SetHowMuchBought = { class = NO prod = 9 type = Luxury }
+    TN_SetHowMuchBought = { class = BG prod = 9 type = Luxury }
+    TN_SetHowMuchBought = { class = CL prod = 9 type = Luxury }
+
+    TN_SetHowMuchBought = { class = SF prod = 10 type = Luxury }
+    TN_SetHowMuchBought = { class = NM prod = 10 type = Luxury }
+    TN_SetHowMuchBought = { class = RE prod = 10 type = Luxury }
+    TN_SetHowMuchBought = { class = NO prod = 10 type = Luxury }
+    TN_SetHowMuchBought = { class = BG prod = 10 type = Luxury }
+    TN_SetHowMuchBought = { class = CL prod = 10 type = Luxury }
+
+    # Calculate 3 class fulfillments
+    TN_CalcFulfillType = { class = SF }
+    TN_CalcFulfillType = { class = NM }
+    TN_CalcFulfillType = { class = RE }
+    TN_CalcFulfillType = { class = NO }
+    TN_CalcFulfillType = { class = BG }
+    TN_CalcFulfillType = { class = CL }
+	
+	set_key = { lhs = Class_FillLife value = 0 }
+	
+	set_key = { lhs = Tmp_0 which = SF_FillLife }
+	multiply_key = { lhs = Tmp_0 which = SF_Total }
+	change_key = { lhs = Class_FillLife which = Tmp_0 }
+	
+	set_key = { lhs = Tmp_0 which = RE_FillLife }
+	multiply_key = { lhs = Tmp_0 which = RE_Total }
+	change_key = { lhs = Class_FillLife which = Tmp_0 }
+	
+	set_key = { lhs = Tmp_0 which = NM_FillLife }
+	multiply_key = { lhs = Tmp_0 which = NM_Total }
+	change_key = { lhs = Class_FillLife which = Tmp_0 }
+	
+	set_key = { lhs = Tmp_0 which = NO_FillLife }
+	multiply_key = { lhs = Tmp_0 which = NO_Total }
+	change_key = { lhs = Class_FillLife which = Tmp_0 }
+	
+	set_key = { lhs = Tmp_0 which = BG_FillLife }
+	multiply_key = { lhs = Tmp_0 which = BG_Total }
+	change_key = { lhs = Class_FillLife which = Tmp_0 }
+	
+	set_key = { lhs = Tmp_0 which = CL_FillLife }
+	multiply_key = { lhs = Tmp_0 which = CL_Total }
+	change_key = { lhs = Class_FillLife which = Tmp_0 }
+	
+	if = {
+		limit = {
+			is_key_equal = { lhs = Class_Total value = 0 }
+		}
+		set_key = { lhs = Class_FillLife value = 1 }
+	}
+	else = {
+		divide_key = { lhs = Class_FillLife which = Class_Total }
+	}
+}
+
+# Summarize various variables into total class and slot incomes
+TN_SetIncome = {
+    # There's a small amount of innate wealth for each classes
+    TN_SetIncomeInnate = yes
+
+    # Class Income
+    set_key = { lhs = SF_Income which = SF_IncomeInnate }
+    set_key = { lhs = NM_Income which = NM_IncomeInnate }
+    set_key = { lhs = RE_Income which = RE_IncomeInnate }
+    set_key = { lhs = NO_Income which = NO_IncomeInnate }
+    set_key = { lhs = BG_Income which = BG_IncomeInnate }
+    set_key = { lhs = CL_Income which = CL_IncomeInnate }
+	
+	# Literati
+    set_key = { lhs = LT_Income which = LT_IncomeProd }
+    change_key = { lhs = RE_Income which = LT_Income } # Literati are Residents
+
+    # Wage
+    change_key = { lhs = SF_Income which = SF_IncomeProd }
+    change_key = { lhs = NM_Income which = NM_IncomeProd }
+    change_key = { lhs = RE_Income which = RE_IncomeProd }
+    change_key = { lhs = NO_Income which = NO_IncomeProd }
+    change_key = { lhs = BG_Income which = BG_IncomeProd }
+    change_key = { lhs = CL_Income which = CL_IncomeProd }
+
+    # Property
+    change_key = { lhs = SF_Income which = SF_IncomePrp }
+    change_key = { lhs = NM_Income which = NM_IncomePrp }
+    change_key = { lhs = RE_Income which = RE_IncomePrp }
+    change_key = { lhs = NO_Income which = NO_IncomePrp }
+    change_key = { lhs = BG_Income which = BG_IncomePrp }
+    change_key = { lhs = CL_Income which = CL_IncomePrp }
+
+    # Dole
+    change_key = { lhs = SF_Income which = SF_IncomeDole }
+    change_key = { lhs = NM_Income which = NM_IncomeDole }
+    change_key = { lhs = RE_Income which = RE_IncomeDole }
+    change_key = { lhs = NO_Income which = NO_IncomeDole }
+    change_key = { lhs = BG_Income which = BG_IncomeDole }
+    change_key = { lhs = CL_Income which = CL_IncomeDole }
+
+    # Dole
+    change_key = { lhs = SF_Income which = SF_IncomeTax }
+    change_key = { lhs = NM_Income which = NM_IncomeTax }
+    change_key = { lhs = RE_Income which = RE_IncomeTax }
+    change_key = { lhs = NO_Income which = NO_IncomeTax }
+    change_key = { lhs = BG_Income which = BG_IncomeTax }
+    change_key = { lhs = CL_Income which = CL_IncomeTax }
+	
+	# Wages
+	change_key = { lhs = NO_Income which = NO_IncomeAdmin }
+	change_key = { lhs = BG_Income which = BG_IncomeAdmin }
+	change_key = { lhs = CL_Income which = CL_IncomeAdmin }
+	
+	# Tax Farming
+	change_key = { lhs = NO_Income which = NO_IncomeFarm }
+	change_key = { lhs = BG_Income which = BG_IncomeFarm }
+	change_key = { lhs = CL_Income which = CL_IncomeFarm }
+	
+	# Corruption
+	change_key = { lhs = NO_Income which = NO_IncomeCrpt }
+	change_key = { lhs = BG_Income which = BG_IncomeCrpt }
+	change_key = { lhs = CL_Income which = CL_IncomeCrpt }
+
+    # Class Spending
+    set_key = { lhs = SF_Spend which = SF_SpendProd }
+    set_key = { lhs = NM_Spend which = NM_SpendProd }
+    set_key = { lhs = RE_Spend which = RE_SpendProd }
+    set_key = { lhs = NO_Spend which = NO_SpendProd }
+    set_key = { lhs = BG_Spend which = BG_SpendProd }
+    set_key = { lhs = CL_Spend which = CL_SpendProd }
+
+    # Property
+    change_key = { lhs = SF_Spend which = SF_SpendPrp }
+    change_key = { lhs = NM_Spend which = NM_SpendPrp }
+    change_key = { lhs = RE_Spend which = RE_SpendPrp }
+    change_key = { lhs = NO_Spend which = NO_SpendPrp }
+    change_key = { lhs = BG_Spend which = BG_SpendPrp }
+    change_key = { lhs = CL_Spend which = CL_SpendPrp }
+
+    # Infra
+    change_key = { lhs = SF_Spend which = SF_SpendInfra }
+    change_key = { lhs = NM_Spend which = NM_SpendInfra }
+    change_key = { lhs = RE_Spend which = RE_SpendInfra }
+    change_key = { lhs = NO_Spend which = NO_SpendInfra }
+    change_key = { lhs = BG_Spend which = BG_SpendInfra }
+    change_key = { lhs = CL_Spend which = CL_SpendInfra }
+
+    # Tax
+    change_key = { lhs = SF_Spend which = SF_SpendTax }
+    change_key = { lhs = NM_Spend which = NM_SpendTax }
+    change_key = { lhs = RE_Spend which = RE_SpendTax }
+    change_key = { lhs = NO_Spend which = NO_SpendTax }
+    change_key = { lhs = BG_Spend which = BG_SpendTax }
+    change_key = { lhs = CL_Spend which = CL_SpendTax }
+				
+	change_key = { lhs = NO_Spend which = NO_SpendMP }
+	change_key = { lhs = BG_Spend which = BG_SpendMP }
+	change_key = { lhs = NO_Spend which = TR_SpendMP }
+    
+    # Slot income and spending
+    set_key = { lhs = Prod_S0Income which = Prod_S0IncomeProd }
+    set_key = { lhs = Prod_S1Income which = Prod_S1IncomeProd }
+    set_key = { lhs = Prod_S2Income which = Prod_S2IncomeProd }
+    set_key = { lhs = Prod_S3Income which = Prod_S3IncomeProd }
+    set_key = { lhs = Prod_S4Income which = Prod_S4IncomeProd }
+    set_key = { lhs = Prod_S5Income which = Prod_S5IncomeProd }
+    set_key = { lhs = Prod_S6Income which = Prod_S6IncomeProd }
+    set_key = { lhs = Prod_S7Income which = Prod_S7IncomeProd }
+    set_key = { lhs = Prod_S8Income which = Prod_S8IncomeProd }
+    set_key = { lhs = Prod_S9Income which = Prod_S9IncomeProd }
+    set_key = { lhs = Prod_S10Income which = Prod_S10IncomeProd }
+    set_key = { lhs = Prod_S11Income which = Prod_S11IncomeProd }
+    set_key = { lhs = Prod_S12Income which = Prod_S12IncomeProd }
+    set_key = { lhs = Prod_S13Income which = Prod_S13IncomeProd }
+    set_key = { lhs = Prod_S14Income which = Prod_S14IncomeProd }
+    set_key = { lhs = Prod_S15Income which = Prod_S15IncomeProd }
+
+    # Gold
+    change_key = { lhs = Prod_S0Income which = Prod_S0IncomeGold }
+    change_key = { lhs = Prod_S1Income which = Prod_S1IncomeGold }
+    change_key = { lhs = Prod_S2Income which = Prod_S2IncomeGold }
+    change_key = { lhs = Prod_S3Income which = Prod_S3IncomeGold }
+    change_key = { lhs = Prod_S4Income which = Prod_S4IncomeGold }
+    change_key = { lhs = Prod_S5Income which = Prod_S5IncomeGold }
+    change_key = { lhs = Prod_S6Income which = Prod_S6IncomeGold }
+    change_key = { lhs = Prod_S7Income which = Prod_S7IncomeGold }
+    change_key = { lhs = Prod_S8Income which = Prod_S8IncomeGold }
+    change_key = { lhs = Prod_S9Income which = Prod_S9IncomeGold }
+    change_key = { lhs = Prod_S10Income which = Prod_S10IncomeGold }
+    change_key = { lhs = Prod_S11Income which = Prod_S11IncomeGold }
+    change_key = { lhs = Prod_S12Income which = Prod_S12IncomeGold }
+    change_key = { lhs = Prod_S13Income which = Prod_S13IncomeGold }
+    change_key = { lhs = Prod_S14Income which = Prod_S14IncomeGold }
+    change_key = { lhs = Prod_S15Income which = Prod_S15IncomeGold }
+	
+	set_key = { lhs = Prod_S0SpendPrev which = Prod_S0Spend }
+    set_key = { lhs = Prod_S1SpendPrev which = Prod_S1Spend }
+    set_key = { lhs = Prod_S2SpendPrev which = Prod_S2Spend }
+    set_key = { lhs = Prod_S3SpendPrev which = Prod_S3Spend }
+    set_key = { lhs = Prod_S4SpendPrev which = Prod_S4Spend }
+    set_key = { lhs = Prod_S5SpendPrev which = Prod_S5Spend }
+    set_key = { lhs = Prod_S6SpendPrev which = Prod_S6Spend }
+    set_key = { lhs = Prod_S7SpendPrev which = Prod_S7Spend }
+    set_key = { lhs = Prod_S8SpendPrev which = Prod_S8Spend }
+    set_key = { lhs = Prod_S9SpendPrev which = Prod_S9Spend }
+    set_key = { lhs = Prod_S10SpendPrev which = Prod_S10Spend }
+    set_key = { lhs = Prod_S11SpendPrev which = Prod_S11Spend }
+    set_key = { lhs = Prod_S12SpendPrev which = Prod_S12Spend }
+    set_key = { lhs = Prod_S13SpendPrev which = Prod_S13Spend }
+    set_key = { lhs = Prod_S14SpendPrev which = Prod_S14Spend }
+    set_key = { lhs = Prod_S15SpendPrev which = Prod_S15Spend }
+
+    # Wage
+    set_key = { lhs = Prod_S0Spend which = Prod_S0SpendL }
+    set_key = { lhs = Prod_S1Spend which = Prod_S1SpendL }
+    set_key = { lhs = Prod_S2Spend which = Prod_S2SpendL }
+    set_key = { lhs = Prod_S3Spend which = Prod_S3SpendL }
+    set_key = { lhs = Prod_S4Spend which = Prod_S4SpendL }
+    set_key = { lhs = Prod_S5Spend which = Prod_S5SpendL }
+    set_key = { lhs = Prod_S6Spend which = Prod_S6SpendL }
+    set_key = { lhs = Prod_S7Spend which = Prod_S7SpendL }
+    set_key = { lhs = Prod_S8Spend which = Prod_S8SpendL }
+    set_key = { lhs = Prod_S9Spend which = Prod_S9SpendL }
+    set_key = { lhs = Prod_S10Spend which = Prod_S10SpendL }
+    set_key = { lhs = Prod_S11Spend which = Prod_S11SpendL }
+    set_key = { lhs = Prod_S12Spend which = Prod_S12SpendL }
+    set_key = { lhs = Prod_S13Spend which = Prod_S13SpendL }
+    set_key = { lhs = Prod_S14Spend which = Prod_S14SpendL }
+    set_key = { lhs = Prod_S15Spend which = Prod_S15SpendL }
+
+    # Input materials
+    change_key = { lhs = Prod_S0Spend which = Prod_S0SpendProd }
+    change_key = { lhs = Prod_S1Spend which = Prod_S1SpendProd }
+    change_key = { lhs = Prod_S2Spend which = Prod_S2SpendProd }
+    change_key = { lhs = Prod_S3Spend which = Prod_S3SpendProd }
+    change_key = { lhs = Prod_S4Spend which = Prod_S4SpendProd }
+    change_key = { lhs = Prod_S5Spend which = Prod_S5SpendProd }
+    change_key = { lhs = Prod_S6Spend which = Prod_S6SpendProd }
+    change_key = { lhs = Prod_S7Spend which = Prod_S7SpendProd }
+    change_key = { lhs = Prod_S8Spend which = Prod_S8SpendProd }
+    change_key = { lhs = Prod_S9Spend which = Prod_S9SpendProd }
+    change_key = { lhs = Prod_S10Spend which = Prod_S10SpendProd }
+    change_key = { lhs = Prod_S11Spend which = Prod_S11SpendProd }
+    change_key = { lhs = Prod_S12Spend which = Prod_S12SpendProd }
+    change_key = { lhs = Prod_S13Spend which = Prod_S13SpendProd }
+    change_key = { lhs = Prod_S14Spend which = Prod_S14SpendProd }
+    change_key = { lhs = Prod_S15Spend which = Prod_S15SpendProd }
+
+    # Tax
+    change_key = { lhs = Prod_S0Spend which = Prod_S0SpendTax }
+    change_key = { lhs = Prod_S1Spend which = Prod_S1SpendTax }
+    change_key = { lhs = Prod_S2Spend which = Prod_S2SpendTax }
+    change_key = { lhs = Prod_S3Spend which = Prod_S3SpendTax }
+    change_key = { lhs = Prod_S4Spend which = Prod_S4SpendTax }
+    change_key = { lhs = Prod_S5Spend which = Prod_S5SpendTax }
+    change_key = { lhs = Prod_S6Spend which = Prod_S6SpendTax }
+    change_key = { lhs = Prod_S7Spend which = Prod_S7SpendTax }
+    change_key = { lhs = Prod_S8Spend which = Prod_S8SpendTax }
+    change_key = { lhs = Prod_S9Spend which = Prod_S9SpendTax }
+    change_key = { lhs = Prod_S10Spend which = Prod_S10SpendTax }
+    change_key = { lhs = Prod_S11Spend which = Prod_S11SpendTax }
+    change_key = { lhs = Prod_S12Spend which = Prod_S12SpendTax }
+    change_key = { lhs = Prod_S13Spend which = Prod_S13SpendTax }
+    change_key = { lhs = Prod_S14Spend which = Prod_S14SpendTax }
+    change_key = { lhs = Prod_S15Spend which = Prod_S15SpendTax }
+
+    # Finalize by adding income and subtracting spending from wealth
+    change_key = { lhs = SF_Wealth which = SF_Income }
+    change_key = { lhs = NM_Wealth which = NM_Income }
+    change_key = { lhs = RE_Wealth which = RE_Income }
+    change_key = { lhs = NO_Wealth which = NO_Income }
+    change_key = { lhs = BG_Wealth which = BG_Income }
+    change_key = { lhs = CL_Wealth which = CL_Income }
+
+    if = { limit = { check_key = { lhs = SF_Spend value = 0.001 } } subtract_key = { lhs = SF_Wealth which = SF_Spend } }
+    if = { limit = { check_key = { lhs = NM_Spend value = 0.001 } } subtract_key = { lhs = NM_Wealth which = NM_Spend } }
+    if = { limit = { check_key = { lhs = RE_Spend value = 0.001 } } subtract_key = { lhs = RE_Wealth which = RE_Spend } }
+    if = { limit = { check_key = { lhs = NO_Spend value = 0.001 } } subtract_key = { lhs = NO_Wealth which = NO_Spend } }
+    if = { limit = { check_key = { lhs = BG_Spend value = 0.001 } } subtract_key = { lhs = BG_Wealth which = BG_Spend } }
+    if = { limit = { check_key = { lhs = CL_Spend value = 0.001 } } subtract_key = { lhs = CL_Wealth which = CL_Spend } }
+
+    if = { limit = { NOT = { check_key = { lhs = SF_Wealth value = 1 } } } set_key = { lhs = SF_Wealth value = 1 } }
+    if = { limit = { NOT = { check_key = { lhs = NM_Wealth value = 1 } } } set_key = { lhs = NM_Wealth value = 1 } }
+    if = { limit = { NOT = { check_key = { lhs = RE_Wealth value = 1 } } } set_key = { lhs = RE_Wealth value = 1 } }
+    if = { limit = { NOT = { check_key = { lhs = NO_Wealth value = 1 } } } set_key = { lhs = NO_Wealth value = 1 } }
+    if = { limit = { NOT = { check_key = { lhs = BG_Wealth value = 1 } } } set_key = { lhs = BG_Wealth value = 1 } }
+    if = { limit = { NOT = { check_key = { lhs = CL_Wealth value = 1 } } } set_key = { lhs = CL_Wealth value = 1 } }
+    if = { limit = { NOT = { check_key = { lhs = BU_Wealth value = 0 } } } set_key = { lhs = BU_Wealth value = 0 } }
+
+    # Get wealth per capita
+    TN_GetWealthPC = { class = SF }
+    TN_GetWealthPC = { class = NM }
+    TN_GetWealthPC = { class = RE }
+    TN_GetWealthPC = { class = NO }
+    TN_GetWealthPC = { class = BG }
+    TN_GetWealthPC = { class = CL }
+    
+    change_key = { lhs = Infra_Wealth which = Infra_Income }
+    change_key = { lhs = Infra_Wealth which = Infra_StateSpend }
+    subtract_key = { lhs = Infra_Wealth which = Infra_Spend }
+
+    if = {
+        limit = {
+            NOT = {
+                check_key = { lhs = Infra_Wealth value = 1 }
+            }
+        }
+        set_key = { lhs = Infra_Wealth value = 1 }
+    }
+
+    POP_SumWealth = yes
+}
+
+TN_SetHowMuchBought = {
+    if = {
+        limit = {
+            check_key = { lhs = $class$_Total value = 0.001 }
+            check_key = { lhs = $class$_Fill$type$ value = 0.001 }
+        }
+        TN_GetDmnd$class$$prod$ = { return = $class$_Bought$prod$ }
+
+        if = {
+            limit = {
+                check_key = { lhs = $class$_Bought$prod$ value = 0.001 }
+            }
+            multiply_key = { lhs = $class$_Bought$prod$ which = $class$_Fill$type$ }
+            multiply_key = { lhs = $class$_Bought$prod$ which = TN_ProvFill$prod$ }
+			multiply_key = { lhs = $class$_Bought$prod$ value = 0.01 }
+        }
+    }
+	else = {
+       set_key = { lhs = $class$_Bought$prod$ value = 0 }
+	}
+}
+
+TN_GetProdCheckSlotSply = {
+    if = {
+        limit = {
+            check_key = { lhs = Prod_S$slot$Sply$prod$ value = 0.001 }
+        }
+        change_key = { lhs = TN_ProvSply$prod$ which = Prod_S$slot$Sply$prod$ }
+    }
+}
+
+TN_GetProdCheckSlotDmnd = {
+    if = {
+        limit = {
+            check_key = { lhs = Prod_S$slot$Dmnd$prod$ value = 0.001 }
+        }
+        change_key = { lhs = TN_ProvDmnd$prod$ which = Prod_S$slot$Dmnd$prod$ }
+    }
+}
+
+TN_GetProdSlot = {
+    TN_GetProdCheckSlotSply = { slot = 0 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 1 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 2 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 3 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 4 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 5 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 6 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 7 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 8 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 9 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 10 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 11 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 12 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 13 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 14 prod = $prod$ }
+    TN_GetProdCheckSlotSply = { slot = 15 prod = $prod$ }
+
+    TN_GetProdCheckSlotDmnd = { slot = 0 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 1 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 2 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 3 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 4 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 5 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 6 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 7 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 8 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 9 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 10 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 11 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 12 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 13 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 14 prod = $prod$ }
+    TN_GetProdCheckSlotDmnd = { slot = 15 prod = $prod$ }
+}
+
+TN_GetProdClassHelper = {
+    if = {
+        limit = {
+            check_key = { lhs = $class$_Fill$type$ value = 0.001 }
+            check_key = { lhs = $class$_Total value = 0.001 }
+        }
+        TN_GetDmnd$class$$prod$ = { return = Tmp_1 }
+        
+        if = {
+            limit = {
+                always = yes 
+            }
+            set_key = { lhs = $class$_Need$prod$ which = Tmp_1 }
+        }
+
+        multiply_key = { lhs = Tmp_1 which = $class$_Fill$type$ }
+        change_key = { lhs = TN_ProvDmnd$prod$ which = Tmp_1 }
+        
+        if = {
+            limit = {
+                owner = { ai = no }
+                #always = yes
+            }
+            set_key = { lhs = $class$_Dmnd$prod$ which = Tmp_1 }
+        }
+
+        set_key = { lhs = Tmp_1  value = 0 }
+    }
+	else = {
+		set_key = { lhs = $class$_Need$prod$ value = 0 }
+	}
+}
+
+TN_GetProdClass = {
+    TN_GetProdClassHelper = { class = SF prod = $prod$ type = $type$ }
+    TN_GetProdClassHelper = { class = NM prod = $prod$ type = $type$ }
+    TN_GetProdClassHelper = { class = RE prod = $prod$ type = $type$ }
+    TN_GetProdClassHelper = { class = NO prod = $prod$ type = $type$ }
+    TN_GetProdClassHelper = { class = BG prod = $prod$ type = $type$ }
+    TN_GetProdClassHelper = { class = CL prod = $prod$ type = $type$ }
+}
+
+# Set intial value for 4 fulfillment variables
+# Initial value represents how much they want to fill up
+# Actual fulfillment is that multiplied by how much was actually fulfilled
+TN_GetDmnd = {
+    set_key = { lhs = $class$_FillLife value = 0 }
+    set_key = { lhs = $class$_FillComfort value = 0 }
+    set_key = { lhs = $class$_FillLuxury value = 0 }
+    set_key = { lhs = $class$_FillKnowledge value = 0 }
+    set_key = { lhs = $class$_Dole value = 0 }
+
+    if = {
+        limit = {
+            check_key = { lhs = $class$_Total value = 0.001 }
+        }
+		# How much a class is planning to spend
+        set_key = { lhs = Tmp_0 which = $class$_Wealth }
+        divide_key = { lhs = Tmp_0 value = $div$ }
+		
+		# How much 100% fulfillment will cost
+        TN_GetDmnd$class$1 = { return = Tmp_1 }
+        TN_GetDmnd$class$2 = { return = Tmp_2 }
+        TN_GetDmnd$class$4 = { return = Public_Tmp1 }
+        TN_GetDmnd$class$5 = { return = Tmp_3 }
+        TN_GetDmnd$class$9 = { return = Tmp_6 }
+        TN_GetDmnd$class$10 = { return = Public_Tmp3 }
+        TN_GetDmnd$class$21 = { return = Tmp_4 }
+        TN_GetDmnd$class$23 = { return = Public_Tmp2 }
+        TN_GetDmnd$class$25 = { return = Tmp_7 }
+		
+        multiply_key = { lhs = Tmp_1 which = TN_ProvPrc1 }
+        multiply_key = { lhs = Tmp_2 which = TN_ProvPrc2 }
+        multiply_key = { lhs = Public_Tmp1 which = TN_ProvPrc4 }
+        multiply_key = { lhs = Tmp_3 which = TN_ProvPrc5 }
+        multiply_key = { lhs = Tmp_6 which = TN_ProvPrc9 }
+        multiply_key = { lhs = Public_Tmp3 which = TN_ProvPrc10 }
+        multiply_key = { lhs = Tmp_4 which = TN_ProvPrc21 }
+        multiply_key = { lhs = Public_Tmp2 which = TN_ProvPrc23 }
+        multiply_key = { lhs = Tmp_7 which = TN_ProvPrc25 }
+
+        set_key = { lhs = Tmp_9 value = 0 }
+		
+		# What happens below is, classes calculate how much it would cost for each step of demand
+		# Then, they subtract their budgete with that expected cost
+		# If budget is still positive, move onto next step
+		# If not, stop
+        set_key = { lhs = Tmp_8 which = Tmp_1 }    # Food
+        change_key = { lhs = Tmp_8 which = Tmp_2 } # Salt
+        change_key = { lhs = Tmp_8 which = Public_Tmp1 } # Fibre
+        change_key = { lhs = Tmp_8 which = Tmp_3 } # Fuel
+        multiply_key = { lhs = Tmp_8 value = 0.8 } # Step 1, Life %
+        change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+        set_key = { lhs = Tmp_8 which = Tmp_4 }
+        change_key = { lhs = Tmp_8 which = Public_Tmp2 }
+        multiply_key = { lhs = Tmp_8 value = 0.1 } # Step 1, Comfort %
+        change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+        set_key = { lhs = Tmp_8 which = Tmp_6 }
+        change_key = { lhs = Tmp_8 which = Tmp_7 }
+        change_key = { lhs = Tmp_8 which = Public_Tmp3 }
+        multiply_key = { lhs = Tmp_8 value = 0.02 } # Step 1, Luxury %
+        change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+        if = {
+            limit = { 
+                check_key = { lhs = Tmp_0 which = Tmp_9 } # If budget > cost so far
+            }
+            subtract_key = { lhs = Tmp_0 which = Tmp_9 }
+            divide_key = { lhs = Tmp_0 value = 1.442 }
+            set_key = { lhs = Tmp_9 value = 0 }
+
+            change_key = { lhs = $class$_FillLife value = 0.8 } # Step 1, extra Life %
+            change_key = { lhs = $class$_FillComfort value = 0.1 } # Step 1, extra Comfort %
+            change_key = { lhs = $class$_FillLuxury value = 0.02 } # Step 1, extra Luxury %
+
+            set_key = { lhs = Tmp_8 which = Tmp_1 }
+            change_key = { lhs = Tmp_8 which = Tmp_2 }
+            change_key = { lhs = Tmp_8 which = Public_Tmp1 }
+            change_key = { lhs = Tmp_8 which = Tmp_3 }
+            multiply_key = { lhs = Tmp_8 value = 0.5 } # Step 2, extra Life %
+            change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+            set_key = { lhs = Tmp_8 which = Tmp_4 }
+			change_key = { lhs = Tmp_8 which = Public_Tmp2 }
+            multiply_key = { lhs = Tmp_8 value = 0.4 } # Step 2, extra Comfort %
+            change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+            set_key = { lhs = Tmp_8 which = Tmp_6 }
+            change_key = { lhs = Tmp_8 which = Tmp_7 }
+			change_key = { lhs = Tmp_8 which = Public_Tmp3 }
+            multiply_key = { lhs = Tmp_8 value = 0.15 } # Step 2, extra Luxury %
+            change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+            if = {
+                limit = {
+                    check_key = { lhs = Tmp_0 which = Tmp_9 }
+                }
+                subtract_key = { lhs = Tmp_0 which = Tmp_9 }
+                divide_key = { lhs = Tmp_0 value = 1.442 }
+                set_key = { lhs = Tmp_9 value = 0 }
+
+                change_key = { lhs = $class$_FillLife value = 0.5 } # Step 2, extra Life %
+                change_key = { lhs = $class$_FillComfort value = 0.4 } # Step 2, extra Comfort %
+                change_key = { lhs = $class$_FillLuxury value = 0.15 } # Step 2, extra Luxury %
+
+                set_key = { lhs = Tmp_8 which = Tmp_1 }
+                change_key = { lhs = Tmp_8 which = Tmp_2 }
+				change_key = { lhs = Tmp_8 which = Public_Tmp1 }
+                change_key = { lhs = Tmp_8 which = Tmp_3 }
+                multiply_key = { lhs = Tmp_8 value = 0.5 } # Step 3, extra Life %
+                change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+                set_key = { lhs = Tmp_8 which = Tmp_4 }
+				change_key = { lhs = Tmp_8 which = Public_Tmp2 }
+                multiply_key = { lhs = Tmp_8 value = 0.5 } # Step 3, extra Comfort %
+                change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+                set_key = { lhs = Tmp_8 which = Tmp_6 }
+                change_key = { lhs = Tmp_8 which = Tmp_7 }
+				change_key = { lhs = Tmp_8 which = Public_Tmp3 }
+                multiply_key = { lhs = Tmp_8 value = 0.5 } # Step 3, extra Luxury %
+                change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+                if = {
+                    limit = {
+                        check_key = { lhs = Tmp_0 which = Tmp_9 }
+                    }
+                    subtract_key = { lhs = Tmp_0 which = Tmp_9 }
+                    divide_key = { lhs = Tmp_0 value = 1.442 }
+                    set_key = { lhs = Tmp_9 value = 0 }
+
+                    change_key = { lhs = $class$_FillLife value = 0.5 } # Step 3, extra Life %
+                    change_key = { lhs = $class$_FillComfort value = 0.5 } # Step 3, extra Comfort %
+                    change_key = { lhs = $class$_FillLuxury value = 0.5 } # Step 3, extra Luxury %
+
+                    set_key = { lhs = Tmp_8 which = Tmp_1 }
+                    change_key = { lhs = Tmp_8 which = Tmp_2 }
+					change_key = { lhs = Tmp_8 which = Public_Tmp1 }
+                    change_key = { lhs = Tmp_8 which = Tmp_3 }
+                    multiply_key = { lhs = Tmp_8 value = 0.4 } # Step 4, extra Life %
+                    change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+                    set_key = { lhs = Tmp_8 which = Tmp_4 }
+					change_key = { lhs = Tmp_8 which = Public_Tmp2 }
+                    multiply_key = { lhs = Tmp_8 value = 0.7 } # Step 4, extra Comfort %
+                    change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+                    set_key = { lhs = Tmp_8 which = Tmp_6 }
+                    change_key = { lhs = Tmp_8 which = Tmp_7 }
+					change_key = { lhs = Tmp_8 which = Public_Tmp3 }
+                    multiply_key = { lhs = Tmp_8 value = 0.9 } # Step 4, extra Luxury %
+                    change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+                    if = {
+                        limit = {
+                            check_key = { lhs = Tmp_0 which = Tmp_9 }
+                        }
+                        subtract_key = { lhs = Tmp_0 which = Tmp_9 }
+						divide_key = { lhs = Tmp_0 value = 1.442 }
+						set_key = { lhs = Tmp_9 value = 0 }
+
+						change_key = { lhs = $class$_FillLife value = 0.4 } # Step 4, extra Life %
+						change_key = { lhs = $class$_FillComfort value = 0.7 } # Step 4, extra Comfort %
+						change_key = { lhs = $class$_FillLuxury value = 0.9 } # Step 4, extra Luxury %
+
+						set_key = { lhs = Tmp_8 which = Tmp_1 }
+						change_key = { lhs = Tmp_8 which = Tmp_2 }
+						change_key = { lhs = Tmp_8 which = Public_Tmp1 }
+						change_key = { lhs = Tmp_8 which = Tmp_3 }
+						multiply_key = { lhs = Tmp_8 value = 0 } # Step 5, extra Life %
+						change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+						set_key = { lhs = Tmp_8 which = Tmp_4 }
+						change_key = { lhs = Tmp_8 which = Public_Tmp2 }
+						multiply_key = { lhs = Tmp_8 value = 0.9 } # Step 5, extra Comfort %
+						change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+						set_key = { lhs = Tmp_8 which = Tmp_6 }
+						change_key = { lhs = Tmp_8 which = Tmp_7 }
+						change_key = { lhs = Tmp_8 which = Public_Tmp3 }
+						multiply_key = { lhs = Tmp_8 value = 1 } # Step 5, extra Luxury %
+						change_key = { lhs = Tmp_9 which = Tmp_8 }
+						if = {
+							limit = {
+								check_key = { lhs = Tmp_0 which = Tmp_9 }
+							}
+							subtract_key = { lhs = Tmp_0 which = Tmp_9 }
+							divide_key = { lhs = Tmp_0 value = 1.442 }
+							set_key = { lhs = Tmp_9 value = 0 }
+
+							change_key = { lhs = $class$_FillLife value = 0 } # Step 5, extra Life %
+							change_key = { lhs = $class$_FillComfort value = 0.9 } # Step 5, extra Comfort %
+							change_key = { lhs = $class$_FillLuxury value = 1.0 } # Step 5, extra Luxury %
+
+							set_key = { lhs = Tmp_8 which = Tmp_1 }
+							change_key = { lhs = Tmp_8 which = Tmp_2 }
+							change_key = { lhs = Tmp_8 which = Public_Tmp1 }
+							change_key = { lhs = Tmp_8 which = Tmp_3 }
+							multiply_key = { lhs = Tmp_8 value = 0 } # Step 6, extra Life %
+							change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+							set_key = { lhs = Tmp_8 which = Tmp_4 }
+							change_key = { lhs = Tmp_8 which = Public_Tmp2 }
+							multiply_key = { lhs = Tmp_8 value = 0.9 } # Step 6, extra Comfort %
+							change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+							set_key = { lhs = Tmp_8 which = Tmp_6 }
+							change_key = { lhs = Tmp_8 which = Tmp_7 }
+							change_key = { lhs = Tmp_8 which = Public_Tmp3 }
+							multiply_key = { lhs = Tmp_8 value = 1 } # Step 6, extra Luxury %
+							change_key = { lhs = Tmp_9 which = Tmp_8 }
+
+							if = {
+								limit = {
+									check_key = { lhs = Tmp_0 which = Tmp_9 }
+								}
+								change_key = { lhs = $class$_FillLife value = 0 } # Step 6, extra Life %
+								change_key = { lhs = $class$_FillComfort value = 0.9 } # Step 6, extra Comfort %
+								change_key = { lhs = $class$_FillLuxury value = 1 } # Step 6, extra Luxury %
+							}
+							else = {
+								divide_key = { lhs = Tmp_0 which = Tmp_9 }
+						
+								set_key = { lhs = Tmp_8 which = Tmp_0 }
+								multiply_key = { lhs = Tmp_8 value = 0 } # Step 6, extra Life %
+								change_key = { lhs = $class$_FillLife which = Tmp_8 }
+
+								set_key = { lhs = Tmp_8 which = Tmp_0 }
+								multiply_key = { lhs = Tmp_8 value = 0.9 } # Step 6, extra Comfort %
+								change_key = { lhs = $class$_FillComfort which = Tmp_8 }
+
+								set_key = { lhs = Tmp_8 which = Tmp_0 }
+								multiply_key = { lhs = Tmp_8 value = 1 } # Step 6, extra Luxury %
+								change_key = { lhs = $class$_FillLuxury which = Tmp_8 }
+							}
+						}
+						else = {
+							divide_key = { lhs = Tmp_0 which = Tmp_9 }
+					
+							set_key = { lhs = Tmp_8 which = Tmp_0 }
+							multiply_key = { lhs = Tmp_8 value = 0 } # Step 5, extra Life %
+							change_key = { lhs = $class$_FillLife which = Tmp_8 }
+
+							set_key = { lhs = Tmp_8 which = Tmp_0 }
+							multiply_key = { lhs = Tmp_8 value = 0.9 } # Step 5, extra Comfort %
+							change_key = { lhs = $class$_FillComfort which = Tmp_8 }
+
+							set_key = { lhs = Tmp_8 which = Tmp_0 }
+							multiply_key = { lhs = Tmp_8 value = 1.0 } # Step 5, extra Luxury %
+							change_key = { lhs = $class$_FillLuxury which = Tmp_8 }
+						}
+                    }
+                    else = {
+                        divide_key = { lhs = Tmp_0 which = Tmp_9 }
+                
+                        set_key = { lhs = Tmp_8 which = Tmp_0 }
+                        multiply_key = { lhs = Tmp_8 value = 0.4 } # Step 4, extra Life %
+                        change_key = { lhs = $class$_FillLife which = Tmp_8 }
+
+                        set_key = { lhs = Tmp_8 which = Tmp_0 }
+                        multiply_key = { lhs = Tmp_8 value = 0.7 } # Step 4, extra Comfort %
+                        change_key = { lhs = $class$_FillComfort which = Tmp_8 }
+
+                        set_key = { lhs = Tmp_8 which = Tmp_0 }
+                        multiply_key = { lhs = Tmp_8 value = 0.9 } # Step 4, extra Luxury %
+                        change_key = { lhs = $class$_FillLuxury which = Tmp_8 }
+                    }
+                }
+                else = {
+                    divide_key = { lhs = Tmp_0 which = Tmp_9 }
+            
+                    set_key = { lhs = Tmp_8 which = Tmp_0 }
+                    multiply_key = { lhs = Tmp_8 value = 0.5 } # Step 3, extra Life %
+                    change_key = { lhs = $class$_FillLife which = Tmp_8 }
+
+                    set_key = { lhs = Tmp_8 which = Tmp_0 }
+                    multiply_key = { lhs = Tmp_8 value = 0.5 } # Step 3, extra Comfort %
+                    change_key = { lhs = $class$_FillComfort which = Tmp_8 }
+
+                    set_key = { lhs = Tmp_8 which = Tmp_0 }
+                    multiply_key = { lhs = Tmp_8 value = 0.5 } # Step 3, extra Luxury %
+                    change_key = { lhs = $class$_FillLuxury which = Tmp_8 }
+                }
+            }
+            else = {
+                divide_key = { lhs = Tmp_0 which = Tmp_9 }
+            
+                set_key = { lhs = Tmp_8 which = Tmp_0 }
+                multiply_key = { lhs = Tmp_8 value = 0.5 } # Step 2, extra Life %
+                change_key = { lhs = $class$_FillLife which = Tmp_8 }
+
+                set_key = { lhs = Tmp_8 which = Tmp_0 }
+                multiply_key = { lhs = Tmp_8 value = 0.4 } # Step 2, extra Comfort %
+                change_key = { lhs = $class$_FillComfort which = Tmp_8 }
+
+                set_key = { lhs = Tmp_8 which = Tmp_0 }
+                multiply_key = { lhs = Tmp_8 value = 0.15 } # Step 2, extra Luxury %
+                change_key = { lhs = $class$_FillLuxury which = Tmp_8 }
+            }
+        }
+        else = {
+            divide_key = { lhs = Tmp_0 which = Tmp_9 }
+            multiply_key = { lhs = Tmp_0 value = 2 }
+
+            if = {
+                limit = {
+                    check_key = { lhs = Tmp_0 value = 1 }
+                }
+                set_key = { lhs = Tmp_0 value = 1 }
+            }
+            
+            set_key = { lhs = Tmp_8 value = 0.8 } # Step 1, extra Life %
+            multiply_key = { lhs = Tmp_8 which = Tmp_0 }
+            change_key = { lhs = $class$_FillLife which = Tmp_8 }
+
+            set_key = { lhs = Tmp_8 which = Tmp_0 }
+            multiply_key = { lhs = Tmp_8 value = 0.1 } # Step 1, extra Comfort %
+            change_key = { lhs = $class$_FillComfort which = Tmp_8 }
+
+            set_key = { lhs = Tmp_8 which = Tmp_0 }
+            multiply_key = { lhs = Tmp_8 value = 0.02 } # Step 1, extra Luxury %
+            change_key = { lhs = $class$_FillLuxury which = Tmp_8 }
+        }
+		
+		# Knowledge fulfillment is special in that it has its own budget
+        set_key = { lhs = $class$_FillKnowledge which = $class$_Wealth }
+        multiply_key = { lhs = $class$_FillKnowledge value = $edu$ }
+
+        if = {
+            limit = {
+                check_key = { lhs = TN_ProvPrc41 value = 10 }
+            }
+            multiply_key = { lhs = $class$_FillKnowledge value = 10 }
+            divide_key = { lhs = $class$_FillKnowledge which = TN_ProvPrc41 }
+        }
+		
+        TN_GetDmnd$class$41 = { return = Tmp_0 }
+        multiply_key = { lhs = Tmp_0 which = TN_ProvPrc41 }
+
+        if = {
+            limit = {
+                check_key = { lhs = Tmp_0 value = 0.001 }
+            }
+            divide_key = { lhs = $class$_FillKnowledge which = Tmp_0 }
+
+            if = {
+                limit = {
+                    check_key = { lhs = $class$_FillKnowledge value = 2 }
+                }
+                set_key = { lhs = $class$_FillKnowledge value = 2 }
+            }
+        }
+        else = {
+            set_key = { lhs = $class$_FillKnowledge value = 1 }
+        }
+		
+		change_key = { lhs = $class$_FillLife value = 0.01 }
+		change_key = { lhs = $class$_FillComfort value = 0.01 }
+		change_key = { lhs = $class$_FillLuxury value = 0.01 }
+        change_key = { lhs = $class$_FillKnowledge value = 0.01 }
+		
+		# Grain dole
+        if = {
+            limit = {
+                NOT = {
+                    check_key = { lhs = $class$_FillLife value = 1 }
+                }
+            }
+            set_key = { lhs = $class$_Dole value = 1 }
+            subtract_key = { lhs = $class$_Dole which = $class$_FillLife }
+
+            if = {
+                limit = {
+                    check_key = { lhs = $class$_Dole which = TN_Dole }
+                }
+                set_key = { lhs = $class$_Dole which = TN_Dole }
+            }
+
+            change_key = { lhs = $class$_FillLife which = $class$_Dole }
+            set_key = { lhs = $class$_DoleD which = $class$_Dole }
+            multiply_key = { lhs = $class$_DoleD value = 100 }
+        }
+
+		set_key = { lhs = Public_Tmp1 value = 0 }
+		set_key = { lhs = Public_Tmp2 value = 0 }
+		set_key = { lhs = Public_Tmp3 value = 0 }
+		set_key = { lhs = Public_Tmp4 value = 0 }
+    }
+}
+
+TN_SetIncomeInnateHelperMain = {
+	if = {
+		limit = {
+			check_key = { lhs = $class$_Total value = $Threshold$ }
+		}
+		set_key = { lhs = Public_Tmp1 value = $Threshold$ }
+		multiply_key = { lhs = Public_Tmp1 value = $val2$ }
+		
+		set_key = { lhs = $class$_IncomeInnate which = $class$_Total }
+		subtract_key = { lhs = $class$_IncomeInnate value = $Threshold$ }
+		multiply_key = { lhs = $class$_IncomeInnate value = $val$ }
+		change_key = { lhs = $class$_IncomeInnate which = Public_Tmp1 }
+		
+		set_key = { lhs = Public_Tmp1 value = 0 }
+	}
+	else = {
+		set_key = { lhs = $class$_IncomeInnate which = $class$_Total }
+		multiply_key = { lhs = $class$_IncomeInnate value = $val2$ }
+	}
+}
+TN_SetIncomeInnateHelper = {
+    set_key = { lhs = $class$_IncomeInnate which = $class$_Total }
+    multiply_key = { lhs = $class$_IncomeInnate value = $val$ }
+}
+
+TN_SetIncomeInnate = {
+    TN_SetIncomeInnateHelperMain = { class = SF val = 0.005 val2 = 0.03 Threshold = 5 }
+    TN_SetIncomeInnateHelperMain = { class = NM val = 0.008 val2 = 0.03 Threshold = 3 }
+    TN_SetIncomeInnateHelperMain = { class = RE val = 0.004 val2 = 0.15 Threshold = 5 }
+    TN_SetIncomeInnateHelperMain = { class = NO val = 0.012 val2 = 0.35 Threshold = 0.3 }
+	set_key = { lhs = BG_IncomeInnate value = 0 }
+	set_key = { lhs = CL_IncomeInnate value = 0 }
+	if = {
+		limit = {
+			has_global_flag = POP_Sim2
+		}
+		multiply_key = { lhs = SF_IncomeInnate value = 1.35 }
+		multiply_key = { lhs = NM_IncomeInnate value = 1.35 }
+		multiply_key = { lhs = RE_IncomeInnate value = 1.35 }
+		multiply_key = { lhs = NO_IncomeInnate value = 1.35 }
+		multiply_key = { lhs = BG_IncomeInnate value = 1.35 }
+		multiply_key = { lhs = CL_IncomeInnate value = 1.35 }
+	}
+	if = {
+		limit = {
+			has_global_flag = POP_Sim6
+		}
+		multiply_key = { lhs = SF_IncomeInnate value = 1.35 }
+		multiply_key = { lhs = NM_IncomeInnate value = 1.35 }
+		multiply_key = { lhs = RE_IncomeInnate value = 1.35 }
+		multiply_key = { lhs = NO_IncomeInnate value = 1.35 }
+		multiply_key = { lhs = BG_IncomeInnate value = 1.35 }
+		multiply_key = { lhs = CL_IncomeInnate value = 1.35 }
+	}
+}
+
+TN_GetWealthPC = {
+    if = {
+        limit = {
+            check_key = { lhs = $class$_Total value = 0.001 }
+        }
+        set_key = { lhs = $class$_WealthPC which = $class$_Wealth }
+        divide_key = { lhs = $class$_WealthPC which = $class$_Total }
+    }
+    else = {
+        set_key = { lhs = $class$_WealthPC value = 0 }
+    }
+}
+
+# Set how much of their demand was actually fulfilled
+TN_CalcFulfillType = {
+    if = {
+        limit = {
+            check_key = { lhs = $class$_Total value = 0.001 }
+        }
+        TN_GetDmnd$class$1 = { return = Tmp_2 }
+        TN_GetDmnd$class$2 = { return = Tmp_3 }
+        TN_GetDmnd$class$4 = { return = Public_Tmp1 }
+        TN_GetDmnd$class$5 = { return = Tmp_4 }
+        TN_GetDmnd$class$9 = { return = Tmp_7 }
+        TN_GetDmnd$class$10 = { return = Public_Tmp3 }
+        TN_GetDmnd$class$21 = { return = Tmp_5 }
+        TN_GetDmnd$class$23 = { return = Public_Tmp2 }
+        TN_GetDmnd$class$25 = { return = Tmp_8 }
+		
+		set_key = { lhs = Tmp_0 which = Tmp_2 }
+		change_key = { lhs = Tmp_0 which = Tmp_3 }
+		change_key = { lhs = Tmp_0 which = Public_Tmp1 }
+		change_key = { lhs = Tmp_0 which = Tmp_4 }
+        # Edit for new produce
+        if = {
+            limit = {
+                check_key = { lhs = $class$_FillLife value = 0.001 }
+                check_key = { lhs = Tmp_0 value = 0.001 }
+            }
+			set_key = { lhs = Public_Tmp4 value = 0 }
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_2 value = 0.001 }
+				}
+				set_key = { lhs = Tmp_1 which = Tmp_2 }
+				divide_key = { lhs = Tmp_1 which = Tmp_0 }
+				multiply_key = { lhs = Tmp_1 which = TN_ProvFill1 }
+				change_key = { lhs = Public_Tmp4 which = Tmp_1 }
+			}
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_3 value = 0.001 }
+				}
+				set_key = { lhs = Tmp_1 which = Tmp_3 }
+				divide_key = { lhs = Tmp_1 which = Tmp_0 }
+				multiply_key = { lhs = Tmp_1 which = TN_ProvFill2 }
+				change_key = { lhs = Public_Tmp4 which = Tmp_1 }
+			}
+			if = {
+				limit = {
+					check_key = { lhs = Public_Tmp1 value = 0.001 }
+				}
+				set_key = { lhs = Tmp_1 which = Public_Tmp1 }
+				divide_key = { lhs = Tmp_1 which = Tmp_0 }
+				multiply_key = { lhs = Tmp_1 which = TN_ProvFill4 }
+				change_key = { lhs = Public_Tmp4 which = Tmp_1 }
+			}
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_4 value = 0.001 }
+				}
+				set_key = { lhs = Tmp_1 which = Tmp_4 }
+				divide_key = { lhs = Tmp_1 which = Tmp_0 }
+				multiply_key = { lhs = Tmp_1 which = TN_ProvFill5 }
+				change_key = { lhs = Public_Tmp4 which = Tmp_1 }
+			}
+            multiply_key = { lhs = $class$_FillLife which = Public_Tmp4 }
+			multiply_key = { lhs = $class$_FillLife value = 0.01 }
+        }
+        else = {
+            set_key = { lhs = $class$_FillLife value = 0 }
+        }
+
+        set_key = { lhs = $class$_FillLifeD which = $class$_FillLife }
+        multiply_key = { lhs = $class$_FillLifeD value = 100 }
+
+		
+		set_key = { lhs = Tmp_0 which = Tmp_5 }
+		change_key = { lhs = Tmp_0 which = Public_Tmp2 }
+		
+        if = {
+            limit = {
+                check_key = { lhs = $class$_FillComfort value = 0.001 }
+                check_key = { lhs = Tmp_0 value = 0.001 }
+            }
+			set_key = { lhs = Public_Tmp4 value = 0 }
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_5 value = 0.001 }
+				}
+				set_key = { lhs = Tmp_1 which = Tmp_5 }
+				divide_key = { lhs = Tmp_1 which = Tmp_0 }
+				multiply_key = { lhs = Tmp_1 which = TN_ProvFill21 }
+				change_key = { lhs = Public_Tmp4 which = Tmp_1 }
+			}
+			if = {
+				limit = {
+					check_key = { lhs = Public_Tmp2 value = 0.001 }
+				}
+				set_key = { lhs = Tmp_1 which = Public_Tmp2 }
+				divide_key = { lhs = Tmp_1 which = Tmp_0 }
+				multiply_key = { lhs = Tmp_1 which = TN_ProvFill23 }
+				change_key = { lhs = Public_Tmp4 which = Tmp_1 }
+			}
+            multiply_key = { lhs = $class$_FillComfort which = Public_Tmp4 }
+			multiply_key = { lhs = $class$_FillComfort value = 0.01 }
+        }
+        else = {
+            set_key = { lhs = $class$_FillComfort value = 0 }
+        }
+
+        set_key = { lhs = $class$_FillComfortD which = $class$_FillComfort }
+        multiply_key = { lhs = $class$_FillComfortD value = 100 }
+
+		set_key = { lhs = Tmp_0 which = Tmp_7 }
+		change_key = { lhs = Tmp_0 which = Tmp_8 }
+		change_key = { lhs = Tmp_0 which = Public_Tmp3 }
+        if = {
+            limit = {
+                check_key = { lhs = $class$_FillLuxury value = 0.001 }
+                check_key = { lhs = Tmp_0 value = 0.001 }
+            }
+			set_key = { lhs = Public_Tmp4 value = 0 }
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_7 value = 0.001 }
+				}
+				set_key = { lhs = Tmp_1 which = Tmp_7 }
+				divide_key = { lhs = Tmp_1 which = Tmp_0 }
+				multiply_key = { lhs = Tmp_1 which = TN_ProvFill9 }
+				change_key = { lhs = Public_Tmp4 which = Tmp_1 }
+			}
+			if = {
+				limit = {
+					check_key = { lhs = Tmp_8 value = 0.001 }
+				}
+				set_key = { lhs = Tmp_1 which = Tmp_8 }
+				divide_key = { lhs = Tmp_1 which = Tmp_0 }
+				multiply_key = { lhs = Tmp_1 which = TN_ProvFill25 }
+				change_key = { lhs = Public_Tmp4 which = Tmp_1 }
+			}
+			if = {
+				limit = {
+					check_key = { lhs = Public_Tmp3 value = 0.001 }
+				}
+				set_key = { lhs = Tmp_1 which = Public_Tmp3 }
+				divide_key = { lhs = Tmp_1 which = Tmp_0 }
+				multiply_key = { lhs = Tmp_1 which = TN_ProvFill10 }
+				change_key = { lhs = Public_Tmp4 which = Tmp_1 }
+			}
+            multiply_key = { lhs = $class$_FillLuxury which = Public_Tmp4 }
+			multiply_key = { lhs = $class$_FillLuxury value = 0.01 }
+        }
+        else = {
+            set_key = { lhs = $class$_FillLuxury value = 0 }
+        }
+
+        set_key = { lhs = $class$_FillLuxuryD which = $class$_FillLuxury }
+        multiply_key = { lhs = $class$_FillLuxuryD value = 100 }
+
+        if = {
+            limit = {
+                check_key = { lhs = $class$_FillKnowledge value = 0.001 }
+            }
+            multiply_key = { lhs = $class$_FillKnowledge which = TN_ProvFill41 }
+			multiply_key = { lhs = $class$_FillKnowledge value = 0.01 }
+        }
+        else = {
+            set_key = { lhs = $class$_FillKnowledge value = 0 }
+        }
+
+        set_key = { lhs = $class$_FillKnowledgeD which = $class$_FillKnowledge }
+        multiply_key = { lhs = $class$_FillKnowledgeD value = 100 }
+
+        set_key = { lhs = Tmp_0 value = 0 }
+        set_key = { lhs = Tmp_1 value = 0 }
+        set_key = { lhs = Tmp_2 value = 0 }
+        set_key = { lhs = Tmp_3 value = 0 }
+        set_key = { lhs = Tmp_4 value = 0 }
+        set_key = { lhs = Tmp_5 value = 0 }
+        set_key = { lhs = Tmp_6 value = 0 }
+        set_key = { lhs = Tmp_7 value = 0 }
+        set_key = { lhs = Tmp_8 value = 0 }
+		set_key = { lhs = Public_Tmp1 value = 0 }
+		set_key = { lhs = Public_Tmp2 value = 0 }
+		set_key = { lhs = Public_Tmp3 value = 0 }
+		set_key = { lhs = Public_Tmp4 value = 0 }
+    }
+    else = {
+        set_key = { lhs = $class$_FillLife value = 0.8 }
+        set_key = { lhs = $class$_FillComfort value = 0.1 }
+        set_key = { lhs = $class$_FillLuxury value = 0 }
+        set_key = { lhs = $class$_FillKnowledge value = 0 }
+    }
+}
+
+# Subsistence is updated based on sector's total production compared to sector's commerce production
+TN_UpdateSubsistence = {
+    set_key = { lhs = Tmp_0 which = TN_SectorSply1 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply2 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply4 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply5 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply6 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply9 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply10 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply21 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply22 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply23 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply24 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply25 }
+    change_key = { lhs = Tmp_0 which = TN_SectorSply41 }
+	
+    if = {
+        limit = {
+            check_key = { lhs = TN_SectorSply1 value = 0.001 }
+        }
+		set_key = { lhs = Tmp_2 which = TN_SectorSply1 }
+		divide_key = { lhs = Tmp_2 which = Tmp_0 }
+	}
+	else = {
+		set_key = { lhs = Tmp_2 value = 0 }
+	}
+
+    set_key = { lhs = Tmp_1 which = TN_SectorSply51 }
+    change_key = { lhs = Tmp_1 value = 1 }
+    multiply_key = { lhs = Tmp_1 value = 20 }
+
+    divide_key = { lhs = Tmp_0 which = Tmp_1 }
+    subtract_key = { lhs = Tmp_0 value = 1 }
+
+    if = {
+        limit = {
+            check_key = { lhs = Tmp_0 value = 0.001 }
+        }
+        divide_key = { lhs = Tmp_0 value = 2 }
+
+        if = {
+            limit = {
+                check_key = { lhs = Tmp_0 value = 1 }
+            }
+            set_key = { lhs = Tmp_0 value = 1 }
+        }
+    }
+
+    divide_key = { lhs = Tmp_0 value = 50 }
+
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 0 }
+		}
+		set_key = { lhs = Tmp_1 value = 1 }
+		subtract_key = { lhs = Tmp_1 which = TN_Subsistence }
+	}
+	else = {
+		set_key = { lhs = Tmp_1 which = TN_Subsistence }
+	}
+
+	multiply_key = { lhs = Tmp_1 which = Tmp_0 }
+
+	change_key = { lhs = TN_Subsistence which = Tmp_1 }
+
+	if = {
+		limit = {
+			check_key = { lhs = TN_Subsistence value = 0.9 }
+		}
+		set_key = { lhs = TN_Subsistence value = 0.9 }
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = TN_Subsistence value = 0 }
+			}
+		}
+		set_key = { lhs = TN_Subsistence value = 0 }
+	}
+
+	set_key = { lhs = Tmp_1 value = 0 }
+	set_key = { lhs = Tmp_0 value = 0 }
+	
+	set_key = { lhs = TN_Subsistence1 which = TN_Subsistence }
+	multiply_key = { lhs = TN_Subsistence1 value = 1.25 }
+	if = {
+		limit = {
+			check_key = { lhs = TN_Subsistence1 value = 0.9 }
+		}
+		set_key = { lhs = TN_Subsistence1 value = 0.9 }
+	}
+	set_key = { lhs = TN_Subsistence2 which = TN_Subsistence }
+	multiply_key = { lhs = TN_Subsistence2 value = 0.5 }
+	set_key = { lhs = TN_Subsistence4 which = TN_Subsistence }
+	set_key = { lhs = TN_Subsistence5 which = TN_Subsistence }
+	set_key = { lhs = TN_Subsistence6 which = TN_Subsistence }
+	set_key = { lhs = TN_Subsistence9 which = TN_Subsistence }
+	multiply_key = { lhs = TN_Subsistence9 value = 0.5 }
+	set_key = { lhs = TN_Subsistence10 which = TN_Subsistence }
+	multiply_key = { lhs = TN_Subsistence10 value = 0.5 }
+	set_key = { lhs = TN_Subsistence21 which = TN_Subsistence }
+	multiply_key = { lhs = TN_Subsistence21 value = 0.9 }
+	set_key = { lhs = TN_Subsistence22 which = TN_Subsistence }
+	multiply_key = { lhs = TN_Subsistence22 value = 0.9 }
+	set_key = { lhs = TN_Subsistence23 which = TN_Subsistence }
+	multiply_key = { lhs = TN_Subsistence23 value = 0.9 }
+	set_key = { lhs = TN_Subsistence24 which = TN_Subsistence }
+	set_key = { lhs = TN_Subsistence25 which = TN_Subsistence }
+	multiply_key = { lhs = TN_Subsistence25 value = 0.5 }
+	set_key = { lhs = TN_Subsistence41 which = TN_Subsistence }
+	multiply_key = { lhs = TN_Subsistence41 value = 0.75 }
+	
+	set_key = { lhs = TN_SubsistenceDisp which = TN_Subsistence }
+
+	set_key = { lhs = Tmp_2 which = PREV }
+	
+	set_key = { lhs = Tmp_3 value = 1 }
+	subtract_key = { lhs = Tmp_3 which = Tmp_2 }
+	multiply_key = { lhs = TN_SubsistenceDisp which = Tmp_3 }
+	
+	set_key = { lhs = Tmp_3 which = Tmp_2 }
+	multiply_key = { lhs = Tmp_3 which = TN_Subsistence1 }
+	change_key = { lhs = TN_SubsistenceDisp which = Tmp_3 }
+	if = {
+		limit = {
+			check_key = { lhs = TN_SubsistenceDisp value = 0.9 }
+		}
+		set_key = { lhs = TN_SubsistenceDisp value = 0.9 }
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				check_key = { lhs = TN_SubsistenceDisp value = 0 }
+			}
+		}
+		set_key = { lhs = TN_SubsistenceDisp value = 0 }
+	}
+	
+	multiply_key = { lhs = TN_SubsistenceDisp value = 100 }
+    
+    every_trade_node_member_province = {
+		if = {
+			limit = {
+				owned_by = PREV
+				has_province_flag = TN_SectorPart
+				NOT = { province_id = PREV }
+			}
+			set_key = { lhs = TN_Subsistence1 which = PREV }
+			set_key = { lhs = TN_Subsistence2 which = PREV }
+			set_key = { lhs = TN_Subsistence4 which = PREV }
+			set_key = { lhs = TN_Subsistence5 which = PREV }
+			set_key = { lhs = TN_Subsistence6 which = PREV }
+			set_key = { lhs = TN_Subsistence9 which = PREV }
+			set_key = { lhs = TN_Subsistence10 which = PREV }
+			set_key = { lhs = TN_Subsistence21 which = PREV }
+			set_key = { lhs = TN_Subsistence22 which = PREV }
+			set_key = { lhs = TN_Subsistence23 which = PREV }
+			set_key = { lhs = TN_Subsistence24 which = PREV }
+			set_key = { lhs = TN_Subsistence25 which = PREV }
+			set_key = { lhs = TN_Subsistence41 which = PREV }
+			set_key = { lhs = TN_Subsistence which = PREV }
+			set_key = { lhs = TN_SubsistenceDisp which = PREV }
+		}
+	}
+
+    set_key = { lhs = Tmp_0 value = 0 }
+    set_key = { lhs = Tmp_1 value = 0 }
+}
+
+TN_DoDole = {
+    if = {
+        limit = {
+            check_key = { lhs = $class$_Dole value = 0.001 }
+        }
+        TN_DoDoleHelper = { class = $class$ prod = 1 }
+        TN_DoDoleHelper = { class = $class$ prod = 2 }
+        TN_DoDoleHelper = { class = $class$ prod = 4 }
+        TN_DoDoleHelper = { class = $class$ prod = 5 }
+    }
+	else = {
+		set_key = { lhs = $class$_IncomeDole value = 0 }
+	}
+}
+
+TN_DoDoleHelper = {
+	TN_GetDmnd$class$$prod$ = { return = Tmp_0 }
+
+	if = {
+		limit = {
+			check_key = { lhs = Tmp_0 value = 0.01 }
+		}
+		multiply_key = { lhs = Tmp_0 which = $class$_Dole }
+		multiply_key = { lhs = Tmp_0 which = TN_SectorSpend$prod$ }
+
+		change_key = { lhs = $class$_IncomeDole which = Tmp_0 }
+	}
+}
+#

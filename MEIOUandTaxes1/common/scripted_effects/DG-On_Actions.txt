@@ -1,0 +1,70 @@
+DG_on_province_religion_converted_effect = {
+	#Conversion to the owner religion, exporting it as a key
+	export_to_key = {
+		 lhs = DG_Tmp0
+		 value = religion
+		 who = owner 
+	}
+	#Adds the religion in case it isn't there already
+	MN_AddReligion = {
+		type = which religion = DG_Tmp0
+	}
+	if = {
+		limit = {
+			OR = {
+				is_key_equal = { lhs = MN_S0 which = DG_Tmp0 }
+				is_key_equal = { lhs = MN_S1 which = DG_Tmp0 }
+				is_key_equal = { lhs = MN_S2 which = DG_Tmp0 }
+				is_key_equal = { lhs = MN_S3 which = DG_Tmp0 }
+				is_key_equal = { lhs = MN_S4 which = DG_Tmp0 }
+				is_key_equal = { lhs = MN_S5 which = DG_Tmp0 }
+			}
+		}
+		MN_ConvertReligion = {
+			typeFrom = which from = MN_S0	# From, as in the religion who is losing its believers
+			typeTo = which to = DG_Tmp0   # To, as in the religion who is gaining new believers
+			typeChange = value   # Change, as in how many people in absolute numbers are changing
+			ruralChange = 20 urbanChange = 25 notablesChange = 10
+		}
+		set_key = { lhs = DG_Tmp0 value = 0 }
+		MN_GetSlot_Class = yes
+		#Converts the religion if necessary, and switches slots between former and new religion
+		set_province_flag = center_converted
+		province_event = { id = DG_Convert.004 days = 1 } #change_religion_effect = yes
+	}
+}
+
+DG_on_convert_by_trade_policy_effect = {
+	#Conversion to the owner religion, exporting it as a key
+	export_to_key = {
+		 lhs = DG_Tmp0
+		 value = religion
+	}
+	#Adds the religion in case it isn't there already
+	MN_AddReligion = {
+		type = which religion = DG_Tmp0
+	}
+	if = {
+		limit = {
+			OR = {
+				is_key_equal = { lhs = MN_S0 which = DG_Tmp0 }
+				is_key_equal = { lhs = MN_S1 which = DG_Tmp0 }
+				is_key_equal = { lhs = MN_S2 which = DG_Tmp0 }
+				is_key_equal = { lhs = MN_S3 which = DG_Tmp0 }
+				is_key_equal = { lhs = MN_S4 which = DG_Tmp0 }
+				is_key_equal = { lhs = MN_S5 which = DG_Tmp0 }
+			}
+		}
+		MN_ConvertReligion = {
+			typeFrom = which from = MN_S0	# From, as in the religion who is losing its believers
+			typeTo = which to = DG_Tmp0   # To, as in the religion who is gaining new believers
+			typeChange = value   # Change, as in how many people in absolute numbers are changing
+			ruralChange = 5 urbanChange = 30 notablesChange = 5
+		}
+		set_key = { lhs = DG_Tmp0 value = 0 }
+		MN_GetSlot_Class = yes
+		#Converts the religion if necessary, and switches slots between former and new religion
+		set_province_flag = center_converted
+		province_event = { id = DG_Convert.004 days = 1 } #change_religion_effect = yes
+	}
+}

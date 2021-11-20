@@ -1,0 +1,72 @@
+SelectCountryProvinces = {
+    category = access
+    
+    require_acceptance = no
+    
+    # Determines when the action is visible
+    is_visible = {
+		hidden_trigger = {
+			always = yes
+        }
+    }
+    
+    # Determines when the action can be taken
+    is_allowed = {
+    }
+    
+    # Which effects to execute on acceptance
+    on_accept = {
+		FROM = {
+			set_country_flag = UI_SelectAssign
+			
+			every_owned_province = {
+				limit = {
+					NOT = {
+						has_province_flag = UI_Select
+					}
+				}				
+				POP_ChangePin = { inp = ID_Prov action = show }
+			}
+		}
+    }
+    
+    # Controls the AI's usage of the action
+    ai_will_do = {
+        always = no
+    }
+}
+SelectCountryProvincesNo = {
+    category = access
+    
+    require_acceptance = no
+    
+    # Determines when the action is visible
+    is_visible = {
+        hidden_trigger = {
+			always = yes
+        }
+    }
+    
+    # Determines when the action can be taken
+    is_allowed = {
+    }
+    
+    # Which effects to execute on acceptance
+    on_accept = {
+		FROM = {
+			clr_country_flag = UI_SelectAssign
+			
+			every_owned_province = {
+				limit = {
+					has_province_flag = UI_Select
+				}
+				POP_ChangePin = { inp = ID_Prov action = hide }
+			}
+		}
+    }
+    
+    # Controls the AI's usage of the action
+    ai_will_do = {
+        always = no
+    }
+}

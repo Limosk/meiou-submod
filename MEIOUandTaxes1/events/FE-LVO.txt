@@ -1,0 +1,693 @@
+country_event = {
+	id = flavor_lvo.001
+	title = flavor_lvo.001.t
+	desc = flavor_lvo.001.d
+	picture = LIVONIANORDER_eventPicture
+	fire_only_once = yes
+	trigger = {
+		ai = yes
+		OR = {
+			tag = LIV
+			tag = LVO
+			tag = KUR
+		}
+		any_owned_province = {
+			area = curonia_area
+		}
+		any_owned_province = {
+			area = livonia_area
+		}
+		AND = {
+			OR = {
+				is_subject = no
+				is_subject_of_type = tributary_state
+				is_subject_of_type = close_tributary_state
+			}
+		}
+		NOT = {
+			has_global_flag = livonian_war
+		}
+		is_religion_enabled = protestant
+		is_at_war = no
+
+		any_neighbor_country = { #bordering Russian state with strong army
+			culture_group = east_slavic
+			army_strength = {
+				who = ROOT
+				value = 2
+			}
+		}
+
+		any_neighbor_country = { #bordering state that can be a potential protector
+			OR = {
+				tag = POL
+				tag = PLC
+				tag = LIT
+			}
+			army_strength = {
+				who = ROOT
+				value = 2
+			}
+		}
+	}
+	mean_time_to_happen = {
+		years = 3
+	}
+	option = {
+		name = "flavor_lvo.001.a"
+		ai_chance = {
+			factor = 90
+		}
+		set_global_flag = livonian_war
+		if = {
+			limit = {
+				POL = {
+					exists = yes
+					senior_union_with = LIT
+				}
+			}
+			POL = {
+				country_event = {
+					id = flavor_lvo.002
+					days = 0
+				}
+			}
+			#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:asked Poland for protection against Russian neighbor:flavor_lvo.001"
+		}
+		if = {
+			limit = {
+				LIT = {
+					exists = yes
+					AND = {
+						OR = {
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+						}
+					}
+				}
+			}
+			LIT = {
+				country_event = {
+					id = flavor_lvo.002
+					days = 0
+				}
+			}
+			#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:asked Lithuania for protection against Russian neighbor:flavor_lvo.001"
+		}
+		if = {
+			limit = {
+				PLC = {
+					exists = yes
+				}
+			}
+			PLC = {
+				country_event = {
+					id = flavor_lvo.002
+					days = 0
+				}
+			}
+			#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:asked Commowealth for protection against Russian neighbor:flavor_lvo.001"
+		}
+	}
+	option = {
+		name = "flavor_lvo.001.b"
+		ai_chance = {
+			factor = 10
+		}
+		set_global_flag = livonian_war
+		Stab_Subtract4 = yes
+		add_prestige = 10
+		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:decided not to ask for protection against Russian neighbor:flavor_lvo.001"
+	}
+}
+country_event = {
+	id = flavor_lvo.002
+	title = flavor_lvo.002.t
+	desc = flavor_lvo.002.d
+	picture = LIVONIANORDER_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "flavor_lvo.002.a"
+		ai_chance = {
+			factor = 90
+		}
+		add_prestige = 5
+		vassalize = FROM
+		FROM = {
+			set_country_flag = pol_accept_ovr
+			country_event = {
+				id = flavor_lvo.003
+				days = 0
+			}
+		}
+		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:gave [From.GetName] protection against Russian neighbor:flavor_lvo.002"
+	}
+	option = {
+		name = "flavor_lvo.002.b"
+		FROM = {
+			country_event = {
+				id = flavor_lvo.009
+				days = 0
+			}
+		}		
+		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:refused to give [From.GetName] protection against Russian neighbor:flavor_lvo.002"
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+country_event = {
+	id = flavor_lvo.003
+	title = flavor_lvo.003.t
+	desc = flavor_lvo.003.d
+	picture = LIVONIANORDER_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "flavor_lvo.003.a"
+		random_neighbor_country = {
+			limit = {
+				culture_group = east_slavic
+				army_strength = {
+					who = ROOT
+					value = 2
+				}
+			}
+			country_event = {
+				id = flavor_lvo.004
+				days = 0
+			}
+		}
+	}
+}
+country_event = {
+	id = flavor_lvo.004
+	title = flavor_lvo.004.t
+	desc = flavor_lvo.004.d
+	picture = LIVONIANORDER_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "flavor_lvo.004.a" #How dare they! (war declaration)
+		ai_chance = {
+			factor = 80
+			modifier = {
+				factor = 0.1
+				is_at_war = yes
+			}
+		}
+		add_prestige = 5
+		FROM = {
+			every_owned_province = {
+				limit = {
+					area = livonia_area
+					AND = {
+						area = estonia_ingria_area
+						NOT = {
+							province_id = 3768 #Hiiumaa island
+						}
+					}
+				}
+				add_claim = ROOT
+			}
+		}
+		declare_war_with_cb = {
+			who = FROM
+			casus_belli = cb_conquest
+		}
+		set_global_flag = livonian_war_decided
+		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:started Livonian war:flavor_lvo.004"
+	}
+	option = {
+		name = "flavor_lvo.004.b" #We will not act..
+		ai_chance = {
+			factor = 5
+		}
+		add_prestige = -25
+		set_global_flag = livonian_war_decided
+		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:declined to start Livonian war:flavor_lvo.004"
+	}
+	option = {
+		name = "flavor_lvo.004.c" #We will not act, yet (claims)
+		ai_chance = {
+			factor = 15
+		}
+		FROM = {
+			every_owned_province = {
+				limit = {
+					OR = {
+						area = livonia_area
+						AND = {
+							area = estonia_ingria_area
+							NOT = {
+								province_id = 3768 #Hiiumaa island
+							}
+						}
+					}
+				}
+				add_claim = ROOT
+			}
+		}
+		add_prestige = -5
+		set_global_flag = livonian_war_decided
+		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:declined to start Livonian war, but claimed the land:flavor_lvo.004"
+	}
+}
+country_event = {
+	id = flavor_lvo.005 #Defection of Estonia
+	title = flavor_lvo.005.t
+	desc = flavor_lvo.005.d
+	picture = LIVONIANORDER_eventPicture
+	fire_only_once = yes
+	trigger = {
+		OR = {
+			tag = LIV
+			tag = LVO
+			tag = KUR
+		}
+		is_religion_enabled = protestant
+		any_owned_province = {
+			area = estonia_ingria_area
+		}
+		is_at_war = yes
+		NOT = { war_score = -10 }
+		OR = {
+			SWE = {
+				owns = 28 #Coast of Finland, Uusima/Porvoo
+			}
+			SWE = {
+				owns = 27 #Coast of Finland, Turku
+			}
+			SWE = {
+				owns = 32 #Coast of Finland, Viipuri/Viborg
+			}
+		}
+		NOT = { #Swedish army is at least 2 times stronger
+			army_strength = {
+				who = SWE
+				value = 0.5
+			}
+		}
+		OR = {
+			NOT = {	stability = 1 }
+			num_of_revolts = 2
+			is_bankrupt = yes
+			war_exhaustion = 10
+			NOT = {	religious_unity = 0.75 }
+		}
+		NOT = {check_key = { lhs = Prov_NOLoy value = 40 } }
+		NOT = { has_reform = Pol_Structure4 } #Devolved Unitary
+		NOT = { has_reform = Pol_Structure5 } #Unitary
+	}
+	mean_time_to_happen = {
+		months = 6
+	}
+	option = {
+		name = "flavor_lvo.005.a"
+		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:Estonian provinces defected to Sweden:flavor_lvo.005"
+		every_owned_province = {
+			limit = {
+				area = estonia_ingria_area
+				owned_by = ROOT
+			}
+			remove_core = ROOT
+			cede_province = SWE
+			if = {
+				limit = {
+					NOT = {is_core = SWE}
+				}
+				add_local_autonomy = 10
+				add_territorial_core = SWE
+			}
+			add_core = EST
+		}
+	
+		if = {
+			limit = {
+				AND = {
+					is_subject = yes
+					NOT = { is_subject_of_type = tributary_state }
+					NOT = {	is_subject_of_type = close_tributary_state }
+				}
+			}
+			overlord = {
+				estonia_ingria_area = {
+					add_claim = PREV
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = flavor_lvo.006 #Sale of Osel
+	title = flavor_lvo.006.t
+	desc = flavor_lvo.006.d
+	picture = LIVONIANORDER_eventPicture
+	fire_only_once = yes
+	trigger = {
+		OR = {
+			tag = OSE
+			tag = PIL
+		}
+		is_religion_enabled = protestant
+		owns = 1354 #Saaremaa
+		
+		overlord = {
+			OR = {
+				tag = LIV
+				tag = LVO
+				tag = KUR
+				tag = TEU
+			}
+			is_at_war = yes
+			NOT = { war_score = -10 }
+			NOT = {check_key = { lhs = Prov_NOLoy value = 40 } }
+			NOT = { has_reform = Pol_Structure4 } #Devolved Unitary
+			NOT = { has_reform = Pol_Structure5 } #Unitary
+			OR = {
+				NOT = {	stability = 1}
+				num_of_revolts = 2
+				is_bankrupt = yes
+				war_exhaustion = 10
+				NOT = {	religious_unity = 0.75}
+			}
+		}
+		
+		OR = {
+			DEN = {
+				owns = 6 #Skane
+			}
+			DAN = {
+				owns = 6 #Skane
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 6
+	}
+	option = {
+		name = "flavor_lvo.006.a"
+		if = {
+			limit = {
+				exists = DEN
+			}
+			1354 = {
+				remove_core = ROOT
+				cede_province = DEN
+				if = {
+					limit = {
+						NOT = {is_core = DEN}
+					}
+					add_local_autonomy = 10
+					add_territorial_core = DEN
+				}
+				add_core = EST
+			}
+		}
+		else_if = {
+			limit = {
+				exists = DAN
+			}
+			1354 = {
+				remove_core = ROOT
+				cede_province = DAN
+				if = {
+					limit = {
+						NOT = {is_core = DAN}
+					}
+					add_local_autonomy = 10
+					add_territorial_core = DAN
+				}
+				add_core = EST
+			}
+		}
+		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:Osel was sold to Danish King:flavor_lvo.006"
+
+		if = {
+			limit = {
+				AND = {
+					is_subject = yes
+					NOT = {	is_subject_of_type = tributary_state }
+					NOT = { is_subject_of_type = close_tributary_state }
+				}
+			}
+			overlord = {
+				add_claim = 1354
+				country_event = {
+					id = flavor_lvo.010
+					days = 0
+				}
+			}
+		}
+	}
+	option = {
+		name = "flavor_lvo.006.b"
+	}
+}
+country_event = {
+	id = flavor_lvo.007 #Sale of Pilten
+	title = flavor_lvo.007.t
+	desc = flavor_lvo.007.d
+	picture = LIVONIANORDER_eventPicture
+	fire_only_once = yes
+	trigger = {
+		OR = {
+			tag = PIL
+			tag = OSE #if bishop of OSE rules also Piltene in a result of some conquest
+		}
+		is_religion_enabled = protestant
+		owns = 1432 #Piltene
+		
+		overlord = {
+			OR = {
+				tag = LIV
+				tag = LVO
+				tag = KUR
+				tag = TEU
+			}
+			is_at_war = yes
+			NOT = { war_score = -10 }
+			NOT = {check_key = { lhs = Prov_NOLoy value = 40 } }
+			NOT = { has_reform = Pol_Structure4 } #Devolved Unitary
+			NOT = { has_reform = Pol_Structure5 } #Unitary
+			OR = {
+				NOT = {	stability = 1}
+				num_of_revolts = 2
+				is_bankrupt = yes
+				war_exhaustion = 10
+				NOT = {	religious_unity = 0.75}
+			}
+		}
+		
+		OR = {
+			DEN = {
+				owns = 6 #Skane
+			}
+			DAN = {
+				owns = 6 #Skane
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 6
+	}
+	option = {
+		name = "flavor_lvo.007.a"
+		if = {
+			limit = {
+				exists = DEN
+			}
+			1432 = {
+				remove_core = ROOT
+				cede_province = DEN
+				if = {
+					limit = {
+						NOT = {is_core = DEN}
+					}
+					add_local_autonomy = 10
+					add_territorial_core = DEN
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				exists = DAN
+			}
+			1432 = {
+				remove_core = ROOT
+				cede_province = DAN
+				if = {
+					limit = {
+						NOT = {is_core = DAN}
+					}
+					add_local_autonomy = 10
+					add_territorial_core = DAN
+				}
+			}
+		}
+		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:Pilten was sold to Danish King:flavor_lvo.007"
+
+		if = {
+			limit = {
+				AND = {
+					is_subject = yes
+					NOT = {
+						is_subject_of_type = tributary_state
+					}
+					NOT = {
+						is_subject_of_type = close_tributary_state
+					}
+				}
+			}
+			overlord = {
+				add_claim = 1432
+				country_event = {
+					id = flavor_lvo.011
+					days = 0
+				}
+			}
+		}
+	}
+	option = {
+		name = "flavor_lvo.006.b"
+	}
+}
+country_event = {
+	id = flavor_lvo.008 #Latvian Nation
+	title = flavor_lvo.008.t
+	desc = flavor_lvo.008.d
+	picture = LIVONIANORDER_eventPicture
+	fire_only_once = yes
+	trigger = {
+		NOT = {
+			has_global_flag = latvian_culture_flag
+		}
+		is_year = 1500
+		curonia_area = {
+			type = all
+			country_or_vassal_holds = ROOT
+		}
+		livonia_area = {
+			type = all
+			country_or_vassal_holds = ROOT
+		}
+	}
+	mean_time_to_happen = {
+		years = 30
+	}
+	option = {
+		name = "flavor_lvo.008.a"
+		commonwealth_superregion = {
+			limit = {
+				country_or_vassal_holds = ROOT
+				OR = {
+					culture = curonian
+					culture = lattgalian
+				}
+			}
+			change_culture = latvian
+		}
+		hidden_effect = {
+			every_known_country = {
+				limit = {
+					capital_scope = {
+						superregion = commonwealth_superregion
+					}
+					OR = {
+						accepted_culture = curonian
+						accepted_culture = lattgalian
+					}
+				}
+				remove_accepted_culture = curonian
+				remove_accepted_culture = lattgalian
+				add_accepted_culture = latvian
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					primary_culture = curonian
+					primary_culture = lattgalian
+				}
+			}
+			change_primary_culture = latvian
+		}
+		every_subject_country = {
+			limit = {
+				OR = {
+					primary_culture = curonian
+					primary_culture = lattgalian
+				}
+			}
+			change_primary_culture = latvian
+		}
+		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:Formation of Latvian culture:flavor_lvo.008"
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	option = {
+		name = "flavor_lvo.008.b"
+		trigger = {
+			primary_culture = lattgalian
+		}
+		every_owned_province = {
+			limit = {
+				culture = curonian
+			}
+			add_nationalism = 10
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = "flavor_lvo.008.c"
+		trigger = {
+			primary_culture = curonian
+		}
+		every_owned_province = {
+			limit = {
+				culture = lattgalian
+			}
+			add_nationalism = 10
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	after = {
+		set_global_flag = latvian_culture_flag
+	}
+}
+country_event = { #Notification on refusal of protection
+	id = flavor_lvo.009
+	title = flavor_lvo.009.t
+	desc = flavor_lvo.009.d
+	picture = LIVONIANORDER_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "flavor_lvo.009.a"
+	}
+}
+country_event = { #Notification on sale of Osel
+	id = flavor_lvo.010
+	title = flavor_lvo.010.t
+	desc = flavor_lvo.010.d
+	picture = LIVONIANORDER_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "flavor_lvo.010.a"
+	}
+}
+country_event = { #Notification on sale of Pilten
+	id = flavor_lvo.011
+	title = flavor_lvo.011.t
+	desc = flavor_lvo.011.d
+	picture = LIVONIANORDER_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "flavor_lvo.010.a"
+	}
+}

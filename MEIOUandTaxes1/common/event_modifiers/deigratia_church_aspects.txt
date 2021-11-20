@@ -1,0 +1,101 @@
+
+#Western Christian Church Aspects
+#Priesthood
+wc_aspect_01_1_em = {  } #Ordained - clergy gravity (pending)
+#wc_aspect_01_2_em = {  }
+wc_aspect_01_3_em = {  } #Universal - clergy un-gravity (pending)
+
+#Purgatory
+wc_aspect_02_1_em = {  } #Dogma, no direct effect
+#wc_aspect_02_2_em = {  }
+wc_aspect_02_3_em = {  } #Dogma, no direct effect
+
+#Baptism
+wc_aspect_03_1_em = { tolerance_own = 0.5 } #Infant
+wc_aspect_03_2_em = { global_missionary_strength = 0.025 } #Adult
+wc_aspect_03_3_em = { religious_unity = -1 } #None
+
+#Bible
+wc_aspect_04_1_em = { stability_cost_modifier = -0.1 } #Latin - needs increase of clergy power
+#wc_aspect_04_2_em = {  }
+wc_aspect_04_3_em = { religious_unity = -1 } #Vernacular - increased religious shift
+
+#Clergy Power
+wc_aspect_05_1_em = {  } #Wealth - needs power and loyalty
+#wc_aspect_05_2_em = {  }
+wc_aspect_05_3_em = {  } #Poverty - needs reduced power and loyalty
+
+#Transubstantiation
+wc_aspect_06_1_em = {  } #Dogma, no direct effect
+wc_aspect_06_2_em = {  } #Dogma, no direct effect
+wc_aspect_06_3_em = {  } #Dogma, no direct effect
+
+#Indulgences
+wc_aspect_07_1_em = { yearly_corruption = 0.03 legitimacy = 0.03 } #Regulated
+wc_aspect_07_2_em = { yearly_corruption = 0.01 legitimacy = 0.01 } #Blind-Eye
+wc_aspect_07_3_em = { yearly_corruption = -0.01 legitimacy = -0.01 } #Forbidden
+
+#Saints
+wc_aspect_08_1_em = { yearly_corruption = 0.01 stability_cost_modifier = -0.01 } #Accepted
+#wc_aspect_08_2_em = {  }
+wc_aspect_08_3_em = { yearly_corruption = -0.01 stability_cost_modifier = 0.01 } #Idolatry
+
+#Usury
+wc_aspect_09_1_em = { interest = 0.05 inflation_reduction = 0.05 } #Forbidden
+wc_aspect_09_2_em = { interest = 0.025 inflation_reduction = 0.025 } #Blind-Eye
+wc_aspect_09_3_em = { interest = -0.05 inflation_reduction = 0.025 } #Authorised
+
+#Divorce
+wc_aspect_10_1_em = { legitimacy = 0.03 } #Forbidden
+#wc_aspect_10_2_em = {  }
+wc_aspect_10_3_em = {  } #Authorised - trigger for decision to divorce consort
+
+#Celibacy
+wc_aspect_11_1_em = {  } #Clergy Celibacy - needs an effect
+#wc_aspect_11_2_em = {  }
+wc_aspect_11_3_em = {  } #Married Priests - needs clergy gravity
+
+#Parish Registers
+wc_aspect_12_1_em = {  } #Non-Regulated - needs an effect
+#wc_aspect_12_2_em = {  }
+wc_aspect_12_3_em = { manpower_recovery_speed = 0.01 } #Regulated
+
+#Creed
+wc_aspect_13_1_em = { tolerance_own = 0.5 } #Through Church
+#wc_aspect_13_2_em = {  }
+wc_aspect_13_3_em = {  } #Individual - needs lower church influence
+
+#Simony
+wc_aspect_14_1_em = {  } #Forbidden - needs an effect
+wc_aspect_14_2_em = { yearly_corruption = 0.01 } #Blind-Eye - needs money transfer from clergy/nobles to state & less power to clergy
+wc_aspect_14_3_em = { yearly_corruption = 0.025 } #Authorised - needs money transfer from clergy/nobles to state & less power to clergy
+
+#Trinitarianism
+wc_aspect_15_1_em = {  } #Dogma, no direct effect
+#wc_aspect_15_2_em = {  }
+wc_aspect_15_3_em = {  } #Dogma, no direct effect
+
+#Absenteism
+wc_aspect_16_1_em = { global_missionary_strength = -0.01 } #Accepted - needs lower power to the clergy
+#wc_aspect_16_2_em = {  }
+wc_aspect_16_3_em = { global_missionary_strength = 0.01 } #Condemned - needs increased power to the clergy
+
+#Clergy Wealth
+wc_aspect_17_1_em = {  } #Clergy Wealth - needs an effect
+#wc_aspect_17_2_em = {  }
+wc_aspect_17_3_em = {  } #Clergy Poverty - needs reduced siphoning of money from population towards clergy
+
+#Primacy
+wc_aspect_18_1_em = {  } #Papal Primacy - Curia mecanics
+wc_aspect_18_2_em = {  } #Prima Inter Pares - needs an effect - some base hierarchy as placeholder
+wc_aspect_18_3_em = {  } #No Primacy - needs an effect - some base hierarchy as placeholder
+
+#Communion
+wc_aspect_19_1_em = {  } #Restricted to Clergy - needs an effect (clergy gravity?)
+wc_aspect_19_2_em = {  } #One Form for Laity - a wee bit of base spirituality (see SYS_API)
+wc_aspect_19_3_em = {  } #Two Forms for Laity - some base spirituality (see SYS_API)
+
+#Unused
+#wc_aspect_20_1_em = {  }
+#wc_aspect_20_2_em = {  }
+#wc_aspect_20_3_em = {  }

@@ -1,0 +1,122 @@
+namespace = flavor_anj
+
+country_event = {
+	id = flavor_anj.1
+	title = "flavor_anj.1.name"
+	desc = "flavor_anj.1.desc"
+	picture = COURT_eventPicture
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			tag = ANJ
+			AND = {
+				tag = FRA
+				NOT = {
+					exists = ANJ
+				}
+			}
+			AND = {
+				tag = FRA
+				ANJ = {
+					junior_union_with = FRA
+				}
+			}
+		}
+		NOT = {
+			has_country_flag = nap_claim
+		}
+		NOT = {
+			dynasty = "de Valois"
+		}
+	}
+	option = {
+		name = "flavor_anj.1.opta"
+		ai_chance = {
+			factor = 100
+		}
+		every_province = {
+			limit = {
+				region = naples_region
+				is_permanent_claim = ROOT
+			}
+			remove_claim = ROOT
+		}
+	}
+	option = {
+		name = "flavor_anj.1.optb"
+		ai_chance = {
+			factor = 0
+		}
+		add_dip_power = -200
+		add_prestige = -15
+		set_country_flag = nap_claim
+	}
+}
+country_event = {
+	id = flavor_anj.3
+	title = "flavor_anj.3.name"
+	desc = "flavor_anj.3.desc"
+	picture = COURT_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = ANJ
+		FROM = { tag = FRA dynasty = "de Valois" }
+	}
+	
+	immediate = {
+		hidden_effect = {
+			naples_region = {
+				limit = {
+					is_permanent_claim = ANJ
+				}
+				remove_claim = ANJ
+				add_permanent_claim = FRA
+			}
+			provence_area = {
+				limit = {
+					is_permanent_claim = ANJ
+				}
+				remove_claim = ANJ
+				add_permanent_claim = FRA
+			}
+			ANJ = {
+				country_event = {
+					id = flavor_anj.4
+				}
+			}
+		}
+	}
+	option = {
+		name = "flavor_anj.3.opta"
+		tooltip = {
+			naples_region = {
+				limit = {
+					is_permanent_claim = ANJ
+				}
+				remove_claim = ANJ
+				add_permanent_claim = FRA
+			}
+			provence_area = {
+				limit = {
+					is_permanent_claim = ANJ
+				}
+				remove_claim = ANJ
+				add_permanent_claim = FRA
+			}
+		}
+	}
+}
+country_event = {
+	id = flavor_anj.4
+	title = "flavor_anj.4.name"
+	desc = "flavor_anj.4.desc"
+	picture = COURT_eventPicture
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = "flavor_anj.4.opta"
+	}
+}

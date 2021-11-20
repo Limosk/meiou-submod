@@ -1,0 +1,52 @@
+Inst_DoInstitution = {
+    every_province = {
+        limit = {
+            isValidProv = yes
+        }
+        clr_province_flag = Inst_Progress_$name$_6.4
+        clr_province_flag = Inst_Progress_$name$_3.2
+        clr_province_flag = Inst_Progress_$name$_1.6
+        clr_province_flag = Inst_Progress_$name$_0.8
+        clr_province_flag = Inst_Progress_$name$_0.4
+        clr_province_flag = Inst_Progress_$name$_0.2
+        clr_province_flag = Inst_Progress_$name$_0.1
+    }
+
+    if = {
+        limit = {
+            Inst_Can_$name$ = yes
+        }
+        every_country = {
+            limit = {
+				Inst_Can_$name$_Country = yes
+				
+                isValidCountry = yes
+            }
+            every_owned_province = {
+                limit = {
+					Inst_Can_$name$_Prov = yes
+
+                    NOT = {
+                        $name$ = 100
+                    }
+					
+                    isValidProv = yes
+                }
+                Inst_Get_$name$ = { return = Tmp_0 }
+
+                multiply_key = { lhs = Tmp_0 value = 5 }
+
+                if = { limit = { check_key = { lhs = Tmp_0 value = 6.4 } } subtract_key = { lhs = Tmp_0 value = 6.4 } set_province_flag = Inst_Progress_$name$_6.4 }
+                if = { limit = { check_key = { lhs = Tmp_0 value = 3.2 } } subtract_key = { lhs = Tmp_0 value = 3.2 } set_province_flag = Inst_Progress_$name$_3.2 }
+                if = { limit = { check_key = { lhs = Tmp_0 value = 1.6 } } subtract_key = { lhs = Tmp_0 value = 1.6 } set_province_flag = Inst_Progress_$name$_1.6 }
+                if = { limit = { check_key = { lhs = Tmp_0 value = 0.8 } } subtract_key = { lhs = Tmp_0 value = 0.8 } set_province_flag = Inst_Progress_$name$_0.8 }
+                if = { limit = { check_key = { lhs = Tmp_0 value = 0.4 } } subtract_key = { lhs = Tmp_0 value = 0.4 } set_province_flag = Inst_Progress_$name$_0.4 }
+                if = { limit = { check_key = { lhs = Tmp_0 value = 0.2 } } subtract_key = { lhs = Tmp_0 value = 0.2 } set_province_flag = Inst_Progress_$name$_0.2 }
+                if = { limit = { check_key = { lhs = Tmp_0 value = 0.1 } } subtract_key = { lhs = Tmp_0 value = 0.1 } set_province_flag = Inst_Progress_$name$_0.1 }
+
+                set_key = { lhs = Tmp_0 value = 0 }
+            }
+        }
+    }
+}
+

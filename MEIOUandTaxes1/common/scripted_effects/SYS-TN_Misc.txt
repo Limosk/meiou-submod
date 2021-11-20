@@ -1,0 +1,607 @@
+# Economy \ Trade \ Misc
+# By KJH
+# Effects below contain information as to how much of each tradegood each classes consume as a base
+
+# Edit for new produce 
+# Food
+TN_GetDmndSF1 = {
+    set_key = { lhs = $return$ value = 0.13 }
+    multiply_key = { lhs = $return$ which = SF_Total }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand1 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand1 }
+}
+TN_GetDmndNM1 = {
+    set_key = { lhs = $return$ value = 0.1 }
+    multiply_key = { lhs = $return$ which = NM_Total }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand1 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand1 }
+}
+TN_GetDmndRE1 = {
+    set_key = { lhs = $return$ value = 0.22 }
+    multiply_key = { lhs = $return$ which = RE_Total }
+    multiply_key = { lhs = $return$ which = Modi_REDemand }
+    multiply_key = { lhs = $return$ which = Modi_REDemand1 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand1 }
+}
+TN_GetDmndNO1 = {
+    set_key = { lhs = $return$ value = 0.7 }
+    multiply_key = { lhs = $return$ which = NO_Total }
+    multiply_key = { lhs = $return$ which = Modi_NODemand }
+    multiply_key = { lhs = $return$ which = Modi_NODemand1 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand1 }
+}
+TN_GetDmndBG1 = {
+    set_key = { lhs = $return$ value = 0.9 }
+    multiply_key = { lhs = $return$ which = BG_Total }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand1 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand1 }
+}
+TN_GetDmndCL1 = {
+    set_key = { lhs = $return$ value = 0.45 }
+    multiply_key = { lhs = $return$ which = CL_Total }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand1 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand1 }
+}
+
+# Salt
+TN_GetDmndSF2 = {
+	set_key = { lhs = $return$ value = 0.016 }
+    multiply_key = { lhs = $return$ which = SF_Total }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand2 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand2 }
+}
+TN_GetDmndNM2 = {
+	set_key = { lhs = $return$ value = 0.01 }
+    multiply_key = { lhs = $return$ which = NM_Total }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand2 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand2 }
+}
+TN_GetDmndRE2 = {
+	set_key = { lhs = $return$ value = 0.025 }
+    multiply_key = { lhs = $return$ which = RE_Total }
+    multiply_key = { lhs = $return$ which = Modi_REDemand }
+    multiply_key = { lhs = $return$ which = Modi_REDemand2 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand2 }
+}
+TN_GetDmndNO2 = {
+	set_key = { lhs = $return$ value = 0.12 }
+    multiply_key = { lhs = $return$ which = NO_Total }
+    multiply_key = { lhs = $return$ which = Modi_NODemand }
+    multiply_key = { lhs = $return$ which = Modi_NODemand2 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand2 }
+}
+TN_GetDmndBG2 = {
+	set_key = { lhs = $return$ value = 0.2 }
+    multiply_key = { lhs = $return$ which = BG_Total }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand2 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand2 }
+}
+TN_GetDmndCL2 = {
+	set_key = { lhs = $return$ value = 0.08 }
+    multiply_key = { lhs = $return$ which = CL_Total }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand2 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand2 }
+}
+# Fibre
+TN_GetDmndSF4 = {
+    set_key = { lhs = $return$ value = 0.02 }
+    multiply_key = { lhs = $return$ which = SF_Total }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand4 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand4 }
+}
+TN_GetDmndNM4 = {
+    set_key = { lhs = $return$ value = 0.02 }
+    multiply_key = { lhs = $return$ which = NM_Total }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand4 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand4 }
+}
+TN_GetDmndRE4 = {
+    set_key = { lhs = $return$ value = 0.02 }
+    multiply_key = { lhs = $return$ which = RE_Total }
+    multiply_key = { lhs = $return$ which = Modi_REDemand }
+    multiply_key = { lhs = $return$ which = Modi_REDemand4 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand4 }
+}
+TN_GetDmndNO4 = {
+    set_key = { lhs = $return$ value = 0.1 }
+    multiply_key = { lhs = $return$ which = NO_Total }
+    multiply_key = { lhs = $return$ which = Modi_NODemand }
+    multiply_key = { lhs = $return$ which = Modi_NODemand4 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand4 }
+}
+TN_GetDmndBG4 = {
+    set_key = { lhs = $return$ value = 0.15 }
+    multiply_key = { lhs = $return$ which = BG_Total }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand4 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand4 }
+}
+TN_GetDmndCL4 = {
+    set_key = { lhs = $return$ value = 0.08 }
+    multiply_key = { lhs = $return$ which = CL_Total }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand4 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand4 }
+}
+
+TN_GetDmndTemp = {
+	if = { # Lower than Norm
+		limit = {
+			NOT = { check_key = { lhs = Land_AvgTemp value = $Norm$ } }
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_key = { lhs = Land_AvgTemp value = 0.1 }
+				}
+			}
+			multiply_key = { lhs = $return$ value = 2 }
+		}
+		else = {
+			set_key = { lhs = Tmp_5 value = $Norm$ }
+			subtract_key = { lhs = Tmp_5 which = Land_AvgTemp }
+
+			divide_key = { lhs = Tmp_5 value = $Norm$ }
+			#multiply_key = { lhs = Tmp_5 value = 0.75 }
+			change_key = { lhs = Tmp_5 value = 1 }
+			multiply_key = { lhs = $return$ which = Tmp_5 }
+
+			set_key = { lhs = Tmp_5 value = 0 }
+		}
+	}
+	else = {
+		if = {
+			limit = {
+				check_key = { lhs = Land_AvgTemp value = $Max$ }
+			}
+			multiply_key = { lhs = $return$ value = 0.5 }
+		}
+		else = {
+			set_key = { lhs = Tmp_5 which = Land_AvgTemp }
+			subtract_key = { lhs = Tmp_5 value = $Norm$ }
+			set_key = { lhs = Tmp_6 value = $Max$ }
+			subtract_key = { lhs = Tmp_6 value = $Norm$ }
+
+			divide_key = { lhs = Tmp_5 which = Tmp_6 }
+			
+			set_key = { lhs = Tmp_6 value = 1 }
+			subtract_key = { lhs = Tmp_6 which = Tmp_5 }
+			
+			multiply_key = { lhs = Tmp_6 value = 0.5 }
+			change_key = { lhs = Tmp_6 value = 0.5 }
+			multiply_key = { lhs = $return$ which = Tmp_6 }
+
+			set_key = { lhs = Tmp_5 value = 0 }
+			set_key = { lhs = Tmp_6 value = 0 }
+		}
+	}
+}
+# Fuel
+TN_GetDmndSF5 = {
+    set_key = { lhs = $return$ value = 0.015 }
+    multiply_key = { lhs = $return$ which = SF_Total }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand5 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand5 }
+	TN_GetDmndTemp = { return=$return$ Norm=12 Max=24 }
+}
+TN_GetDmndNM5 = {
+    set_key = { lhs = $return$ value = 0.005 }
+    multiply_key = { lhs = $return$ which = NM_Total }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand5 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand5 }
+	TN_GetDmndTemp = { return=$return$ Norm=12 Max=24 }
+}
+TN_GetDmndRE5 = {
+    set_key = { lhs = $return$ value = 0.025 }
+    multiply_key = { lhs = $return$ which = RE_Total }
+    multiply_key = { lhs = $return$ which = Modi_REDemand }
+    multiply_key = { lhs = $return$ which = Modi_REDemand5 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand5 }
+	TN_GetDmndTemp = { return=$return$ Norm=12 Max=24 }
+}
+TN_GetDmndNO5 = {
+    set_key = { lhs = $return$ value = 0.12 }
+    multiply_key = { lhs = $return$ which = NO_Total }
+    multiply_key = { lhs = $return$ which = Modi_NODemand }
+    multiply_key = { lhs = $return$ which = Modi_NODemand5 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand5 }
+	TN_GetDmndTemp = { return=$return$ Norm=12 Max=24 }
+}
+TN_GetDmndBG5 = {
+    set_key = { lhs = $return$ value = 0.18 }
+    multiply_key = { lhs = $return$ which = BG_Total }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand5 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand5 }
+	TN_GetDmndTemp = { return=$return$ Norm=12 Max=24 }
+}
+TN_GetDmndCL5 = {
+    set_key = { lhs = $return$ value = 0.07 }
+    multiply_key = { lhs = $return$ which = CL_Total }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand5 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand5 }
+	TN_GetDmndTemp = { return=$return$ Norm=12 Max=24 }
+}
+
+# Exotics
+TN_GetDmndSF9 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = SF_Total }
+    multiply_key = { lhs = $return$ value = 0.01 }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire9 }
+}
+TN_GetDmndNM9 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = NM_Total }
+    multiply_key = { lhs = $return$ value = 0.01 }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire9 }
+}
+TN_GetDmndRE9 = {
+    set_key = { lhs = $return$ value = 0.02 }
+    multiply_key = { lhs = $return$ which = RE_Total }
+    multiply_key = { lhs = $return$ which = Modi_REDemand }
+    multiply_key = { lhs = $return$ which = Modi_REDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire9 }
+}
+TN_GetDmndNO9 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = NO_Total }
+    multiply_key = { lhs = $return$ value = 0.5 }
+    multiply_key = { lhs = $return$ which = Modi_NODemand }
+    multiply_key = { lhs = $return$ which = Modi_NODemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire9 }
+}
+TN_GetDmndBG9 = {
+    set_key = { lhs = $return$ value = 0.7 }
+    multiply_key = { lhs = $return$ which = BG_Total }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire9 }
+}
+TN_GetDmndCL9 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = CL_Total }
+    multiply_key = { lhs = $return$ value = 0.18 }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand9 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire9 }
+}
+
+# Delicacies
+TN_GetDmndSF10 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = SF_Total }
+    multiply_key = { lhs = $return$ value = 0.007 }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire10 }
+}
+TN_GetDmndNM10 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = NM_Total }
+    multiply_key = { lhs = $return$ value = 0.009 }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire10 }
+}
+TN_GetDmndRE10 = {
+    set_key = { lhs = $return$ value = 0.12 }
+    multiply_key = { lhs = $return$ which = RE_Total }
+    multiply_key = { lhs = $return$ which = Modi_REDemand }
+    multiply_key = { lhs = $return$ which = Modi_REDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire10 }
+}
+TN_GetDmndNO10 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = NO_Total }
+    multiply_key = { lhs = $return$ value = 0.33 }
+    multiply_key = { lhs = $return$ which = Modi_NODemand }
+    multiply_key = { lhs = $return$ which = Modi_NODemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire10 }
+}
+TN_GetDmndBG10 = {
+    set_key = { lhs = $return$ value = 0.5 }
+    multiply_key = { lhs = $return$ which = BG_Total }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire10 }
+}
+TN_GetDmndCL10 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = CL_Total }
+    multiply_key = { lhs = $return$ value = 0.17 }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand10 }
+	multiply_key = { lhs = $return$ which = Modi_ProdDesire10 }
+}
+
+# Consumer Product
+TN_GetDmndSF21 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = SF_Total }
+    multiply_key = { lhs = $return$ value = 0.01 }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand21 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand21 }
+}
+TN_GetDmndNM21 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = NM_Total }
+    multiply_key = { lhs = $return$ value = 0.008 }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand21 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand21 }
+}
+TN_GetDmndRE21 = {
+    set_key = { lhs = $return$ value = 0.06 }
+    multiply_key = { lhs = $return$ which = RE_Total }
+    multiply_key = { lhs = $return$ which = Modi_REDemand }
+    multiply_key = { lhs = $return$ which = Modi_REDemand21 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand21 }
+}
+TN_GetDmndNO21 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = NO_Total }
+    multiply_key = { lhs = $return$ value = 0.225 }
+    multiply_key = { lhs = $return$ which = Modi_NODemand }
+    multiply_key = { lhs = $return$ which = Modi_NODemand21 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand21 }
+}
+TN_GetDmndBG21 = {
+    set_key = { lhs = $return$ value = 0.5 }
+    multiply_key = { lhs = $return$ which = BG_Total }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand21 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand21 }
+}
+TN_GetDmndCL21 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = CL_Total }
+    multiply_key = { lhs = $return$ value = 0.15 }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand21 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand21 }
+}
+
+# Luxury Product
+TN_GetDmndSF25 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = SF_Total }
+    multiply_key = { lhs = $return$ value = 0.004 }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand25 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand25 }
+}
+TN_GetDmndNM25 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = NM_Total }
+    multiply_key = { lhs = $return$ value = 0.003 }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand }
+    multiply_key = { lhs = $return$ which = Modi_NMDemand25 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand25 }
+}
+TN_GetDmndRE25 = {
+    set_key = { lhs = $return$ value = 0.033 }
+    multiply_key = { lhs = $return$ which = RE_Total }
+    multiply_key = { lhs = $return$ which = Modi_REDemand }
+    multiply_key = { lhs = $return$ which = Modi_REDemand25 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand25 }
+}
+TN_GetDmndNO25 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = NO_Total }
+    multiply_key = { lhs = $return$ value = 0.15 }
+    multiply_key = { lhs = $return$ which = Modi_NODemand }
+    multiply_key = { lhs = $return$ which = Modi_NODemand25 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand25 }
+}
+TN_GetDmndBG25 = {
+    set_key = { lhs = $return$ value = 0.22 }
+    multiply_key = { lhs = $return$ which = BG_Total }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand25 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand25 }
+}
+TN_GetDmndCL25 = {
+    set_key = { lhs = $return$ value = 125 }
+    subtract_key = { lhs = $return$ which = Prov_TRPow }
+    divide_key = { lhs = $return$ value = 125 }
+    multiply_key = { lhs = $return$ which = CL_Total }
+    multiply_key = { lhs = $return$ value = 0.05 }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand25 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand25 }
+}
+
+# Knowledge
+TN_GetDmndSF41 = {
+    set_key = { lhs = $return$ value = 0.003 }
+    multiply_key = { lhs = $return$ which = SF_Total }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand }
+    multiply_key = { lhs = $return$ which = Modi_SFDemand41 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand41 }
+}
+TN_GetDmndNM41 = { 
+    set_key = { lhs = $return$ value = 0 }
+}
+TN_GetDmndRE41 = {
+    set_key = { lhs = $return$ value = 0.008 }
+    multiply_key = { lhs = $return$ which = RE_Total }
+    multiply_key = { lhs = $return$ which = Modi_REDemand }
+    multiply_key = { lhs = $return$ which = Modi_REDemand41 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand41 }
+}
+TN_GetDmndNO41 = {
+    set_key = { lhs = $return$ value = 0.015 }
+    multiply_key = { lhs = $return$ which = NO_Total }
+    multiply_key = { lhs = $return$ which = Modi_NODemand }
+    multiply_key = { lhs = $return$ which = Modi_NODemand41 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand41 }
+}
+TN_GetDmndBG41 = {
+    set_key = { lhs = $return$ value = 0.05 }
+    multiply_key = { lhs = $return$ which = BG_Total }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand }
+    multiply_key = { lhs = $return$ which = Modi_BGDemand41 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand41 }
+}
+TN_GetDmndCL41 = {
+    set_key = { lhs = $return$ value = 0.03 }
+    multiply_key = { lhs = $return$ which = CL_Total }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand }
+    multiply_key = { lhs = $return$ which = Modi_CLDemand41 }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	multiply_key = { lhs = $return$ which = Modi_ClassDemand41 }
+}
+TN_GetDmndSF23 = {
+    set_key = { lhs = $return$ value = 0 }
+}
+TN_GetDmndNM23 = {
+    set_key = { lhs = $return$ value = 0 }
+}
+TN_GetDmndRE23 = {
+	if = {
+		limit = {
+			has_port = yes
+		}
+		set_key = { lhs = $return$ value = 0.01 }
+		multiply_key = { lhs = $return$ which = RE_Total }
+		multiply_key = { lhs = $return$ which = Modi_REDemand }
+		multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	}
+	else = {
+		set_key = { lhs = $return$ value = 0 }
+	}
+}
+TN_GetDmndNO23 = {
+    set_key = { lhs = $return$ value = 0 }
+}
+# Naval
+TN_GetDmndBG23 = {
+	if = {
+		limit = {
+			has_port = yes
+		}
+		set_key = { lhs = $return$ value = 0.05 }
+		multiply_key = { lhs = $return$ which = BG_Total }
+		multiply_key = { lhs = $return$ which = Modi_BGDemand }
+		multiply_key = { lhs = $return$ which = Modi_ClassDemand }
+	}
+	else = {
+		set_key = { lhs = $return$ value = 0 }
+	}
+}
+TN_GetDmndCL23 = {
+    set_key = { lhs = $return$ value = 0 }
+}

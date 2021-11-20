@@ -1,0 +1,9 @@
+# No previous file for PROV5044
+# This province is a wasteland
+
+culture = evenki
+religion = tengri_pagan_reformed
+
+#1750.1.1 = {
+#	discovered_by = RUS
+#}

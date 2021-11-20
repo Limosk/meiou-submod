@@ -1,0 +1,83 @@
+
+#christian
+#	western
+#		catholic					# 01
+#		protestant					# 02
+#		reformed					# 03
+#		hussite					# 04
+#		waldensian					# 05
+#		lollard					# 06
+#		avignonist					# 07
+#		holyleague					# 08
+#		messalian					# 21
+#	eastern
+#		orthodox					# 09
+#		chalcedonism				# 10
+#		coptic						# 11
+#		chaldean					# 12
+#		arianism					# 13
+#		monothelite				# 14
+#		iconoclast					# 15
+#		monophysite				# 16
+#	dualist
+#		gnostic					# 17
+#		cathar						# 18
+#		bogomilist					# 19
+#		paulician					# 20
+#muslim
+#	sunni							# 22
+#	shiite							# 23
+#	druze							# 24
+#	ibadi							# 25
+#	wahhabi						# 26
+#	zikri							# 27
+#	kharijite						# 28
+#	hurufi							# 29
+#	zaidi							# 30
+#taoic
+#	buddhism						# 31
+#	confucianism					# 32
+#	mahayana						# 33
+#	vajrayana						# 34
+#dharmic
+#	hinduism						# 35
+#	sikhism						# 36
+#	jain							# 37
+#zro_group
+#	zoroastrian					# 38
+#	yazidi							# 39
+#	mazdaki						# 40
+#	manichean						# 41
+#jewish_group
+#	jewish							# 42
+#	samaritan						# 43
+#	karaite						# 44
+#new_world_pagan
+#	mesoamerican_religion			# 45
+#	inca_reformed					# 46
+#	inti							# 47
+#	totemism						# 48
+#	aztec_reformed				# 49
+#	nahuatl						# 50
+#	pantheism						# 51
+#european_pagan
+#	baltic_pagan_reformed			# 52
+#	finnish_pagan_reformed		# 53
+#	slavic_pagan_reformed			# 54
+#	norse_pagan_reformed			# 55
+#	hellenic_pagan				# 56
+#	celtic_pagan_reformed			# 57
+#	german_pagan_reformed			# 58
+#pagan
+#	adi_dharam						# 59
+#	shinto							# 60
+#	animism						# 61
+#	west_african_pagan_reformed	# 62
+#	shamanism						# 63
+#	tibetan_bon					# 64
+#	muism							# 65
+#	polynesian_religion			# 66
+#	tengri_pagan_reformed			# 67
+#	egyptian_pagan				# 68
+#	zun_pagan_reformed			# 69
+#	zunism							# 70

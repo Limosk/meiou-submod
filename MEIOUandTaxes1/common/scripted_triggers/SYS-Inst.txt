@@ -1,0 +1,586 @@
+Inst_Can_Legalism = {
+    always = yes
+}
+Inst_Can_Legalism_Country = {
+	Inst_Can_Legalism_Country_Invent = yes
+}
+Inst_Can_Legalism_Country_Invent = {
+	AND = {
+		total_development = 100
+
+		adm = 3
+
+		absolutism = 5
+	}
+}
+Inst_Can_Legalism_Prov = {
+	AND = {
+		OR = {
+			is_capital = yes
+
+			check_key = { lhs = Infra_Capitol value = 1 }
+		}
+	}
+}
+Inst_Can_Legalism_Spread = {
+	NOT = { check_key = { lhs = Prov_TRPow value = 50.001 } }
+}
+Inst_Can_Legalism_Embrace = {
+	AND = {
+		custom_trigger_tooltip = {
+			tooltip = Pol_Identity3NOT
+			NOT = { is_key_equal = { lhs = Pol_Identity value = 2 } }
+		}
+	}
+}
+
+Inst_Can_Meritocracy = {
+    always = yes
+}
+Inst_Can_Meritocracy_Country = {
+	Inst_Can_Meritocracy_Country_Invent = yes
+}
+
+Inst_Can_Meritocracy_Country_Invent = {
+	AND = {
+		Privilege_HasGreater = { Privilege=BUOffice Lvl=2 }
+		Privilege_HasGreater = { Privilege=BUFarm Lvl=2 }
+		Privilege_HasGreater = { Privilege=BUHierarchy Lvl=1 }
+		Privilege_HasGreater = { Privilege=BUHire Lvl=3 }
+		Privilege_HasGreater = { Privilege=BUExams Lvl=2 }
+		Privilege_HasGreater = { Privilege=BUStructure Lvl=2 }
+		Privilege_HasGreater = { Privilege=BUCourts Lvl=2 }
+
+		adm = 3
+	}
+}
+Inst_Can_Meritocracy_Prov = {
+	AND = {
+		Legalism = 100
+		OR = {
+			is_capital = yes
+
+			check_key = { lhs = Infra_Capitol value = 1 }
+		}
+	}
+}
+Inst_Can_Meritocracy_Spread = {
+	AND = {
+		Legalism = 100
+		owner = {
+			custom_trigger_tooltip = {
+				tooltip = Privilege_BUOffice2HasGreater
+				Privilege_HasGreater = { Privilege=BUOffice Lvl=2 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = Privilege_BUFarm2HasGreater
+				Privilege_HasGreater = { Privilege=BUFarm Lvl=2 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = Privilege_BUHierarchy1HasGreater
+				Privilege_HasGreater = { Privilege=BUHierarchy Lvl=1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = Privilege_BUHire1HasGreater
+				Privilege_HasGreater = { Privilege=BUHire Lvl=1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = Privilege_BUStructure2HasGreater
+				Privilege_HasGreater = { Privilege=BUStructure Lvl=2 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = Privilege_BUCourts2HasGreater
+				Privilege_HasGreater = { Privilege=BUCourts Lvl=2 }
+			}
+		}
+	}
+}
+Inst_Can_Meritocracy_Embrace = {
+	AND = {
+		has_institution = Legalism
+		custom_trigger_tooltip = {
+			tooltip = Privilege_BUOffice2HasGreater
+			Privilege_HasGreater = { Privilege=BUOffice Lvl=2 }
+		}
+		custom_trigger_tooltip = {
+			tooltip = Privilege_BUFarm2HasGreater
+			Privilege_HasGreater = { Privilege=BUFarm Lvl=2 }
+		}
+		custom_trigger_tooltip = {
+			tooltip = Privilege_BUHierarchy1HasGreater
+			Privilege_HasGreater = { Privilege=BUHierarchy Lvl=1 }
+		}
+		custom_trigger_tooltip = {
+			tooltip = Privilege_BUHire1HasGreater
+			Privilege_HasGreater = { Privilege=BUHire Lvl=1 }
+		}
+		custom_trigger_tooltip = {
+			tooltip = Privilege_BUStructure2HasGreater
+			Privilege_HasGreater = { Privilege=BUStructure Lvl=2 }
+		}
+		custom_trigger_tooltip = {
+			tooltip = Privilege_BUCourts2HasGreater
+			Privilege_HasGreater = { Privilege=BUCourts Lvl=2 }
+		}
+	}
+}
+
+Inst_Can_Banking = {
+    always = yes
+}
+Inst_Can_Banking_Country = {
+	Inst_Can_Banking_Country_Invent = yes
+}
+Inst_Can_Banking_Country_Invent = {
+	AND = {
+		Rights_BGCom8HasGreater = yes
+
+		NOT = {
+			Rights_BGGov3Has = yes
+		}
+	}
+}
+Inst_Can_Banking_Prov = {
+	AND = {
+		Legalism = 100
+
+		has_local_modifier_value = { which = trade_value value = 5 }
+		
+		NOT = {
+			check_key = { lhs = TN_SubsistenceDisp value = 60 }
+		}
+
+		check_key = { lhs = Prov_BGPow value = 40 }
+		
+		# prevent weird shit
+		OR = {
+			NOT = { culture = greek }
+			is_year = 1450
+			owner = { ai = no }
+		}
+	}
+}
+Inst_Can_Banking_Spread = {
+	AND = {
+		Legalism = 100
+		owner = {
+			custom_trigger_tooltip = {
+				tooltip = Rights_BGCom7HasGreater
+				Rights_BGCom7HasGreater = yes
+			}
+		}
+		
+		NOT = {
+			check_key = { lhs = TN_SubsistenceDisp value = 60 }
+		}
+	}
+}
+Inst_Can_Banking_Embrace = {
+	AND = {
+		has_institution = Legalism
+		custom_trigger_tooltip = {
+			tooltip = Rights_BGCom7HasGreater
+			Rights_BGCom7HasGreater = yes
+		}
+	}
+}
+
+Inst_Can_Columbian_Exchange = {
+    always = yes
+}
+Inst_Can_Columbian_Exchange_Country = {
+	Inst_Can_Columbian_Exchange_Country_Invent = yes
+}
+Inst_Can_Columbian_Exchange_Spawn = {
+	any_country = {
+		exists = yes
+		OR = {
+			is_colonial_nation = yes
+			AND = {
+				OR = {
+					technology_group = north_american
+					technology_group = mesoamerican
+					technology_group = south_american
+					technology_group = andean
+					technology_group = high_american
+				}
+				
+				any_owned_province = {
+					has_port = yes
+					
+					NOT = {
+						continent = south_america
+						continent = north_america
+						continent = oceania
+					}
+				}
+			}
+		}
+	}
+}
+Inst_Can_Columbian_Exchange_Country_Invent = {
+	AND = {
+		OR = {
+			AND = {
+				capital_scope = {
+					OR = {
+						continent = south_america
+						continent = north_america
+					}
+				}
+				
+				any_owned_province = {
+					has_port = yes
+					
+					NOT = {
+						continent = south_america
+						continent = north_america
+						continent = oceania
+					}
+				}
+			}
+			
+			any_subject_country = {
+				is_colonial_nation = yes
+
+				capital_scope = {
+					OR = {
+						continent = south_america
+						continent = north_america
+					}
+				}
+			}
+		}
+	}
+}
+Inst_Can_Columbian_Exchange_Prov = {
+	AND = {
+		Banking = 100
+
+		has_port = yes
+
+		has_local_modifier_value = { which = trade_value value = 5 }
+	}
+}
+Inst_Can_Columbian_Exchange_Spread = {
+	always = yes
+}
+Inst_Can_Columbian_Exchange_Embrace = {
+	always = yes
+}
+
+Inst_Can_Casual_Literacy = {
+	always = yes
+}
+Inst_Can_Casual_Literacy_Country = {
+	AND = {
+		OR = {
+			is_year = 1500	# 10 Years after Printing press technology
+			adm_tech = 21	# Printing Press Technology
+			any_known_country = { has_institution = Casual_Literacy }
+		}
+		Inst_Can_Casual_Literacy_Country_Invent = yes
+	}
+}
+Inst_Can_Casual_Literacy_Spawn = {
+	AND = {
+		OR = {
+			is_year = 1500	# 10 Years after Printing press technology
+			any_country = {
+				exists = yes
+				adm_tech = 21	# Printing Press Technology
+				Inst_Can_Casual_Literacy_Country_Invent = yes
+			}
+		}
+	}
+}
+Inst_Can_Casual_Literacy_Country_Invent = {
+	always = yes
+}
+Inst_Can_Casual_Literacy_Prov = {
+	AND = {
+		Banking = 100
+		
+		#continent = europe # Latin/Greek alphabetic script
+
+		check_key = { lhs = TN_ProvSply41 value = 2 }
+		
+		Prod_HasProd = { Prod=30 }
+	}
+}
+Inst_Can_Casual_Literacy_Spread = {
+	AND = {
+		Legalism = 100
+		Banking = 100
+	}
+}
+Inst_Can_Casual_Literacy_Embrace = {
+	AND = {
+		has_institution = Legalism
+		has_institution = Banking
+	}
+}
+
+Inst_Can_Scientific_Method = {
+    always = yes
+}
+
+Inst_Can_Scientific_Method_Country = {
+	AND = {
+		OR = {
+			is_year = 1620
+			adm_tech = 27
+			any_known_country = { has_institution = Scientific_Method }
+		}
+		Inst_Can_Scientific_Method_Country_Invent = yes
+	}
+}
+
+Inst_Can_Scientific_Method_Spawn = {
+	AND = {
+		OR = {
+			is_year = 1620
+			any_country = {
+				exists = yes
+				adm_tech = 27
+				Inst_Can_Scientific_Method_Country_Invent = yes
+			}
+		}
+	}
+}
+Inst_Can_Scientific_Method_Country_Invent = {
+	AND = {
+		has_institution = Casual_Literacy
+		#OR = {                                      #Enable when all institutions are in (AI stop picking ideas due to behind in tech from lacking institutions). Alternatively use personal freedom rights
+		#	has_idea = innovativeness_ideas_4
+		#	has_idea = culture_ideas_7
+		##	has_idea = economic_ideas_7
+		#	has_idea = humanist_ideas_3
+		#	has_idea = representation_ideas_2
+		#}
+	}
+}
+
+Inst_Can_Scientific_Method_Prov = { 
+	AND = {
+		Legalism = 100
+		Casual_Literacy = 100
+		NOT = { unrest = 1 }
+	}
+}
+
+Inst_Can_Scientific_Method_Spread = {
+	AND = {
+		Legalism = 100
+		Casual_Literacy = 100
+		owner = {
+			adm_tech = 20
+		}
+	}
+}
+Inst_Can_Scientific_Method_Embrace = {
+	AND = {
+		has_institution = Legalism
+		has_institution = Casual_Literacy
+	}
+}
+
+Inst_Can_Global_Trade = {
+    always = yes
+}
+Inst_Can_Global_Trade_Country = {
+	Inst_Can_Global_Trade_Country_Invent = yes
+}
+Inst_Can_Global_Trade_Spawn = {
+	#AND = {
+		any_country = {
+			exists = yes
+			Inst_Can_Global_Trade_Country_Invent = yes
+		}
+	#}
+}
+Inst_Can_Global_Trade_Country_Invent = {
+	AND = {
+		has_institution = Banking
+
+		any_owned_province = { continent = indian_continent has_local_modifier_value = { which = trade_value value = 2 } }
+		any_owned_province = { continent = southeast_asia has_local_modifier_value = { which = trade_value value = 2 } }
+		any_owned_province = { continent = africa has_local_modifier_value = { which = trade_value value = 2 } }
+	}
+}
+Inst_Can_Global_Trade_Prov = {
+	AND = {
+		Banking = 100
+
+		has_local_modifier_value = { which = trade_value value = 5 }
+	}
+}
+Inst_Can_Global_Trade_Spread = {
+	AND = {
+		Legalism = 100
+		OR = {
+			Banking = 100
+			has_local_modifier_value = { which = trade_value value = 4 }
+		}
+	}
+}
+Inst_Can_Global_Trade_Embrace = {
+	AND = {
+		has_institution = Legalism
+		OR = {
+			has_institution = Banking
+			any_owned_province = { has_local_modifier_value = { which = trade_value value = 2 } }
+		}
+	}
+}
+
+Inst_Can_Academia = {
+    always = yes
+}
+Inst_Can_Academia_Country = {
+	AND = {
+		OR = {
+			is_year = 1710
+			adm_tech = 36
+			any_known_country = { has_institution = Academia }
+		}
+		Inst_Can_Academia_Country_Invent = yes
+	}
+}
+Inst_Can_Academia_Spawn = {
+	AND = {
+		OR = {
+			is_year = 1710
+			any_country = {
+				exists = yes
+				adm_tech = 36
+				Inst_Can_Academia_Country_Invent = yes
+			}
+		}
+	}
+}
+Inst_Can_Academia_Country_Invent = {
+	has_institution = Scientific_Method 
+}
+Inst_Can_Academia_Prov = {
+	AND = {
+		Scientific_Method = 100
+		Legalism = 100
+		NOT = { unrest = 1 }
+		check_key = { lhs = Prov_BUPow value = 25 }
+	}
+}
+Inst_Can_Academia_Spread = {
+	AND = {
+		Legalism = 100
+		Scientific_Method = 100
+		owner = { adm_tech = 30 }
+	}
+}
+Inst_Can_Academia_Embrace = {
+	AND = {
+		has_institution = Legalism
+		has_institution = Scientific_Method
+	}
+}
+
+Inst_Can_Nationalism = {
+    always = yes
+}
+Inst_Can_Nationalism_Country = {
+	AND = {
+		OR = {
+			is_year = 1740
+			adm_tech = 42
+			any_known_country = { has_institution = Nationalism }
+		}
+		Inst_Can_Nationalism_Country_Invent = yes
+	}
+}
+Inst_Can_Nationalism_Spawn = {
+	AND = {
+		OR = {
+			is_year = 1740
+			any_country = {
+				exists = yes
+				adm_tech = 42
+				Inst_Can_Nationalism_Country_Invent = yes
+			}
+		}
+	}
+}
+Inst_Can_Nationalism_Country_Invent = {
+	has_institution = Casual_Literacy 
+}
+Inst_Can_Nationalism_Prov = {
+	AND = {
+		Casual_Literacy = 100
+		OR = {
+			has_owner_accepted_culture = yes
+			has_owner_culture = yes
+			culture_group = owner
+		}
+		check_key = { lhs = Prov_BUPow value = 25 }
+	}
+}
+Inst_Can_Nationalism_Spread = {
+    Casual_Literacy = 100
+}
+Inst_Can_Nationalism_Embrace = {
+    has_institution = Casual_Literacy
+}
+
+Inst_Can_Industrialisation = {
+    always = yes
+}
+Inst_Can_Industrialisation_Country = {
+	AND = {
+		OR = {
+			is_year = 1750
+			adm_tech = 46
+			any_known_country = { has_institution = Industrialisation }
+		}
+		Inst_Can_Industrialisation_Country_Invent = yes
+	}
+}
+Inst_Can_Industrialisation_Spawn = {
+	AND = {
+		OR = {
+			is_year = 1750
+			any_country = {
+				exists = yes
+				adm_tech = 46
+				Inst_Can_Industrialisation_Country_Invent = yes
+			}
+		}
+	}
+}
+Inst_Can_Industrialisation_Country_Invent = {
+	AND = {
+		adm_tech = 34
+		has_institution = Banking
+		has_institution = Scientific_Method
+		#has_idea = industrial_ideas_5
+	}
+}
+Inst_Can_Industrialisation_Prov = {
+	AND = {
+		Banking = 100
+		Scientific_Method = 100
+	}
+
+}
+Inst_Can_Industrialisation_Spread = {
+	AND = {
+		owner = { adm_tech = 34 }
+		Banking = 100
+		Scientific_Method = 100 
+		check_key = { lhs = Building_Industrial value = 1 }
+	}
+}
+Inst_Can_Industrialisation_Embrace = {
+	AND = {
+		has_institution = Banking
+		has_institution = Scientific_Method
+	}
+}

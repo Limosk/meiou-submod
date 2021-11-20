@@ -1,0 +1,502 @@
+namespace = phlopsi_ce_main
+
+# Calculates communication efficiency (CE) of every owned land province via all
+# owned land provinces' and all sea zones' travel time (TT)
+country_event = {
+	id = phlopsi_ce_main.1
+	title = EVTNAME5060
+	desc = EVTDESC5060
+	picture = COMET_SIGHTED_eventPicture
+
+	hidden = yes
+	is_triggered_only = yes
+
+	trigger = {
+		isValidCountry = yes
+	}
+
+	immediate = {
+		hidden_effect = {
+			# Initialization
+			set_key = { lhs = tv_owned_provinces_in_state_in_progress value = 0 }
+			set_key = { lhs = tv_port value = 0 }
+
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				overlord = {
+					if = {
+						limit = {
+							is_subject = yes
+						}
+						overlord = {
+							save_event_target_as = tt_highest
+						}
+					}
+					else = {
+						save_event_target_as = tt_highest
+					}
+				}
+			}
+			else = {
+				save_event_target_as = tt_highest
+			}
+
+			export_ship_speed_multiplier_effect = { which = tv_ship } # Get hardcoded ship spead increase from techs
+
+			# Add modifier as key to all port provinces
+			sea_starts = {
+				set_key = { lhs = tv_ship which = ROOT }
+			}
+
+			## Loop through every non empty province hold by overlord and all his subjects - Treat HRE and Japan as an area
+			every_province = {
+				limit = {
+					OR = {
+						country_or_vassal_holds = event_target:tt_highest
+						owner = { overlord = { is_subject_of = event_target:tt_highest } }
+						AND = {
+							owner = { is_part_of_hre = yes }
+							event_target:tt_highest = { is_part_of_hre = yes }
+						}
+						AND = {
+							owner = { daimyo_trigger = yes }
+							event_target:tt_highest = { daimyo_trigger = yes }
+						}
+					}
+					isValidEmpty = yes
+				}
+				set_key = { lhs = tv_ship which = ROOT }
+
+				if = {
+					limit = {
+						has_port = yes
+					}
+					ROOT = {
+						change_key = { lhs = tv_port value = 1 }
+					}
+				}
+
+				if = {
+					limit = {
+						owned_by = ROOT
+					}
+					ROOT = {
+						change_key = { lhs = tv_owned_provinces_in_state_in_progress value = 1 }
+					}
+				}
+				else = {
+					set_key = { lhs = pv_ce_save which = pv_ce }
+					set_key = { lhs = pv_prev_save which = pv_prev }
+				}
+
+				set_key = { lhs = pv_ce value = 0 }
+				set_key = { lhs = pv_prev value = 0 }
+
+				ce_get_cost_land = { return = tv_cost_land }
+				ce_get_cost_port_embark = { return = tv_cost_port_embark }
+				ce_get_cost_port_to = { return = tv_cost_port_to }
+			}
+
+			# Set runner_dispatching_province
+			capital_scope = {
+				set_key = { lhs = tv_tt value = 0 }
+				
+				if = {
+					limit = {
+						ROOT = {
+							check_key = { lhs = tv_owned_provinces_in_state_in_progress value = 1 }
+						}
+					}
+					save_event_target_as = runner_dispatching_province
+				}
+			}
+
+			# Main loop
+			while = {
+				limit = {
+					event_target:runner_dispatching_province = {
+						NOT = { has_province_flag = tf_communication_efficiency_final }
+					}
+				}
+
+				event_target:runner_dispatching_province = {
+					set_province_flag = tf_communication_efficiency_final
+
+					if = {
+						limit = {
+							owned_by = ROOT
+						}
+						ROOT = {
+							subtract_key = { lhs = tv_owned_provinces_in_state_in_progress value = 1 }
+						}
+					}
+					if = {
+						limit = {
+							has_port = yes
+						}
+						ROOT = { 
+							subtract_key = { lhs = tv_port value = 1 }
+						}
+					}
+
+					if = {
+						limit = {
+							ROOT = {
+								check_key = { lhs = tv_owned_provinces_in_state_in_progress value = 1 }
+							}
+						}
+						ce_do_river = {
+							prev = pv_prev
+						}
+						ce_do_land = {
+							prev = pv_prev
+						}
+
+						if = {
+							limit = {
+								ROOT = { 
+									check_key = { lhs = tv_port value = 1 }
+								}
+							}
+							ce_do_sea = {
+								prev = pv_prev
+							}
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						check_key = { lhs = tv_owned_provinces_in_state_in_progress value = 1 }
+					}
+					ce_set_runner_dispatching_province_land = {
+						scope = every_owned_province
+						max = 1440
+						overlord = yes
+						subject = yes
+						hre = yes
+					}
+					
+					if = {
+						limit = {
+							check_key = { lhs = tv_port value = 1 }
+						}
+						ce_set_runner_disptaching_province_sea = {
+							max = 1440
+						}
+					}
+				}
+			}
+			
+			every_province = {
+				limit = {
+					has_province_flag = tf_river
+				}
+				clr_province_flag = tf_river
+			}
+
+			if = {
+				limit = {
+					any_province = {
+						has_province_flag = tf_communication_efficiency_final
+						
+						check_key = { lhs = Infra_Capitol value = 1 }
+						
+						is_capital = no
+					}
+				}
+				every_province = {
+					limit = {
+						has_province_flag = tf_communication_efficiency_final
+						
+						is_capital = no
+					}
+					set_province_flag = tf_communication_efficiency_final_save
+					clr_province_flag = tf_communication_efficiency_final
+
+					if = {
+						limit = {
+							check_key = { lhs = Infra_Capitol value = 1 }
+						}
+						save_event_target_as = runner_dispatching_province
+
+						if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 1 } } multiply_key = { lhs = tv_tt value = 0.92 } subtract_key = { lhs = tv_tt value = 40 } }
+						else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 2 } } multiply_key = { lhs = tv_tt value = 0.84 } subtract_key = { lhs = tv_tt value = 60 } }
+						else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 3 } } multiply_key = { lhs = tv_tt value = 0.75 } subtract_key = { lhs = tv_tt value = 80 } }
+						else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 4 } } multiply_key = { lhs = tv_tt value = 0.67 } subtract_key = { lhs = tv_tt value = 100 } }
+						else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 5 } } multiply_key = { lhs = tv_tt value = 0.58 } subtract_key = { lhs = tv_tt value = 120 } }
+						else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 6 } } multiply_key = { lhs = tv_tt value = 0.5 } subtract_key = { lhs = tv_tt value = 140 } }
+						else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 7 } } multiply_key = { lhs = tv_tt value = 0.4 } subtract_key = { lhs = tv_tt value = 160 } }
+					
+						if = {
+							limit = {
+								NOT = {
+									check_key = { lhs = tv_tt value = 0.001 }
+								}
+							}
+							set_key = { lhs = tv_tt value = 0.001 }
+						}
+					}
+				}
+
+				ce_set_runner_dispatching_province_land = {
+					scope = every_owned_province
+					max = 1440
+					overlord = yes
+					subject = yes
+					hre = yes
+				}
+
+				while = {
+					limit = {
+						event_target:runner_dispatching_province = {
+							NOT = { has_province_flag = tf_communication_efficiency_final }
+						}
+					}
+
+					event_target:runner_dispatching_province = {
+						set_province_flag = tf_communication_efficiency_final
+						
+						ce_do_river = {
+							prev = pv_prev
+						}
+						ce_do_land = {
+							prev = pv_prev
+						}
+						ce_do_sea = {
+							prev = pv_prev
+						}
+					}
+
+					ce_set_runner_dispatching_province_land = {
+						scope = every_owned_province
+						max = 1440
+						overlord = yes
+						subject = yes
+						hre = yes
+					}
+					ce_set_runner_disptaching_province_sea = {
+						max = 1440
+					}
+				}
+
+				every_province = {
+					limit = {
+						has_province_flag = tf_communication_efficiency_final_save
+					}
+					clr_province_flag = tf_communication_efficiency_final_save
+					set_province_flag = tf_communication_efficiency_final
+				}
+				
+				every_province = {
+					limit = {
+						has_province_flag = tf_river
+					}
+					clr_province_flag = tf_river
+				}
+			}
+			
+			set_key = { lhs = Tmp_0 value = 1 }
+
+			capital_scope = {
+				if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 1 } } PREV = { set_key = { lhs = Tmp_0 value = 0.93 } } }
+				else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 2 } } PREV = { set_key = { lhs = Tmp_0 value = 0.88 } } }
+				else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 3 } } PREV = { set_key = { lhs = Tmp_0 value = 0.83 } } }
+				else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 4 } } PREV = { set_key = { lhs = Tmp_0 value = 0.79 } } }
+				else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 5 } } PREV = { set_key = { lhs = Tmp_0 value = 0.75 } } }
+				else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 6 } } PREV = { set_key = { lhs = Tmp_0 value = 0.71 } } }
+				else_if = { limit = { is_key_equal = { lhs = Infra_Capitol value = 7 } } PREV = { set_key = { lhs = Tmp_0 value = 0.67 } } }
+			}
+
+			every_owned_province = {
+				limit = {
+					check_key = { lhs = tv_tt value = 0.001 }
+				}
+				set_key = { lhs = Tmp_0 which = PREV }
+
+				multiply_key = { lhs = tv_tt which = Tmp_0 }
+
+				set_key = { lhs = Tmp_0 value = 0 }
+			}
+			
+			if = {
+				limit = {
+					has_country_flag = limiting_shugo_power
+				}
+				every_province = {
+					limit = {
+						owner = {
+							culture_group = japanese_g
+							
+							OR = {
+								is_subject_of_type = daimyo_vassal
+								is_subject_of_type = vassal
+							}
+							
+							overlord = {
+								has_country_flag = limiting_shugo_power
+							}
+						}
+					}
+					set_key = { lhs = Tmp_0 which = PREV }
+
+					multiply_key = { lhs = tv_tt which = Tmp_0 }
+
+					set_key = { lhs = Tmp_0 value = 0 }
+					
+					set_key = { lhs = japan_overlord_ce which = tv_tt }
+					change_key = { lhs = japan_overlord_ce value = 0.001 }
+				}
+			}
+			else_if = {
+				limit = {
+					culture_group = japanese_g
+							
+					OR = {
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = decentralized_vassal
+						is_subject_of_type = vassal
+					}
+							
+					overlord = {
+						has_country_flag = limiting_shugo_power
+					}
+				}
+				every_owned_province = {
+					limit = {
+						check_key = { lhs = tv_tt value = 0.001 }
+						isValidEmpty = yes
+						check_key = { lhs = japan_overlord_ce value = 0.001 }
+						NOT = {
+							check_key = { lhs = japan_overlord_ce value = 960 }
+						}
+					}
+					change_key = { lhs = tv_tt value = 960 }
+					subtract_key = { lhs = tv_tt which = japan_overlord_ce }
+				}
+			}
+
+			set_key = { lhs = Tmp_0 value = 0 }
+
+			# Finalize
+			ce_finalize_effect = {
+				scope = every_owned_province
+				time = pv_ce
+				clean = yes
+			}
+
+			every_province = {
+				limit = {
+					OR = {
+						country_or_vassal_holds = event_target:tt_highest
+						owner = { overlord = { is_subject_of = event_target:tt_highest } }
+						AND = {
+							owner = { is_part_of_hre = yes }
+							event_target:tt_highest = { is_part_of_hre = yes }
+						}
+						AND = {
+							owner = { daimyo_trigger = yes }
+							event_target:tt_highest = { daimyo_trigger = yes }
+						}
+					}
+					isValidEmpty = yes
+				}
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+						}
+					}
+					set_key = { lhs = pv_ce which = pv_ce_save }
+					set_key = { lhs = pv_prev which = pv_prev_save }
+				}
+				else = {
+					set_key = { lhs = Tmp_1 which = pv_ce }
+					
+					add_CE_modifier = yes
+					
+					multiply_key = { lhs = Tmp_1 value = 0.015 }
+					
+					set_key = { lhs = pv_CEauto which = Tmp_1 }
+					
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 1.500 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 1.024 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 0.512 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 0.256 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 0.128 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 0.064 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 0.032 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 0.016 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 0.008 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 0.004 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 0.002 }
+					POP_SetMod = { varname = Tmp_1 modname = Stat_CE type = province value = 0.001 }
+					
+					set_key = { lhs = Tmp_1 value = 0 }
+				}
+
+				set_key = { lhs = pv_ce_save value = 0 }
+				set_key = { lhs = pv_prev_save value = 0 }
+			}
+
+			# Clear all temporary variables
+			ce_cleanup = yes
+		}
+	}
+
+	option = {
+		name = EVTOPTA5060
+	}
+}
+
+# called by phlopsi_on_monthly
+country_event = {
+	id = phlopsi_ce_main.3
+	title = EVTNAME5060
+	desc = EVTDESC5060
+	picture = COMET_SIGHTED_eventPicture
+
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = {
+			limit = {
+				isValidCountry = yes
+				has_country_flag = tf_recalculate_communication_efficiency
+			}
+
+			clr_country_flag = tf_recalculate_communication_efficiency
+			country_event = { id = phlopsi_ce_main.1 }
+		}
+	}
+
+	option = {
+		name = EVTOPTA5060
+	}
+}
+
+country_event = {
+	id = phlopsi_ce_main.4
+	title = EVTNAME5060
+	desc = EVTDESC5060
+	picture = COMET_SIGHTED_eventPicture
+
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = {
+			limit = {
+				isValidCountry = yes
+			}
+			country_event = { id = phlopsi_ce_main.1 }
+		}
+	}
+
+	option = {
+		name = EVTOPTA5060
+	}
+}

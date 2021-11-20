@@ -1,0 +1,66 @@
+colony_abandon_backup_effect = {
+# Backup system, copies important data to wastelands, restores it the next day
+	ROOT = {
+		if = { limit = { 5186 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			5186 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 2465 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			2465 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 5185 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			5185 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 2466 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			2466 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 2508 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			2508 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 4087 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			4087 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 406 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			406 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 4089 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			4089 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 1197 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			1197 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 2791 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			2791 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 1152 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			1152 = { save_event_target_as = ProvStore }
+		}
+		else_if = { limit = { 2509 = { NOT = { has_province_flag = storage } } }
+			set_province_flag = storage_found
+			2509 = { save_event_target_as = ProvStore }
+		}
+		
+		if = {
+			limit = { has_province_flag = storage_found }
+			cede_province = AAA
+			set_key = { lhs = Cleanup_Search which = ID_Prov }
+			Cleanup_To = { Storage=event_target:ProvStore type=province }
+			event_target:ProvStore = { 
+				province_event = { id = Empty_Province.001 days = 1 }
+				set_key = { lhs = Cleanup_Search which = PREV }
+			}
+			set_key = { lhs = Cleanup_Search value = 0 }
+			clr_province_flag = storage_found
+		}
+	}
+}

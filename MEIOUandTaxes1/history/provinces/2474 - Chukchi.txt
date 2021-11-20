@@ -1,0 +1,5 @@
+# 2474 - Chukchi
+# This province is a wasteland
+
+religion = animism
+culture = inuit

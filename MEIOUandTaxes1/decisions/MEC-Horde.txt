@@ -1,0 +1,33 @@
+country_decisions = {
+	# Legalised native reforms away from primitive
+	Horde_Timur = {
+		major = yes
+		potential = {
+			tag = CHG
+			has_country_flag = Horde_Timur
+			NOT = { has_country_flag = Horde_Timur_Empire }
+			NOT = { has_country_flag = Horde_TimurDead }
+		}
+		allow = {
+			owns = 3843
+			owns = 457
+		}
+		effect = {
+			country_event = {
+				id = timur.10
+			}
+			hidden_effect = {
+				set_country_flag = Horde_Timur_Empire
+			}
+			if = {
+				limit = {
+					ai = yes
+				}
+				set_country_flag = ai_tax_recalc
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+}

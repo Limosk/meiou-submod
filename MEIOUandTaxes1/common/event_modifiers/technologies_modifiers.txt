@@ -1,0 +1,189 @@
+####
+## ANY Changes to the modifiers need to be localised in /localisation/replace/techlevels_l_english.yml
+
+
+adm_tech_0 = { }
+adm_tech_1 = { }
+adm_tech_2 = { global_trade_goods_size_modifier = 0.01 } # global_trade_goods_size_modifier = 0.01
+adm_tech_3 = { global_trade_goods_size_modifier = 0.01 stability_cost_modifier = -0.01 } # stability_cost_modifier = -0.01
+adm_tech_4 = { global_trade_goods_size_modifier = 0.01 stability_cost_modifier = -0.01 yearly_corruption = -0.01 } # yearly_corruption = -0.01
+adm_tech_5 = { global_trade_goods_size_modifier = 0.01 stability_cost_modifier = -0.01 yearly_corruption = -0.01 }
+adm_tech_6 = { global_trade_goods_size_modifier = 0.01 stability_cost_modifier = -0.01 yearly_corruption = -0.01 }
+adm_tech_7 = { global_trade_goods_size_modifier = 0.01 stability_cost_modifier = -0.02 yearly_corruption = -0.01 } # stability_cost_modifier = -0.01
+adm_tech_8 = { global_trade_goods_size_modifier = 0.01 stability_cost_modifier = -0.02 yearly_corruption = -0.01 }
+adm_tech_9 = { global_trade_goods_size_modifier = 0.01 stability_cost_modifier = -0.02 yearly_corruption = -0.01 }
+adm_tech_10 = { global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.02 yearly_corruption = -0.01 } # global_trade_goods_size_modifier = 0.01
+adm_tech_11 = { global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.02 yearly_corruption = -0.01 }
+adm_tech_12 = { global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.02 yearly_corruption = -0.01 }
+adm_tech_13 = { max_absolutism = 5 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.03 yearly_corruption = -0.01 } # stability_cost_modifier = -0.01 # max absolutism +5
+adm_tech_14 = { max_absolutism = 5 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.03 yearly_corruption = -0.01 }
+adm_tech_15 = { max_absolutism = 5 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.04 yearly_corruption = -0.01 } # stability_cost_modifier = -0.01
+adm_tech_16 = { max_absolutism = 5 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.04 yearly_corruption = -0.01 }
+adm_tech_17 = { max_absolutism = 5 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.05 yearly_corruption = -0.01 } # stability_cost_modifier = -0.01
+adm_tech_18 = { max_absolutism = 10 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.05 yearly_corruption = -0.03 } # yearly_corruption = -0.02 # max absolutism +5
+adm_tech_19 = { max_absolutism = 10 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.05 yearly_corruption = -0.03 yearly_absolutism = 0.1 } # yearly_absolutism = 0.1
+adm_tech_20 = { max_absolutism = 10 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.05 yearly_corruption = -0.05 yearly_absolutism = 0.1 } # yearly_corruption = -0.02
+adm_tech_21 = { max_absolutism = 10 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.06 yearly_corruption = -0.05 yearly_absolutism = 0.1 } # stability_cost_modifier = -0.01
+adm_tech_22 = { max_absolutism = 10 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.06 yearly_corruption = -0.05 yearly_absolutism = 0.1 }
+adm_tech_23 = { max_absolutism = 10 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.07 yearly_corruption = -0.05 yearly_absolutism = 0.1 } # stability_cost_modifier = -0.01
+adm_tech_24 = { max_absolutism = 10 global_trade_goods_size_modifier = 0.02 stability_cost_modifier = -0.07 yearly_corruption = -0.05 yearly_absolutism = 0.1 }
+adm_tech_25 = { max_absolutism = 15 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.07 yearly_corruption = -0.05 yearly_absolutism = 0.1 } # global_trade_goods_size_modifier = 0.05 # max absolutism +5
+adm_tech_26 = { max_absolutism = 15 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.08 yearly_corruption = -0.05 yearly_absolutism = 0.1 } # stability_cost_modifier = -0.01
+adm_tech_27 = { max_absolutism = 15 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.08 yearly_corruption = -0.07 yearly_absolutism = 0.1 } # yearly_corruption = -0.02
+adm_tech_28 = { max_absolutism = 15 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.08 yearly_corruption = -0.07 yearly_absolutism = 0.1 }
+adm_tech_29 = { max_absolutism = 15 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.08 yearly_corruption = -0.07 yearly_absolutism = 0.1 }
+adm_tech_30 = { max_absolutism = 15 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.08 yearly_corruption = -0.07 yearly_absolutism = 0.1 }
+adm_tech_31 = { max_absolutism = 15 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.09 yearly_corruption = -0.07 yearly_absolutism = 0.1 } # stability_cost_modifier = -0.01
+adm_tech_32 = { max_absolutism = 15 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.09 yearly_corruption = -0.07 yearly_absolutism = 0.1 }
+adm_tech_33 = { max_absolutism = 15 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.09 yearly_corruption = -0.09 yearly_absolutism = 0.1 } # yearly_corruption = -0.02
+adm_tech_34 = { max_absolutism = 15 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.09 yearly_corruption = -0.09 yearly_absolutism = 0.1 }
+adm_tech_35 = { max_absolutism = 20 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.10 yearly_corruption = -0.09 yearly_absolutism = 0.1 } # stability_cost_modifier = -0.01 # max absolutism +5
+adm_tech_36 = { max_absolutism = 20 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.10 yearly_corruption = -0.09 yearly_absolutism = 0.1 }
+adm_tech_37 = { max_absolutism = 20 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.11 yearly_corruption = -0.09 yearly_absolutism = 0.1 } # stability_cost_modifier = -0.01
+adm_tech_38 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.11 yearly_corruption = -0.11 yearly_absolutism = 0.1 } # yearly_corruption = -0.02 # max absolutism +5
+adm_tech_39 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.07 stability_cost_modifier = -0.11 yearly_corruption = -0.11 yearly_absolutism = 0.1 }
+adm_tech_40 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.12 stability_cost_modifier = -0.11 yearly_corruption = -0.11 yearly_absolutism = 0.1 } # global_trade_goods_size_modifier = 0.05
+adm_tech_41 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.12 stability_cost_modifier = -0.11 yearly_corruption = -0.11 yearly_absolutism = 0.1 }
+adm_tech_42 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.12 stability_cost_modifier = -0.11 yearly_corruption = -0.11 yearly_absolutism = 0.1 }
+adm_tech_43 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.17 stability_cost_modifier = -0.11 yearly_corruption = -0.11 yearly_absolutism = 0.1 } # global_trade_goods_size_modifier = 0.05
+adm_tech_44 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.17 stability_cost_modifier = -0.11 yearly_corruption = -0.11 yearly_absolutism = 0.1 }
+adm_tech_45 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.17 stability_cost_modifier = -0.11 yearly_corruption = -0.11 yearly_absolutism = 0.1 }
+adm_tech_46 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.17 stability_cost_modifier = -0.12 yearly_corruption = -0.11 yearly_absolutism = 0.1 } # stability_cost_modifier = -0.01
+adm_tech_47 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.17 stability_cost_modifier = -0.12 yearly_corruption = -0.11 yearly_absolutism = 0.1 }
+adm_tech_48 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.17 stability_cost_modifier = -0.12 yearly_corruption = -0.11 yearly_absolutism = 0.1 }
+adm_tech_49 = { max_absolutism = 25 global_trade_goods_size_modifier = 0.17 stability_cost_modifier = -0.12 yearly_corruption = -0.11 yearly_absolutism = 0.1 }
+adm_tech_50 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.17 stability_cost_modifier = -0.12 yearly_corruption = -0.16 yearly_absolutism = 0.1 } # yearly_corruption = -0.05 # max absolutism +5
+adm_tech_51 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.17 stability_cost_modifier = -0.12 yearly_corruption = -0.16 yearly_absolutism = 0.1 }
+adm_tech_52 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.22 stability_cost_modifier = -0.12 yearly_corruption = -0.16 yearly_absolutism = 0.1 } # global_trade_goods_size_modifier = 0.05
+adm_tech_53 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.22 stability_cost_modifier = -0.13 yearly_corruption = -0.16 yearly_absolutism = 0.1 } # stability_cost_modifier = -0.01
+adm_tech_54 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.22 stability_cost_modifier = -0.14 yearly_corruption = -0.16 yearly_absolutism = 0.1 } # stability_cost_modifier = -0.01
+adm_tech_55 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.22 stability_cost_modifier = -0.14 yearly_corruption = -0.16 yearly_absolutism = 0.1 }
+adm_tech_56 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.22 stability_cost_modifier = -0.14 yearly_corruption = -0.16 yearly_absolutism = 0.1 }
+adm_tech_57 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.22 stability_cost_modifier = -0.14 yearly_corruption = -0.16 yearly_absolutism = 0.1 }
+adm_tech_58 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.22 stability_cost_modifier = -0.15 yearly_corruption = -0.16 yearly_absolutism = 0.1 } # stability_cost_modifier = -0.01
+adm_tech_59 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.22 stability_cost_modifier = -0.15 yearly_corruption = -0.16 yearly_absolutism = 0.1 }
+adm_tech_60 = { max_absolutism = 30 global_trade_goods_size_modifier = 0.22 stability_cost_modifier = -0.15 yearly_corruption = -0.16 yearly_absolutism = 0.1 }
+
+dip_tech_0  = { }
+dip_tech_1  = { }
+dip_tech_2  = { }
+dip_tech_3  = {  } 
+dip_tech_4  = {  }
+dip_tech_5  = {  }
+dip_tech_6  = { naval_forcelimit_modifier = 0.02 } # naval_forcelimit_modifier = 0.02
+dip_tech_7  = { naval_forcelimit_modifier = 0.03 } # naval_forcelimit_modifier = 0.01
+dip_tech_8  = { naval_forcelimit_modifier = 0.03 }
+dip_tech_9  = { naval_forcelimit_modifier = 0.03 }
+dip_tech_10 = { naval_forcelimit_modifier = 0.05 } # naval_forcelimit_modifier = 0.02
+dip_tech_11 = { naval_forcelimit_modifier = 0.07 } # naval_forcelimit_modifier = 0.02
+dip_tech_12 = { naval_forcelimit_modifier = 0.07 }
+dip_tech_13 = { naval_forcelimit_modifier = 0.07 ship_durability = 0.02 } # ship_durability = 0.02
+dip_tech_14 = { naval_forcelimit_modifier = 0.10 ship_durability = 0.02 } # naval_forcelimit_modifier = 0.03
+dip_tech_15 = { naval_forcelimit_modifier = 0.10 ship_durability = 0.02 }
+dip_tech_16 = { naval_forcelimit_modifier = 0.10 ship_durability = 0.04 } # ship_durability = 0.02
+dip_tech_17 = { naval_forcelimit_modifier = 0.10 ship_durability = 0.04 }
+dip_tech_18 = { naval_forcelimit_modifier = 0.10 ship_durability = 0.04 } 
+dip_tech_19 = { naval_forcelimit_modifier = 0.15 ship_durability = 0.04 } # naval_forcelimit_modifier 0.05
+dip_tech_20 = { naval_forcelimit_modifier = 0.15 ship_durability = 0.04 }
+dip_tech_21 = { naval_forcelimit_modifier = 0.15 global_naval_engagement_modifier = 0.05 ship_durability = 0.04 } # global_naval_engagement_modifier = 0.05
+dip_tech_22 = { naval_forcelimit_modifier = 0.15 global_naval_engagement_modifier = 0.05 ship_durability = 0.06 } # ship_durability = 0.02
+dip_tech_23 = { naval_forcelimit_modifier = 0.20 global_naval_engagement_modifier = 0.05 ship_durability = 0.06 } # naval_forcelimit_modifier 0.05
+dip_tech_24 = { naval_forcelimit_modifier = 0.20 global_naval_engagement_modifier = 0.05 siege_blockade_progress = 1 ship_durability = 0.08 } # siege_blockade_progress = 1 ship_durability = 0.02
+dip_tech_25 = { naval_forcelimit_modifier = 0.20 global_naval_engagement_modifier = 0.15 siege_blockade_progress = 1 ship_durability = 0.10 } # global_naval_engagement_modifier = 0.1
+dip_tech_26 = { naval_forcelimit_modifier = 0.20 global_naval_engagement_modifier = 0.15 siege_blockade_progress = 1 ship_durability = 0.10 global_ship_trade_power = 0.02 } # global_ship_trade_power = 0.02
+dip_tech_27 = { naval_forcelimit_modifier = 0.20 global_naval_engagement_modifier = 0.15 siege_blockade_progress = 1 ship_durability = 0.10 global_ship_trade_power = 0.02 }
+dip_tech_28 = { naval_forcelimit_modifier = 0.22 global_naval_engagement_modifier = 0.15 siege_blockade_progress = 1 ship_durability = 0.10 global_ship_trade_power = 0.02 } # naval_forcelimit_modifier = 0.02
+dip_tech_29 = { naval_forcelimit_modifier = 0.25 global_naval_engagement_modifier = 0.15 siege_blockade_progress = 1 ship_durability = 0.10 global_ship_trade_power = 0.02 } # naval_forcelimit_modifier = 0.03
+dip_tech_30 = { naval_forcelimit_modifier = 0.25 global_naval_engagement_modifier = 0.15 siege_blockade_progress = 1 ship_durability = 0.10 global_ship_trade_power = 0.02 } # ship_durability = 0.02
+dip_tech_31 = { naval_forcelimit_modifier = 0.25 global_naval_engagement_modifier = 0.15 siege_blockade_progress = 1 ship_durability = 0.10 global_ship_trade_power = 0.04 } # global_ship_trade_power = 0.02
+dip_tech_32 = { naval_forcelimit_modifier = 0.25 global_naval_engagement_modifier = 0.20 siege_blockade_progress = 1 ship_durability = 0.12 global_ship_trade_power = 0.04 } # global_naval_engagement_modifier = 0.05
+dip_tech_33 = { naval_forcelimit_modifier = 0.30 global_naval_engagement_modifier = 0.20 siege_blockade_progress = 1 ship_durability = 0.12 global_ship_trade_power = 0.04 } # naval_forcelimit_modifier = 0.05
+dip_tech_34 = { naval_forcelimit_modifier = 0.30 global_naval_engagement_modifier = 0.20 siege_blockade_progress = 1 ship_durability = 0.12 global_ship_trade_power = 0.04 }
+dip_tech_35 = { naval_forcelimit_modifier = 0.30 global_naval_engagement_modifier = 0.20 siege_blockade_progress = 1 ship_durability = 0.12 global_ship_trade_power = 0.04 }
+dip_tech_36 = { naval_forcelimit_modifier = 0.35 global_naval_engagement_modifier = 0.25 siege_blockade_progress = 1 ship_durability = 0.12 global_ship_trade_power = 0.04 } # naval_forcelimit_modifier = 0.05 # global_naval_engagement_modifier = 0.05
+dip_tech_37 = { naval_forcelimit_modifier = 0.35 global_naval_engagement_modifier = 0.25 siege_blockade_progress = 1 ship_durability = 0.12 global_ship_trade_power = 0.10 } # global_ship_trade_power = 0.04
+dip_tech_38 = { naval_forcelimit_modifier = 0.35 global_naval_engagement_modifier = 0.25 siege_blockade_progress = 1 ship_durability = 0.12 global_ship_trade_power = 0.10 } 
+dip_tech_39 = { naval_forcelimit_modifier = 0.40 global_naval_engagement_modifier = 0.25 siege_blockade_progress = 1 ship_durability = 0.12 global_ship_trade_power = 0.10 } # naval_forcelimit_modifier = 0.05
+dip_tech_40 = { naval_forcelimit_modifier = 0.40 global_naval_engagement_modifier = 0.25 siege_blockade_progress = 1 ship_durability = 0.12 global_ship_trade_power = 0.10 own_coast_naval_combat_bonus = 0.25 } # own_coast_naval_combat_bonus = 0.25
+dip_tech_41 = { naval_forcelimit_modifier = 0.40 global_naval_engagement_modifier = 0.25 siege_blockade_progress = 1 ship_durability = 0.15 global_ship_trade_power = 0.10 own_coast_naval_combat_bonus = 0.25 } # ship_durability = 0.03
+dip_tech_42 = { naval_forcelimit_modifier = 0.45 global_naval_engagement_modifier = 0.25 siege_blockade_progress = 1 ship_durability = 0.15 global_ship_trade_power = 0.10 own_coast_naval_combat_bonus = 0.25 } # naval_forcelimit_modifier = 0.05
+dip_tech_43 = { naval_forcelimit_modifier = 0.45 global_naval_engagement_modifier = 0.25 siege_blockade_progress = 1 ship_durability = 0.15 global_ship_trade_power = 0.12 own_coast_naval_combat_bonus = 0.25 } # global_ship_trade_power = 0.02
+dip_tech_44 = { naval_forcelimit_modifier = 0.45 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.20 global_ship_trade_power = 0.12 own_coast_naval_combat_bonus = 0.25 } # ship_durability = 0.05 # global_naval_engagement_modifier = 0.05
+dip_tech_45 = { naval_forcelimit_modifier = 0.45 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.20 global_ship_trade_power = 0.12 own_coast_naval_combat_bonus = 0.25 } # global_naval_engagement_modifier = 0.1
+dip_tech_46 = { naval_forcelimit_modifier = 0.50 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.20 global_ship_trade_power = 0.12 own_coast_naval_combat_bonus = 0.25 } # naval_forcelimit_modifier = 0.05
+dip_tech_47 = { naval_forcelimit_modifier = 0.50 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.20 global_ship_trade_power = 0.15 own_coast_naval_combat_bonus = 0.25 } # global_ship_trade_power = 0.03
+dip_tech_48 = { naval_forcelimit_modifier = 0.50 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.20 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.25 } # global_ship_trade_power = 0.05
+dip_tech_49 = { naval_forcelimit_modifier = 0.50 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.22 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.25 } # ship_durability = 0.02
+dip_tech_50 = { naval_forcelimit_modifier = 0.50 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.22 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.25 }
+dip_tech_51 = { naval_forcelimit_modifier = 0.50 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.22 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.25 }
+dip_tech_52 = { naval_forcelimit_modifier = 0.50 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.22 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.25 }
+dip_tech_53 = { naval_forcelimit_modifier = 0.50 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.25 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.25 } # ship_durability = 0.03
+dip_tech_54 = { naval_forcelimit_modifier = 0.50 global_naval_engagement_modifier = 0.30 siege_blockade_progress = 1 ship_durability = 0.25 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.25 interest = -0.5 } # interest -0.5
+dip_tech_55 = { naval_forcelimit_modifier = 0.55 global_naval_engagement_modifier = 0.40 siege_blockade_progress = 1 ship_durability = 0.30 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.25 interest = -0.5 } # ship_durability = 0.05 naval_forcelimit_modifier = 0.05 # global_naval_engagement_modifier = 0.1
+dip_tech_56 = { naval_forcelimit_modifier = 0.55 global_naval_engagement_modifier = 0.40 siege_blockade_progress = 1 ship_durability = 0.30 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.25 interest = -1.0 } # interest -0.5
+dip_tech_57 = { naval_forcelimit_modifier = 0.55 global_naval_engagement_modifier = 0.40 siege_blockade_progress = 1 ship_durability = 0.35 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.25 interest = -1.0 } # ship_durability = 0.05
+dip_tech_58 = { naval_forcelimit_modifier = 0.55 global_naval_engagement_modifier = 0.40 siege_blockade_progress = 1 ship_durability = 0.35 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.50 interest = -1.0 } # own_coast_naval_combat_bonus = 0.25
+dip_tech_59 = { naval_forcelimit_modifier = 0.55 global_naval_engagement_modifier = 0.40 siege_blockade_progress = 1 ship_durability = 0.35 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.50 interest = -1.0 } 
+dip_tech_60 = { naval_forcelimit_modifier = 0.60 global_naval_engagement_modifier = 0.40 siege_blockade_progress = 1 ship_durability = 0.35 global_ship_trade_power = 0.20 own_coast_naval_combat_bonus = 0.50 interest = -1.0 } # naval_forcelimit_modifier = 0.05
+
+mil_tech_0  = { }
+mil_tech_1  = {  } 
+mil_tech_2  = {  }
+mil_tech_3  = {  }
+mil_tech_4  = {  }
+mil_tech_5  = {  }
+mil_tech_6  = {  }
+mil_tech_7  = {  }
+mil_tech_8  = {  }
+mil_tech_9  = {  }
+mil_tech_10 = {  }
+mil_tech_11 = { siege_ability = 0.05 } # siege_ability = 0.05
+mil_tech_12 = { siege_ability = 0.05 }
+mil_tech_13 = { siege_ability = 0.05 }
+mil_tech_14 = { siege_ability = 0.10 } # siege_ability = 0.05
+mil_tech_15 = { siege_ability = 0.10 reserves_organisation = 0.05 }  # reserves_organisation = -0.05
+mil_tech_16 = { siege_ability = 0.10 reserves_organisation = 0.10 }  # reserves_organisation = -0.05
+mil_tech_17 = { siege_ability = 0.10 reserves_organisation = 0.10  land_attrition = -0.05 }  # land_attrition = -0.05
+mil_tech_18 = { siege_ability = 0.10 reserves_organisation = 0.10  land_attrition = -0.05 }
+mil_tech_19 = { siege_ability = 0.10 reserves_organisation = 0.10  land_attrition = -0.05 }
+mil_tech_20 = { siege_ability = 0.10 reserves_organisation = 0.10  land_attrition = -0.05 }
+mil_tech_21 = { siege_ability = 0.10 reserves_organisation = 0.10  land_attrition = -0.05 }
+mil_tech_22 = { siege_ability = 0.10 reserves_organisation = 0.10  land_attrition = -0.05 }
+mil_tech_23 = { siege_ability = 0.10 reserves_organisation = 0.10  land_attrition = -0.05 }
+mil_tech_24 = { siege_ability = 0.10 reserves_organisation = 0.15  land_attrition = -0.05 } # reserves_organisation = -0.05
+mil_tech_25 = { siege_ability = 0.10 reserves_organisation = 0.15  land_attrition = -0.05 cavalry_flanking = 0.10 } # cavalry_flanking = 0.1
+mil_tech_26 = { siege_ability = 0.10 reserves_organisation = 0.15  land_attrition = -0.10 cavalry_flanking = 0.10 } # land_attrition = -0.05
+mil_tech_27 = { siege_ability = 0.10 reserves_organisation = 0.15  land_attrition = -0.10 cavalry_flanking = 0.10 }
+mil_tech_28 = { siege_ability = 0.10 reserves_organisation = 0.15  land_attrition = -0.10 cavalry_flanking = 0.20 } # cavalry_flanking = 0.1
+mil_tech_29 = { siege_ability = 0.20 reserves_organisation = 0.15  land_attrition = -0.10 cavalry_flanking = 0.20 } # siege_ability = 0.1
+mil_tech_30 = { siege_ability = 0.20 reserves_organisation = 0.20  land_attrition = -0.10 cavalry_flanking = 0.20 } # reserves_organisation = -0.05
+mil_tech_31 = { siege_ability = 0.20 reserves_organisation = 0.20  land_attrition = -0.10 cavalry_flanking = 0.20 }
+mil_tech_32 = { siege_ability = 0.20 reserves_organisation = 0.20  land_attrition = -0.10 cavalry_flanking = 0.20 } 
+mil_tech_33 = { siege_ability = 0.20 reserves_organisation = 0.20  land_attrition = -0.10 cavalry_flanking = 0.25 } # cavalry_flanking = 0.05
+mil_tech_34 = { siege_ability = 0.20 reserves_organisation = 0.20  land_attrition = -0.10 cavalry_flanking = 0.25 } 
+mil_tech_35 = { siege_ability = 0.25 reserves_organisation = 0.20  land_attrition = -0.10 cavalry_flanking = 0.25 } # siege_ability = 0.05
+mil_tech_36 = { siege_ability = 0.25 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 } # reserves_organisation = -0.05
+mil_tech_37 = { siege_ability = 0.25 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 }
+mil_tech_38 = { siege_ability = 0.25 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 }
+mil_tech_39 = { siege_ability = 0.25 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 }
+mil_tech_40 = { siege_ability = 0.25 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 }
+mil_tech_41 = { siege_ability = 0.25 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 }
+mil_tech_42 = { siege_ability = 0.25 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 }
+mil_tech_43 = { siege_ability = 0.25 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 }
+mil_tech_44 = { siege_ability = 0.25 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 } # movement_speed = 0.1
+mil_tech_45 = { siege_ability = 0.25 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 } 
+mil_tech_46 = { siege_ability = 0.30 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 } # siege_ability 0.05
+mil_tech_47 = { siege_ability = 0.35 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 } # siege_ability 0.05
+mil_tech_48 = { siege_ability = 0.35 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_49 = { siege_ability = 0.35 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_50 = { siege_ability = 0.35 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_51 = { siege_ability = 0.35 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_52 = { siege_ability = 0.35 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_53 = { siege_ability = 0.35 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_54 = { siege_ability = 0.35 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_55 = { siege_ability = 0.35 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_56 = { siege_ability = 0.50 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 } # siege_ability 0.15
+mil_tech_57 = { siege_ability = 0.50 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_58 = { siege_ability = 0.50 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_59 = { siege_ability = 0.50 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }
+mil_tech_60 = { siege_ability = 0.50 reserves_organisation = 0.25  land_attrition = -0.10 cavalry_flanking = 0.25 movement_speed = 0.1 }

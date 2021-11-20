@@ -1,0 +1,69 @@
+singleplayer_trigger = {
+	NOT = {
+		calc_true_if = {
+			all_country = {
+				ai = no
+			}
+			amount = 2
+		}
+	}
+}
+
+multiplayer_trigger = {
+	calc_true_if = {
+		all_country = {
+			ai = no
+		}
+		amount = 2
+	}
+}
+
+singleplayer_or_ai_country_trigger = {
+	OR = {
+		ai = yes
+		NOT = {
+			calc_true_if = {
+				all_country = {
+					ai = no
+				}
+				amount = 2
+			}
+		}
+	}
+}
+
+no_cavalry_trigger = {
+	AND = {
+		always = no
+		NOT = { has_institution = Columbian_Exchange }
+	}
+}
+
+has_integratable_subjects = { #min
+	OR = {
+		personal_union = $min$
+		vassal = $min$
+		custom_vassal = $min$
+		client_vassal = $min$
+		appanage_subject = $min$
+		personal_union = $min$
+	}
+}
+
+policy_trigger = {
+	if = {
+		limit = { always = no }
+		full_idea_group = default_policy_1_ideas
+		full_idea_group = default_policy_2_ideas
+	}
+}
+
+monarchy_or_harem_gov = {
+	custom_trigger_tooltip = {
+		tooltip = is_monarchy_tt
+		OR = {
+			government = monarchy
+			government = has_harem
+		}
+	}
+}

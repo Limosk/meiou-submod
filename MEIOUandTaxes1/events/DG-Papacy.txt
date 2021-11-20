@@ -1,0 +1,1205 @@
+namespace = DG_Papacy
+
+#001-100: Cardinals
+#101-200: Papal Election
+
+#Papacy Maintenance
+#Triggered by on_four_year_pulse_2
+#Death of Cardinals
+province_event = {
+	id = DG_Papacy.001
+	title = "DG_Papacy.001.title"
+	desc = "DG_Papacy.001.desc"
+	picture = catholic_college_of_cardinals
+	
+	mean_time_to_happen = {
+		months = 36
+	}
+	
+	hidden = yes
+	
+	trigger = {
+		has_cardinal = yes
+	}
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { religion = catholic }
+				PAP = { Calc_Pap_Auth = yes }
+			}
+			else_if = {
+				limit = { religion = holy_league }
+				AVI = { Calc_Pap_Auth = yes }
+			}
+			#log = "DG - Cardinal dies"
+			if = {
+				limit = {
+					OR = { owned_by = PAP owned_by = AVI check_key = { lhs = MN_Cardinal value = 50 } }
+				}
+				AddCardinal = yes
+				#log = "DG - DG replaced (province)"
+			}
+			else = {
+				RemoveCardinal = yes
+				if = {
+					limit = {
+						owner = { check_key = { lhs = MN_Cardinal value = 50 } }
+					}
+					owner = {
+						random_owned_province = {
+							limit = { check_key = { lhs = MN_Cardinal value = 50 } }
+							AddCardinal = yes
+							#log = "DG - DG replaced (country)"
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "DG_Papacy.001.opta"
+	}
+}
+
+#Death of the Pope
+country_event = {
+	id = DG_Papacy.101
+	title = "no_localisation"
+	desc = "no_localisation"
+	picture = catholic_college_of_cardinals
+	
+	hidden = yes
+	
+	trigger = {
+		is_papal_controller = yes
+		OR = {
+			AND = {
+				religion = catholic
+				PAP = {
+					has_global_flag = living_rome_pope
+					had_global_flag = { flag = living_rome_pope days = 1095 } #Ahistorical, but prevents players from reporting bugs
+				}
+			}
+			AND = {
+				religion = holyleague
+				AVI = {
+					has_global_flag = living_avignon_pope
+					had_global_flag = { flag = living_avignon_pope days = 1095 } #Ahistorical, but prevents players from reporting bugs
+				}
+			}
+		}
+	}
+	
+	# Average length of papal reign is a mere 7 years - EU4 monarch lifespans do not model popes well
+	# Set to 5 years to offset 3 guaranteed years, to still get an average of 7
+	mean_time_to_happen = { years = 5 }
+
+	immediate = {
+		if = {
+			limit = { religion = catholic }
+			PAP = {
+				define_ruler = {
+					regency = yes
+					name = "(Papal Conclave)"
+					fixed = yes
+					ADM = 2
+					DIP = 2
+					MIL = 1
+				}
+			}
+			clr_global_flag = living_rome_pope
+			clr_country_flag = pious_pope
+			clr_country_flag = secular_pope
+			clr_country_flag = corrupt_pope
+			clr_country_flag = accepted_graft
+			clr_country_flag = refused_graft
+			set_country_flag = conclave
+			Calc_Pap_Auth = yes
+			papal_corruption_se = yes
+		}
+		else_if = {
+			limit = { religion = holyleague }
+				AVI = {
+				define_ruler = {
+					regency = yes
+					name = "(Papal Conclave)"
+					fixed = yes
+					ADM = 2
+					DIP = 2
+					MIL = 1
+				}
+			}
+			clr_global_flag = living_avignon_pope
+			clr_country_flag = pious_pope
+			clr_country_flag = secular_pope
+			clr_country_flag = corrupt_pope
+			clr_country_flag = accepted_graft
+			clr_country_flag = refused_graft
+			set_country_flag = conclave
+			Calc_Pap_Auth = yes
+			papal_corruption_se = yes
+		}
+		every_known_country = {
+			limit = { OR = { religion = catholic religion = holyleague } num_of_cardinals = 1 }
+			DG_Papabile = yes
+		}
+		log = "DG - Start of the Conclave"
+	}
+	
+	option = {
+		name = "no_localisation"
+		if = {
+			limit = { religion = catholic }
+			every_known_country = {
+				limit = { religion = catholic num_of_cardinals = 1 has_country_flag = papacy_notification }
+				country_event = { id = DG_Papacy.102 }
+			}
+			country_event = { id = DG_Papacy.103 }
+		}
+		else_if = {
+			limit = { religion = holyleague }
+			every_known_country = {
+				limit = { religion = holyleague num_of_cardinals = 1 has_country_flag = papacy_notification }
+				country_event = { id = DG_Papacy.102 }
+			}
+			country_event = { id = DG_Papacy.103 }
+		}
+	}
+}
+
+country_event = {
+	id = DG_Papacy.102
+	title = "DG_Papacy.102.title"
+	desc = "DG_Papacy.102.desc"
+	picture = catholic_habemus_papam
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "DG_Papacy.102.opta"
+	}
+}
+
+#Conclage underway
+country_event = {
+	id = DG_Papacy.103
+	title = "DG_Papacy.103.title"
+	desc = "DG_Papacy.103.desc"
+	picture = catholic_habemus_papam
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = { any_known_country = { has_country_flag = papal_captor } }
+			random_known_country = {
+				limit = { has_country_flag = papal_captor }
+				country_event = { id = DG_Papacy.201 days = 5 }
+			}
+		}
+		else_if = {
+			limit = { any_known_country = { check_key = { lhs = DG_Papability value =  2 } num_of_cardinals = 1 ai = no is_excommunicated = no } }
+			random_known_country = {
+				limit = { check_key = { lhs = DG_Papability value =  2 } num_of_cardinals = 1 ai = no is_excommunicated = no }
+				country_event = { id = DG_Papacy.104 days = 5 }
+			}
+		}
+		else = {
+			if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 7 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 7 } }
+					country_event = { id = DG_Papacy.501 days = 15 }
+				}
+			}
+			else_if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 6 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 6 } }
+					country_event = { id = DG_Papacy.501 days = 15 }
+				}
+			}
+			else_if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 5 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 5 } }
+					country_event = { id = DG_Papacy.501 days = 15 }
+				}
+			}
+			else_if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 4 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 4 } }
+					country_event = { id = DG_Papacy.501 days = 15 }
+				}
+			}
+			else_if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 3 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 3 } }
+					country_event = { id = DG_Papacy.501 days = 15 }
+				}
+			}
+			else_if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 2 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 2 } }
+					country_event = { id = DG_Papacy.501 days = 15 }
+				}
+			}
+			else = {
+				log = "DG - Papacy has no Controller"
+				if = {
+					limit = { religion = catholic num_of_cardinals = 1 }
+					if = {
+						limit = {
+							PAP = { check_key = { lhs = MN_Pap_Corruption value = 7.5 } }
+						}
+						country_event = { id = DG_Papacy.603 days = 15 }	#Secular Pope
+					}
+					else = {
+						country_event = { id = DG_Papacy.601 days = 15 }	#Pious Pope
+					}
+				}
+				else_if = {
+					limit = { religion = holyleague num_of_cardinals = 1 }
+					if = {
+						limit = {
+							AVI = { check_key = { lhs = MN_Pap_Corruption value = 7.5 } }
+						}
+						country_event = { id = DG_Papacy.603 days = 15 }	#Secular Pope
+					}
+					else = {
+						country_event = { id = DG_Papacy.601 days = 15 }	#Pious Pope
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Papacy.103.opta"
+	}
+}
+
+country_event = {
+	id = DG_Papacy.104
+	title = "DG_Papacy.103.title"
+	desc = "DG_Papacy.103.desc"
+	picture = catholic_habemus_papam
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability which = PREV } } }
+			random_known_country = {
+				limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability which = PREV } }
+				country_event = { id = DG_Papacy.502 days = 15 } #DG_Papacy.301 days = 5 }
+				save_event_target_as = conc_preferiti
+			}
+			save_event_target_as = conc_contender
+		}
+		else = {
+			if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 11 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 11 } }
+					save_event_target_as = conc_contender
+				}
+				country_event = { id = DG_Papacy.502 days = 15 } #DG_Papacy.401 days = 5 }
+				save_event_target_as = conc_preferiti
+			}
+			else_if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 9 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 9 } }
+					save_event_target_as = conc_contender
+				}
+				country_event = { id = DG_Papacy.502 days = 15 } #DG_Papacy.401 days = 5 }
+				save_event_target_as = conc_preferiti
+			}
+			else_if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 7 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 7 } }
+					save_event_target_as = conc_contender
+				}
+				country_event = { id = DG_Papacy.502 days = 15 } #DG_Papacy.401 days = 5 }
+				save_event_target_as = conc_preferiti
+			}
+			else_if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 5 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 5 } }
+					save_event_target_as = conc_contender
+				}
+				country_event = { id = DG_Papacy.502 days = 15 } #DG_Papacy.401 days = 5 }
+				save_event_target_as = conc_preferiti
+			}
+			else_if = {
+				limit = { any_known_country = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 3 } } }
+				random_known_country = {
+					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 3 } }
+					save_event_target_as = conc_contender
+				}
+				country_event = { id = DG_Papacy.502 days = 15 } #DG_Papacy.401 days = 5 }
+				save_event_target_as = conc_preferiti
+			}
+			else = {
+				country_event = { id = DG_Papacy.502 days = 5 }
+			}
+		}
+	}
+	
+	option = {
+		name = "DG_Papacy.103.opta"
+	}
+}
+
+#Papal Captor gets dibs on selecting to be Papal Controller
+country_event = {
+	id = DG_Papacy.201
+	title = "DG_Papacy.201.title"
+	desc = "DG_Papacy.201.desc"
+	picture = catholic_habemus_papam
+
+	is_triggered_only = yes
+	
+	trigger = {  num_of_cardinals = 1 }
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Papacy.201.opta" #Maintain Status Quo
+		add_opinion = { who = PAP modifier = papacy_bad }
+		hidden_effect = {
+#			if = {
+#				limit = { ai = no }
+#				random_country = {
+#					limit = { num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 5 } }
+#					country_event = { id = DG_Papacy.501 days = 5 } #211 days = 5 }
+#				}
+#			}
+#			else_if = {
+#				limit = { any_known_country = { ai = no num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 5 } } }
+#				random_country = {
+#					limit = { ai = no num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 5 } }
+#					country_event = { id = DG_Papacy.501 days = 5 } #231 days = 5 }
+#				}
+#			}
+#			else = {
+				country_event = { id = DG_Papacy.502 days = 5 }
+#			}
+		}
+	}
+	option = {
+		name = "DG_Papacy.201.optb" #Negociate Return
+		add_opinion = { who = PAP modifier = papacy_good }
+		clr_country_flag = papal_captor
+		hidden_effect = {
+			if = {
+				limit = { religion = catholic }
+				add_opinion = { who = PAP modifier = papacy_good }
+					country_event = { id = DG_Papacy.501 days = 5 } #251 days = 5 }
+				PAP = {
+					Effect_set_capital = { target = 2530 }
+					clr_country_flag = french_curia
+					clr_country_flag = italian_curia
+					clr_country_flag = iberian_curia
+					clr_country_flag = imperial_curia
+					clr_country_flag = english_curia
+				}
+			}
+			else_if = {
+				limit = { religion = holyleague }
+				AVI = {
+					country_event = { id = DG_Papacy.501 days = 5 } #251 days = 5 }
+				}
+			}
+		}
+	}
+	option = {
+		name = "DG_Papacy.201.optc" #No Interference
+		hidden_effect = {
+			if = {
+				limit = { religion = catholic }
+				add_opinion = { who = PAP modifier = papacy_good }
+				PAP = {
+					country_event = { id = DG_Papacy.501 days = 5 } #251 days = 5 }
+					Effect_set_capital = { target = 2530 }
+					clr_country_flag = french_curia
+					clr_country_flag = italian_curia
+					clr_country_flag = iberian_curia
+					clr_country_flag = imperial_curia
+					clr_country_flag = english_curia
+				}
+			}
+			else_if = {
+				limit = { religion = holyleague }
+				AVI = {
+				}
+			}
+			if = {
+				limit = { any_known_country = { ai = no num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 5 } } }
+				random_country = {
+					limit = { ai = no num_of_cardinals = 1 check_key = { lhs = DG_Papability value = 5 } }
+					country_event = { id = DG_Papacy.501 days = 5 } #271 days = 5 }
+				}
+			}
+			else = {
+				log = "DG - Papacy has no Controller"
+				if = {
+					limit = { religion = catholic }
+					if = {
+						limit = {
+							PAP = { check_key = { lhs = MN_Pap_Corruption value = 7.5 } }
+						}
+						country_event = { id = DG_Papacy.603 days = 15 }	#Secular Pope
+					}
+					else = {
+						country_event = { id = DG_Papacy.601 days = 15 }	#Pious Pope
+					}
+				}
+				else_if = {
+					limit = { religion = holyleague }
+					if = {
+						limit = {
+							AVI = { check_key = { lhs = MN_Pap_Corruption value = 7.5 } }
+						}
+						country_event = { id = DG_Papacy.603 days = 15 }	#Secular Pope
+					}
+					else = {
+						country_event = { id = DG_Papacy.601 days = 15 }	#Pious Pope
+					}
+				}
+			}
+		}
+	}
+#	option = {
+#		name = "DG_Papacy.201.optd" #Our Hands are Tied
+#		hidden_effect = {
+#			country_event = { id = DG_Papacy.501 days = 5 } #DG_Papacy.291 days = 5 }
+#		}
+#	}
+}
+
+country_event = {
+	id = DG_Papacy.211
+	title = "DG_Papacy.211.title"
+	desc = "DG_Papacy.211.desc"
+	picture = catholic_habemus_papam
+
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Papacy.103.optd" #Mount an expedition
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = "DG_Papacy.103.optd" #No Interference
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = "DG_Papacy.103.optd" #Our Hands are Tied
+		hidden_effect = {
+		}
+	}
+}
+
+#Player can't contend
+country_event = {
+	id = DG_Papacy.501
+	title = "no_localisation"
+	desc = "no_localisation"
+	picture = catholic_habemus_papam
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "no_localisation"
+		ai_chance = { factor = 100 }
+		add_papal_influence = 150
+		random_list = {
+			50 = { country_event = { id = DG_Papacy.503 days =  45 } }
+			25 = { country_event = { id = DG_Papacy.503 days =  60 } }
+			10 = { country_event = { id = DG_Papacy.503 days =  75 } }
+			 7 = { country_event = { id = DG_Papacy.503 days =  90 } }
+			 5 = { country_event = { id = DG_Papacy.503 days = 105 } }
+			 3 = { country_event = { id = DG_Papacy.503 days = 120 } }
+			 2 = { country_event = { id = DG_Papacy.503 days = 240 } }
+			 1 = { country_event = { id = DG_Papacy.503 days = 360 } }
+			 1 = { country_event = { id = DG_Papacy.503 days = 480 } }
+			 1 = { country_event = { id = DG_Papacy.503 days = 600 } }
+		}
+		log = "DG - [Root.GetName] is Papal Controller (151)"
+	}
+	option = {
+		name = "no_localisation"
+		ai_chance = { factor = 0 }
+		log = "DG - Papacy has no Controller"
+		if = {
+			limit = { religion = catholic }
+			if = {
+				limit = {
+					PAP = { check_key = { lhs = MN_Pap_Corruption value = 7.5 } }
+				}
+				country_event = { id = DG_Papacy.603 days = 15 }	#Secular Pope
+			}
+			else = {
+				country_event = { id = DG_Papacy.601 days = 15 }	#Pious Pope
+			}
+		}
+		else_if = {
+			limit = { religion = holyleague }
+			if = {
+				limit = {
+					AVI = { check_key = { lhs = MN_Pap_Corruption value = 7.5 } }
+				}
+				country_event = { id = DG_Papacy.603 days = 15 }	#Secular Pope
+			}
+			else = {
+				country_event = { id = DG_Papacy.601 days = 15 }	#Pious Pope
+			}
+		}
+	}
+}
+
+#Getting the Papal influence to become Papal controller
+country_event = {
+	id = DG_Papacy.502
+	title = "DG_Papacy.502.title"
+	desc = "DG_Papacy.502.desc"
+	picture = catholic_habemus_papam
+
+	is_triggered_only = yes
+	
+	trigger = { num_of_cardinals = 1 }
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Papacy.502.opta"
+		add_papal_influence = 150
+		random_list = {
+			50 = { country_event = { id = DG_Papacy.503 days =  45 } }
+			20 = { country_event = { id = DG_Papacy.503 days =  60 } }
+			10 = { country_event = { id = DG_Papacy.503 days =  75 } }
+			 7 = { country_event = { id = DG_Papacy.503 days =  90 } }
+			 5 = { country_event = { id = DG_Papacy.503 days = 105 } }
+			 4 = { country_event = { id = DG_Papacy.503 days = 120 } }
+			 3 = { country_event = { id = DG_Papacy.503 days = 240 } }
+			 2 = { country_event = { id = DG_Papacy.503 days = 360 } }
+			 1 = { country_event = { id = DG_Papacy.503 days = 480 } }
+			 1 = { country_event = { id = DG_Papacy.503 days = 600 } }
+		}
+		log = "DG - [Root.GetName] is Papal Controller (159)"
+	}
+}
+
+#Bought Election
+country_event = {
+	id = DG_Papacy.503
+	title = "no_localisation"
+	desc = "no_localisation"
+	picture = catholic_college_of_cardinals
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		log = "DG - Bought Election"
+		#add_reform_desire = 0.025
+	}
+	
+	option = {
+		name = "no_localisation"
+		if = {
+			limit = { religion = catholic }
+			if = {
+				limit = {
+					PAP = { check_key = { lhs = MN_Pap_Corruption value = 7.5 } }
+				}
+				country_event = { id = DG_Papacy.605 days = 15 }	#Corrupt Pope
+			}
+			else = {
+				country_event = { id = DG_Papacy.603 days = 15 }	#Secular Pope
+			}
+		}
+		else_if = {
+			limit = { religion = holyleague }
+			if = {
+				limit = {
+					AVI = { check_key = { lhs = MN_Pap_Corruption value = 7.5 } }
+				}
+				country_event = { id = DG_Papacy.605 days = 15 }	#Corrupt Pope
+			}
+			else = {
+				country_event = { id = DG_Papacy.603 days = 15 }	#Secular Pope
+			}
+		}
+	}
+}
+
+#Pious Pope
+country_event = {
+	id = DG_Papacy.601
+	title = "no_localisation"
+	desc = "no_localisation"
+	picture = catholic_college_of_cardinals
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = { religion = catholic }
+			PAP = {
+				define_ruler = {}
+				clr_country_flag = conclave
+				clr_country_flag = deadlocked_conclave
+				set_country_flag = pious_pope
+				set_global_flag = living_rome_pope
+				Calc_Pap_Auth = yes
+				papal_corruption_se = yes
+				log = "DG - Getting new pope - pious"
+			}
+		}
+		else_if = {
+			limit = { religion = holyleague }
+			AVI = {
+				define_ruler = {}
+				clr_country_flag = conclave
+				clr_country_flag = deadlocked_conclave
+				set_country_flag = pious_pope
+				set_global_flag = living_avignon_pope
+				Calc_Pap_Auth = yes
+				papal_corruption_se = yes
+			}
+		}
+	}
+	
+	option = {
+		name = "no_localisation"
+		if = {
+			limit = { religion = catholic has_country_flag = papacy_notification }
+			every_known_country = {
+				limit = { religion = catholic }
+				country_event = { id = DG_Papacy.602 }
+			}
+		}
+		else_if = {
+			limit = { religion = holyleague has_country_flag = papacy_notification }
+			every_known_country = {
+				limit = { religion = holyleague }
+				country_event = { id = DG_Papacy.602 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = DG_Papacy.602
+	title = "DG_Papacy.602.title"
+	desc = "DG_Papacy.602.desc"
+	picture = catholic_college_of_cardinals
+
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Papacy.602.opta"
+	}
+}
+
+#Secular Pope
+country_event = {
+	id = DG_Papacy.603
+	title = "no_localisation"
+	desc = "no_localisation"
+	picture = catholic_college_of_cardinals
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = { religion = catholic }
+			PAP = {
+				define_ruler = {}
+				clr_country_flag = conclave
+				clr_country_flag = deadlocked_conclave
+				set_country_flag = secular_pope
+				set_global_flag = living_rome_pope
+				Calc_Pap_Auth = yes
+				papal_corruption_se = yes
+				log = "DG - Getting new pope - secular"
+			}
+		}
+		else_if = {
+			limit = { religion = holyleague }
+			AVI = {
+				define_ruler = {}
+				clr_country_flag = conclave
+				set_country_flag = secular_pope
+				set_global_flag = living_avignon_pope
+				Calc_Pap_Auth = yes
+				papal_corruption_se = yes
+			}
+		}
+		add_reform_desire = 0.01
+	}
+	
+	option = {
+		name = "no_localisation"
+		if = {
+			limit = { religion = catholic }
+			every_known_country = {
+				limit = { religion = catholic has_country_flag = papacy_notification }
+				country_event = { id = DG_Papacy.604 }
+			}
+		}
+		else_if = {
+			limit = { religion = holyleague has_country_flag = papacy_notification }
+			every_known_country = {
+				limit = { religion = holyleague }
+				country_event = { id = DG_Papacy.604 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = DG_Papacy.604
+	title = "DG_Papacy.604.title"
+	desc = "DG_Papacy.604.desc"
+	picture = catholic_college_of_cardinals
+
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Papacy.604.opta"
+	}
+}
+
+#Corrupt Pope
+country_event = {
+	id = DG_Papacy.605
+	title = "no_localisation"
+	desc = "no_localisation"
+	picture = catholic_college_of_cardinals
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = { religion = catholic }
+			PAP = {
+				if = {
+					limit = { has_country_flag = first_pope }
+					define_ruler = {
+						name = "Innocentius VI"
+						fixed = yes
+						ADM = 3
+						DIP = 5
+						MIL = 2
+						age = 53
+						claim = 75
+					}
+					clr_country_flag = first_pope
+					FRA = {
+						if = {
+							limit = { is_papal_controller = no }
+							add_papal_influence = -150
+						}
+					}
+				}
+				else = {
+					PAP = {
+						define_ruler = {}
+					}
+				}
+				clr_country_flag = conclave
+				clr_country_flag = deadlocked_conclave
+				set_country_flag = corrupt_pope
+				set_global_flag = living_rome_pope
+				Calc_Pap_Auth = yes
+				papal_corruption_se = yes
+				log = "DG - Getting new pope - corrupt"
+			}
+		}
+		else_if = {
+			limit = { religion = holyleague }
+			AVI = {
+				define_ruler = {}
+				clr_country_flag = conclave
+				clr_country_flag = deadlocked_conclave
+				set_country_flag = corrupt_pope
+				set_global_flag = living_avignon_pope
+				Calc_Pap_Auth = yes
+				papal_corruption_se = yes
+			}
+		}
+		add_reform_desire = 0.02
+	}
+	
+	option = {
+		name = "no_localisation"
+		if = {
+			limit = { religion = catholic }
+			every_known_country = {
+				limit = { religion = catholic has_country_flag = papacy_notification }
+				country_event = { id = DG_Papacy.606 }
+			}
+		}
+		else_if = {
+			limit = { religion = holyleague }
+			every_known_country = {
+				limit = { religion = holyleague has_country_flag = papacy_notification }
+				country_event = { id = DG_Papacy.606 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = DG_Papacy.606
+	title = "DG_Papacy.606.title"
+	desc = "DG_Papacy.606.desc"
+	picture = catholic_college_of_cardinals
+
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "DG_Papacy.606.opta"
+	}
+}
+
+# The Doctrine of Particular Judgement
+country_event = {
+	id = DG_Papacy.701
+	title = catholic_flavor.8.t
+	desc = catholic_flavor.8.d
+	picture = POPE_PREACHING_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		religion = catholic
+		NOT = { is_religion_enabled = protestant }
+		NOT = { tag = PAP }
+		any_owned_province = {
+			religion = catholic
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					religion = catholic
+				}
+				save_event_target_as = unrest_province
+			}
+		}
+	}
+	option = {
+		name = catholic_flavor.8.a
+		add_reform_desire = 0.01
+		add_papal_influence = 2
+	}
+	option = {
+		name = catholic_flavor.8.b
+		goto = unrest_province
+		add_reform_desire = -0.001
+		event_target:unrest_province = {
+			add_unrest = 5
+		}
+	}
+}
+
+# Simony
+country_event = {
+	id = DG_Papacy.702
+	title = catholic_flavor.4.t
+	desc = catholic_flavor.4.d
+	picture = RELIGION_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		religion = catholic
+		NOT = { is_religion_enabled = protestant }
+		NOT = { tag = PAP }
+		NOT = {
+			has_global_flag = pap_disables_simony_flag
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+		
+	}
+	option = {
+		name = catholic_flavor.4.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 5
+				has_global_flag = borgia_pope_global
+			}
+		}
+		add_years_of_income = 0.2
+		add_reform_desire = 0.001
+	}
+	option = {
+		name = catholic_flavor.4.b
+		ai_chance = {
+			factor = 10
+		}
+		add_papal_influence = 10
+		add_devotion = 1
+	}
+}
+
+# Selling of Indulgences
+country_event = {
+	id = DG_Papacy.703
+	title = catholic_flavor.5.t
+	desc = catholic_flavor.5.d
+	picture = RELIGION_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		religion = catholic
+		NOT = { is_religion_enabled = protestant }
+		NOT = { tag = PAP }
+		is_year = 1480
+		ruler_age = 45
+		NOT = {
+			has_global_flag = pap_disables_indulgences_flag
+		}
+		is_excommunicated = no
+		NOT = { has_country_modifier = papal_indulgence }
+		NOT = {
+			reverse_has_opinion_modifier = {
+				who = PAP
+				modifier = bought_indulgence
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = catholic_flavor.5.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0.5
+				is_rival = PAP
+			}
+		}
+		add_years_of_income = -1
+		if = {
+			limit = { NOT = { num_of_cities = 6 } }
+			add_curia_treasury_small_effect = yes
+		}
+		else = {
+			add_curia_treasury_medium_effect = yes
+		}
+		add_papal_influence = 10
+		add_reform_desire = 0.001
+	}
+	option = {
+		name = catholic_flavor.5.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				has_global_flag = borgia_pope_global
+			}
+			modifier = {
+				factor = 0.5
+				alliance_with = PAP
+			}
+		}
+		add_reform_desire = -0.001
+		add_papal_influence = -10
+		PAP = {
+			add_opinion = {
+				who = root
+				modifier = catholic_obstructing_church
+			}
+		}
+	}
+}
+
+# Veneration of Relics
+country_event = {
+	id = DG_Papacy.704
+	title = catholic_flavor.6.t
+	desc = catholic_flavor.6.d
+	picture = RELIGION_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		religion = catholic
+		NOT = { is_religion_enabled = protestant }
+		NOT = { tag = PAP }
+		any_owned_province = {
+			religion = catholic
+		}
+		is_year = 1490
+		NOT = {
+			has_global_flag = pap_disables_veneration_relics_flag
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					religion = catholic
+				}
+				save_event_target_as = unrest_province
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+		
+	}
+	option = {
+		name = catholic_flavor.6.a
+		ai_chance = {
+			factor = 10
+		}
+		add_reform_desire = 0.001
+		add_papal_influence = 2
+	}
+	option = {
+		name = catholic_flavor.6.b
+		goto = unrest_province
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 5
+				has_global_flag = borgia_pope_global
+			}
+		}
+		event_target:unrest_province = {
+			add_unrest = 5
+		}
+	}
+}
+
+# Veneration of the Virgin Mary 
+country_event = {
+	id = DG_Papacy.705
+	title = catholic_flavor.7.t
+	desc = catholic_flavor.7.d
+	picture = RELIGION_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		religion = catholic
+		NOT = { is_religion_enabled = protestant }
+		NOT = { tag = PAP }
+
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+		
+	}
+	option = {
+		name = catholic_flavor.7.a
+		add_reform_desire = 0.001
+		add_papal_influence = 2
+	}
+	option = {
+		name = catholic_flavor.7.b
+		PAP = {
+			add_opinion = {
+				who = root
+				modifier = opinion_denying_the_holy_mother
+			}
+		}
+	}
+}
+
+#Logging of Papal authority
+country_event = {
+	id = DG_Papacy.999
+	title = "DG_Papacy.001.title"
+	desc = "DG_Papacy.001.desc"
+	picture = catholic_college_of_cardinals
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	trigger = {
+		tag = PAP
+	}
+
+	immediate = {
+#		export_to_key = {
+#			lhs = DG_Tmp1
+#			value = reform_desire
+#		}
+#		export_to_key = {
+#			lhs = DG_Tmp2
+#			value = modifier:reform_desire
+#		}
+	}
+	
+	option = {
+#		log = "DG:[GetYear]: :[This.kdt.GetValue]:Reform Desire: :[This.GetName]"
+#		log = "DG:[GetYear]: :[This.kdu.GetValue]:Reform Desire: :[This.GetName]"
+		log = "DG:[GetYear]: :[This.nto.GetValue]:Papal Authority: :[This.GetName]"
+	}
+
+	after = {
+#		export_to_key = {
+#			lhs = DG_Tmp1
+#			value = 0
+#		}
+#		export_to_key = {
+#			lhs = DG_Tmp2
+#			value = 0
+#		}
+	}
+}
