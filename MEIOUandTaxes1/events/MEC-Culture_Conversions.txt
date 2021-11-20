@@ -1173,23 +1173,385 @@ province_event = {
 						}
 						change_culture = pontic
 					}
-					else_if = { 
-						limit = { 
-							OR = { 
-								culture = turkoman
-								AND = { 
-									area = cappadocia_area
-									any_neighbor_province = { 
-										culture = cappadocian
-									}
-								}
+					if = {
+						limit = {
+							OR = {
+								region = north_russia_region
+								region = east_russia_region
+								region = russia_region
+								region = steppes_region
+								region = north_caucasus_region
+								province_id = 287
 							}
 						}
-						change_culture = cappadocian
+						change_culture = russian_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = ruthenia_region
+								region = crimea_region
+								area = polesia_area
+								area = black_ruthenia_area
+								area = white_ruthenia_area
+							}
+							NOT = {
+								province_id = 3764
+							}
+						}
+						change_culture = ruthenian_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								area = curonia_area
+								area = livonia_area
+							}
+							NOT = {
+								province_id = 37
+								province_id = 1263
+								province_id = 1354
+							}
+						}
+						change_culture = latvian_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								area = lithuania_area
+								province_id = 3763
+								province_id = 3764
+							}
+						}
+						change_culture = lithuanian_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = polonia_major_region
+								region = polonia_minor_region
+							}
+							NOT = {
+								province_id = 2398
+								province_id = 3763
+							}
+						}
+						change_culture = polish_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								area = royal_bohemia_area
+								area = north_bohemia_area
+								area = moravia_area
+								area = west_slovakia_area
+								area = east_slovakia_area
+							}
+						}
+						change_culture = czech_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = finland_region
+								area = estonia_ingria_area
+								province_id = 1354
+								province_id = 37
+								province_id = 1263
+							}
+						}
+						change_culture = finnish_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = danish_region
+								region = scandinavia_region
+								region = norwegian_region
+							}
+						}
+						change_culture = scandinavian_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = belgii_region
+								region = low_countries_region
+							}
+							NOT = {
+								province_id = 1511
+							}
+						}
+						change_culture = dutch_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = austrian_circle_region
+								region = swabia_bavarian_region
+								region = switzerland_region
+								region = upper_rhenish_circle_region
+								region = westphalian_circle_region
+								region = lower_saxon_circle_region
+								region = upper_saxon_circle_region
+								region = brandenburg_pommern_region
+								region = prussia_region
+								area = lower_silesia_area
+								area = upper_silesia_area
+								province_id = 2398
+								province_id = 1511
+							}
+							NOT = {
+								area = carinthia_area
+								province_id = 2384
+								province_id = 110
+								province_id = 2611
+								province_id = 185
+								province_id = 2334
+								province_id = 1389
+							}
+						}
+						change_culture = german_roman
+					}
+					if = {
+						limit = {
+							region = ireland_region
+						}
+						change_culture = irish_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = south_england_region
+								region = north_england_region
+								region = scotland_region
+							}
+						}
+						change_culture = english_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = ouest_france_region
+								region = east_france_region
+								region = high_countries_region
+								province_id = 1384
+								province_id = 190
+							}
+						}
+						change_culture = french_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = provence_region
+								region = languedoc_region
+								region = aquitaine_region
+								province_id = 2334
+								province_id = 1389
+								province_id = 185
+							}
+							NOT = {
+								province_id = 1384
+								province_id = 190
+							}
+						}
+						change_culture = occitan_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								area = catalonia_area
+								area = valencia_area
+								area = baleares_area
+							}
+						}
+						change_culture = catalan_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								superregion = iberia_superregion
+								superregion = italy_superregion
+								province_id = 2611
+								province_id = 110
+							}
+							NOT = {
+								area = catalonia_area
+								area = valencia_area
+								area = baleares_area
+							}
+						}
+						change_culture = italo_hispano_portuguese_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = east_maghreb_region
+								region = central_maghreb_region
+								region = west_maghreb_region
+								region = west_sahara_region
+								region = east_sahara_region
+							}
+						}
+						change_culture = berber_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = egypt_region
+							}
+							NOT = {
+								province_id = 5107
+							}
+						}
+						change_culture = egyptian_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = arabia_region
+								region = hadhramut_region
+							}
+						}
+						change_culture = arabic_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = syria_region
+								region = lower_mesopotamia_region
+								region = upper_mesopotamia_region
+								province_id = 1444
+								province_id = 418
+							}
+							NOT = {
+								province_id = 2726
+								province_id = 1443
+								province_id = 1440
+								province_id = 3393
+								province_id = 5080
+								area = sophene_area
+							}
+						}
+						change_culture = aramaic_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = iran_region
+								region = fars_region
+								region = khorasani_region
+								region = sista_region
+								province_id = 3090
+								province_id = 2726
+							}
+						}
+						change_culture = persian_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								area = west_armenia_area
+								area = east_armenia_area
+								area = van_area
+								area = upper_armenia_area
+								area = sophene_area
+								area = malatya_area
+								area = cilicia_area
+								province_id = 5076
+								province_id = 3807
+								province_id = 3809
+							}
+							NOT = {
+								province_id = 1444
+								province_id = 418
+								province_id = 2655
+							}
+						}
+						change_culture = armenian_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								area = west_georgia_area
+								area = east_georgia_area
+								area = shemakha_area
+								area = shirvan_area
+							}
+							NOT = {
+								province_id = 3090
+								province_id = 5076
+								province_id = 3807
+								province_id = 3809
+							}
+						}
+						change_culture = georgian_roman
+					}
+					if = {
+						limit = {
+							region = magyar_plains_region
+							NOT = {
+								province_id = 2846
+							}
+						}
+						change_culture = hungarian_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = south_carpathia_region
+								province_id = 2380
+								province_id = 3782
+								area = transylvania_area
+							}
+						}
+						change_culture = romanian_roman
+					}
+					if = {
+						limit = {
+							OR = {
+								region = east_balkan_region
+								region = central_balkan_region
+								region = west_balkan_region
+								area = carinthia_area
+								province_id = 2384
+							}
+							NOT = {
+								area = albania_area
+								province_id = 2381
+								province_id = 159
+							}
+						}
+						change_culture = south_slavic_roman
+					}
+					if = {
+						limit = {
+							area = albania_area
+						}
+						change_culture = albanian_roman
 					}
 					else_if = { 
 						limit = { 
-							continent = mena
+							OR = {
+								area = south_anatolia_region
+								area = north_anatolia_region
+							}
+							NOT = {
+								area = cilicia_area
+								area = teke_area
+								area = aydin_area
+								area = manisa_area
+								area = trebizond_area
+								province_id = 2553
+								province_id = 2552
+								province_id = 1446
+								province_id = 316
+								province_id = 1447
+								province_id = 1437
+								province_id = 328
+								province_id = 3392
+							}
 							has_port = no
 						}
 						change_culture = anatolian
@@ -1298,153 +1660,7 @@ province_event = {
 					}
 					change_culture = yungui
 				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						region = naples_region
-					}
-					change_culture = grecanici
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						region = sicily_region
-					}
-					change_culture = sikelianoi
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						OR = { 
-							region = east_balkan_region
-							region = central_balkan_region
-							region = west_balkan_region
-						}
-						NOT = { 
-							area = dobrogea_area
-						}
-					}
-					change_culture = slavoi
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						culture_group = romanian
-						NOT = { 
-							area = dobrogea_area
-						}
-					}
-					change_culture = vlachoi
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						OR = { 
-							region = crimea_region
-							culture_group = tartar_group
-							culture_group = caucasus_group
-						}
-						NOT = { 
-							area = crimea_area
-						}
-					}
-					change_culture = methoriakoi
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						culture_group = georgian_group
-						NOT = { 
-							area = trebizond_area
-						}
-					}
-					change_culture = georgianoi
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						OR = { 
-							area = malatya_area
-							area = sophene_area
-							area = hakkari_area
-							culture_group = armenian
-						}
-						NOT = { 
-							area = cilicia_area
-						}
-					}
-					change_culture = armenioi
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						region = syria_region
-					}
-					change_culture = suroi
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						culture_group = levantine
-						OR = { 
-							area = diyar_mudar_area
-							area = diyar_rabia_area
-							area = diyar_bakir_area
-							region = lower_mesopotamia_region
-						}
-					}
-					change_culture = irakinoi
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						region = egypt_region
-					}
-					change_culture = aigyptioi
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = greek_group
-						}
-						OR = { 
-							region = iran_region
-							region = fars_region
-							area = shemakha_area
-							culture_group = persian_group
-						}
-					}
-					change_culture = perses
-				}
-				else_if = { 
-					limit = { 
-						owner = { 
-							culture_group = maghreb
-						}
-						region = sicily_region
-					}
-					change_culture = siqiliya
-				}
+				
 				else_if = { 
 					limit = { 
 						owner = { 
@@ -1541,51 +1757,5 @@ province_event = {
 				hidden = yes
 			}
 		}
-	}
-}
-province_event = { 
-	id = culture_conversions.8
-	title = "culture_conversions.8.name"
-	desc = "culture_conversions.8.desc"
-	picture = REFORM_eventPicture
-	trigger = { 
-		OR = { 
-			culture = laz
-			culture = greek
-		}
-		owner = { 
-			NOT = { 
-				primary_culture = greek
-			}
-		}
-		OR = { 
-			area = trebizond_area
-			area = kastamonu_area
-			region = crimea_region
-			province_id = 3796
-		}
-	}
-	mean_time_to_happen = { 
-		years = 100
-		modifier = { 
-			factor = 0.9
-			owner = { 
-				stability = 2
-			}
-		}
-		modifier = { 
-			factor = 0.9
-			owner = { 
-				stability = 3
-			}
-		}
-		modifier = { 
-			factor = 0.8
-			base_production = 5
-		}
-	}
-	option = { 
-		name = "culture_conversions.8.opta"
-		change_culture = pontic
 	}
 }
