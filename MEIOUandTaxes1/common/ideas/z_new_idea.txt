@@ -789,33 +789,52 @@ roman_ideas = {
 	
 	roman_ideas_1 = {
 		prestige = 0.50
-		culture_conversion_cost = -0.20
+		legitimacy = 0.50
+		advisor_pool = 3
+        monthly_splendor = 1
+		#ce reduction
 	}
 	roman_ideas_2 = {
-		stability_cost_modifier = -0.10
-		# capitol infra cost
+		stability_cost_modifier = -0.25
+		discipline = 0.25
+		drill_gain_modifier = 1
+		drill_decay_modifier = -0.50
+		#infrastructure maintenance
 	}
 	roman_ideas_3 = {
-		defensiveness = 0.15
-		idea_cost = -0.075
+		defensiveness = 0.75
+		fort_maintenance_modifier = -0.75
+		movement_speed = 0.05
+		land_morale = 0.25
+		leader_cost = -0.33
 	}
 	roman_ideas_4 = {
-		years_of_nationalism = -5
-		tolerance_own = 1
+		years_of_nationalism = -15
+		tolerance_own = 3
+		missionaries = 3
+		global_missionary_strength = 0.05
 		#spirituality concern
 	}
 	roman_ideas_5 = {
-		build_cost = -0.05
-		movement_speed_onto_off_boat_modifier = 0.10
+		build_cost = -0.33
+		global_own_trade_power = 0.20
+	    admiral_skill_gain_modifier = 0.33
+		movement_speed_onto_off_boat_modifier = 0.25
+        liberty_desire_from_subject_development = -0.33
 	}
 	roman_ideas_6 = {
-		diplomatic_upkeep = 1
-		diplomats = 1
-		spy_offence = 0.10
+		diplomats = 2
+	    diplomatic_upkeep = 5
+		fabricate_claims_cost = -0.25
+		spy_offence = 0.50
+		siege_ability = 0.50
 	}
 	roman_ideas_7 = {
-		administrative_efficiency = 0.05
-		province_warscore_cost = -0.10
+		global_autonomy = -0.250
+		administrative_efficiency = 0.20
+		province_warscore_cost = -0.25
+		yearly_corruption = -0.25
+        war_exhaustion = -0.10
 	}
 }
 
