@@ -1,365 +1,537 @@
-
-bri_mission_one = {
+bri_mission_one = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bri
 	}
 	has_country_shield = yes
-	
-	bri_centralise_state = {
+	bri_centralise_state = { 
 		icon = mission_conquer_50_development
 		required_missions = { }
-		trigger = {
+		trigger = { 
 			absolutism = 30
 		}
-		effect = {
+		effect = { 
 			add_legitimacy = 10
 			add_horde_unity = 10
 			add_republican_tradition = 10
 		}
 	}
-	
-	bri_brittany_university = {
+	bri_brittany_university = { 
 		icon = mission_early_game_buildings
-		required_missions = { bri_centralise_state }
-		provinces_to_highlight = {
+		required_missions = { bri_centralise_state}
+		provinces_to_highlight = { 
 			province_id = 1388
 		}
-		trigger = {
-			1388 = {
+		trigger = { 
+			1388 = { 
 				owned_by = ROOT
-				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				check_key = { lhs = Modi_KnowledgeOutput value = 0.2 }
+				OR = { 
+					has_building = urban_infrastructure_2
+					custom_trigger_tooltip = { 
+						tooltip = hasbuildingorbetter_tooltip
+						OR = { 
+							has_building = urban_infrastructure_3
+							has_building = urban_infrastructure_4
+							has_building = urban_infrastructure_5
+							has_building = urban_infrastructure_6
+						}
+					}
+				}
+				check_variable = { 
+					which = gzk
+					value = 0.2
+				}
 			}
 		}
-		effect = {
-			1388 = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			1388 = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-	bri_military_harbour = {
+	bri_military_harbour = { 
 		icon = mission_early_game_buildings
-		required_missions = { bri_brittany_university }
-		provinces_to_highlight = {
+		required_missions = { bri_brittany_university}
+		provinces_to_highlight = { 
 			province_id = 170
 		}
-		trigger = {
-			170 = {
+		trigger = { 
+			170 = { 
 				owned_by = ROOT
-				HasBuildingOrBetter = { b1=harbour_infrastructure_3 b2=harbour_infrastructure_4 b3=harbour_infrastructure_5 b4=harbour_infrastructure_6 } #HasBuildingOrBetter = { b1=military_harbour_2 b2=military_harbour_3 b3=military_harbour_4 }
+				OR = { 
+					has_building = harbour_infrastructure_3
+					custom_trigger_tooltip = { 
+						tooltip = hasbuildingorbetter_tooltip
+						OR = { 
+							has_building = harbour_infrastructure_4
+							has_building = harbour_infrastructure_5
+							has_building = harbour_infrastructure_6
+						}
+					}
+				}
 			}
 		}
-		effect = {
-			170 = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			170 = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
 }
-
-bri_mission_two = {
+bri_mission_two = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bri
 	}
 	has_country_shield = yes
-	
-	bri_unify_bretagne = {
+	bri_unify_bretagne = { 
 		icon = mission_cannons_firing
-		required_missions = {  }
-		provinces_to_highlight = {
+		required_missions = { }
+		provinces_to_highlight = { 
 			area = brittany_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			brittany_area = {
+		trigger = { 
+			brittany_area = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			form_BRI_effect = yes
-			hidden_effect = { complete_mission = bri_unify_bretagne }
-		}
-	}
-}
-
-bri_mission_three = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential = {
-		has_country_flag = d_of_bri
-	}
-	has_country_shield = yes
-	
-	bri_build_army = {
-		icon = mission_build_up_to_force_limit
-		trigger = {
-			army_size_percentage = 1
-		}
-		effect = {
-			add_country_modifier = {
-				name = "thriving_arms_industry"
-				duration = 9125 #25 years
+		effect = { 
+			brittany_area = { 
+				limit = { 
+					owned_by = ROOT
+				}
+				hidden_effect = { 
+					remove_core = ROOT
+				}
+				add_core = ROOT
+			}
+			brittany_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			if = { 
+				limit = { 
+					custom_trigger_tooltip = { 
+						tooltip = is_monarchy_tt
+						OR = { 
+							government = monarchy
+							government = has_harem
+						}
+					}
+					OR = { 
+						has_country_modifier = title_1
+						has_country_modifier = title_2
+					}
+				}
+				remove_country_modifier = title_1
+				remove_country_modifier = title_2
+				remove_country_modifier = title_4
+				remove_country_modifier = title_5
+				remove_country_modifier = title_6
+				add_country_modifier = { 
+					name = title_3
+					duration = -1
+				}
+				clr_country_flag = title_1
+				clr_country_flag = title_2
+				clr_country_flag = title_3
+				clr_country_flag = title_4
+				clr_country_flag = title_5
+				clr_country_flag = title_6
+				set_country_flag = title_3
+			}
+			if = { 
+				limit = { 
+					NOT = { 
+						exists = BRI
+					}
+				}
+				change_tag = BRI
+			}
+			add_absolutism = 10
+			if = { 
+				limit = { 
+					has_custom_ideas = no
+					NOT = { 
+						has_idea_group = breton_ideas
+					}
+				}
+				hidden_effect = { 
+					country_event = { 
+						id = ideagroups.9000
+						days = 1
+					}
+				}
+				custom_tooltip = swap_national_ideas
+			}
+			hidden_effect = { 
+				complete_mission = bri_unify_bretagne
 			}
 		}
 	}
 }
-
-bri_mission_four = {
-	slot = 2
+bri_mission_three = { 
+	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bri
 	}
 	has_country_shield = yes
-	
-	bri_fortify_bretagne = {
+	bri_build_army = { 
+		icon = mission_build_up_to_force_limit
+		trigger = { 
+			army_size_percentage = 1
+		}
+		effect = { 
+			add_country_modifier = { 
+				name = "thriving_arms_industry"
+				duration = 9125
+			}
+		}
+	}
+}
+bri_mission_four = { 
+	slot = 2
+	generic = no
+	ai = yes
+	potential = { 
+		has_country_flag = d_of_bri
+	}
+	has_country_shield = yes
+	bri_fortify_bretagne = { 
 		icon = mission_european_fort
-		required_missions = { bri_unify_bretagne bri_build_army }
+		required_missions = { bri_unify_bretagne bri_build_army}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 169
 				province_id = 1388
 			}
 		}
-		trigger = {
-			OR = {
-				169 = {
-					HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th }
+		trigger = { 
+			OR = { 
+				169 = { 
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
 					owned_by = ROOT
 				}
-				1388 = {
-					HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th }
+				1388 = { 
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 50
 		}
 	}
 }
-
-bri_mission_five = {
+bri_mission_five = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bri
 	}
 	has_country_shield = yes
-	
-	bri_conquer_anjou = {
+	bri_conquer_anjou = { 
 		icon = mission_unite_home_region
-		required_missions = { bri_fortify_bretagne }
+		required_missions = { bri_fortify_bretagne}
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = anjou_poitou_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			anjou_poitou_area = {
+		trigger = { 
+			anjou_poitou_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-	bri_conquer_loire = {
+	bri_conquer_loire = { 
 		icon = mission_unite_home_region
-		required_missions = { bri_conquer_anjou }
-		provinces_to_highlight = {
+		required_missions = { bri_conquer_anjou}
+		provinces_to_highlight = { 
 			area = val_de_loire_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			val_de_loire_area = {
+		trigger = { 
+			val_de_loire_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 10
 		}
 	}
-	
-	bri_annex_alencon = {
+	bri_annex_alencon = { 
 		icon = mission_have_two_subjects
-		required_missions = { bri_conquer_loire }
-		provinces_to_highlight = {
+		required_missions = { bri_conquer_loire}
+		provinces_to_highlight = { 
 			area = normandy_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			normandy_area = {
+		trigger = { 
+			normandy_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 		}
 	}
 }
-
-bri_mission_six = {
+bri_mission_six = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bri
 	}
 	has_country_shield = yes
-	
-	bri_conquer_munster = {
+	bri_conquer_munster = { 
 		icon = mission_unite_home_region
-		required_missions = { bri_fortify_bretagne }
+		required_missions = { bri_fortify_bretagne}
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = munster_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			munster_area = {
+		trigger = { 
+			munster_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_navy_tradition = 20
 		}
 	}
-	
-	bri_unify_ireland = {
+	bri_unify_ireland = { 
 		icon = mission_unite_home_region
-		required_missions = { bri_conquer_munster }
-		provinces_to_highlight = {
+		required_missions = { bri_conquer_munster}
+		provinces_to_highlight = { 
 			region = ireland_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			ireland_region = {
+		trigger = { 
+			ireland_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-	bri_conquer_scotland = {
+	bri_conquer_scotland = { 
 		icon = mission_unite_home_region
-		required_missions = { bri_unify_ireland }
-		provinces_to_highlight = {
+		required_missions = { bri_unify_ireland}
+		provinces_to_highlight = { 
 			region = scotland_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			scotland_region = {
+		trigger = { 
+			scotland_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 20
 		}
 	}
-	
-	bri_fortify_scotland = {
+	bri_fortify_scotland = { 
 		icon = mission_european_fort
-		required_missions = { bri_conquer_scotland }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { bri_conquer_scotland}
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 1416
 				province_id = 3337
 			}
 		}
-		trigger = {
-			OR = {
-				1416 = {
-					HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th }
+		trigger = { 
+			OR = { 
+				1416 = { 
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
 					owned_by = ROOT
 				}
-				3337 = {
-					HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th }
+				3337 = { 
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 50
 		}
 	}
-	
-	bri_conquer_wales = {
+	bri_conquer_wales = { 
 		icon = mission_unite_home_region
-		required_missions = { bri_fortify_scotland }
+		required_missions = { bri_fortify_scotland}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = wales_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			wales_area = {
+		trigger = { 
+			wales_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 25
 		}
 	}
-	
-	bri_conquer_iceland = {
+	bri_conquer_iceland = { 
 		icon = mission_unite_home_region
-		required_missions = { bri_conquer_wales }
-		provinces_to_highlight = {
+		required_missions = { bri_conquer_wales}
+		provinces_to_highlight = { 
 			area = subarctic_islands_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			subarctic_islands_area = {
+		trigger = { 
+			subarctic_islands_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 		}
 	}

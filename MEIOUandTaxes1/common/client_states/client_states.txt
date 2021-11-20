@@ -1,110 +1,123 @@
-westphalia =
-{
+westphalia = { 
 	region = westphalian_circle_region
-	
-	name = {
+	name = { 
 		name = "KINGDOM_OF_WESTPHALIA"
-		trigger = {
-			from = {
-				monarchy_or_harem_gov = yes
+		trigger = { 
+			from = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
 			}
 		}
 	}
-	
-	name = {
+	name = { 
 		name = "REPUBLIC_OF_WESTPHALIA"
-		trigger = {
-			from = {
+		trigger = { 
+			from = { 
 				government = republic
 			}
 		}
 	}
 }
-
-two_sicilies = {
+two_sicilies = { 
 	region = naples_region
-	
-	name = {
+	name = { 
 		name = "KINGDOM_OF_NAPLES"
-		trigger = {
-			from = {
-				monarchy_or_harem_gov = yes
+		trigger = { 
+			from = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
 			}
 		}
 	}
-	
-	name = {
+	name = { 
 		name = "REPUBLICS_OF_NAPLES"
-		trigger = {
-			from = {
+		trigger = { 
+			from = { 
 				government = republic
 			}
 		}
 	}
 }
-
-central_italy = {
+central_italy = { 
 	region = central_italy_region
-	
-	name = {
+	name = { 
 		name = "KINGDOM_OF_ITALY"
-		trigger = {
-			from = {
-				monarchy_or_harem_gov = yes
+		trigger = { 
+			from = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
 			}
 		}
 	}
-	
-	name = {
+	name = { 
 		name = "SUBALPINE_REPUBLIC"
-		trigger = {
-			from = {
+		trigger = { 
+			from = { 
 				government = republic
 			}
 		}
 	}
 }
-
-
-west_italy = {
+west_italy = { 
 	region = west_italy_region
-	
-	name = {
+	name = { 
 		name = "KINGDOM_OF_ITALY"
-		trigger = {
-			from = {
-				monarchy_or_harem_gov = yes
+		trigger = { 
+			from = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
 			}
 		}
 	}
-	
-	name = {
+	name = { 
 		name = "SUBALPINE_REPUBLIC"
-		trigger = {
-			from = {
+		trigger = { 
+			from = { 
 				government = republic
 			}
 		}
 	}
 }
-
-
-east_italy = {
+east_italy = { 
 	region = east_italy_region
-	
-	name = {
+	name = { 
 		name = "KINGDOM_OF_ITALY"
-		trigger = {
-			from = {
-				monarchy_or_harem_gov = yes
+		trigger = { 
+			from = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
 			}
 		}
 	}
-	
-	name = {
+	name = { 
 		name = "SUBALPINE_REPUBLIC"
-		trigger = {
-			from = {
+		trigger = { 
+			from = { 
 				government = republic
 			}
 		}

@@ -1,44 +1,48 @@
-country_decisions = {
-	UI_show_sector_centers = {
-		potential = { ai = no }
-		allow = {
-			if = {
-				limit = {
+country_decisions = { 
+	UI_show_sector_centers = { 
+		potential = { 
+			ai = no
+		}
+		allow = { 
+			if = { 
+				limit = { 
 					has_country_flag = UI_ssc_all
 				}
-				custom_trigger_tooltip = {
+				custom_trigger_tooltip = { 
 					tooltip = UI_ssc_allow1
 					always = yes
 				}
 			}
-			else = {
-				custom_trigger_tooltip = {
+			else = { 
+				custom_trigger_tooltip = { 
 					tooltip = UI_ssc_allow2
 					always = yes
 				}
 			}
 		}
-		provinces_to_highlight = {
-			if = {
-				limit = {
-					ROOT = { has_country_flag = UI_ssc_all }
+		provinces_to_highlight = { 
+			if = { 
+				limit = { 
+					ROOT = { 
+						has_country_flag = UI_ssc_all
+					}
 				}
-				UI_show_sector_highest_trigger = yes
+				has_province_flag = TN_SectorCent
 			}
-			else = {
+			else = { 
 				owned_by = ROOT
-				UI_show_sector_highest_trigger = yes
+				has_province_flag = TN_SectorCent
 			}
 		}
-		effect = {
-			if = {
-				limit = {
+		effect = { 
+			if = { 
+				limit = { 
 					has_country_flag = UI_ssc_all
 				}
 				custom_tooltip = UI_ssc_effect1
 				clr_country_flag = UI_ssc_all
 			}
-			else = {
+			else = { 
 				custom_tooltip = UI_ssc_effect2
 				set_country_flag = UI_ssc_all
 			}

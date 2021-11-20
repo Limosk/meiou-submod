@@ -1,287 +1,287 @@
-country_decisions = {
-	control_kurdish_princelings = {
-		potential = {
-			upper_mesopotamia_region = {
-				AND = {
+country_decisions = { 
+	control_kurdish_princelings = { 
+		potential = { 
+			upper_mesopotamia_region = { 
+				AND = { 
 					owned_by = PREV
 					has_province_modifier = kurdish_princelings
 				}
 			}
 		}
-		allow = {
+		allow = { 
 			absolutism = 60
 			mil_power = 150
 			is_at_war = no
 		}
-		effect = {
+		effect = { 
 			add_mil_power = -100
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					has_province_modifier = kurdish_princelings
 				}
 				remove_province_modifier = kurdish_princelings
-				if = {
-					limit = {
-						NOT = {
-							owner = {
+				if = { 
+					limit = { 
+						NOT = { 
+							owner = { 
 								tag = KRD
 							}
 						}
 					}
-					spawn_rebels = {
+					spawn_rebels = { 
 						type = noble_rebels
 						size = 2
 					}
 				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
-			modifier = {
+			modifier = { 
 				factor = 0
-				NOT = {
+				NOT = { 
 					primary_culture = kurdish
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0
-				NOT = {
+				NOT = { 
 					stability = 2
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0
 				is_at_war = no
 			}
 		}
 		ai_importance = 1000
 	}
-	assimilate_ditmarsian_republic = {
-		potential = {
+	assimilate_ditmarsian_republic = { 
+		potential = { 
 			owns = 3722
-			3722 = {
+			3722 = { 
 				has_province_modifier = ditmarsian_republic
 			}
 		}
-		allow = {
+		allow = { 
 			absolutism = 60
 			adm_power = 150
 			is_at_war = no
 		}
-		effect = {
+		effect = { 
 			add_adm_power = -100
-			3722 = {
+			3722 = { 
 				remove_province_modifier = ditmarsian_republic
-				spawn_rebels = {
+				spawn_rebels = { 
 					type = burghers_rebels
 					size = 3
 				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
-			modifier = {
+			modifier = { 
 				factor = 0
-				NOT = {
+				NOT = { 
 					stability = 2
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0
 				is_at_war = no
 			}
 		}
 		ai_importance = 100
 	}
-	assimilate_duchy_of_wroclaw = {
-		potential = {
+	assimilate_duchy_of_wroclaw = { 
+		potential = { 
 			owns = 1359
-			1359 = {
+			1359 = { 
 				has_province_modifier = duchy_of_wroclaw
 			}
 		}
-		allow = {
+		allow = { 
 			absolutism = 60
-			OR = {
+			OR = { 
 				tag = WRO
 				dip_power = 100
 			}
 			is_at_war = no
 		}
-		effect = {
-			1359 = {
+		effect = { 
+			1359 = { 
 				remove_province_modifier = duchy_of_wroclaw
-				if = {
-					limit = {
-						NOT = {
-							owner = {
+				if = { 
+					limit = { 
+						NOT = { 
+							owner = { 
 								tag = WRO
 							}
 						}
 					}
-					owner = {
+					owner = { 
 						add_dip_power = -50
 					}
-					spawn_rebels = {
+					spawn_rebels = { 
 						type = noble_rebels
 						size = 2
 					}
 				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
-			modifier = {
+			modifier = { 
 				factor = 0
 				culture_group = west_slavic
-				NOT = {
+				NOT = { 
 					tag = WRO
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0
 				is_at_war = no
 			}
 		}
 		ai_importance = 100
 	}
-	abolish_qasim_khanate = {
-		potential = {
+	abolish_qasim_khanate = { 
+		potential = { 
 			owns = 301
-			301 = {
+			301 = { 
 				has_province_modifier = qasim_khanate
 			}
 		}
-		allow = {
+		allow = { 
 			mil_power = 150
 			is_at_war = no
-			OR = {
+			OR = { 
 				adm_tech = 35
 				technology_group = western
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = -100
 			set_country_flag = qasim_abolished
 			if = { 
-				limit = {
+				limit = { 
 					has_country_modifier = qasim_khanate_levies
 				}
 				remove_country_modifier = qasim_khanate_levies
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					has_province_modifier = qasim_khanate
 				}
 				remove_province_modifier = qasim_khanate
-				if = {
-					limit = {
-						NOT = {
-							owner = {
+				if = { 
+					limit = { 
+						NOT = { 
+							owner = { 
 								tag = KAZ
 							}
 						}
 					}
-					spawn_rebels = {
+					spawn_rebels = { 
 						type = noble_rebels
 						size = 2
 					}
 				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
-			modifier = {
+			modifier = { 
 				factor = 0
-				NOT = {
+				NOT = { 
 					stability = 2
 				}
 			}
 		}
 		ai_importance = 1000
 	}
-	assimilate_principalty_of_taranto = {
-		potential = {
-			principality_of_taranto_group = {
-				AND = {
+	assimilate_principalty_of_taranto = { 
+		potential = { 
+			principality_of_taranto_group = { 
+				AND = { 
 					owned_by = PREV
 					has_province_modifier = principality_of_taranto
 				}
 			}
 		}
-		allow = {
-			OR = {
-				AND = {
+		allow = { 
+			OR = { 
+				AND = { 
 					absolutism = 20
-					OR = {
-						AND = {
+					OR = { 
+						AND = { 
 							culture_group = napolitan
 							dip_power = 100
 						}
-						AND = {
-							NOT = {
+						AND = { 
+							NOT = { 
 								culture_group = napolitan
 							}
 							dip_power = 200
 						}
 					}
 				}
-				NOT = {
+				NOT = { 
 					religion_group = christian
 				}
 			}
 			is_at_war = no
 			adm = 3
 		}
-		effect = {
-			if = {
-				limit = {
+		effect = { 
+			if = { 
+				limit = { 
 					culture_group = napolitan
 				}
 				add_dip_power = -100
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						province_group = principality_of_taranto_group
 						has_province_modifier = principality_of_taranto
 					}
 					remove_province_modifier = principality_of_taranto
 				}
 			}
-			else_if = {
-				limit = {
-					NOT = {
+			else_if = { 
+				limit = { 
+					NOT = { 
 						culture_group = napolitan
 					}
 				}
 				add_dip_power = -200
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						province_group = principality_of_taranto_group
 						has_province_modifier = principality_of_taranto
 					}
 					remove_province_modifier = principality_of_taranto
-					spawn_rebels = {
+					spawn_rebels = { 
 						type = noble_rebels
 						size = 1
 					}
 				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
-			modifier = {
+			modifier = { 
 				factor = 0.5
-				NOT = {
+				NOT = { 
 					culture_group = napolitan
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 3
-				NOT = {
+				NOT = { 
 					religion_group = christian
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0
 				is_at_war = no
 			}

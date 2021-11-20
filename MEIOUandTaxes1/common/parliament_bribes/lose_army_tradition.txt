@@ -1,15 +1,13 @@
-lose_army_tradition = {
-	trigger = {
+lose_army_tradition = { 
+	trigger = { 
 		always = yes
 	}
-	
-	effect = {
+	effect = { 
 		add_army_tradition = -2
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 0.1
 			is_at_war = yes
 		}

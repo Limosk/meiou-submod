@@ -1,90 +1,273 @@
 namespace = flavor_interregnum
-
-country_event = {
+country_event = { 
 	id = flavor_interregnum.1
 	title = "flavor_interregnum.1.n"
 	desc = "flavor_interregnum.1.t"
 	picture = CIVIL_WAR_eventPicture
 	major = yes
 	is_triggered_only = yes
-	immediate = {
-		if = {
-			limit = {
+	immediate = { 
+		if = { 
+			limit = { 
 				stability = 0
-				NOT = {
+				NOT = { 
 					stability = 1
 				}
 			}
-			random_list = {
-				30 = {}
-				40 = {
-					Stab_Subtract50Percent = yes
+			random_list = { 
+				30 = { }
+				40 = { 
+					hidden_effect = { 
+						change_variable = { 
+							which = ahf
+							value = -600
+						}
+						if = { 
+							limit = { 
+								check_variable = { 
+									which = ahf
+									value = 1200
+								}
+							}
+							if = { 
+								limit = { 
+									stability = 3
+								}
+								set_variable = { 
+									which = ahf
+									value = 1200
+								}
+							}
+							else = { 
+								subtract_variable = { 
+									which = ahf
+									value = 1200
+								}
+								add_stability = 1
+							}
+						}
+						else_if = { 
+							limit = { 
+								NOT = { 
+									check_variable = { 
+										which = ahf
+										value = 0
+									}
+								}
+							}
+							if = { 
+								limit = { 
+									NOT = { 
+										stability = -2
+									}
+								}
+								set_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+							else = { 
+								change_variable = { 
+									which = ahf
+									value = 1200
+								}
+								add_stability = -1
+							}
+						}
+						set_variable = { 
+							which = ahd
+							which = ahf
+						}
+						divide_variable = { 
+							which = ahd
+							value = 12
+						}
+						multiply_variable = { 
+							which = ahd
+							value = 0.1
+						}
+						multiply_variable = { 
+							which = ahd
+							value = 10
+						}
+						set_variable = { 
+							which = lsc
+							value = 100
+						}
+						subtract_variable = { 
+							which = lsc
+							which = ahd
+						}
+					}
+					custom_tooltip = POP_StabSubtract50
+					if = { 
+						limit = { 
+							is_emperor_of_china = yes
+						}
+						add_mandate = -2.5
+					}
 				}
-				30 = {
-					Stab_Subtract1 = yes
+				30 = { 
+					hidden_effect = { 
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							add_stability = -1
+						}
+					}
+					tooltip = { 
+						add_stability = -1
+					}
+					if = { 
+						limit = { 
+							is_emperor_of_china = yes
+						}
+						add_mandate = -5
+					}
 				}
 			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				stability = 1
-				NOT = {
+				NOT = { 
 					stability = 2
 				}
 			}
-			Stab_Subtract2 = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					add_stability = -2
+				}
+			}
+			tooltip = { 
+				add_stability = -2
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = -10
+			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				stability = 2
-				NOT = {
+				NOT = { 
 					stability = 3
 				}
 			}
-			Stab_Subtract3 = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					add_stability = -3
+				}
+			}
+			tooltip = { 
+				add_stability = -3
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = -15
+			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				stability = 3
 			}
-			Stab_Subtract4 = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					add_stability = -4
+				}
+			}
+			tooltip = { 
+				add_stability = -4
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = -20
+			}
 		}
-		random_owned_province = {
-			limit = {
-				NOT = {
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
 					has_province_modifier = pretender_organizing
 				}
 				culture_group = ROOT
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
 			custom_tooltip = pretender_organizing_tt
 			add_unrest = 5
 		}
-		random_owned_province = {
-			limit = {
-				NOT = {
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
 					has_province_modifier = pretender_organizing
 				}
 				culture_group = ROOT
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
 			custom_tooltip = pretender_organizing_tt
 			add_unrest = 5
 		}
-		random_owned_province = {
-			limit = {
-				NOT = {
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
 					has_province_modifier = pretender_organizing
 				}
 				culture_group = ROOT
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
@@ -92,30 +275,36 @@ country_event = {
 			add_unrest = 5
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_interregnum.1.a"
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_interregnum.2
 	title = "flavor_interregnum.2.n"
 	desc = "flavor_interregnum.2.t"
 	picture = MILITARY_CAMP_eventPicture
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		num_of_cities = 3
-		monarchy_or_harem_gov = yes
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
 	}
-	option = {
+	option = { 
 		name = "flavor_interregnum.2.a"
-		random_owned_province = {
-			limit = {
-				OR = {
+		random_owned_province = { 
+			limit = { 
+				OR = { 
 					is_core = ROOT
 					is_capital = yes
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
@@ -124,17 +313,17 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_interregnum.3
 	title = "flavor_interregnum.3.n"
 	desc = "flavor_interregnum.3.t"
 	picture = CIVIL_WAR_eventPicture
 	major = yes
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "flavor_interregnum.3.a"
-		hidden_effect = {
-			add_ruler_modifier = {
+		hidden_effect = { 
+			add_ruler_modifier = { 
 				name = "interregnum_happened"
 			}
 		}

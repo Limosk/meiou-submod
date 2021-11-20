@@ -1,187 +1,216 @@
-pom_missions_5 = {
+pom_missions_5 = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = d_of_pom
 			has_country_flag = d_of_sh
 		}
 	}
 	has_country_shield = yes
-	
-	pom_holstein = {
+	pom_holstein = { 
 		icon = mission_conquer_50_development
 		required_missions = { }
-		
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = holstein_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			holstein_area = {
+		trigger = { 
+			holstein_area = { 
 				type = all
-				OR = {
-					owner = { free_city_trigger = yes }
+				OR = { 
+					owner = { 
+						AND = { 
+							government = republic
+							has_reform = Pol_Mandate1
+							has_reform = Pol_Stylings1
+							has_reform = Pol_ExtraPowers1
+							has_reform = Pol_Assembly2
+							has_reform = Pol_TermOfOffice5
+							has_reform = free_city
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 		}
 	}
-	pom_jutland = {
+	pom_jutland = { 
 		icon = mission_have_two_subjects
-		required_missions = { pom_holstein pom_unite_pomerania }
-		
-		provinces_to_highlight = {
+		required_missions = { pom_holstein pom_unite_pomerania}
+		provinces_to_highlight = { 
 			area = jutland_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			jutland_area = {
+		trigger = { 
+			jutland_area = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			denmark_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			denmark_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_denmark = {
+	pom_denmark = { 
 		icon = mission_unite_home_region
-		required_missions = { pom_jutland }
-		provinces_to_highlight = {
+		required_missions = { pom_jutland}
+		provinces_to_highlight = { 
 			area = denmark_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			denmark_area = {
+		trigger = { 
+			denmark_area = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			skaneland_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			skaneland_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_skane = {
+	pom_skane = { 
 		icon = mission_european_fort
-		required_missions = { pom_denmark }
-		provinces_to_highlight = {
+		required_missions = { pom_denmark}
+		provinces_to_highlight = { 
 			area = skaneland_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			skaneland_area = {
+		trigger = { 
+			skaneland_area = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			scandinavia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			scandinavia_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_sweden = {
+	pom_sweden = { 
 		icon = mission_cannons_firing
-		required_missions = { pom_skane }
-		provinces_to_highlight = {
+		required_missions = { pom_skane}
+		provinces_to_highlight = { 
 			region = scandinavia_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			scandinavia_region = {
+		trigger = { 
+			scandinavia_region = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			19 = {
+		effect = { 
+			19 = { 
 				add_permanent_claim = ROOT
 			}
-			30 = {
+			30 = { 
 				add_permanent_claim = ROOT
 			}
-			27 = {
+			27 = { 
 				add_permanent_claim = ROOT
 			}
-			28 = {
+			28 = { 
 				add_permanent_claim = ROOT
 			}
-			32 = {
+			32 = { 
 				add_permanent_claim = ROOT
 			}
-			3401 = {
+			3401 = { 
 				add_permanent_claim = ROOT
 			}
-			34 = {
+			34 = { 
 				add_permanent_claim = ROOT
 			}
-			3400 = {
+			3400 = { 
 				add_permanent_claim = ROOT
 			}
-			36 = {
+			36 = { 
 				add_permanent_claim = ROOT
 			}
-			3767 = {
+			3767 = { 
 				add_permanent_claim = ROOT
 			}
-			3768 = {
+			3768 = { 
 				add_permanent_claim = ROOT
 			}
-			1354 = {
+			1354 = { 
 				add_permanent_claim = ROOT
 			}
-			37 = {
+			37 = { 
 				add_permanent_claim = ROOT
 			}
-			1430 = {
+			1430 = { 
 				add_permanent_claim = ROOT
 			}
-			3399 = {
+			3399 = { 
 				add_permanent_claim = ROOT
 			}
-			38 = {
+			38 = { 
 				add_permanent_claim = ROOT
 			}
-			1264 = {
+			1264 = { 
 				add_permanent_claim = ROOT
 			}
-			39 = {
+			39 = { 
 				add_permanent_claim = ROOT
 			}
-			1432 = {
+			1432 = { 
 				add_permanent_claim = ROOT
 			}
-			1265 = {
+			1265 = { 
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_unite_baltic_coast = {
+	pom_unite_baltic_coast = { 
 		icon = mission_assemble_an_army
-		required_missions = { pom_sweden }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { pom_sweden}
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 19
 				province_id = 30
 				province_id = 27
@@ -203,622 +232,908 @@ pom_missions_5 = {
 				province_id = 1432
 				province_id = 1265
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			19 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			30 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			27 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			28 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			32 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			3401 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			3400 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			36 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			3767 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			3768 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			1354 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			37 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			1430 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			3399 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			38 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			1264 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			39 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			1432 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			1265 = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		trigger = { 
+			19 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			30 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			27 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			28 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			32 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			3401 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			3400 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			36 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			3767 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			3768 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1354 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			37 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1430 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			3399 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			38 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1264 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			39 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1432 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1265 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
 			add_prestige = 15
 		}
 	}
-	pom_low_countries = {
+	pom_low_countries = { 
 		icon = mission_european_fort
-		required_missions = { pom_form_germany }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { pom_form_germany}
+		provinces_to_highlight = { 
+			OR = { 
 				region = low_countries_region
 				region = belgii_region
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			low_countries_region = {
+		trigger = { 
+			low_countries_region = { 
 				type = all
 				owned_by = ROOT
 			}
-			belgii_region = {
+			belgii_region = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			high_countries_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			high_countries_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_high_countries = {
+	pom_high_countries = { 
 		icon = mission_european_fort
-		required_missions = { pom_low_countries }
-		provinces_to_highlight = {
+		required_missions = { pom_low_countries}
+		provinces_to_highlight = { 
 			region = high_countries_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			high_countries_region = {
+		trigger = { 
+			high_countries_region = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_adm_power = 25
 			add_dip_power = 25
 			add_mil_power = 25
 		}
 	}
 }
-
-pom_missions_6 = {
+pom_missions_6 = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = d_of_pom
 			has_country_flag = d_of_sh
 		}
 	}
 	has_country_shield = yes
-	
-	pom_unite_pomerania = {
+	pom_unite_pomerania = { 
 		icon = mission_cossack_cavalry
 		required_missions = { }
-		
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 47
 				province_id = 2843
 				province_id = 2844
 				province_id = 2847
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			OR = {
-				NOT = { exists = POM }
+		trigger = { 
+			OR = { 
+				NOT = { 
+					exists = POM
+				}
 				tag = POM
 			}
-			owns = 47 # Vorpommern
-			owns = 2843 # Stralsund
-			owns = 2844 # Pyritz
-			owns = 2847 # Stargard
-			is_core = 47 # Vorpommern
-			is_core = 2843 # Stralsund
-			is_core = 2844 # Pyritz
-			is_core = 2847 # Stargard
+			owns = 47
+			owns = 2843
+			owns = 2844
+			owns = 2847
+			is_core = 47
+			is_core = 2843
+			is_core = 2844
+			is_core = 2847
 			is_at_war = no
-			is_free_or_tributary_trigger = yes
+			AND = { 
+				OR = { 
+					is_subject = no
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
 		}
-		effect = {
-			if = {
-				limit = {
+		effect = { 
+			if = { 
+				limit = { 
 					has_country_flag = d_of_pom
 					primary_culture = pommeranian
 				}
-				country_event = { id = mission_event.039 }
+				country_event = { 
+					id = mission_event.039
+				}
 			}
-			jutland_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			jutland_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			brandenburg_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
-					NOT = { owner = { free_city_trigger = yes } }
+			brandenburg_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						owner = { 
+							AND = { 
+								government = republic
+								has_reform = Pol_Mandate1
+								has_reform = Pol_Stylings1
+								has_reform = Pol_ExtraPowers1
+								has_reform = Pol_Assembly2
+								has_reform = Pol_TermOfOffice5
+								has_reform = free_city
+							}
+						}
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			prussia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
-					NOT = { owner = { free_city_trigger = yes } }
+			prussia_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						owner = { 
+							AND = { 
+								government = republic
+								has_reform = Pol_Mandate1
+								has_reform = Pol_Stylings1
+								has_reform = Pol_ExtraPowers1
+								has_reform = Pol_Assembly2
+								has_reform = Pol_TermOfOffice5
+								has_reform = free_city
+							}
+						}
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_brandenburg = {
+	pom_brandenburg = { 
 		icon = mission_monarch_in_throne_room
-		required_missions = { pom_unite_pomerania  }
-		
-		provinces_to_highlight = {
+		required_missions = { pom_unite_pomerania}
+		provinces_to_highlight = { 
 			area = brandenburg_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			brandenburg_area = {
+		trigger = { 
+			brandenburg_area = { 
 				type = all
-				OR = {
-					owner = { free_city_trigger = yes }
+				OR = { 
+					owner = { 
+						AND = { 
+							government = republic
+							has_reform = Pol_Mandate1
+							has_reform = Pol_Stylings1
+							has_reform = Pol_ExtraPowers1
+							has_reform = Pol_Assembly2
+							has_reform = Pol_TermOfOffice5
+							has_reform = free_city
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
-			lower_saxon_circle_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
-					NOT = { owner = { free_city_trigger = yes } }
+		effect = { 
+			lower_saxon_circle_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						owner = { 
+							AND = { 
+								government = republic
+								has_reform = Pol_Mandate1
+								has_reform = Pol_Stylings1
+								has_reform = Pol_ExtraPowers1
+								has_reform = Pol_Assembly2
+								has_reform = Pol_TermOfOffice5
+								has_reform = free_city
+							}
+						}
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_lower_saxony = {
+	pom_lower_saxony = { 
 		icon = mission_cannons_firing
-		required_missions = { pom_brandenburg }
-		
-		provinces_to_highlight = {
+		required_missions = { pom_brandenburg}
+		provinces_to_highlight = { 
 			region = lower_saxon_circle_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			lower_saxon_circle_region = {
+		trigger = { 
+			lower_saxon_circle_region = { 
 				type = all
-				OR = {
-					owner = { free_city_trigger = yes }
+				OR = { 
+					owner = { 
+						AND = { 
+							government = republic
+							has_reform = Pol_Mandate1
+							has_reform = Pol_Stylings1
+							has_reform = Pol_ExtraPowers1
+							has_reform = Pol_Assembly2
+							has_reform = Pol_TermOfOffice5
+							has_reform = free_city
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
-			westphalian_circle_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
-					NOT = { owner = { free_city_trigger = yes } }
+		effect = { 
+			westphalian_circle_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						owner = { 
+							AND = { 
+								government = republic
+								has_reform = Pol_Mandate1
+								has_reform = Pol_Stylings1
+								has_reform = Pol_ExtraPowers1
+								has_reform = Pol_Assembly2
+								has_reform = Pol_TermOfOffice5
+								has_reform = free_city
+							}
+						}
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_westphalia = {
+	pom_westphalia = { 
 		icon = mission_build_up_to_force_limit
-		required_missions = { pom_lower_saxony }
-		
-		provinces_to_highlight = {
+		required_missions = { pom_lower_saxony}
+		provinces_to_highlight = { 
 			region = westphalian_circle_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			westphalian_circle_region = {
+		trigger = { 
+			westphalian_circle_region = { 
 				type = all
-				OR = {
-					owner = { free_city_trigger = yes }
+				OR = { 
+					owner = { 
+						AND = { 
+							government = republic
+							has_reform = Pol_Mandate1
+							has_reform = Pol_Stylings1
+							has_reform = Pol_ExtraPowers1
+							has_reform = Pol_Assembly2
+							has_reform = Pol_TermOfOffice5
+							has_reform = free_city
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
-			upper_rhenish_circle_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
-					NOT = { owner = { free_city_trigger = yes } }
+		effect = { 
+			upper_rhenish_circle_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						owner = { 
+							AND = { 
+								government = republic
+								has_reform = Pol_Mandate1
+								has_reform = Pol_Stylings1
+								has_reform = Pol_ExtraPowers1
+								has_reform = Pol_Assembly2
+								has_reform = Pol_TermOfOffice5
+								has_reform = free_city
+							}
+						}
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_upper_rhine = {
+	pom_upper_rhine = { 
 		icon = mission_conquer_5_states
-		required_missions = { pom_westphalia }
-		
-		provinces_to_highlight = {
+		required_missions = { pom_westphalia}
+		provinces_to_highlight = { 
 			region = upper_rhenish_circle_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			upper_rhenish_circle_region = {
+		trigger = { 
+			upper_rhenish_circle_region = { 
 				type = all
-				OR = {
-					owner = { free_city_trigger = yes }
+				OR = { 
+					owner = { 
+						AND = { 
+							government = republic
+							has_reform = Pol_Mandate1
+							has_reform = Pol_Stylings1
+							has_reform = Pol_ExtraPowers1
+							has_reform = Pol_Assembly2
+							has_reform = Pol_TermOfOffice5
+							has_reform = free_city
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 15
 		}
 	}
-	pom_form_germany = {
+	pom_form_germany = { 
 		icon = mission_empire
-		required_missions = { pom_upper_rhine pom_swabia_bayern }
-		
-		trigger = {
-			OR = {
-				NOT = { exists = GER }
+		required_missions = { pom_upper_rhine pom_swabia_bayern}
+		trigger = { 
+			OR = { 
+				NOT = { 
+					exists = GER
+				}
 				tag = GER
 			}
-			OR = {
-				NOT = { tag = ERG }
-				AND = {
+			OR = { 
+				NOT = { 
+					tag = ERG
+				}
+				AND = { 
 					dip_tech = 45
-					NOT = {
+					NOT = { 
 						tag = ERG
 						ai = yes
 					}
 				}
 			}
-			NOT = { tag = PAP }
-			OR = {
+			NOT = { 
+				tag = PAP
+			}
+			OR = { 
 				culture_group = high_germanic
 				culture_group = low_germanic
 			}
-			is_free_or_tributary_trigger = yes
+			AND = { 
+				OR = { 
+					is_subject = no
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
 			is_at_war = no
-			OR = {
-				NOT = { hre_size = 1 }
-				AND = {
+			OR = { 
+				NOT = { 
 					hre_size = 1
-					NOT = { hre_size = 2 }
+				}
+				AND = { 
+					hre_size = 1
+					NOT = { 
+						hre_size = 2
+					}
 					is_emperor = yes
 				}
 				adm_tech = 50
 			}
 		}
-		effect = {
-			country_event = { id = mission_event.017 }
-			low_countries_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			country_event = { 
+				id = mission_event.017
+			}
+			low_countries_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			belgii_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			belgii_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			west_italy_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			west_italy_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_west_italy = {
+	pom_west_italy = { 
 		icon = mission_cossack_cavalry
-		required_missions = { pom_form_germany }
-		
-		provinces_to_highlight = {
+		required_missions = { pom_form_germany}
+		provinces_to_highlight = { 
 			region = west_italy_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			west_italy_region = {
+		trigger = { 
+			west_italy_region = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			east_italy_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			east_italy_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_east_italy = {
+	pom_east_italy = { 
 		icon = mission_invade_island
-		required_missions = { pom_west_italy }
-		
-		provinces_to_highlight = {
+		required_missions = { pom_west_italy}
+		provinces_to_highlight = { 
 			region = east_italy_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			east_italy_region = {
+		trigger = { 
+			east_italy_region = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 15
 		}
 	}
 }
-
-pom_missions_7 = {
+pom_missions_7 = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = d_of_pom
 			has_country_flag = d_of_sh
 		}
 	}
 	has_country_shield = yes
-	
-	pom_mecklenburg = {
+	pom_mecklenburg = { 
 		icon = mission_sea_battles
 		required_missions = { }
-		
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = mecklenburg_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			mecklenburg_area = {
+		trigger = { 
+			mecklenburg_area = { 
 				type = all
-				OR = {
-					owner = { free_city_trigger = yes }
+				OR = { 
+					owner = { 
+						AND = { 
+							government = republic
+							has_reform = Pol_Mandate1
+							has_reform = Pol_Stylings1
+							has_reform = Pol_ExtraPowers1
+							has_reform = Pol_Assembly2
+							has_reform = Pol_TermOfOffice5
+							has_reform = free_city
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 50
 		}
 	}
-	
-	pom_prussia = {
+	pom_prussia = { 
 		icon = mission_have_two_subjects
-		required_missions = { pom_mecklenburg pom_unite_pomerania }
-		provinces_to_highlight = {
+		required_missions = { pom_mecklenburg pom_unite_pomerania}
+		provinces_to_highlight = { 
 			region = prussia_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			prussia_region = {
+		trigger = { 
+			prussia_region = { 
 				type = all
-				OR = {
-					owner = { free_city_trigger = yes }
+				OR = { 
+					owner = { 
+						AND = { 
+							government = republic
+							has_reform = Pol_Mandate1
+							has_reform = Pol_Stylings1
+							has_reform = Pol_ExtraPowers1
+							has_reform = Pol_Assembly2
+							has_reform = Pol_TermOfOffice5
+							has_reform = free_city
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 15
 		}
 	}
-	
-	pom_bb_pommern = {
+	pom_bb_pommern = { 
 		icon = mission_conquer_50_development
-		required_missions = { pom_brandenburg }
-
-		provinces_to_highlight = {
+		required_missions = { pom_brandenburg}
+		provinces_to_highlight = { 
 			region = brandenburg_pommern_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			brandenburg_pommern_region = {
+		trigger = { 
+			brandenburg_pommern_region = { 
 				type = all
-				OR = {
-					owner = { free_city_trigger = yes }
+				OR = { 
+					owner = { 
+						AND = { 
+							government = republic
+							has_reform = Pol_Mandate1
+							has_reform = Pol_Stylings1
+							has_reform = Pol_ExtraPowers1
+							has_reform = Pol_Assembly2
+							has_reform = Pol_TermOfOffice5
+							has_reform = free_city
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
-			upper_saxon_circle_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
-					NOT = { owner = { free_city_trigger = yes } }
+		effect = { 
+			upper_saxon_circle_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						owner = { 
+							AND = { 
+								government = republic
+								has_reform = Pol_Mandate1
+								has_reform = Pol_Stylings1
+								has_reform = Pol_ExtraPowers1
+								has_reform = Pol_Assembly2
+								has_reform = Pol_TermOfOffice5
+								has_reform = free_city
+							}
+						}
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_upper_saxony = {
+	pom_upper_saxony = { 
 		icon = mission_cannons_firing
-		required_missions = { pom_bb_pommern }
-		
-		provinces_to_highlight = {
+		required_missions = { pom_bb_pommern}
+		provinces_to_highlight = { 
 			region = upper_saxon_circle_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			upper_saxon_circle_region = {
+		trigger = { 
+			upper_saxon_circle_region = { 
 				type = all
-				OR = {
-					owner = { free_city_trigger = yes }
+				OR = { 
+					owner = { 
+						AND = { 
+							government = republic
+							has_reform = Pol_Mandate1
+							has_reform = Pol_Stylings1
+							has_reform = Pol_ExtraPowers1
+							has_reform = Pol_Assembly2
+							has_reform = Pol_TermOfOffice5
+							has_reform = free_city
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
-			swabia_bavarian_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
-					NOT = { owner = { free_city_trigger = yes } }
+		effect = { 
+			swabia_bavarian_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						owner = { 
+							AND = { 
+								government = republic
+								has_reform = Pol_Mandate1
+								has_reform = Pol_Stylings1
+								has_reform = Pol_ExtraPowers1
+								has_reform = Pol_Assembly2
+								has_reform = Pol_TermOfOffice5
+								has_reform = free_city
+							}
+						}
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-
-	pom_swabia_bayern = {
+	pom_swabia_bayern = { 
 		icon = mission_unite_home_region
-		required_missions = { pom_upper_saxony }
-
-		provinces_to_highlight = {
+		required_missions = { pom_upper_saxony}
+		provinces_to_highlight = { 
 			region = swabia_bavarian_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			swabia_bavarian_region = {
+		trigger = { 
+			swabia_bavarian_region = { 
 				type = all
-				OR = {
-					owner = { free_city_trigger = yes }
+				OR = { 
+					owner = { 
+						AND = { 
+							government = republic
+							has_reform = Pol_Mandate1
+							has_reform = Pol_Stylings1
+							has_reform = Pol_ExtraPowers1
+							has_reform = Pol_Assembly2
+							has_reform = Pol_TermOfOffice5
+							has_reform = free_city
+						}
+					}
 					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
-			bohemia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			bohemia_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_bohemia = {
+	pom_bohemia = { 
 		icon = mission_cannons_firing
-		required_missions = { pom_swabia_bayern }
-
-		provinces_to_highlight = {
+		required_missions = { pom_swabia_bayern}
+		provinces_to_highlight = { 
 			region = bohemia_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			bohemia_region = {
+		trigger = { 
+			bohemia_region = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			north_carpathia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			north_carpathia_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			magyar_plains_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			magyar_plains_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_hungary = {
+	pom_hungary = { 
 		icon = mission_european_fort
-		required_missions = { pom_bohemia pom_form_germany }
-
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { pom_bohemia pom_form_germany}
+		provinces_to_highlight = { 
+			OR = { 
 				region = north_carpathia_region
 				region = magyar_plains_region
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			north_carpathia_region = {
+		trigger = { 
+			north_carpathia_region = { 
 				type = all
 				owned_by = ROOT
 			}
-			magyar_plains_region = {
+			magyar_plains_region = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			polonia_major_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			polonia_major_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	pom_poland = {
+	pom_poland = { 
 		icon = mission_conquer_50_development
-		required_missions = { pom_hungary }
-
-		provinces_to_highlight = {
+		required_missions = { pom_hungary}
+		provinces_to_highlight = { 
 			region = polonia_major_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			polonia_major_region = {
+		trigger = { 
+			polonia_major_region = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 15
 		}
 	}

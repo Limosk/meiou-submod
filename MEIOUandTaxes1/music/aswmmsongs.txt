@@ -1,37 +1,23 @@
-#Table of Contents
-
-#Voices of Byzantium
-#National Anthems
-#General Ambient
-#General War
-#General
-#EU - Europe
-#ME - Middle East, India, and North Africa
-#EA - East Asia
-#NA - Native American
-
-############VOICES OF BYZANTIUM##################
-song = {
+song = { 
 	name = "MercyofPeace"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
-			OR = {
+			OR = { 
 				religion = orthodox
 				religion = coptic
 				religion = gnostic
 				religion = chaldean
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			tag = BYZ
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion = orthodox
 					religion = coptic
 					religion = gnostic
@@ -41,30 +27,26 @@ song = {
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "ItisTrulyMeet"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
-			OR = {
+			OR = { 
 				religion = orthodox
 				religion = coptic
 				religion = gnostic
 				religion = chaldean
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			tag = BYZ
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion = orthodox
 					religion = coptic
 					religion = gnostic
@@ -74,30 +56,26 @@ song = {
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "HolyGod"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
-			OR = {
+			OR = { 
 				religion = orthodox
 				religion = coptic
 				religion = gnostic
 				religion = chaldean
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			tag = BYZ
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion = orthodox
 					religion = coptic
 					religion = gnostic
@@ -107,30 +85,26 @@ song = {
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "GreatLitany"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
-			OR = {
+			OR = { 
 				religion = orthodox
 				religion = coptic
 				religion = gnostic
 				religion = chaldean
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			tag = BYZ
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion = orthodox
 					religion = coptic
 					religion = gnostic
@@ -140,30 +114,26 @@ song = {
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "CherubicHymn"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
-			OR = {
+			OR = { 
 				religion = orthodox
 				religion = coptic
 				religion = gnostic
 				religion = chaldean
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			tag = BYZ
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion = orthodox
 					religion = coptic
 					religion = gnostic
@@ -173,30 +143,26 @@ song = {
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "AgniPartheneHymn"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
-			OR = {
+			OR = { 
 				religion = orthodox
 				religion = coptic
 				religion = gnostic
 				religion = chaldean
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			tag = BYZ
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion = orthodox
 					religion = coptic
 					religion = gnostic
@@ -206,365 +172,273 @@ song = {
 		}
 	}
 }
-
-
-##################NATIONAL ANTHEMS##############
-###COMING SOON###
-
-##############AMBIENT and Peace###################
-song = {
+song = { 
 	name = "Greensleeves"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = yes
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "MistressWintersJump"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = yes
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "ItsOkaytobeAfraid"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = yes
 		}
 	}
 }
-
-
-song = {
+song = { 
 	name = "HymnForConstantinople"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = yes
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "PeaceofAugsburg"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = yes
 		}
 	}
 }
-
-
-song = {
+song = { 
 	name = "TheKingisDead"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = yes
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "TheHuntingTrip"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = yes
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "IntheShadowofTime"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = yes
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "NewLandsNewBeginnings"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = yes
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "BlessedistheMan"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = yes
 		}
 	}
 }
-
-
-
-
-#############WAR########################
-song = {
+song = { 
 	name = "ChargeoftheHussars"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
 			is_at_war = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = no
 		}
 	}
 }
-
-
-
-
-song = {
+song = { 
 	name = "SiegeofVienna"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
 			is_at_war = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = no
 		}
 	}
 }
-
-
-song = {
+song = { 
 	name = "PeasantsRebellion"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
 			is_at_war = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = no
 		}
 	}
 }
-
-
-song = {
+song = { 
 	name = "Tamerlane"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
 			is_at_war = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = no
 		}
 	}
 }
-
-
-song = {
+song = { 
 	name = "LastMarchoftheCrusaders"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
 			is_at_war = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = no
 		}
 	}
 }
-
-
-song = {
+song = { 
 	name = "WrathoftheNorthmen"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
 			is_at_war = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = no
 		}
 	}
 }
-
-
-song = {
+song = { 
 	name = "Danger"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
 			is_at_war = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = no
 		}
 	}
 }
-
-song = {
+song = { 
 	name = "NationUnderSiege"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1.25
 			is_at_war = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = no
 		}
 	}
 }
-###############GENERAL################################
-#song = {
-#	name = "maintheme"
-#	
-#	chance = {
-#		modifier = {
-#			factor = 0			#"The Sun Never Sets", composed specially as a theme for MEIOU And Taxes
-#		}
-#	}
-#}	# Not necessary, Vanilla file pick the mod's maintheme ogg file anyways.
-
-song = {
+song = { 
 	name = "AgeofExploration"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "Cantabile"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "avemaria"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 		}
 	}
 }
-
-############EAST ASIA######################
-song = {
+song = { 
 	name = "CherryBlossoms"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			OR = {
+			OR = { 
 				culture_group = chinese_group
 				culture_group = japanese_g
 				culture_group = korean_group
@@ -574,10 +448,10 @@ song = {
 				culture_group = southeastasian_group
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					culture_group = chinese_group
 					culture_group = japanese_g
 					culture_group = korean_group
@@ -590,19 +464,15 @@ song = {
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "GazingRiver"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			OR = {
+			OR = { 
 				culture_group = chinese_group
 				culture_group = japanese_g
 				culture_group = korean_group
@@ -612,10 +482,10 @@ song = {
 				culture_group = southeastasian_group
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					culture_group = chinese_group
 					culture_group = japanese_g
 					culture_group = korean_group
@@ -628,19 +498,15 @@ song = {
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "HighMountainFlowingWater"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			OR = {
+			OR = { 
 				culture_group = chinese_group
 				culture_group = japanese_g
 				culture_group = korean_group
@@ -650,10 +516,10 @@ song = {
 				culture_group = southeastasian_group
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					culture_group = chinese_group
 					culture_group = japanese_g
 					culture_group = korean_group
@@ -666,19 +532,15 @@ song = {
 		}
 	}
 }
-
-
-
-song = {
+song = { 
 	name = "TamerlaneGoesEast"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 1
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			OR = {
+			OR = { 
 				culture_group = chinese_group
 				culture_group = japanese_g
 				culture_group = korean_group
@@ -688,10 +550,10 @@ song = {
 				culture_group = southeastasian_group
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					culture_group = chinese_group
 					culture_group = japanese_g
 					culture_group = korean_group
@@ -704,30 +566,24 @@ song = {
 		}
 	}
 }
-
-
-
-
-##########NATIVE AMERICA#########
-song = {
+song = { 
 	name = "AmongtheTrees"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 2
-			OR = {
+			OR = { 
 				religion_group = pagan
 				religion_group = new_world_pagan
-				any_owned_province = {
-					OR = {
+				any_owned_province = { 
+					OR = { 
 						continent = north_america
 						continent = south_america
 					}
 				}
-				any_subject_country = {
+				any_subject_country = { 
 					is_colonial_nation = yes
-					capital_scope = {
-						OR = {
+					capital_scope = { 
+						OR = { 
 							continent = north_america
 							continent = south_america
 						}
@@ -736,22 +592,22 @@ song = {
 				government = native
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion_group = pagan
 					religion_group = new_world_pagan
-					any_owned_province = {
-						OR = {
+					any_owned_province = { 
+						OR = { 
 							continent = north_america
 							continent = south_america
 						}
 					}
-					any_subject_country = {
+					any_subject_country = { 
 						is_colonial_nation = yes
-						capital_scope = {
-							OR = {
+						capital_scope = { 
+							OR = { 
 								continent = north_america
 								continent = south_america
 							}
@@ -763,26 +619,24 @@ song = {
 		}
 	}
 }
-
-song = {
+song = { 
 	name = "CountdowntoDoomsday"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 2
-			OR = {
+			OR = { 
 				religion_group = pagan
 				religion_group = new_world_pagan
-				any_owned_province = {
-					OR = {
+				any_owned_province = { 
+					OR = { 
 						continent = north_america
 						continent = south_america
 					}
 				}
-				any_subject_country = {
+				any_subject_country = { 
 					is_colonial_nation = yes
-					capital_scope = {
-						OR = {
+					capital_scope = { 
+						OR = { 
 							continent = north_america
 							continent = south_america
 						}
@@ -791,22 +645,22 @@ song = {
 				government = native
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion_group = pagan
 					religion_group = new_world_pagan
-					any_owned_province = {
-						OR = {
+					any_owned_province = { 
+						OR = { 
 							continent = north_america
 							continent = south_america
 						}
 					}
-					any_subject_country = {
+					any_subject_country = { 
 						is_colonial_nation = yes
-						capital_scope = {
-							OR = {
+						capital_scope = { 
+							OR = { 
 								continent = north_america
 								continent = south_america
 							}
@@ -818,26 +672,24 @@ song = {
 		}
 	}
 }
-
-song = {
+song = { 
 	name = "JaguarWarriors"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 2
-			OR = {
+			OR = { 
 				religion_group = pagan
 				religion_group = new_world_pagan
-				any_owned_province = {
-					OR = {
+				any_owned_province = { 
+					OR = { 
 						continent = north_america
 						continent = south_america
 					}
 				}
-				any_subject_country = {
+				any_subject_country = { 
 					is_colonial_nation = yes
-					capital_scope = {
-						OR = {
+					capital_scope = { 
+						OR = { 
 							continent = north_america
 							continent = south_america
 						}
@@ -846,22 +698,22 @@ song = {
 				government = native
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion_group = pagan
 					religion_group = new_world_pagan
-					any_owned_province = {
-						OR = {
+					any_owned_province = { 
+						OR = { 
 							continent = north_america
 							continent = south_america
 						}
 					}
-					any_subject_country = {
+					any_subject_country = { 
 						is_colonial_nation = yes
-						capital_scope = {
-							OR = {
+						capital_scope = { 
+							OR = { 
 								continent = north_america
 								continent = south_america
 							}
@@ -873,26 +725,24 @@ song = {
 		}
 	}
 }
-
-song = {
+song = { 
 	name = "TempleoftheSunandMoon"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 2
-			OR = {
+			OR = { 
 				religion_group = pagan
 				religion_group = new_world_pagan
-				any_owned_province = {
-					OR = {
+				any_owned_province = { 
+					OR = { 
 						continent = north_america
 						continent = south_america
 					}
 				}
-				any_subject_country = {
+				any_subject_country = { 
 					is_colonial_nation = yes
-					capital_scope = {
-						OR = {
+					capital_scope = { 
+						OR = { 
 							continent = north_america
 							continent = south_america
 						}
@@ -901,22 +751,22 @@ song = {
 				government = native
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion_group = pagan
 					religion_group = new_world_pagan
-					any_owned_province = {
-						OR = {
+					any_owned_province = { 
+						OR = { 
 							continent = north_america
 							continent = south_america
 						}
 					}
-					any_subject_country = {
+					any_subject_country = { 
 						is_colonial_nation = yes
-						capital_scope = {
-							OR = {
+						capital_scope = { 
+							OR = { 
 								continent = north_america
 								continent = south_america
 							}
@@ -928,26 +778,24 @@ song = {
 		}
 	}
 }
-
-song = {
+song = { 
 	name = "VillageElder"
-	
-	chance = {
-		modifier = {
+	chance = { 
+		modifier = { 
 			factor = 2
-			OR = {
+			OR = { 
 				religion_group = pagan
 				religion_group = new_world_pagan
-				any_owned_province = {
-					OR = {
+				any_owned_province = { 
+					OR = { 
 						continent = north_america
 						continent = south_america
 					}
 				}
-				any_subject_country = {
+				any_subject_country = { 
 					is_colonial_nation = yes
-					capital_scope = {
-						OR = {
+					capital_scope = { 
+						OR = { 
 							continent = north_america
 							continent = south_america
 						}
@@ -956,22 +804,22 @@ song = {
 				government = native
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					religion_group = pagan
 					religion_group = new_world_pagan
-					any_owned_province = {
-						OR = {
+					any_owned_province = { 
+						OR = { 
 							continent = north_america
 							continent = south_america
 						}
 					}
-					any_subject_country = {
+					any_subject_country = { 
 						is_colonial_nation = yes
-						capital_scope = {
-							OR = {
+						capital_scope = { 
+							OR = { 
 								continent = north_america
 								continent = south_america
 							}

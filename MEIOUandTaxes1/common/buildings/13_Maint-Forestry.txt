@@ -1,33 +1,23 @@
-#######################
-# Maint - Agriculture #
-#######################
-
-maint_Forestry_no = {
+maint_Forestry_no = { 
 	cost = 0
-	time =  0
-	
-	potential = {
+	time = 0
+	potential = { 
 		ai = no
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		always = no
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		has_building = maint_Forestry_no
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = maint_Forestry_low
 					has_building = maint_Forestry_med
 					has_building = maint_Forestry_high
@@ -37,40 +27,54 @@ maint_Forestry_no = {
 		}
 	}
 }
-maint_Forestry_low = {
+maint_Forestry_low = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropForestryCan = yes }
-		
-		NOT = {
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = deq
+					value = 0.01
+				}
+			}
+		}
+		NOT = { 
 			has_building = maint_Forestry_med
 			has_building = maint_Forestry_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropForestryCan = yes }
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = deq
+					value = 0.01
+				}
+			}
+		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = maint_Forestry_no
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = maint_Forestry_med
 					has_building = maint_Forestry_high
 				}
@@ -79,40 +83,54 @@ maint_Forestry_low = {
 		}
 	}
 }
-maint_Forestry_med = {
+maint_Forestry_med = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropForestryCan = yes }
-		
-		NOT = {
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = deq
+					value = 0.01
+				}
+			}
+		}
+		NOT = { 
 			has_building = maint_Forestry_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropForestryCan = yes }
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = deq
+					value = 0.01
+				}
+			}
+		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = maint_Forestry_no
-        remove_building = maint_Forestry_low
+		remove_building = maint_Forestry_low
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = maint_Forestry_high
 				}
 			}
@@ -120,34 +138,49 @@ maint_Forestry_med = {
 		}
 	}
 }
-maint_Forestry_high = {
+maint_Forestry_high = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropForestryCan = yes }
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = deq
+					value = 0.01
+				}
+			}
+		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropForestryCan = yes }
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = deq
+					value = 0.01
+				}
+			}
+		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = maint_Forestry_no
-        remove_building = maint_Forestry_low
-        remove_building = maint_Forestry_med
+		remove_building = maint_Forestry_low
+		remove_building = maint_Forestry_med
 	}
-	
-	on_destroyed = {
+	on_destroyed = { 
 		add_building = maint_Forestry_med
 	}
 }

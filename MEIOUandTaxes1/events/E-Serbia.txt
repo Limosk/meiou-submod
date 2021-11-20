@@ -1,76 +1,160 @@
 namespace = Serbia
-
-country_event = {
+country_event = { 
 	id = Serbia.01
 	title = Serbia.01.t
 	desc = Serbia.01.d
 	picture = CIVIL_WAR_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		exists = SER
-		NOT = { tag = SER }
-		FROM = {
+		NOT = { 
+			tag = SER
+		}
+		FROM = { 
 			owned_by = SER
 			is_capital = yes
 		}
-		SER = { ai = yes }
+		SER = { 
+			ai = yes
+		}
 		primary_culture = serbian
-		NOT = { has_country_flag = SER_Inheritor }
+		NOT = { 
+			has_country_flag = SER_Inheritor
+		}
 	}
-
-	option = {
+	option = { 
 		name = Serbia.01.a
 		add_legitimacy = -25
 		add_prestige = 25
-		Stab_Subtract1 = yes
-		hidden_effect = {
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -1
+			}
+		}
+		tooltip = { 
+			add_stability = -1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -5
+		}
+		hidden_effect = { 
 			white_peace = SER
 		}
-		SER = {
-			every_subject_country = {
-				limit = {
-					is_subject_other_than_tributary_trigger = yes
+		SER = { 
+			every_subject_country = { 
+				limit = { 
+					AND = { 
+						is_subject = yes
+						NOT = { 
+							is_subject_of_type = tributary_state
+						}
+						NOT = { 
+							is_subject_of_type = close_tributary_state
+						}
+						NOT = { 
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
 					primary_culture = serbian
 				}
-				hidden_effect = { grant_independence = yes }
-				ROOT = {
-					create_subject = {
+				hidden_effect = { 
+					grant_independence = yes
+				}
+				ROOT = { 
+					create_subject = { 
 						subject_type = rebellious_decentralized_vassal
 						who = PREV
 					}
 				}
 				add_liberty_desire = 25
 			}
-			hidden_effect = { grant_independence = yes }
+			hidden_effect = { 
+				grant_independence = yes
+			}
 		}
 		inherit = SER
 		change_tag = SER
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				owns = 2612
 			}
-			Effect_set_capital={ target=2612 }
+			if = { 
+				limit = { 
+					is_part_of_hre = yes
+					ROOT = { 
+						is_part_of_hre = no
+					}
+				}
+				set_in_empire = no
+				swap_non_generic_missions = yes
+				emperor = { 
+					add_opinion = { 
+						who = ROOT
+						modifier = hre_province_left
+					}
+				}
+				add_imperial_influence = -1
+			}
+			set_capital = 2612
+			hidden_effect = { 
+				set_country_flag = tf_recalculate_communication_efficiency
+				set_country_flag = ai_tax_recalc
+			}
 		}
-		else_if = {
-			limit = {
+		else_if = { 
+			limit = { 
 				owns = 3775
 			}
-			Effect_set_capital={ target=3775 }
+			if = { 
+				limit = { 
+					is_part_of_hre = yes
+					ROOT = { 
+						is_part_of_hre = no
+					}
+				}
+				set_in_empire = no
+				swap_non_generic_missions = yes
+				emperor = { 
+					add_opinion = { 
+						who = ROOT
+						modifier = hre_province_left
+					}
+				}
+				add_imperial_influence = -1
+			}
+			set_capital = 3775
+			hidden_effect = { 
+				set_country_flag = tf_recalculate_communication_efficiency
+				set_country_flag = ai_tax_recalc
+			}
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
 	}
-
-	option = {
+	option = { 
 		name = Serbia.01.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 	}
-	after = {
-		hidden_effect = { set_country_flag = SER_Inheritor }
+	after = { 
+		hidden_effect = { 
+			set_country_flag = SER_Inheritor
+		}
 	}
 }

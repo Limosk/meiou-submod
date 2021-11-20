@@ -6,14 +6,16 @@ country_decisions = {
 		}
 		allow = { }
 		effect = { 
-			if = {
-				limit = { has_country_flag = baltic_crus_west }
+			if = { 
+				limit = { 
+					has_country_flag = baltic_crus_west
+				}
 				set_country_flag = baltic_crus_east
 				set_country_flag = baltic_crus_secul
 				clr_country_flag = baltic_crus_west
 				swap_non_generic_missions = yes
 			}
-			else = {
+			else = { 
 				set_country_flag = baltic_crus_west
 				set_country_flag = baltic_crus_secul
 				clr_country_flag = baltic_crus_east

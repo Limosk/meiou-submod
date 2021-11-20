@@ -1,521 +1,1200 @@
-
-#Western Christian Church Aspects
-defined_text = {
+defined_text = { 
 	name = WC_aspect_01
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_01_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_01 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knf
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_01_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_01 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knf
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_01_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_01 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knf
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_02
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_02_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_02 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kng
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_02_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_02 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kng
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_02_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_02 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kng
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_03
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_03_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_03 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knh
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_03_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_03 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knh
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_03_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_03 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knh
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_04
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_04_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_04 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kni
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_04_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_04 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kni
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_04_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_04 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kni
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_05
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_05_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_05 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knj
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_05_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_05 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knj
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_05_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_05 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knj
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_06
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_06_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_06 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knk
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_06_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_06 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knk
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_06_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_06 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knk
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_07
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_07_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_07 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knl
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_07_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_07 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knl
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_07_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_07 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knl
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_08
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_08_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_08 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knm
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_08_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_08 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knm
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_08_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_08 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knm
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_09
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_09_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_09 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knn
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_09_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_09 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knn
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_09_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_09 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knn
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_10
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_10_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_10 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kno
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_10_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_10 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kno
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_10_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_10 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kno
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_11
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_11_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_11 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knp
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_11_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_11 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knp
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_11_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_11 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knp
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_12
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_12_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_12 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knq
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_12_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_12 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knq
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_12_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_12 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knq
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_13
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_13_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_13 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knr
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_13_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_13 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knr
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_13_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_13 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knr
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_14
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_14_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_14 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kns
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_14_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_14 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kns
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_14_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_14 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kns
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_15
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_15_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_15 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knt
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_15_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_15 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knt
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_15_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_15 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knt
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_16
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_16_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_16 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knu
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_16_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_16 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knu
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_16_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_16 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knu
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_17
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_17_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_17 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knv
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_17_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_17 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knv
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_17_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_17 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knv
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_18
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_18_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_18 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knw
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_18_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_18 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knw
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_18_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_18 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knw
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_19
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_19_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_19 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knx
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_19_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_19 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knx
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_19_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_19 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = knx
+				value = 3
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = WC_aspect_20
-	
-	text = {
+	text = { 
 		localisation_key = WC_aspect_20_1
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_20 value = 1 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kny
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_20_2
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_20 value = 2 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kny
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = WC_aspect_20_3
-		trigger = {
-			western_christian = yes
-			is_key_equal = { lhs = aspect_20 value = 3 }
+		trigger = { 
+			OR = { 
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = waldensian
+				religion = lollard
+				religion = fraticelli
+				religion = holyleague
+			}
+			is_variable_equal = { 
+				which = kny
+				value = 3
+			}
 		}
 	}
 }

@@ -1,223 +1,153 @@
-#
-#test_hint_one = {
-#	window = "hints_test"
-#	title = "HINT_PROV_VIEW_TITLE"
-#	text = "HINT_PROV_VIEW_TEXT_1"
-#	text = "HINT_PROV_VIEW_TEXT_2"
-#	text = "HINT_PROV_VIEW_TEXT_3"
-#	
-#	button = test_hint_two
-#	button = test_hint_two
-#}
-
-#############################################################
-###################### TRIGGERED HINTS ######################
-#############################################################
-
-#changed intro hint tree added more buttons. Look in localisation to find text. Also changed Stability hint tree - H
-#3 different ideas hints now redirect to each other and one more (not monarch points etc - players shld know they're related to mp by now)
-#admin efficiency won't work no matter what/ did cores/claims, states/territories, overextension. need to link alltogether when figure out whats up with admin eff.
-#next autonomy, and then estates.
-test_hint_intro = {
+test_hint_intro = { 
 	window = "hints_test"
 	title = "HINT_INTRO_TITLE"
 	text = "HINT_INTRO_TEXT"
 	button = "hint_welcome"
 	button = "hint_mttutorial"
 	button = "hint_faq"
-	trigger = {
+	trigger = { 
 		ai = no
 	}
 }
-	hint_welcome = {
-		window = "hints_test"
-		title = "HINT_WELCOME_TITLE"
-		text = "HINT_WELCOME_TEXT"
-		button = "hint_mttutorial"
-		button = "hint_faq"
-		button = "test_hint_intro"
-	}
-	hint_mttutorial = {
-		window = "hints_test"
-		title = "HINT_INTROTUTORIAL_TITLE"
-		text = "HINT_INTROTUTORIAL_TEXT"
-		button = "hint_welcome"
-		button = "hint_faq"
-		button = "test_hint_intro"
-	}
-	hint_faq = {
-		window = "hints_test"
-		title = "HINT_INTROFAQ_TITLE"
-		text = "HINT_INTROFAQ_TEXT"
-		button = "hint_welcome"
-		button = "hint_mttutorial"
-		button = "test_hint_intro"
-	}
-
-hint_personalunion = {
+hint_welcome = { 
+	window = "hints_test"
+	title = "HINT_WELCOME_TITLE"
+	text = "HINT_WELCOME_TEXT"
+	button = "hint_mttutorial"
+	button = "hint_faq"
+	button = "test_hint_intro"
+}
+hint_mttutorial = { 
+	window = "hints_test"
+	title = "HINT_INTROTUTORIAL_TITLE"
+	text = "HINT_INTROTUTORIAL_TEXT"
+	button = "hint_welcome"
+	button = "hint_faq"
+	button = "test_hint_intro"
+}
+hint_faq = { 
+	window = "hints_test"
+	title = "HINT_INTROFAQ_TITLE"
+	text = "HINT_INTROFAQ_TEXT"
+	button = "hint_welcome"
+	button = "hint_mttutorial"
+	button = "test_hint_intro"
+}
+hint_personalunion = { 
 	window = "hints_test"
 	title = "HINT_PERSONALUNION_TITLE"
 	text = "HINT_PERSONALUNION_TEXT"
 	button = "hint_enterpersonalunion"
 	button = "hint_breakunion"
 	button = "hint_inherit"
-	trigger = {
-		NOT = { has_country_modifier = hints_timer }
+	trigger = { 
+		NOT = { 
+			has_country_modifier = hints_timer
+		}
 		is_lesser_in_union = yes
 	}
-	#effect = {
-	#	hidden_effect = {
-	#		add_country_modifier = {
-	#			name = hints_timer
-	#			duration = 7
-	#			hidden = yes
-	#		}
-	#	}
-	#}
 }
-
-hint_papalcontroller = {
+hint_papalcontroller = { 
 	window = "hints_test"
 	title = "HINT_PAPALCONTROLLER_TITLE"
 	text = "HINT_PAPALCONTROLLER_TEXT"
 	button = "hint_cardinal"
 	button = "hint_papalinfluence"
 	button = "hint_papalactions"
-	trigger = {
-		NOT = { has_country_modifier = hints_timer }
+	trigger = { 
+		NOT = { 
+			has_country_modifier = hints_timer
+		}
 		is_papal_controller = yes
 	}
-	#effect = {
-	#	hidden_effect = {
-	#		add_country_modifier = {
-	#			name = hints_timer
-	#			duration = 7
-	#			hidden = yes
-	#		}
-	#	}
-	#}
 }
-
-hint_emperor = {
+hint_emperor = { 
 	window = "hints_test"
 	title = "HINT_EMPEROR_TITLE"
 	text = "HINT_EMPEROR_TEXT"
 	button = "hint_hre"
 	button = "hint_imperialauthority"
-	trigger = {
-		NOT = { has_country_modifier = hints_timer }
+	trigger = { 
+		NOT = { 
+			has_country_modifier = hints_timer
+		}
 		is_emperor = yes
 	}
-	#effect = {
-	#	hidden_effect = {
-	#		add_country_modifier = {
-	#			name = hints_timer
-	#			duration = 7
-	#			hidden = yes
-	#		}
-	#	}
-	#}
 }
-hint_vassals = {
+hint_vassals = { 
 	window = "hints_test"
 	title = "HINT_VASSALS_TITLE"
 	text = "HINT_VASSALS_TEXT"
 	button = "hint_diplomaticupkeep"
-	trigger = {
-		NOT = { has_country_modifier = hints_timer }
+	trigger = { 
+		NOT = { 
+			has_country_modifier = hints_timer
+		}
 		vassal = 1
 	}
-	#effect = {
-	#	hidden_effect = {
-	#		add_country_modifier = {
-	#			name = hints_timer
-	#			duration = 7
-	#			hidden = yes
-	#		}
-	#	}
-	#}
 }
-hint_hre = {
+hint_hre = { 
 	window = "hints_test"
 	title = "HINT_HRE_TITLE"
 	text = "HINT_HRE_TEXT"
 	button = "hint_emperor"
 	button = "hint_imperialauthority"
-	trigger = {
-		NOT = { has_country_modifier = hints_timer }
+	trigger = { 
+		NOT = { 
+			has_country_modifier = hints_timer
+		}
 		is_part_of_hre = yes
 	}
-	#effect = {
-	#	hidden_effect = {
-	#		add_country_modifier = {
-	#			name = hints_timer
-	#			duration = 7
-	#			hidden = yes
-	#		}
-	#	}
-	#}
 }
-
-
-hint_overextension = {
+hint_overextension = { 
 	window = "hints_test"
 	title = "HINT_OVEREXTENSION_TITLE"
 	text = "HINT_OVEREXTENSION_TEXT"
 	button = "hint_administrative_efficiency"
 	button = "hint_core"
 	button = "hint_states"
-	trigger = {
+	trigger = { 
 		overextension_percentage = 0.10
 	}
 }
-	hint_administrative_efficiency = {
-		window = "hints_test"
-		title = "HINT_ADMINISTRATIVE_EFFICIENCY_TITLE"
-		text = "HINT_ADMINISTRATIVE_EFFICIENCY_TEXT"
-		button = "hint_core"
-		button = "hint_states"
-		button = "hint_overextension"
-	}
-	hint_core = {
-		window = "hints_test"
-		title = "HINT_CORE_TITLE"
-		text = "HINT_CORE_TEXT"
-		button = "hint_casusbelli"
-		button = "hint_administrative_efficiency"
-		button = "hint_overextension"
-	}
-	hint_states = {
-		window = "hints_test"
-		title = "HINT_STATES_TITLE"
-		text = "HINT_STATES_TEXT"
-		button = "hint_autonomy"
-		button = "hint_core"
-		button = "hint_overextension"
-	}
-
-
-hint_combat = {
+hint_administrative_efficiency = { 
+	window = "hints_test"
+	title = "HINT_ADMINISTRATIVE_EFFICIENCY_TITLE"
+	text = "HINT_ADMINISTRATIVE_EFFICIENCY_TEXT"
+	button = "hint_core"
+	button = "hint_states"
+	button = "hint_overextension"
+}
+hint_core = { 
+	window = "hints_test"
+	title = "HINT_CORE_TITLE"
+	text = "HINT_CORE_TEXT"
+	button = "hint_casusbelli"
+	button = "hint_administrative_efficiency"
+	button = "hint_overextension"
+}
+hint_states = { 
+	window = "hints_test"
+	title = "HINT_STATES_TITLE"
+	text = "HINT_STATES_TEXT"
+	button = "hint_autonomy"
+	button = "hint_core"
+	button = "hint_overextension"
+}
+hint_combat = { 
 	window = "hints_test"
 	title = "HINT_COMBAT_TITLE"
 	text = "HINT_COMBAT_TEXT"
 	button = "hint_combatadv"
-	#trigger = {
-	#	select unit in combat
-	#}
 }
-
-#############################################################
-####################### MANUAL HINTS ########################
-#############################################################
-
-test_hint_two = {
+test_hint_two = { 
 	window = "hints_test"
 	title = "HINT_OTHER"
 	text = "HINT_PROV_VIEW_TEXT_1"
 	text = "HINT_PROV_VIEW_TEXT_2"
 	text = "HINT_PROV_VIEW_TEXT_3"
 }
-hint_ducats = {
+hint_ducats = { 
 	window = "hints_test"
 	title = "HINT_DUCATS_TITLE"
 	text = "HINT_DUCATS_TEXT"
@@ -225,7 +155,7 @@ hint_ducats = {
 	button = "hint_trade"
 	button = "hint_income"
 }
-hint_taxes = {
+hint_taxes = { 
 	window = "hints_test"
 	title = "HINT_TAXES_TITLE"
 	text = "HINT_TAXES_TEXT"
@@ -233,7 +163,7 @@ hint_taxes = {
 	button = "hint_trade"
 	button = "hint_income"
 }
-hint_trade = {
+hint_trade = { 
 	window = "hints_test"
 	title = "HINT_TRADE_TITLE"
 	text = "HINT_TRADE_TEXT"
@@ -241,8 +171,7 @@ hint_trade = {
 	button = "hint_taxes"
 	button = "hint_income"
 }
-
-hint_income = {
+hint_income = { 
 	window = "hints_test"
 	title = "HINT_INCOME_TITLE"
 	text = "HINT_INCOME_TEXT"
@@ -250,21 +179,18 @@ hint_income = {
 	button = "hint_taxes"
 	button = "hint_trade"
 }
-
-hint_papalactions = {
+hint_papalactions = { 
 	window = "hints_test"
 	title = "HINT_PAPALACTIONS_TITLE"
 	text = "HINT_PAPALACTIONS_TEXT"
 	button = "hint_papalcontroller"
 }
-
-hint_manpower = {
+hint_manpower = { 
 	window = "hints_test"
 	title = "HINT_MANPOWER_TITLE"
 	text = "HINT_MANPOWER_TEXT"
 }
-
-hint_stability = {
+hint_stability = { 
 	window = "hints_test"
 	title = "HINT_STABILITY_TITLE"
 	text = "HINT_STABILITY_TEXT"
@@ -272,32 +198,31 @@ hint_stability = {
 	button = "hint_losestability"
 	button = "hint_stabilityguide"
 }
-	hint_increasestability = {
-		window = "hints_test"
-		title = "HINT_INCREASESTABILITY_TITLE"
-		text = "HINT_INCREASESTABILITY_TEXT"
-		button = "hint_stability"
-		button = "hint_losestability"
-		button = "hint_stabilityguide"
-	}
-	hint_losestability = {
-		window = "hints_test"
-		title = "HINT_LOSESTABILITY_TITLE"
-		text = "HINT_LOSESTABILITY_TEXT"
-		button = "hint_stability"
-		button = "hint_increasestability"
-		button = "hint_stabilityguide"
-	}
-	hint_stabilityguide = {
-		window = "hints_test"
-		title = "HINT_STABILITYGUIDE_TITLE"
-		text = "HINT_STABILITYGUIDE_TEXT"
-		button = "hint_stability"
-		button = "hint_increasestability"
-		button = "hint_losestability"
-	}
-
-hint_prestige = {
+hint_increasestability = { 
+	window = "hints_test"
+	title = "HINT_INCREASESTABILITY_TITLE"
+	text = "HINT_INCREASESTABILITY_TEXT"
+	button = "hint_stability"
+	button = "hint_losestability"
+	button = "hint_stabilityguide"
+}
+hint_losestability = { 
+	window = "hints_test"
+	title = "HINT_LOSESTABILITY_TITLE"
+	text = "HINT_LOSESTABILITY_TEXT"
+	button = "hint_stability"
+	button = "hint_increasestability"
+	button = "hint_stabilityguide"
+}
+hint_stabilityguide = { 
+	window = "hints_test"
+	title = "HINT_STABILITYGUIDE_TITLE"
+	text = "HINT_STABILITYGUIDE_TEXT"
+	button = "hint_stability"
+	button = "hint_increasestability"
+	button = "hint_losestability"
+}
+hint_prestige = { 
 	window = "hints_test"
 	title = "HINT_PRESTIGE_TITLE"
 	text = "HINT_PRESTIGE_TEXT"
@@ -305,22 +230,21 @@ hint_prestige = {
 	button = "hint_loseprestige"
 	button = "hint_royalmarriage"
 }
-	hint_increaseprestige = {
-		window = "hints_test"
-		title = "HINT_INCREASEPRESTIGE_TITLE"
-		text = "HINT_INCREASEPRESTIGE_TEXT"
-		button = "hint_prestige"
-		button = "hint_loseprestige"
-	}
-	hint_loseprestige = {
-		window = "hints_test"
-		title = "HINT_LOSEPRESTIGE_TITLE"
-		text = "HINT_LOSEPRESTIGE_TEXT"
-		button = "hint_prestige"
-		button = "hint_increaseprestige"
-	}
-
-hint_royalmarriage = {
+hint_increaseprestige = { 
+	window = "hints_test"
+	title = "HINT_INCREASEPRESTIGE_TITLE"
+	text = "HINT_INCREASEPRESTIGE_TEXT"
+	button = "hint_prestige"
+	button = "hint_loseprestige"
+}
+hint_loseprestige = { 
+	window = "hints_test"
+	title = "HINT_LOSEPRESTIGE_TITLE"
+	text = "HINT_LOSEPRESTIGE_TEXT"
+	button = "hint_prestige"
+	button = "hint_increaseprestige"
+}
+hint_royalmarriage = { 
 	window = "hints_test"
 	title = "HINT_ROYALMARRIAGE_TITLE"
 	text = "HINT_ROYALMARRIAGE_TEXT"
@@ -328,16 +252,14 @@ hint_royalmarriage = {
 	button = "hint_personalunion"
 	button = "hint_diplomaticupkeep"
 }
-
-hint_enterroyalmarriage = {
+hint_enterroyalmarriage = { 
 	window = "hints_test"
 	title = "HINT_ROYALMARRIAGE_TITLE"
 	text = "HINT_ROYALMARRIAGE_TEXT"
 	button = "hint_royalmarriage"
 	button = "hint_personalunion"
 }
-
-hint_enterpersonalunion = {
+hint_enterpersonalunion = { 
 	window = "hints_test"
 	title = "HINT_ENTERPERSONALUNION_TITLE"
 	text = "HINT_ENTERPERSONALUNION_TEXT"
@@ -345,8 +267,7 @@ hint_enterpersonalunion = {
 	button = "hint_breakunion"
 	button = "hint_royalmarriage"
 }
-
-hint_legitimacy = {
+hint_legitimacy = { 
 	window = "hints_test"
 	title = "HINT_LEGITIMACY_TITLE"
 	text = "HINT_LEGITIMACY_TEXT"
@@ -354,7 +275,7 @@ hint_legitimacy = {
 	button = "hint_gainlegitimacy"
 	button = "hint_royalmarriage"
 }
-hint_loselegitimacy = {
+hint_loselegitimacy = { 
 	window = "hints_test"
 	title = "HINT_LOSELEGITIMACY_TITLE"
 	text = "HINT_LOSELEGITIMACY_TEXT"
@@ -362,7 +283,7 @@ hint_loselegitimacy = {
 	button = "hint_gainlegitimacy"
 	button = "hint_royalmarriage"
 }
-hint_gainlegitimacy = {
+hint_gainlegitimacy = { 
 	window = "hints_test"
 	title = "HINT_GAINLEGITIMACY_TITLE"
 	text = "HINT_GAINLEGITIMACY_TEXT"
@@ -370,29 +291,26 @@ hint_gainlegitimacy = {
 	button = "hint_loselegitimacy"
 	button = "hint_royalmarriage"
 }
-
-hint_republican = {
+hint_republican = { 
 	window = "hints_test"
 	title = "HINT_REPUBLICAN_TITLE"
 	text = "HINT_REPUBLICAN_TEXT"
 }
-
-hint_envoys = {
+hint_envoys = { 
 	window = "hints_test"
 	title = "HINT_ENVOYS_TITLE"
 	text = "HINT_ENVOYS_TEXT"
 	button = "hint_merchant"
 	button = "hint_colonists"
 }
-
-hint_merchant = {
+hint_merchant = { 
 	window = "hints_test"
 	title = "HINT_MERCHANT_TITLE"
 	text = "HINT_MERCHANT_TEXT"
 	button = "hint_trade"
 	button = "hint_moremerchant"
 }
-hint_moremerchant = {
+hint_moremerchant = { 
 	window = "hints_test"
 	title = "HINT_MOREMERCHANT_TITLE"
 	text = "HINT_MOREMERCHANT_TEXT"
@@ -400,8 +318,7 @@ hint_moremerchant = {
 	button = "hint_ideas"
 	button = "hint_ideagroup"
 }
-
-hint_colonist = {
+hint_colonist = { 
 	window = "hints_test"
 	title = "HINT_COLONIST_TITLE"
 	text = "HINT_COLONIST_TEXT"
@@ -409,36 +326,33 @@ hint_colonist = {
 	button = "hint_colonisttime"
 	button = "hint_colonialrange"
 }
-hint_morecolonist = {
+hint_morecolonist = { 
 	window = "hints_test"
 	title = "HINT_MORECOLONIST_TITLE"
 	text = "HINT_MORECOLONIST_TEXT"
 	button = "hint_colonist"
 	button = "hint_ideagroup"
 }
-
-
-hint_diplomat = {
+hint_diplomat = { 
 	window = "hints_test"
 	title = "HINT_DIPLOMAT_TITLE"
 	text = "HINT_DIPLOMAT_TEXT"
 }
-hint_morediplomat = {
+hint_morediplomat = { 
 	window = "hints_test"
 	title = "HINT_MOREDIPLOMAT_TITLE"
 	text = "HINT_MOREDIPLOMAT_TEXT"
 	button = "hint_diplomat"
 	button = "hint_ideagroup"
 }
-
-hint_missionary = {
+hint_missionary = { 
 	window = "hints_test"
 	title = "HINT_MISSIONARY_TITLE"
 	text = "HINT_MISSIONARY_TEXT"
 	button = "hint_moremissionary"
 	button = "hint_religion"
 }
-hint_moremissionary = {
+hint_moremissionary = { 
 	window = "hints_test"
 	title = "HINT_MOREMISSIONARY_TITLE"
 	text = "HINT_MOREMISSIONARY_TEXT"
@@ -446,8 +360,7 @@ hint_moremissionary = {
 	button = "hint_ideagroup"
 	button = "hint_nationalideas"
 }
-
-hint_score = {
+hint_score = { 
 	window = "hints_test"
 	title = "HINT_SCORE_TITLE"
 	text = "HINT_SCORE_TEXT"
@@ -455,7 +368,7 @@ hint_score = {
 	button = "hint_dipscore"
 	button = "hint_milscore"
 }
-hint_admscore = {
+hint_admscore = { 
 	window = "hints_test"
 	title = "HINT_ADMSCORE_TITLE"
 	text = "HINT_ADMSCORE_TEXT"
@@ -463,7 +376,7 @@ hint_admscore = {
 	button = "hint_dipscore"
 	button = "hint_milscore"
 }
-hint_dipscore = {
+hint_dipscore = { 
 	window = "hints_test"
 	title = "HINT_DIPSCORE_TITLE"
 	text = "HINT_DIPSCORE_TEXT"
@@ -471,7 +384,7 @@ hint_dipscore = {
 	button = "hint_admscore"
 	button = "hint_milscore"
 }
-hint_milscore = {
+hint_milscore = { 
 	window = "hints_test"
 	title = "HINT_MILSCORE_TITLE"
 	text = "HINT_MILSCORE_TEXT"
@@ -479,14 +392,12 @@ hint_milscore = {
 	button = "hint_admscore"
 	button = "hint_dipscore"
 }
-
-hint_waroverview = {
+hint_waroverview = { 
 	window = "hints_test"
 	title = "HINT_WAROVERVIEW_TITLE"
 	text = "HINT_WAROVERVIEW_TEXT"
 }
-
-hint_papacy = {
+hint_papacy = { 
 	window = "hints_test"
 	title = "HINT_PAPACY_TITLE"
 	text = "HINT_PAPACY_TEXT"
@@ -494,15 +405,14 @@ hint_papacy = {
 	button = "hint_papalinfluence"
 	button = "hint_cardinal"
 }
-
-hint_macrobuild = {
+hint_macrobuild = { 
 	window = "hints_test"
 	title = "HINT_MACROBUILD_TITLE"
 	text = "HINT_MACROBUILD_TEXT"
 	button = "hint_buildings"
 	button = "hint_monarchpoints"
 }
-hint_monarchpoints = {
+hint_monarchpoints = { 
 	window = "hints_test"
 	title = "HINT_MONARCHPOINTS_TITLE"
 	text = "HINT_MONARCHPOINTS_TEXT"
@@ -510,7 +420,7 @@ hint_monarchpoints = {
 	button = "hint_ideas"
 	button = "hint_technology"
 }
-hint_adm = {
+hint_adm = { 
 	window = "hints_test"
 	title = "HINT_ADMINPOWER_TITLE"
 	text = "HINT_ADMINPOWER_TEXT"
@@ -518,7 +428,7 @@ hint_adm = {
 	button = "hint_dip"
 	button = "hint_mil"
 }
-hint_dip = {
+hint_dip = { 
 	window = "hints_test"
 	title = "HINT_DIPLOPOWER_TITLE"
 	text = "HINT_DIPLOPOWER_TEXT"
@@ -526,7 +436,7 @@ hint_dip = {
 	button = "hint_adm"
 	button = "hint_mil"
 }
-hint_mil = {
+hint_mil = { 
 	window = "hints_test"
 	title = "HINT_MILPOWER_TITLE"
 	text = "HINT_MILPOWER_TEXT"
@@ -534,19 +444,19 @@ hint_mil = {
 	button = "hint_adm"
 	button = "hint_dip"
 }
-hint_outliner = {
+hint_outliner = { 
 	window = "hints_test"
 	title = "HINT_OUTLINER_TITLE"
 	text = "HINT_OUTLINER_TEXT"
 }
-hint_changegov = {
+hint_changegov = { 
 	window = "hints_test"
 	title = "HINT_CHANGEGOV_TITLE"
 	text = "HINT_CHANGEGOV_TEXT"
 	button = "hint_adm"
 	button = "hint_govtype"
 }
-hint_govtype = {
+hint_govtype = { 
 	window = "hints_test"
 	title = "HINT_GOVTYPE_TITLE"
 	text = "HINT_GOVTYPE_TEXT"
@@ -554,19 +464,19 @@ hint_govtype = {
 	button = "hint_republic"
 	button = "hint_theocracy"
 }
-hint_govname = {
+hint_govname = { 
 	window = "hints_test"
 	title = "HINT_GOVNAME_TITLE"
 	text = "HINT_GOVNAME_TEXT"
 }
-hint_advisor = {
+hint_advisor = { 
 	window = "hints_test"
 	title = "HINT_ADVISOR_TITLE"
 	text = "HINT_ADVISOR_TEXT"
 	button = "hint_monarchpoints"
 	button = "hint_income"
 }
-hint_primaryculture = {
+hint_primaryculture = { 
 	window = "hints_test"
 	title = "HINT_PRIMARYCULTURE_TITLE"
 	text = "HINT_PRIMARYCULTURE_TEXT"
@@ -574,7 +484,7 @@ hint_primaryculture = {
 	button = "hint_rebels"
 	button = "hint_stability"
 }
-hint_acceptculture = {
+hint_acceptculture = { 
 	window = "hints_test"
 	title = "HINT_ACCEPTCULTURE_TITLE"
 	text = "HINT_ACCEPTCULTURE_TEXT"
@@ -582,30 +492,30 @@ hint_acceptculture = {
 	button = "hint_rebels"
 	button = "hint_stability"
 }
-hint_countrymod = {
+hint_countrymod = { 
 	window = "hints_test"
 	title = "HINT_COUNTRYMOD_TITLE"
 	text = "HINT_COUNTRYMOD_TEXT"
 }
-hint_techgroup = {
+hint_techgroup = { 
 	window = "hints_test"
 	title = "HINT_TECHGROUP_TITLE"
 	text = "HINT_TECHGROUP_TEXT"
 	button = "hint_technology"
 }
-hint_technology = {
+hint_technology = { 
 	window = "hints_test"
 	title = "HINT_TECHNOLOGY_TITLE"
 	text = "HINT_TECHNOLOGY_TEXT"
 	button = "hint_techgroup"
 	button = "hint_monarchpoints"
 }
-hint_spyefficiency = {
+hint_spyefficiency = { 
 	window = "hints_test"
 	title = "HINT_SPYEFFICIENCY_TITLE"
 	text = "HINT_SPYEFFICIENCY_TEXT"
 }
-hint_ideas = {
+hint_ideas = { 
 	window = "hints_test"
 	title = "HINT_IDEAS_TITLE"
 	text = "HINT_IDEAS_TEXT"
@@ -613,7 +523,7 @@ hint_ideas = {
 	button = "hint_ideaguide"
 	button = "hint_nationalideas"
 }
-hint_ideagroup = {
+hint_ideagroup = { 
 	window = "hints_test"
 	title = "HINT_IDEAGROUP_TITLE"
 	text = "HINT_IDEAGROUP_TEXT"
@@ -621,7 +531,7 @@ hint_ideagroup = {
 	button = "hint_ideaguide"
 	button = "hint_nationalideas"
 }
-hint_nationalideas = {
+hint_nationalideas = { 
 	window = "hints_test"
 	title = "HINT_NATIONALIDEAS_TITLE"
 	text = "HINT_NATIONALIDEAS_TEXT"
@@ -629,7 +539,7 @@ hint_nationalideas = {
 	button = "hint_ideaguide"
 	button = "hint_ideagroup"
 }
-hint_ideaguide = {
+hint_ideaguide = { 
 	window = "hints_test"
 	title = "HINT_IDEAGUIDE_TITLE"
 	text = "HINT_IDEAGUIDE_TEXT"
@@ -637,7 +547,7 @@ hint_ideaguide = {
 	button = "hint_ideagroup"
 	button = "hint_nationalideas"
 }
-hint_diplomaticupkeep = {
+hint_diplomaticupkeep = { 
 	window = "hints_test"
 	title = "HINT_DIPUPKEEP_TITLE"
 	text = "HINT_DIPUPKEEP_TEXT"
@@ -645,46 +555,46 @@ hint_diplomaticupkeep = {
 	button = "hint_vassals"
 	button = "hint_royalmarriage"
 }
-hint_dipreputation = {
+hint_dipreputation = { 
 	window = "hints_test"
 	title = "HINT_DIPREPUTATION_TITLE"
 	text = "HINT_DIPREPUTATION_TEXT"
 }
-hint_rival = {
+hint_rival = { 
 	window = "hints_test"
 	title = "HINT_RIVAL_TITLE"
 	text = "HINT_RIVAL_TEXT"
 	button = "hint_powerprojection"
 }
-hint_admtech = {
+hint_admtech = { 
 	window = "hints_test"
 	title = "HINT_ADMTECH_TITLE"
 	text = "HINT_ADMTECH_TEXT"
 	button = "hint_adm"
 	button = "hint_technology"
 }
-hint_diptech = {
+hint_diptech = { 
 	window = "hints_test"
 	title = "HINT_DIPTECH_TITLE"
 	text = "HINT_DIPTECH_TEXT"
 	button = "hint_dip"
 	button = "hint_technology"
 }
-hint_miltech = {
+hint_miltech = { 
 	window = "hints_test"
 	title = "HINT_MILTECH_TITLE"
 	text = "HINT_MILTECH_TEXT"
 	button = "hint_mil"
 	button = "hint_technology"
 }
-hint_religion = {
+hint_religion = { 
 	window = "hints_test"
 	title = "HINT_RELIGION_TITLE"
 	text = "HINT_RELIGION_TEXT"
 	button = "hint_missionary"
 	button = "hint_unity"
 }
-hint_inflation = {
+hint_inflation = { 
 	window = "hints_test"
 	title = "HINT_INFLATION_TITLE"
 	text = "HINT_INFLATION_TEXT"
@@ -692,21 +602,21 @@ hint_inflation = {
 	button = "hint_advisor"
 	button = "hint_loans"
 }
-hint_wartaxes = {
+hint_wartaxes = { 
 	window = "hints_test"
 	title = "HINT_WARTAXES_TITLE"
 	text = "HINT_WARTAXES_TEXT"
 	button = "hint_warexhaustion"
 	button = "hint_taxes"
 }
-hint_warexhaustion = {
+hint_warexhaustion = { 
 	window = "hints_test"
 	title = "HINT_WAREXHAUSTION_TITLE"
 	text = "HINT_WAREXHAUSTION_TEXT"
 	button = "hint_dip"
 	button = "hint_revoltrisk"
 }
-hint_revoltrisk = {
+hint_revoltrisk = { 
 	window = "hints_test"
 	title = "HINT_REVOLTRISK_TITLE"
 	text = "HINT_REVOLTRISK_TEXT"
@@ -714,7 +624,7 @@ hint_revoltrisk = {
 	button = "hint_rebels"
 	button = "hint_stability"
 }
-hint_rebels = {
+hint_rebels = { 
 	window = "hints_test"
 	title = "HINT_REBELS_TITLE"
 	text = "HINT_REBELS_TEXT"
@@ -722,14 +632,14 @@ hint_rebels = {
 	button = "hint_rebeltypes"
 	button = "hint_overextension"
 }
-hint_rebeltypes = {
+hint_rebeltypes = { 
 	window = "hints_test"
 	title = "HINT_REBELS_TITLE"
 	text = "HINT_REBELS_TEXT"
 	button = "hint_rebels"
 	button = "hint_leaders"
 }
-hint_leaders = {
+hint_leaders = { 
 	window = "hints_test"
 	title = "HINT_LEADER_TITLE"
 	text = "HINT_LEADER_TEXT"
@@ -737,7 +647,7 @@ hint_leaders = {
 	button = "hint_dip"
 	button = "hint_mil"
 }
-hint_expconq = {
+hint_expconq = { 
 	window = "hints_test"
 	title = "HINT_EXPCONQ_TITLE"
 	text = "HINT_EXPCONQ_TEXT"
@@ -745,21 +655,21 @@ hint_expconq = {
 	button = "hint_exploration"
 	button = "hint_ideagroup"
 }
-hint_exploration = {
+hint_exploration = { 
 	window = "hints_test"
 	title = "HINT_EXPLORATION_TITLE"
 	text = "HINT_EXPLORATION_TEXT"
 	button = "hint_expconq"
 	button = "hint_terraincognita"
 }
-hint_terraincognita = {
+hint_terraincognita = { 
 	window = "hints_test"
 	title = "HINT_TERRAINCOGNITA_TITLE"
 	text = "HINT_TERRAINCOGNITA_TEXT"
 	button = "hint_expconq"
 	button = "hint_exploration"
 }
-hint_loans = {
+hint_loans = { 
 	window = "hints_test"
 	title = "HINT_LOANS_TITLE"
 	text = "HINT_LOANS_TEXT"
@@ -767,7 +677,7 @@ hint_loans = {
 	button = "hint_ducats"
 	button = "hint_inflation"
 }
-hint_interest = {
+hint_interest = { 
 	window = "hints_test"
 	title = "HINT_INTEREST_TITLE"
 	text = "HINT_INTEREST_TEXT"
@@ -775,21 +685,21 @@ hint_interest = {
 	button = "hint_stability"
 	button = "hint_inflation"
 }
-hint_firemod = {
+hint_firemod = { 
 	window = "hints_test"
 	title = "HINT_FIREMOD_TITLE"
 	text = "HINT_FIREMOD_TEXT"
 	button = "hint_shockmod"
 	button = "hint_combat"
 }
-hint_shockmod = {
+hint_shockmod = { 
 	window = "hints_test"
 	title = "HINT_SHOCKMOD_TITLE"
 	text = "HINT_SHOCKMOD_TEXT"
 	button = "hint_firemod"
 	button = "hint_combat"
 }
-hint_miltac = {
+hint_miltac = { 
 	window = "hints_test"
 	title = "HINT_MILTAC_TITLE"
 	text = "HINT_MILTAC_TEXT"
@@ -797,19 +707,19 @@ hint_miltac = {
 	button = "hint_firemod"
 	button = "hint_combat"
 }
-hint_discipline = {
+hint_discipline = { 
 	window = "hints_test"
 	title = "HINT_DISCIPLINE_TITLE"
 	text = "HINT_DISCIPLINE_TEXT"
 	button = "hint_combat"
 }
-hint_combatwidth = {
+hint_combatwidth = { 
 	window = "hints_test"
 	title = "HINT_COMBATWIDTH_TITLE"
 	text = "HINT_COMBATWIDTH_TEXT"
 	button = "hint_combat"
 }
-hint_heavyships = {
+hint_heavyships = { 
 	window = "hints_test"
 	title = "HINT_HEAVYSHIPS_TITLE"
 	text = "HINT_HEAVYSHIPS_TEXT"
@@ -817,7 +727,7 @@ hint_heavyships = {
 	button = "hint_cannons"
 	button = "hint_hullsize"
 }
-hint_lightships = {
+hint_lightships = { 
 	window = "hints_test"
 	title = "HINT_LIGHTSHIPS_TITLE"
 	text = "HINT_LIGHTSHIPS_TEXT"
@@ -825,7 +735,7 @@ hint_lightships = {
 	button = "hint_trade"
 	button = "hint_tradepower"
 }
-hint_galleys = {
+hint_galleys = { 
 	window = "hints_test"
 	title = "HINT_GALLEYS_TITLE"
 	text = "HINT_GALLEYS_TEXT"
@@ -833,7 +743,7 @@ hint_galleys = {
 	button = "hint_cannons"
 	button = "hint_hullsize"
 }
-hint_transports = {
+hint_transports = { 
 	window = "hints_test"
 	title = "HINT_TRANSPORTS_TITLE"
 	text = "HINT_TRANSPORTS_TEXT"
@@ -841,7 +751,7 @@ hint_transports = {
 	button = "hint_cannons"
 	button = "hint_hullsize"
 }
-hint_blockade = {
+hint_blockade = { 
 	window = "hints_test"
 	title = "HINT_BLOCKADE_TITLE"
 	text = "HINT_BLOCKADE_TEXT"
@@ -849,32 +759,32 @@ hint_blockade = {
 	button = "hint_tradepower"
 	button = "hint_taxes"
 }
-hint_coalition = {
+hint_coalition = { 
 	window = "hints_test"
 	title = "HINT_COALITION_TITLE"
 	text = "HINT_COALITION_TEXT"
 }
-hint_attrition = {
+hint_attrition = { 
 	window = "hints_test"
 	title = "HINT_ATTRITION_TITLE"
 	text = "HINT_ATTRITION_TEXT"
 	button = "hint_manpower"
 }
-hint_colonialrange = {
+hint_colonialrange = { 
 	window = "hints_test"
 	title = "HINT_COLONIALRANGE_TITLE"
 	text = "HINT_COLONIALRANGE_TEXT"
 	button = "hint_colony"
 	button = "hint_colonist"
 }
-hint_colony = {
+hint_colony = { 
 	window = "hints_test"
 	title = "HINT_COLONY_TITLE"
 	text = "HINT_COLONY_TEXT"
 	button = "hint_colonist"
 	button = "hint_settlergrowth"
 }
-hint_buildings = {
+hint_buildings = { 
 	window = "hints_test"
 	title = "HINT_BUILDING_TITLE"
 	text = "HINT_BUILDING_TEXT"
@@ -882,96 +792,96 @@ hint_buildings = {
 	button = "hint_macrobuild"
 	button = "hint_income"
 }
-hint_monarchy = {
+hint_monarchy = { 
 	window = "hints_test"
 	title = "HINT_MONARCHY_TITLE"
 	text = "HINT_MONARCHY_TEXT"
 	button = "hint_ruler"
 	button = "hint_govtype"
 }
-hint_republic = {
+hint_republic = { 
 	window = "hints_test"
 	title = "HINT_REPUBLIC_TITLE"
 	text = "HINT_REPUBLIC_TEXT"
 	button = "hint_govtype"
 	button = "hint_ruler"
 }
-hint_tribe = {
+hint_tribe = { 
 	window = "hints_test"
 	title = "HINT_TRIBE_TITLE"
 	text = "HINT_TRIBE_TEXT"
 	button = "hint_govtype"
 	button = "hint_ruler"
 }
-hint_nomad = {
+hint_nomad = { 
 	window = "hints_test"
 	title = "HINT_NOMAD_TITLE"
 	text = "HINT_NOMAD_TEXT"
 	button = "hint_govtype"
 	button = "hint_ruler"
 }
-hint_theocracy = {
+hint_theocracy = { 
 	window = "hints_test"
 	title = "HINT_THEOCRACY_TITLE"
 	text = "HINT_THEOCRACY_TEXT"
 	button = "hint_govtype"
 	button = "hint_ruler"
 }
-hint_combatpower = {
+hint_combatpower = { 
 	window = "hints_test"
 	title = "HINT_COMBATPOWER_TITLE"
 	text = "HINT_COMBATPOWER_TEXT"
 	button = "hint_combat"
 }
-hint_preferredunit = {
+hint_preferredunit = { 
 	window = "hints_test"
 	title = "HINT_PREFERREDUNIT_TITLE"
 	text = "HINT_PREFERREDUNIT_TEXT"
 	button = "hint_unitbasecost"
 }
-hint_cannons = {
+hint_cannons = { 
 	window = "hints_test"
 	title = "HINT_CANNONS_TITLE"
 	text = "HINT_CANNONS_TEXT"
 	button = "hint_seacombat"
 	button = "hint_hullsize"
 }
-hint_hullsize = {
+hint_hullsize = { 
 	window = "hints_test"
 	title = "HINT_HULLSIZE_TITLE"
 	text = "HINT_HULLSIZE_TEXT"
 	button = "hint_seacombat"
 	button = "hint_cannons"
 }
-hint_leaderfire = {
+hint_leaderfire = { 
 	window = "hints_test"
 	title = "HINT_LEADERFIRE_TITLE"
 	text = "HINT_LEADERFIRE_TEXT"
 	button = "hint_combat"
 	button = "hint_leaders"
 }
-hint_leadershock = {
+hint_leadershock = { 
 	window = "hints_test"
 	title = "HINT_LEADERSHOCK_TITLE"
 	text = "HINT_LEADERSHOCK_TEXT"
 	button = "hint_combat"
 	button = "hint_leaders"
 }
-hint_leadermaneuver = {
+hint_leadermaneuver = { 
 	window = "hints_test"
 	title = "HINT_LEADERMANEUVER_TITLE"
 	text = "HINT_LEADERMANEUVER_TEXT"
 	button = "hint_combat"
 	button = "hint_leaders"
 }
-hint_leadersiege = {
+hint_leadersiege = { 
 	window = "hints_test"
 	title = "HINT_LEADERSIEGE_TITLE"
 	text = "HINT_LEADERSIEGE_TEXT"
 	button = "hint_siege"
 	button = "hint_leaders"
 }
-hint_unitbasecost = {
+hint_unitbasecost = { 
 	window = "hints_test"
 	title = "HINT_UNITBASECOST_TITLE"
 	text = "HINT_UNITBASECOST_TEXT"
@@ -979,50 +889,50 @@ hint_unitbasecost = {
 	button = "hint_cavalry"
 	button = "hint_artillery"
 }
-hint_fire = {
+hint_fire = { 
 	window = "hints_test"
 	title = "HINT_FIRE_TITLE"
 	text = "HINT_FIRE_TEXT"
 	button = "hint_combat"
 }
-hint_shock = {
+hint_shock = { 
 	window = "hints_test"
 	title = "HINT_SHOCK_TITLE"
 	text = "HINT_SHOCK_TEXT"
 	button = "hint_combat"
 }
-hint_unitmorale = {
+hint_unitmorale = { 
 	window = "hints_test"
 	title = "HINT_UNITMORALE_TITLE"
 	text = "HINT_UNITMORALE_TEXT"
 	button = "hint_combat"
 }
-hint_morale = {
+hint_morale = { 
 	window = "hints_test"
 	title = "HINT_MORALE_TITLE"
 	text = "HINT_MORALE_TEXT"
 	button = "hint_combat"
 }
-hint_infantry = {
+hint_infantry = { 
 	window = "hints_test"
 	title = "HINT_INFANTRY_TITLE"
 	text = "HINT_INFANTRY_TEXT"
 	button = "hint_combat"
 }
-hint_cavalry = {
+hint_cavalry = { 
 	window = "hints_test"
 	title = "HINT_CAVALRY_TITLE"
 	text = "HINT_CAVALRY_TEXT"
 	button = "hint_combat"
 }
-hint_artillery = {
+hint_artillery = { 
 	window = "hints_test"
 	title = "HINT_ARTILLERY_TITLE"
 	text = "HINT_ARTILLERY_TEXT"
 	button = "hint_combat"
 	button = "hint_siege"
 }
-hint_tolerancetrue = {
+hint_tolerancetrue = { 
 	window = "hints_test"
 	title = "HINT_TOLERANCETRUE_TITLE"
 	text = "HINT_TOLERANCETRUE_TEXT"
@@ -1030,7 +940,7 @@ hint_tolerancetrue = {
 	button = "hint_toleranceheretic"
 	button = "hint_toleranceheathen"
 }
-hint_toleranceheretic = {
+hint_toleranceheretic = { 
 	window = "hints_test"
 	title = "HINT_TOLERANCEHERETIC_TITLE"
 	text = "HINT_TOLERANCEHERETIC_TEXT"
@@ -1038,7 +948,7 @@ hint_toleranceheretic = {
 	button = "hint_tolerancetrue"
 	button = "hint_toleranceheathen"
 }
-hint_toleranceheathen = {
+hint_toleranceheathen = { 
 	window = "hints_test"
 	title = "HINT_TOLERANCEHEATHEN_TITLE"
 	text = "HINT_TOLERANCEHEATHEN_TEXT"
@@ -1046,47 +956,47 @@ hint_toleranceheathen = {
 	button = "hint_toleranceheretic"
 	button = "hint_tolerancetrue"
 }
-hint_reformdesire = {
+hint_reformdesire = { 
 	window = "hints_test"
 	title = "HINT_REFORMDESIRE_TITLE"
 	text = "HINT_REFORMDESIRE_TEXT"
 	button = "hint_changereligion"
 }
-hint_papalinfluence = {
+hint_papalinfluence = { 
 	window = "hints_test"
 	title = "HINT_PAPALINFLUENCE_TITLE"
 	text = "HINT_PAPALINFLUENCE_TEXT"
 	button = "hint_cardinal"
 	button = "hint_papalcontroller"
 }
-hint_changereligion = {
+hint_changereligion = { 
 	window = "hints_test"
 	title = "HINT_CHANGERELIGION_TITLE"
 	text = "HINT_CHANGERELIGION_TEXT"
 	button = "hint_reformdesire"
 }
-hint_cardinal = {
+hint_cardinal = { 
 	window = "hints_test"
 	title = "HINT_CARDINAL_TITLE"
 	text = "HINT_CARDINAL_TEXT"
 	button = "hint_papalinfluence"
 	button = "hint_papalcontroller"
 }
-hint_settlergrowth = {
+hint_settlergrowth = { 
 	window = "hints_test"
 	title = "HINT_SETTLERGROWTH_TITLE"
 	text = "HINT_SETTLERGROWTH_TEXT"
 	button = "hint_colonist"
 	button = "hint_colony"
 }
-hint_colonisttime = {
+hint_colonisttime = { 
 	window = "hints_test"
 	title = "HINT_COLONISTTIME_TITLE"
 	text = "HINT_COLONISTTIME_TEXT"
 	button = "hint_colonist"
 	button = "hint_colony"
 }
-hint_traderange = {
+hint_traderange = { 
 	window = "hints_test"
 	title = "HINT_TRADERANGE_TITLE"
 	text = "HINT_TRADERANGE_TEXT"
@@ -1094,16 +1004,15 @@ hint_traderange = {
 	button = "hint_tradenode"
 	button = "hint_merchant"
 }
-hint_mercantilism = {
+hint_mercantilism = { 
 	window = "hints_test"
 	title = "HINT_MERCANTILISM_TITLE"
 	text = "HINT_MERCANTILISM_TEXT"
 	button = "hint_trade"
 	button = "hint_tradenode"
 	button = "hint_tradepower"
-	
 }
-hint_tradesteering = {
+hint_tradesteering = { 
 	window = "hints_test"
 	title = "HINT_TRADESTEERING_TITLE"
 	text = "HINT_TRADESTEERING_TEXT"
@@ -1111,7 +1020,7 @@ hint_tradesteering = {
 	button = "hint_tradenode"
 	button = "hint_tradepower"
 }
-hint_tradeeff = {
+hint_tradeeff = { 
 	window = "hints_test"
 	title = "HINT_TRADEEFF_TITLE"
 	text = "HINT_TRADEEFF_TEXT"
@@ -1119,14 +1028,14 @@ hint_tradeeff = {
 	button = "hint_tradenode"
 	button = "hint_merchant"
 }
-hint_basetax = {
+hint_basetax = { 
 	window = "hints_test"
 	title = "HINT_BASETAX_TITLE"
 	text = "HINT_BASETAX_TEXT"
 	button = "hint_province"
 	button = "hint_core"
 }
-hint_tradepower = {
+hint_tradepower = { 
 	window = "hints_test"
 	title = "HINT_TRADEPOWER_TITLE"
 	text = "HINT_TRADEPOWER_TEXT"
@@ -1134,7 +1043,7 @@ hint_tradepower = {
 	button = "hint_tradenode"
 	button = "hint_tradesteering"
 }
-hint_tradevalue = {
+hint_tradevalue = { 
 	window = "hints_test"
 	title = "HINT_TRADEVALUE_TITLE"
 	text = "HINT_TRADEVALUE_TEXT"
@@ -1142,7 +1051,7 @@ hint_tradevalue = {
 	button = "hint_tradenode"
 	button = "hint_trade"
 }
-hint_tradegoods = {
+hint_tradegoods = { 
 	window = "hints_test"
 	title = "HINT_TRADEGOODS_TITLE"
 	text = "HINT_TRADEGOODS_TEXT"
@@ -1150,7 +1059,7 @@ hint_tradegoods = {
 	button = "hint_tradenode"
 	button = "hint_trade"
 }
-hint_tradenode = {
+hint_tradenode = { 
 	window = "hints_test"
 	title = "HINT_TRADENODE_TITLE"
 	text = "HINT_TRADENODE_TEXT"
@@ -1158,53 +1067,53 @@ hint_tradenode = {
 	button = "hint_tradevalue"
 	button = "hint_trade"
 }
-hint_tradepost = {
+hint_tradepost = { 
 	window = "hints_test"
 	title = "HINT_TRADEPOST_TITLE"
 	text = "HINT_TRADEPOST_TEXT"
 	button = "hint_tradenode"
 }
-hint_alliance = {
+hint_alliance = { 
 	window = "hints_test"
 	title = "HINT_ALLIANCE_TITLE"
 	text = "HINT_ALLIANCE_TEXT"
 	button = "hint_diplomaticupkeep"
 }
-hint_militaryaccess = {
+hint_militaryaccess = { 
 	window = "hints_test"
 	title = "HINT_MILITARYACCESS_TITLE"
 	text = "HINT_MILITARYACCESS_TEXT"
 	button = "hint_diplomaticupkeep"
 }
-hint_province = {
+hint_province = { 
 	window = "hints_test"
 	title = "HINT_PROVINCE_TITLE"
 	text = "HINT_PROVINCE_TEXT"
 	button = "hint_core"
 	button = "hint_basetax"
 }
-hint_ruler = {
+hint_ruler = { 
 	window = "hints_test"
 	title = "HINT_RULER_TITLE"
 	text = "HINT_RULER_TEXT"
 	button = "hint_monarchpoints"
 	button = "hint_govtype"
 }
-hint_heir = {
+hint_heir = { 
 	window = "hints_test"
 	title = "HINT_HEIR_TITLE"
 	text = "HINT_HEIR_TEXT"
 	button = "hint_monarchpoints"
 	button = "hint_govtype"
 }
-hint_fortdefense = {
+hint_fortdefense = { 
 	window = "hints_test"
 	title = "HINT_FORTDEFENSE_TITLE"
 	text = "HINT_FORTDEFENSE_TEXT"
 	button = "hint_fortlevel"
 	button = "hint_siege"
 }
-hint_elector = {
+hint_elector = { 
 	window = "hints_test"
 	title = "HINT_ELECTOR_TITLE"
 	text = "HINT_ELECTOR_TEXT"
@@ -1212,7 +1121,7 @@ hint_elector = {
 	button = "hint_emperor"
 	button = "hint_imperialauthority"
 }
-hint_imperialauthority = {
+hint_imperialauthority = { 
 	window = "hints_test"
 	title = "HINT_IMPERIALAUTHORITY_TITLE"
 	text = "HINT_IMPERIALAUTHORITY_TEXT"
@@ -1220,7 +1129,7 @@ hint_imperialauthority = {
 	button = "hint_emperor"
 	button = "hint_elector"
 }
-hint_unity = {
+hint_unity = { 
 	window = "hints_test"
 	title = "HINT_UNITY_TITLE"
 	text = "HINT_UNITY_TEXT"
@@ -1228,31 +1137,31 @@ hint_unity = {
 	button = "hint_revoltrisk"
 	button = "hint_missionary"
 }
-hint_fortlevel = {
+hint_fortlevel = { 
 	window = "hints_test"
 	title = "HINT_FORTLVL_TITLE"
 	text = "HINT_FORTLVL_TEXT"
 	button = "hint_fortdefense"
 }
-hint_siege = {
+hint_siege = { 
 	window = "hints_test"
 	title = "HINT_SIEGE_TITLE"
 	text = "HINT_SIEGE_TEXT"
 	button = "hint_fortdefense"
 	button = "hint_fortlevel"
 }
-hint_combatadv = {
+hint_combatadv = { 
 	window = "hints_test"
 	title = "HINT_COMBATADV_TITLE"
 	text = "HINT_COMBATADV_TEXT"
 	button = "hint_combat"
 }
-hint_breach = {
+hint_breach = { 
 	window = "hints_test"
 	title = "HINT_BREACH_TITLE"
 	text = "HINT_BREACH_TEXT"
 }
-hint_maneuver = {
+hint_maneuver = { 
 	window = "hints_test"
 	title = "HINT_MANEUVER_TITLE"
 	text = "HINT_MANEUVER_TEXT"
@@ -1260,74 +1169,73 @@ hint_maneuver = {
 	button = "hint_leadermaneuver"
 	button = "hint_technology"
 }
-hint_seacombat = {
+hint_seacombat = { 
 	window = "hints_test"
 	title = "HINT_SEACOMBAT_TITLE"
 	text = "HINT_SEACOMBAT_TEXT"
 	button = "hint_cannons"
 	button = "hint_hullsize"
 	button = "hint_leaders"
-
 }
-hint_breakunion = {
+hint_breakunion = { 
 	window = "hints_test"
 	title = "HINT_BREAKUNION_TITLE"
 	text = "HINT_BREAKUNION_TEXT"
 	button = "hint_personalunion"
 	button = "hint_enterpersonalunion"
 }
-hint_inherit = {
+hint_inherit = { 
 	window = "hints_test"
 	title = "HINT_INHERIT_TITLE"
 	text = "HINT_INHERIT_TEXT"
 	button = "hint_personalunion"
 }
-hint_integrate = {
+hint_integrate = { 
 	window = "hints_test"
 	title = "HINT_INHERIT_TITLE"
 	text = "HINT_INHERIT_TEXT"
 	button = "hint_personalunion"
 }
-hint_powerprojection = {
+hint_powerprojection = { 
 	window = "hints_test"
 	title = "HINT_POWERPROJECTION_TITLE"
 	text = "HINT_POWERPROJECTION_TEXT"
 	button = "hint_rival"
 	button = "hint_monarchpoints"
 }
-hint_policies = {
+hint_policies = { 
 	window = "hints_test"
 	title = "HINT_POLICIES_TITLE"
 	text = "HINT_POLICIES_TEXT"
 }
-hint_factions = {
+hint_factions = { 
 	window = "hints_test"
 	title = "HINT_FACTIONS_TITLE"
 	text = "HINT_FACTIONS_TEXT"
 }
-hint_natives = {
+hint_natives = { 
 	window = "hints_test"
 	title = "HINT_NATIVES_TITLE"
 	text = "HINT_NATIVES_TEXT"
 }
-hint_religiousreforms = {
+hint_religiousreforms = { 
 	window = "hints_test"
 	title = "HINT_RELIGIOUSREFORMS_TITLE"
 	text = "HINT_RELIGIOUSREFORMS_TEXT"
 }
-hint_privateering = {
+hint_privateering = { 
 	window = "hints_test"
 	title = "HINT_PRIVATEERING_TITLE"
 	text = "HINT_PRIVATEERING_TEXT"
 	button = "hint_trade"
 }
-hint_improverelations = {
+hint_improverelations = { 
 	window = "hints_test"
 	title = "HINT_IMPROVERELATIONS_TITLE"
 	text = "HINT_IMPROVERELATIONS_TEXT"
 	button = "hint_diplomat"
 }
-hint_autonomy = {
+hint_autonomy = { 
 	window = "hints_test"
 	title = ""
 	text = ""
@@ -1335,5 +1243,3 @@ hint_autonomy = {
 	button = "hint_estates"
 	button = "hint_autonomy2"
 }
-#hint_casusbelli = {}
-#hint_estates = {}

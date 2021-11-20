@@ -1,328 +1,330 @@
-
-mlo_missions_unite_italy_plus_balkans = {
+mlo_missions_unite_italy_plus_balkans = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_mlo
 	}
 	has_country_shield = yes
-	
-	mlo_conquer_pavia = {
+	mlo_conquer_pavia = { 
 		icon = mission_unite_home_region
-		required_missions = {  }
+		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 1347
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			1347 = {
+		trigger = { 
+			1347 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_legitimacy = 10
 			add_horde_unity = 10
 			add_republican_tradition = 10
 			add_prestige = 15
 		}
 	}
-	
-	mlo_conquer_rumagna = {
+	mlo_conquer_rumagna = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_conquer_pavia }
+		required_missions = { mlo_conquer_pavia}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 106
 				province_id = 113
 				province_id = 114
 				province_id = 1378
 				province_id = 3867
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			106 = {
+		trigger = { 
+			106 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			113 = {
+			113 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			114 = {
+			114 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1378 = {
+			1378 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3867 = {
+			3867 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_winter_viper"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_conquer_pisa = {
+	mlo_conquer_pisa = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_conquer_rumagna }
+		required_missions = { mlo_conquer_rumagna}
 		position = 3
-		provinces_to_highlight = {
-			OR = {
-				province_id = 115	#Lucca
-				province_id = 1380	#Pisa
-				province_id = 3868	#Livorno
+		provinces_to_highlight = { 
+			OR = { 
+				province_id = 115
+				province_id = 1380
+				province_id = 3868
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			115 = {
+		trigger = { 
+			115 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1380 = {
+			1380 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3868 = {
+			3868 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 		}
 	}
-	
-	mlo_conquer_tuscany = {
+	mlo_conquer_tuscany = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_conquer_pisa }
+		required_missions = { mlo_conquer_pisa}
 		position = 4
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 116
 				province_id = 117
 				province_id = 3697
 				province_id = 3698
 				province_id = 2563
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			116 = {
+		trigger = { 
+			116 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			117 = {
+			117 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3697 = {
+			3697 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3698 = {
+			3698 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2563 = {
+			2563 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "hegemonic_ambition"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-
-	mlo_conquer_marche = {
+	mlo_conquer_marche = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_conquer_tuscany }
+		required_missions = { mlo_conquer_tuscany}
 		position = 5
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = marche_area
 				province_id = 2453
 				province_id = 3699
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			marche_area = {
+		trigger = { 
+			marche_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2453 = {
+			2453 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3699 = {
+			3699 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_adriatic_trade"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_march_on_rome = {
+	mlo_march_on_rome = { 
 		icon = mission_iron_crown
-		required_missions = { mlo_conquer_marche }
+		required_missions = { mlo_conquer_marche}
 		position = 6
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 118
 				province_id = 1347
 				province_id = 1379
 				province_id = 2530
 				province_id = 3869
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			118 = {
+		trigger = { 
+			118 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1379 = {
+			1379 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2530 = {
+			2530 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3869 = {
+			3869 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			OR = {
-				AND = {
-					monarchy_or_harem_gov = yes
-					NOT = { has_institution = Nationalism }
+			OR = { 
+				AND = { 
+					custom_trigger_tooltip = { 
+						tooltip = is_monarchy_tt
+						OR = { 
+							government = monarchy
+							government = has_harem
+						}
+					}
+					NOT = { 
+						has_institution = Nationalism
+					}
 				}
 				has_institution = Nationalism
 			}
-			# OR = {
-			# 	NOT = { hre_size = 1 }
-			# 	is_part_of_hre = no
-			# 	is_emperor = yes
-			# 	has_country_flag = iron_crown_granted
-			# }
 			owns = 1347
-			is_free_or_tributary_trigger = yes
-			is_at_war = no
-		}
-		effect = {
-			if = {
-				limit = {
-					is_part_of_hre = yes
-				}
-				emperor = {
-					country_event = { id = flavor_ita.1 days = 5 }
+			AND = { 
+				OR = { 
+					is_subject = no
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+					is_subject_of_type = muscovite_tributary_state
 				}
 			}
-			else = { country_event = { id = mission_event.025 } }
+			is_at_war = no
+		}
+		effect = { 
+			if = { 
+				limit = { 
+					is_part_of_hre = yes
+				}
+				emperor = { 
+					country_event = { 
+						id = flavor_ita.1
+						days = 5
+					}
+				}
+			}
+			else = { 
+				country_event = { 
+					id = mission_event.025
+				}
+			}
 		}
 	}
-	
-	mlo_conquer_naples = {
+	mlo_conquer_naples = { 
 		icon = mission_monarch_in_throne_room
-		required_missions = { mlo_march_on_rome }
+		required_missions = { mlo_march_on_rome}
 		position = 7
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = naples_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			OR = {
-				KNP = {
+		trigger = { 
+			OR = { 
+				KNP = { 
 					junior_union_with = ROOT
 				}
-				NAP = {
+				NAP = { 
 					junior_union_with = ROOT
 				}
-				naples_region = {
+				naples_region = { 
 					type = all
 					country_or_non_sovereign_subject_holds = ROOT
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
-			hidden_effect = {
-				remove_casus_belli = {
+			hidden_effect = { 
+				remove_casus_belli = { 
 					type = cb_restore_personal_union
 					target = KNP
 				}
-				remove_casus_belli = {
+				remove_casus_belli = { 
 					type = cb_restore_personal_union
 					target = NAP
 				}
 			}
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = "mlo_peninsular_unification"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-
-	#balkans missions
-	mlo_albania = {
+	mlo_albania = { 
 		icon = mission_cannons_firing
-		required_missions = { mlo_conquer_naples }
+		required_missions = { mlo_conquer_naples}
 		position = 8
-		
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = albania_area
 				province_id = 154
 				province_id = 1399
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			albania_area = {
+		trigger = { 
+			albania_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			154 = {
+			154 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1399 = {
+			1399 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_albanian_stratioti"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_greece = {
+	mlo_greece = { 
 		icon = mission_cannons_firing
-		required_missions = { mlo_albania }
+		required_missions = { mlo_albania}
 		position = 9
-		
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = morea_area
 				area = aegean_area
 				province_id = 142
@@ -331,544 +333,546 @@ mlo_missions_unite_italy_plus_balkans = {
 				province_id = 1436
 				province_id = 3872
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			morea_area = {
+		trigger = { 
+			morea_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			aegean_area = {
+			aegean_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			142 = {
+			142 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			146 = {
+			146 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1434 = {
+			1434 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1436 = {
+			1436 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3872 = {
+			3872 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_latinokratia"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_ottoman_crusade = {
+	mlo_ottoman_crusade = { 
 		icon = mission_cannons_firing
-		required_missions = { mlo_greece }
+		required_missions = { mlo_greece}
 		position = 10
-		
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				region = east_balkan_region
 				region = west_balkan_region
 				region = greece_region
 			}
-			OR = {
+			OR = { 
 				country_or_non_sovereign_subject_holds = TUR
 				country_or_non_sovereign_subject_holds = OTT
 			}
 		}
-		trigger = {
-			OR = {
-				AND = {
-					NOT = { exists = TUR }
-					NOT = { exists = OTT }
+		trigger = { 
+			OR = { 
+				AND = { 
+					NOT = { 
+						exists = TUR
+					}
+					NOT = { 
+						exists = OTT
+					}
 				}
-				AND = {
-					east_balkan_region = {
+				AND = { 
+					east_balkan_region = { 
 						type = all
-						NOT = { country_or_non_sovereign_subject_holds = OTT }
+						NOT = { 
+							country_or_non_sovereign_subject_holds = OTT
+						}
 					}
-					west_balkan_region = {
+					west_balkan_region = { 
 						type = all
-						NOT = { country_or_non_sovereign_subject_holds = OTT }
+						NOT = { 
+							country_or_non_sovereign_subject_holds = OTT
+						}
 					}
-					greece_region = {
+					greece_region = { 
 						type = all
-						NOT = { country_or_non_sovereign_subject_holds = OTT }
+						NOT = { 
+							country_or_non_sovereign_subject_holds = OTT
+						}
 					}
-					east_balkan_region = {
+					east_balkan_region = { 
 						type = all
-						NOT = { country_or_non_sovereign_subject_holds = TUR }
+						NOT = { 
+							country_or_non_sovereign_subject_holds = TUR
+						}
 					}
-					west_balkan_region = {
+					west_balkan_region = { 
 						type = all
-						NOT = { country_or_non_sovereign_subject_holds = TUR }
+						NOT = { 
+							country_or_non_sovereign_subject_holds = TUR
+						}
 					}
-					greece_region = {
+					greece_region = { 
 						type = all
-						NOT = { country_or_non_sovereign_subject_holds = TUR }
+						NOT = { 
+							country_or_non_sovereign_subject_holds = TUR
+						}
 					}
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 10
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = "mlo_crusader_king"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
 }
-
-mlo_missions_savoysicily = {
+mlo_missions_savoysicily = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_mlo
 	}
-	
 	has_country_shield = yes
-	
-	mlo_annex_piedmont = {
+	mlo_annex_piedmont = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_conquer_pavia }
+		required_missions = { mlo_conquer_pavia}
 		position = 2
-	
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = piedmont_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			piedmont_area = {
+		trigger = { 
+			piedmont_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_piedmont_conquered"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_provence_area = {
+	mlo_provence_area = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_annex_piedmont }
+		required_missions = { mlo_annex_piedmont}
 		position = 3
-	
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = provence_area
 				province_id = 102
 				province_id = 1382
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			provence_area = {
+		trigger = { 
+			provence_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			102 = {
+			102 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1382 = {
+			1382 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_provence_conquered"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_subjugate_savoy = {
+	mlo_subjugate_savoy = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_provence_area }
+		required_missions = { mlo_provence_area}
 		position = 4
-	
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 205
 				province_id = 1389
 				province_id = 185
 				province_id = 2334
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			185 = {
+		trigger = { 
+			185 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			205 = {
+			205 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1389 = {
+			1389 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2334 = {
+			2334 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "imperial_ambition"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_rhone_border = {
+	mlo_rhone_border = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_subjugate_savoy }
+		required_missions = { mlo_subjugate_savoy}
 		position = 5
-	
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 203
 				province_id = 204
 				province_id = 976
 				province_id = 2335
 				province_id = 2385
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			203 = {
+		trigger = { 
+			203 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			204 = {
+			204 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			976 = {
+			976 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2335 = {
+			2335 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2385 = {
+			2385 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_border_on_the_rhone"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	mlo_swiss_conquest = {
+	mlo_swiss_conquest = { 
 		icon = mission_swiss_cheese
-		required_missions = { mlo_rhone_border }
+		required_missions = { mlo_rhone_border}
 		position = 6
-	
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 1374
 				area = switzerland_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			switzerland_area = {
+		trigger = { 
+			switzerland_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1374 = {
+			1374 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_swiss_cheese"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_brenner_pass = {
+	mlo_brenner_pass = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_swiss_conquest }
+		required_missions = { mlo_swiss_conquest}
 		position = 7
-		
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = tirol_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			tirol_area = {
+		trigger = { 
+			tirol_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_brenner_pass_control"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_conquer_sicily = {
+	mlo_conquer_sicily = { 
 		icon = mission_monarch_in_throne_room
-		required_missions = { mlo_conquer_naples }
+		required_missions = { mlo_conquer_naples}
 		position = 8
-		
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = sicily_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			sicily_region = {
+		trigger = { 
+			sicily_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_sicilian_grain"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_conquer_carthage = {
+	mlo_conquer_carthage = { 
 		icon = mission_cannons_firing
-		required_missions = { mlo_conquer_sicily }
+		required_missions = { mlo_conquer_sicily}
 		position = 9
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = tunis_area
 				area = kairwan_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			tunis_area = {
+		trigger = { 
+			tunis_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			kairwan_area = {
+			kairwan_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_tunis_trade"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_the_fourth_shore = {
+	mlo_the_fourth_shore = { 
 		icon = mission_cannons_firing
-		required_missions = { mlo_conquer_carthage }
+		required_missions = { mlo_conquer_carthage}
 		position = 10
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = tripolitania_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			tunis_area = {
+		trigger = { 
+			tunis_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			kabylia_area = {
+			kabylia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_kingdom_of_africa"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
 }
-
-mlo_missions_venetian = {
+mlo_missions_venetian = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_mlo
 	}
 	has_country_shield = yes
-
-	mlo_conquer_veneto = {
+	mlo_conquer_veneto = { 
 		icon = mission_unite_home_region
-		required_missions = {  }
+		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 108
 				province_id = 1348
 				province_id = 3382
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			108 = {
+		trigger = { 
+			108 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1348 = {
+			1348 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3382 = {
+			3382 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-	mlo_conquer_friuli = {
+	mlo_conquer_friuli = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_conquer_veneto }
+		required_missions = { mlo_conquer_veneto}
 		position = 2
-		
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 107
 				province_id = 111
 				province_id = 1355
 				province_id = 1858
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			107 = {
+		trigger = { 
+			107 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			111 = {
+			111 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1355 = {
+			1355 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1858 = {
+			1858 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_march_of_friuli"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_conquer_venice = {
+	mlo_conquer_venice = { 
 		icon = mission_establish_high_seas_navy
-		required_missions = { mlo_conquer_friuli }
+		required_missions = { mlo_conquer_friuli}
 		position = 3
-		
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 112
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		
-		trigger = {
-			112 = { country_or_non_sovereign_subject_holds = ROOT }
+		trigger = { 
+			112 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_conquest_of_venice"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_julian_alps = {
+	mlo_julian_alps = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_conquer_venice }
+		required_missions = { mlo_conquer_venice}
 		position = 4
-		
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 129
 				province_id = 130
 				province_id = 2452
 				province_id = 3747
 				province_id = 4034
-				
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			129 = {
+		trigger = { 
+			129 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			130 = {
+			130 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2452 = {
+			2452 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3747 = {
+			3747 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			4034 = {
+			4034 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_julian_alps_defense"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_illyrian_provinces = {
+	mlo_illyrian_provinces = { 
 		icon = mission_unite_home_region
-		required_missions = { mlo_julian_alps }
+		required_missions = { mlo_julian_alps}
 		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 131
 				province_id = 136
 				province_id = 137
@@ -876,154 +880,147 @@ mlo_missions_venetian = {
 				province_id = 2388
 				province_id = 2389
 				province_id = 2571
-				
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			131 = {
+		trigger = { 
+			131 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			136 = {
+			136 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			137 = {
+			137 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1403 = {
+			1403 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2388 = {
+			2388 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2389 = {
+			2389 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2452 = {
+			2452 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2571 = {
+			2571 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "imperial_ambition"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_conquer_genoa = {
+	mlo_conquer_genoa = { 
 		icon = mission_cannons_firing
-		required_missions = {  }
+		required_missions = { }
 		position = 7
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 101
 				province_id = 1513
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			101 = {
+		trigger = { 
+			101 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1513 = {
+			1513 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_genoese_sailors"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_conquer_sardinia = {
+	mlo_conquer_sardinia = { 
 		icon = mission_cannons_firing
-		required_missions = { mlo_conquer_genoa }
+		required_missions = { mlo_conquer_genoa}
 		position = 8
-		
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = corsica_sardinia_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			corsica_sardinia_area = {
+		trigger = { 
+			corsica_sardinia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_navy_tradition = 15
 		}
 	}
-	
-	mlo_shatter_aragon = {
+	mlo_shatter_aragon = { 
 		icon = mission_cannons_firing
-		required_missions = { mlo_conquer_sardinia mlo_conquer_sicily }
+		required_missions = { mlo_conquer_sardinia mlo_conquer_sicily}
 		position = 9
-	
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = baleares_area
 				area = valencia_area
 				area = catalonia_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			baleares_area = {
+		trigger = { 
+			baleares_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			valencia_area = {
+			valencia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			catalonia_area = {
+			catalonia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mlo_mare_nostrum"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	mlo_andalucia = {
+	mlo_andalucia = { 
 		icon = mission_cannons_firing
-		required_missions = { mlo_shatter_aragon }
+		required_missions = { mlo_shatter_aragon}
 		position = 10
-		
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = andalucia_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		
-		trigger = {
-			andalucia_region = {
+		trigger = { 
+			andalucia_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "the_unknown_frontier"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}

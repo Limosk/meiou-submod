@@ -1,432 +1,502 @@
-
-pro_unification_missions = {
+pro_unification_missions = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_pro
 	}
 	has_country_shield = yes
-	
-	pro_centralise_state = {
+	pro_centralise_state = { 
 		icon = mission_conquer_50_development
 		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 201
 			province_id = 1512
 			province_id = 3377
 			province_id = 3860
 		}
-		trigger = {
+		trigger = { 
 			absolutism = 30
 			owns = 201
 			owns = 1512
 			owns = 3377
 			owns = 3860
 		}
-		effect = {
+		effect = { 
 			add_legitimacy = 10
 			add_horde_unity = 10
 			add_republican_tradition = 10
 			add_heir_claim = 10
 		}
 	}
-	
-	pro_control_nice = {
+	pro_control_nice = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_centralise_state }
+		required_missions = { pro_centralise_state}
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 102
 		}
-		trigger = {
+		trigger = { 
 			owns = 102
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-	pro_win_independence = {
+	pro_win_independence = { 
 		icon = mission_monarch_in_throne_room
-		required_missions = { pro_control_nice }
+		required_missions = { pro_control_nice}
 		position = 3
-		trigger = {
+		trigger = { 
 			is_subject = no
 			is_at_war = no
 		}
-		effect = {
-			ile_de_france_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			ile_de_france_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_core = ROOT
 			}
 		}
 	}
-	
-	pro_ally_major = {
+	pro_ally_major = { 
 		icon = mission_alliances
-		required_missions = { pro_win_independence }
+		required_missions = { pro_win_independence}
 		position = 4
-		trigger = {
-			if = {
-				limit = { exists = ARA }
+		trigger = { 
+			if = { 
+				limit = { 
+					exists = ARA
+				}
 				alliance_with = ARA
 			}
-			else_if = {
-				limit = { exists = CAS }
+			else_if = { 
+				limit = { 
+					exists = CAS
+				}
 				alliance_with = CAS
 			}
-			else_if = {
-				limit = { exists = SPA }
+			else_if = { 
+				limit = { 
+					exists = SPA
+				}
 				alliance_with = SPA
 			}
-			else_if = {
-				limit = { exists = GBR }
+			else_if = { 
+				limit = { 
+					exists = GBR
+				}
 				alliance_with = GBR
 			}
-			else = {
+			else = { 
 				alliance_with = ENG
 			}
 		}
-		effect = {
-			if = {
-				limit = { exists = ARA }
+		effect = { 
+			if = { 
+				limit = { 
+					exists = ARA
+				}
 				add_historical_friend = ARA
-				ARA = { add_historical_friend = ROOT }
+				ARA = { 
+					add_historical_friend = ROOT
+				}
 			}
-			else_if = {
-				limit = { exists = CAS }
+			else_if = { 
+				limit = { 
+					exists = CAS
+				}
 				add_historical_friend = CAS
-				CAS = { add_historical_friend = ROOT }
+				CAS = { 
+					add_historical_friend = ROOT
+				}
 			}
-			else_if = {
-				limit = { exists = SPA }
+			else_if = { 
+				limit = { 
+					exists = SPA
+				}
 				add_historical_friend = SPA
-				SPA = { add_historical_friend = ROOT }
+				SPA = { 
+					add_historical_friend = ROOT
+				}
 			}
-			else_if = {
-				limit = { exists = GBR }
+			else_if = { 
+				limit = { 
+					exists = GBR
+				}
 				add_historical_friend = GBR
-				GBR = { add_historical_friend = ROOT }
+				GBR = { 
+					add_historical_friend = ROOT
+				}
 			}
-			else = {
+			else = { 
 				add_historical_friend = ENG
-				ENG = { add_historical_friend = ROOT }
+				ENG = { 
+					add_historical_friend = ROOT
+				}
 			}
 		}
 	}
-	
-	pro_control_dauphine = {
+	pro_control_dauphine = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_ally_major }
+		required_missions = { pro_ally_major}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = savoy_dauphine_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			savoy_dauphine_area = {
+		trigger = { 
+			savoy_dauphine_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 15
 		}
 	}
-	
-	pro_control_romandie = {
+	pro_control_romandie = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_dauphine }
+		required_missions = { pro_control_dauphine}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = romandie_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			romandie_area = {
+		trigger = { 
+			romandie_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 		}
 	}
-	
-	pro_control_burgundy = {
+	pro_control_burgundy = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_romandie }
+		required_missions = { pro_control_romandie}
 		position = 7
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 193
 				province_id = 2366
 				province_id = 4228
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			193 = {
+		trigger = { 
+			193 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2366 = {
+			2366 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			4228 = {
+			4228 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			country_event = { id = mission_event.002 }
-			hidden_effect = { complete_mission = pro_control_burgundy }
+		effect = { 
+			country_event = { 
+				id = mission_event.002
+			}
+			hidden_effect = { 
+				complete_mission = pro_control_burgundy
+			}
 		}
 	}
 }
-
-pro_italian_missions = {
+pro_italian_missions = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_pro
 	}
 	has_country_shield = yes
-	
-	pro_control_liguria = {
+	pro_control_liguria = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_win_independence }
+		required_missions = { pro_win_independence}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = liguria_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			liguria_area = {
+		trigger = { 
+			liguria_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 		}
 	}
-	
-	pro_control_sardinia = {
+	pro_control_sardinia = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_liguria }
+		required_missions = { pro_control_liguria}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = corsica_sardinia_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			corsica_sardinia_area = {
+		trigger = { 
+			corsica_sardinia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_navy_tradition = 10
 		}
 	}
-	
-	pro_control_naples = {
+	pro_control_naples = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_sardinia }
+		required_missions = { pro_control_sardinia}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = naples_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			naples_region = {
+		trigger = { 
+			naples_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 10
 		}
 	}
-	
-	pro_control_sicily = {
+	pro_control_sicily = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_naples }
+		required_missions = { pro_control_naples}
 		position = 7
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = sicily_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			sicily_region = {
+		trigger = { 
+			sicily_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
 }
-
-pro_new_missiontree = {
+pro_new_missiontree = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_pro
 	}
 	has_country_shield = yes
-	
-	pro_control_piedmont = {
+	pro_control_piedmont = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_nice }
+		required_missions = { pro_control_nice}
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = piedmont_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			piedmont_area = {
+		trigger = { 
+			piedmont_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-	pro_control_lombardy = {
+	pro_control_lombardy = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_piedmont }
+		required_missions = { pro_control_piedmont}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = lombardy_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			lombardy_area = {
+		trigger = { 
+			lombardy_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 		}
 	}
-	
-	pro_control_padan = {
+	pro_control_padan = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_lombardy }
+		required_missions = { pro_control_lombardy}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = padan_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			padan_area = {
+		trigger = { 
+			padan_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 10
 		}
 	}
-	
-	pro_control_emilia = {
+	pro_control_emilia = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_padan }
+		required_missions = { pro_control_padan}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = emilia_romagna_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			emilia_romagna_area = {
+		trigger = { 
+			emilia_romagna_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_navy_tradition = 10
 		}
 	}
-	
-	pro_control_tuscany = {
+	pro_control_tuscany = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_emilia }
+		required_missions = { pro_control_emilia}
 		position = 7
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = tuscany_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			tuscany_area = {
+		trigger = { 
+			tuscany_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 10
 		}
 	}
-	
-	pro_control_siena = {
+	pro_control_siena = { 
 		icon = mission_unite_home_region
-		required_missions = { pro_control_tuscany }
+		required_missions = { pro_control_tuscany}
 		position = 8
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = siena_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			siena_area = {
+		trigger = { 
+			siena_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}

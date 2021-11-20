@@ -1,17 +1,17 @@
-pay_rep_tradition = {
-	trigger = {
+pay_rep_tradition = { 
+	trigger = { 
 		government = republic
 	}
-	
-	effect = {
+	effect = { 
 		add_republican_tradition = -5
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			NOT = { republican_tradition = 60 }
+			NOT = { 
+				republican_tradition = 60
+			}
 		}
 	}
 }

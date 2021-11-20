@@ -1,6 +1,3 @@
-# 5198 - Nebrodi
-# This province is a wasteland
-
 discovered_by = eastern
 discovered_by = byzantine
 discovered_by = western

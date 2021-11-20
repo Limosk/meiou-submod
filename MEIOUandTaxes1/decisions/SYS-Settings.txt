@@ -1,19 +1,19 @@
-
-country_decisions = {
-
-	change_settings_dec = {
+country_decisions = { 
+	change_settings_dec = { 
 		major = yes
-		potential = {
+		potential = { 
 			has_country_flag = unlocked_settings
 		}
-		allow = {
-		}
-		effect = {
-			hidden_effect = {
-				country_event = { id = setup_event.105 days = 0 }
+		allow = { }
+		effect = { 
+			hidden_effect = { 
+				country_event = { 
+					id = setup_event.105
+					days = 0
+				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 0
 		}
 	}

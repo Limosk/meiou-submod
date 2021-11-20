@@ -1,115 +1,82 @@
-lithuanian_missions_1 = {
+lithuanian_missions_1 = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_lit
 	}
 	has_country_shield = yes
-	
-	
-	lit_conquer_kiev = {
+	lit_conquer_kiev = { 
 		icon = mission_unite_home_region
-		required_missions = {  }
+		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = west_dniepr_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			west_dniepr_area = {
+		trigger = { 
+			west_dniepr_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-#	develop_ukraine_1 = {
-#		icon = mission_colonial
-#		required_missions = { lit_conquer_kiev }
-#		position = 2
-#		provinces_to_highlight = {
-#			region = ruthenia_region
-#			NOT = {
-#				OR = {
-#					development = 10
-#					has_building = temple
-#					has_building = great_temple
-#				}
-#			}
-#		}
-#		trigger = {
-#			custom_trigger_tooltip = {
-#				tooltip = develop_ukraine_tooltip
-#				num_of_owned_provinces_with = {
-#					region = ruthenia_region
-#					OR = {
-#						development = 10
-#						has_building = temple
-#						has_building = great_temple
-#					}
-#					value = 10
-#				}
-#			}
-#		}
-#		effect = {
-#			custom_tooltip = develop_ukraine_effect_tooltip
-#			hidden_effect = {
-#				every_owned_province = {
-#					limit = {
-#						region = ruthenia_region
-#					}
-#					add_province_modifier = {
-#						name = restored_ruthenia
-#						duration = 9125 #25 years - was -1
-#					}
-#				}
-#			}
-#		}
-#	}
-	
-	lit_religious_unity = {
+	lit_religious_unity = { 
 		icon = mission_luther_theses
-		required_missions = { lit_conquer_kiev } #develop_ukraine_1 }
+		required_missions = { lit_conquer_kiev}
 		position = 3
-		trigger = {
-			#NOT = { current_age = age_of_discovery }
-			#NOT = { current_age = age_of_reformation }
+		trigger = { 
 			religious_unity = 1
 		}
-		effect = {
-			if = {
-				limit = {
-					num_of_owned_provinces_with = {
+		effect = { 
+			if = { 
+				limit = { 
+					num_of_owned_provinces_with = { 
 						religion_group = ROOT
-						NOT = { religion = ROOT }
+						NOT = { 
+							religion = ROOT
+						}
 						value = 20
 					}
 				}
-				define_advisor = {
+				define_advisor = { 
 					culture = lithuanian
 					type = theologian
 					skill = 3
 					cost_multiplier = 0.5
 				}
-				add_country_modifier = {
+				add_country_modifier = { 
 					name = "lit_conferedation_on_religion"
-					duration = 9125 #25 years - was 7300
+					duration = 9125
 				}
 			}
-			else = {
-				add_country_modifier = {
+			else = { 
+				add_country_modifier = { 
 					name = "lithuanian_counter_reformation"
-					duration = 9125 #25 years - was 7300
+					duration = 9125
 				}
-				define_advisor = {
+				define_advisor = { 
 					culture = lithuanian
 					type = inquisitor
 					skill = 3
@@ -118,386 +85,475 @@ lithuanian_missions_1 = {
 			}
 		}
 	}
-	lit_ukraine_2 = {
+	lit_ukraine_2 = { 
 		icon = mission_eastern_european_city
-		required_missions = { lit_religious_unity }
+		required_missions = { lit_religious_unity}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 280
 		}
-		trigger = {
-			280 = {
+		trigger = { 
+			280 = { 
 				development = 20
-				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				check_key = { lhs = Modi_TradeOutput value = 0.2 }
+				OR = { 
+					has_building = urban_infrastructure_2
+					custom_trigger_tooltip = { 
+						tooltip = hasbuildingorbetter_tooltip
+						OR = { 
+							has_building = urban_infrastructure_3
+							has_building = urban_infrastructure_4
+							has_building = urban_infrastructure_5
+							has_building = urban_infrastructure_6
+						}
+					}
+				}
+				check_variable = { 
+					which = dkf
+					value = 0.2
+				}
 			}
 		}
-		effect = {
-			280 = {
-				add_province_modifier = {
+		effect = { 
+			280 = { 
+				add_province_modifier = { 
 					name = "restoration_of_kiev"
-					duration = 9125 #25 years - was -1
+					duration = 9125
 				}
 			}
 		}
 	}
-	lit_develop_sluck = {
+	lit_develop_sluck = { 
 		icon = mission_noble_council
-		required_missions = { lit_ukraine_2 }
+		required_missions = { lit_ukraine_2}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 2837
 		}
-		trigger = {
-			2837 = {
-				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				check_key = { lhs = Modi_UrbanOutput value = 0.5 }
+		trigger = { 
+			2837 = { 
+				OR = { 
+					has_building = urban_infrastructure_2
+					custom_trigger_tooltip = { 
+						tooltip = hasbuildingorbetter_tooltip
+						OR = { 
+							has_building = urban_infrastructure_3
+							has_building = urban_infrastructure_4
+							has_building = urban_infrastructure_5
+							has_building = urban_infrastructure_6
+						}
+					}
+				}
+				check_variable = { 
+					which = dkd
+					value = 0.5
+				}
 			}
 		}
-		effect = {
-			2837 = {
-				add_province_modifier = {
+		effect = { 
+			2837 = { 
+				add_province_modifier = { 
 					name = "sluck_sashes"
-					duration = 9125 #25 years - was -1
+					duration = 9125
 				}
 			}
 		}
 	}
 }
-
-lithuanian_missions_2 = {
+lithuanian_missions_2 = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_lit
 	}
 	has_country_shield = yes
-	
-	polish_alliance_lit = {
+	polish_alliance_lit = { 
 		icon = mission_noble_council
-		required_missions = {  }
+		required_missions = { }
 		position = 1
-		trigger = {
-			OR = {
-				custom_trigger_tooltip = {
+		trigger = { 
+			OR = { 
+				custom_trigger_tooltip = { 
 					tooltip = plc_election_mission_tooltip
 					has_global_flag = plc_union_outcome_flag
 				}
 				is_year = 1450
 			}
 			is_subject = no
-			OR = {
+			OR = { 
 				is_rival = POL
-				POL = { is_rival = ROOT }
+				POL = { 
+					is_rival = ROOT
+				}
 				alliance_with = POL
-				NOT = { exists = POL }
+				NOT = { 
+					exists = POL
+				}
 			}
 		}
-		effect = {
-			livonia_area = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			livonia_area = { 
+				limit = { 
+					NOT = { 
+						is_permanent_claim = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			estonia_ingria_area = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT	}
-					NOT = { is_core = ROOT	}
+			estonia_ingria_area = { 
+				limit = { 
+					NOT = { 
+						is_permanent_claim = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			curonia_area = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT	}
-					NOT = { is_core = ROOT	}
+			curonia_area = { 
+				limit = { 
+					NOT = { 
+						is_permanent_claim = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-
-	defeat_the_livonian_order = {
+	defeat_the_livonian_order = { 
 		icon = mission_teutonic_knights
-		required_missions = { polish_alliance_lit }
+		required_missions = { polish_alliance_lit}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = livonia_area
 				area = estonia_ingria_area
 				area = curonia_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			livonia_area = {
+		trigger = { 
+			livonia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			estonia_ingria_area = {
+			estonia_ingria_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			curonia_area = {
+			curonia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "baltic_ambition_new"
-				duration = 9125 #25 years - was 7300
+				duration = 9125
 			}
-			if = {
-				limit = {
-					monarchy_or_harem_gov = yes
+			if = { 
+				limit = { 
+					custom_trigger_tooltip = { 
+						tooltip = is_monarchy_tt
+						OR = { 
+							government = monarchy
+							government = has_harem
+						}
+					}
 					exists = POL
 					is_subject = no
-					POL = {
+					POL = { 
 						is_subject = no
 					}
 				}
-				add_casus_belli = {
+				add_casus_belli = { 
 					type = cb_restore_personal_union
 					months = 300
 					target = POL
 				}
 			}
-			else = {
-				malopolska_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT	}
+			else = { 
+				malopolska_area = { 
+					limit = { 
+						NOT = { 
+							is_permanent_claim = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
-				mazovia_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT	}
+				mazovia_area = { 
+					limit = { 
+						NOT = { 
+							is_permanent_claim = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
-				west_prussia_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT	}
+				west_prussia_area = { 
+					limit = { 
+						NOT = { 
+							is_permanent_claim = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
-			novgorod_area = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT }
-					NOT = { is_core = ROOT	}
+			novgorod_area = { 
+				limit = { 
+					NOT = { 
+						is_permanent_claim = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	
-	mission_lit_polish_union = {
+	mission_lit_polish_union = { 
 		icon = mission_monarch_in_throne_room
-		required_missions = { defeat_the_livonian_order }
+		required_missions = { defeat_the_livonian_order}
 		position = 3
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = malopolska_area
 				area = mazovia_area
 				area = west_prussia_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			OR = {
+		trigger = { 
+			OR = { 
 				tag = PLC
-				POL = {
+				POL = { 
 					is_subject_of = ROOT
 				}
-				AND = {
-					malopolska_area = {
+				AND = { 
+					malopolska_area = { 
 						type = all
 						country_or_non_sovereign_subject_holds = ROOT
 					}
-					mazovia_area = {
+					mazovia_area = { 
 						type = all
 						country_or_non_sovereign_subject_holds = ROOT
 					}
-					west_prussia_area = {
+					west_prussia_area = { 
 						type = all
 						country_or_non_sovereign_subject_holds = ROOT
 					}
 				}
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "integrated_polish_nobility"
-				duration = 9125 #25 years - was -1
+				duration = 9125
 			}
 		}
 	}
-	
-	lit_jag_university = {
+	lit_jag_university = { 
 		icon = mission_early_modern_university
-		required_missions = { mission_lit_polish_union }
+		required_missions = { mission_lit_polish_union}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 262
 		}
-		trigger = {
+		trigger = { 
 			owns_core_province = 262
-			262 = {
-				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				check_key = { lhs = Modi_KnowledgeOutput value = 0.2 }
+			262 = { 
+				OR = { 
+					has_building = urban_infrastructure_2
+					custom_trigger_tooltip = { 
+						tooltip = hasbuildingorbetter_tooltip
+						OR = { 
+							has_building = urban_infrastructure_3
+							has_building = urban_infrastructure_4
+							has_building = urban_infrastructure_5
+							has_building = urban_infrastructure_6
+						}
+					}
+				}
+				check_variable = { 
+					which = gzk
+					value = 0.2
+				}
 			}
-			num_of_owned_provinces_with = {
-				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				check_key = { lhs = Modi_KnowledgeOutput value = 0.2 }
+			num_of_owned_provinces_with = { 
+				OR = { 
+					has_building = urban_infrastructure_2
+					custom_trigger_tooltip = { 
+						tooltip = hasbuildingorbetter_tooltip
+						OR = { 
+							has_building = urban_infrastructure_3
+							has_building = urban_infrastructure_4
+							has_building = urban_infrastructure_5
+							has_building = urban_infrastructure_6
+						}
+					}
+				}
+				check_variable = { 
+					which = gzk
+					value = 0.2
+				}
 				value = 3
 			}
 			has_institution = casual_literacy
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = "renovated_jag_uni"
-				duration = 9125 #25 years - was 7300
+				duration = 9125
 			}
 		}
 	}
 }
-
-lithuanian_missions_slot = {
+lithuanian_missions_slot = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = d_of_lit
 	}
 	has_country_shield = yes
-	
-	mission_lit_cossacks = {
+	mission_lit_cossacks = { 
 		icon = mission_cossack_cavalry
-		required_missions = {  }
+		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
-			OR = {
-				province_id = 282	#Crimea
-				province_id = 4021	#Chyhyryn
-				province_id = 1431	#Dnieper
+		provinces_to_highlight = { 
+			OR = { 
+				province_id = 282
+				province_id = 4021
+				province_id = 1431
 			}
 		}
-		trigger = {
+		trigger = { 
 			is_subject = no
-			282 = { #Crimea
+			282 = { 
 				owned_by = ROOT
 				is_state = yes
-				NOT = {
+				NOT = { 
 					unrest = 1
 				}
-				NOT = {
+				NOT = { 
 					local_autonomy = 40
 				}
 			}
-			4021 = { #Chyhyryn
+			4021 = { 
 				owned_by = ROOT
 				is_state = yes
-				NOT = {
+				NOT = { 
 					unrest = 1
 				}
-				NOT = {
+				NOT = { 
 					local_autonomy = 40
 				}
 			}
-			1431 = { #Dnieper
+			1431 = { 
 				owned_by = ROOT
 				is_state = yes
-				NOT = {
+				NOT = { 
 					unrest = 1
 				}
-				NOT = {
+				NOT = { 
 					local_autonomy = 40
 				}
 			}
 		}
-		effect = {
-			crimea_region = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			crimea_region = { 
+				limit = { 
+					NOT = { 
+						is_permanent_claim = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	
-	lit_conquer_crimea = {
+	lit_conquer_crimea = { 
 		icon = mission_crusade_for_varna
-		required_missions = { mission_lit_cossacks }
+		required_missions = { mission_lit_cossacks}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				region = crimea_region
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			zaporizhia_area = {
+		trigger = { 
+			zaporizhia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			sloboda_ukraine_area = {
+			sloboda_ukraine_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			crimea_area = {
+			crimea_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			azov_area = {
+			azov_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			285 = {
-				add_trade_modifier = {
+		effect = { 
+			285 = { 
+				add_trade_modifier = { 
 					who = root
-					duration = 9125 #25 years - was 7300
+					duration = 9125
 					power = 50
 					key = crimean_trade
 				}
 			}
 		}
 	}
-	
-	lit_conquer_novgorod = {
+	lit_conquer_novgorod = { 
 		icon = mission_assemble_an_army
-		required_missions = { defeat_the_livonian_order }
+		required_missions = { defeat_the_livonian_order}
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = novgorod_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			OR = {
-				novgorod_area = {
+		trigger = { 
+			OR = { 
+				novgorod_area = { 
 					type = all
 					country_or_non_sovereign_subject_holds = ROOT
 				}
-				NOV = {
-					OR = {
+				NOV = { 
+					OR = { 
 						alliance_with = ROOT
 						is_subject_of = ROOT
 					}
@@ -505,99 +561,112 @@ lithuanian_missions_slot = {
 				}
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-	lit_conquer_muscovy = {
+	lit_conquer_muscovy = { 
 		icon = mission_conquer_5_states
-		required_missions = { lit_conquer_novgorod }
+		required_missions = { lit_conquer_novgorod}
 		position = 4
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = moscow_area
 				area = tver_area
 				area = galich_area
 				area = suzdal_area
 				area = ryazan_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			moscow_area = {
+		trigger = { 
+			moscow_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			tver_area = {
+			tver_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			galich_area = {
+			galich_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			suzdal_area = {
+			suzdal_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			ryazan_area = {
+			ryazan_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 100
-			if = {
-				limit = {
-					RUS = {
+			if = { 
+				limit = { 
+					RUS = { 
 						is_subject_of = ROOT
 						is_lesser_in_union = no
 					}
 				}
-				RUS = {
-					define_ruler = {
+				RUS = { 
+					define_ruler = { 
 						name = "Dmitry"
 					}
 				}
 			}
-			else_if = {
-				limit = {
-					MOS = {
+			else_if = { 
+				limit = { 
+					MOS = { 
 						is_subject_of = ROOT
 						is_lesser_in_union = no
 					}
 				}
-				MOS = {
-					define_ruler = {
+				MOS = { 
+					define_ruler = { 
 						name = "Dmitry"
 					}
 				}
 			}
-			if = {
-				limit = {
-					OR = {
-						MOS = {
+			if = { 
+				limit = { 
+					OR = { 
+						MOS = { 
 							is_subject_of = ROOT
 						}
-						RUS = {
+						RUS = { 
 							is_subject_of = ROOT
 						}
 					}
 				}
-				add_country_modifier = {
+				add_country_modifier = { 
 					name = "lit_lord_of_the_rus"
-					duration = 9125 #25 years - was 7300
+					duration = 9125
 				}
 			}
-			else = {
-				add_country_modifier = {
+			else = { 
+				add_country_modifier = { 
 					name = "lit_conquered_rus"
-					duration = 9125 #25 years - was 7300
+					duration = 9125
 				}
 			}
 		}

@@ -1,6 +1,3 @@
-# 5171 - Qinling Mountains
-# This province is a wasteland
-
 discovered_by = chinese
 discovered_by = japanese
 discovered_by = tibetan

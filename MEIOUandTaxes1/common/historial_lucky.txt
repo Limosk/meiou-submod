@@ -1,212 +1,181 @@
-# Order here is the priority for taking them, if trigger is true.
-
-MNG = {
-	NOT = { is_year = 1400 }
+MNG = { 
+	NOT = { 
+		is_year = 1400
+	}
 }
-
-DLH = {
-	NOT = { is_year = 1450 }
+DLH = { 
+	NOT = { 
+		is_year = 1450
+	}
 }
-
-ENR = {
-	NOT = {
+ENR = { 
+	NOT = { 
 		exists = SPA
-		OR = {
+		OR = { 
 			exists = NED
 			is_year = 1600
 		}
 	}
 }
-
-CAS = {
-	NOT = {
+CAS = { 
+	NOT = { 
 		exists = ENR
 		exists = SPA
-		OR = {
+		OR = { 
 			exists = NED
 			is_year = 1600
 		}
 	}
 }
-
-SPA = {
-	NOT = {
+SPA = { 
+	NOT = { 
 		exists = CAS
-		OR = {
+		OR = { 
 			exists = NED
 			is_year = 1600
 		}
 	}
 }
-
-OTT = {
-	NOT = {
+OTT = { 
+	NOT = { 
 		is_year = 1650
 	}
 }
-
-TUR = {
-	NOT = {
+TUR = { 
+	NOT = { 
 		exists = OTT
 		is_year = 1650
 	}
 }
-
-GBR = {
+GBR = { 
 	always = yes
 }
-
-ENG = {
-	NOT = {
+ENG = { 
+	NOT = { 
 		exists = GBR
 	}
 }
-
-MNF = {
-	NOT = {
+MNF = { 
+	NOT = { 
 		exists = BRI
 	}
 }
-
-FRA = {
+FRA = { 
 	is_year = 1450
 }
-
-HAB = {
+HAB = { 
 	always = yes
 }
-HOL = {
-	NOT = {
+HOL = { 
+	NOT = { 
 		exists = HOL
 	}
 }
-NED = {
+NED = { 
 	always = yes
 }
-
-BRA = {
-	NOT = {
+BRA = { 
+	NOT = { 
 		exists = PRU
 	}
 	is_year = 1658
 }
-
-PRU = {
-	NOT = {
+PRU = { 
+	NOT = { 
 		exists = BRA
 	}
 	is_year = 1658
 }
-
-
-PER = {
+PER = { 
 	always = yes
 }
-
-OTT = {
-	NOT = {
+OTT = { 
+	NOT = { 
 		exists = TUR
 		is_year = 1650
 	}
 }
-
-SON = {
-	NOT = {
+SON = { 
+	NOT = { 
 		is_year = 1531
 	}
 }
-
-QNG = {
+QNG = { 
 	is_year = 1600
 }
-
-MCH = {
-	NOT = {
+MCH = { 
+	NOT = { 
 		exists = QNG
 	}
 	is_year = 1600
 }
-
-RUS = {
+RUS = { 
 	always = yes
 }
-
-ETH = {
+ETH = { 
 	always = yes
 }
-
-MOS = {
-	NOT = {
+MOS = { 
+	NOT = { 
 		exists = RUS
 	}
 }
-
-POR = {
-	NOT = {
+POR = { 
+	NOT = { 
 		is_year = 1700
 	}
 }
-
-DEN = {
-	NOT = {
+DEN = { 
+	NOT = { 
 		exists = DAN
 		is_year = 1523
 	}
 }
-
-SWE = {
+SWE = { 
 	is_year = 1500
-	NOT = {
+	NOT = { 
 		is_year = 1700
 	}
 }
-
-PLC = {
-	NOT = {
+PLC = { 
+	NOT = { 
 		is_year = 1640
 		exists = ZAZ
 	}
 }
-
-POL = {
-	NOT = {
+POL = { 
+	NOT = { 
 		exists = PLC
 		is_year = 1640
 	}
 }
-
-CZC = {
-	NOT = {
+CZC = { 
+	NOT = { 
 		exists = INC
 		is_year = 1530
 	}
 }
-
-INC = {
-	NOT = {
+INC = { 
+	NOT = { 
 		is_year = 1530
 	}
 }
-
-TEN = {
-	NOT = {
+TEN = { 
+	NOT = { 
 		exists = AZT
 		is_year = 1520
 	}
 }
-
-AZT = {
-	NOT = {
+AZT = { 
+	NOT = { 
 		is_year = 1520
 	}
 }
-
-PER = {
+PER = { 
 	always = yes
 }
-
-AYU = {
-	NOT = {
+AYU = { 
+	NOT = { 
 		is_year = 1500
 	}
 }

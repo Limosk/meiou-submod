@@ -1,941 +1,1823 @@
-defined_text = {
+defined_text = { 
 	name = Beylik_Notable
 	random = no
-	
-	
-	text = {
+	text = { 
 		localisation_key = Dominant_Beylik_t
-		
-		trigger = {
-			check_key = { lhs = Anatolian_PowerGreat value = 50 }
+		trigger = { 
+			check_variable = { 
+				which = lns
+				value = 50
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Notable_Beylik_t
-		
-		trigger = {
+		trigger = { 
 			has_country_flag = BeylikNotable
-			NOT = { check_key = { lhs = Anatolian_PowerGreat value = 50 } }
+			NOT = { 
+				check_variable = { 
+					which = lns
+					value = 50
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Infra_Forest
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Infra_Forest
-		
-		trigger = {
-			check_key = { lhs = Land_Forest value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = abu
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Infra_Extraction
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Infra_Extraction
-		
-		trigger = {
-			check_key = { lhs = Land_Resource value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = abw
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Infra_Fishery
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Infra_Fishery
-		
-		trigger = {
-			check_key = { lhs = Land_Fish value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = acc
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Infra_Urban
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Infra_Urban
-		
-		trigger = {
-			OR = {
-				check_key = { lhs = Building_Industrial value = 0.001 }
-				check_key = { lhs = Building_Academic value = 0.001 }
-				check_key = { lhs = Building_Commercial value = 0.001 }
+		trigger = { 
+			OR = { 
+				check_variable = { 
+					which = dce
+					value = 0.001
+				}
+				check_variable = { 
+					which = dcf
+					value = 0.001
+				}
+				check_variable = { 
+					which = dcd
+					value = 0.001
+				}
 			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Infra_Workshop
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Infra_Workshop
-		
-		trigger = {
-			check_key = { lhs = Building_Industrial value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = dce
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Infra_Academy
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Infra_Academy
-		
-		trigger = {
-			check_key = { lhs = Building_Academic value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = dcf
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Infra_Commercial
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Infra_Commercial
-		
-		trigger = {
-			check_key = { lhs = Building_Commercial value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = dcd
+				value = 0.001
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Disp_TaxLayer
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Disp_Tax0
-
-		trigger = {
-			is_key_equal = { lhs = Class_Layer value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = ayx
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Disp_Tax1
-
-		trigger = {
-			is_key_equal = { lhs = Class_Layer value = 1 }
+		trigger = { 
+			is_variable_equal = { 
+				which = ayx
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Disp_Tax2
-
-		trigger = {
-			is_key_equal = { lhs = Class_Layer value = 2 }
+		trigger = { 
+			is_variable_equal = { 
+				which = ayx
+				value = 2
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Disp_ProvLayer
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Disp_Prov1
-
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Class_Layer value = 0 }
-				is_key_equal = { lhs = Class_Layer value = 2 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = ayx
+					value = 0
+				}
+				is_variable_equal = { 
+					which = ayx
+					value = 2
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Prov_UI.005.loyaltyd
-
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Class_Layer value = 1 }
-				is_key_equal = { lhs = Class_Layer value = 3 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = ayx
+					value = 1
+				}
+				is_variable_equal = { 
+					which = ayx
+					value = 3
+				}
 			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Bureaucrats_Disp
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Bureaucrats_Disp
-		
-		trigger = {
-			OR = {
-				check_key = { lhs = Admin_DemandUni value = 0.001 }
-				check_key = { lhs = Admin_DemandDir value = 0.001 }
-				check_key = { lhs = Admin_DemandInd value = 0.001 }
+		trigger = { 
+			OR = { 
+				check_variable = { 
+					which = dny
+					value = 0.001
+				}
+				check_variable = { 
+					which = dnz
+					value = 0.001
+				}
+				check_variable = { 
+					which = doa
+					value = 0.001
+				}
 			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Prov_NO_mod
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Prov_NO_mod
-		
-		trigger = {
-			check_key = { lhs = Prov_NOPow value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = asn
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Prov_BG_mod
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Prov_BG_mod
-		
-		trigger = {
-			check_key = { lhs = Prov_BGPow value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = ass
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Prov_CL_mod
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Prov_CL_mod
-		
-		trigger = {
-			check_key = { lhs = Prov_CLPow value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = asx
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Prov_TR_mod
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Prov_TR_mod
-		
-		trigger = {
-			check_key = { lhs = Prov_TRPow value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = atc
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Prov_BU_mod
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Prov_BU_mod
-		
-		trigger = {
-			check_key = { lhs = Prov_BUPow value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = ati
+				value = 0.001
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = POP_NaturalTrade
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = POP_NaturalTradeMajor
-		
-		trigger = {
+		trigger = { 
 			has_province_flag = TN_Natural_Major
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = POP_NaturalTradeImportant
-		
-		trigger = {
+		trigger = { 
 			has_province_flag = TN_Natural_Important
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = POP_NaturalTradeMinor
-		
-		trigger = {
+		trigger = { 
 			has_province_flag = TN_Natural_Minor
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = POP_CanalTrade
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = POP_CanalTradeSpecial
-		
-		trigger = {
+		trigger = { 
 			has_province_flag = TN_SpecialCanal
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = POP_CanalTrade
-		
-		trigger = {
-			NOT = { has_province_flag = TN_SpecialCanal }
+		trigger = { 
+			NOT = { 
+				has_province_flag = TN_SpecialCanal
+			}
 			has_province_flag = TN_Canal
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = POP_NaturalHarbour
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = POP_NaturalHarbourMajor
-		
-		trigger = {
+		trigger = { 
 			has_province_flag = TN_Harbour_Major
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = POP_NaturalHarbourImportant
-		
-		trigger = {
+		trigger = { 
 			has_province_flag = TN_Harbour_Important
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = POP_NaturalHarbourMinor
-		
-		trigger = {
+		trigger = { 
 			has_province_flag = TN_Harbour_Minor
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Land_SoilColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = Land_Soil value = 0.6 } } }
-	text = { localisation_key = loc_yellow trigger = { check_key = { lhs = Land_Soil value = 0.4 } NOT = { check_key = { lhs = Land_Soil value = 0.6 } } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = Land_Soil value = 0.4 } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = abx
+				value = 0.6
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_yellow
+		trigger = { 
+			check_variable = { 
+				which = abx
+				value = 0.4
+			}
+			NOT = { 
+				check_variable = { 
+					which = abx
+					value = 0.6
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = abx
+					value = 0.4
+				}
+			}
+		}
+	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Land_HeatColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = Land_AvgTemp value = 15 } } }
-	text = { localisation_key = loc_yellow trigger = { check_key = { lhs = Land_AvgTemp value = -5 } NOT = { check_key = { lhs = Land_AvgTemp value = 15 } } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = Land_AvgTemp value = -5 } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = nla
+				value = 15
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_yellow
+		trigger = { 
+			check_variable = { 
+				which = nla
+				value = -5
+			}
+			NOT = { 
+				check_variable = { 
+					which = nla
+					value = 15
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = nla
+					value = -5
+				}
+			}
+		}
+	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Land_Forest
-	
-	text = {
+	text = { 
 		localisation_key = Land_Forest
-
-		trigger = {
-			check_key = { lhs = Land_Forest value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = abu
+				value = 0.001
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = SF_1
-	
-	text = {
+	text = { 
 		localisation_key = SF_1
-
-		trigger = {
-			check_key = { lhs = SF_Total value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = aap
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = SF_TotalColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = SF_Total which = SF_HistTotal } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = SF_Total which = SF_HistTotal } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aap
+				which = anp
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aap
+					which = anp
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = SF_BirthColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = SF_Birth which = SF_HistBirth } check_key = { lhs = SF_Birth value = 0 } } }
-	text = { localisation_key = loc_orange trigger = { check_key = { lhs = SF_Birth which = SF_HistBirth } NOT = { check_key = { lhs = SF_Birth value = 0 } } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = SF_Birth which = SF_HistBirth } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = adg
+				which = anv
+			}
+			check_variable = { 
+				which = adg
+				value = 0
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_orange
+		trigger = { 
+			check_variable = { 
+				which = adg
+				which = anv
+			}
+			NOT = { 
+				check_variable = { 
+					which = adg
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = adg
+					which = anv
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = SF_InColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = SF_In which = SF_HistIn } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = SF_In which = SF_HistIn } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = bre
+				which = aob
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bre
+					which = aob
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = SF_OutColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = SF_HistOut which = SF_Out } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = SF_HistOut which = SF_Out } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aoh
+				which = brk
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aoh
+					which = brk
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = SF_MPColor
 	random = no
-	
-	text = { localisation_key = loc_red trigger = { check_key = { lhs = SF_HistMP which = SF_MP } } }
-	text = { localisation_key = loc_green trigger = { NOT = { check_key = { lhs = SF_HistMP which = SF_MP } } } }
-}
-defined_text = {
-	name = NM_1
-	
-	text = {
-		localisation_key = NM_1
-
-		trigger = {
-			check_key = { lhs = NM_Total value = 0.001 }
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			check_variable = { 
+				which = aqz
+				which = afz
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aqz
+					which = afz
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
+	name = NM_1
+	text = { 
+		localisation_key = NM_1
+		trigger = { 
+			check_variable = { 
+				which = aaq
+				value = 0.001
+			}
+		}
+	}
+}
+defined_text = { 
 	name = NM_TotalColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = NM_Total which = NM_HistTotal } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = NM_Total which = NM_HistTotal } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aaq
+				which = anq
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aaq
+					which = anq
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = NM_BirthColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = NM_Birth which = NM_HistBirth } check_key = { lhs = NM_Birth value = 0 } } }
-	text = { localisation_key = loc_orange trigger = { check_key = { lhs = NM_Birth which = NM_HistBirth } NOT = { check_key = { lhs = NM_Birth value = 0 } } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = NM_Birth which = NM_HistBirth } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = adi
+				which = anw
+			}
+			check_variable = { 
+				which = adi
+				value = 0
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_orange
+		trigger = { 
+			check_variable = { 
+				which = adi
+				which = anw
+			}
+			NOT = { 
+				check_variable = { 
+					which = adi
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = adi
+					which = anw
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = NM_InColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = NM_In which = NM_HistIn } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = NM_In which = NM_HistIn } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = brf
+				which = aoc
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = brf
+					which = aoc
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = NM_OutColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = NM_HistOut which = NM_Out } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = NM_HistOut which = NM_Out } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aoi
+				which = brl
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aoi
+					which = brl
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = NM_MPColor
 	random = no
-	
-	text = { localisation_key = loc_red trigger = { check_key = { lhs = NM_HistMP which = NM_MP } } }
-	text = { localisation_key = loc_green trigger = { NOT = { check_key = { lhs = NM_HistMP which = NM_MP } } } }
-}
-
-defined_text = {
-	name = RE_1
-	
-	text = {
-		localisation_key = RE_1
-
-		trigger = {
-			check_key = { lhs = RE_Total value = 0.001 }
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			check_variable = { 
+				which = ara
+				which = agb
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = ara
+					which = agb
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
+	name = RE_1
+	text = { 
+		localisation_key = RE_1
+		trigger = { 
+			check_variable = { 
+				which = aar
+				value = 0.001
+			}
+		}
+	}
+}
+defined_text = { 
 	name = RE_TotalColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = RE_Total which = RE_HistTotal } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = RE_Total which = RE_HistTotal } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aar
+				which = anr
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aar
+					which = anr
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = RE_BirthColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = RE_Birth which = RE_HistBirth } check_key = { lhs = RE_Birth value = 0 } } }
-	text = { localisation_key = loc_orange trigger = { check_key = { lhs = RE_Birth which = RE_HistBirth } NOT = { check_key = { lhs = RE_Birth value = 0 } } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = RE_Birth which = RE_HistBirth } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = adk
+				which = anx
+			}
+			check_variable = { 
+				which = adk
+				value = 0
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_orange
+		trigger = { 
+			check_variable = { 
+				which = adk
+				which = anx
+			}
+			NOT = { 
+				check_variable = { 
+					which = adk
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = adk
+					which = anx
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = RE_InColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = RE_In which = RE_HistIn } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = RE_In which = RE_HistIn } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = brg
+				which = aod
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = brg
+					which = aod
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = RE_OutColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = RE_HistOut which = RE_Out } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = RE_HistOut which = RE_Out } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aoj
+				which = brm
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aoj
+					which = brm
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = RE_MPColor
 	random = no
-	
-	text = { localisation_key = loc_red trigger = { check_key = { lhs = RE_HistMP which = RE_MP } } }
-	text = { localisation_key = loc_green trigger = { NOT = { check_key = { lhs = RE_HistMP which = RE_MP } } } }
-}
-defined_text = {
-	name = NO_1
-	
-	text = {
-		localisation_key = NO_1
-
-		trigger = {
-			check_key = { lhs = NO_Total value = 0.001 }
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			check_variable = { 
+				which = arb
+				which = agd
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = arb
+					which = agd
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
+	name = NO_1
+	text = { 
+		localisation_key = NO_1
+		trigger = { 
+			check_variable = { 
+				which = aas
+				value = 0.001
+			}
+		}
+	}
+}
+defined_text = { 
 	name = NO_TotalColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = NO_Total which = NO_HistTotal } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = NO_Total which = NO_HistTotal } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aas
+				which = ans
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aas
+					which = ans
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = NO_BirthColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = NO_Birth which = NO_HistBirth } check_key = { lhs = NO_Birth value = 0 } } }
-	text = { localisation_key = loc_orange trigger = { check_key = { lhs = NO_Birth which = NO_HistBirth } NOT = { check_key = { lhs = NO_Birth value = 0 } } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = NO_Birth which = NO_HistBirth } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = adm
+				which = any
+			}
+			check_variable = { 
+				which = adm
+				value = 0
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_orange
+		trigger = { 
+			check_variable = { 
+				which = adm
+				which = any
+			}
+			NOT = { 
+				check_variable = { 
+					which = adm
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = adm
+					which = any
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = NO_InColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = NO_In which = NO_HistIn } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = NO_In which = NO_HistIn } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = brh
+				which = aoe
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = brh
+					which = aoe
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = NO_OutColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = NO_HistOut which = NO_Out } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = NO_HistOut which = NO_Out } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aok
+				which = brn
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aok
+					which = brn
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = NO_MPColor
 	random = no
-	
-	text = { localisation_key = loc_red trigger = { check_key = { lhs = NO_HistMP which = NO_MP } } }
-	text = { localisation_key = loc_green trigger = { NOT = { check_key = { lhs = NO_HistMP which = NO_MP } } } }
-}
-defined_text = {
-	name = BG_1
-	
-	text = {
-		localisation_key = BG_1
-
-		trigger = {
-			check_key = { lhs = BG_Total value = 0.001 }
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			check_variable = { 
+				which = arc
+				which = agf
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = arc
+					which = agf
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
+	name = BG_1
+	text = { 
+		localisation_key = BG_1
+		trigger = { 
+			check_variable = { 
+				which = aat
+				value = 0.001
+			}
+		}
+	}
+}
+defined_text = { 
 	name = BG_TotalColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = BG_Total which = BG_HistTotal } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = BG_Total which = BG_HistTotal } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aat
+				which = ant
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aat
+					which = ant
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = BG_BirthColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = BG_Birth which = BG_HistBirth } check_key = { lhs = BG_Birth value = 0 } } }
-	text = { localisation_key = loc_orange trigger = { check_key = { lhs = BG_Birth which = BG_HistBirth } NOT = { check_key = { lhs = BG_Birth value = 0 } } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = BG_Birth which = BG_HistBirth } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = ado
+				which = anz
+			}
+			check_variable = { 
+				which = ado
+				value = 0
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_orange
+		trigger = { 
+			check_variable = { 
+				which = ado
+				which = anz
+			}
+			NOT = { 
+				check_variable = { 
+					which = ado
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = ado
+					which = anz
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = BG_InColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = BG_In which = BG_HistIn } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = BG_In which = BG_HistIn } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = bri
+				which = aof
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bri
+					which = aof
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = BG_OutColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = BG_HistOut which = BG_Out } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = BG_HistOut which = BG_Out } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aol
+				which = bro
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aol
+					which = bro
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = BG_MPColor
 	random = no
-	
-	text = { localisation_key = loc_red trigger = { check_key = { lhs = BG_HistMP which = BG_MP } } }
-	text = { localisation_key = loc_green trigger = { NOT = { check_key = { lhs = BG_HistMP which = BG_MP } } } }
-}
-defined_text = {
-	name = CL_1
-	
-	text = {
-		localisation_key = CL_1
-
-		trigger = {
-			check_key = { lhs = CL_Total value = 0.001 }
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			check_variable = { 
+				which = ard
+				which = agh
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = ard
+					which = agh
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
+	name = CL_1
+	text = { 
+		localisation_key = CL_1
+		trigger = { 
+			check_variable = { 
+				which = aau
+				value = 0.001
+			}
+		}
+	}
+}
+defined_text = { 
 	name = CL_TotalColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = CL_Total which = CL_HistTotal } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = CL_Total which = CL_HistTotal } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aau
+				which = anu
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aau
+					which = anu
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = CL_BirthColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = CL_Birth which = CL_HistBirth } check_key = { lhs = CL_Birth value = 0 } } }
-	text = { localisation_key = loc_orange trigger = { check_key = { lhs = CL_Birth which = CL_HistBirth } NOT = { check_key = { lhs = CL_Birth value = 0 } } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = CL_Birth which = CL_HistBirth } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = adq
+				which = aoa
+			}
+			check_variable = { 
+				which = adq
+				value = 0
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_orange
+		trigger = { 
+			check_variable = { 
+				which = adq
+				which = aoa
+			}
+			NOT = { 
+				check_variable = { 
+					which = adq
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = adq
+					which = aoa
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = CL_InColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = CL_In which = CL_HistIn } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = CL_In which = CL_HistIn } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = brj
+				which = aog
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = brj
+					which = aog
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = CL_OutColor
 	random = no
-	
-	text = { localisation_key = loc_green trigger = { check_key = { lhs = CL_HistOut which = CL_Out } } }
-	text = { localisation_key = loc_red trigger = { NOT = { check_key = { lhs = CL_HistOut which = CL_Out } } } }
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			check_variable = { 
+				which = aom
+				which = brp
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = aom
+					which = brp
+				}
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = CL_MPColor
 	random = no
-	
-	text = { localisation_key = loc_red trigger = { check_key = { lhs = CL_HistMP which = CL_MP } } }
-	text = { localisation_key = loc_green trigger = { NOT = { check_key = { lhs = CL_HistMP which = CL_MP } } } }
+	text = { 
+		localisation_key = loc_red
+		trigger = { 
+			check_variable = { 
+				which = are
+				which = agj
+			}
+		}
+	}
+	text = { 
+		localisation_key = loc_green
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = are
+					which = agj
+				}
+			}
+		}
+	}
 }
-
-defined_text = {
+defined_text = { 
 	name = SF_Color
 	random = no
-	
-	text = { localisation_key = WF_SFR trigger = { NOT = { check_key = { lhs = WK_SFNet value = 0 } } } }
-	text = { localisation_key = WF_SFG trigger = { check_key = { lhs = WK_SFNet value = 0.001 } } }
-    text = { localisation_key = WF_SFN trigger = { is_key_equal = { lhs = WK_SFNet value = 0 } } }
+	text = { 
+		localisation_key = WF_SFR
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = los
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_SFG
+		trigger = { 
+			check_variable = { 
+				which = los
+				value = 0.001
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_SFN
+		trigger = { 
+			is_variable_equal = { 
+				which = los
+				value = 0
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = NM_Color
 	random = no
-	
-	text = { localisation_key = WF_NMR trigger = { NOT = { check_key = { lhs = WK_NMNet value = 0 } } } }
-	text = { localisation_key = WF_NMG trigger = { check_key = { lhs = WK_NMNet value = 0.001 } } }
-    text = { localisation_key = WF_NMN trigger = { is_key_equal = { lhs = WK_NMNet value = 0 } } }
+	text = { 
+		localisation_key = WF_NMR
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = loy
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_NMG
+		trigger = { 
+			check_variable = { 
+				which = loy
+				value = 0.001
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_NMN
+		trigger = { 
+			is_variable_equal = { 
+				which = loy
+				value = 0
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = RE_Color
 	random = no
-	
-	text = { localisation_key = WF_RER trigger = { NOT = { check_key = { lhs = WK_RENet value = 0 } } } }
-	text = { localisation_key = WF_REG trigger = { check_key = { lhs = WK_RENet value = 0.001 } } }
-    text = { localisation_key = WF_REN trigger = { is_key_equal = { lhs = WK_RENet value = 0 } } }
+	text = { 
+		localisation_key = WF_RER
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = lot
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_REG
+		trigger = { 
+			check_variable = { 
+				which = lot
+				value = 0.001
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_REN
+		trigger = { 
+			is_variable_equal = { 
+				which = lot
+				value = 0
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = BG_Color
 	random = no
-	
-	text = { localisation_key = WF_BGR trigger = { NOT = { check_key = { lhs = WK_BGNet value = 0 } } } }
-	text = { localisation_key = WF_BGG trigger = { check_key = { lhs = WK_BGNet value = 0.001 } } }
-    text = { localisation_key = WF_BGN trigger = { is_key_equal = { lhs = WK_BGNet value = 0 } } }
+	text = { 
+		localisation_key = WF_BGR
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = lov
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_BGG
+		trigger = { 
+			check_variable = { 
+				which = lov
+				value = 0.001
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_BGN
+		trigger = { 
+			is_variable_equal = { 
+				which = lov
+				value = 0
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = CL_Color
 	random = no
-	
-	text = { localisation_key = WF_CLR trigger = { NOT = { check_key = { lhs = WK_CLNet value = 0 } } } }
-	text = { localisation_key = WF_CLG trigger = { check_key = { lhs = WK_CLNet value = 0.001 } } }
-    text = { localisation_key = WF_CLN trigger = { is_key_equal = { lhs = WK_CLNet value = 0 } } }
+	text = { 
+		localisation_key = WF_CLR
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = low
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_CLG
+		trigger = { 
+			check_variable = { 
+				which = low
+				value = 0.001
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_CLN
+		trigger = { 
+			is_variable_equal = { 
+				which = low
+				value = 0
+			}
+		}
+	}
 }
-defined_text = {
+defined_text = { 
 	name = LT_Color
 	random = no
-	
-	text = { localisation_key = WF_LTR trigger = { NOT = { check_key = { lhs = WK_LTNet value = 0 } } } }
-	text = { localisation_key = WF_LTG trigger = { check_key = { lhs = WK_LTNet value = 0.001 } } }
-    text = { localisation_key = WF_LTN trigger = { is_key_equal = { lhs = WK_LTNet value = 0 } } }
+	text = { 
+		localisation_key = WF_LTR
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = lox
+					value = 0
+				}
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_LTG
+		trigger = { 
+			check_variable = { 
+				which = lox
+				value = 0.001
+			}
+		}
+	}
+	text = { 
+		localisation_key = WF_LTN
+		trigger = { 
+			is_variable_equal = { 
+				which = lox
+				value = 0
+			}
+		}
+	}
 }
-
-defined_text = {
+defined_text = { 
 	name = SF_2
-	
-	text = {
+	text = { 
 		localisation_key = SF_2
-
-		trigger = {
-			check_key = { lhs = SF_Total value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = aap
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = NM_2
-	
-	text = {
+	text = { 
 		localisation_key = NM_2
-
-		trigger = {
-			check_key = { lhs = NM_Total value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = aaq
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = RE_2
-	
-	text = {
+	text = { 
 		localisation_key = RE_2
-
-		trigger = {
-			check_key = { lhs = RE_Total value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = aar
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = NO_2
-	
-	text = {
+	text = { 
 		localisation_key = NO_2
-
-		trigger = {
-			check_key = { lhs = NO_Total value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = aas
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = BG_2
-	
-	text = {
+	text = { 
 		localisation_key = BG_2
-
-		trigger = {
-			check_key = { lhs = BG_Total value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = aat
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = CL_2
-	
-	text = {
+	text = { 
 		localisation_key = CL_2
-
-		trigger = {
-			check_key = { lhs = CL_Total value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = aau
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Disp_Misc_BUIncome
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUIncome
-
-		trigger = {
-			NOT = { check_key = { lhs = BU_Income value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = afw
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUProperty
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUProperty
-
-		trigger = {
-			check_key = { lhs = BU_PropertyMisc value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = lod
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUPropertyNeg
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUPropertyNeg
-
-		trigger = {
-			check_key = { lhs = TaxD_BUPropertyNeg value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = lvk
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_Mil
-	
-	text = {
+	text = { 
 		localisation_key = Misc_Mil
-
-		trigger = {
+		trigger = { 
 			is_capital = yes
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUInfra
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUInfra
-
-		trigger = {
-			check_key = { lhs = Infra_StateSpend value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = ged
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUDole
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUDole
-
-		trigger = {
-			check_key = { lhs = Class_IncomeDole value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = loc
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_ColonailSubsidy
-	
-	text = {
+	text = { 
 		localisation_key = Misc_ColonailSubsidy
-
-		trigger = {
-			check_key = { lhs = Colonial_SubsidyDisp value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = nmm
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUAgriculture
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUAgriculture
-
-		trigger = {
-			check_key = { lhs = BU_SpendAgriculture value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = fxz
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUFishery
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUFishery
-
-		trigger = {
-			check_key = { lhs = BU_SpendFishery value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = fyf
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUForestry
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUForestry
-
-		trigger = {
-			check_key = { lhs = BU_SpendForestry value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = fya
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUMines
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUMines
-
-		trigger = {
-			check_key = { lhs = BU_SpendExtraction value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = fyb
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUIndustrial
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUIndustrial
-
-		trigger = {
-			check_key = { lhs = BU_SpendIndustrial value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = fyd
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUAcademic
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUAcademic
-
-		trigger = {
-			check_key = { lhs = BU_SpendAcademic value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = fye
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Misc_BUCommercial
-	
-	text = {
+	text = { 
 		localisation_key = Misc_BUCommercial
-
-		trigger = {
-			check_key = { lhs = BU_SpendCommercial value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = fyc
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = TaxD_Teuton
-	
-	text = {
+	text = { 
 		localisation_key = TaxD_Teuton
-
-		trigger = {
-			check_key = { lhs = Tax_Teuton value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = jeu
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = TaxD_Emperor
-	
-	text = {
+	text = { 
 		localisation_key = TaxD_Emperor
-
-		trigger = {
-			check_key = { lhs = Tax_Emperor value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = lvi
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = TaxD_Knights
-	
-	text = {
+	text = { 
 		localisation_key = TaxD_Knights
-
-		trigger = {
-			check_key = { lhs = Tax_Knights value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = lvt
+				value = 0.001
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = TaxD_PostFees
-	
-	text = {
+	text = { 
 		localisation_key = TaxD_PostFees
-
-		trigger = {
-			check_key = { lhs = Post_Fees value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = lsa
+				value = 0.001
+			}
 		}
 	}
 }

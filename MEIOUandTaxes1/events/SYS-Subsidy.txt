@@ -1,318 +1,1222 @@
 namespace = POP_Colonial
-
-country_event = {
+country_event = { 
 	id = POP_Colonial.001
 	title = "POP_Colonial.001.t"
 	desc = "POP_Colonial.001.d"
 	picture = CITY_DEVELOPMENT_AU_eventPicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	immediate = {
-		every_country = {
-			limit = {
-				NOT = { tag = AAA }
-			}
-			if = {
-				limit = {
-					isValidCountry = yes
-				}
-				if = {
-					limit = {
-						check_key = { lhs = Colonial_SubsidyIncome value = 0.001 }
-					}
-					set_key = { lhs = Colonial_SubsidyIncomeSave which = Colonial_SubsidyIncome } # Used to ensure there isnt exponential growth in income
-					divide_key = { lhs = Colonial_SubsidyIncomeSave value = 12 } # Used in monthly form
-				}
-				set_key = { lhs = Colonial_SubsidyIncome value = 0 } # Wipe out any old income
-				if = {
-					limit = {
-						check_key = { lhs = Colonial_Subsidy value = 0.001 }
-					}
-					set_key = { lhs = Colonial_SubsidySave which = Colonial_Subsidy } # Used to ensure there isnt exponential growth in income
+	immediate = { 
+		every_country = { 
+			limit = { 
+				NOT = { 
+					tag = AAA
 				}
 			}
-			else = {
-				set_key = { lhs = Colonial_SubsidyMultiplier value = 0 }
-				set_key = { lhs = Colonial_Subsidy value = 0 }
-				set_key = { lhs = Colonial_SubsidyIncome value = 0 }
+			if = { 
+				limit = { 
+					AND = { 
+						num_of_cities = 1
+						NOT = { 
+							tag = AAA
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = nmh
+							value = 0.001
+						}
+					}
+					set_variable = { 
+						which = nmi
+						which = nmh
+					}
+					divide_variable = { 
+						which = nmi
+						value = 12
+					}
+				}
+				set_variable = { 
+					which = nmh
+					value = 0
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = nmf
+							value = 0.001
+						}
+					}
+					set_variable = { 
+						which = nmg
+						which = nmf
+					}
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = nmj
+					value = 0
+				}
+				set_variable = { 
+					which = nmf
+					value = 0
+				}
+				set_variable = { 
+					which = nmh
+					value = 0
+				}
 				clr_country_flag = dont_subsidise_colonies
 			}
 		}
-		every_country = {
-			limit = {
-				isValidCountry = yes
+		every_country = { 
+			limit = { 
+				AND = { 
+					num_of_cities = 1
+					NOT = { 
+						tag = AAA
+					}
+				}
 			}
-			# Only distribute income if theres subjects to send it to.
-			if = {
-				limit = {
-					any_subject_country = {
+			if = { 
+				limit = { 
+					any_subject_country = { 
 						is_colonial_nation = yes
 					}
 					monthly_income = 4
 				}
-				if = { # If there is an existing subsidy to distribute, then its time to send it to the colonies
-					limit = {
-						check_key = { lhs = Colonial_Subsidy value = 0.001 }
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = nmf
+							value = 0.001
+						}
 					}
-					set_key = { lhs = Colonial_SubsidyOutput which = Colonial_Subsidy }
-					set_key = { lhs = Colonial_Subsidy value = 0 }
-						
-					set_key = { lhs = Colonial_WeightCur value = 0 }
-					every_subject_country = {
-						limit = {
-							isValidCountry = yes
+					set_variable = { 
+						which = nmk
+						which = nmf
+					}
+					set_variable = { 
+						which = nmf
+						value = 0
+					}
+					set_variable = { 
+						which = nmn
+						value = 0
+					}
+					every_subject_country = { 
+						limit = { 
+							AND = { 
+								num_of_cities = 1
+								NOT = { 
+									tag = AAA
+								}
+							}
 							is_colonial_nation = yes
 						}
-						
-						export_to_key = {
-							lhs = Colonial_WeightCur
+						export_to_variable = { 
+							which = export
 							value = monthly_income
 						}
-						if = {
-							limit = {
-								check_key = { lhs = Colonial_SubsidyIncomeSave value = 0.001 }
-							}
-							subtract_key = { lhs = Colonial_WeightCur which = Colonial_SubsidyIncomeSave } # Used to ensure there isnt exponential growth in income
-							set_key = { lhs = Colonial_SubsidyIncomeSave value = 0 } # Used to ensure there isnt exponential growth in income
+						set_variable = { 
+							which = nmn
+							which = export
 						}
-						if = {
-							limit = {
-								NOT = { check_key = { lhs = Colonial_WeightCur value = 0.1 } }
+						if = { 
+							limit = { 
+								check_variable = { 
+									which = nmi
+									value = 0.001
+								}
 							}
-							set_key = { lhs = Colonial_WeightCur value = 0.1 } # Prevent negaitve incomes from contributing
+							subtract_variable = { 
+								which = nmn
+								which = nmi
+							}
+							set_variable = { 
+								which = nmi
+								value = 0
+							}
 						}
-						PREV = { change_key = { lhs = Colonial_WeightCur which = PREV } }
+						if = { 
+							limit = { 
+								NOT = { 
+									check_variable = { 
+										which = nmn
+										value = 0.1
+									}
+								}
+							}
+							set_variable = { 
+								which = nmn
+								value = 0.1
+							}
+						}
+						PREV = { 
+							change_variable = { 
+								which = nmn
+								which = PREV
+							}
+						}
 					}
-					
-					# Inversely weigh each province income, using Colonial_WeightTotal / Colonial_WeightCur. More of a contribution means less weight
-					# for example, (250 / 33 = 15), while (250 / 2 = 250 )
-					set_key = { lhs = Colonial_WeightTotal which = Colonial_WeightCur } # Use the tally as a total income to distribute
-					set_key = { lhs = Colonial_WeightCur value = 0 }
-					set_key = { lhs = Colonial_WeightHighest value = 0 }
-					
-					every_subject_country = {
-						limit = {
-							isValidCountry = yes
+					set_variable = { 
+						which = nmo
+						which = nmn
+					}
+					set_variable = { 
+						which = nmn
+						value = 0
+					}
+					set_variable = { 
+						which = nmp
+						value = 0
+					}
+					every_subject_country = { 
+						limit = { 
+							AND = { 
+								num_of_cities = 1
+								NOT = { 
+									tag = AAA
+								}
+							}
 							is_colonial_nation = yes
 						}
-						# Grab country level vars
-						set_key = { lhs = Colonial_WeightTotal which = PREV }
-						set_key = { lhs = Colonial_WeightHighest which = PREV }
-						
-						divide_key = { lhs = Colonial_WeightTotal which = Colonial_WeightCur }
-						
-						set_key = { lhs = Colonial_WeightCur which = Colonial_WeightTotal }
-						set_key = { lhs = Colonial_WeightTotal value = 0 }
-						
-						if = { # Store the highest income for the next step
-							limit = {
-								check_key = { lhs = Colonial_WeightCur which = Colonial_WeightHighest }
-							}
-							set_key = { lhs = Colonial_WeightHighest which = Colonial_WeightCur }
-							PREV = { set_key = { lhs = Colonial_WeightHighest which = PREV } }
+						set_variable = { 
+							which = nmo
+							which = PREV
 						}
-						set_key = { lhs = Colonial_WeightHighest value = 0 }
-						
-						PREV = { change_key = { lhs = Colonial_WeightCur which = PREV } }
+						set_variable = { 
+							which = nmp
+							which = PREV
+						}
+						divide_variable = { 
+							which = nmo
+							which = nmn
+						}
+						set_variable = { 
+							which = nmn
+							which = nmo
+						}
+						set_variable = { 
+							which = nmo
+							value = 0
+						}
+						if = { 
+							limit = { 
+								check_variable = { 
+									which = nmn
+									which = nmp
+								}
+							}
+							set_variable = { 
+								which = nmp
+								which = nmn
+							}
+							PREV = { 
+								set_variable = { 
+									which = nmp
+									which = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = nmp
+							value = 0
+						}
+						PREV = { 
+							change_variable = { 
+								which = nmn
+								which = PREV
+							}
+						}
 					}
-					
-					set_key = { lhs = Colonial_WeightTotal which = Colonial_WeightCur } # Use the tally as a total weight to distribute
-					set_key = { lhs = Colonial_WeightCur value = 0 }
-					
-					# Run another pass, and ensure no nation is weighed higher than 12x the highest nation
-					every_subject_country = {
-						limit = {
+					set_variable = { 
+						which = nmo
+						which = nmn
+					}
+					set_variable = { 
+						which = nmn
+						value = 0
+					}
+					every_subject_country = { 
+						limit = { 
 							is_colonial_nation = yes
 						}
-						# Grab country level vars
-						set_key = { lhs = Colonial_WeightHighest which = PREV }
-						
-						multiply_key = { lhs = Colonial_WeightHighest value = 0.083 }
-						
-						if = {
-							limit = {
-								check_key = { lhs = Colonial_WeightHighest which = Colonial_WeightCur }
+						set_variable = { 
+							which = nmp
+							which = PREV
+						}
+						multiply_variable = { 
+							which = nmp
+							value = 0.083
+						}
+						if = { 
+							limit = { 
+								check_variable = { 
+									which = nmp
+									which = nmn
+								}
 							}
-							set_key = { lhs = Colonial_WeightCur which = Colonial_WeightHighest }
+							set_variable = { 
+								which = nmn
+								which = nmp
+							}
 						}
-						set_key = { lhs = Colonial_WeightHighest value = 0 }
-						
-						PREV = { change_key = { lhs = Colonial_WeightCur which = PREV } }
+						set_variable = { 
+							which = nmp
+							value = 0
+						}
+						PREV = { 
+							change_variable = { 
+								which = nmn
+								which = PREV
+							}
+						}
 					}
-					
-					set_key = { lhs = Colonial_WeightTotal which = Colonial_WeightCur } # Use the tally as a total weight to distribute
-					set_key = { lhs = Colonial_WeightCur value = 0 }
-					set_key = { lhs = Colonial_WeightHighest value = 0 }
-					
-					if = {
-						limit = {
-							check_key = { lhs = Colonial_WeightTotal value = 0.001 }
+					set_variable = { 
+						which = nmo
+						which = nmn
+					}
+					set_variable = { 
+						which = nmn
+						value = 0
+					}
+					set_variable = { 
+						which = nmp
+						value = 0
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = nmo
+								value = 0.001
+							}
 						}
-						every_subject_country = {
-							limit = {
-								isValidCountry = yes
+						every_subject_country = { 
+							limit = { 
+								AND = { 
+									num_of_cities = 1
+									NOT = { 
+										tag = AAA
+									}
+								}
 								is_colonial_nation = yes
 							}
-							# Grab country level vars
-							set_key = { lhs = Colonial_WeightTotal which = PREV }
-							set_key = { lhs = Colonial_SubsidyOutput which = PREV }
-							set_key = { lhs = Colonial_SubsidyIncome which = Colonial_SubsidyOutput } # Colonial_SubsidyIncome is the final variable
-							
-							# Use a 100% scale instead of a 0-1% scale, less chance of overflow or DBZ
-							multiply_key = { lhs = Colonial_WeightCur value = 100 }
-							divide_key = { lhs = Colonial_WeightCur which = Colonial_WeightTotal }
-							
-							# Take the countries share of the total subsidies
-							multiply_key = { lhs = Colonial_SubsidyIncome which = Colonial_WeightCur }
-							multiply_key = { lhs = Colonial_SubsidyIncome value = 0.01 } # Rescale subsidy income back down from the 100% scale.
-							
-							# When trickle down is implemented
-							#set_key = { lhs = Colonial_SubsidySF which = Colonial_SubsidyIncome }
-							#multiply_key = { lhs = Colonial_SubsidySF value = 0.3 }
-							#multiply_key = { lhs = Colonial_SubsidyIncome value = 0.7 }
-							
-							#change_key = { lhs = SF_NatTrickleDown which = Colonial_SubsidySF }
-							
-							# Cleanup
-							set_key = { lhs = Colonial_Tmp4 value = 0 }
-							set_key = { lhs = Colonial_WeightCur value = 0 }
-							set_key = { lhs = Colonial_SubsidyOutput value = 0 }
-							set_key = { lhs = Colonial_WeightTotal value = 0 }
-							set_key = { lhs = Colonial_SubsidySF value = 0 }
+							set_variable = { 
+								which = nmo
+								which = PREV
+							}
+							set_variable = { 
+								which = nmk
+								which = PREV
+							}
+							set_variable = { 
+								which = nmh
+								which = nmk
+							}
+							multiply_variable = { 
+								which = nmn
+								value = 100
+							}
+							divide_variable = { 
+								which = nmn
+								which = nmo
+							}
+							multiply_variable = { 
+								which = nmh
+								which = nmn
+							}
+							multiply_variable = { 
+								which = nmh
+								value = 0.01
+							}
+							set_variable = { 
+								which = nme
+								value = 0
+							}
+							set_variable = { 
+								which = nmn
+								value = 0
+							}
+							set_variable = { 
+								which = nmk
+								value = 0
+							}
+							set_variable = { 
+								which = nmo
+								value = 0
+							}
+							set_variable = { 
+								which = nml
+								value = 0
+							}
 						}
-						set_key = { lhs = Colonial_WeightTotal value = 0 }
+						set_variable = { 
+							which = nmo
+							value = 0
+						}
 					}
-					else = {
-						every_subject_country = {
-							limit = {
-								isValidCountry = yes
+					else = { 
+						every_subject_country = { 
+							limit = { 
+								AND = { 
+									num_of_cities = 1
+									NOT = { 
+										tag = AAA
+									}
+								}
 								is_colonial_nation = yes
 							}
-							set_key = { lhs = Colonial_WeightCur value = 0 }
+							set_variable = { 
+								which = nmn
+								value = 0
+							}
 						}
 					}
-					set_key = { lhs = Colonial_SubsidyOutput value = 0 }
+					set_variable = { 
+						which = nmk
+						value = 0
+					}
 				}
-				set_key = { lhs = Colonial_Subsidy value = 0 }
-				set_key = { lhs = Colonial_SubsidyDisp value = 0 }
-
-				export_to_key = {
-					lhs = Colonial_Subsidy
+				set_variable = { 
+					which = nmf
+					value = 0
+				}
+				set_variable = { 
+					which = nmm
+					value = 0
+				}
+				export_to_variable = { 
+					which = export
 					value = monthly_income
 				}
-				
-				# Effect country expenditure based on country's treasury
-				multiply_key = { lhs = Colonial_Subsidy value = 12 } # 1 year of income				
-				if = {
-					limit = {
-						check_key = { lhs = Colonial_SubsidySave value = 0.001 }
-					}
-					change_key = { lhs = Colonial_Subsidy which = Colonial_SubsidySave } # Used to ensure there isnt exponential growth in income
-					set_key = { lhs = Colonial_SubsidySave value = 0 } # Used to ensure there isnt exponential growth in income
+				set_variable = { 
+					which = nmf
+					which = export
 				}
-				
-				if = {
-					limit = {
-						check_key = { lhs = Colonial_SubsidyMultiplier value = 0.001 }
-					}
-					multiply_key = { lhs = Colonial_Subsidy which = Colonial_SubsidyMultiplier }
-				
-					set_key = { lhs = Colonial_SubsidyDisp which = Colonial_Subsidy }
+				multiply_variable = { 
+					which = nmf
+					value = 12
 				}
-				else_if = {
-					limit = {
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = nmg
+							value = 0.001
+						}
+					}
+					change_variable = { 
+						which = nmf
+						which = nmg
+					}
+					set_variable = { 
+						which = nmg
+						value = 0
+					}
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = nmj
+							value = 0.001
+						}
+					}
+					multiply_variable = { 
+						which = nmf
+						which = nmj
+					}
+					set_variable = { 
+						which = nmm
+						which = nmf
+					}
+				}
+				else_if = { 
+					limit = { 
 						has_country_flag = dont_subsidise_colonies
 					}
-					set_key = { lhs = Colonial_Subsidy value = 0 }
-					set_key = { lhs = Colonial_SubsidyDisp value = 0 }
+					set_variable = { 
+						which = nmf
+						value = 0
+					}
+					set_variable = { 
+						which = nmm
+						value = 0
+					}
 				}
-				else = {
-					set_key = { lhs = Colonial_Subsidy value = 0 }
-					set_key = { lhs = Colonial_SubsidyDisp value = 0 }
-					country_event = {
+				else = { 
+					set_variable = { 
+						which = nmf
+						value = 0
+					}
+					set_variable = { 
+						which = nmm
+						value = 0
+					}
+					country_event = { 
 						id = POP_Colonial.002
 						days = 10
 						random = 5
 					}
 				}
 			}
-			# Otherwise, dump any subsidy back into the treasury
-			else = {
-				set_key = { lhs = Colonial_SubsidyMultiplier value = 0 }
-				if = {
-					limit = {
-						check_key = { lhs = Colonial_Subsidy value = 0.001 }
+			else = { 
+				set_variable = { 
+					which = nmj
+					value = 0
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = nmf
+							value = 0.001
+						}
 					}
-					set_key = { lhs = Colonial_Tmp4 which = Colonial_Subsidy }
-					POP_GetDucat = {
-						type = which
-						inp = Colonial_Tmp4
+					set_variable = { 
+						which = nme
+						which = nmf
 					}
-					set_key = { lhs = Colonial_Subsidy value = 0 }
-					set_key = { lhs = Colonial_SubsidyDisp value = 0 }
-					set_key = { lhs = Colonial_Tmp4 value = 0 }
+					set_variable = { 
+						which = okp
+						which = nme
+					}
+					while = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 32768
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 32768
+						}
+						add_treasury = 32768
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 16384
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 16384
+						}
+						add_treasury = 16384
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 8192
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 8192
+						}
+						add_treasury = 8192
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 4096
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 4096
+						}
+						add_treasury = 4096
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 2048
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 2048
+						}
+						add_treasury = 2048
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 1024
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 1024
+						}
+						add_treasury = 1024
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 512
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 512
+						}
+						add_treasury = 512
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 256
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 256
+						}
+						add_treasury = 256
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 128
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 128
+						}
+						add_treasury = 128
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 64
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 64
+						}
+						add_treasury = 64
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 32
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 32
+						}
+						add_treasury = 32
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 16
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 16
+						}
+						add_treasury = 16
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 8
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 8
+						}
+						add_treasury = 8
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 4
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 4
+						}
+						add_treasury = 4
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 2
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 2
+						}
+						add_treasury = 2
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = okp
+								value = 1
+							}
+						}
+						subtract_variable = { 
+							which = okp
+							value = 1
+						}
+						add_treasury = 1
+					}
+					set_variable = { 
+						which = okp
+						value = 0
+					}
+					set_variable = { 
+						which = nmf
+						value = 0
+					}
+					set_variable = { 
+						which = nmm
+						value = 0
+					}
+					set_variable = { 
+						which = nme
+						value = 0
+					}
 				}
 				clr_country_flag = dont_subsidise_colonies
 			}
 		}
-		every_country = {
-			limit = {
-				isValidCountry = yes
+		every_country = { 
+			limit = { 
+				AND = { 
+					num_of_cities = 1
+					NOT = { 
+						tag = AAA
+					}
+				}
 			}
-			set_key = { lhs = Colonial_Tmp4 which = Colonial_SubsidyIncome }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 1638.4 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 819.2 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 409.6 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 204.8 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 102.4 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 51.2 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 25.6 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 12.8 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 6.4 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 3.2 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 1.6 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 0.8 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 0.4 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 0.2 }
-			POP_SetMod = { varname = Colonial_Tmp4 modname = ColonialIncome type = country value = 0.1 }
-			
-			set_key = { lhs = Colonial_SubsidySave value = 0 }
-			set_key = { lhs = Colonial_SubsidyIncomeSave value = 0 }
-			set_key = { lhs = Colonial_Tmp4 value = 0 }
+			set_variable = { 
+				which = nme
+				which = nmh
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 1638.4
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 1638.4
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_1638.4
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_1638.4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_1638.4
+				}
+				remove_country_modifier = ColonialIncome_1638.4
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 819.2
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 819.2
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_819.2
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_819.2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_819.2
+				}
+				remove_country_modifier = ColonialIncome_819.2
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 409.6
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 409.6
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_409.6
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_409.6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_409.6
+				}
+				remove_country_modifier = ColonialIncome_409.6
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 204.8
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 204.8
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_204.8
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_204.8
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_204.8
+				}
+				remove_country_modifier = ColonialIncome_204.8
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 102.4
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 102.4
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_102.4
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_102.4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_102.4
+				}
+				remove_country_modifier = ColonialIncome_102.4
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 51.2
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 51.2
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_51.2
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_51.2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_51.2
+				}
+				remove_country_modifier = ColonialIncome_51.2
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 25.6
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 25.6
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_25.6
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_25.6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_25.6
+				}
+				remove_country_modifier = ColonialIncome_25.6
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 12.8
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 12.8
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_12.8
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_12.8
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_12.8
+				}
+				remove_country_modifier = ColonialIncome_12.8
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 6.4
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 6.4
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_6.4
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_6.4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_6.4
+				}
+				remove_country_modifier = ColonialIncome_6.4
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 3.2
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 3.2
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_3.2
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_3.2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_3.2
+				}
+				remove_country_modifier = ColonialIncome_3.2
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 1.6
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 1.6
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_1.6
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_1.6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_1.6
+				}
+				remove_country_modifier = ColonialIncome_1.6
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 0.8
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 0.8
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_0.8
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_0.8
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_0.8
+				}
+				remove_country_modifier = ColonialIncome_0.8
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 0.4
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 0.4
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_0.4
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_0.4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_0.4
+				}
+				remove_country_modifier = ColonialIncome_0.4
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 0.2
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 0.2
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_0.2
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_0.2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_0.2
+				}
+				remove_country_modifier = ColonialIncome_0.2
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nme
+						value = 0.1
+					}
+				}
+				subtract_variable = { 
+					which = nme
+					value = 0.1
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = ColonialIncome_0.1
+						}
+					}
+					add_country_modifier = { 
+						name = ColonialIncome_0.1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = ColonialIncome_0.1
+				}
+				remove_country_modifier = ColonialIncome_0.1
+			}
+			set_variable = { 
+				which = nmg
+				value = 0
+			}
+			set_variable = { 
+				which = nmi
+				value = 0
+			}
+			set_variable = { 
+				which = nme
+				value = 0
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = POP_Colonial.001.a
 	}
 }
-country_event = {
+country_event = { 
 	id = POP_Colonial.002
 	title = "POP_Colonial.002.t"
 	desc = "POP_Colonial.002.d"
 	picture = TRADEGOODS_eventPicture
-	
 	is_triggered_only = yes
-	
-	immediate = {
-		hidden_effect = {
-			set_key = { lhs = Colonial_SubsidyMultiplier value = 0.05 }
+	immediate = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = nmj
+				value = 0.05
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = POP_Colonial.002.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
 	}
-	
-	option = {
+	option = { 
 		name = POP_Colonial.002.b
-		hidden_effect = {
-			set_key = { lhs = Colonial_SubsidyMultiplier value = 0 }
+		hidden_effect = { 
+			set_variable = { 
+				which = nmj
+				value = 0
+			}
 			set_country_flag = dont_subsidise_colonies
 		}
 	}

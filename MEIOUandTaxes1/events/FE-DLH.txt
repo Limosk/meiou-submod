@@ -1,30 +1,29 @@
 namespace = flavor_dlh
-
-country_event = {
+country_event = { 
 	id = flavor_dlh.1
 	title = "flavor_dlh.EVTNAME1"
 	desc = "flavor_dlh.EVTDESC1"
 	picture = ANGRY_MOB_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		is_year = 1625
-		NOT = {
+		NOT = { 
 			exists = MAR
 		}
-		OR = {
-			NOT = {
+		OR = { 
+			NOT = { 
 				religion = hinduism
 			}
-			NOT = {
+			NOT = { 
 				accepted_culture = marathi
 			}
 		}
-		NOT = {
+		NOT = { 
 			stability = 0
 		}
 		num_of_cities = 5
-		any_owned_province = {
-			OR = {
+		any_owned_province = { 
+			OR = { 
 				province_id = 530
 				province_id = 1587
 				province_id = 2243
@@ -36,14 +35,14 @@ country_event = {
 			religion = hinduism
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_dlh.EVTOPTA1"
-		every_owned_province = {
-			limit = {
-				OR = {
+		every_owned_province = { 
+			limit = { 
+				OR = { 
 					province_id = 530
 					province_id = 1587
 					province_id = 2243
@@ -57,11 +56,11 @@ country_event = {
 			add_unrest = 10
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_dlh.EVTOPTB1"
-		every_owned_province = {
-			limit = {
-				OR = {
+		every_owned_province = { 
+			limit = { 
+				OR = { 
 					province_id = 530
 					province_id = 1587
 					province_id = 2243
@@ -75,43 +74,43 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_dlh.2
 	title = "flavor_dlh.EVTNAME2"
 	desc = "flavor_dlh.EVTDESC2"
 	picture = MILITARY_CAMP_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = DLH
 		exists = MUG
 		is_year = 1510
-		NOT = {
+		NOT = { 
 			is_year = 1530
 		}
-		NOT = {
+		NOT = { 
 			war_with = MUG
 		}
-		any_neighbor_country = {
+		any_neighbor_country = { 
 			tag = MUG
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_dlh.EVTOPTA2"
-		MUG = {
-			add_opinion = {
+		MUG = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = opinion_negotiated_peace
 				years = 50
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_dlh.EVTOPTB2"
-		MUG = {
-			add_opinion = {
+		MUG = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = opinion_displeased
 				years = 50
@@ -120,47 +119,159 @@ country_event = {
 		add_prestige = 10
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_dlh.3
 	title = "flavor_dlh.EVTNAME3"
 	desc = "flavor_dlh.EVTDESC3"
 	picture = COURT_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = DLH
 		is_year = 1452
-		NOT = {
+		NOT = { 
 			is_year = 1553
 		}
 		dynasty = "Lodi"
-		OR = {
-			NOT = {
+		OR = { 
+			NOT = { 
 				dip = 0
 			}
-			NOT = {
+			NOT = { 
 				mil = 0
 			}
-			NOT = {
+			NOT = { 
 				adm = 0
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_dlh.EVTOPTA3"
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
 			}
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				is_core = MAR
 			}
 			add_unrest = 2
@@ -169,48 +280,160 @@ country_event = {
 		set_country_flag = dlh_lodi_flag
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_dlh.4
 	title = "flavor_dlh.EVTNAME4"
 	desc = "flavor_dlh.EVTDESC4"
 	picture = COURT_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = DLH
 		is_year = 1452
-		NOT = {
+		NOT = { 
 			is_year = 1553
 		}
 		dynasty = "Lodi"
-		OR = {
-			NOT = {
+		OR = { 
+			NOT = { 
 				dip = 0
 			}
-			NOT = {
+			NOT = { 
 				mil = 0
 			}
-			NOT = {
+			NOT = { 
 				adm = 0
 			}
 		}
 		has_country_flag = dlh_lodi_flag
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_dlh.EVTOPTA3"
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
 			}
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				is_core = DLH
 			}
 			add_unrest = 5
@@ -219,31 +442,31 @@ country_event = {
 		clr_country_flag = dlh_lodi_flag
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_dlh.5
 	title = "flavor_dlh.EVTNAME1"
 	desc = "flavor_dlh.EVTDESC1"
 	picture = ANGRY_MOB_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		is_year = 1625
-		NOT = {
+		NOT = { 
 			exists = MAR
 		}
-		OR = {
-			NOT = {
+		OR = { 
+			NOT = { 
 				religion = hinduism
 			}
-			NOT = {
+			NOT = { 
 				accepted_culture = marathi
 			}
 		}
-		NOT = {
+		NOT = { 
 			stability = 0
 		}
 		num_of_cities = 5
-		any_owned_province = {
-			OR = {
+		any_owned_province = { 
+			OR = { 
 				province_id = 530
 				province_id = 1587
 				province_id = 2243
@@ -255,57 +478,57 @@ country_event = {
 			religion = hinduism
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 166
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			NOT = {
+			NOT = { 
 				accepted_culture = marathi
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			NOT = {
+			NOT = { 
 				primary_culture = marathi
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			num_of_owned_provinces_with = {
+			num_of_owned_provinces_with = { 
 				value = 2
 				culture = marathi
 				religion = hinduism
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			num_of_owned_provinces_with = {
+			num_of_owned_provinces_with = { 
 				value = 4
 				culture = marathi
 				religion = hinduism
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			num_of_owned_provinces_with = {
+			num_of_owned_provinces_with = { 
 				value = 6
 				culture = marathi
 				religion = hinduism
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			num_of_owned_provinces_with = {
+			num_of_owned_provinces_with = { 
 				value = 8
 				culture = marathi
 				religion = hinduism
 			}
 		}
 	}
-	immediate = {
-		hidden_effect = {
-			every_owned_province = {
-				limit = {
+	immediate = { 
+		hidden_effect = { 
+			every_owned_province = { 
+				limit = { 
 					religion = hinduism
 					culture = marathi
 				}
@@ -313,8 +536,8 @@ country_event = {
 				add_core = MAR
 			}
 			release = MAR
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					culture = marathi
 				}
@@ -322,17 +545,17 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_dlh.EVTOPTA1"
-		MAR = {
-			declare_war_with_cb = {
+		MAR = { 
+			declare_war_with_cb = { 
 				who = ROOT
 				casus_belli = cb_independence_war
 			}
 		}
-		hidden_effect = {
-			MAR = {
-				country_event = {
+		hidden_effect = { 
+			MAR = { 
+				country_event = { 
 					id = flavor_mar.1
 					days = 1
 				}

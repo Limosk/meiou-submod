@@ -1,173 +1,171 @@
 namespace = mec_vassals
-
-# Vassal Reversion Events #
-
-country_event = { # $Tag$ Reverts to the Crown, insp., Burgundy and France
+country_event = { 
 	id = mec_vassals.1
 	title = "mec_vassals_1_title"
 	desc = "mec_vassals_1_desc"
 	picture = GOOD_WITH_MONARCH_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = mec_vassals.1.a
-		if = {
-			limit = {
-				FROM = {
+		if = { 
+			limit = { 
+				FROM = { 
 					is_overseas_subject = yes
 				}
 			}
-			#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:inherits their overseas fief [From.GetName]:mec_vassals.1"
-			create_subject = {
+			create_subject = { 
 				subject_type = overseas_fief
 				subject = FROM
 			}
 		}
-		else = {
-			#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:got their appanage ([From.GetName]) into PU:mec_vassals.1"
-			create_subject = {
+		else = { 
+			create_subject = { 
 				subject_type = personal_union
 				subject = FROM
 			}
-			if = {
-				limit = {
-					FROM = {
+			if = { 
+				limit = { 
+					FROM = { 
 						tag = ANJ
 					}
 				}
-				FRA = {
-					country_event = {
-						id = flavor_anj.3 
+				FRA = { 
+					country_event = { 
+						id = flavor_anj.3
 					}
 				}
 			}
 		}
-		reverse_add_opinion = {
+		reverse_add_opinion = { 
 			who = FROM
 			modifier = union_appanage
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 2
 			modifier = { 
 				factor = 0.25
-				NOT = {
-					FROM = {
-						has_opinion = {
+				NOT = { 
+					FROM = { 
+						has_opinion = { 
 							value = 80
 							who = PREV
 						}
 					}
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = greedy_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = selfish_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				personality = proud_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
-				check_key = { lhs = Prov_BUPow value = 30 }
+				check_variable = { 
+					which = ati
+					value = 30
+				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
-				check_key = { lhs = Prov_BUPow value = 45 }
+				check_variable = { 
+					which = ati
+					value = 45
+				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
-				check_key = { lhs = Prov_BUPow value = 55 }
+				check_variable = { 
+					which = ati
+					value = 55
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = mec_vassals.1.b
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:continued treating [From.GetName] as appanage, refused PU:mec_vassals.1"
-
-		FROM = {
+		FROM = { 
 			set_country_flag = Had_Heir
-			define_ruler = {
+			define_ruler = { 
 				dynasty = PREV
 				culture = PREV
 				religion = PREV
 			}
-			define_heir = {
+			define_heir = { 
 				dynasty = PREV
 				culture = PREV
 				religion = PREV
 			}
 		}
-		reverse_add_opinion = {
+		reverse_add_opinion = { 
 			who = FROM
 			modifier = continued_appanage
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 1
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = weak_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				personality = modest_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = kind_hearted_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = benevolent_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = generous_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
-				personal_union  = 1
-				FROM = { total_development	= 30 } #it is safe to get them into PU, as annexation will be swift
+				personal_union = 1
+				FROM = { 
+					total_development = 30
+				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personal_union = 2
-				FROM = { total_development	= 30 } #it is safe to get them into PU, as annexation will be swift
-			}			
+				FROM = { 
+					total_development = 30
+				}
+			}
 		}
 	}
 }
-
-# Realm Collapse #
-
-country_event = { # Dissolution of the Realm, insp Serbia c. 1371
+country_event = { 
 	id = mec_vassals.2
 	title = "mec_vassals_2_title"
 	desc = "mec_vassals_2_desc"
 	picture = BORDER_TENSION_eventPicture
-	
 	is_triggered_only = yes
 	major = yes
-	
-	option = {
+	option = { 
 		name = mec_vassals.2.a
-		every_subject_country = {
-			limit = {
-				OR = {
+		every_subject_country = { 
+			limit = { 
+				OR = { 
 					is_subject_of_type = decentralized_vassal
 					is_subject_of_type = rebellious_decentralized_vassal
 				}
 			}
-			#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:granted independence to  its decentralized vassals:mec_vassals.2"
 			grant_independence = yes
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						is_core = THIS
 					}
 					add_claim = ROOT
@@ -176,9 +174,9 @@ country_event = { # Dissolution of the Realm, insp Serbia c. 1371
 		}
 		add_prestige = -40
 		add_stability = 1
-		if = {
-			limit = {
-				OR = {
+		if = { 
+			limit = { 
+				OR = { 
 					has_country_modifier = title_4
 					has_country_modifier = title_5
 					has_country_modifier = title_6
@@ -187,930 +185,3075 @@ country_event = { # Dissolution of the Realm, insp Serbia c. 1371
 			remove_country_modifier = title_4
 			remove_country_modifier = title_5
 			remove_country_modifier = title_6
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = title_3
 				duration = -1
-			}				
+			}
 		}
-				
-		ai_chance = {
+		ai_chance = { 
 			factor = 50
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = weak_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				personality = modest_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = coward_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				personality = lazy_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				personality = careful_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 5
 				is_bankrupt = yes
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				num_of_loans = 3
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				num_of_loans = 5
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				num_of_loans = 7
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				war_exhaustion = 5
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				war_exhaustion = 10
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				is_at_war = yes
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
-				NOT = { manpower_percentage = 0.1 }
+				NOT = { 
+					manpower_percentage = 0.1
+				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
-				NOT = { manpower_percentage = 0.2 }
+				NOT = { 
+					manpower_percentage = 0.2
+				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
-				NOT = { manpower_percentage = 0.3 }
+				NOT = { 
+					manpower_percentage = 0.3
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = mec_vassals.2.b
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:refused to give independence to its decentralized vassals, sent ultimatum:mec_vassals.2"
-
-		every_subject_country = {
-			limit = {
-				OR = {
+		every_subject_country = { 
+			limit = { 
+				OR = { 
 					is_subject_of_type = rebellious_decentralized_vassal
 					is_subject_of_type = decentralized_vassal
 				}
 			}
-			hidden_effect = {
+			hidden_effect = { 
 				grant_independence = yes
 			}
-			country_event = {
+			country_event = { 
 				id = mec_vassals.3
 			}
 		}
-		
 		add_legitimacy = 20
-		
 		convert_ruler_to_general = yes
-		
-		ai_chance = {
+		ai_chance = { 
 			factor = 50
-			
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = valorous_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = proud_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = aggressive_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = vengeful_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = reckless_personality
 			}
 		}
 	}
 }
-
-country_event = { # An Ultimatum
+country_event = { 
 	id = mec_vassals.3
 	title = "mec_vassals_3_title"
 	desc = "mec_vassals_3_desc"
 	picture = DIPLOMACY_eventPicture
-	
 	is_triggered_only = yes
-
-	immediate = {
-		hidden_effect = {
-			add_opinion = {
+	immediate = { 
+		hidden_effect = { 
+			add_opinion = { 
 				modifier = illegitimate_overlord
 				who = FROM
 			}
-			export_to_key = { lhs = Vassal_Tmp0 value = total_development }
-			export_to_key = { lhs = Vassal_Tmp1 value = total_development who = FROM }
-			divide_key = { lhs = Vassal_Tmp0 which = Vassal_Tmp1 }
+			export_to_variable = { 
+				which = export
+				value = total_development
+			}
+			set_variable = { 
+				which = hzw
+				which = export
+			}
+			export_to_variable = { 
+				which = export
+				value = total_development
+				who = FROM
+			}
+			set_variable = { 
+				which = hzx
+				which = export
+			}
+			divide_variable = { 
+				which = hzw
+				which = hzx
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = mec_vassals.3.a
-			add_prestige = -10
-			FROM = {
-				#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:was subjected back to the decentralized vassal of [From.GetName] status:mec_vassals.3"
-				create_subject = {
-					subject = ROOT
-					subject_type = decentralized_vassal
-				}
+		add_prestige = -10
+		FROM = { 
+			create_subject = { 
+				subject = ROOT
+				subject_type = decentralized_vassal
 			}
-			hidden_effect = {				
-				set_key = { lhs = Vassal_Tmp0 value = 0 }
-				set_key = { lhs = Vassal_Tmp1 value = 0 }
+		}
+		hidden_effect = { 
+			set_variable = { 
+				which = hzw
+				value = 0
 			}
-		ai_chance = {
+			set_variable = { 
+				which = hzx
+				value = 0
+			}
+		}
+		ai_chance = { 
 			factor = 25
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = weak_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				personality = modest_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = coward_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				personality = lazy_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				personality = careful_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 5
 				is_bankrupt = yes
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				num_of_loans = 3
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				num_of_loans = 5
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				num_of_loans = 7
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				war_exhaustion = 5
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
 				war_exhaustion = 10
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				is_at_war = yes
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
-				NOT = { manpower_percentage = 0.1 }
+				NOT = { 
+					manpower_percentage = 0.1
+				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
-				NOT = { manpower_percentage = 0.2 }
+				NOT = { 
+					manpower_percentage = 0.2
+				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.5
-				NOT = { manpower_percentage = 0.3 }
+				NOT = { 
+					manpower_percentage = 0.3
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = mec_vassals.3.b
-		hidden_effect = {
-			every_owned_province = {
-				limit = {
+		hidden_effect = { 
+			every_owned_province = { 
+				limit = { 
 					is_core = THIS
 				}
 				add_claim = FROM
 			}
-			set_key = { lhs = Vassal_Tmp0 value = 0 }
-			set_key = { lhs = Vassal_Tmp1 value = 0 }
+			set_variable = { 
+				which = hzw
+				value = 0
+			}
+			set_variable = { 
+				which = hzx
+				value = 0
+			}
 		}
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:was attacked by [From.GetName] after rejecting to become theirs vassals:mec_vassals.3"
-
-		FROM = {
-			declare_war_with_cb = {
+		FROM = { 
+			declare_war_with_cb = { 
 				casus_belli = cb_annex
 				who = PREV
 			}
 		}
-			
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
-			modifier = {
+			modifier = { 
 				factor = 2
-				has_opinion = {
+				has_opinion = { 
 					value = 150
 					who = FROM
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
-				check_key = { lhs = Vassal_Tmp0 value = 0.33 }
+				check_variable = { 
+					which = hzw
+					value = 0.33
+				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = greedy_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = malevolent_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = selfish_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = proud_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = aggressive_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = vengeful_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
 				personality = reckless_personality
 			}
-			modifier = {
+			modifier = { 
 				factor = 2
-				any_owned_province = {
-					any_neighbor_province = {
-						NOT = {
+				any_owned_province = { 
+					any_neighbor_province = { 
+						NOT = { 
 							owned_by = FROM
 						}
 					}
 				}
 			}
-		}					
+		}
 	}
 }
-
-
-
-country_event = { # Releasing $Tag$
+country_event = { 
 	id = mec_vassals.5
 	title = "mec_vassals_5_title"
 	desc = "mec_vassals_5_desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-
-	option = {
+	option = { 
 		name = mec_vassals.5.a
-		trigger = {
-			subject_centralisation_trigger = no
-			monarchy_or_harem_gov = yes
+		trigger = { 
+			NOT = { 
+				AND = { 
+					check_variable = { 
+						which = gqr
+						value = 2
+					}
+					is_variable_equal = { 
+						which = gqt
+						value = 1
+					}
+					OR = { 
+						NOT = { 
+							culture_group = japanese_g
+						}
+						has_country_flag = centralised_japan
+					}
+				}
+			}
+			custom_trigger_tooltip = { 
+				tooltip = is_monarchy_tt
+				OR = { 
+					government = monarchy
+					government = has_harem
+				}
+			}
 		}
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:created an appanage from [From.GetName]:mec_vassals.5"
-		create_subject = {
+		create_subject = { 
 			subject_type = appanage_subject
 			subject = FROM
 		}
 		FROM = { 
-			define_ruler = {
+			define_ruler = { 
 				dynasty = ROOT
 			}
 		}
 		add_absolutism = -10
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 	}
-	option = {
+	option = { 
 		name = mec_vassals.5.b
-		trigger = {
-			subject_centralisation_trigger = no
+		trigger = { 
+			NOT = { 
+				AND = { 
+					check_variable = { 
+						which = gqr
+						value = 2
+					}
+					is_variable_equal = { 
+						which = gqt
+						value = 1
+					}
+					OR = { 
+						NOT = { 
+							culture_group = japanese_g
+						}
+						has_country_flag = centralised_japan
+					}
+				}
+			}
 		}
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:created feudatory from [From.GetName]:mec_vassals.5"
-		FROM = { hidden_effect = { set_key = { lhs = Vassal_Type value = 10 } } }
-		create_subject = {
+		FROM = { 
+			hidden_effect = { 
+				set_variable = { 
+					which = hro
+					value = 10
+				}
+			}
+		}
+		create_subject = { 
 			subject_type = daimyo_vassal
 			subject = FROM
 		}
 		add_absolutism = -10
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 	}
-	option = {
+	option = { 
 		name = mec_vassals.5.c
-		trigger = {
-			OR = {
-				NOT = {
-					is_key_equal = { lhs = Pol_Structure value = 4 }
+		trigger = { 
+			OR = { 
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 4
+					}
 				}
-                has_country_flag = centralised_japan
+				has_country_flag = centralised_japan
 			}
 		}
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:created division from [From.GetName]:mec_vassals.5"
-		create_subject = {
+		create_subject = { 
 			subject_type = decentralized_vassal
 			subject = FROM
 		}
 		add_absolutism = -10
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 	}
-	option = {
+	option = { 
 		name = mec_vassals.5.d
-		trigger = {
-			OR = {
-				NOT = { culture_group = japanese_g }
-				FROM = { NOT = { culture_group = japanese_g } }
-				AND = {
-					subject_centralisation_trigger = yes
-					is_key_equal = { lhs = Pol_Structure value = 4 }
+		trigger = { 
+			OR = { 
+				NOT = { 
+					culture_group = japanese_g
 				}
-                has_country_flag = centralised_japan
+				FROM = { 
+					NOT = { 
+						culture_group = japanese_g
+					}
+				}
+				AND = { 
+					AND = { 
+						check_variable = { 
+							which = gqr
+							value = 2
+						}
+						is_variable_equal = { 
+							which = gqt
+							value = 1
+						}
+						OR = { 
+							NOT = { 
+								culture_group = japanese_g
+							}
+							has_country_flag = centralised_japan
+						}
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 4
+					}
+				}
+				has_country_flag = centralised_japan
 			}
 		}
-		create_subject = {
+		create_subject = { 
 			subject_type = custom_vassal
 			subject = FROM
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 1
 		}
 	}
-	
-	after = {
-		FROM = {
-			subject_transition_effect = yes
-			vassal_type_tracking_effect = yes
+	after = { 
+		FROM = { 
+			if = { 
+				limit = { 
+					is_subject = yes
+					is_at_war = no
+				}
+				if = { 
+					limit = { 
+						is_subject_of_type = decentralized_vassal
+						liberty_desire = 50
+						NOT = { 
+							tag = PA2
+							overlord = { 
+								tag = PAP
+								num_of_cities = 1
+							}
+						}
+					}
+					if = { 
+						limit = { 
+							ai = no
+						}
+						country_event = { 
+							id = mec_vassals.11
+						}
+					}
+					overlord = { 
+						create_subject = { 
+							subject_type = rebellious_decentralized_vassal
+							subject = ROOT
+						}
+						if = { 
+							limit = { 
+								ai = no
+							}
+							country_event = { 
+								id = mec_vassals.12
+							}
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						OR = { 
+							AND = { 
+								is_subject_of_type = rebellious_decentralized_vassal
+								NOT = { 
+									liberty_desire = 50
+								}
+							}
+							AND = { 
+								overlord = { 
+									AND = { 
+										check_variable = { 
+											which = gqr
+											value = 2
+										}
+										is_variable_equal = { 
+											which = gqt
+											value = 1
+										}
+										OR = { 
+											NOT = { 
+												culture_group = japanese_g
+											}
+											has_country_flag = centralised_japan
+										}
+									}
+								}
+								OR = { 
+									is_subject_of_type = daimyo_vassal
+									is_subject_of_type = appanage_subject
+								}
+							}
+							AND = { 
+								tag = PA2
+								overlord = { 
+									tag = PAP
+									num_of_cities = 1
+								}
+								is_subject_of_type = rebellious_decentralized_vassal
+							}
+						}
+					}
+					if = { 
+						limit = { 
+							ai = no
+						}
+						country_event = { 
+							id = mec_vassals.13
+						}
+					}
+					overlord = { 
+						create_subject = { 
+							subject_type = decentralized_vassal
+							subject = ROOT
+						}
+						if = { 
+							limit = { 
+								ai = no
+							}
+							country_event = { 
+								id = mec_vassals.14
+							}
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						is_subject_of_type = tributary_state
+						overlord = { 
+							OR = { 
+								AND = { 
+									is_emperor_of_china = yes
+									PREV = { 
+										culture_group = tibetic
+									}
+								}
+								AND = { 
+									is_subject_of_type = muscovite_tributary_state
+									NOT = { 
+										total_development = 10
+									}
+								}
+								AND = { 
+									is_neighbor_of = PREV
+									has_opinion = { 
+										value = 100
+										who = PREV
+									}
+									trust = { 
+										who = PREV
+										value = 50
+									}
+									PREV = { 
+										has_opinion = { 
+											value = 125
+											who = PREV
+										}
+										trust = { 
+											who = PREV
+											value = 50
+										}
+									}
+								}
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+								is_subject_of_type = tributary_state
+								is_nomad = yes
+							}
+						}
+					}
+					if = { 
+						limit = { 
+							ai = no
+						}
+						country_event = { 
+							id = mec_vassals.15
+						}
+					}
+					overlord = { 
+						create_subject = { 
+							subject_type = close_tributary_state
+							subject = ROOT
+						}
+						if = { 
+							limit = { 
+								ai = no
+							}
+							country_event = { 
+								id = mec_vassals.16
+							}
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						is_subject_of_type = close_tributary_state
+					}
+					export_to_variable = { 
+						which = export
+						value = total_development
+					}
+					set_variable = { 
+						which = hzw
+						which = export
+					}
+					export_to_variable = { 
+						which = export
+						value = total_development
+						who = overlord
+					}
+					set_variable = { 
+						which = hzx
+						which = export
+					}
+					divide_variable = { 
+						which = hzx
+						which = hzw
+					}
+					if = { 
+						limit = { 
+							overlord = { 
+								OR = { 
+									NOT = { 
+										has_opinion = { 
+											value = 100
+											who = PREV
+										}
+									}
+									NOT = { 
+										PREV = { 
+											has_opinion = { 
+												value = 100
+												who = PREV
+											}
+										}
+									}
+								}
+								OR = { 
+									is_emperor_of_china = no
+									PREV = { 
+										NOT = { 
+											culture_group = tibetic
+										}
+									}
+								}
+								NOT = { 
+									is_subject_of_type = muscovite_tributary_state
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								ai = no
+							}
+							country_event = { 
+								id = mec_vassals.17
+							}
+						}
+						overlord = { 
+							create_subject = { 
+								subject_type = tributary_state
+								subject = ROOT
+							}
+							if = { 
+								limit = { 
+									ai = no
+								}
+								country_event = { 
+									id = mec_vassals.18
+								}
+							}
+						}
+					}
+					else_if = { 
+						limit = { 
+							check_variable = { 
+								which = hzx
+								value = 3
+							}
+							overlord = { 
+								is_neighbor_of = PREV
+								has_opinion = { 
+									value = 125
+									who = PREV
+								}
+								trust = { 
+									who = PREV
+									value = 50
+								}
+								PREV = { 
+									has_opinion = { 
+										value = 150
+										who = PREV
+									}
+									trust = { 
+										who = PREV
+										value = 50
+									}
+									NOT = { 
+										liberty_desire = 25
+									}
+								}
+								prestige = 25
+								is_nomad = no
+								NOT = { 
+									religion_group = taoic
+								}
+							}
+						}
+						overlord = { 
+							create_subject = { 
+								subject_type = daimyo_vassal
+								subject = ROOT
+							}
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						is_subject_of_type = overseas_fief
+						overlord = { 
+							OR = { 
+								AND = { 
+									check_variable = { 
+										which = gqr
+										value = 2
+									}
+									is_variable_equal = { 
+										which = gqt
+										value = 1
+									}
+									OR = { 
+										NOT = { 
+											culture_group = japanese_g
+										}
+										has_country_flag = centralised_japan
+									}
+								}
+								any_owned_province = { 
+									any_neighbor_province = { 
+										owner = { 
+											tag = ROOT
+										}
+									}
+								}
+							}
+							OR = { 
+								NOT = { 
+									tag = ENG
+								}
+								has_global_flag = hundred_years_war_ENG_win
+								has_global_flag = hundred_years_war_FRA_win
+								is_year = 1500
+							}
+						}
+					}
+					if = { 
+						limit = { 
+							ai = no
+							tag = GUY
+						}
+						country_event = { 
+							id = mec_vassals.21
+						}
+					}
+					else_if = { 
+						limit = { 
+							ai = no
+						}
+						country_event = { 
+							id = mec_vassals.23
+						}
+					}
+					set_variable = { 
+						which = hrn
+						value = 0
+					}
+					overlord = { 
+						create_subject = { 
+							subject_type = personal_union
+							subject = ROOT
+						}
+						if = { 
+							limit = { 
+								ai = no
+								OR = { 
+									tag = ENG
+									tag = GBR
+									tag = UEF
+								}
+								GUY = { 
+									is_subject_of = ROOT
+								}
+							}
+							country_event = { 
+								id = mec_vassals.22
+							}
+						}
+						else_if = { 
+							limit = { 
+								ai = no
+							}
+							country_event = { 
+								id = mec_vassals.24
+							}
+						}
+					}
+					set_variable = { 
+						which = bfw
+						value = 50
+					}
+				}
+			}
+			if = { 
+				limit = { 
+					OR = { 
+						is_subject_of_type = overseas_fief
+						is_subject_of_type = personal_union
+						is_subject_of_type = temporary_union
+						is_subject_of_type = permanent_union
+					}
+				}
+				set_variable = { 
+					which = hrn
+					value = 1
+				}
+			}
+			if = { 
+				limit = { 
+					is_subject = yes
+				}
+				trigger_switch = { 
+					on_trigger = is_subject_of_type
+					vassal = { 
+						set_variable = { 
+							which = hro
+							value = 1
+						}
+					}
+					custom_vassal = { 
+						set_variable = { 
+							which = hro
+							value = 1
+						}
+					}
+					march = { 
+						set_variable = { 
+							which = hro
+							value = 2
+						}
+					}
+					client_vassal = { 
+						set_variable = { 
+							which = hro
+							value = 3
+						}
+					}
+					client_march = { 
+						set_variable = { 
+							which = hro
+							value = 4
+						}
+					}
+					colony = { 
+						set_variable = { 
+							which = hro
+							value = 5
+						}
+					}
+					protectorate = { 
+						set_variable = { 
+							which = hro
+							value = 6
+						}
+					}
+					tributary_state = { 
+						set_variable = { 
+							which = hro
+							value = 7
+						}
+					}
+					close_tributary_state = { 
+						set_variable = { 
+							which = hro
+							value = 8
+						}
+					}
+					appanage_subject = { 
+						set_variable = { 
+							which = hro
+							value = 9
+						}
+					}
+					daimyo_vassal = { 
+						set_variable = { 
+							which = hro
+							value = 10
+						}
+					}
+					decentralized_vassal = { 
+						set_variable = { 
+							which = hro
+							value = 11
+						}
+					}
+					rebellious_decentralized_vassal = { 
+						set_variable = { 
+							which = hro
+							value = 12
+						}
+					}
+					personal_union = { 
+						set_variable = { 
+							which = hro
+							value = 15
+						}
+					}
+					warlord = { 
+						set_variable = { 
+							which = hro
+							value = 14
+						}
+					}
+					overseas_fief = { 
+						set_variable = { 
+							which = hro
+							value = 15
+						}
+					}
+					temporary_union = { 
+						set_variable = { 
+							which = hro
+							value = 16
+						}
+					}
+					permanent_union = { 
+						set_variable = { 
+							which = hro
+							value = 17
+						}
+					}
+					muscovite_tributary_state = { 
+						set_variable = { 
+							which = hro
+							value = 18
+						}
+					}
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = hro
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					OR = { 
+						is_subject_of_type = overseas_fief
+						is_subject_of_type = personal_union
+						is_subject_of_type = temporary_union
+						is_subject_of_type = permanent_union
+					}
+				}
+				set_variable = { 
+					which = hrn
+					value = 1
+				}
+			}
+			if = { 
+				limit = { 
+					is_subject = yes
+				}
+				trigger_switch = { 
+					on_trigger = is_subject_of_type
+					vassal = { 
+						set_variable = { 
+							which = hro
+							value = 1
+						}
+					}
+					custom_vassal = { 
+						set_variable = { 
+							which = hro
+							value = 1
+						}
+					}
+					march = { 
+						set_variable = { 
+							which = hro
+							value = 2
+						}
+					}
+					client_vassal = { 
+						set_variable = { 
+							which = hro
+							value = 3
+						}
+					}
+					client_march = { 
+						set_variable = { 
+							which = hro
+							value = 4
+						}
+					}
+					colony = { 
+						set_variable = { 
+							which = hro
+							value = 5
+						}
+					}
+					protectorate = { 
+						set_variable = { 
+							which = hro
+							value = 6
+						}
+					}
+					tributary_state = { 
+						set_variable = { 
+							which = hro
+							value = 7
+						}
+					}
+					close_tributary_state = { 
+						set_variable = { 
+							which = hro
+							value = 8
+						}
+					}
+					appanage_subject = { 
+						set_variable = { 
+							which = hro
+							value = 9
+						}
+					}
+					daimyo_vassal = { 
+						set_variable = { 
+							which = hro
+							value = 10
+						}
+					}
+					decentralized_vassal = { 
+						set_variable = { 
+							which = hro
+							value = 11
+						}
+					}
+					rebellious_decentralized_vassal = { 
+						set_variable = { 
+							which = hro
+							value = 12
+						}
+					}
+					personal_union = { 
+						set_variable = { 
+							which = hro
+							value = 15
+						}
+					}
+					warlord = { 
+						set_variable = { 
+							which = hro
+							value = 14
+						}
+					}
+					overseas_fief = { 
+						set_variable = { 
+							which = hro
+							value = 15
+						}
+					}
+					temporary_union = { 
+						set_variable = { 
+							which = hro
+							value = 16
+						}
+					}
+					permanent_union = { 
+						set_variable = { 
+							which = hro
+							value = 17
+						}
+					}
+					muscovite_tributary_state = { 
+						set_variable = { 
+							which = hro
+							value = 18
+						}
+					}
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = hro
+					value = 0
+				}
+			}
 		}
 	}
 }
-
-#baby goes in the corner
-
-#country_event = { # Feudatories and Appanages chose whether to fight, I hated writing this whole event chain so much
-#	id = mec_vassals.4
-#	title = "mec_vassals_4_title"
-#	desc = "mec_vassals_4_desc"
-#	picture = LAND_MILITARY_eventPicture
-#	
-#	is_triggered_only = yes
-#
-#	option = {
-#		name = mec_vassals.4.a
-#		trigger = {
-#			OR = {
-#				is_subject_of_type = daimyo_vassal_war
-#				is_subject_of_type = appanage_subject_war
-#				is_subject_of_type = appanage_subject
-#				is_subject_of_type = daimyo_vassal
-#			}
-#		}
-#		if = {
-#			limit = {
-#				OR = {
-#					is_subject_of_type = daimyo_vassal_war
-#					is_subject_of_type = appanage_subject_war
-#				}
-#			}
-#			if = {
-#				limit = {
-#					overlord = {
-#						OR = {
-#							tag = event_target:overlord_attacker
-#							has_country_flag = overlord_attacker
-#						}
-#					}
-#				}
-#				trigger_switch = {
-#					on_trigger = is_subject_of_type
-#					daimyo_vassal_war = {
-#						if = {
-#							limit = {
-#								ai = yes
-#							}
-#							white_peace = event_target:overlord_defender
-#						}
-#						else = {
-#							every_enemy_country = {
-#								limit = {
-#									has_country_flag = overlord_defender
-#								}
-#								ROOT = {
-#									white_peace = PREV
-#								}
-#								clr_country_flag = overlord_defender
-#							}
-#						}
-#						custom_tooltip = vassal_peace_noprestige_tt
-#						hidden_effect = {
-#							add_prestige = 25 #if someone manages to somehow get -20 warscore before picking this option, frankly you deserve it
-#						}
-#					}
-#					appanage_subject_war = {
-#						if = {
-#							limit = {
-#								ai = yes
-#							}
-#							white_peace = event_target:overlord_defender
-#						}
-#						else = {
-#							every_enemy_country = {
-#								limit = {
-#									has_country_flag = overlord_defender
-#								}
-#								ROOT = {
-#									white_peace = PREV
-#								}
-#								clr_country_flag = overlord_defender
-#							}
-#						}
-#						custom_tooltip = vassal_peace_noprestige_tt
-#						hidden_effect = {
-#							add_prestige = 25
-#						}
-#					}
-#				}
-#			}
-#			else_if = {
-#				limit = {
-#					overlord = {
-#						OR = {
-#							tag = event_target:overlord_defender
-#							has_country_flag = overlord_defender
-#						}
-#					}
-#				}
-#				trigger_switch = {
-#					on_trigger = is_subject_of_type
-#					daimyo_vassal_war = {
-#						if = {
-#							limit = {
-#								ai = yes
-#							}
-#							white_peace = event_target:overlord_attacker
-#						}
-#						else = {
-#							every_enemy_country = {
-#								limit = {
-#									has_country_flag = overlord_attacker
-#								}
-#								ROOT = {
-#									white_peace = PREV
-#								}
-#								clr_country_flag = overlord_attacker
-#							}
-#						}
-#						custom_tooltip = vassal_peace_noprestige_tt
-#						hidden_effect = {
-#							add_prestige = 25
-#						}
-#					}
-#					appanage_subject_war = {
-#						if = {
-#							limit = {
-#								ai = yes
-#							}
-#							white_peace = event_target:overlord_attacker
-#						}
-#						else = {
-#							every_enemy_country = {
-#								limit = {
-#									has_country_flag = overlord_attacker
-#								}
-#								ROOT = {
-#									white_peace = PREV
-#								}
-#								clr_country_flag = overlord_attacker
-#							}
-#						}
-#						custom_tooltip = vassal_peace_noprestige_tt
-#						hidden_effect = {
-#							add_prestige = 25
-#						}
-#					}
-#				}
-#			}
-#		}
-#		else = {
-#			custom_tooltip = vassal_peace_tt
-#		}
-#		hidden_effect = { clr_country_flag = fuck_this_stupid_engine }
-#		ai_chance = {
-#			factor = 1
-#		}
-#	}
-#	
-#	option = { # join the war
-#		name = mec_vassals.4.b
-#		trigger = {
-#		}
-#		hidden_effect = {
-#			overlord = {
-#				every_enemy_country = {
-#					limit = {
-#						NOT = {
-#							war_with = ROOT
-#							tag = event_target:overlord_attacker
-#							tag = event_target:overlord_defender
-#							has_country_flag = overlord_attacker
-#							has_country_flag = overlord_defender
-#						}
-#					}
-#					set_country_flag = no_war_thx
-#				}
-#			}
-#			trigger_switch = {
-#				on_trigger = is_subject_of_type
-#				appanage_subject = {
-#					overlord = {
-#						create_subject = {
-#							subject_type = appanage_subject_war
-#							subject = ROOT
-#						}
-#					}
-#				}
-#				daimyo_vassal = {
-#					overlord = {
-#						create_subject = {
-#							subject_type = daimyo_vassal_war
-#							subject = ROOT
-#						}
-#					}
-#				}
-#			}
-#			overlord = {
-#				every_enemy_country = {
-#					limit = {
-#						has_country_flag = no_war_thx
-#					}
-#					ROOT = {
-#						white_peace = PREV
-#						prestige = 25
-#					}
-#					clr_country_flag = no_war_thx
-#				}
-#			}
-#			clr_country_flag = fuck_this_stupid_engine
-#			overlord = {
-#				country_event = {
-#					id = mec_vassals.7
-#				}
-#			}
-#		}
-#		custom_tooltip = vassal_war_tt
-#		ai_chance = {
-#			factor = 1
-#		}
-#	}
-#}
-#
-##country_event = { # God damn this is convoluted
-##	id = mec_vassals.7
-##	title = "mec_vassals_7_title"
-##	desc = "mec_vassals_7_desc"
-##	picture = aionly_eventPicture
-##	
-##	is_triggered_only = yes
-##	hidden = yes
-##	
-##	trigger = {
-##		event_target:overlord_attacker = {
-##			all_subject_country = {
-##				NOT = {
-##					has_country_flag = fuck_this_stupid_engine
-##				}
-##			}
-##		}
-##		event_target:overlord_defender = {
-##			all_subject_country = {
-##				NOT = {
-##					has_country_flag = fuck_this_stupid_engine
-##				}
-##			}
-##		}
-##	}
-##
-##	option = {
-##		name = mec_vassals.7.a
-##		clear_global_event_target = overlord_attacker
-##		clear_global_event_target = overlord_defender
-##		ai_chance = {
-##			factor = 1 #you better fuckin do it
-##		}
-##	}
-##}
-
-
-
-country_event = {
+country_event = { 
 	id = mec_vassals.8
 	title = "mec_vassals_8_title"
 	desc = "mec_vassals_8_desc"
 	picture = aionly_eventPicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	trigger = {
-	}
-	
-	immediate = {
-		every_country = {
-			limit = {
-				any_subject_country = {
-					OR = {
+	trigger = { }
+	immediate = { 
+		every_country = { 
+			limit = { 
+				any_subject_country = { 
+					OR = { 
 						is_subject_of_type = vassal
 						is_subject_of_type = custom_vassal
 						is_subject_of_type = personal_union
 					}
 				}
 			}
-			country_event = { id = mec_vassals.9 days = 1 }
+			country_event = { 
+				id = mec_vassals.9
+				days = 1
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = mec_vassals.8.a
-				
-		ai_chance = {
-			factor = 1 
+		ai_chance = { 
+			factor = 1
 		}
 	}
 }
-
-#ROOT = Overlord
-country_event = {
+country_event = { 
 	id = mec_vassals.9
 	title = "mec_vassals_9_title"
 	desc = "mec_vassals_9_desc"
 	picture = aionly_eventPicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	trigger = {
-	}
-	
-	immediate = {
-		every_subject_country = {
-			limit = {
-				OR = {
+	trigger = { }
+	immediate = { 
+		every_subject_country = { 
+			limit = { 
+				OR = { 
 					is_subject_of_type = vassal
 					is_subject_of_type = custom_vassal
 					is_subject_of_type = personal_union
 				}
 			}
-			if = { limit = {
-					OR = {
+			if = { 
+				limit = { 
+					OR = { 
 						is_subject_of_type = vassal
 						is_subject_of_type = custom_vassal
 					}
-					NOT = { subject_integrated_trigger = yes }
-				}	
-				calc_integration_progress = { type = vassal }
-				check_integration_progress = yes
-			}
-			else_if = { limit = { 
-					is_subject_of_type = personal_union 
-					NOT = { subject_integrated_trigger = yes }					
+					NOT = { 
+						has_country_flag = MEC_SUBJ_INTEGRATED
+					}
 				}
-				calc_integration_progress = { type = personal_union }
-				check_integration_progress = yes
+				hidden_effect = { 
+					set_variable = { 
+						which = amn
+						value = 0
+					}
+					set_variable = { 
+						which = amo
+						value = 0
+					}
+					set_variable = { 
+						which = amp
+						value = 0
+					}
+					set_variable = { 
+						which = amq
+						value = 0
+					}
+					set_variable = { 
+						which = amr
+						value = 0
+					}
+					set_variable = { 
+						which = ams
+						value = 0
+					}
+					set_variable = { 
+						which = amt
+						value = 0
+					}
+					set_variable = { 
+						which = amu
+						value = 0
+					}
+					set_variable = { 
+						which = amv
+						value = 0
+					}
+					set_variable = { 
+						which = jwm
+						value = 0
+					}
+					set_variable = { 
+						which = jwn
+						value = 0
+					}
+					set_variable = { 
+						which = jwo
+						value = 0
+					}
+					set_variable = { 
+						which = kgx
+						value = 0
+					}
+					set_variable = { 
+						which = kgy
+						value = 0
+					}
+					set_variable = { 
+						which = kgz
+						value = 0
+					}
+					set_variable = { 
+						which = kha
+						value = 0
+					}
+					set_variable = { 
+						which = khb
+						value = 0
+					}
+					set_variable = { 
+						which = khc
+						value = 0
+					}
+					set_variable = { 
+						which = khd
+						value = 0
+					}
+					set_variable = { 
+						which = khe
+						value = 0
+					}
+				}
+				set_country_flag = Check_vassal
+				set_variable = { 
+					which = hxx
+					which = ani
+				}
+				overlord = { 
+					set_variable = { 
+						which = amn
+						which = ani
+					}
+				}
+				set_variable = { 
+					which = amn
+					which = PREV
+				}
+				overlord = { 
+					set_variable = { 
+						which = amn
+						value = 0
+					}
+				}
+				divide_variable = { 
+					which = amn
+					which = hxx
+				}
+				AAA = { 
+					PREV = { 
+						set_variable = { 
+							which = ohs
+							which = PREV
+						}
+					}
+				}
+				set_variable = { 
+					which = amo
+					which = ohs
+				}
+				change_variable = { 
+					which = amo
+					which = oht
+				}
+				multiply_variable = { 
+					which = hxx
+					which = ohs
+				}
+				set_variable = { 
+					which = ohs
+					value = 0
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = amn
+							which = hxx
+						}
+					}
+					set_variable = { 
+						which = amn
+						which = hxx
+					}
+				}
+				set_variable = { 
+					which = kgx
+					which = amn
+				}
+				trigger_switch = { 
+					on_trigger = has_country_flag
+					Check_vassal = { 
+						multiply_variable = { 
+							which = amn
+							value = 1
+						}
+						clr_country_flag = Check_vassal
+					}
+					Check_personal_union = { 
+						multiply_variable = { 
+							which = amn
+							value = 0.75
+						}
+						clr_country_flag = Check_personal_union
+					}
+				}
+				trigger_switch = { 
+					on_trigger = government
+					monarchy = { 
+						overlord = { 
+							trigger_switch = { 
+								on_trigger = government
+								monarchy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 1
+										}
+									}
+								}
+								republic = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.5
+										}
+									}
+								}
+								theocracy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.25
+										}
+									}
+								}
+							}
+						}
+					}
+					republic = { 
+						overlord = { 
+							trigger_switch = { 
+								on_trigger = government
+								monarchy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.5
+										}
+									}
+								}
+								republic = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 1
+										}
+									}
+								}
+								theocracy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.25
+										}
+									}
+								}
+							}
+						}
+					}
+					theocracy = { 
+						overlord = { 
+							trigger_switch = { 
+								on_trigger = government
+								monarchy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.5
+										}
+									}
+								}
+								republic = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.25
+										}
+									}
+								}
+								theocracy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 1
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				overlord = { 
+					export_to_variable = { 
+						which = export
+						value = trigger_value:num_of_diplomats
+					}
+					set_variable = { 
+						which = hxx
+						which = export
+					}
+					subtract_variable = { 
+						which = hxx
+						value = 1
+					}
+				}
+				set_variable = { 
+					which = hxx
+					which = PREV
+				}
+				multiply_variable = { 
+					which = hxx
+					value = 0.075
+				}
+				set_variable = { 
+					which = khc
+					which = hxx
+				}
+				multiply_variable = { 
+					which = khc
+					value = 100
+				}
+				change_variable = { 
+					which = hxx
+					value = 1
+				}
+				multiply_variable = { 
+					which = amn
+					which = hxx
+				}
+				set_variable = { 
+					which = hxx
+					value = 0
+				}
+				set_variable = { 
+					which = amo
+					value = 1
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:diplomatic_annexation_cost
+					who = ROOT
+				}
+				set_variable = { 
+					which = amp
+					which = export
+				}
+				multiply_variable = { 
+					which = amp
+					value = -1
+				}
+				change_variable = { 
+					which = amo
+					which = amp
+				}
+				set_variable = { 
+					which = kgy
+					which = amp
+				}
+				multiply_variable = { 
+					which = kgy
+					value = 100
+				}
+				export_to_variable = { 
+					which = export
+					value = trigger_value:liberty_desire
+				}
+				set_variable = { 
+					which = amq
+					which = export
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = amq
+								value = 1
+							}
+						}
+					}
+					set_variable = { 
+						which = amq
+						value = 1
+					}
+				}
+				divide_variable = { 
+					which = amq
+					value = 35
+				}
+				multiply_variable = { 
+					which = amq
+					value = -1
+				}
+				multiply_variable = { 
+					which = amq
+					value = 0.2
+				}
+				change_variable = { 
+					which = amo
+					which = amq
+				}
+				set_variable = { 
+					which = kgz
+					which = amq
+				}
+				multiply_variable = { 
+					which = kgz
+					value = 100
+				}
+				overlord = { 
+					export_to_variable = { 
+						which = Subject_Opinion
+						value = opinion
+						who = PREV
+					}
+				}
+				set_variable = { 
+					which = Subject_Opinion
+					which = PREV
+				}
+				set_variable = { 
+					which = amu
+					which = Subject_Opinion
+				}
+				subtract_variable = { 
+					which = amu
+					value = 50
+				}
+				divide_variable = { 
+					which = amu
+					value = 50
+				}
+				multiply_variable = { 
+					which = amu
+					value = 0.2
+				}
+				change_variable = { 
+					which = amo
+					which = amu
+				}
+				set_variable = { 
+					which = kha
+					which = amu
+				}
+				multiply_variable = { 
+					which = kha
+					value = 100
+				}
+				set_variable = { 
+					which = Subject_Opinion
+					value = 0
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							religion = ROOT
+						}
+						religion_group = ROOT
+					}
+					change_variable = { 
+						which = amo
+						value = -0.1
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							religion_group = ROOT
+						}
+					}
+					change_variable = { 
+						which = amo
+						value = -0.25
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							primary_culture = ROOT
+						}
+						culture_group = ROOT
+					}
+					change_variable = { 
+						which = amo
+						value = -0.05
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							culture_group = ROOT
+						}
+					}
+					change_variable = { 
+						which = amo
+						value = -0.15
+					}
+				}
+				if = { 
+					limit = { 
+						ROOT = { 
+							has_active_policy = one_currency_act
+						}
+					}
+					change_variable = { 
+						which = amo
+						value = 0.1
+					}
+				}
+				if = { 
+					limit = { 
+						ROOT = { 
+							has_active_policy = vassal_integration_act
+						}
+					}
+					change_variable = { 
+						which = amo
+						value = 0.1
+					}
+				}
+				if = { 
+					limit = { 
+						ROOT = { 
+							has_active_policy = full_sovereignty_act
+						}
+					}
+					change_variable = { 
+						which = amo
+						value = 0.1
+					}
+				}
+				multiply_variable = { 
+					which = amn
+					which = amo
+				}
+				set_variable = { 
+					which = khb
+					which = amo
+				}
+				multiply_variable = { 
+					which = khb
+					value = 100
+				}
+				change_variable = { 
+					which = bfw
+					which = amn
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bfw
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = bfw
+						value = 0
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							is_variable_equal = { 
+								which = bfw
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = bfy
+						which = ani
+					}
+					subtract_variable = { 
+						which = bfy
+						which = bfw
+					}
+					divide_variable = { 
+						which = bfy
+						which = amn
+					}
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = bfw
+							which = ani
+						}
+					}
+					set_country_flag = MEC_SUBJ_INTEGRATED
+					set_variable = { 
+						which = bfw
+						value = 100
+					}
+				}
+				else = { 
+					clr_country_flag = MEC_SUBJ_INTEGRATED
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_subject_of_type = personal_union
+					NOT = { 
+						has_country_flag = MEC_SUBJ_INTEGRATED
+					}
+				}
+				hidden_effect = { 
+					set_variable = { 
+						which = amn
+						value = 0
+					}
+					set_variable = { 
+						which = amo
+						value = 0
+					}
+					set_variable = { 
+						which = amp
+						value = 0
+					}
+					set_variable = { 
+						which = amq
+						value = 0
+					}
+					set_variable = { 
+						which = amr
+						value = 0
+					}
+					set_variable = { 
+						which = ams
+						value = 0
+					}
+					set_variable = { 
+						which = amt
+						value = 0
+					}
+					set_variable = { 
+						which = amu
+						value = 0
+					}
+					set_variable = { 
+						which = amv
+						value = 0
+					}
+					set_variable = { 
+						which = jwm
+						value = 0
+					}
+					set_variable = { 
+						which = jwn
+						value = 0
+					}
+					set_variable = { 
+						which = jwo
+						value = 0
+					}
+					set_variable = { 
+						which = kgx
+						value = 0
+					}
+					set_variable = { 
+						which = kgy
+						value = 0
+					}
+					set_variable = { 
+						which = kgz
+						value = 0
+					}
+					set_variable = { 
+						which = kha
+						value = 0
+					}
+					set_variable = { 
+						which = khb
+						value = 0
+					}
+					set_variable = { 
+						which = khc
+						value = 0
+					}
+					set_variable = { 
+						which = khd
+						value = 0
+					}
+					set_variable = { 
+						which = khe
+						value = 0
+					}
+				}
+				set_country_flag = Check_personal_union
+				set_variable = { 
+					which = hxx
+					which = ani
+				}
+				overlord = { 
+					set_variable = { 
+						which = amn
+						which = ani
+					}
+				}
+				set_variable = { 
+					which = amn
+					which = PREV
+				}
+				overlord = { 
+					set_variable = { 
+						which = amn
+						value = 0
+					}
+				}
+				divide_variable = { 
+					which = amn
+					which = hxx
+				}
+				AAA = { 
+					PREV = { 
+						set_variable = { 
+							which = ohs
+							which = PREV
+						}
+					}
+				}
+				set_variable = { 
+					which = amo
+					which = ohs
+				}
+				change_variable = { 
+					which = amo
+					which = oht
+				}
+				multiply_variable = { 
+					which = hxx
+					which = ohs
+				}
+				set_variable = { 
+					which = ohs
+					value = 0
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = amn
+							which = hxx
+						}
+					}
+					set_variable = { 
+						which = amn
+						which = hxx
+					}
+				}
+				set_variable = { 
+					which = kgx
+					which = amn
+				}
+				trigger_switch = { 
+					on_trigger = has_country_flag
+					Check_vassal = { 
+						multiply_variable = { 
+							which = amn
+							value = 1
+						}
+						clr_country_flag = Check_vassal
+					}
+					Check_personal_union = { 
+						multiply_variable = { 
+							which = amn
+							value = 0.75
+						}
+						clr_country_flag = Check_personal_union
+					}
+				}
+				trigger_switch = { 
+					on_trigger = government
+					monarchy = { 
+						overlord = { 
+							trigger_switch = { 
+								on_trigger = government
+								monarchy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 1
+										}
+									}
+								}
+								republic = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.5
+										}
+									}
+								}
+								theocracy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.25
+										}
+									}
+								}
+							}
+						}
+					}
+					republic = { 
+						overlord = { 
+							trigger_switch = { 
+								on_trigger = government
+								monarchy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.5
+										}
+									}
+								}
+								republic = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 1
+										}
+									}
+								}
+								theocracy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.25
+										}
+									}
+								}
+							}
+						}
+					}
+					theocracy = { 
+						overlord = { 
+							trigger_switch = { 
+								on_trigger = government
+								monarchy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.5
+										}
+									}
+								}
+								republic = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 0.25
+										}
+									}
+								}
+								theocracy = { 
+									PREV = { 
+										multiply_variable = { 
+											which = amn
+											value = 1
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				overlord = { 
+					export_to_variable = { 
+						which = export
+						value = trigger_value:num_of_diplomats
+					}
+					set_variable = { 
+						which = hxx
+						which = export
+					}
+					subtract_variable = { 
+						which = hxx
+						value = 1
+					}
+				}
+				set_variable = { 
+					which = hxx
+					which = PREV
+				}
+				multiply_variable = { 
+					which = hxx
+					value = 0.075
+				}
+				set_variable = { 
+					which = khc
+					which = hxx
+				}
+				multiply_variable = { 
+					which = khc
+					value = 100
+				}
+				change_variable = { 
+					which = hxx
+					value = 1
+				}
+				multiply_variable = { 
+					which = amn
+					which = hxx
+				}
+				set_variable = { 
+					which = hxx
+					value = 0
+				}
+				set_variable = { 
+					which = amo
+					value = 1
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:diplomatic_annexation_cost
+					who = ROOT
+				}
+				set_variable = { 
+					which = amp
+					which = export
+				}
+				multiply_variable = { 
+					which = amp
+					value = -1
+				}
+				change_variable = { 
+					which = amo
+					which = amp
+				}
+				set_variable = { 
+					which = kgy
+					which = amp
+				}
+				multiply_variable = { 
+					which = kgy
+					value = 100
+				}
+				export_to_variable = { 
+					which = export
+					value = trigger_value:liberty_desire
+				}
+				set_variable = { 
+					which = amq
+					which = export
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = amq
+								value = 1
+							}
+						}
+					}
+					set_variable = { 
+						which = amq
+						value = 1
+					}
+				}
+				divide_variable = { 
+					which = amq
+					value = 35
+				}
+				multiply_variable = { 
+					which = amq
+					value = -1
+				}
+				multiply_variable = { 
+					which = amq
+					value = 0.2
+				}
+				change_variable = { 
+					which = amo
+					which = amq
+				}
+				set_variable = { 
+					which = kgz
+					which = amq
+				}
+				multiply_variable = { 
+					which = kgz
+					value = 100
+				}
+				overlord = { 
+					export_to_variable = { 
+						which = Subject_Opinion
+						value = opinion
+						who = PREV
+					}
+				}
+				set_variable = { 
+					which = Subject_Opinion
+					which = PREV
+				}
+				set_variable = { 
+					which = amu
+					which = Subject_Opinion
+				}
+				subtract_variable = { 
+					which = amu
+					value = 50
+				}
+				divide_variable = { 
+					which = amu
+					value = 50
+				}
+				multiply_variable = { 
+					which = amu
+					value = 0.2
+				}
+				change_variable = { 
+					which = amo
+					which = amu
+				}
+				set_variable = { 
+					which = kha
+					which = amu
+				}
+				multiply_variable = { 
+					which = kha
+					value = 100
+				}
+				set_variable = { 
+					which = Subject_Opinion
+					value = 0
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							religion = ROOT
+						}
+						religion_group = ROOT
+					}
+					change_variable = { 
+						which = amo
+						value = -0.1
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							religion_group = ROOT
+						}
+					}
+					change_variable = { 
+						which = amo
+						value = -0.25
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							primary_culture = ROOT
+						}
+						culture_group = ROOT
+					}
+					change_variable = { 
+						which = amo
+						value = -0.05
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							culture_group = ROOT
+						}
+					}
+					change_variable = { 
+						which = amo
+						value = -0.15
+					}
+				}
+				if = { 
+					limit = { 
+						ROOT = { 
+							has_active_policy = one_currency_act
+						}
+					}
+					change_variable = { 
+						which = amo
+						value = 0.1
+					}
+				}
+				if = { 
+					limit = { 
+						ROOT = { 
+							has_active_policy = vassal_integration_act
+						}
+					}
+					change_variable = { 
+						which = amo
+						value = 0.1
+					}
+				}
+				if = { 
+					limit = { 
+						ROOT = { 
+							has_active_policy = full_sovereignty_act
+						}
+					}
+					change_variable = { 
+						which = amo
+						value = 0.1
+					}
+				}
+				multiply_variable = { 
+					which = amn
+					which = amo
+				}
+				set_variable = { 
+					which = khb
+					which = amo
+				}
+				multiply_variable = { 
+					which = khb
+					value = 100
+				}
+				change_variable = { 
+					which = bfw
+					which = amn
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bfw
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = bfw
+						value = 0
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							is_variable_equal = { 
+								which = bfw
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = bfy
+						which = ani
+					}
+					subtract_variable = { 
+						which = bfy
+						which = bfw
+					}
+					divide_variable = { 
+						which = bfy
+						which = amn
+					}
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = bfw
+							which = ani
+						}
+					}
+					set_country_flag = MEC_SUBJ_INTEGRATED
+					set_variable = { 
+						which = bfw
+						value = 100
+					}
+				}
+				else = { 
+					clr_country_flag = MEC_SUBJ_INTEGRATED
+				}
 			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = mec_vassals.8.a
-				
-		ai_chance = {
-			factor = 1 
-		}		
+		ai_chance = { 
+			factor = 1
+		}
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.10
 	title = no_localisation
 	desc = no_localisation
 	picture = aionly_eventPicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	trigger = {
+	trigger = { 
 		is_subject = yes
-		isValidCountry = yes
+		AND = { 
+			num_of_cities = 1
+			NOT = { 
+				tag = AAA
+			}
+		}
 	}
-	
-	immediate = {
-		subject_transition_effect = yes
+	immediate = { 
+		if = { 
+			limit = { 
+				is_subject = yes
+				is_at_war = no
+			}
+			if = { 
+				limit = { 
+					is_subject_of_type = decentralized_vassal
+					liberty_desire = 50
+					NOT = { 
+						tag = PA2
+						overlord = { 
+							tag = PAP
+							num_of_cities = 1
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						ai = no
+					}
+					country_event = { 
+						id = mec_vassals.11
+					}
+				}
+				overlord = { 
+					create_subject = { 
+						subject_type = rebellious_decentralized_vassal
+						subject = ROOT
+					}
+					if = { 
+						limit = { 
+							ai = no
+						}
+						country_event = { 
+							id = mec_vassals.12
+						}
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					OR = { 
+						AND = { 
+							is_subject_of_type = rebellious_decentralized_vassal
+							NOT = { 
+								liberty_desire = 50
+							}
+						}
+						AND = { 
+							overlord = { 
+								AND = { 
+									check_variable = { 
+										which = gqr
+										value = 2
+									}
+									is_variable_equal = { 
+										which = gqt
+										value = 1
+									}
+									OR = { 
+										NOT = { 
+											culture_group = japanese_g
+										}
+										has_country_flag = centralised_japan
+									}
+								}
+							}
+							OR = { 
+								is_subject_of_type = daimyo_vassal
+								is_subject_of_type = appanage_subject
+							}
+						}
+						AND = { 
+							tag = PA2
+							overlord = { 
+								tag = PAP
+								num_of_cities = 1
+							}
+							is_subject_of_type = rebellious_decentralized_vassal
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						ai = no
+					}
+					country_event = { 
+						id = mec_vassals.13
+					}
+				}
+				overlord = { 
+					create_subject = { 
+						subject_type = decentralized_vassal
+						subject = ROOT
+					}
+					if = { 
+						limit = { 
+							ai = no
+						}
+						country_event = { 
+							id = mec_vassals.14
+						}
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_subject_of_type = tributary_state
+					overlord = { 
+						OR = { 
+							AND = { 
+								is_emperor_of_china = yes
+								PREV = { 
+									culture_group = tibetic
+								}
+							}
+							AND = { 
+								is_subject_of_type = muscovite_tributary_state
+								NOT = { 
+									total_development = 10
+								}
+							}
+							AND = { 
+								is_neighbor_of = PREV
+								has_opinion = { 
+									value = 100
+									who = PREV
+								}
+								trust = { 
+									who = PREV
+									value = 50
+								}
+								PREV = { 
+									has_opinion = { 
+										value = 125
+										who = PREV
+									}
+									trust = { 
+										who = PREV
+										value = 50
+									}
+								}
+							}
+						}
+						NOT = { 
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = tributary_state
+							is_nomad = yes
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						ai = no
+					}
+					country_event = { 
+						id = mec_vassals.15
+					}
+				}
+				overlord = { 
+					create_subject = { 
+						subject_type = close_tributary_state
+						subject = ROOT
+					}
+					if = { 
+						limit = { 
+							ai = no
+						}
+						country_event = { 
+							id = mec_vassals.16
+						}
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_subject_of_type = close_tributary_state
+				}
+				export_to_variable = { 
+					which = export
+					value = total_development
+				}
+				set_variable = { 
+					which = hzw
+					which = export
+				}
+				export_to_variable = { 
+					which = export
+					value = total_development
+					who = overlord
+				}
+				set_variable = { 
+					which = hzx
+					which = export
+				}
+				divide_variable = { 
+					which = hzx
+					which = hzw
+				}
+				if = { 
+					limit = { 
+						overlord = { 
+							OR = { 
+								NOT = { 
+									has_opinion = { 
+										value = 100
+										who = PREV
+									}
+								}
+								NOT = { 
+									PREV = { 
+										has_opinion = { 
+											value = 100
+											who = PREV
+										}
+									}
+								}
+							}
+							OR = { 
+								is_emperor_of_china = no
+								PREV = { 
+									NOT = { 
+										culture_group = tibetic
+									}
+								}
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+						}
+					}
+					if = { 
+						limit = { 
+							ai = no
+						}
+						country_event = { 
+							id = mec_vassals.17
+						}
+					}
+					overlord = { 
+						create_subject = { 
+							subject_type = tributary_state
+							subject = ROOT
+						}
+						if = { 
+							limit = { 
+								ai = no
+							}
+							country_event = { 
+								id = mec_vassals.18
+							}
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = hzx
+							value = 3
+						}
+						overlord = { 
+							is_neighbor_of = PREV
+							has_opinion = { 
+								value = 125
+								who = PREV
+							}
+							trust = { 
+								who = PREV
+								value = 50
+							}
+							PREV = { 
+								has_opinion = { 
+									value = 150
+									who = PREV
+								}
+								trust = { 
+									who = PREV
+									value = 50
+								}
+								NOT = { 
+									liberty_desire = 25
+								}
+							}
+							prestige = 25
+							is_nomad = no
+							NOT = { 
+								religion_group = taoic
+							}
+						}
+					}
+					overlord = { 
+						create_subject = { 
+							subject_type = daimyo_vassal
+							subject = ROOT
+						}
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_subject_of_type = overseas_fief
+					overlord = { 
+						OR = { 
+							AND = { 
+								check_variable = { 
+									which = gqr
+									value = 2
+								}
+								is_variable_equal = { 
+									which = gqt
+									value = 1
+								}
+								OR = { 
+									NOT = { 
+										culture_group = japanese_g
+									}
+									has_country_flag = centralised_japan
+								}
+							}
+							any_owned_province = { 
+								any_neighbor_province = { 
+									owner = { 
+										tag = ROOT
+									}
+								}
+							}
+						}
+						OR = { 
+							NOT = { 
+								tag = ENG
+							}
+							has_global_flag = hundred_years_war_ENG_win
+							has_global_flag = hundred_years_war_FRA_win
+							is_year = 1500
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						ai = no
+						tag = GUY
+					}
+					country_event = { 
+						id = mec_vassals.21
+					}
+				}
+				else_if = { 
+					limit = { 
+						ai = no
+					}
+					country_event = { 
+						id = mec_vassals.23
+					}
+				}
+				set_variable = { 
+					which = hrn
+					value = 0
+				}
+				overlord = { 
+					create_subject = { 
+						subject_type = personal_union
+						subject = ROOT
+					}
+					if = { 
+						limit = { 
+							ai = no
+							OR = { 
+								tag = ENG
+								tag = GBR
+								tag = UEF
+							}
+							GUY = { 
+								is_subject_of = ROOT
+							}
+						}
+						country_event = { 
+							id = mec_vassals.22
+						}
+					}
+					else_if = { 
+						limit = { 
+							ai = no
+						}
+						country_event = { 
+							id = mec_vassals.24
+						}
+					}
+				}
+				set_variable = { 
+					which = bfw
+					value = 50
+				}
+			}
+		}
+		if = { 
+			limit = { 
+				OR = { 
+					is_subject_of_type = overseas_fief
+					is_subject_of_type = personal_union
+					is_subject_of_type = temporary_union
+					is_subject_of_type = permanent_union
+				}
+			}
+			set_variable = { 
+				which = hrn
+				value = 1
+			}
+		}
+		if = { 
+			limit = { 
+				is_subject = yes
+			}
+			trigger_switch = { 
+				on_trigger = is_subject_of_type
+				vassal = { 
+					set_variable = { 
+						which = hro
+						value = 1
+					}
+				}
+				custom_vassal = { 
+					set_variable = { 
+						which = hro
+						value = 1
+					}
+				}
+				march = { 
+					set_variable = { 
+						which = hro
+						value = 2
+					}
+				}
+				client_vassal = { 
+					set_variable = { 
+						which = hro
+						value = 3
+					}
+				}
+				client_march = { 
+					set_variable = { 
+						which = hro
+						value = 4
+					}
+				}
+				colony = { 
+					set_variable = { 
+						which = hro
+						value = 5
+					}
+				}
+				protectorate = { 
+					set_variable = { 
+						which = hro
+						value = 6
+					}
+				}
+				tributary_state = { 
+					set_variable = { 
+						which = hro
+						value = 7
+					}
+				}
+				close_tributary_state = { 
+					set_variable = { 
+						which = hro
+						value = 8
+					}
+				}
+				appanage_subject = { 
+					set_variable = { 
+						which = hro
+						value = 9
+					}
+				}
+				daimyo_vassal = { 
+					set_variable = { 
+						which = hro
+						value = 10
+					}
+				}
+				decentralized_vassal = { 
+					set_variable = { 
+						which = hro
+						value = 11
+					}
+				}
+				rebellious_decentralized_vassal = { 
+					set_variable = { 
+						which = hro
+						value = 12
+					}
+				}
+				personal_union = { 
+					set_variable = { 
+						which = hro
+						value = 15
+					}
+				}
+				warlord = { 
+					set_variable = { 
+						which = hro
+						value = 14
+					}
+				}
+				overseas_fief = { 
+					set_variable = { 
+						which = hro
+						value = 15
+					}
+				}
+				temporary_union = { 
+					set_variable = { 
+						which = hro
+						value = 16
+					}
+				}
+				permanent_union = { 
+					set_variable = { 
+						which = hro
+						value = 17
+					}
+				}
+				muscovite_tributary_state = { 
+					set_variable = { 
+						which = hro
+						value = 18
+					}
+				}
+			}
+		}
+		else = { 
+			set_variable = { 
+				which = hro
+				value = 0
+			}
+		}
 	}
-	
-	option = {
+	option = { 
 		name = no_localisation
 	}
 }
-#Notification events for subject status change
-country_event = {
+country_event = { 
 	id = mec_vassals.11
 	title = "mec_vassals.11.title"
 	desc = "mec_vassals.11.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.11.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.12
 	title = "mec_vassals.12.title"
 	desc = "mec_vassals.12.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.12.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.13
 	title = "mec_vassals.13.title"
 	desc = "mec_vassals.13.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.13.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.14
 	title = "mec_vassals.14.title"
 	desc = "mec_vassals.14.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.14.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.15
 	title = "mec_vassals.15.title"
 	desc = "mec_vassals.15.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.11.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.16
 	title = "mec_vassals.16.title"
 	desc = "mec_vassals.16.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.12.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.17
 	title = "mec_vassals.17.title"
 	desc = "mec_vassals.17.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.13.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.18
 	title = "mec_vassals.18.title"
 	desc = "mec_vassals.18.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.14.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.19
 	title = "mec_vassals.19.title"
 	desc = "mec_vassals.19.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.13.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.20
 	title = "mec_vassals.20.title"
 	desc = "mec_vassals.20.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.14.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.21
 	title = "mec_vassals.21.title"
 	desc = "mec_vassals.21.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.12.opta"
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:switched from their special status to regular PU with [Root.Overlord.GetName]:mec_vassals.21"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.22
 	title = "mec_vassals.22.title"
 	desc = "mec_vassals.22.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.11.opta"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.23
 	title = "mec_vassals.21.title"
 	desc = "mec_vassals.23.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.12.opta"
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:switched from their special status to regular PU with [Root.Overlord.GetName]:mec_vassals.21"
 	}
 }
-country_event = {
+country_event = { 
 	id = mec_vassals.24
 	title = "mec_vassals.22.title"
 	desc = "mec_vassals.24.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mec_vassals.11.opta"
 	}
 }

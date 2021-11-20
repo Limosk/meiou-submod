@@ -1,5 +1,5 @@
-waldensian_rebels = {
-	color = { 235 210 210 }
+waldensian_rebels = { 
+	color = { 235 210 210}
 	area = nation_religion
 	government = theocracy
 	religion = waldensian
@@ -8,7 +8,7 @@ waldensian_rebels = {
 	independence = none
 	unit_transfer = yes
 	gfx_type = culture_province
-    will_relocate = yes
+	will_relocate = yes
 	resilient = no
 	reinforcing = no
 	general = yes
@@ -21,212 +21,369 @@ waldensian_rebels = {
 	handle_action_stability = no
 	handle_action_build_core = no
 	handle_action_send_missionary = yes
-	spawn_chance = {
+	spawn_chance = { 
 		factor = 1
-		# modifier = {
-		# 	factor = 0
-		# 	NOT = {
-		# 		has_global_flag = waldensian_heresy
-		# 	}
-		# }
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = { is_religion_enabled = waldensian }
+			NOT = { 
+				is_religion_enabled = waldensian
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				owner = {
+			NOT = { 
+				owner = { 
 					religion = ROOT
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = {
-				owner = {
+			NOT = { 
+				owner = { 
 					religion = catholic
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			religion_group = pagan
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
 			religion_group = taoic
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			is_year = 1700
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.01
 			is_overseas = yes
 		}
-		modifier = {
-			NOT = { MN_CheckProp = { religion = 5 type = TotP prop = 40 } }
+		modifier = { 
+			NOT = { 
+				OR = { 
+					AND = { 
+						is_variable_equal = { 
+							which = adv
+							value = 5
+						}
+						check_variable = { 
+							which = ayr
+							value = 40
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adx
+							value = 5
+						}
+						check_variable = { 
+							which = ays
+							value = 40
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adz
+							value = 5
+						}
+						check_variable = { 
+							which = ayt
+							value = 40
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aeb
+							value = 5
+						}
+						check_variable = { 
+							which = ayu
+							value = 40
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aed
+							value = 5
+						}
+						check_variable = { 
+							which = ayv
+							value = 40
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aef
+							value = 5
+						}
+						check_variable = { 
+							which = ayw
+							value = 40
+						}
+					}
+				}
+			}
 			factor = 0.5
 		}
-		modifier = {
-			NOT = { MN_CheckProp = { religion = 5 type = TotP prop = 30 } }
-		 	factor = 0.5
+		modifier = { 
+			NOT = { 
+				OR = { 
+					AND = { 
+						is_variable_equal = { 
+							which = adv
+							value = 5
+						}
+						check_variable = { 
+							which = ayr
+							value = 30
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adx
+							value = 5
+						}
+						check_variable = { 
+							which = ays
+							value = 30
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adz
+							value = 5
+						}
+						check_variable = { 
+							which = ayt
+							value = 30
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aeb
+							value = 5
+						}
+						check_variable = { 
+							which = ayu
+							value = 30
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aed
+							value = 5
+						}
+						check_variable = { 
+							which = ayv
+							value = 30
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aef
+							value = 5
+						}
+						check_variable = { 
+							which = ayw
+							value = 30
+						}
+					}
+				}
+			}
+			factor = 0.5
 		}
-		modifier = {
-			NOT = { MN_CheckProp = { religion = 5 type = TotP prop = 20 } }
+		modifier = { 
+			NOT = { 
+				OR = { 
+					AND = { 
+						is_variable_equal = { 
+							which = adv
+							value = 5
+						}
+						check_variable = { 
+							which = ayr
+							value = 20
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adx
+							value = 5
+						}
+						check_variable = { 
+							which = ays
+							value = 20
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adz
+							value = 5
+						}
+						check_variable = { 
+							which = ayt
+							value = 20
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aeb
+							value = 5
+						}
+						check_variable = { 
+							which = ayu
+							value = 20
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aed
+							value = 5
+						}
+						check_variable = { 
+							which = ayv
+							value = 20
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aef
+							value = 5
+						}
+						check_variable = { 
+							which = ayw
+							value = 20
+						}
+					}
+				}
+			}
 			factor = 0.0
 		}
-		# modifier = {
-		# 	factor = 5
-		# 	check_variable = {
-		# 		which = heretics
-		# 		value = 2
-		# 	}
-		# }
-		modifier = {
+		modifier = { 
 			factor = 3.0
 			is_year = 1450
-			owner = {
+			owner = { 
 				religion = catholic
 			}
-			NOT = {
+			NOT = { 
 				is_religion_enabled = protestant
 			}
-			NOT = {
+			NOT = { 
 				is_religion_enabled = reformed
 			}
 		}
-		# modifier = {
-		# 	factor = 1.2
-		# 	owner = {
-		# 		NOT = {
-		# 			innovativeness_ideas = 4
-		# 		}
-		# 	}
-		# }
-		# modifier = {
-		# 	factor = 1.5
-		# 	owner = {
-		# 		NOT = {
-		# 			innovativeness_ideas = 2
-		# 		}
-		# 	}
-		# }
-		modifier = {
+		modifier = { 
 			has_province_modifier = fanatics_organizing
 			factor = 1.4
 		}
-		modifier = {
+		modifier = { 
 			has_province_modifier = religious_uprising_cooldown
 			factor = 0.1
 		}
 	}
-	movement_evaluation = {
+	movement_evaluation = { 
 		factor = 1
-		# modifier = {
-		# 	factor = 0.001
-		# 	check_variable = {
-		# 		which = heretics
-		# 		value = 2
-		# 	}
-		# }
-		modifier = {
+		modifier = { 
 			factor = 0.1
 			units_in_province = 1
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.001
 			controlled_by = REB
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.5
 			unrest = 2
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.5
 			unrest = 4
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.5
 			unrest = 6
 		}
 	}
-	siege_won_trigger = {
-		# NOT = {
-		# 	check_variable = {
-		# 		which = heretics
-		# 		value = 2
-		# 	}
-		# }
-	}
-	siege_won_effect = {
-		hidden_effect = {
-			add_province_modifier = {
+	siege_won_trigger = { }
+	siege_won_effect = { 
+		hidden_effect = { 
+			add_province_modifier = { 
 				name = religious_uprising_cooldown
 				duration = 7300
 				hidden = yes
 			}
 		}
-		# change_variable = {
-		# 	which = heretics
-		# 	value = 2
-		# }
 	}
-	can_negotiate_trigger = {
-		NOT = {
+	can_negotiate_trigger = { 
+		NOT = { 
 			tag = PAP
 		}
 	}
-	can_enforce_trigger = {
-		NOT = {
+	can_enforce_trigger = { 
+		NOT = { 
 			tag = PAP
 		}
 	}
 	demands_description = "waldensian_rebels_demand"
-	demands_enforced_effect = {
+	demands_enforced_effect = { 
 		add_prestige = -50
-		hidden_effect = {
-			every_owned_province = {
-				add_province_modifier = {
+		hidden_effect = { 
+			every_owned_province = { 
+				add_province_modifier = { 
 					name = religious_uprising_cooldown
 					duration = 7300
 					hidden = yes
 				}
 			}
 		}
-		every_owned_province = {
-			#clr_province_flag = waldensian_rebel_victory
-		}
-		if = {
-			limit = {
+		every_owned_province = { }
+		if = { 
+			limit = { 
 				religion = waldensian
 			}
 			remove_country_modifier = religious_tolerance
 			remove_country_modifier = edict_of_tolerance
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = religious_intolerance
 				duration = 2000
 			}
 			add_legitimacy = -25
 			add_prestige = -50
 		}
-		else_if = {
-			limit = {
-				NOT = { religion = waldensian }
-				NOT = { government = theocracy }
-				OR = {
-					AND = {
-						capital_scope = { religion = waldensian }
-						OR = {
-							western_christian = yes
+		else_if = { 
+			limit = { 
+				NOT = { 
+					religion = waldensian
+				}
+				NOT = { 
+					government = theocracy
+				}
+				OR = { 
+					AND = { 
+						capital_scope = { 
+							religion = waldensian
+						}
+						OR = { 
+							OR = { 
+								religion = catholic
+								religion = protestant
+								religion = reformed
+								religion = hussite
+								religion = waldensian
+								religion = lollard
+								religion = fraticelli
+								religion = holyleague
+							}
 							dominant_religion = waldensian
 						}
 					}
-					overlord = {
+					overlord = { 
 						religion = waldensian
 					}
-					any_owned_province = {
+					any_owned_province = { 
 						religion = waldensian
 						culture_group = owner
 						is_overseas = no
@@ -236,12 +393,73 @@ waldensian_rebels = {
 			change_religion = waldensian
 			force_converted = yes
 		}
-		else = {
-			every_owned_province = {
-				limit = {
-					MN_CheckProp = { religion = 5 type = TotP prop = 40 }
+		else = { 
+			every_owned_province = { 
+				limit = { 
+					OR = { 
+						AND = { 
+							is_variable_equal = { 
+								which = adv
+								value = 5
+							}
+							check_variable = { 
+								which = ayr
+								value = 40
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adx
+								value = 5
+							}
+							check_variable = { 
+								which = ays
+								value = 40
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adz
+								value = 5
+							}
+							check_variable = { 
+								which = ayt
+								value = 40
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aeb
+								value = 5
+							}
+							check_variable = { 
+								which = ayu
+								value = 40
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aed
+								value = 5
+							}
+							check_variable = { 
+								which = ayv
+								value = 40
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aef
+								value = 5
+							}
+							check_variable = { 
+								which = ayw
+								value = 40
+							}
+						}
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = religious_autonomy
 					duration = 10000
 				}

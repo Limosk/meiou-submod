@@ -1,62 +1,149 @@
 namespace = hee_HAM
-
-country_event = {
+country_event = { 
 	id = hee_HAM.1
 	title = hee_HAM.1.t
 	desc = hee_HAM.1.d
 	picture = DEBATE_REPUBLICAN_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = HAM
 		owns_core_province = 44
-		44 = {
+		44 = { 
 			religion = protestant
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 4
 	}
-	option = {
+	option = { 
 		name = hee_HAM.1.a
-		44 = {
-			add_province_modifier = {
+		44 = { 
+			add_province_modifier = { 
 				name = hee_long_compromise
 				duration = 3650
 			}
 		}
-		Stab_Add50Percent = yes
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
 	}
 }
-country_event = {
+country_event = { 
 	id = hee_HAM.2
 	title = hee_HAM.2.t
 	desc = hee_HAM.2.d
 	picture = GREAT_BUILDING_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			tag = HAM
 			tag = HSA
 		}
 		owns_core_province = 44
-		NOT = {
+		NOT = { 
 			is_year = 1570
 		}
 		is_year = 1550
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 10
 	}
-	option = {
+	option = { 
 		name = hee_HAM.2.a
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = hee_hamburg_loan_market
 			duration = -1
 		}
 	}
-	option = {
+	option = { 
 		name = hee_HAM.2.b
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = hee_hamburg_strict_control
 			duration = -1
 		}

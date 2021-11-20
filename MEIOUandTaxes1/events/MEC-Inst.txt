@@ -1,172 +1,251 @@
 namespace = institutions
-
-country_event = {
+country_event = { 
 	id = institutions.001
 	title = "institutions.001.name"
 	desc = "institutions.001.desc"
 	picture = AIONLY_eventpicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	option = {
+	option = { 
 		name = "institutions.001.opta"
-		AAA = {
-			export_to_key = { lhs = LegalismDate value = trigger_value:is_year }
-			subtract_key = { lhs = LegalismDate value = 1 }
+		AAA = { 
+			export_to_variable = { 
+				which = export
+				value = trigger_value:is_year
+			}
+			set_variable = { 
+				which = nns
+				which = export
+			}
+			subtract_variable = { 
+				which = nns
+				value = 1
+			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = institutions.002
 	title = "institutions.001.name"
 	desc = "institutions.001.desc"
 	picture = AIONLY_eventpicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	option = {
+	option = { 
 		name = "institutions.002.opta"
-		AAA = {
-			export_to_key = { lhs = MeritocracyDate value = trigger_value:is_year }
-			subtract_key = { lhs = MeritocracyDate value = 1 }
+		AAA = { 
+			export_to_variable = { 
+				which = export
+				value = trigger_value:is_year
+			}
+			set_variable = { 
+				which = nnt
+				which = export
+			}
+			subtract_variable = { 
+				which = nnt
+				value = 1
+			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = institutions.003
 	title = "institutions.001.name"
 	desc = "institutions.001.desc"
 	picture = AIONLY_eventpicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	option = {
+	option = { 
 		name = "institutions.003.opta"
-		AAA = {
-			export_to_key = { lhs = BankingDate value = trigger_value:is_year }
-			subtract_key = { lhs = BankingDate value = 1 }
+		AAA = { 
+			export_to_variable = { 
+				which = export
+				value = trigger_value:is_year
+			}
+			set_variable = { 
+				which = nnu
+				which = export
+			}
+			subtract_variable = { 
+				which = nnu
+				value = 1
+			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = institutions.004
 	title = "institutions.001.name"
 	desc = "institutions.001.desc"
 	picture = AIONLY_eventpicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	option = {
+	option = { 
 		name = "institutions.004.opta"
-		AAA = {
-			export_to_key = { lhs = Casual_LiteracyDate value = trigger_value:is_year }
-			subtract_key = { lhs = Casual_LiteracyDate value = 1 }
+		AAA = { 
+			export_to_variable = { 
+				which = export
+				value = trigger_value:is_year
+			}
+			set_variable = { 
+				which = nnv
+				which = export
+			}
+			subtract_variable = { 
+				which = nnv
+				value = 1
+			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = institutions.005
 	title = "institutions.001.name"
 	desc = "institutions.001.desc"
 	picture = AIONLY_eventpicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	option = {
+	option = { 
 		name = "institutions.005.opta"
-		AAA = {
-			export_to_key = { lhs = Columbian_ExchangeDate value = trigger_value:is_year }
-			subtract_key = { lhs = Columbian_ExchangeDate value = 1 }
+		AAA = { 
+			export_to_variable = { 
+				which = export
+				value = trigger_value:is_year
+			}
+			set_variable = { 
+				which = nnw
+				which = export
+			}
+			subtract_variable = { 
+				which = nnw
+				value = 1
+			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = institutions.006
 	title = "institutions.001.name"
 	desc = "institutions.001.desc"
 	picture = AIONLY_eventpicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	option = {
+	option = { 
 		name = "institutions.006.opta"
-		AAA = {
-			export_to_key = { lhs = Scientific_MethodDate value = trigger_value:is_year }
-			subtract_key = { lhs = Scientific_MethodDate value = 1 }
+		AAA = { 
+			export_to_variable = { 
+				which = export
+				value = trigger_value:is_year
+			}
+			set_variable = { 
+				which = nnx
+				which = export
+			}
+			subtract_variable = { 
+				which = nnx
+				value = 1
+			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = institutions.007
 	title = "institutions.001.name"
 	desc = "institutions.001.desc"
 	picture = AIONLY_eventpicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	option = {
+	option = { 
 		name = "institutions.007.opta"
-		AAA = {
-			export_to_key = { lhs = Global_TradeDate value = trigger_value:is_year }
-			subtract_key = { lhs = Global_TradeDate value = 1 }
+		AAA = { 
+			export_to_variable = { 
+				which = export
+				value = trigger_value:is_year
+			}
+			set_variable = { 
+				which = nny
+				which = export
+			}
+			subtract_variable = { 
+				which = nny
+				value = 1
+			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = institutions.008
 	title = "institutions.001.name"
 	desc = "institutions.001.desc"
 	picture = AIONLY_eventpicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	option = {
+	option = { 
 		name = "institutions.008.opta"
-		AAA = {
-			export_to_key = { lhs = AcademiaDate value = trigger_value:is_year }
-			subtract_key = { lhs = AcademiaDate value = 1 }
+		AAA = { 
+			export_to_variable = { 
+				which = export
+				value = trigger_value:is_year
+			}
+			set_variable = { 
+				which = nnz
+				which = export
+			}
+			subtract_variable = { 
+				which = nnz
+				value = 1
+			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = institutions.009
 	title = "institutions.001.name"
 	desc = "institutions.001.desc"
 	picture = AIONLY_eventpicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	option = {
+	option = { 
 		name = "institutions.009.opta"
-		AAA = {
-			export_to_key = { lhs = NationalismDate value = trigger_value:is_year }
-			subtract_key = { lhs = NationalismDate value = 1 }
+		AAA = { 
+			export_to_variable = { 
+				which = export
+				value = trigger_value:is_year
+			}
+			set_variable = { 
+				which = noa
+				which = export
+			}
+			subtract_variable = { 
+				which = noa
+				value = 1
+			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = institutions.010
 	title = "institutions.001.name"
 	desc = "institutions.001.desc"
 	picture = AIONLY_eventpicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	option = {
+	option = { 
 		name = "institutions.010.opta"
-		AAA = {
-			export_to_key = { lhs = IndustrialisationDate value = trigger_value:is_year }
-			subtract_key = { lhs = IndustrialisationDate value = 1 }
+		AAA = { 
+			export_to_variable = { 
+				which = export
+				value = trigger_value:is_year
+			}
+			set_variable = { 
+				which = nob
+				which = export
+			}
+			subtract_variable = { 
+				which = nob
+				value = 1
+			}
 		}
 	}
 }

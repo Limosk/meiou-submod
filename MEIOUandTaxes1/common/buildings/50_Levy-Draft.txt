@@ -1,33 +1,23 @@
-################
-# Levy - Draft #
-################
-
-levy_draft_no = {
+levy_draft_no = { 
 	cost = 0
-	time =  0
-	
-	potential = {
+	time = 0
+	potential = { 
 		ai = no
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		always = no
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		has_building = levy_draft_no
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = levy_draft_low
 					has_building = levy_draft_med
 					has_building = levy_draft_high
@@ -37,44 +27,58 @@ levy_draft_no = {
 		}
 	}
 }
-levy_draft_low = {
+levy_draft_low = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_LevyDraftCan = yes
+		owner = { 
+			AND = { 
+				check_variable = { 
+					which = bca
+					value = 2
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
-
-		NOT = {
+		NOT = { 
 			has_building = levy_draft_med
 			has_building = levy_draft_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_LevyDraftCan = yes
+		owner = { 
+			AND = { 
+				check_variable = { 
+					which = bca
+					value = 2
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = levy_draft_no
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = levy_draft_med
 					has_building = levy_draft_high
 				}
@@ -83,44 +87,58 @@ levy_draft_low = {
 		}
 	}
 }
-levy_draft_med = {
+levy_draft_med = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_LevyDraftCan = yes
+		owner = { 
+			AND = { 
+				check_variable = { 
+					which = bca
+					value = 2
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
-
-		NOT = {
+		NOT = { 
 			has_building = levy_draft_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_LevyDraftCan = yes
+		owner = { 
+			AND = { 
+				check_variable = { 
+					which = bca
+					value = 2
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = levy_draft_no
-        remove_building = levy_draft_low
+		remove_building = levy_draft_low
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = levy_draft_high
 				}
 			}
@@ -128,38 +146,53 @@ levy_draft_med = {
 		}
 	}
 }
-levy_draft_high = {
+levy_draft_high = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_LevyDraftCan = yes
+		owner = { 
+			AND = { 
+				check_variable = { 
+					which = bca
+					value = 2
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_LevyDraftCan = yes
+		owner = { 
+			AND = { 
+				check_variable = { 
+					which = bca
+					value = 2
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = levy_draft_no
-        remove_building = levy_draft_low
-        remove_building = levy_draft_med
+		remove_building = levy_draft_low
+		remove_building = levy_draft_med
 	}
-	
-	on_destroyed = {
+	on_destroyed = { 
 		add_building = levy_draft_med
 	}
 }

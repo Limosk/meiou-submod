@@ -1,33 +1,23 @@
-#################
-# Tax - Alcohol #
-#################
-
-tax_alcohol_no = {
+tax_alcohol_no = { 
 	cost = 0
-	time =  0
-	
-	potential = {
+	time = 0
+	potential = { 
 		ai = no
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		always = no
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		has_building = tax_alcohol_no
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = tax_alcohol_low
 					has_building = tax_alcohol_med
 					has_building = tax_alcohol_high
@@ -37,44 +27,44 @@ tax_alcohol_no = {
 		}
 	}
 }
-tax_alcohol_low = {
+tax_alcohol_low = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxAlcoholCan = yes
+		owner = { 
+			check_variable = { 
+				which = bby
+				value = 2
+			}
 		}
-
-		NOT = {
+		NOT = { 
 			has_building = tax_alcohol_med
 			has_building = tax_alcohol_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxAlcoholCan = yes
+		owner = { 
+			check_variable = { 
+				which = bby
+				value = 2
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = tax_alcohol_no
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = tax_alcohol_med
 					has_building = tax_alcohol_high
 				}
@@ -83,44 +73,44 @@ tax_alcohol_low = {
 		}
 	}
 }
-tax_alcohol_med = {
+tax_alcohol_med = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxAlcoholCan = yes
+		owner = { 
+			check_variable = { 
+				which = bby
+				value = 2
+			}
 		}
-
-		NOT = {
+		NOT = { 
 			has_building = tax_alcohol_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxAlcoholCan = yes
+		owner = { 
+			check_variable = { 
+				which = bby
+				value = 2
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = tax_alcohol_no
-        remove_building = tax_alcohol_low
+		remove_building = tax_alcohol_low
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = tax_alcohol_high
 				}
 			}
@@ -128,38 +118,39 @@ tax_alcohol_med = {
 		}
 	}
 }
-tax_alcohol_high = {
+tax_alcohol_high = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxAlcoholCan = yes
+		owner = { 
+			check_variable = { 
+				which = bby
+				value = 2
+			}
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxAlcoholCan = yes
+		owner = { 
+			check_variable = { 
+				which = bby
+				value = 2
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = tax_alcohol_no
-        remove_building = tax_alcohol_low
-        remove_building = tax_alcohol_med
+		remove_building = tax_alcohol_low
+		remove_building = tax_alcohol_med
 	}
-	
-	on_destroyed = {
+	on_destroyed = { 
 		add_building = tax_alcohol_med
 	}
 }

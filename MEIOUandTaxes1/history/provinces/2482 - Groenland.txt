@@ -1,8 +1,2 @@
-# 2482 - Groenland
-# This province is a wasteland
-
 culture = inuit
 religion = animism
-#1523.6.21 = {
-#	discovered_by = DAN
-#}

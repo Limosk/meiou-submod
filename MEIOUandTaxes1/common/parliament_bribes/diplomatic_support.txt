@@ -1,13 +1,11 @@
-diplomatic_support = {
-	trigger = {
+diplomatic_support = { 
+	trigger = { 
 		always = yes
 	}
-	
-	effect = {
+	effect = { 
 		dip_power_cost = 10
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
 	}
 }

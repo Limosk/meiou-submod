@@ -1,17 +1,49 @@
-defined_text = {
+defined_text = { 
 	name = CaHAversionAllow
-	text = {
+	text = { 
 		localisation_key = CaHAversionAllow_Y
-		trigger = {
-			CaHAversionPotential = yes
-			CaHAversionAllow = yes		
+		trigger = { 
+			always = yes
+			AND = { 
+				NOT = { 
+					faction_influence = { 
+						faction = FC_NO
+						influence = 60
+					}
+				}
+				check_variable = { 
+					which = asq
+					value = 70
+				}
+				check_variable = { 
+					which = asv
+					value = 70
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = CaHAversionAllow_N
-		trigger = {
-			CaHAversionPotential = yes
-			CaHAversionAllow = no		
+		trigger = { 
+			always = yes
+			NOT = { 
+				AND = { 
+					NOT = { 
+						faction_influence = { 
+							faction = FC_NO
+							influence = 60
+						}
+					}
+					check_variable = { 
+						which = asq
+						value = 70
+					}
+					check_variable = { 
+						which = asv
+						value = 70
+					}
+				}
+			}
 		}
 	}
 }

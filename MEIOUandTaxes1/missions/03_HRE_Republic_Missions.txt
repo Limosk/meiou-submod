@@ -1,289 +1,463 @@
-hre_republic_1 = {
+hre_republic_1 = { 
 	slot = 8
 	generic = no
 	ai = yes
-	
-	potential = {
-		capital_scope = {
+	potential = { 
+		capital_scope = { 
 			continent = europe
 		}
 		government = republic
 		is_part_of_hre = yes
 	}
-
 	has_country_shield = no
-
-	hre_republic_deals = {
+	hre_republic_deals = { 
 		icon = mission_dominate_home_trade_node
 		required_missions = { }
 		position = 1
-		
-		trigger = {
-			calc_true_if = {
-				all_country = {
+		trigger = { 
+			calc_true_if = { 
+				all_country = { 
 					is_part_of_hre = yes
 					government = republic
-					has_opinion = { who = ROOT value = 150 } #alliance_with = ROOT
+					has_opinion = { 
+						who = ROOT
+						value = 150
+					}
 				}
 				amount = 2
 			}
 		}
-		
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "gen_hre_diplomacy_mod"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	hre_republic_imperial_relations = {
+	hre_republic_imperial_relations = { 
 		icon = mission_have_two_subjects
-		required_missions = { hre_republic_deals }
+		required_missions = { hre_republic_deals}
 		position = 2
-		
-		trigger = {
-			emperor = {
-				has_opinion = {
+		trigger = { 
+			emperor = { 
+				has_opinion = { 
 					who = ROOT
 					value = 125
 				}
 			}
 		}
-		
-		effect = {
+		effect = { 
 			add_prestige = 10
 		}
 	}
-	hre_republic_urban_prod_1 = {
+	hre_republic_urban_prod_1 = { 
 		icon = mission_market_place_with_asian_traders
 		required_missions = { }
 		position = 3
-		
-		trigger = {
-			#To be adapted
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = hre_republic_urban_prod_1.tooltip
-				OR = {
-					check_key = { lhs = TN_HistProvSply21 value = 10 }
-					check_key = { lhs = TN_HistProvSply22 value = 10 }
-					check_key = { lhs = TN_HistProvSply23 value = 10 }
-					check_key = { lhs = TN_HistProvSply24 value = 10 }
-					check_key = { lhs = TN_HistProvSply25 value = 10 }
+				OR = { 
+					check_variable = { 
+						which = aqd
+						value = 10
+					}
+					check_variable = { 
+						which = aqe
+						value = 10
+					}
+					check_variable = { 
+						which = aqf
+						value = 10
+					}
+					check_variable = { 
+						which = aqg
+						value = 10
+					}
+					check_variable = { 
+						which = aqh
+						value = 10
+					}
 				}
 			}
 		}
-		
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "republic_production_improvements"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	hre_republic_urban_prod_2 = {
+	hre_republic_urban_prod_2 = { 
 		icon = mission_trade_company_region_abroad
-		required_missions = { hre_republic_urban_prod_1 }
+		required_missions = { hre_republic_urban_prod_1}
 		position = 4
-		
-		trigger = {
-			#To be adapted
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = hre_republic_urban_prod_2.tooltip
-				OR = {
-					check_key = { lhs = TN_HistProvSply21 value = 25 }
-					check_key = { lhs = TN_HistProvSply22 value = 25 }
-					check_key = { lhs = TN_HistProvSply23 value = 25 }
-					check_key = { lhs = TN_HistProvSply24 value = 25 }
-					check_key = { lhs = TN_HistProvSply25 value = 25 }
+				OR = { 
+					check_variable = { 
+						which = aqd
+						value = 25
+					}
+					check_variable = { 
+						which = aqe
+						value = 25
+					}
+					check_variable = { 
+						which = aqf
+						value = 25
+					}
+					check_variable = { 
+						which = aqg
+						value = 25
+					}
+					check_variable = { 
+						which = aqh
+						value = 25
+					}
 				}
 			}
 		}
-		
-		effect = {
+		effect = { 
 			add_years_of_income = 1
 		}
 	}
-	hre_republic_development = {
+	hre_republic_development = { 
 		icon = mission_japanese_fort
-		required_missions = { hre_republic_urban_prod_2 }
+		required_missions = { hre_republic_urban_prod_2}
 		position = 5
-		
-		trigger = {
-			#has_country_modifier = country_development_8
-		}
-		
-		effect = {
+		trigger = { }
+		effect = { 
 			add_prestige = 15
 			add_adm_power = 50
 		}
 	}
 }
-hre_republic_2 = {
+hre_republic_2 = { 
 	slot = 9
 	generic = no
 	ai = yes
-	
-	potential = {
-		capital_scope = {
+	potential = { 
+		capital_scope = { 
 			continent = europe
 		}
 		government = republic
 		is_part_of_hre = yes
 	}
-
 	has_country_shield = no
-
-	hre_republic_advisor = {
+	hre_republic_advisor = { 
 		icon = mission_asian_trader
 		required_missions = { }
 		position = 1
-		
-		trigger = {
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = hre_republic_advisor.tooltip1
-				Advisor_HasMana = { ADM=yes Level=1 }
+				AND = { 
+					if = { 
+						limit = { 
+							always = yes
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Advisor_HasADM1
+							OR = { 
+								OR = { 
+									cardinal_CL = 1
+								}
+								OR = { 
+									philosopher_CL = 1
+									philosopher_NO = 1
+									philosopher_BU = 1
+									philosopher_BG = 1
+									philosopher_TR = 1
+								}
+								OR = { 
+									natural_scientist_BU = 1
+									natural_scientist_NO = 1
+									natural_scientist_BG = 1
+								}
+								OR = { 
+									artist_BG = 1
+									artist_NO = 1
+									artist_BU = 1
+									artist_TR = 1
+								}
+								OR = { 
+									treasurer_BG = 1
+									treasurer_NO = 1
+									treasurer_BU = 1
+									treasurer_TR = 1
+								}
+								OR = { 
+									theologian_CL = 1
+								}
+								OR = { 
+									master_of_mint_BG = 1
+									master_of_mint_BU = 1
+									master_of_mint_NO = 1
+								}
+								OR = { 
+									inquisitor_CL = 1
+								}
+								OR = { 
+									alderman_NO = 1
+									alderman_BU = 1
+									alderman_BG = 1
+								}
+								OR = { 
+									architect_BU = 1
+									architect_BG = 1
+								}
+								OR = { 
+									high_judge_BU = 1
+								}
+								OR = { 
+									astronomist_NO = 1
+									astronomist_BU = 1
+									astronomist_BG = 1
+								}
+								OR = { 
+									composer_BG = 1
+									composer_NO = 1
+									composer_BU = 1
+								}
+							}
+						}
+					}
+				}
 			}
 		}
-		
-		effect = {
-			Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=BG Amount=5 }
+		effect = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
+						AND = { 
+							OR = { 
+								is_city = yes
+								is_colony = yes
+							}
+							has_province_flag = Data
+						}
+						check_variable = { 
+							which = ass
+							value = 0.001
+						}
+					}
+					change_variable = { 
+						which = asv
+						value = 5
+					}
+					change_variable = { 
+						which = asw
+						value = 5
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = asv
+								value = 100.001
+							}
+						}
+						set_variable = { 
+							which = asv
+							value = 100
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = asv
+									value = 0
+								}
+							}
+						}
+						set_variable = { 
+							which = asv
+							value = 0
+						}
+					}
+					set_province_flag = Unrest_Update
+				}
+			}
+			custom_tooltip = POP_BGLoyProv_5
 		}
 	}
-	hre_republic_merchants_and_state = {
+	hre_republic_merchants_and_state = { 
 		icon = mission_galleys_in_port
-		required_missions = { hre_republic_advisor }
+		required_missions = { hre_republic_advisor}
 		position = 2
-		
-		trigger = {
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = hre_republic_merchants_and_state.tooltip
-				check_variable = { which = estate_burghers_weight_share value = 0.40 }
-				check_variable = { which = estate_burghers_loyalty value = 0.60 }
-				check_variable = { which = estate_bureaucracy_weight_share value = 0.40 }
+				check_variable = { 
+					which = estate_burghers_weight_share
+					value = 0.40
+				}
+				check_variable = { 
+					which = estate_burghers_loyalty
+					value = 0.60
+				}
+				check_variable = { 
+					which = estate_bureaucracy_weight_share
+					value = 0.40
+				}
 			}
 		}
-		
-		effect = {
-			Stab_Add1 = yes
+		effect = { 
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					add_stability = 1
+				}
+			}
+			tooltip = { 
+				add_stability = 1
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = 5
+			}
 		}
 	}
-	hre_republic_trade = {
+	hre_republic_trade = { 
 		icon = mission_high_income
-		required_missions = { hre_republic_merchants_and_state }
+		required_missions = { hre_republic_merchants_and_state}
 		position = 3
-		
-		trigger = {
+		trigger = { 
 			trade_efficiency = 0.15
-			NOT = { inflation = 3 }
+			NOT = { 
+				inflation = 3
+			}
 		}
-		
-		effect = {
+		effect = { 
 			add_years_of_income = 2
 		}
 	}
-	hre_republic_treasury = {
+	hre_republic_treasury = { 
 		icon = mission_war_chest
-		required_missions = { hre_republic_trade }
+		required_missions = { hre_republic_trade}
 		position = 4
-		
-		trigger = {
+		trigger = { 
 			treasury = 5000
-			NOT = { num_of_loans = 1 }
+			NOT = { 
+				num_of_loans = 1
+			}
 		}
-		
-		effect = {
+		effect = { 
 			add_prestige = 20
 		}
 	}
 }
-hre_republic_3 = {
+hre_republic_3 = { 
 	slot = 10
 	generic = no
 	ai = yes
-	
-	potential = {
-		capital_scope = {
+	potential = { 
+		capital_scope = { 
 			continent = europe
 		}
 		government = republic
 		is_part_of_hre = yes
 	}
-
 	has_country_shield = no
-
-	hre_republic_ruler = {
+	hre_republic_ruler = { 
 		icon = mission_monarch_in_throne_room
 		required_missions = { }
 		position = 1
-		
-		trigger = {
+		trigger = { 
 			adm = 5
 			dip = 5
 			mil = 5
 		}
-		
-		effect = {
-			Stab_Add1 = yes
-		}
-	}
-	hre_republic_stabilise = {
-		icon = mission_great_wall
-		required_missions = { hre_republic_ruler }
-		position = 2
-		
-		trigger = {
-			NOT = { corruption = 10 }
-			stability = 1
-			republican_tradition = 90
-		}
-		
-		effect = {
-			add_country_modifier = {
-				name = "monarchy_stabilise_country_mod"
-				duration = 9125 #25 years
+		effect = { 
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					add_stability = 1
+				}
+			}
+			tooltip = { 
+				add_stability = 1
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = 5
 			}
 		}
 	}
-	hre_republic_centralise = {
+	hre_republic_stabilise = { 
+		icon = mission_great_wall
+		required_missions = { hre_republic_ruler}
+		position = 2
+		trigger = { 
+			NOT = { 
+				corruption = 10
+			}
+			stability = 1
+			republican_tradition = 90
+		}
+		effect = { 
+			add_country_modifier = { 
+				name = "monarchy_stabilise_country_mod"
+				duration = 9125
+			}
+		}
+	}
+	hre_republic_centralise = { 
 		icon = mission_non-western_soldiers
-		required_missions = { hre_republic_stabilise }
+		required_missions = { hre_republic_stabilise}
 		position = 3
-		
-		trigger = {
+		trigger = { 
 			absolutism = 20
 		}
-		
-		effect = {
+		effect = { 
 			add_adm_power = 50
 		}
 	}
-	hre_republic_military = {
+	hre_republic_military = { 
 		icon = mission_cossack_cavalry
 		required_missions = { }
 		position = 4
-		
-		trigger = {
+		trigger = { 
 			army_size = 6
 			land_forcelimit = 6
 			army_size_percentage = 1
 		}
-		
-		effect = {
+		effect = { 
 			add_army_tradition = 10
 		}
 	}
-	hre_republic_punch = {
+	hre_republic_punch = { 
 		icon = mission_cannons_firing
-		required_missions = { hre_republic_military }
+		required_missions = { hre_republic_military}
 		position = 5
-		
-		trigger = {
+		trigger = { 
 			army_size = 12
 			land_forcelimit = 12
 			army_size_percentage = 1
 		}
-		
-		effect = {
+		effect = { 
 			add_mil_power = 100
 		}
 	}

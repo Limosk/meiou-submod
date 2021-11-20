@@ -1,80 +1,83 @@
-dissolution_of_georgia = {
-	potential = {
+dissolution_of_georgia = { 
+	potential = { 
 		TAG = GEO
 		is_year = 1425
-		NOT = {
+		NOT = { 
 			is_year = 1550
 		}
-		NOT = {
+		NOT = { 
 			has_global_flag = end_of_georgia
 		}
-		NOT = {
+		NOT = { 
 			stability = 1
 		}
 	}
-	can_start = {
-		NOT = {
+	can_start = { 
+		NOT = { 
 			stability = 1
 		}
-		NOT = {
+		NOT = { 
 			ADM = 5
 		}
 	}
-	can_stop = {
+	can_stop = { 
 		stability = 2
 	}
-	progress = {
-		modifier = {
+	progress = { 
+		modifier = { 
 			factor = 0.5
-			NOT = {
+			NOT = { 
 				stability = 1
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			NOT = {
+			NOT = { 
 				stability = 0
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			NOT = {
+			NOT = { 
 				stability = -1
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			NOT = { 
 				stability = -2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			NOT = { 
 				ADM = 4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			NOT = { 
 				ADM = 3
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			NOT = { 
 				ADM = 2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			NOT = { 
 				ADM = 1
 			}
 		}
 	}
-	can_end = {
-		had_global_flag = { flag = end_of_georgia days = 10 }
+	can_end = { 
+		had_global_flag = { 
+			flag = end_of_georgia
+			days = 10
+		}
 	}
 	on_start = flavor_geo.001
 	on_end = flavor_geo.002

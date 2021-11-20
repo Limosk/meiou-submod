@@ -1,29 +1,29 @@
-country_decisions = {
-	move_capital_to_warsawa = {
-		potential = {
+country_decisions = { 
+	move_capital_to_warsawa = { 
+		potential = { 
 			owns = 256
-			OR = {
+			OR = { 
 				tag = POL
 				tag = PLC
 			}
-			NOT = {
+			NOT = { 
 				capital = 256
 			}
-			NOT = {
+			NOT = { 
 				has_country_flag = relocated_capital_warsawa
 			}
 		}
-		allow = {
-			OR = {
+		allow = { 
+			OR = { 
 				adm = 4
-				OR = {
+				OR = { 
 					advisor = statesman_CL
 					advisor = statesman_BG
 					advisor = statesman_NO
 					advisor = statesman_BU
 					advisor = statesman_TR
 				}
-				OR = {
+				OR = { 
 					advisor = alderman_BG
 					advisor = alderman_NO
 					advisor = alderman_BU
@@ -33,21 +33,130 @@ country_decisions = {
 			is_core = 256
 			is_at_war = no
 		}
-		effect = {
+		effect = { 
 			set_country_flag = relocated_capital_warsawa
-			Stab_Add50Percent = yes
-			Effect_set_capital = { target= 256 }
-			if = {
-				limit = {
+			hidden_effect = { 
+				change_variable = { 
+					which = ahf
+					value = 600
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = ahf
+							value = 1200
+						}
+					}
+					if = { 
+						limit = { 
+							stability = 3
+						}
+						set_variable = { 
+							which = ahf
+							value = 1200
+						}
+					}
+					else = { 
+						subtract_variable = { 
+							which = ahf
+							value = 1200
+						}
+						add_stability = 1
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						change_variable = { 
+							which = ahf
+							value = 1200
+						}
+						add_stability = -1
+					}
+				}
+				set_variable = { 
+					which = ahd
+					which = ahf
+				}
+				divide_variable = { 
+					which = ahd
+					value = 12
+				}
+				multiply_variable = { 
+					which = ahd
+					value = 0.1
+				}
+				multiply_variable = { 
+					which = ahd
+					value = 10
+				}
+				set_variable = { 
+					which = lsc
+					value = 100
+				}
+				subtract_variable = { 
+					which = lsc
+					which = ahd
+				}
+			}
+			custom_tooltip = POP_StabAdd50
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = 2.5
+			}
+			if = { 
+				limit = { 
 					is_part_of_hre = yes
-					ROOT = {
+					ROOT = { 
 						is_part_of_hre = no
 					}
 				}
 				set_in_empire = no
 				swap_non_generic_missions = yes
-				emperor = {
-					add_opinion = {
+				emperor = { 
+					add_opinion = { 
+						who = ROOT
+						modifier = hre_province_left
+					}
+				}
+				add_imperial_influence = -1
+			}
+			set_capital = 256
+			hidden_effect = { 
+				set_country_flag = tf_recalculate_communication_efficiency
+				set_country_flag = ai_tax_recalc
+			}
+			if = { 
+				limit = { 
+					is_part_of_hre = yes
+					ROOT = { 
+						is_part_of_hre = no
+					}
+				}
+				set_in_empire = no
+				swap_non_generic_missions = yes
+				emperor = { 
+					add_opinion = { 
 						who = ROOT
 						modifier = hre_province_left
 					}
@@ -56,98 +165,19 @@ country_decisions = {
 			}
 			add_adm_power = -200
 			add_prestige = 10
-			256 = {
+			256 = { 
 				rename_capital = "Warszawa"
 				change_province_name = "Warszawa"
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
-			modifier = {
+			modifier = { 
 				factor = 0
-				NOT = {
+				NOT = { 
 					years_of_income = 1.25
 				}
 			}
 		}
 	}
-	# form_union_with_lithuania = {
-	# 	major = yes
-	# 	potential = {
-	# 		tag = POL
-	# 		has_regency = yes
-	# 		has_heir = no
-	# 		LIT = {
-	# 			ai = yes
-	# 			exists = yes
-	# 			NOT = {
-	# 				junior_union_with = POL
-	# 			}
-	# 			OR = {
-	# 				AND = {
-	# 					has_ruler = "Kazimierz"
-	# 					dynasty = "Jagiellon"
-	# 				}
-	# 				AND = {
-	# 					dynasty = ROOT
-	# 					is_lesser_in_union = no
-	# 				}
-	# 			}
-	# 		}
-	# 	}
-	# 	allow = {
-	# 		stability = 1
-	# 		dip_power = 200
-	# 		has_regency = yes
-	# 		has_heir = no
-	# 		is_lesser_in_union = no
-	# 		is_at_war = no
-	# 		LIT = {
-	# 			OR = {
-	# 				AND = {
-	# 					has_ruler = "Kazimierz"
-	# 					dynasty = "Jagiellon"
-	# 				}
-	# 				AND = {
-	# 					dynasty = ROOT
-	# 					is_lesser_in_union = no
-	# 				}
-	# 			}
-	# 		}
-	# 	}
-	# 	effect = {
-	# 		add_dip_power = -200
-	# 		create_union = LIT
-	# 	}
-	# 	ai_will_do = {
-	# 		factor = 1
-	# 	}
-	# }
-	# rely_on_polish_hussars = {
-	# 	potential = {
-	# 		OR = {
-	# 			tag = POL
-	# 			tag = PLC
-	# 		}
-	# 		mil_tech = 26
-	# 		NOT = {
-	# 			has_country_flag = polish_hussars_decision
-	# 		}
-	# 	}
-	# 	allow = {
-	# 		mil_power = 100
-	# 		army_tradition = 80
-	# 	}
-	# 	effect = {
-	# 		add_mil_power = -100
-	# 		set_country_flag = polish_hussars_decision
-	# 		add_country_modifier = {
-	# 			name = "polish_hussars"
-	# 			duration = 7300
-	# 		}
-	# 	}
-	# 	ai_will_do = {
-	# 		factor = 1
-	# 	}
-	# }
 }

@@ -1,329 +1,271 @@
-# Great Britain
-GBR = {
+GBR = { 
 	is_core = GBR
 }
-
-ENG = {
-	NOT = { exists = GBR }
+ENG = { 
+	NOT = { 
+		exists = GBR
+	}
 }
-
-# Holy Roman Empire
-ERG = {
+ERG = { 
 	always = no
 }
-
-# Germany
-GER = {
+GER = { 
 	is_core = GER
 }
-
-# Italy
-ITA = {
+ITA = { 
 	is_core = ITA
 }
-
-# Netherlands
-NED = {
+NED = { 
 	is_core = NED
 }
-BRB = {
+BRB = { 
 	is_core = BRB
 }
-FLA = {
+FLA = { 
 	is_core = FLA
 }
-HAI = {
+HAI = { 
 	is_core = HAI
 }
-HOL = {
+HOL = { 
 	is_core = HOL
 }
-
-PLC = {
-	OR = {
+PLC = { 
+	OR = { 
 		is_core = PLC
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = PLC
 			}
 		}
 	}
-	NOT = { exists = POL }
-	NOT = { exists = LIT }
+	NOT = { 
+		exists = POL
+	}
+	NOT = { 
+		exists = LIT
+	}
 }
-
-# Greece and Anatolia
-GRE = {
-	NOT = { exists = BYZ }
+GRE = { 
+	NOT = { 
+		exists = BYZ
+	}
 }
-
-MOE = {
+MOE = { 
 	is_core = MOE
 }
-
-CRT = {
+CRT = { 
 	is_core = CRT
 }
-
-THD = {
+THD = { 
 	is_core = THD
 }
-
-TRE = {
+TRE = { 
 	is_core = TRE
 }
-
-ERE = { #foreign Mongols
-	OR = {
-		NOT = { culture = mongol }
+ERE = { 
+	OR = { 
+		NOT = { 
+			culture = mongol
+		}
 		is_core = ERE
 	}
 }
-
-TSL = { #serbian pretender
+TSL = { 
 	always = no
 }
-
-KAM = {
+KAM = { 
 	is_core = KAM
 }
-
-DOB = {
+DOB = { 
 	is_core = DOB
 }
-
-MON = {
+MON = { 
 	is_core = MON
 }
-
-EPI = {
+EPI = { 
 	is_core = EPI
 }
-
-MKO = {
+MKO = { 
 	is_core = MKO
 }
-
-VBZ = {
+VBZ = { 
 	is_core = VBZ
 }
-
-VUK = {
+VUK = { 
 	is_core = VUK
 }
-
-SRR = {
+SRR = { 
 	is_core = SRR
 }
-
-#crusaders
-ATH = {
+ATH = { 
 	always = no
 }
-
-CEP = {
+CEP = { 
 	always = no
 }
-
-ACH = {
+ACH = { 
 	always = no
 }
-
-CYP = {
+CYP = { 
 	always = no
 }
-
-NAX = {
+NAX = { 
 	always = no
 }
-
-# Sardinia-Piedmont
-SPI = {
-	OR = {
+SPI = { 
+	OR = { 
 		is_core = SPI
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = SPI
 			}
 		}
 	}
 }
-
-# Prussia
-PRU = {
-	OR = {
+PRU = { 
+	OR = { 
 		is_core = PRU
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = PRU
 			}
 		}
 	}
 }
-
-# Hanover
-HAN = {
-	OR = {
+HAN = { 
+	OR = { 
 		is_core = HAN
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = HAN
 			}
 		}
 	}
 }
-
-# Swabia
-SWA = {
-	OR = {
+SWA = { 
+	OR = { 
 		is_core = SWA
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = SWA
 			}
 		}
 	}
 }
-
-# Bavaria
-BAV = {
-	OR = {
+BAV = { 
+	OR = { 
 		is_core = BAV
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = BAV
 			}
 		}
 	}
 }
-
-# Ireland
-IRE = {
-	OR = {
+IRE = { 
+	OR = { 
 		is_core = IRE
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = IRE
 			}
 		}
 	}
 }
-
-# Two Sicilies
-KNP = {
-	OR = {
+KNP = { 
+	OR = { 
 		is_core = KNP
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = KNP
 			}
 		}
 	}
-	NOT = { exists = NAP }
-	NOT = { exists = SIC }
+	NOT = { 
+		exists = NAP
+	}
+	NOT = { 
+		exists = SIC
+	}
 }
-
-# Naples
-NAP = {
-	NOT = { exists = KNP }
+NAP = { 
+	NOT = { 
+		exists = KNP
+	}
 }
-
-# Sicily
-SIC = {
-	NOT = { exists = KNP }
+SIC = { 
+	NOT = { 
+		exists = KNP
+	}
 }
-
-# Romania
-ROU = {
-	OR = {
+ROU = { 
+	OR = { 
 		is_core = ROU
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = ROU
 			}
 		}
 	}
 }
-
-# Wallachia
-WAL = {
-	NOT = { is_core = ROU }
+WAL = { 
+	NOT = { 
+		is_core = ROU
+	}
 }
-
-# Moldavia
-MOL = {
-	NOT = { is_core = ROU }
+MOL = { 
+	NOT = { 
+		is_core = ROU
+	}
 }
-
-# The Hansa
-HSA = {
+HSA = { 
 	always = no
 }
-
-# Teutonic Order
-TEU = {
+TEU = { 
 	always = no
 }
-
-# Livonian Order
-LVO = {
+LVO = { 
 	always = no
 }
-
-# The Knights
-KNI = {
+KNI = { 
 	always = no
 }
-
-# Ukraine
-UKR = {
+UKR = { 
 	is_core = UKR
 }
-
-AZT	 = {
+AZT = { 
 	is_core = AZT
 }
-
-BUL = {
+BUL = { 
 	is_core = BUL
 }
-
-GGK = {
+GGK = { 
 	always = no
 }
-
-KAL = {
+KAL = { 
 	always = no
 }
-
-DAN = {
+DAN = { 
 	always = no
 }
-
-LOT = {
+LOT = { 
 	always = no
 }
-
-ICE = {
+ICE = { 
 	is_core = ICE
 }
-
-BUR = {
+BUR = { 
 	is_core = BUR
 }
-
-
-
-# Danzig
-DNZ = {
+DNZ = { 
 	always = no
 }
-
 SCO = { 
-	OR = {
+	OR = { 
 		is_core = SCO
-		AND = {
-			OR = {
+		AND = { 
+			OR = { 
 				culture = lowland_scottish
 				culture = highland_scottish
 			}
@@ -331,9 +273,7 @@ SCO = {
 		}
 	}
 }
-
-NOL = {
+NOL = { 
 	is_core = NOL
 	culture = northern_english
 }
-

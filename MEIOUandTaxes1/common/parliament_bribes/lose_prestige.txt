@@ -1,13 +1,11 @@
-lose_prestige = {
-	trigger = {
+lose_prestige = { 
+	trigger = { 
 		prestige = 10
 	}
-	
-	effect = {
+	effect = { 
 		add_prestige = -5
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
 	}
 }

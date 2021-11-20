@@ -1,405 +1,977 @@
 namespace = DG_Synod
-
-#Synod on Protestantism
-country_event = {
+country_event = { 
 	id = DG_Synod.201
 	title = "DG_Synod.201.title"
 	desc = "DG_Synod.201.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-
-	immediate = {
-		hidden_effect = {
-			set_key = { lhs = synodvote value = 0 }
-			set_key = { lhs = playervote value = 0 }
+	immediate = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = kph
+				value = 0
+			}
+			set_variable = { 
+				which = kpi
+				value = 0
+			}
 		}
 		log = "DG:[GetYear]:[pro_synod_site.aab.GetValue]:Lutheran:Synod Convenes:[pro_synod_site.GetName]:[This.GetName]"
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.201.optb"
 		custom_tooltip = pro_synod_001_b
-		hidden_effect = {
-			every_country = {
-				limit = {
+		hidden_effect = { 
+			every_country = { 
+				limit = { 
 					religion = catholic
-					OR = {
+					OR = { 
 						government = theocracy
 						is_emperor = yes
 						is_elector = yes
 						num_of_cities = 5
-						any_owned_province = { OR = { has_cardinal = yes has_province_flag = MN_Archbishopric } }
+						any_owned_province = { 
+							OR = { 
+								has_cardinal = yes
+								has_province_flag = MN_Archbishopric
+							}
+						}
 					}
 				}
-				if = {
-					limit = { ai = no }
-					country_event = { id = DG_Synod.202 }
+				if = { 
+					limit = { 
+						ai = no
+					}
+					country_event = { 
+						id = DG_Synod.202
+					}
 				}
-				else = {
-					country_event = { id = DG_Synod.203 days = 100 }
+				else = { 
+					country_event = { 
+						id = DG_Synod.203
+						days = 100
+					}
 				}
 			}
-			PAP = {
-				country_event = { id = DG_Synod.204 days = 200 }
+			PAP = { 
+				country_event = { 
+					id = DG_Synod.204
+					days = 200
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.201.opta"
-		trigger = { ai = no }
+		trigger = { 
+			ai = no
+		}
 		custom_tooltip = pro_synod_001_a
-		hidden_effect = {
+		hidden_effect = { 
 			set_country_flag = PAP_condemn_02
-			every_country = {
-				limit = { has_country_flag = protestant_presence }
-				country_event = { id = DG_Protestant.005 }
+			every_country = { 
+				limit = { 
+					has_country_flag = protestant_presence
+				}
+				country_event = { 
+					id = DG_Protestant.005
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.201.optc"
-		trigger = { ai = no }
-		Stab_Subtract4 = yes
+		trigger = { 
+			ai = no
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
 		custom_tooltip = SetProtestantCompromiseAspects_tt
-		hidden_effect = {
-			SetProtestantCompromiseAspects = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 2
+			}
+			set_variable = { 
+				which = kng
+				value = 3
+			}
+			set_variable = { 
+				which = knh
+				value = 1
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 3
+			}
+			set_variable = { 
+				which = knk
+				value = 1
+			}
+			set_variable = { 
+				which = knl
+				value = 2
+			}
+			set_variable = { 
+				which = knm
+				value = 1
+			}
+			set_variable = { 
+				which = knn
+				value = 2
+			}
+			set_variable = { 
+				which = kno
+				value = 1
+			}
+			set_variable = { 
+				which = knp
+				value = 1
+			}
+			set_variable = { 
+				which = knq
+				value = 1
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 2
+			}
+			set_variable = { 
+				which = knt
+				value = 1
+			}
+			set_variable = { 
+				which = knu
+				value = 3
+			}
+			set_variable = { 
+				which = knv
+				value = 3
+			}
+			set_variable = { 
+				which = knw
+				value = 2
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
 			set_global_flag = pro_schism_compromise
 			clr_global_flag = lol_schism_mended
 			clr_global_flag = lol_schism_compromise
 			clr_global_flag = hus_schism_mended
 			clr_global_flag = hus_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Protestant.021 }
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Protestant.021
+				}
 			}
-			every_country = {
-				limit = { religion = protestant }
-				country_event = { id = DG_Protestant.031 }
+			every_country = { 
+				limit = { 
+					religion = protestant
+				}
+				country_event = { 
+					id = DG_Protestant.031
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.202
 	title = "DG_Synod.202.title"
 	desc = "DG_Synod.202.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-	
-	trigger = { ai = no }
-
-	option = {
+	trigger = { 
+		ai = no
+	}
+	option = { 
 		name = "DG_Synod.202.opta"
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = -1 }
-				if = { limit = { PREV = { ai = no } } change_key = { lhs = playervote value = -1 } }
-				change_key = { lhs = pro_synodvote_against value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = -1
+				}
+				if = { 
+					limit = { 
+						PREV = { 
+							ai = no
+						}
+					}
+					change_variable = { 
+						which = kpi
+						value = -1
+					}
+				}
+				change_variable = { 
+					which = psc
+					value = 1
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.202.optb"
-		trigger = { ai = no }
+		trigger = { 
+			ai = no
+		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.202.optc"
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = 1 }
-				change_key = { lhs = playervote value = 1 }
-				change_key = { lhs = pro_synodvote_infavour value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = 1
+				}
+				change_variable = { 
+					which = kpi
+					value = 1
+				}
+				change_variable = { 
+					which = psb
+					value = 1
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.203
 	title = "DG_Synod.202.title"
 	desc = "DG_Synod.202.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-
-	option = {
+	option = { 
 		name = "DG_Synod.202.opta"
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
-			modifier = {
-				PAP = { NOT = { check_key = { lhs = playervote value = 0 } } }
+			modifier = { 
+				PAP = { 
+					NOT = { 
+						check_variable = { 
+							which = kpi
+							value = 0
+						}
+					}
+				}
 				factor = 1.75
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 260 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 260
+				}
 				factor = 0.75
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 390 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 390
+				}
 				factor = 0.75
 			}
-			modifier = {
-				NOT = { capital_distance = { who = PAP distance = 130 } }
+			modifier = { 
+				NOT = { 
+					capital_distance = { 
+						who = PAP
+						distance = 130
+					}
+				}
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				is_lesser_in_union = yes
-				any_country = {
+				any_country = { 
 					overlord_of = ROOT
 					religion = catholic
 				}
 				factor = 2.0
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 5
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 10
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 20
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 40
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 80
 				factor = 1.5
 			}
 		}
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = -1 }
-				change_key = { lhs = pro_synodvote_against value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = -1
+				}
+				change_variable = { 
+					which = psc
+					value = 1
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.202.optc"
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
-			modifier = {
-				PAP = { check_key = { lhs = playervote value = 1 } }
+			modifier = { 
+				PAP = { 
+					check_variable = { 
+						which = kpi
+						value = 1
+					}
+				}
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				government = republic
 				factor = 2
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 260 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 260
+				}
 				factor = 1.5
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 390 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 390
+				}
 				factor = 1.5
 			}
-			modifier = {
-				NOT = { capital_distance = { who = PAP distance = 130 } }
+			modifier = { 
+				NOT = { 
+					capital_distance = { 
+						who = PAP
+						distance = 130
+					}
+				}
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				exists = AVI
-				AVI = { papal_trigger = yes }
+				AVI = { 
+					AND = { 
+						government = theocracy
+						is_variable_equal = { 
+							which = grp
+							value = 3
+						}
+					}
+				}
 				factor = 0.5
 			}
-			modifier = {
+			modifier = { 
 				is_papal_controller = yes
 				factor = 2
 			}
-			modifier = {
-				any_neighbor_country = { NOT = { religion_group = christian } }
+			modifier = { 
+				any_neighbor_country = { 
+					NOT = { 
+						religion_group = christian
+					}
+				}
 				factor = 0.8
 			}
-			modifier = {
-				OR = {
+			modifier = { 
+				OR = { 
 					is_elector = yes
 					is_emperor = yes
 				}
 				factor = 2.0
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 5
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 10
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 20
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 40
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 80
 				factor = 0.8
 			}
 		}
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = 1 }
-				change_key = { lhs = pro_synodvote_infavour value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = 1
+				}
+				change_variable = { 
+					which = psb
+					value = 1
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.204
 	title = "DG_Synod.204.title"
 	desc = "DG_Synod.204.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-	
-	immediate = {
+	immediate = { 
 		log = "DG:[GetYear]:[pro_synod_site.aab.GetValue]:Lutheran:Synod Decides:[pro_synod_site.GetName]:[This.GetName]"
 	}
-
-	option = {
+	option = { 
 		name = "DG_Synod.204.opta"
-		trigger = {
-			NOT = { check_key = { lhs = synodvote value = -2 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = kph
+					value = -2
+				}
+			}
 		}
 		custom_tooltip = pro_synod_001_a
-		hidden_effect = {
+		hidden_effect = { 
 			set_country_flag = PAP_condemn_02
-			every_country = {
-				limit = { has_country_flag = protestant_presence }
-				country_event = { id = DG_Protestant.006 }
+			every_country = { 
+				limit = { 
+					has_country_flag = protestant_presence
+				}
+				country_event = { 
+					id = DG_Protestant.006
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.204.optb"
-		trigger = {
-			check_key = { lhs = synodvote value = -2 }
-			NOT = { check_key = { lhs = synodvote value = 3 } }
+		trigger = { 
+			check_variable = { 
+				which = kph
+				value = -2
+			}
+			NOT = { 
+				check_variable = { 
+					which = kph
+					value = 3
+				}
+			}
 		}
-		Stab_Subtract4 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
 		custom_tooltip = SetProtestantCompromiseAspects_tt
-		hidden_effect = {
-			SetProtestantCompromiseAspects = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 2
+			}
+			set_variable = { 
+				which = kng
+				value = 3
+			}
+			set_variable = { 
+				which = knh
+				value = 1
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 3
+			}
+			set_variable = { 
+				which = knk
+				value = 1
+			}
+			set_variable = { 
+				which = knl
+				value = 2
+			}
+			set_variable = { 
+				which = knm
+				value = 1
+			}
+			set_variable = { 
+				which = knn
+				value = 2
+			}
+			set_variable = { 
+				which = kno
+				value = 1
+			}
+			set_variable = { 
+				which = knp
+				value = 1
+			}
+			set_variable = { 
+				which = knq
+				value = 1
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 2
+			}
+			set_variable = { 
+				which = knt
+				value = 1
+			}
+			set_variable = { 
+				which = knu
+				value = 3
+			}
+			set_variable = { 
+				which = knv
+				value = 3
+			}
+			set_variable = { 
+				which = knw
+				value = 2
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
 			set_global_flag = pro_schism_compromise
 			clr_global_flag = lol_schism_mended
 			clr_global_flag = lol_schism_compromise
 			clr_global_flag = hus_schism_mended
 			clr_global_flag = hus_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Protestant.021 }
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Protestant.021
+				}
 			}
-			every_country = {
-				limit = { religion = protestant }
-				country_event = { id = DG_Protestant.031 }
+			every_country = { 
+				limit = { 
+					religion = protestant
+				}
+				country_event = { 
+					id = DG_Protestant.031
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.204.optc"
-		trigger = {
-			check_key = { lhs = synodvote value = 3 }
+		trigger = { 
+			check_variable = { 
+				which = kph
+				value = 3
+			}
 		}
-		Stab_Subtract4 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
 		custom_tooltip = SetProtestantAspects_tt
-		hidden_effect = {
-			SetProtestantAspects = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 3
+			}
+			set_variable = { 
+				which = kng
+				value = 3
+			}
+			set_variable = { 
+				which = knh
+				value = 3
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 3
+			}
+			set_variable = { 
+				which = knk
+				value = 2
+			}
+			set_variable = { 
+				which = knl
+				value = 3
+			}
+			set_variable = { 
+				which = knm
+				value = 3
+			}
+			set_variable = { 
+				which = knn
+				value = 3
+			}
+			set_variable = { 
+				which = kno
+				value = 3
+			}
+			set_variable = { 
+				which = knp
+				value = 3
+			}
+			set_variable = { 
+				which = knq
+				value = 3
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 1
+			}
+			set_variable = { 
+				which = knt
+				value = 1
+			}
+			set_variable = { 
+				which = knu
+				value = 3
+			}
+			set_variable = { 
+				which = knv
+				value = 3
+			}
+			set_variable = { 
+				which = knw
+				value = 3
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
 			set_global_flag = pro_schism_mended
 			clr_global_flag = lol_schism_mended
 			clr_global_flag = lol_schism_compromise
 			clr_global_flag = hus_schism_mended
 			clr_global_flag = hus_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Protestant.041 }
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Protestant.041
+				}
 			}
-			every_country = {
-				limit = { religion = protestant }
-				country_event = { id = DG_Protestant.051 }
+			every_country = { 
+				limit = { 
+					religion = protestant
+				}
+				country_event = { 
+					id = DG_Protestant.051
+				}
 			}
 		}
 	}
-	after = {
-		hidden_effect = {
-			set_key = { lhs = synodvote value = 0 }
-			set_key = { lhs = playervote value = 0 }
+	after = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = kph
+				value = 0
+			}
+			set_variable = { 
+				which = kpi
+				value = 0
+			}
 		}
 	}
 }
-
-#Synod on Calvinism
-country_event = {
+country_event = { 
 	id = DG_Synod.301
 	title = "DG_Synod.301.title"
 	desc = "DG_Synod.301.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-
-	immediate = {
-		hidden_effect = {
-			set_key = { lhs = synodvote value = 0 }
-			set_key = { lhs = playervote value = 0 }
+	immediate = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = kph
+				value = 0
+			}
+			set_variable = { 
+				which = kpi
+				value = 0
+			}
 		}
 		log = "DG:[GetYear]:[ref_synod_site.aab.GetValue]:Calvinism:Synod Convenes:[ref_synod_site.GetName]:[This.GetName]"
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.301.optb"
 		custom_tooltip = pro_synod_001_b
-		hidden_effect = {
-			every_country = {
-				limit = {
+		hidden_effect = { 
+			every_country = { 
+				limit = { 
 					religion = catholic
-					OR = {
+					OR = { 
 						government = theocracy
 						is_emperor = yes
 						is_elector = yes
 						num_of_cities = 5
-						any_owned_province = { OR = { has_cardinal = yes has_province_flag = MN_Archbishopric } }
+						any_owned_province = { 
+							OR = { 
+								has_cardinal = yes
+								has_province_flag = MN_Archbishopric
+							}
+						}
 					}
 				}
-				if = {
-					limit = { ai = no }
-					country_event = { id = DG_Synod.302 }
+				if = { 
+					limit = { 
+						ai = no
+					}
+					country_event = { 
+						id = DG_Synod.302
+					}
 				}
-				else = {
-					country_event = { id = DG_Synod.303 days = 100 }
+				else = { 
+					country_event = { 
+						id = DG_Synod.303
+						days = 100
+					}
 				}
 			}
-			PAP = {
-				country_event = { id = DG_Synod.304 days = 200 }
+			PAP = { 
+				country_event = { 
+					id = DG_Synod.304
+					days = 200
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.301.opta"
-		trigger = { ai = no }
+		trigger = { 
+			ai = no
+		}
 		custom_tooltip = pro_synod_001_a
-		hidden_effect = {
+		hidden_effect = { 
 			set_country_flag = PAP_condemn_02
-			every_country = {
-				limit = { has_country_flag = reformed_presence }
-				country_event = { id = DG_Reformed.005 }
+			every_country = { 
+				limit = { 
+					has_country_flag = reformed_presence
+				}
+				country_event = { 
+					id = DG_Reformed.005
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.301.optc"
-		trigger = { ai = no }
-		Stab_Subtract4 = yes
+		trigger = { 
+			ai = no
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
 		custom_tooltip = SetReformedCompromiseAspects_tt
-		hidden_effect = {
-			SetReformedCompromiseAspects = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 3
+			}
+			set_variable = { 
+				which = kng
+				value = 3
+			}
+			set_variable = { 
+				which = knh
+				value = 1
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 3
+			}
+			set_variable = { 
+				which = knk
+				value = 1
+			}
+			set_variable = { 
+				which = knl
+				value = 3
+			}
+			set_variable = { 
+				which = knm
+				value = 1
+			}
+			set_variable = { 
+				which = knn
+				value = 2
+			}
+			set_variable = { 
+				which = kno
+				value = 3
+			}
+			set_variable = { 
+				which = knp
+				value = 3
+			}
+			set_variable = { 
+				which = knq
+				value = 1
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 2
+			}
+			set_variable = { 
+				which = knt
+				value = 2
+			}
+			set_variable = { 
+				which = knu
+				value = 3
+			}
+			set_variable = { 
+				which = knv
+				value = 3
+			}
+			set_variable = { 
+				which = knw
+				value = 2
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
 			set_global_flag = ref_schism_compromise
 			clr_global_flag = lol_schism_mended
 			clr_global_flag = lol_schism_compromise
@@ -407,227 +979,418 @@ country_event = {
 			clr_global_flag = hus_schism_compromise
 			clr_global_flag = pro_schism_mended
 			clr_global_flag = pro_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Reformed.021 }
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Reformed.021
+				}
 			}
-			every_country = {
-				limit = { religion = reformed }
-				country_event = { id = DG_Reformed.031 }
+			every_country = { 
+				limit = { 
+					religion = reformed
+				}
+				country_event = { 
+					id = DG_Reformed.031
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.302
 	title = "DG_Synod.302.title"
 	desc = "DG_Synod.302.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-	
-	trigger = { ai = no }
-
-	option = {
+	trigger = { 
+		ai = no
+	}
+	option = { 
 		name = "DG_Synod.302.opta"
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = -1 }
-				change_key = { lhs = playervote value = -1 }
-				change_key = { lhs = ref_synodvote_against value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = -1
+				}
+				change_variable = { 
+					which = kpi
+					value = -1
+				}
+				change_variable = { 
+					which = pse
+					value = 1
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.302.optb"
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.302.optc"
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = 1 }
-				change_key = { lhs = playervote value = 1 }
-				change_key = { lhs = ref_synodvote_infavour value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = 1
+				}
+				change_variable = { 
+					which = kpi
+					value = 1
+				}
+				change_variable = { 
+					which = psd
+					value = 1
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.303
 	title = "DG_Synod.302.title"
 	desc = "DG_Synod.302.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-
-	option = {
+	option = { 
 		name = "DG_Synod.302.opta"
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
-			modifier = {
-				PAP = { NOT = { check_key = { lhs = playervote value = 0 } } }
+			modifier = { 
+				PAP = { 
+					NOT = { 
+						check_variable = { 
+							which = kpi
+							value = 0
+						}
+					}
+				}
 				factor = 1.75
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 260 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 260
+				}
 				factor = 0.75
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 390 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 390
+				}
 				factor = 0.75
 			}
-			modifier = {
-				NOT = { capital_distance = { who = PAP distance = 130 } }
+			modifier = { 
+				NOT = { 
+					capital_distance = { 
+						who = PAP
+						distance = 130
+					}
+				}
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				is_lesser_in_union = yes
-				any_country = {
+				any_country = { 
 					overlord_of = ROOT
 					religion = catholic
 				}
 				factor = 2.0
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 5
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 10
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 20
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 40
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 80
 				factor = 1.5
 			}
 		}
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = -1 }
-				change_key = { lhs = ref_synodvote_against value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = -1
+				}
+				change_variable = { 
+					which = pse
+					value = 1
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.302.optc"
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
-			modifier = {
-				PAP = { check_key = { lhs = playervote value = 1 } }
+			modifier = { 
+				PAP = { 
+					check_variable = { 
+						which = kpi
+						value = 1
+					}
+				}
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				government = republic
 				factor = 2
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 260 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 260
+				}
 				factor = 1.5
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 390 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 390
+				}
 				factor = 1.5
 			}
-			modifier = {
-				NOT = { capital_distance = { who = PAP distance = 130 } }
+			modifier = { 
+				NOT = { 
+					capital_distance = { 
+						who = PAP
+						distance = 130
+					}
+				}
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				exists = AVI
-				AVI = { papal_trigger = yes }
+				AVI = { 
+					AND = { 
+						government = theocracy
+						is_variable_equal = { 
+							which = grp
+							value = 3
+						}
+					}
+				}
 				factor = 0.5
 			}
-			modifier = {
+			modifier = { 
 				is_papal_controller = yes
 				factor = 2
 			}
-			modifier = {
-				any_neighbor_country = { NOT = { religion_group = christian } }
+			modifier = { 
+				any_neighbor_country = { 
+					NOT = { 
+						religion_group = christian
+					}
+				}
 				factor = 0.8
 			}
-			modifier = {
-				OR = {
+			modifier = { 
+				OR = { 
 					is_elector = yes
 					is_emperor = yes
 				}
 				factor = 2.0
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 5
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 10
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 20
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 40
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 80
 				factor = 0.8
 			}
 		}
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = 1 }
-				change_key = { lhs = ref_synodvote_infavour value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = 1
+				}
+				change_variable = { 
+					which = psd
+					value = 1
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.304
 	title = "DG_Synod.304.title"
 	desc = "DG_Synod.304.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-	
-	immediate = {
+	immediate = { 
 		log = "DG:[GetYear]:[ref_synod_site.aab.GetValue]:Calvinism:Synod Decides:[ref_synod_site.GetName]:[This.GetName]"
 	}
-
-	option = {
+	option = { 
 		name = "DG_Synod.304.opta"
-		trigger = {
-			NOT = { check_key = { lhs = synodvote value = -2 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = kph
+					value = -2
+				}
+			}
 		}
 		custom_tooltip = pro_synod_001_a
-		hidden_effect = {
+		hidden_effect = { 
 			set_country_flag = PAP_condemn_02
-			every_country = {
-				limit = { has_country_flag = reformed_presence }
-				country_event = { id = DG_Reformed.006 }
+			every_country = { 
+				limit = { 
+					has_country_flag = reformed_presence
+				}
+				country_event = { 
+					id = DG_Reformed.006
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.304.optb"
-		trigger = {
-			check_key = { lhs = synodvote value = -2 }
-			NOT = { check_key = { lhs = synodvote value = 3 } }
+		trigger = { 
+			check_variable = { 
+				which = kph
+				value = -2
+			}
+			NOT = { 
+				check_variable = { 
+					which = kph
+					value = 3
+				}
+			}
 		}
-		Stab_Subtract4 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
 		custom_tooltip = SetReformedCompromiseAspects_tt
-		hidden_effect = {
-			SetReformedCompromiseAspects = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 3
+			}
+			set_variable = { 
+				which = kng
+				value = 3
+			}
+			set_variable = { 
+				which = knh
+				value = 1
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 3
+			}
+			set_variable = { 
+				which = knk
+				value = 1
+			}
+			set_variable = { 
+				which = knl
+				value = 3
+			}
+			set_variable = { 
+				which = knm
+				value = 1
+			}
+			set_variable = { 
+				which = knn
+				value = 2
+			}
+			set_variable = { 
+				which = kno
+				value = 3
+			}
+			set_variable = { 
+				which = knp
+				value = 3
+			}
+			set_variable = { 
+				which = knq
+				value = 1
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 2
+			}
+			set_variable = { 
+				which = knt
+				value = 2
+			}
+			set_variable = { 
+				which = knu
+				value = 3
+			}
+			set_variable = { 
+				which = knv
+				value = 3
+			}
+			set_variable = { 
+				which = knw
+				value = 2
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
 			set_global_flag = ref_schism_compromise
 			clr_global_flag = lol_schism_mended
 			clr_global_flag = lol_schism_compromise
@@ -635,25 +1398,135 @@ country_event = {
 			clr_global_flag = hus_schism_compromise
 			clr_global_flag = pro_schism_mended
 			clr_global_flag = pro_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Reformed.021 }
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Reformed.021
+				}
 			}
-			every_country = {
-				limit = { religion = reformed }
-				country_event = { id = DG_Reformed.031 }
+			every_country = { 
+				limit = { 
+					religion = reformed
+				}
+				country_event = { 
+					id = DG_Reformed.031
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.304.optc"
-		trigger = {
-			check_key = { lhs = synodvote value = 3 }
+		trigger = { 
+			check_variable = { 
+				which = kph
+				value = 3
+			}
 		}
-		Stab_Subtract4 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
 		custom_tooltip = SetReformedAspects_tt
-		hidden_effect = {
-			SetReformedAspects = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 3
+			}
+			set_variable = { 
+				which = kng
+				value = 3
+			}
+			set_variable = { 
+				which = knh
+				value = 2
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 3
+			}
+			set_variable = { 
+				which = knk
+				value = 3
+			}
+			set_variable = { 
+				which = knl
+				value = 3
+			}
+			set_variable = { 
+				which = knm
+				value = 3
+			}
+			set_variable = { 
+				which = knn
+				value = 3
+			}
+			set_variable = { 
+				which = kno
+				value = 3
+			}
+			set_variable = { 
+				which = knp
+				value = 3
+			}
+			set_variable = { 
+				which = knq
+				value = 3
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 1
+			}
+			set_variable = { 
+				which = knt
+				value = 3
+			}
+			set_variable = { 
+				which = knu
+				value = 3
+			}
+			set_variable = { 
+				which = knv
+				value = 3
+			}
+			set_variable = { 
+				which = knw
+				value = 3
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
 			set_global_flag = ref_schism_mended
 			clr_global_flag = lol_schism_mended
 			clr_global_flag = lol_schism_compromise
@@ -661,674 +1534,1564 @@ country_event = {
 			clr_global_flag = hus_schism_compromise
 			clr_global_flag = pro_schism_mended
 			clr_global_flag = pro_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Reformed.041 }
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Reformed.041
+				}
 			}
-			every_country = {
-				limit = { religion = reformed }
-				country_event = { id = DG_Reformed.051 }
+			every_country = { 
+				limit = { 
+					religion = reformed
+				}
+				country_event = { 
+					id = DG_Reformed.051
+				}
 			}
 		}
 	}
-	after = {
-		hidden_effect = {
-			set_key = { lhs = synodvote value = 0 }
-			set_key = { lhs = playervote value = 0 }
+	after = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = kph
+				value = 0
+			}
+			set_variable = { 
+				which = kpi
+				value = 0
+			}
 		}
 	}
 }
-
-#Synod on Hussitism
-country_event = {
+country_event = { 
 	id = DG_Synod.401
 	title = "DG_Synod.401.title"
 	desc = "DG_Synod.401.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-
-	immediate = {
-		hidden_effect = {
-			set_key = { lhs = synodvote value = 0 }
-			set_key = { lhs = playervote value = 0 }
+	immediate = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = kph
+				value = 0
+			}
+			set_variable = { 
+				which = kpi
+				value = 0
+			}
 		}
 		log = "DG:[GetYear]:[hus_synod_site.aab.GetValue]:Hussite:Synod Convenes:[hus_synod_site.GetName]:[This.GetName]"
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.401.optb"
 		custom_tooltip = hus_synod_001_b
-		hidden_effect = {
-			every_country = {
-				limit = {
+		hidden_effect = { 
+			every_country = { 
+				limit = { 
 					religion = catholic
-					OR = {
+					OR = { 
 						government = theocracy
 						is_emperor = yes
 						is_elector = yes
 						num_of_cities = 5
-						any_owned_province = { OR = { has_cardinal = yes has_province_flag = MN_Archbishopric } }
+						any_owned_province = { 
+							OR = { 
+								has_cardinal = yes
+								has_province_flag = MN_Archbishopric
+							}
+						}
 					}
 				}
-				if = {
-					limit = { ai = no }
-					country_event = { id = DG_Synod.402 }
+				if = { 
+					limit = { 
+						ai = no
+					}
+					country_event = { 
+						id = DG_Synod.402
+					}
 				}
-				else = {
-					country_event = { id = DG_Synod.403 days = 100 }
+				else = { 
+					country_event = { 
+						id = DG_Synod.403
+						days = 100
+					}
 				}
 			}
-			PAP = {
-				country_event = { id = DG_Synod.404 days = 200 }
+			PAP = { 
+				country_event = { 
+					id = DG_Synod.404
+					days = 200
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.401.opta"
-		trigger = { ai = no }
+		trigger = { 
+			ai = no
+		}
 		custom_tooltip = hus_synod_001_a
-		hidden_effect = {
+		hidden_effect = { 
 			set_country_flag = PAP_condemn_16
-			every_country = {
-				limit = { has_country_flag = hussite_presence }
-				country_event = { id = DG_Hussites.005 }
+			every_country = { 
+				limit = { 
+					has_country_flag = hussite_presence
+				}
+				country_event = { 
+					id = DG_Hussites.005
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.401.optc"
-		trigger = { ai = no }
-		Stab_Subtract4 = yes
+		trigger = { 
+			ai = no
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
 		custom_tooltip = SetHussiteCompromiseAspects_tt
-		hidden_effect = {
-			SetHussiteCompromiseAspects = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 1
+			}
+			set_variable = { 
+				which = kng
+				value = 3
+			}
+			set_variable = { 
+				which = knh
+				value = 1
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 2
+			}
+			set_variable = { 
+				which = knk
+				value = 1
+			}
+			set_variable = { 
+				which = knl
+				value = 2
+			}
+			set_variable = { 
+				which = knm
+				value = 1
+			}
+			set_variable = { 
+				which = knn
+				value = 2
+			}
+			set_variable = { 
+				which = kno
+				value = 1
+			}
+			set_variable = { 
+				which = knp
+				value = 1
+			}
+			set_variable = { 
+				which = knq
+				value = 1
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 2
+			}
+			set_variable = { 
+				which = knt
+				value = 1
+			}
+			set_variable = { 
+				which = knu
+				value = 2
+			}
+			set_variable = { 
+				which = knv
+				value = 2
+			}
+			set_variable = { 
+				which = knw
+				value = 1
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
 			set_global_flag = hus_schism_compromise
 			clr_global_flag = lol_schism_mended
 			clr_global_flag = lol_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Hussites.021 }
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Hussites.021
+				}
 			}
-			every_country = {
-				limit = { religion = hussite }
-				country_event = { id = DG_Hussites.031 }
+			every_country = { 
+				limit = { 
+					religion = hussite
+				}
+				country_event = { 
+					id = DG_Hussites.031
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.402
 	title = "DG_Synod.402.title"
 	desc = "DG_Synod.402.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-	
-	trigger = { ai = no }
-
-	option = {
+	trigger = { 
+		ai = no
+	}
+	option = { 
 		name = "DG_Synod.402.opta"
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = -1 }
-				change_key = { lhs = playervote value = -1 }
-				change_key = { lhs = hus_synodvote_against value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = -1
+				}
+				change_variable = { 
+					which = kpi
+					value = -1
+				}
+				change_variable = { 
+					which = psa
+					value = 1
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.402.optb"
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.402.optc"
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = 1 }
-				change_key = { lhs = playervote value = 1 }
-				change_key = { lhs = hus_synodvote_infavour value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = 1
+				}
+				change_variable = { 
+					which = kpi
+					value = 1
+				}
+				change_variable = { 
+					which = prz
+					value = 1
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.403
 	title = "DG_Synod.402.title"
 	desc = "DG_Synod.402.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-
-	option = {
+	option = { 
 		name = "DG_Synod.402.opta"
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
-			modifier = {
-				PAP = { NOT = { check_key = { lhs = playervote value = 0 } } }
+			modifier = { 
+				PAP = { 
+					NOT = { 
+						check_variable = { 
+							which = kpi
+							value = 0
+						}
+					}
+				}
 				factor = 1.75
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 260 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 260
+				}
 				factor = 0.75
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 390 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 390
+				}
 				factor = 0.75
 			}
-			modifier = {
-				NOT = { capital_distance = { who = PAP distance = 130 } }
+			modifier = { 
+				NOT = { 
+					capital_distance = { 
+						who = PAP
+						distance = 130
+					}
+				}
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				is_lesser_in_union = yes
-				any_country = {
+				any_country = { 
 					overlord_of = ROOT
 					religion = catholic
 				}
 				factor = 2.0
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 5
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 10
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 20
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 40
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 80
 				factor = 1.5
 			}
 		}
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = -1 }
-				change_key = { lhs = hus_synodvote_against value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = -1
+				}
+				change_variable = { 
+					which = psa
+					value = 1
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.402.optc"
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
-			modifier = {
-				PAP = { check_key = { lhs = playervote value = 1 } }
+			modifier = { 
+				PAP = { 
+					check_variable = { 
+						which = kpi
+						value = 1
+					}
+				}
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				government = republic
 				factor = 2
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 260 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 260
+				}
 				factor = 1.5
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 390 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 390
+				}
 				factor = 1.5
 			}
-			modifier = {
-				NOT = { capital_distance = { who = PAP distance = 130 } }
+			modifier = { 
+				NOT = { 
+					capital_distance = { 
+						who = PAP
+						distance = 130
+					}
+				}
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				exists = AVI
-				AVI = { papal_trigger = yes }
+				AVI = { 
+					AND = { 
+						government = theocracy
+						is_variable_equal = { 
+							which = grp
+							value = 3
+						}
+					}
+				}
 				factor = 0.5
 			}
-			modifier = {
+			modifier = { 
 				is_papal_controller = yes
 				factor = 2
 			}
-			modifier = {
-				any_neighbor_country = { NOT = { religion_group = christian } }
+			modifier = { 
+				any_neighbor_country = { 
+					NOT = { 
+						religion_group = christian
+					}
+				}
 				factor = 0.8
 			}
-			modifier = {
-				OR = {
+			modifier = { 
+				OR = { 
 					is_elector = yes
 					is_emperor = yes
 				}
 				factor = 2.0
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 5
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 10
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 20
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 40
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 80
 				factor = 0.8
 			}
 		}
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = 1 }
-				change_key = { lhs = hus_synodvote_infavour value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = 1
+				}
+				change_variable = { 
+					which = prz
+					value = 1
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.404
 	title = "DG_Synod.404.title"
 	desc = "DG_Synod.404.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-	
-	immediate = {
-	}
-
-	option = {
+	immediate = { }
+	option = { 
 		name = "DG_Synod.404.opta"
-		trigger = {
-			NOT = { check_key = { lhs = synodvote value = -2 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = kph
+					value = -2
+				}
+			}
 		}
 		custom_tooltip = hus_synod_001_a
-		hidden_effect = {
+		hidden_effect = { 
 			set_country_flag = PAP_condemn_16
-			every_country = {
-				limit = { has_country_flag = hussite_presence }
-				country_event = { id = DG_Hussites.006 }
+			every_country = { 
+				limit = { 
+					has_country_flag = hussite_presence
+				}
+				country_event = { 
+					id = DG_Hussites.006
+				}
 			}
 		}
 		log = "DG:[GetYear]:[hus_synod_site.aab.GetValue]:Hussite:Synod Burns Hus:[hus_synod_site.GetName]:[This.GetName]"
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.404.optb"
-		trigger = {
-			check_key = { lhs = synodvote value = -2 }
-			NOT = { check_key = { lhs = synodvote value = 3 } }
+		trigger = { 
+			check_variable = { 
+				which = kph
+				value = -2
+			}
+			NOT = { 
+				check_variable = { 
+					which = kph
+					value = 3
+				}
+			}
 		}
-		Stab_Subtract4 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
 		custom_tooltip = SetHussiteCompromiseAspects_tt
-		hidden_effect = {
-			SetHussiteCompromiseAspects = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 1
+			}
+			set_variable = { 
+				which = kng
+				value = 3
+			}
+			set_variable = { 
+				which = knh
+				value = 1
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 2
+			}
+			set_variable = { 
+				which = knk
+				value = 1
+			}
+			set_variable = { 
+				which = knl
+				value = 2
+			}
+			set_variable = { 
+				which = knm
+				value = 1
+			}
+			set_variable = { 
+				which = knn
+				value = 2
+			}
+			set_variable = { 
+				which = kno
+				value = 1
+			}
+			set_variable = { 
+				which = knp
+				value = 1
+			}
+			set_variable = { 
+				which = knq
+				value = 1
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 2
+			}
+			set_variable = { 
+				which = knt
+				value = 1
+			}
+			set_variable = { 
+				which = knu
+				value = 2
+			}
+			set_variable = { 
+				which = knv
+				value = 2
+			}
+			set_variable = { 
+				which = knw
+				value = 1
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
 			set_global_flag = hus_schism_compromise
 			clr_global_flag = lol_schism_mended
 			clr_global_flag = lol_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Hussites.021 }
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Hussites.021
+				}
 			}
-			every_country = {
-				limit = { religion = hussite }
-				country_event = { id = DG_Hussites.031 }
+			every_country = { 
+				limit = { 
+					religion = hussite
+				}
+				country_event = { 
+					id = DG_Hussites.031
+				}
 			}
 		}
 		log = "DG:[GetYear]:[hus_synod_site.aab.GetValue]:Hussite:Synod Compromises:[hus_synod_site.GetName]:[This.GetName]"
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.404.optc"
-		trigger = {
-			check_key = { lhs = synodvote value = 3 }
+		trigger = { 
+			check_variable = { 
+				which = kph
+				value = 3
+			}
 		}
-		Stab_Subtract4 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
 		custom_tooltip = SetHussiteAspects_tt
-		hidden_effect = {
-			SetHussiteAspects = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 3
+			}
+			set_variable = { 
+				which = kng
+				value = 3
+			}
+			set_variable = { 
+				which = knh
+				value = 3
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 3
+			}
+			set_variable = { 
+				which = knk
+				value = 2
+			}
+			set_variable = { 
+				which = knl
+				value = 3
+			}
+			set_variable = { 
+				which = knm
+				value = 1
+			}
+			set_variable = { 
+				which = knn
+				value = 2
+			}
+			set_variable = { 
+				which = kno
+				value = 1
+			}
+			set_variable = { 
+				which = knp
+				value = 3
+			}
+			set_variable = { 
+				which = knq
+				value = 1
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 1
+			}
+			set_variable = { 
+				which = knt
+				value = 1
+			}
+			set_variable = { 
+				which = knu
+				value = 3
+			}
+			set_variable = { 
+				which = knv
+				value = 3
+			}
+			set_variable = { 
+				which = knw
+				value = 2
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
 			set_global_flag = hus_schism_mended
 			clr_global_flag = lol_schism_mended
 			clr_global_flag = lol_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Hussites.041 }
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Hussites.041
+				}
 			}
-			every_country = {
-				limit = { religion = hussite }
-				country_event = { id = DG_Hussites.051 }
+			every_country = { 
+				limit = { 
+					religion = hussite
+				}
+				country_event = { 
+					id = DG_Hussites.051
+				}
 			}
 		}
 		log = "DG:[GetYear]:[hus_synod_site.aab.GetValue]:Hussite:Synod Reforms:[hus_synod_site.GetName]:[This.GetName]"
 	}
-	after = {
-		hidden_effect = {
-			set_key = { lhs = synodvote value = 0 }
-			set_key = { lhs = playervote value = 0 }
+	after = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = kph
+				value = 0
+			}
+			set_variable = { 
+				which = kpi
+				value = 0
+			}
 		}
 	}
 }
-
-#Synod on Wycliffitism
-country_event = {
+country_event = { 
 	id = DG_Synod.601
 	title = "DG_Synod.601.title"
 	desc = "DG_Synod.601.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-
-	immediate = {
-		hidden_effect = {
-			set_key = { lhs = synodvote value = 0 }
-			set_key = { lhs = playervote value = 0 }
+	immediate = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = kph
+				value = 0
+			}
+			set_variable = { 
+				which = kpi
+				value = 0
+			}
 		}
 		log = "DG:[GetYear]:[lol_synod_site.aab.GetValue]:Wycliffite:Synod Convenes:[lol_synod_site.GetName]:[This.GetName]"
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.601.optb"
 		custom_tooltip = lol_synod_001_b
-		hidden_effect = {
-			every_country = {
-				limit = {
+		hidden_effect = { 
+			every_country = { 
+				limit = { 
 					religion = catholic
-					OR = {
+					OR = { 
 						government = theocracy
 						is_emperor = yes
 						is_elector = yes
 						num_of_cities = 5
-						any_owned_province = { OR = { has_cardinal = yes has_province_flag = MN_Archbishopric } }
+						any_owned_province = { 
+							OR = { 
+								has_cardinal = yes
+								has_province_flag = MN_Archbishopric
+							}
+						}
 					}
 				}
-				if = {
-					limit = { ai = no }
-					country_event = { id = DG_Synod.602 }
+				if = { 
+					limit = { 
+						ai = no
+					}
+					country_event = { 
+						id = DG_Synod.602
+					}
 				}
-				else = {
-					country_event = { id = DG_Synod.603 days = 100 }
+				else = { 
+					country_event = { 
+						id = DG_Synod.603
+						days = 100
+					}
 				}
 			}
-			PAP = {
-				country_event = { id = DG_Synod.604 days = 200 }
+			PAP = { 
+				country_event = { 
+					id = DG_Synod.604
+					days = 200
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.601.opta"
-		trigger = { ai = no }
+		trigger = { 
+			ai = no
+		}
 		custom_tooltip = lol_synod_001_a
-		hidden_effect = {
+		hidden_effect = { 
 			set_country_flag = PAP_condemn_16
-			every_country = {
-				limit = { has_country_flag = lollard_presence }
-				country_event = { id = DG_Lollards.005 }
+			every_country = { 
+				limit = { 
+					has_country_flag = lollard_presence
+				}
+				country_event = { 
+					id = DG_Lollards.005
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.601.optc"
-		trigger = { ai = no }
-		Stab_Subtract4 = yes
-		custom_tooltip = SetLollardCompromiseAspects_tt
-		hidden_effect = {
-			SetLollardCompromiseAspects = yes
-			set_global_flag = lol_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Lollards.021 }
+		trigger = { 
+			ai = no
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
 			}
-			every_country = {
-				limit = { religion = lollard }
-				country_event = { id = DG_Lollards.031 }
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
+		custom_tooltip = SetLollardCompromiseAspects_tt
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 1
+			}
+			set_variable = { 
+				which = kng
+				value = 1
+			}
+			set_variable = { 
+				which = knh
+				value = 1
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 1
+			}
+			set_variable = { 
+				which = knk
+				value = 1
+			}
+			set_variable = { 
+				which = knl
+				value = 1
+			}
+			set_variable = { 
+				which = knm
+				value = 1
+			}
+			set_variable = { 
+				which = knn
+				value = 2
+			}
+			set_variable = { 
+				which = kno
+				value = 1
+			}
+			set_variable = { 
+				which = knp
+				value = 1
+			}
+			set_variable = { 
+				which = knq
+				value = 1
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 2
+			}
+			set_variable = { 
+				which = knt
+				value = 1
+			}
+			set_variable = { 
+				which = knu
+				value = 2
+			}
+			set_variable = { 
+				which = knv
+				value = 2
+			}
+			set_variable = { 
+				which = knw
+				value = 1
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
+			set_global_flag = lol_schism_compromise
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Lollards.021
+				}
+			}
+			every_country = { 
+				limit = { 
+					religion = lollard
+				}
+				country_event = { 
+					id = DG_Lollards.031
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.602
 	title = "DG_Synod.602.title"
 	desc = "DG_Synod.602.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-	
-	trigger = { ai = no }
-
-	option = {
+	trigger = { 
+		ai = no
+	}
+	option = { 
 		name = "DG_Synod.602.opta"
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = -1 }
-				change_key = { lhs = playervote value = -1 }
-				change_key = { lhs = lol_synodvote_against value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = -1
+				}
+				change_variable = { 
+					which = kpi
+					value = -1
+				}
+				change_variable = { 
+					which = pry
+					value = 1
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.602.optb"
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.602.optc"
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = 1 }
-				change_key = { lhs = playervote value = 1 }
-				change_key = { lhs = lol_synodvote_infavour value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = 1
+				}
+				change_variable = { 
+					which = kpi
+					value = 1
+				}
+				change_variable = { 
+					which = prx
+					value = 1
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.603
 	title = "DG_Synod.602.title"
 	desc = "DG_Synod.602.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-
-	option = {
+	option = { 
 		name = "DG_Synod.602.opta"
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
-			modifier = {
-				capital_distance = { who = PAP distance = 260 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 260
+				}
 				factor = 0.75
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 390 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 390
+				}
 				factor = 0.75
 			}
-			modifier = {
-				NOT = { capital_distance = { who = PAP distance = 130 } }
+			modifier = { 
+				NOT = { 
+					capital_distance = { 
+						who = PAP
+						distance = 130
+					}
+				}
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				is_lesser_in_union = yes
-				any_country = {
+				any_country = { 
 					overlord_of = ROOT
 					religion = catholic
 				}
 				factor = 2.0
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 5
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 10
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 20
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 40
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 80
 				factor = 1.5
 			}
 		}
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = -1 }
-				change_key = { lhs = playervote value = -1 }
-				change_key = { lhs = lol_synodvote_against value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = -1
+				}
+				change_variable = { 
+					which = kpi
+					value = -1
+				}
+				change_variable = { 
+					which = pry
+					value = 1
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.602.optc"
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
-			modifier = {
-				PAP = { check_key = { lhs = playervote value = 1 } }
+			modifier = { 
+				PAP = { 
+					check_variable = { 
+						which = kpi
+						value = 1
+					}
+				}
 				factor = 1.5
 			}
-			modifier = {
+			modifier = { 
 				government = republic
 				factor = 2
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 260 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 260
+				}
 				factor = 1.5
 			}
-			modifier = {
-				capital_distance = { who = PAP distance = 390 }
+			modifier = { 
+				capital_distance = { 
+					who = PAP
+					distance = 390
+				}
 				factor = 1.5
 			}
-			modifier = {
-				NOT = { capital_distance = { who = PAP distance = 130 } }
+			modifier = { 
+				NOT = { 
+					capital_distance = { 
+						who = PAP
+						distance = 130
+					}
+				}
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				exists = AVI
-				AVI = { papal_trigger = yes }
+				AVI = { 
+					AND = { 
+						government = theocracy
+						is_variable_equal = { 
+							which = grp
+							value = 3
+						}
+					}
+				}
 				factor = 0.5
 			}
-			modifier = {
+			modifier = { 
 				is_papal_controller = yes
 				factor = 2
 			}
-			modifier = {
-				any_neighbor_country = { NOT = { religion_group = christian } }
+			modifier = { 
+				any_neighbor_country = { 
+					NOT = { 
+						religion_group = christian
+					}
+				}
 				factor = 0.8
 			}
-			modifier = {
-				OR = {
+			modifier = { 
+				OR = { 
 					is_elector = yes
 					is_emperor = yes
 				}
 				factor = 2.0
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 5
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 10
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 20
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 40
 				factor = 0.8
 			}
-			modifier = {
+			modifier = { 
 				num_of_cities = 80
 				factor = 0.8
 			}
 		}
-		hidden_effect = {
-			PAP = {
-				change_key = { lhs = synodvote value = 1 }
-				change_key = { lhs = playervote value = 1 }
-				change_key = { lhs = lol_synodvote_infavour value = 1 }
+		hidden_effect = { 
+			PAP = { 
+				change_variable = { 
+					which = kph
+					value = 1
+				}
+				change_variable = { 
+					which = kpi
+					value = 1
+				}
+				change_variable = { 
+					which = prx
+					value = 1
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = DG_Synod.604
 	title = "DG_Synod.604.title"
 	desc = "DG_Synod.604.desc"
 	picture = all_church_state
-
 	is_triggered_only = yes
-	
-	immediate = {
+	immediate = { 
 		log = "DG:[GetYear]:[lol_synod_site.aab.GetValue]:Wycliffite:Synod Decides:[lol_synod_site.GetName]:[This.GetName]"
 	}
-
-	option = {
+	option = { 
 		name = "DG_Synod.604.opta"
-		trigger = {
-			NOT = { check_key = { lhs = synodvote value = -2 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = kph
+					value = -2
+				}
+			}
 		}
 		custom_tooltip = lol_synod_001_a
-		hidden_effect = {
+		hidden_effect = { 
 			set_country_flag = PAP_condemn_16
-			every_country = {
-				limit = { has_country_flag = lollard_presence }
-				country_event = { id = DG_Lollards.006 }
+			every_country = { 
+				limit = { 
+					has_country_flag = lollard_presence
+				}
+				country_event = { 
+					id = DG_Lollards.006
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.604.optb"
-		trigger = {
-			check_key = { lhs = synodvote value = -2 }
-			NOT = { check_key = { lhs = synodvote value = 3 } }
+		trigger = { 
+			check_variable = { 
+				which = kph
+				value = -2
+			}
+			NOT = { 
+				check_variable = { 
+					which = kph
+					value = 3
+				}
+			}
 		}
-		Stab_Subtract4 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
 		custom_tooltip = SetLollardCompromiseAspects_tt
-		hidden_effect = {
-			SetLollardCompromiseAspects = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 1
+			}
+			set_variable = { 
+				which = kng
+				value = 1
+			}
+			set_variable = { 
+				which = knh
+				value = 1
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 1
+			}
+			set_variable = { 
+				which = knk
+				value = 1
+			}
+			set_variable = { 
+				which = knl
+				value = 1
+			}
+			set_variable = { 
+				which = knm
+				value = 1
+			}
+			set_variable = { 
+				which = knn
+				value = 2
+			}
+			set_variable = { 
+				which = kno
+				value = 1
+			}
+			set_variable = { 
+				which = knp
+				value = 1
+			}
+			set_variable = { 
+				which = knq
+				value = 1
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 2
+			}
+			set_variable = { 
+				which = knt
+				value = 1
+			}
+			set_variable = { 
+				which = knu
+				value = 2
+			}
+			set_variable = { 
+				which = knv
+				value = 2
+			}
+			set_variable = { 
+				which = knw
+				value = 1
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
 			set_global_flag = lol_schism_compromise
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Lollards.021 }
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Lollards.021
+				}
 			}
-			every_country = {
-				limit = { religion = lollard }
-				country_event = { id = DG_Lollards.031 }
+			every_country = { 
+				limit = { 
+					religion = lollard
+				}
+				country_event = { 
+					id = DG_Lollards.031
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "DG_Synod.604.optc"
-		trigger = {
-			check_key = { lhs = synodvote value = 3 }
-		}
-		Stab_Subtract4 = yes
-		custom_tooltip = SetLollardAspects_tt
-		hidden_effect = {
-			SetLollardAspects = yes
-			set_global_flag = lol_schism_mended
-			every_country = {
-				limit = { religion = catholic }
-				country_event = { id = DG_Lollards.041 }
+		trigger = { 
+			check_variable = { 
+				which = kph
+				value = 3
 			}
-			every_country = {
-				limit = { religion = lollard }
-				country_event = { id = DG_Lollards.051 }
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -4
+			}
+		}
+		tooltip = { 
+			add_stability = -4
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
+		custom_tooltip = SetLollardAspects_tt
+		hidden_effect = { 
+			set_variable = { 
+				which = knf
+				value = 3
+			}
+			set_variable = { 
+				which = kng
+				value = 3
+			}
+			set_variable = { 
+				which = knh
+				value = 3
+			}
+			set_variable = { 
+				which = kni
+				value = 3
+			}
+			set_variable = { 
+				which = knj
+				value = 3
+			}
+			set_variable = { 
+				which = knk
+				value = 2
+			}
+			set_variable = { 
+				which = knl
+				value = 3
+			}
+			set_variable = { 
+				which = knm
+				value = 1
+			}
+			set_variable = { 
+				which = knn
+				value = 2
+			}
+			set_variable = { 
+				which = kno
+				value = 1
+			}
+			set_variable = { 
+				which = knp
+				value = 3
+			}
+			set_variable = { 
+				which = knq
+				value = 1
+			}
+			set_variable = { 
+				which = knr
+				value = 1
+			}
+			set_variable = { 
+				which = kns
+				value = 2
+			}
+			set_variable = { 
+				which = knt
+				value = 1
+			}
+			set_variable = { 
+				which = knu
+				value = 2
+			}
+			set_variable = { 
+				which = knv
+				value = 3
+			}
+			set_variable = { 
+				which = knw
+				value = 2
+			}
+			set_variable = { 
+				which = knx
+				value = 3
+			}
+			set_global_flag = lol_schism_mended
+			every_country = { 
+				limit = { 
+					religion = catholic
+				}
+				country_event = { 
+					id = DG_Lollards.041
+				}
+			}
+			every_country = { 
+				limit = { 
+					religion = lollard
+				}
+				country_event = { 
+					id = DG_Lollards.051
+				}
 			}
 		}
 	}
-	after = {
-		hidden_effect = {
-			set_key = { lhs = synodvote value = 0 }
-			set_key = { lhs = playervote value = 0 }
+	after = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = kph
+				value = 0
+			}
+			set_variable = { 
+				which = kpi
+				value = 0
+			}
 		}
 	}
 }

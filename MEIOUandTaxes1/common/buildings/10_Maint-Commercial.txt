@@ -1,33 +1,23 @@
-#######################
-# Maint - Agriculture #
-#######################
-
-maint_Commercial_no = {
+maint_Commercial_no = { 
 	cost = 0
-	time =  0
-	
-	potential = {
+	time = 0
+	potential = { 
 		ai = no
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		always = no
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		has_building = maint_Commercial_no
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = maint_Commercial_low
 					has_building = maint_Commercial_med
 					has_building = maint_Commercial_high
@@ -37,40 +27,54 @@ maint_Commercial_no = {
 		}
 	}
 }
-maint_Commercial_low = {
+maint_Commercial_low = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropCommercialCan = yes }
-		
-		NOT = {
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = dgg
+					value = 0.01
+				}
+			}
+		}
+		NOT = { 
 			has_building = maint_Commercial_med
 			has_building = maint_Commercial_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropCommercialCan = yes }
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = dgg
+					value = 0.01
+				}
+			}
+		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = maint_Commercial_no
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = maint_Commercial_med
 					has_building = maint_Commercial_high
 				}
@@ -79,40 +83,54 @@ maint_Commercial_low = {
 		}
 	}
 }
-maint_Commercial_med = {
+maint_Commercial_med = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropCommercialCan = yes }
-		
-		NOT = {
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = dgg
+					value = 0.01
+				}
+			}
+		}
+		NOT = { 
 			has_building = maint_Commercial_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropCommercialCan = yes }
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = dgg
+					value = 0.01
+				}
+			}
+		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = maint_Commercial_no
-        remove_building = maint_Commercial_low
+		remove_building = maint_Commercial_low
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = maint_Commercial_high
 				}
 			}
@@ -120,34 +138,49 @@ maint_Commercial_med = {
 		}
 	}
 }
-maint_Commercial_high = {
+maint_Commercial_high = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropCommercialCan = yes }
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = dgg
+					value = 0.01
+				}
+			}
+		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = { Tax_PropCommercialCan = yes }
+		owner = { 
+			PREV = { 
+				NOT = { 
+					has_province_modifier = no_maint
+				}
+				check_variable = { 
+					which = dgg
+					value = 0.01
+				}
+			}
+		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = maint_Commercial_no
-        remove_building = maint_Commercial_low
-        remove_building = maint_Commercial_med
+		remove_building = maint_Commercial_low
+		remove_building = maint_Commercial_med
 	}
-	
-	on_destroyed = {
+	on_destroyed = { 
 		add_building = maint_Commercial_med
 	}
 }

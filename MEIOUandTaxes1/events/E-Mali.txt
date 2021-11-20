@@ -1,91 +1,88 @@
-
-
-########################################
-# Events for Mali
-#
-# written by Gilles Gaudray
-########################################
-
-# The Songhai Rebellion
-country_event = {
+country_event = { 
 	id = flavor_mal.11
 	title = flavor_mal.11.t
 	desc = flavor_mal.11.d
 	picture = AFRICAN_WARRIORS_eventPicture
-	
 	fire_only_once = yes
-	
-	trigger = {
+	trigger = { 
 		tag = MAL
 		exists = SON
 		num_of_cities = 15
-		any_owned_province = {
+		any_owned_province = { 
 			area = songhai_area
 		}
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 40
-		modifier = {
+		modifier = { 
 			factor = 0.95
-			NOT = { stability = 2 }
+			NOT = { 
+				stability = 2
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.95
-			NOT = { stability = 1 }
+			NOT = { 
+				stability = 1
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.95
-			NOT = { stability = 0 }
+			NOT = { 
+				stability = 0
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.95
-			NOT = { stability = -1 }
+			NOT = { 
+				stability = -1
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.95
-			NOT = { stability = -2 }
+			NOT = { 
+				stability = -2
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.80
-			any_owned_province = {
+			any_owned_province = { 
 				area = songhai_area
 				culture = songhai
 			}
 		}
 	}
-	
-	immediate = {
-		every_owned_province = {
-			limit = {
+	immediate = { 
+		every_owned_province = { 
+			limit = { 
 				area = songhai_area
 			}
 			change_culture = songhai
 			add_core = SON
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_mal.11.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				area = songhai_area
 			}
 			cede_province = SON
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_mal.11.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				area = songhai_area
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nationalists_organizing"
 				duration = 7300
 			}

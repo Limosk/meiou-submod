@@ -1,174 +1,1643 @@
 namespace = POP_MP
-
-### Recalculate all provinces fighting age man manpower pools
-country_event = {
-    id = POP_MP.001
-    title = no_localisation
-    desc = no_localisation
+country_event = { 
+	id = POP_MP.001
+	title = no_localisation
+	desc = no_localisation
 	picture = MEIOU_AND_TAXES_eventPicture
-
-    is_triggered_only = yes
-    hidden = yes
-
-    immediate = {
-        regiongroup = {
-            region = {
-                limit = {
-                    isValidEmpty = yes
-                }
-                MP_DoProv = yes
-            }
-        }
-    }
-
-    option = { 
-		name = no_localisation
-    }
-}
-### Monthly manpower handling event
-country_event = {
-    id = POP_MP.0022
-    title = no_localisation
-    desc = no_localisation
-	picture = MEIOU_AND_TAXES_eventPicture
-
-    is_triggered_only = yes
-    hidden = yes
-	
-	immediate = {
-		every_country = {
-			limit = {
-				isValidCountry = yes
-			}
-			# Take old manpower out of the difference
-			set_key = { lhs = MP_Diff value = 0 }
-			subtract_key = { lhs = MP_Diff which = MP_MP }
-
-			MP_RaisedCalc = yes # Calculate the raised regiment amount (subtracting mercenaries)
-
-			export_to_key = {
-				lhs = MP_MP
-				value = manpower
-			}
-
-			# Add new manpower + raised regiments
-			change_key = { lhs = MP_MP which = MP_RaisedReg }
-			change_key = { lhs = MP_Diff which = MP_MP }
-
-			### Distribute losses from tag on provinces
-			## MP_Diff derived from on_battle_won_country on_action
-			if = {
-				limit = {
-					NOT = { is_key_equal = { lhs = MP_Diff value = 0 } }
+	is_triggered_only = yes
+	hidden = yes
+	immediate = { 
+		regiongroup = { 
+			region = { 
+				limit = { 
+					has_province_flag = Data
 				}
-				set_key = { lhs = Tmp_0 value = 0 }
-				
-				# Sum up Stat_MP in owner for further calculation
-				every_owned_province = {
-					limit = {
-						check_key = { lhs = Stat_MP value = 0.001 }
-						
-						isValidProv = yes
-					}
-					set_key = { lhs = Tmp_0 which = Stat_MP }
-					PREV = {
-						change_key = { lhs = Tmp_0 which = PREV }
-					}
-				}
-				# Distribute manpower changes over all owned provinces
-				set_key = { lhs = Tmp_1 value = 0 }
-				every_owned_province = {
-					limit = {
-						check_key = { lhs = Stat_MP value = 0.001 }
-						
-						isValidProv = yes
-					}
-					set_key = { lhs = MP_Diff which = PREV } # Distribute manpower changes over all owned provinces
-					set_key = { lhs = Tmp_0 which = PREV } # tag total manpower stat
-					
-					# Calculate fraction [0-100]: provincial manpower stat /  tag total manpower stat
-					set_key = { lhs = Tmp_1 which = Stat_MP }
-					multiply_key = { lhs = Tmp_1 value = 100 }
-					divide_key = { lhs = Tmp_1 which = Tmp_0 }
-					
-					multiply_key = { lhs = Tmp_1 which = MP_Diff } # multiply fraction with tag mnapower difference
-					divide_key = { lhs = Tmp_1 value = 100 } # transform back the 0-100 fraction
-					change_key = { lhs = MP_Losses which = Tmp_1 } # Add distributed change to MP_Losses key
-
-					if = { # Province was looted remove mp losses from loot kill display variable (already displayed in military losses)
-						limit = {
-							has_province_modifier = Loot_Disp
-							NOT = { check_key = { lhs = Tmp_1 value = 0 } }
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = aap
+							value = 0.1
 						}
-						subtract_key = { lhs = Loot_NDeathR which = Tmp_1 }
-						PREV = { change_key = { lhs = Tmp_1 which = PREV } }
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = afy
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = afy
+							value = 0.01
+						}
+					}
+					set_variable = { 
+						which = ibp
+						value = 10
+					}
+					if = { 
+						limit = { 
+							is_capital = yes
+							check_variable = { 
+								which = aap
+								value = 4
+							}
+						}
+						set_variable = { 
+							which = aro
+							value = 3
+						}
+						divide_variable = { 
+							which = aro
+							which = aap
+						}
+						multiply_variable = { 
+							which = aro
+							value = 100
+						}
+						change_variable = { 
+							which = ibp
+							which = aro
+						}
+					}
+					set_variable = { 
+						which = aro
+						which = afy
+					}
+					divide_variable = { 
+						which = aro
+						which = ibp
+					}
+					multiply_variable = { 
+						which = aro
+						which = aro
+					}
+					subtract_variable = { 
+						which = aro
+						value = 1
+					}
+					multiply_variable = { 
+						which = aro
+						value = -1
+					}
+					multiply_variable = { 
+						which = aro
+						value = 0.25
+					}
+					set_variable = { 
+						which = ibp
+						value = 0
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = afy
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = afy
+							value = 0.01
+						}
+					}
+					else_if = { 
+						limit = { 
+							check_variable = { 
+								which = afy
+								value = 100
+							}
+						}
+						set_variable = { 
+							which = afy
+							value = 100
+						}
+					}
+					change_variable = { 
+						which = afy
+						which = aro
+					}
+					set_variable = { 
+						which = afz
+						which = aap
+					}
+					multiply_variable = { 
+						which = afz
+						which = afy
+					}
+					multiply_variable = { 
+						which = afz
+						value = 0.01
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = afz
+								which = aap
+							}
+						}
+						set_variable = { 
+							which = afz
+							which = aap
+						}
+					}
+					set_variable = { 
+						which = aro
+						value = 0
 					}
 				}
-				subtract_key = { lhs = Loot_NDeathR which = Tmp_1 } # Add Losses to overall tag based display of losses
-			}
-			
-			# Sum up manpower losses nationally
-			set_key = { lhs = MP_Losses value = 0 }
-			every_owned_province = {
-				limit = {
-					isValidProv = yes
+				else = { 
+					set_variable = { 
+						which = afz
+						value = 0
+					}
+					set_variable = { 
+						which = afy
+						value = 100
+					}
 				}
-				PREV = { change_key = { lhs = MP_Losses which = PREV } }
-			}
-
-			set_key = { lhs = MP_Tmp0 value = 0 }
-			if = {
-				limit = {
-					ai = yes
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = aaq
+							value = 0.1
+						}
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = aga
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = aga
+							value = 0.01
+						}
+					}
+					set_variable = { 
+						which = ibp
+						value = 20
+					}
+					set_variable = { 
+						which = aro
+						which = aga
+					}
+					divide_variable = { 
+						which = aro
+						which = ibp
+					}
+					multiply_variable = { 
+						which = aro
+						which = aro
+					}
+					subtract_variable = { 
+						which = aro
+						value = 1
+					}
+					multiply_variable = { 
+						which = aro
+						value = -1
+					}
+					multiply_variable = { 
+						which = aro
+						value = 0.25
+					}
+					set_variable = { 
+						which = ibp
+						value = 0
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = aga
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = aga
+							value = 0.01
+						}
+					}
+					else_if = { 
+						limit = { 
+							check_variable = { 
+								which = aga
+								value = 100
+							}
+						}
+						set_variable = { 
+							which = aga
+							value = 100
+						}
+					}
+					change_variable = { 
+						which = aga
+						which = aro
+					}
+					set_variable = { 
+						which = agb
+						which = aaq
+					}
+					multiply_variable = { 
+						which = agb
+						which = aga
+					}
+					multiply_variable = { 
+						which = agb
+						value = 0.01
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = agb
+								which = aaq
+							}
+						}
+						set_variable = { 
+							which = agb
+							which = aaq
+						}
+					}
+					set_variable = { 
+						which = aro
+						value = 0
+					}
 				}
-				subtract_key = { lhs = MP_Tmp0 which = MP_RaisedReg }
-			}
-			if = {
-				limit = {
-					check_key = { lhs = MP_Tmp0 value = 0 }
+				else = { 
+					set_variable = { 
+						which = agb
+						value = 0
+					}
+					set_variable = { 
+						which = aga
+						value = 100
+					}
 				}
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 655.36 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 327.68 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 163.84 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 81.92 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 40.96 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 20.48 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 10.24 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 5.12 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 2.56 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 1.28 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 0.64 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 0.32 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 0.16 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 0.08 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 0.04 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 0.02 }
-				POP_ClrMod = { modname = statGlobalManpowerNeg type = country value = 0.01 }
-			}
-			else = {
-				multiply_key = { lhs = MP_Tmp0 value = -1 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 655.36 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 327.68 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 163.84 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 81.92 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 40.96 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 20.48 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 10.24 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 5.12 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 2.56 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 1.28 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 0.64 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 0.32 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 0.16 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 0.08 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 0.04 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 0.02 }
-				POP_SetMod = { varname = MP_Tmp0 modname = statGlobalManpowerNeg type = country value = 0.01 }
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = aar
+							value = 0.1
+						}
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = agc
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = agc
+							value = 0.01
+						}
+					}
+					set_variable = { 
+						which = ibp
+						value = 10
+					}
+					set_variable = { 
+						which = aro
+						which = agc
+					}
+					divide_variable = { 
+						which = aro
+						which = ibp
+					}
+					multiply_variable = { 
+						which = aro
+						which = aro
+					}
+					subtract_variable = { 
+						which = aro
+						value = 1
+					}
+					multiply_variable = { 
+						which = aro
+						value = -1
+					}
+					multiply_variable = { 
+						which = aro
+						value = 0.25
+					}
+					set_variable = { 
+						which = ibp
+						value = 0
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = agc
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = agc
+							value = 0.01
+						}
+					}
+					else_if = { 
+						limit = { 
+							check_variable = { 
+								which = agc
+								value = 100
+							}
+						}
+						set_variable = { 
+							which = agc
+							value = 100
+						}
+					}
+					change_variable = { 
+						which = agc
+						which = aro
+					}
+					set_variable = { 
+						which = agd
+						which = aar
+					}
+					multiply_variable = { 
+						which = agd
+						which = agc
+					}
+					multiply_variable = { 
+						which = agd
+						value = 0.01
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = agd
+								which = aar
+							}
+						}
+						set_variable = { 
+							which = agd
+							which = aar
+						}
+					}
+					set_variable = { 
+						which = aro
+						value = 0
+					}
+				}
+				else = { 
+					set_variable = { 
+						which = agd
+						value = 0
+					}
+					set_variable = { 
+						which = agc
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = aas
+							value = 0.1
+						}
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = age
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = age
+							value = 0.01
+						}
+					}
+					set_variable = { 
+						which = ibp
+						value = 25
+					}
+					set_variable = { 
+						which = aro
+						which = age
+					}
+					divide_variable = { 
+						which = aro
+						which = ibp
+					}
+					multiply_variable = { 
+						which = aro
+						which = aro
+					}
+					subtract_variable = { 
+						which = aro
+						value = 1
+					}
+					multiply_variable = { 
+						which = aro
+						value = -1
+					}
+					multiply_variable = { 
+						which = aro
+						value = 0.25
+					}
+					set_variable = { 
+						which = ibp
+						value = 0
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = age
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = age
+							value = 0.01
+						}
+					}
+					else_if = { 
+						limit = { 
+							check_variable = { 
+								which = age
+								value = 100
+							}
+						}
+						set_variable = { 
+							which = age
+							value = 100
+						}
+					}
+					change_variable = { 
+						which = age
+						which = aro
+					}
+					set_variable = { 
+						which = agf
+						which = aas
+					}
+					multiply_variable = { 
+						which = agf
+						which = age
+					}
+					multiply_variable = { 
+						which = agf
+						value = 0.01
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = agf
+								which = aas
+							}
+						}
+						set_variable = { 
+							which = agf
+							which = aas
+						}
+					}
+					set_variable = { 
+						which = aro
+						value = 0
+					}
+				}
+				else = { 
+					set_variable = { 
+						which = agf
+						value = 0
+					}
+					set_variable = { 
+						which = age
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = aat
+							value = 0.1
+						}
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = agg
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = agg
+							value = 0.01
+						}
+					}
+					set_variable = { 
+						which = ibp
+						value = 10
+					}
+					set_variable = { 
+						which = aro
+						which = agg
+					}
+					divide_variable = { 
+						which = aro
+						which = ibp
+					}
+					multiply_variable = { 
+						which = aro
+						which = aro
+					}
+					subtract_variable = { 
+						which = aro
+						value = 1
+					}
+					multiply_variable = { 
+						which = aro
+						value = -1
+					}
+					multiply_variable = { 
+						which = aro
+						value = 0.25
+					}
+					set_variable = { 
+						which = ibp
+						value = 0
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = agg
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = agg
+							value = 0.01
+						}
+					}
+					else_if = { 
+						limit = { 
+							check_variable = { 
+								which = agg
+								value = 100
+							}
+						}
+						set_variable = { 
+							which = agg
+							value = 100
+						}
+					}
+					change_variable = { 
+						which = agg
+						which = aro
+					}
+					set_variable = { 
+						which = agh
+						which = aat
+					}
+					multiply_variable = { 
+						which = agh
+						which = agg
+					}
+					multiply_variable = { 
+						which = agh
+						value = 0.01
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = agh
+								which = aat
+							}
+						}
+						set_variable = { 
+							which = agh
+							which = aat
+						}
+					}
+					set_variable = { 
+						which = aro
+						value = 0
+					}
+				}
+				else = { 
+					set_variable = { 
+						which = agh
+						value = 0
+					}
+					set_variable = { 
+						which = agg
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = aau
+							value = 0.1
+						}
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = agi
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = agi
+							value = 0.01
+						}
+					}
+					set_variable = { 
+						which = ibp
+						value = 10
+					}
+					set_variable = { 
+						which = aro
+						which = agi
+					}
+					divide_variable = { 
+						which = aro
+						which = ibp
+					}
+					multiply_variable = { 
+						which = aro
+						which = aro
+					}
+					subtract_variable = { 
+						which = aro
+						value = 1
+					}
+					multiply_variable = { 
+						which = aro
+						value = -1
+					}
+					multiply_variable = { 
+						which = aro
+						value = 0.25
+					}
+					set_variable = { 
+						which = ibp
+						value = 0
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = agi
+									value = 0.01
+								}
+							}
+						}
+						set_variable = { 
+							which = agi
+							value = 0.01
+						}
+					}
+					else_if = { 
+						limit = { 
+							check_variable = { 
+								which = agi
+								value = 100
+							}
+						}
+						set_variable = { 
+							which = agi
+							value = 100
+						}
+					}
+					change_variable = { 
+						which = agi
+						which = aro
+					}
+					set_variable = { 
+						which = agj
+						which = aau
+					}
+					multiply_variable = { 
+						which = agj
+						which = agi
+					}
+					multiply_variable = { 
+						which = agj
+						value = 0.01
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = agj
+								which = aau
+							}
+						}
+						set_variable = { 
+							which = agj
+							which = aau
+						}
+					}
+					set_variable = { 
+						which = aro
+						value = 0
+					}
+				}
+				else = { 
+					set_variable = { 
+						which = agj
+						value = 0
+					}
+					set_variable = { 
+						which = agi
+						value = 100
+					}
+				}
 			}
 		}
 	}
-	
-	option = {
+	option = { 
+		name = no_localisation
+	}
+}
+country_event = { 
+	id = POP_MP.0022
+	title = no_localisation
+	desc = no_localisation
+	picture = MEIOU_AND_TAXES_eventPicture
+	is_triggered_only = yes
+	hidden = yes
+	immediate = { 
+		every_country = { 
+			limit = { 
+				AND = { 
+					num_of_cities = 1
+					NOT = { 
+						tag = AAA
+					}
+				}
+			}
+			set_variable = { 
+				which = ozt
+				value = 0
+			}
+			subtract_variable = { 
+				which = ozt
+				which = alg
+			}
+			export_to_variable = { 
+				which = export
+				value = army_size
+			}
+			set_variable = { 
+				which = nco
+				which = export
+			}
+			export_to_variable = { 
+				which = export
+				value = trigger_value:num_of_mercenaries
+			}
+			set_variable = { 
+				which = opr
+				which = export
+			}
+			subtract_variable = { 
+				which = nco
+				which = opr
+			}
+			every_owned_province = { 
+				limit = { 
+					has_construction = army
+					AND = { 
+						OR = { 
+							is_city = yes
+							is_colony = yes
+						}
+						has_province_flag = Data
+					}
+					controlled_by = owner
+				}
+				PREV = { 
+					change_variable = { 
+						which = nco
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = opr
+				value = 0
+			}
+			export_to_variable = { 
+				which = export
+				value = manpower
+			}
+			set_variable = { 
+				which = alg
+				which = export
+			}
+			change_variable = { 
+				which = alg
+				which = nco
+			}
+			change_variable = { 
+				which = ozt
+				which = alg
+			}
+			if = { 
+				limit = { 
+					NOT = { 
+						is_variable_equal = { 
+							which = ozt
+							value = 0
+						}
+					}
+				}
+				set_variable = { 
+					which = arf
+					value = 0
+				}
+				every_owned_province = { 
+					limit = { 
+						check_variable = { 
+							which = ahx
+							value = 0.001
+						}
+						AND = { 
+							OR = { 
+								is_city = yes
+								is_colony = yes
+							}
+							has_province_flag = Data
+						}
+					}
+					set_variable = { 
+						which = arf
+						which = ahx
+					}
+					PREV = { 
+						change_variable = { 
+							which = arf
+							which = PREV
+						}
+					}
+				}
+				set_variable = { 
+					which = arg
+					value = 0
+				}
+				every_owned_province = { 
+					limit = { 
+						check_variable = { 
+							which = ahx
+							value = 0.001
+						}
+						AND = { 
+							OR = { 
+								is_city = yes
+								is_colony = yes
+							}
+							has_province_flag = Data
+						}
+					}
+					set_variable = { 
+						which = ozt
+						which = PREV
+					}
+					set_variable = { 
+						which = arf
+						which = PREV
+					}
+					set_variable = { 
+						which = arg
+						which = ahx
+					}
+					multiply_variable = { 
+						which = arg
+						value = 100
+					}
+					divide_variable = { 
+						which = arg
+						which = arf
+					}
+					multiply_variable = { 
+						which = arg
+						which = ozt
+					}
+					divide_variable = { 
+						which = arg
+						value = 100
+					}
+					change_variable = { 
+						which = ozn
+						which = arg
+					}
+					if = { 
+						limit = { 
+							has_province_modifier = Loot_Disp
+							NOT = { 
+								check_variable = { 
+									which = arg
+									value = 0
+								}
+							}
+						}
+						subtract_variable = { 
+							which = ayf
+							which = arg
+						}
+						PREV = { 
+							change_variable = { 
+								which = arg
+								which = PREV
+							}
+						}
+					}
+				}
+				subtract_variable = { 
+					which = ayf
+					which = arg
+				}
+			}
+			set_variable = { 
+				which = ozn
+				value = 0
+			}
+			every_owned_province = { 
+				limit = { 
+					AND = { 
+						OR = { 
+							is_city = yes
+							is_colony = yes
+						}
+						has_province_flag = Data
+					}
+				}
+				PREV = { 
+					change_variable = { 
+						which = ozn
+						which = PREV
+					}
+				}
+			}
+			set_variable = { 
+				which = opq
+				value = 0
+			}
+			if = { 
+				limit = { 
+					ai = yes
+				}
+				subtract_variable = { 
+					which = opq
+					which = nco
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = opq
+						value = 0
+					}
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_655.36
+					}
+					remove_country_modifier = statGlobalManpowerNeg_655.36
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_327.68
+					}
+					remove_country_modifier = statGlobalManpowerNeg_327.68
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_163.84
+					}
+					remove_country_modifier = statGlobalManpowerNeg_163.84
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_81.92
+					}
+					remove_country_modifier = statGlobalManpowerNeg_81.92
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_40.96
+					}
+					remove_country_modifier = statGlobalManpowerNeg_40.96
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_20.48
+					}
+					remove_country_modifier = statGlobalManpowerNeg_20.48
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_10.24
+					}
+					remove_country_modifier = statGlobalManpowerNeg_10.24
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_5.12
+					}
+					remove_country_modifier = statGlobalManpowerNeg_5.12
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_2.56
+					}
+					remove_country_modifier = statGlobalManpowerNeg_2.56
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_1.28
+					}
+					remove_country_modifier = statGlobalManpowerNeg_1.28
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.64
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.64
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.32
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.32
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.16
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.16
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.08
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.08
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.04
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.04
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.02
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.02
+				}
+				if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.01
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.01
+				}
+			}
+			else = { 
+				multiply_variable = { 
+					which = opq
+					value = -1
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 655.36
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 655.36
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_655.36
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_655.36
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_655.36
+					}
+					remove_country_modifier = statGlobalManpowerNeg_655.36
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 327.68
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 327.68
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_327.68
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_327.68
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_327.68
+					}
+					remove_country_modifier = statGlobalManpowerNeg_327.68
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 163.84
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 163.84
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_163.84
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_163.84
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_163.84
+					}
+					remove_country_modifier = statGlobalManpowerNeg_163.84
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 81.92
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 81.92
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_81.92
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_81.92
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_81.92
+					}
+					remove_country_modifier = statGlobalManpowerNeg_81.92
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 40.96
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 40.96
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_40.96
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_40.96
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_40.96
+					}
+					remove_country_modifier = statGlobalManpowerNeg_40.96
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 20.48
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 20.48
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_20.48
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_20.48
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_20.48
+					}
+					remove_country_modifier = statGlobalManpowerNeg_20.48
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 10.24
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 10.24
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_10.24
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_10.24
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_10.24
+					}
+					remove_country_modifier = statGlobalManpowerNeg_10.24
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 5.12
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 5.12
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_5.12
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_5.12
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_5.12
+					}
+					remove_country_modifier = statGlobalManpowerNeg_5.12
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 2.56
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 2.56
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_2.56
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_2.56
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_2.56
+					}
+					remove_country_modifier = statGlobalManpowerNeg_2.56
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 1.28
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 1.28
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_1.28
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_1.28
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_1.28
+					}
+					remove_country_modifier = statGlobalManpowerNeg_1.28
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 0.64
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 0.64
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_0.64
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_0.64
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.64
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.64
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 0.32
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 0.32
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_0.32
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_0.32
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.32
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.32
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 0.16
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 0.16
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_0.16
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_0.16
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.16
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.16
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 0.08
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 0.08
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_0.08
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_0.08
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.08
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.08
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 0.04
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 0.04
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_0.04
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_0.04
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.04
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.04
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 0.02
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 0.02
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_0.02
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_0.02
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.02
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.02
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = opq
+							value = 0.01
+						}
+					}
+					subtract_variable = { 
+						which = opq
+						value = 0.01
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								has_country_modifier = statGlobalManpowerNeg_0.01
+							}
+						}
+						add_country_modifier = { 
+							name = statGlobalManpowerNeg_0.01
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else_if = { 
+					limit = { 
+						has_country_modifier = statGlobalManpowerNeg_0.01
+					}
+					remove_country_modifier = statGlobalManpowerNeg_0.01
+				}
+			}
+		}
+	}
+	option = { 
 		name = no_localisation
 	}
 }

@@ -1,50 +1,56 @@
 namespace = flavor_muz
-
-country_event = {
+country_event = { 
 	id = flavor_muz.1
 	title = flavor_muz.1.t
 	desc = flavor_muz.1.d
 	picture = KING_SICK_IN_BED_eventPicture
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		dynasty = "Muzaffarid"
 		has_country_modifier = "obstacle_feuding"
-		OR = {
+		OR = { 
 			num_of_states = 3
 			num_of_territories = 3
-			AND = {
+			AND = { 
 				num_of_states = 2
 				num_of_territories = 1
 			}
-			AND = {
+			AND = { 
 				num_of_states = 1
 				num_of_territories = 2
 			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				ai = no
 			}
-			is_free_or_tributary_trigger = yes
+			AND = { 
+				OR = { 
+					is_subject = no
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
 		}
 	}
-	immediate = {
-		hidden_effect = {
-			random_list = {
-				40 = {
-					set_variable = {
+	immediate = { 
+		hidden_effect = { 
+			random_list = { 
+				40 = { 
+					set_variable = { 
 						which = num_brothers
 						value = 0
 					}
 				}
-				35 = {
-					set_variable = {
+				35 = { 
+					set_variable = { 
 						which = num_brothers
 						value = 1
 					}
 				}
-				25 = {
-					set_variable = {
+				25 = { 
+					set_variable = { 
 						which = num_brothers
 						value = 2
 					}
@@ -52,28 +58,28 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_muz.1.a
-		hidden_effect = {
-			country_event = {
+		hidden_effect = { 
+			country_event = { 
 				id = flavor_muz.2
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_muz.2
 	title = flavor_muz.2.t
 	desc = flavor_muz.2.d
 	picture = KING_SICK_IN_BED_eventPicture
 	is_triggered_only = yes
 	hidden = yes
-	option = {
+	option = { 
 		name = EVT_AI
-		capital_scope = {
+		capital_scope = { 
 			set_province_flag = capital_brother_0
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					owned_by = ROOT
 					area = PREV
@@ -81,29 +87,29 @@ country_event = {
 				set_province_flag = land_brother_0
 			}
 		}
-		set_variable = {
+		set_variable = { 
 			which = brother_count_iterator
 			which = num_brothers
 		}
-		set_variable = {
+		set_variable = { 
 			which = winning_prov_dev
 			value = 0
 		}
-		set_variable = {
+		set_variable = { 
 			which = current_prov_check_dev
 			value = 0
 		}
-		while = {
-			limit = {
-				check_variable = {
+		while = { 
+			limit = { 
+				check_variable = { 
 					which = brother_count_iterator
 					value = 1
 				}
 			}
-			every_owned_province = {
-				limit = {
-					NOT = {
-						OR = {
+			every_owned_province = { 
+				limit = { 
+					NOT = { 
+						OR = { 
 							has_province_flag = capital_brother_0
 							has_province_flag = land_brother_0
 							has_province_flag = capital_brother_1
@@ -113,13 +119,13 @@ country_event = {
 						}
 					}
 				}
-				export_to_variable = {
+				export_to_variable = { 
 					which = current_prov_check_dev
 					value = development
 				}
-				if = {
-					limit = {
-						OR = {
+				if = { 
+					limit = { 
+						OR = { 
 							province_id = 1313
 							province_id = 405
 							province_id = 410
@@ -132,71 +138,71 @@ country_event = {
 							province_id = 551
 						}
 					}
-					change_variable = {
+					change_variable = { 
 						which = current_prov_check_dev
 						value = 3
 					}
 				}
-				owner = {
-					set_variable = {
+				owner = { 
+					set_variable = { 
 						which = current_prov_check_dev
 						which = PREV
 					}
 				}
-				if = {
-					limit = {
-						owner = {
-							check_variable = {
+				if = { 
+					limit = { 
+						owner = { 
+							check_variable = { 
 								which = current_prov_check_dev
 								which = winning_prov_dev
 							}
 						}
 					}
-					if = {
-						limit = {
-							owner = {
-								is_variable_equal = {
+					if = { 
+						limit = { 
+							owner = { 
+								is_variable_equal = { 
 									which = brother_count_iterator
 									value = 1
 								}
 							}
 						}
-						ROOT = {
-							every_owned_province = {
-								limit = {
+						ROOT = { 
+							every_owned_province = { 
+								limit = { 
 									has_province_flag = capital_brother_1
 								}
 								clr_province_flag = capital_brother_1
 							}
 						}
 						set_province_flag = capital_brother_1
-						owner = {
-							set_variable = {
+						owner = { 
+							set_variable = { 
 								which = winning_prov_dev
 								which = current_prov_check_dev
 							}
 						}
 					}
-					if = {
-						limit = {
-							owner = {
-								is_variable_equal = {
+					if = { 
+						limit = { 
+							owner = { 
+								is_variable_equal = { 
 									which = brother_count_iterator
 									value = 2
 								}
 							}
 						}
-						ROOT = {
-							every_owned_province = {
-								limit = {
+						ROOT = { 
+							every_owned_province = { 
+								limit = { 
 									has_province_flag = capital_brother_2
 								}
 								clr_province_flag = capital_brother_2
 							}
 						}
 						set_province_flag = capital_brother_2
-						owner = {
-							set_variable = {
+						owner = { 
+							set_variable = { 
 								which = winning_prov_dev
 								which = current_prov_check_dev
 							}
@@ -204,18 +210,18 @@ country_event = {
 					}
 				}
 			}
-			set_variable = {
+			set_variable = { 
 				which = tiebreaker_check_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = winner_tiebreaker_check_dev
 				value = 0
 			}
-			every_owned_province = {
-				limit = {
-					NOT = {
-						OR = {
+			every_owned_province = { 
+				limit = { 
+					NOT = { 
+						OR = { 
 							has_province_flag = capital_brother_0
 							has_province_flag = land_brother_0
 							has_province_flag = capital_brother_1
@@ -225,43 +231,43 @@ country_event = {
 						}
 					}
 				}
-				export_to_variable = {
+				export_to_variable = { 
 					which = current_prov_check_dev
 					value = development
 				}
-				every_province = {
-					limit = {
+				every_province = { 
+					limit = { 
 						is_city = yes
 						owned_by = ROOT
 						area = PREV
 					}
-					export_to_variable = {
+					export_to_variable = { 
 						which = tiebreaker_check_dev
 						value = development
 					}
-					owner = {
-						change_variable = {
+					owner = { 
+						change_variable = { 
 							which = tiebreaker_check_dev
 							which = PREV
 						}
 					}
 				}
-				every_province = {
-					limit = {
+				every_province = { 
+					limit = { 
 						is_city = yes
 						owned_by = ROOT
-						OR = {
-							NOT = {
-								is_variable_equal = {
+						OR = { 
+							NOT = { 
+								is_variable_equal = { 
 									which = brother_count_iterator
 									value = 1
 								}
 							}
 							has_province_flag = capital_brother_1
 						}
-						OR = {
-							NOT = {
-								is_variable_equal = {
+						OR = { 
+							NOT = { 
+								is_variable_equal = { 
 									which = brother_count_iterator
 									value = 2
 								}
@@ -269,45 +275,45 @@ country_event = {
 							has_province_flag = capital_brother_2
 						}
 					}
-					every_province = {
-						limit = {
+					every_province = { 
+						limit = { 
 							is_city = yes
 							owned_by = root
 							area = PREV
 						}
-						export_to_variable = {
+						export_to_variable = { 
 							which = winner_tiebreaker_check_dev
 							value = development
 						}
-						owner = {
-							change_variable = {
+						owner = { 
+							change_variable = { 
 								which = winner_tiebreaker_check_dev
 								which = PREV
 							}
 						}
 					}
 				}
-				if = {
-					limit = {
-						owner = {
-							check_variable = {
+				if = { 
+					limit = { 
+						owner = { 
+							check_variable = { 
 								which = tiebreaker_check_dev
 								which = winner_tiebreaker_check_dev
 							}
 						}
 					}
-					if = {
-						limit = {
-							owner = {
-								is_variable_equal = {
+					if = { 
+						limit = { 
+							owner = { 
+								is_variable_equal = { 
 									which = brother_count_iterator
 									value = 1
 								}
 							}
 						}
-						ROOT = {
-							every_owned_province = {
-								limit = {
+						ROOT = { 
+							every_owned_province = { 
+								limit = { 
 									has_province_flag = capital_brother_1
 								}
 								clr_province_flag = capital_brother_1
@@ -315,18 +321,18 @@ country_event = {
 						}
 						set_province_flag = capital_brother_1
 					}
-					if = {
-						limit = {
-							owner = {
-								is_variable_equal = {
+					if = { 
+						limit = { 
+							owner = { 
+								is_variable_equal = { 
 									which = brother_count_iterator
 									value = 2
 								}
 							}
 						}
-						ROOT = {
-							every_owned_province = {
-								limit = {
+						ROOT = { 
+							every_owned_province = { 
+								limit = { 
 									has_province_flag = capital_brother_2
 								}
 								clr_province_flag = capital_brother_2
@@ -335,29 +341,29 @@ country_event = {
 						set_province_flag = capital_brother_2
 					}
 				}
-				set_variable = {
+				set_variable = { 
 					which = tiebreaker_check_dev
 					value = 0
 				}
-				set_variable = {
+				set_variable = { 
 					which = winner_tiebreaker_check_dev
 					value = 0
 				}
 			}
-			if = {
-				limit = {
-					is_variable_equal = {
+			if = { 
+				limit = { 
+					is_variable_equal = { 
 						which = brother_count_iterator
 						value = 1
 					}
 				}
-				ROOT = {
-					every_owned_province = {
-						limit = {
+				ROOT = { 
+					every_owned_province = { 
+						limit = { 
 							has_province_flag = capital_brother_1
 						}
-						every_province = {
-							limit = {
+						every_province = { 
+							limit = { 
 								is_city = yes
 								owned_by = ROOT
 								area = PREV
@@ -367,20 +373,20 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					is_variable_equal = {
+			if = { 
+				limit = { 
+					is_variable_equal = { 
 						which = brother_count_iterator
 						value = 2
 					}
 				}
-				ROOT = {
-					every_owned_province = {
-						limit = {
+				ROOT = { 
+					every_owned_province = { 
+						limit = { 
 							has_province_flag = capital_brother_2
 						}
-						every_province = {
-							limit = {
+						every_province = { 
+							limit = { 
 								is_city = yes
 								owned_by = ROOT
 								area = PREV
@@ -390,254 +396,254 @@ country_event = {
 					}
 				}
 			}
-			change_variable = {
+			change_variable = { 
 				which = brother_count_iterator
 				value = -1
 			}
-			set_variable = {
+			set_variable = { 
 				which = winning_prov_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = current_prov_check_dev
 				value = 0
 			}
 		}
-		set_variable = {
+		set_variable = { 
 			which = which_brother
 			value = 0
 		}
-		set_variable = {
+		set_variable = { 
 			which = brother_0_dev
 			value = 0
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				has_province_flag = land_brother_0
 			}
-			export_to_variable = {
+			export_to_variable = { 
 				which = brother_0_dev
 				value = development
 			}
-			owner = {
-				change_variable = {
+			owner = { 
+				change_variable = { 
 					which = brother_0_dev
 					which = PREV
 				}
 			}
 		}
-		if = {
-			limit = {
-				check_variable = {
+		if = { 
+			limit = { 
+				check_variable = { 
 					which = num_brothers
 					value = 1
 				}
 			}
-			set_variable = {
+			set_variable = { 
 				which = brother_1_dev
 				value = 0
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					has_province_flag = land_brother_1
 				}
-				export_to_variable = {
+				export_to_variable = { 
 					which = brother_1_dev
 					value = development
 				}
-				owner = {
-					change_variable = {
+				owner = { 
+					change_variable = { 
 						which = brother_1_dev
 						which = PREV
 					}
 				}
 			}
 		}
-		if = {
-			limit = {
-				check_variable = {
+		if = { 
+			limit = { 
+				check_variable = { 
 					which = num_brothers
 					value = 2
 				}
 			}
-			set_variable = {
+			set_variable = { 
 				which = brother_2_dev
 				value = 0
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					has_province_flag = land_brother_2
 				}
-				export_to_variable = {
+				export_to_variable = { 
 					which = brother_2_dev
 					value = development
 				}
-				owner = {
-					change_variable = {
+				owner = { 
+					change_variable = { 
 						which = brother_2_dev
 						which = PREV
 					}
 				}
 			}
 		}
-		if = {
-			limit = {
-				check_variable = {
+		if = { 
+			limit = { 
+				check_variable = { 
 					which = num_brothers
 					value = 0
 				}
-				any_owned_province = {
+				any_owned_province = { 
 					has_province_flag = capital_brother_0
-					NOT = {
+					NOT = { 
 						has_province_flag = stop_counting
 					}
 				}
-				OR = {
-					NOT = {
-						check_variable = {
+				OR = { 
+					NOT = { 
+						check_variable = { 
 							which = num_brothers
 							value = 1
 						}
 					}
-					check_variable = {
+					check_variable = { 
 						which = brother_1_dev
 						which = brother_0_dev
 					}
 				}
-				OR = {
-					NOT = {
-						check_variable = {
+				OR = { 
+					NOT = { 
+						check_variable = { 
 							which = num_brothers
 							value = 2
 						}
 					}
-					check_variable = {
+					check_variable = { 
 						which = brother_2_dev
 						which = brother_0_dev
 					}
 				}
 			}
-			set_variable = {
+			set_variable = { 
 				which = which_brother
 				value = 0
 			}
 		}
-		if = {
-			limit = {
-				check_variable = {
+		if = { 
+			limit = { 
+				check_variable = { 
 					which = num_brothers
 					value = 1
 				}
-				any_owned_province = {
+				any_owned_province = { 
 					has_province_flag = capital_brother_1
-					NOT = {
+					NOT = { 
 						has_province_flag = stop_counting
 					}
 				}
-				check_variable = {
+				check_variable = { 
 					which = brother_0_dev
 					which = brother_1_dev
 				}
-				OR = {
-					NOT = {
-						check_variable = {
+				OR = { 
+					NOT = { 
+						check_variable = { 
 							which = num_brothers
 							value = 2
 						}
 					}
-					check_variable = {
+					check_variable = { 
 						which = brother_2_dev
 						which = brother_1_dev
 					}
 				}
 			}
-			set_variable = {
+			set_variable = { 
 				which = which_brother
 				value = 1
 			}
 		}
-		if = {
-			limit = {
-				check_variable = {
+		if = { 
+			limit = { 
+				check_variable = { 
 					which = num_brothers
 					value = 2
 				}
-				any_owned_province = {
+				any_owned_province = { 
 					has_province_flag = capital_brother_2
-					NOT = {
+					NOT = { 
 						has_province_flag = stop_counting
 					}
 				}
-				check_variable = {
+				check_variable = { 
 					which = brother_0_dev
 					which = brother_2_dev
 				}
-				check_variable = {
+				check_variable = { 
 					which = brother_1_dev
 					which = brother_2_dev
 				}
 			}
-			set_variable = {
+			set_variable = { 
 				which = which_brother
 				value = 2
 			}
 		}
-		set_variable = {
+		set_variable = { 
 			which = current_area_check_dev
 			value = 0
 		}
-		set_variable = {
+		set_variable = { 
 			which = winning_area_dev
 			value = 0
 		}
-		while = {
-			limit = {
-				NOT = {
-					is_variable_equal = {
+		while = { 
+			limit = { 
+				NOT = { 
+					is_variable_equal = { 
 						which = which_brother
 						value = -1
 					}
 				}
 			}
-			if = {
-				limit = {
-					is_variable_equal = {
+			if = { 
+				limit = { 
+					is_variable_equal = { 
 						which = which_brother
 						value = 0
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = capital_brother_0
 					}
 					set_province_flag = stop_counting
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_0
 					}
-					every_neighbor_province = {
-						limit = {
+					every_neighbor_province = { 
+						limit = { 
 							owned_by = ROOT
-							NOT = {
-								OR = {
+							NOT = { 
+								OR = { 
 									has_province_flag = land_brother_0
 									has_province_flag = land_brother_1
 									has_province_flag = land_brother_2
 								}
 							}
 						}
-						if = {
-							limit = {
-								ROOT = {
-									any_owned_province = {
+						if = { 
+							limit = { 
+								ROOT = { 
+									any_owned_province = { 
 										has_province_flag = capital_brother_0
 										has_province_flag = stop_counting
 									}
 								}
 							}
-							every_province = {
-								limit = {
+							every_province = { 
+								limit = { 
 									is_city = yes
 									has_province_flag = capital_brother_0
 									has_province_flag = stop_counting
@@ -645,43 +651,43 @@ country_event = {
 								clr_province_flag = stop_counting
 							}
 						}
-						every_province = {
-							limit = {
+						every_province = { 
+							limit = { 
 								is_city = yes
 								owned_by = ROOT
 								area = PREV
 							}
-							export_to_variable = {
+							export_to_variable = { 
 								which = current_area_check_dev
 								value = development
 							}
-							owner = {
-								change_variable = {
+							owner = { 
+								change_variable = { 
 									which = current_area_check_dev
 									which = PREV
 								}
 							}
 						}
-						if = {
-							limit = {
-								owner = {
-									check_variable = {
+						if = { 
+							limit = { 
+								owner = { 
+									check_variable = { 
 										which = current_area_check_dev
 										which = winning_area_dev
 									}
 								}
 							}
-							ROOT = {
-								every_owned_province = {
-									limit = {
+							ROOT = { 
+								every_owned_province = { 
+									limit = { 
 										has_province_flag = winning_area
 									}
 									clr_province_flag = winning_area
 								}
 							}
 							set_province_flag = winning_area
-							owner = {
-								set_variable = {
+							owner = { 
+								set_variable = { 
 									which = winning_area_dev
 									which = current_area_check_dev
 								}
@@ -689,14 +695,14 @@ country_event = {
 						}
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = winning_area
 					}
 					clr_province_flag = winning_area
 					set_province_flag = land_brother_0
-					every_province = {
-						limit = {
+					every_province = { 
+						limit = { 
 							is_city = yes
 							owned_by = ROOT
 							area = PREV
@@ -705,88 +711,88 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					is_variable_equal = {
+			if = { 
+				limit = { 
+					is_variable_equal = { 
 						which = which_brother
 						value = 1
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = capital_brother_1
 					}
 					set_province_flag = stop_counting
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_1
 					}
-					every_neighbor_province = {
-						limit = {
+					every_neighbor_province = { 
+						limit = { 
 							owned_by = ROOT
-							NOT = {
-								OR = {
+							NOT = { 
+								OR = { 
 									has_province_flag = land_brother_0
 									has_province_flag = land_brother_1
 									has_province_flag = land_brother_2
 								}
 							}
 						}
-						if = {
-							limit = {
-								ROOT = {
-									any_owned_province = {
+						if = { 
+							limit = { 
+								ROOT = { 
+									any_owned_province = { 
 										has_province_flag = capital_brother_1
 										has_province_flag = stop_counting
 									}
 								}
 							}
-							every_province = {
-								limit = {
+							every_province = { 
+								limit = { 
 									has_province_flag = capital_brother_1
 									has_province_flag = stop_counting
 								}
 								clr_province_flag = stop_counting
 							}
 						}
-						every_province = {
-							limit = {
+						every_province = { 
+							limit = { 
 								is_city = yes
 								owned_by = ROOT
 								area = PREV
 							}
-							export_to_variable = {
+							export_to_variable = { 
 								which = current_area_check_dev
 								value = development
 							}
-							owner = {
-								change_variable = {
+							owner = { 
+								change_variable = { 
 									which = current_area_check_dev
 									which = PREV
 								}
 							}
 						}
-						if = {
-							limit = {
-								owner = {
-									check_variable = {
+						if = { 
+							limit = { 
+								owner = { 
+									check_variable = { 
 										which = current_area_check_dev
 										which = winning_area_dev
 									}
 								}
 							}
-							ROOT = {
-								every_owned_province = {
-									limit = {
+							ROOT = { 
+								every_owned_province = { 
+									limit = { 
 										has_province_flag = winning_area
 									}
 									clr_province_flag = winning_area
 								}
 							}
 							set_province_flag = winning_area
-							owner = {
-								set_variable = {
+							owner = { 
+								set_variable = { 
 									which = winning_area_dev
 									which = current_area_check_dev
 								}
@@ -794,14 +800,14 @@ country_event = {
 						}
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = winning_area
 					}
 					clr_province_flag = winning_area
 					set_province_flag = land_brother_1
-					every_province = {
-						limit = {
+					every_province = { 
+						limit = { 
 							owned_by = ROOT
 							area = PREV
 						}
@@ -809,88 +815,88 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					is_variable_equal = {
+			if = { 
+				limit = { 
+					is_variable_equal = { 
 						which = which_brother
 						value = 2
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = capital_brother_2
 					}
 					set_province_flag = stop_counting
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_2
 					}
-					every_neighbor_province = {
-						limit = {
+					every_neighbor_province = { 
+						limit = { 
 							owned_by = ROOT
-							NOT = {
-								OR = {
+							NOT = { 
+								OR = { 
 									has_province_flag = land_brother_0
 									has_province_flag = land_brother_1
 									has_province_flag = land_brother_2
 								}
 							}
 						}
-						if = {
-							limit = {
-								ROOT = {
-									any_owned_province = {
+						if = { 
+							limit = { 
+								ROOT = { 
+									any_owned_province = { 
 										has_province_flag = capital_brother_2
 										has_province_flag = stop_counting
 									}
 								}
 							}
-							every_province = {
-								limit = {
+							every_province = { 
+								limit = { 
 									has_province_flag = capital_brother_2
 									has_province_flag = stop_counting
 								}
 								clr_province_flag = stop_counting
 							}
 						}
-						every_province = {
-							limit = {
+						every_province = { 
+							limit = { 
 								is_city = yes
 								owned_by = ROOT
 								area = PREV
 							}
-							export_to_variable = {
+							export_to_variable = { 
 								which = current_area_check_dev
 								value = development
 							}
-							owner = {
-								change_variable = {
+							owner = { 
+								change_variable = { 
 									which = current_area_check_dev
 									which = PREV
 								}
 							}
 						}
-						if = {
-							limit = {
-								owner = {
-									check_variable = {
+						if = { 
+							limit = { 
+								owner = { 
+									check_variable = { 
 										which = current_area_check_dev
 										which = winning_area_dev
 									}
 								}
 							}
-							ROOT = {
-								every_owned_province = {
-									limit = {
+							ROOT = { 
+								every_owned_province = { 
+									limit = { 
 										has_province_flag = winning_area
 									}
 									clr_province_flag = winning_area
 								}
 							}
 							set_province_flag = winning_area
-							owner = {
-								set_variable = {
+							owner = { 
+								set_variable = { 
 									which = winning_area_dev
 									which = current_area_check_dev
 								}
@@ -898,14 +904,14 @@ country_event = {
 						}
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = winning_area
 					}
 					clr_province_flag = winning_area
 					set_province_flag = land_brother_2
-					every_province = {
-						limit = {
+					every_province = { 
+						limit = { 
 							owned_by = ROOT
 							area = PREV
 						}
@@ -913,310 +919,310 @@ country_event = {
 					}
 				}
 			}
-			set_variable = {
+			set_variable = { 
 				which = which_brother
 				value = -1
 			}
-			set_variable = {
+			set_variable = { 
 				which = brother_0_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = brother_1_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = brother_2_dev
 				value = 0
 			}
-			if = {
-				limit = {
-					check_variable = {
+			if = { 
+				limit = { 
+					check_variable = { 
 						which = num_brothers
 						value = 0
 					}
-					any_owned_province = {
+					any_owned_province = { 
 						has_province_flag = capital_brother_0
-						NOT = {
+						NOT = { 
 							has_province_flag = stop_counting
 						}
 					}
-					OR = {
-						NOT = {
-							check_variable = {
+					OR = { 
+						NOT = { 
+							check_variable = { 
 								which = num_brothers
 								value = 1
 							}
 						}
-						check_variable = {
+						check_variable = { 
 							which = brother_1_dev
 							which = brother_0_dev
 						}
 					}
-					OR = {
-						NOT = {
-							check_variable = {
+					OR = { 
+						NOT = { 
+							check_variable = { 
 								which = num_brothers
 								value = 2
 							}
 						}
-						check_variable = {
+						check_variable = { 
 							which = brother_2_dev
 							which = brother_0_dev
 						}
 					}
 				}
-				set_variable = {
+				set_variable = { 
 					which = which_brother
 					value = 0
 				}
 			}
-			if = {
-				limit = {
-					check_variable = {
+			if = { 
+				limit = { 
+					check_variable = { 
 						which = num_brothers
 						value = 1
 					}
-					any_owned_province = {
+					any_owned_province = { 
 						has_province_flag = capital_brother_1
-						NOT = {
+						NOT = { 
 							has_province_flag = stop_counting
 						}
 					}
-					check_variable = {
+					check_variable = { 
 						which = brother_0_dev
 						which = brother_1_dev
 					}
-					OR = {
-						NOT = {
-							check_variable = {
+					OR = { 
+						NOT = { 
+							check_variable = { 
 								which = num_brothers
 								value = 2
 							}
 						}
-						check_variable = {
+						check_variable = { 
 							which = brother_2_dev
 							which = brother_1_dev
 						}
 					}
 				}
-				set_variable = {
+				set_variable = { 
 					which = which_brother
 					value = 1
 				}
 			}
-			if = {
-				limit = {
-					check_variable = {
+			if = { 
+				limit = { 
+					check_variable = { 
 						which = num_brothers
 						value = 2
 					}
-					any_owned_province = {
+					any_owned_province = { 
 						has_province_flag = capital_brother_2
-						NOT = {
+						NOT = { 
 							has_province_flag = stop_counting
 						}
 					}
-					check_variable = {
+					check_variable = { 
 						which = brother_0_dev
 						which = brother_2_dev
 					}
-					check_variable = {
+					check_variable = { 
 						which = brother_1_dev
 						which = brother_2_dev
 					}
 				}
-				set_variable = {
+				set_variable = { 
 					which = which_brother
 					value = 2
 				}
 			}
-			set_variable = {
+			set_variable = { 
 				which = current_area_check_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = winning_area_dev
 				value = 0
 			}
 		}
-		if = {
-			limit = {
-				414 = {
-					OR = {
-						AND = {
+		if = { 
+			limit = { 
+				414 = { 
+					OR = { 
+						AND = { 
 							has_province_flag = land_brother_1
-							NOT = {
-								AND = {
-									429 = {
+							NOT = { 
+								AND = { 
+									429 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MUZ
 									}
 								}
-								AND = {
-									435 = {
+								AND = { 
+									435 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = KER
 									}
 								}
-								AND = {
-									1313 = {
+								AND = { 
+									1313 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = TEH
 									}
 								}
-								AND = {
-									416 = {
+								AND = { 
+									416 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = TAB
 									}
 								}
-								AND = {
-									426 = {
+								AND = { 
+									426 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MZA
 									}
 								}
-								AND = {
-									410 = {
+								AND = { 
+									410 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = IRQ
 									}
 								}
-								AND = {
-									447 = {
+								AND = { 
+									447 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = KTD
 									}
 								}
-								AND = {
-									551 = {
+								AND = { 
+									551 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MIH
 									}
 								}
-								AND = {
-									405 = {
+								AND = { 
+									405 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = ATB
 									}
 								}
 							}
 						}
-						AND = {
+						AND = { 
 							has_province_flag = land_brother_2
-							NOT = {
-								AND = {
-									429 = {
+							NOT = { 
+								AND = { 
+									429 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MUZ
 									}
 								}
-								AND = {
-									435 = {
+								AND = { 
+									435 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = KER
 									}
 								}
-								AND = {
-									1313 = {
+								AND = { 
+									1313 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = TEH
 									}
 								}
-								AND = {
-									416 = {
+								AND = { 
+									416 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = TAB
 									}
 								}
-								AND = {
-									426 = {
+								AND = { 
+									426 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MZA
 									}
 								}
-								AND = {
-									410 = {
+								AND = { 
+									410 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = IRQ
 									}
 								}
-								AND = {
-									447 = {
+								AND = { 
+									447 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = KTD
 									}
 								}
-								AND = {
-									551 = {
+								AND = { 
+									551 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MIH
 									}
 								}
-								AND = {
-									405 = {
+								AND = { 
+									405 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = ATB
 									}
 								}
@@ -1224,264 +1230,345 @@ country_event = {
 						}
 					}
 				}
-				NOT = {
+				NOT = { 
 					exists = ISF
 				}
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_core = ISF
 				}
 				remove_core = ISF
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					is_core = ROOT
 				}
 				add_permanent_claim = ISF
 			}
-			if = {
-				limit = {
-					414 = {
+			if = { 
+				limit = { 
+					414 = { 
 						has_province_flag = land_brother_1
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_1
 					}
-					cede_and_release = { scope = ISF }
+					cede_province = ISF
+					hidden_effect = { 
+						ISF = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 					add_core = ISF
 					add_core = ROOT
 					clr_province_flag = land_brother_1
 				}
 			}
-			if = {
-				limit = {
-					414 = {
+			if = { 
+				limit = { 
+					414 = { 
 						has_province_flag = land_brother_2
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_2
 					}
-					cede_and_release = { scope = ISF }
+					cede_province = ISF
+					hidden_effect = { 
+						ISF = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 					add_core = ISF
 					add_core = ROOT
 					clr_province_flag = land_brother_2
 				}
 			}
-			ISF = {
+			ISF = { 
 				set_dynasty = PREV
 				change_religion = PREV
 				change_primary_culture = PREV
-				every_owned_province = {
-					limit = {
-						OR = {
+				every_owned_province = { 
+					limit = { 
+						OR = { 
 							has_province_flag = capital_brother_1
 							has_province_flag = capital_brother_2
 						}
 					}
-					PREV = {
-						Effect_set_capital = { target = PREV }
+					PREV = { 
+						if = { 
+							limit = { 
+								is_part_of_hre = yes
+								ROOT = { 
+									is_part_of_hre = no
+								}
+							}
+							set_in_empire = no
+							swap_non_generic_missions = yes
+							emperor = { 
+								add_opinion = { 
+									who = ROOT
+									modifier = hre_province_left
+								}
+							}
+							add_imperial_influence = -1
+						}
+						set_capital = PREV
+						hidden_effect = { 
+							set_country_flag = tf_recalculate_communication_efficiency
+							set_country_flag = ai_tax_recalc
+						}
 					}
-					if = {
-						limit = {
+					if = { 
+						limit = { 
 							has_province_flag = capital_brother_1
 						}
 						clr_province_flag = capital_brother_1
 					}
-					if = {
-						limit = {
+					if = { 
+						limit = { 
 							has_province_flag = capital_brother_2
 						}
 						clr_province_flag = capital_brother_2
 					}
 					clr_province_flag = stop_counting
 				}
-				add_country_modifier = {
+				add_country_modifier = { 
 					name = "obstacle_feuding"
 					duration = -1
 				}
-				PREV = {
+				PREV = { 
 					add_historical_rival = THIS
 				}
 				add_historical_rival = PREV
 			}
 		}
-		if = {
-			limit = {
-				429 = {
-					OR = {
-						AND = {
+		if = { 
+			limit = { 
+				429 = { 
+					OR = { 
+						AND = { 
 							has_province_flag = land_brother_1
-							NOT = {
-								AND = {
-									414 = {
+							NOT = { 
+								AND = { 
+									414 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = ISF
 									}
 								}
-								AND = {
-									435 = {
+								AND = { 
+									435 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = KER
 									}
 								}
-								AND = {
-									1313 = {
+								AND = { 
+									1313 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = TEH
 									}
 								}
-								AND = {
-									416 = {
+								AND = { 
+									416 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = TAB
 									}
 								}
-								AND = {
-									426 = {
+								AND = { 
+									426 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MZA
 									}
 								}
-								AND = {
-									410 = {
+								AND = { 
+									410 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = IRQ
 									}
 								}
-								AND = {
-									447 = {
+								AND = { 
+									447 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = KTD
 									}
 								}
-								AND = {
-									551 = {
+								AND = { 
+									551 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MIH
 									}
 								}
-								AND = {
-									405 = {
+								AND = { 
+									405 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = ATB
 									}
 								}
 							}
 						}
-						AND = {
+						AND = { 
 							has_province_flag = land_brother_2
-							NOT = {
-								AND = {
-									414 = {
+							NOT = { 
+								AND = { 
+									414 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = ISF
 									}
 								}
-								AND = {
-									435 = {
+								AND = { 
+									435 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = KER
 									}
 								}
-								AND = {
-									1313 = {
+								AND = { 
+									1313 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = TEH
 									}
 								}
-								AND = {
-									416 = {
+								AND = { 
+									416 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = TAB
 									}
 								}
-								AND = {
-									426 = {
+								AND = { 
+									426 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MZA
 									}
 								}
-								AND = {
-									410 = {
+								AND = { 
+									410 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = IRQ
 									}
 								}
-								AND = {
-									447 = {
+								AND = { 
+									447 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = KTD
 									}
 								}
-								AND = {
-									551 = {
+								AND = { 
+									551 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MIH
 									}
 								}
-								AND = {
-									405 = {
+								AND = { 
+									405 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = ATB
 									}
 								}
@@ -1489,259 +1576,340 @@ country_event = {
 						}
 					}
 				}
-				NOT = {
+				NOT = { 
 					exists = MUZ
 				}
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					is_core = MUZ
 				}
 				remove_core = MUZ
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					is_core = ROOT
 				}
 				add_permanent_claim = MUZ
 			}
-			if = {
-				limit = {
-					429 = {
+			if = { 
+				limit = { 
+					429 = { 
 						has_province_flag = land_brother_1
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_1
 					}
-					cede_and_release = { scope = MUZ }
+					cede_province = MUZ
+					hidden_effect = { 
+						MUZ = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 					add_core = MUZ
 					add_core = ROOT
 					clr_province_flag = land_brother_1
 				}
 			}
-			if = {
-				limit = {
-					429 = {
+			if = { 
+				limit = { 
+					429 = { 
 						has_province_flag = land_brother_2
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_2
 					}
-					cede_and_release = { scope = MUZ }
+					cede_province = MUZ
+					hidden_effect = { 
+						MUZ = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 					add_core = MUZ
 					add_core = ROOT
 					clr_province_flag = land_brother_2
 				}
 			}
-			MUZ = {
+			MUZ = { 
 				set_dynasty = PREV
 				change_religion = PREV
 				change_primary_culture = PREV
-				every_owned_province = {
-					limit = {
-						OR = {
+				every_owned_province = { 
+					limit = { 
+						OR = { 
 							has_province_flag = capital_brother_1
 							has_province_flag = capital_brother_2
 						}
 					}
-					PREV = {
-						Effect_set_capital = { target = PREV }
+					PREV = { 
+						if = { 
+							limit = { 
+								is_part_of_hre = yes
+								ROOT = { 
+									is_part_of_hre = no
+								}
+							}
+							set_in_empire = no
+							swap_non_generic_missions = yes
+							emperor = { 
+								add_opinion = { 
+									who = ROOT
+									modifier = hre_province_left
+								}
+							}
+							add_imperial_influence = -1
+						}
+						set_capital = PREV
+						hidden_effect = { 
+							set_country_flag = tf_recalculate_communication_efficiency
+							set_country_flag = ai_tax_recalc
+						}
 					}
-					if = {
-						limit = {
+					if = { 
+						limit = { 
 							has_province_flag = capital_brother_1
 						}
 						clr_province_flag = capital_brother_1
 					}
-					if = {
-						limit = {
+					if = { 
+						limit = { 
 							has_province_flag = capital_brother_2
 						}
 						clr_province_flag = capital_brother_2
 					}
 					clr_province_flag = stop_counting
 				}
-				add_country_modifier = {
+				add_country_modifier = { 
 					name = "obstacle_feuding"
 					duration = -1
 				}
-				PREV = {
+				PREV = { 
 					add_historical_rival = THIS
 				}
 				add_historical_rival = PREV
 			}
 		}
-		if = {
-			limit = {
-				416 = {
-					OR = {
-						AND = {
+		if = { 
+			limit = { 
+				416 = { 
+					OR = { 
+						AND = { 
 							has_province_flag = land_brother_1
-							NOT = {
-								AND = {
-									414 = {
+							NOT = { 
+								AND = { 
+									414 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = ISF
 									}
 								}
-								AND = {
-									435 = {
+								AND = { 
+									435 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = KER
 									}
 								}
-								AND = {
-									1313 = {
+								AND = { 
+									1313 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = TEH
 									}
 								}
-								AND = {
-									429 = {
+								AND = { 
+									429 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MUZ
 									}
 								}
-								AND = {
-									426 = {
+								AND = { 
+									426 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MZA
 									}
 								}
-								AND = {
-									410 = {
+								AND = { 
+									410 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = IRQ
 									}
 								}
-								AND = {
-									447 = {
+								AND = { 
+									447 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = KTD
 									}
 								}
-								AND = {
-									551 = {
+								AND = { 
+									551 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MIH
 									}
 								}
-								AND = {
-									405 = {
+								AND = { 
+									405 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = ATB
 									}
 								}
 							}
 						}
-						AND = {
+						AND = { 
 							has_province_flag = land_brother_2
-							NOT = {
-								AND = {
-									414 = {
+							NOT = { 
+								AND = { 
+									414 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = ISF
 									}
 								}
-								AND = {
-									435 = {
+								AND = { 
+									435 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = KER
 									}
 								}
-								AND = {
-									1313 = {
+								AND = { 
+									1313 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = TEH
 									}
 								}
-								AND = {
-									429 = {
+								AND = { 
+									429 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MUZ
 									}
 								}
-								AND = {
-									426 = {
+								AND = { 
+									426 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MZA
 									}
 								}
-								AND = {
-									410 = {
+								AND = { 
+									410 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = IRQ
 									}
 								}
-								AND = {
-									447 = {
+								AND = { 
+									447 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = KTD
 									}
 								}
-								AND = {
-									551 = {
+								AND = { 
+									551 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MIH
 									}
 								}
-								AND = {
-									405 = {
+								AND = { 
+									405 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = ATB
 									}
 								}
@@ -1749,283 +1917,364 @@ country_event = {
 						}
 					}
 				}
-				NOT = {
+				NOT = { 
 					exists = TAB
 				}
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					is_core = TAB
 				}
 				remove_core = TAB
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					is_core = ROOT
 				}
 				add_permanent_claim = TAB
 			}
-			if = {
-				limit = {
-					416 = {
+			if = { 
+				limit = { 
+					416 = { 
 						has_province_flag = land_brother_1
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_1
 					}
-					cede_and_release = { scope = TAB }
+					cede_province = TAB
+					hidden_effect = { 
+						TAB = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 					add_core = TAB
 					add_core = ROOT
 					clr_province_flag = land_brother_1
 				}
 			}
-			if = {
-				limit = {
-					416 = {
+			if = { 
+				limit = { 
+					416 = { 
 						has_province_flag = land_brother_2
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_2
 					}
-					cede_and_release = { scope = TAB }
+					cede_province = TAB
+					hidden_effect = { 
+						TAB = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 					add_core = TAB
 					add_core = ROOT
 					clr_province_flag = land_brother_2
 				}
 			}
-			TAB = {
+			TAB = { 
 				set_dynasty = PREV
 				change_religion = PREV
 				change_primary_culture = PREV
-				every_owned_province = {
-					limit = {
-						OR = {
+				every_owned_province = { 
+					limit = { 
+						OR = { 
 							has_province_flag = capital_brother_1
 							has_province_flag = capital_brother_2
 						}
 					}
-					PREV = {
-						Effect_set_capital = { target=PREV }
+					PREV = { 
+						if = { 
+							limit = { 
+								is_part_of_hre = yes
+								ROOT = { 
+									is_part_of_hre = no
+								}
+							}
+							set_in_empire = no
+							swap_non_generic_missions = yes
+							emperor = { 
+								add_opinion = { 
+									who = ROOT
+									modifier = hre_province_left
+								}
+							}
+							add_imperial_influence = -1
+						}
+						set_capital = PREV
+						hidden_effect = { 
+							set_country_flag = tf_recalculate_communication_efficiency
+							set_country_flag = ai_tax_recalc
+						}
 					}
-					if = {
-						limit = {
+					if = { 
+						limit = { 
 							has_province_flag = capital_brother_1
 						}
 						clr_province_flag = capital_brother_1
 					}
-					if = {
-						limit = {
+					if = { 
+						limit = { 
 							has_province_flag = capital_brother_2
 						}
 						clr_province_flag = capital_brother_2
 					}
 					clr_province_flag = stop_counting
 				}
-				add_country_modifier = {
+				add_country_modifier = { 
 					name = "obstacle_feuding"
 					duration = -1
 				}
-				PREV = {
+				PREV = { 
 					add_historical_rival = THIS
 				}
 				add_historical_rival = PREV
 			}
 		}
-		if = {
-			limit = {
-				435 = {
-					OR = {
-						AND = {
+		if = { 
+			limit = { 
+				435 = { 
+					OR = { 
+						AND = { 
 							has_province_flag = land_brother_1
-							NOT = {
-								AND = {
-									429 = {
+							NOT = { 
+								AND = { 
+									429 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MUZ
 									}
 								}
-								AND = {
-									414 = {
+								AND = { 
+									414 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = ISF
 									}
 								}
-								AND = {
-									1313 = {
+								AND = { 
+									1313 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = TEH
 									}
 								}
-								AND = {
-									416 = {
+								AND = { 
+									416 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = TAB
 									}
 								}
-								AND = {
-									426 = {
+								AND = { 
+									426 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MZA
 									}
 								}
-								AND = {
-									410 = {
+								AND = { 
+									410 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = IRQ
 									}
 								}
-								AND = {
-									447 = {
+								AND = { 
+									447 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = KTD
 									}
 								}
-								AND = {
-									551 = {
+								AND = { 
+									551 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MIH
 									}
 								}
-								AND = {
-									405 = {
+								AND = { 
+									405 = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = ATB
 									}
 								}
 							}
 						}
-						AND = {
+						AND = { 
 							has_province_flag = land_brother_2
-							NOT = {
-								AND = {
-									429 = {
+							NOT = { 
+								AND = { 
+									429 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MUZ
 									}
 								}
-								AND = {
-									414 = {
+								AND = { 
+									414 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = ISF
 									}
 								}
-								AND = {
-									1313 = {
+								AND = { 
+									1313 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = TEH
 									}
 								}
-								AND = {
-									416 = {
+								AND = { 
+									416 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = TAB
 									}
 								}
-								AND = {
-									426 = {
+								AND = { 
+									426 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MZA
 									}
 								}
-								AND = {
-									410 = {
+								AND = { 
+									410 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = IRQ
 									}
 								}
-								AND = {
-									447 = {
+								AND = { 
+									447 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = KTD
 									}
 								}
-								AND = {
-									551 = {
+								AND = { 
+									551 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MIH
 									}
 								}
-								AND = {
-									405 = {
+								AND = { 
+									405 = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = ATB
 									}
 								}
@@ -2033,301 +2282,382 @@ country_event = {
 						}
 					}
 				}
-				NOT = {
+				NOT = { 
 					exists = KER
 				}
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					is_core = KER
 				}
 				remove_core = KER
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					is_core = ROOT
 				}
 				add_permanent_claim = KER
 			}
-			if = {
-				limit = {
-					435 = {
+			if = { 
+				limit = { 
+					435 = { 
 						has_province_flag = land_brother_1
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_1
 					}
-					cede_and_release = { scope = KER }
+					cede_province = KER
+					hidden_effect = { 
+						KER = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 					add_core = KER
 					add_core = ROOT
 					clr_province_flag = land_brother_1
 				}
 			}
-			if = {
-				limit = {
-					435 = {
+			if = { 
+				limit = { 
+					435 = { 
 						has_province_flag = land_brother_2
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_2
 					}
-					cede_and_release = { scope = KER }
+					cede_province = KER
+					hidden_effect = { 
+						KER = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 					add_core = KER
 					add_core = ROOT
 					clr_province_flag = land_brother_2
 				}
 			}
-			KER = {
+			KER = { 
 				set_dynasty = PREV
 				change_religion = PREV
 				change_primary_culture = PREV
-				every_owned_province = {
-					limit = {
-						OR = {
+				every_owned_province = { 
+					limit = { 
+						OR = { 
 							has_province_flag = capital_brother_1
 							has_province_flag = capital_brother_2
 						}
 					}
-					PREV = {
-						Effect_set_capital = { target = PREV }
+					PREV = { 
+						if = { 
+							limit = { 
+								is_part_of_hre = yes
+								ROOT = { 
+									is_part_of_hre = no
+								}
+							}
+							set_in_empire = no
+							swap_non_generic_missions = yes
+							emperor = { 
+								add_opinion = { 
+									who = ROOT
+									modifier = hre_province_left
+								}
+							}
+							add_imperial_influence = -1
+						}
+						set_capital = PREV
+						hidden_effect = { 
+							set_country_flag = tf_recalculate_communication_efficiency
+							set_country_flag = ai_tax_recalc
+						}
 					}
-					if = {
-						limit = {
+					if = { 
+						limit = { 
 							has_province_flag = capital_brother_1
 						}
 						clr_province_flag = capital_brother_1
 					}
-					if = {
-						limit = {
+					if = { 
+						limit = { 
 							has_province_flag = capital_brother_2
 						}
 						clr_province_flag = capital_brother_2
 					}
 					clr_province_flag = stop_counting
 				}
-				add_country_modifier = {
+				add_country_modifier = { 
 					name = "obstacle_feuding"
 					duration = -1
 				}
-				PREV = {
+				PREV = { 
 					add_historical_rival = THIS
 				}
 				add_historical_rival = PREV
 			}
 		}
-		if = {
-			limit = {
-				1313 = {
-					OR = {
-						AND = {
+		if = { 
+			limit = { 
+				1313 = { 
+					OR = { 
+						AND = { 
 							has_province_flag = land_brother_1
-							NOT = {
-								AND = {
-									429 = {
+							NOT = { 
+								AND = { 
+									429 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MUZ
 									}
 								}
-								AND = {
-									414 = {
+								AND = { 
+									414 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = ISF
 									}
 								}
-								AND = {
-									435 = {
+								AND = { 
+									435 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = KER
 									}
 								}
-								AND = {
-									416 = {
+								AND = { 
+									416 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = TAB
 									}
 								}
-								AND = {
-									426 = {
+								AND = { 
+									426 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MZA
 									}
 								}
-								AND = {
-									410 = {
+								AND = { 
+									410 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = IRQ
 									}
 								}
-								AND = {
-									447 = {
+								AND = { 
+									447 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = KTD
 									}
 								}
-								AND = {
-									551 = {
+								AND = { 
+									551 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = MIH
 									}
 								}
-								AND = {
-									405 = {
+								AND = { 
+									405 = { 
 										has_province_flag = land_brother_1
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_1
 									}
-									NOT = {
+									NOT = { 
 										exists = ATB
 									}
 								}
 							}
 						}
-						AND = {
+						AND = { 
 							has_province_flag = land_brother_2
-							NOT = {
-								AND = {
-									429 = {
+							NOT = { 
+								AND = { 
+									429 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MUZ
 									}
 								}
-								AND = {
-									414 = {
+								AND = { 
+									414 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = ISF
 									}
 								}
-								AND = {
-									435 = {
+								AND = { 
+									435 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = KER
 									}
 								}
-								AND = {
-									416 = {
+								AND = { 
+									416 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = TAB
 									}
 								}
-								AND = {
-									426 = {
+								AND = { 
+									426 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MZA
 									}
 								}
-								AND = {
-									410 = {
+								AND = { 
+									410 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = IRQ
 									}
 								}
-								AND = {
-									447 = {
+								AND = { 
+									447 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = KTD
 									}
 								}
-								AND = {
-									551 = {
+								AND = { 
+									551 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = MIH
 									}
 								}
-								AND = {
-									405 = {
+								AND = { 
+									405 = { 
 										has_province_flag = land_brother_2
 									}
-									NOT = {
+									NOT = { 
 										has_province_flag = capital_brother_2
 									}
-									NOT = {
+									NOT = { 
 										exists = ATB
 									}
 								}
@@ -2335,122 +2665,203 @@ country_event = {
 						}
 					}
 				}
-				NOT = {
+				NOT = { 
 					exists = TEH
 				}
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					is_core = TEH
 				}
 				remove_core = TEH
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					is_city = yes
 					is_core = ROOT
 				}
 				add_permanent_claim = TEH
 			}
-			if = {
-				limit = {
-					1313 = {
+			if = { 
+				limit = { 
+					1313 = { 
 						has_province_flag = land_brother_1
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_1
 					}
-					cede_and_release = { scope = TEH }
+					cede_province = TEH
+					hidden_effect = { 
+						TEH = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 					add_core = TEH
 					add_core = ROOT
 					clr_province_flag = land_brother_1
 				}
 			}
-			if = {
-				limit = {
-					1313 = {
+			if = { 
+				limit = { 
+					1313 = { 
 						has_province_flag = land_brother_2
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						has_province_flag = land_brother_2
 					}
-					cede_and_release = { scope = TEH }
+					cede_province = TEH
+					hidden_effect = { 
+						TEH = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 					add_core = TEH
 					add_core = ROOT
 					clr_province_flag = land_brother_2
 				}
 			}
-			TEH = {
+			TEH = { 
 				set_dynasty = PREV
 				change_religion = PREV
 				change_primary_culture = PREV
-				every_owned_province = {
-					limit = {
-						OR = {
+				every_owned_province = { 
+					limit = { 
+						OR = { 
 							has_province_flag = capital_brother_1
 							has_province_flag = capital_brother_2
 						}
 					}
-					PREV = {
-						Effect_set_capital = { target = PREV }
+					PREV = { 
+						if = { 
+							limit = { 
+								is_part_of_hre = yes
+								ROOT = { 
+									is_part_of_hre = no
+								}
+							}
+							set_in_empire = no
+							swap_non_generic_missions = yes
+							emperor = { 
+								add_opinion = { 
+									who = ROOT
+									modifier = hre_province_left
+								}
+							}
+							add_imperial_influence = -1
+						}
+						set_capital = PREV
+						hidden_effect = { 
+							set_country_flag = tf_recalculate_communication_efficiency
+							set_country_flag = ai_tax_recalc
+						}
 					}
-					if = {
-						limit = {
+					if = { 
+						limit = { 
 							has_province_flag = capital_brother_1
 						}
 						clr_province_flag = capital_brother_1
 					}
-					if = {
-						limit = {
+					if = { 
+						limit = { 
 							has_province_flag = capital_brother_2
 						}
 						clr_province_flag = capital_brother_2
 					}
 					clr_province_flag = stop_counting
 				}
-				add_country_modifier = {
+				add_country_modifier = { 
 					name = "obstacle_feuding"
 					duration = -1
 				}
-				PREV = {
+				PREV = { 
 					add_historical_rival = THIS
 				}
 				add_historical_rival = PREV
 			}
 		}
-		every_owned_province = {
-			limit = {
-				OR = {
+		every_owned_province = { 
+			limit = { 
+				OR = { 
 					has_province_flag = capital_brother_1
 					has_province_flag = capital_brother_2
 				}
 			}
-			spawn_rebels = {
+			spawn_rebels = { 
 				type = pretender_rebels
 				size = 3
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_province_flag = capital_brother_1
 				}
 				clr_province_flag = capital_brother_1
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_province_flag = capital_brother_2
 				}
 				clr_province_flag = capital_brother_2
 			}
 			clr_province_flag = stop_counting
 		}
-		every_province = {
-			limit = {
-				OR = {
+		every_province = { 
+			limit = { 
+				OR = { 
 					has_province_flag = capital_brother_0
 					has_province_flag = land_brother_0
 					has_province_flag = capital_brother_1
@@ -2459,69 +2870,69 @@ country_event = {
 					has_province_flag = land_brother_2
 				}
 			}
-			set_variable = {
+			set_variable = { 
 				which = current_prov_check_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = current_prov_check_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = tiebreaker_check_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = winner_tiebreaker_check_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = brother_0_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = brother_1_dev
 				value = 0
 			}
-			set_variable = {
+			set_variable = { 
 				which = brother_2_dev
 				value = 0
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_province_flag = capital_brother_0
 				}
 				clr_province_flag = capital_brother_0
 				clr_province_flag = stop_counting
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_province_flag = land_brother_0
 				}
 				clr_province_flag = land_brother_0
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_province_flag = capital_brother_1
 				}
 				clr_province_flag = capital_brother_1
 				clr_province_flag = stop_counting
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_province_flag = land_brother_1
 				}
 				clr_province_flag = land_brother_1
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_province_flag = capital_brother_2
 				}
 				clr_province_flag = capital_brother_2
 				clr_province_flag = stop_counting
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_province_flag = land_brother_2
 				}
 				clr_province_flag = land_brother_2
@@ -2529,39 +2940,69 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_muz.3
 	title = flavor_muz.3.t
 	desc = flavor_muz.3.d
 	picture = KING_SICK_IN_BED_eventPicture
 	fire_only_once = yes
 	hidden = yes
-	trigger = {
+	trigger = { 
 		tag = MUZ
 		ai = yes
-		ISF = {
+		ISF = { 
 			ai = yes
 		}
 		offensive_war_with = ISF
-		war_score_against = {
+		war_score_against = { 
 			who = ISF
 			value = 100
 		}
-		NOT = {
+		NOT = { 
 			is_year = 1358
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 1
 	}
-	option = {
+	option = { 
 		name = EVT_AI
-		ISF = {
-			every_owned_province = {
-				limit = {
+		ISF = { 
+			every_owned_province = { 
+				limit = { 
 					is_core = ISF
 				}
-				cede_and_release = { scope = MUZ }
+				cede_province = MUZ
+				hidden_effect = { 
+					MUZ = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
 			}
 		}
 	}

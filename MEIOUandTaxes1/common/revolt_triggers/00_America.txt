@@ -1,158 +1,143 @@
-# Post-Colonial Nations
-BRZ	= {
-	OR = {
+BRZ = { 
+	OR = { 
 		is_core = BRZ
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = BRZ
 			}
 		}
 	}
 }
-
-CAN	= {
-	OR = {
+CAN = { 
+	OR = { 
 		is_core = CAN
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = CAN
 			}
 		}
 	}
 }
-
-CHL	= {
-	OR = {
+CHL = { 
+	OR = { 
 		is_core = CHL
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = CHL
 			}
 		}
 	}
 }
-
-COL	= {
-	OR = {
+COL = { 
+	OR = { 
 		is_core = COL
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = COL
 			}
 		}
 	}
 }
-
-HAT	= {
-	OR = {
+HAT = { 
+	OR = { 
 		is_core = HAT
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = HAT
 			}
 		}
 	}
 }
-
-LAP	= {
-	OR = {
+LAP = { 
+	OR = { 
 		is_core = LAP
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = LAP
 			}
 		}
 	}
 }
-
-LOU	= {
-	OR = {
+LOU = { 
+	OR = { 
 		is_core = LOU
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = LOU
 			}
 		}
 	}
 }
-
-MEX	= {
-	OR = {
+MEX = { 
+	OR = { 
 		is_core = MEX
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = MEX
 			}
 		}
 	}
 }
-
-PEU	= {
-	OR = {
+PEU = { 
+	OR = { 
 		is_core = PEU
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = PEU
 			}
 		}
 	}
 }
-
-PRG	= {
-	OR = {
+PRG = { 
+	OR = { 
 		is_core = PRG
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = PRG
 			}
 		}
 	}
 }
-
-QUE	= {
-	OR = {
+QUE = { 
+	OR = { 
 		is_core = QUE
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = QUE
 			}
 		}
 	}
 }
-
-CAM	= {
-	OR = {
+CAM = { 
+	OR = { 
 		is_core = CAM
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = CAM
 			}
 		}
 	}
 }
-
-USA	= {
-	OR = {
+USA = { 
+	OR = { 
 		is_core = USA
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = USA
 			}
 		}
 	}
 }
-
-VNZ	= {
-	OR = {
+VNZ = { 
+	OR = { 
 		is_core = VNZ
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = VNZ
 			}
 		}
 	}
 }
-# Pizarro
-PIZ = {
+PIZ = { 
 	always = no
 }

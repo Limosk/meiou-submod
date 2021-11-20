@@ -1,10 +1,5 @@
-# For specific combinations of culture, religion and other such triggers
-# Will pick the first valid one it finds in list
-
-
-
-papacy_title_1 = {
-	rank = {
+papacy_title_1 = { 
+	rank = { 
 		1 = PAPACY
 		2 = PAPACY
 		3 = PAPACY
@@ -12,8 +7,7 @@ papacy_title_1 = {
 		5 = PAPACY
 		6 = PAPACY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = POPE
 		2 = POPE
 		3 = POPE
@@ -21,8 +15,7 @@ papacy_title_1 = {
 		5 = POPE
 		6 = POPE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = POPETTE
 		2 = POPETTE
 		3 = POPETTE
@@ -30,14 +23,18 @@ papacy_title_1 = {
 		5 = POPETTE
 		6 = POPETTE
 	}
-	
-	trigger = {
-		papal_trigger = yes
+	trigger = { 
+		AND = { 
+			government = theocracy
+			is_variable_equal = { 
+				which = grp
+				value = 3
+			}
+		}
 	}
 }
-
-muslim_illiberal_republic_vassal = {
-	rank = {
+muslim_illiberal_republic_vassal = { 
+	rank = { 
 		1 = PROVINCE
 		2 = PROVINCE
 		3 = PROVINCE
@@ -45,8 +42,7 @@ muslim_illiberal_republic_vassal = {
 		5 = PROVINCE
 		6 = PROVINCE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RAIS
 		2 = RAIS
 		3 = RAIS
@@ -54,8 +50,7 @@ muslim_illiberal_republic_vassal = {
 		5 = RAIS
 		6 = RAIS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RAIS
 		2 = RAIS
 		3 = RAIS
@@ -63,16 +58,84 @@ muslim_illiberal_republic_vassal = {
 		5 = RAIS
 		6 = RAIS
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		religion_group = muslim
 	}
 }
-muslim_illiberal_republic_sovereign = {
-	rank = {
+muslim_illiberal_republic_sovereign = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -80,8 +143,7 @@ muslim_illiberal_republic_sovereign = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RAIS
 		2 = RAIS
 		3 = RAIS
@@ -89,8 +151,7 @@ muslim_illiberal_republic_sovereign = {
 		5 = RAIS
 		6 = RAIS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RAIS
 		2 = RAIS
 		3 = RAIS
@@ -98,17 +159,101 @@ muslim_illiberal_republic_sovereign = {
 		5 = RAIS
 		6 = RAIS
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		religion_group = muslim
 	}
 }
-muslim_illiberal_republic_federal = {
-	rank = {
+muslim_illiberal_republic_federal = { 
+	rank = { 
 		1 = REPUBLICS
 		2 = REPUBLICS
 		3 = REPUBLICS
@@ -116,8 +261,7 @@ muslim_illiberal_republic_federal = {
 		5 = REPUBLICS
 		6 = REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = AZAM_RAIS
 		2 = AZAM_RAIS
 		3 = AZAM_RAIS
@@ -125,8 +269,7 @@ muslim_illiberal_republic_federal = {
 		5 = AZAM_RAIS
 		6 = AZAM_RAIS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = AZAM_RAIS
 		2 = AZAM_RAIS
 		3 = AZAM_RAIS
@@ -134,18 +277,99 @@ muslim_illiberal_republic_federal = {
 		5 = AZAM_RAIS
 		6 = AZAM_RAIS
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		religion_group = muslim
 	}
 }
-
-muslim_liberal_republic_vassal = {
-	rank = {
+muslim_liberal_republic_vassal = { 
+	rank = { 
 		1 = TERRITORY
 		2 = TERRITORY
 		3 = TERRITORY
@@ -153,8 +377,7 @@ muslim_liberal_republic_vassal = {
 		5 = TERRITORY
 		6 = TERRITORY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ALWAZIR_ALAWAL
 		2 = ALWAZIR_ALAWAL
 		3 = ALWAZIR_ALAWAL
@@ -162,8 +385,7 @@ muslim_liberal_republic_vassal = {
 		5 = ALWAZIR_ALAWAL
 		6 = ALWAZIR_ALAWAL
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ALWAZIR_ALAWAL
 		2 = ALWAZIR_ALAWAL
 		3 = ALWAZIR_ALAWAL
@@ -171,17 +393,82 @@ muslim_liberal_republic_vassal = {
 		5 = ALWAZIR_ALAWAL
 		6 = ALWAZIR_ALAWAL
 	}
-	
-	trigger = {
-		liberal_republic_trigger = yes
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		religion_group = muslim
 	}
 }
-
-muslim_liberal_republic_sovereign = {
-	rank = {
+muslim_liberal_republic_sovereign = { 
+	rank = { 
 		1 = STATE
 		2 = STATE
 		3 = STATE
@@ -189,8 +476,7 @@ muslim_liberal_republic_sovereign = {
 		5 = STATE
 		6 = STATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RAIS
 		2 = RAIS
 		3 = RAIS
@@ -198,8 +484,7 @@ muslim_liberal_republic_sovereign = {
 		5 = RAIS
 		6 = RAIS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RAIS
 		2 = RAIS
 		3 = RAIS
@@ -207,17 +492,84 @@ muslim_liberal_republic_sovereign = {
 		5 = RAIS
 		6 = RAIS
 	}
-	
-	trigger = {
-		liberal_republic_trigger = yes
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		religion_group = muslim
 	}
 }
-
-muslim_liberal_republic_federal = {
-	rank = {
+muslim_liberal_republic_federal = { 
+	rank = { 
 		1 = REPUBLICS
 		2 = REPUBLICS
 		3 = REPUBLICS
@@ -225,8 +577,7 @@ muslim_liberal_republic_federal = {
 		5 = REPUBLICS
 		6 = REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RAIS
 		2 = RAIS
 		3 = RAIS
@@ -234,8 +585,7 @@ muslim_liberal_republic_federal = {
 		5 = RAIS
 		6 = RAIS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RAIS
 		2 = RAIS
 		3 = RAIS
@@ -243,18 +593,97 @@ muslim_liberal_republic_federal = {
 		5 = RAIS
 		6 = RAIS
 	}
-	
-	trigger = {
-		liberal_republic_trigger = yes
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		religion_group = muslim
 	}
 }
-
-hindu_illiberal_republic_vassal = {
-	rank = {
+hindu_illiberal_republic_vassal = { 
+	rank = { 
 		1 = PROVINCE
 		2 = PROVINCE
 		3 = PROVINCE
@@ -262,8 +691,7 @@ hindu_illiberal_republic_vassal = {
 		5 = PROVINCE
 		6 = PROVINCE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SADR
 		2 = SADR
 		3 = SADR
@@ -271,8 +699,7 @@ hindu_illiberal_republic_vassal = {
 		5 = SADR
 		6 = SADR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SADR
 		2 = SADR
 		3 = SADR
@@ -280,18 +707,84 @@ hindu_illiberal_republic_vassal = {
 		5 = SADR
 		6 = SADR
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		religion_group = hindu
 	}
 }
-
-
-hindu_illiberal_republic_sovereign = {
-	rank = {
+hindu_illiberal_republic_sovereign = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -299,8 +792,7 @@ hindu_illiberal_republic_sovereign = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PESHWA
 		2 = PESHWA
 		3 = PESHWA
@@ -308,8 +800,7 @@ hindu_illiberal_republic_sovereign = {
 		5 = PESHWA
 		6 = PESHWA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = PESHWA
 		2 = PESHWA
 		3 = PESHWA
@@ -317,17 +808,101 @@ hindu_illiberal_republic_sovereign = {
 		5 = PESHWA
 		6 = PESHWA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		religion_group = hindu
 	}
 }
-hindu_illiberal_republic_federal = {
-	rank = {
+hindu_illiberal_republic_federal = { 
+	rank = { 
 		1 = REPUBLICS
 		2 = REPUBLICS
 		3 = REPUBLICS
@@ -335,8 +910,7 @@ hindu_illiberal_republic_federal = {
 		5 = REPUBLICS
 		6 = REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PRATINIDHI
 		2 = PRATINIDHI
 		3 = PRATINIDHI
@@ -344,8 +918,7 @@ hindu_illiberal_republic_federal = {
 		5 = PRATINIDHI
 		6 = PRATINIDHI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = PRATINIDHI
 		2 = PRATINIDHI
 		3 = PRATINIDHI
@@ -353,18 +926,99 @@ hindu_illiberal_republic_federal = {
 		5 = PRATINIDHI
 		6 = PRATINIDHI
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		religion_group = hindu
 	}
 }
-
-hindu_liberal_republic_vassal = {
-	rank = {
+hindu_liberal_republic_vassal = { 
+	rank = { 
 		1 = TERRITORY
 		2 = TERRITORY
 		3 = TERRITORY
@@ -372,8 +1026,7 @@ hindu_liberal_republic_vassal = {
 		5 = TERRITORY
 		6 = TERRITORY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PRAHHAAN_MANTREE
 		2 = PRAHHAAN_MANTREE
 		3 = PRAHHAAN_MANTREE
@@ -381,8 +1034,7 @@ hindu_liberal_republic_vassal = {
 		5 = PRAHHAAN_MANTREE
 		6 = PRAHHAAN_MANTREE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = PRAHHAAN_MANTREE
 		2 = PRAHHAAN_MANTREE
 		3 = PRAHHAAN_MANTREE
@@ -390,17 +1042,82 @@ hindu_liberal_republic_vassal = {
 		5 = PRAHHAAN_MANTREE
 		6 = PRAHHAAN_MANTREE
 	}
-	
-	trigger = {
-		liberal_republic_trigger = yes
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		religion_group = hindu
 	}
 }
-
-hindu_liberal_republic_sovereign = {
-	rank = {
+hindu_liberal_republic_sovereign = { 
+	rank = { 
 		1 = STATE
 		2 = STATE
 		3 = STATE
@@ -408,8 +1125,7 @@ hindu_liberal_republic_sovereign = {
 		5 = STATE
 		6 = STATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RAASHTRAPATI
 		2 = RAASHTRAPATI
 		3 = RAASHTRAPATI
@@ -417,8 +1133,7 @@ hindu_liberal_republic_sovereign = {
 		5 = RAASHTRAPATI
 		6 = RAASHTRAPATI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RAASHTRAPATI
 		2 = RAASHTRAPATI
 		3 = RAASHTRAPATI
@@ -426,17 +1141,84 @@ hindu_liberal_republic_sovereign = {
 		5 = RAASHTRAPATI
 		6 = RAASHTRAPATI
 	}
-	
-	trigger = {
-		liberal_republic_trigger = yes
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		religion_group = hindu
 	}
 }
-
-hindu_liberal_republic_federal = {
-	rank = {
+hindu_liberal_republic_federal = { 
+	rank = { 
 		1 = UNION
 		2 = UNION
 		3 = UNION
@@ -444,8 +1226,7 @@ hindu_liberal_republic_federal = {
 		5 = UNION
 		6 = UNION
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RAASHTRAPATI
 		2 = RAASHTRAPATI
 		3 = RAASHTRAPATI
@@ -453,8 +1234,7 @@ hindu_liberal_republic_federal = {
 		5 = RAASHTRAPATI
 		6 = RAASHTRAPATI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RAASHTRAPATI
 		2 = RAASHTRAPATI
 		3 = RAASHTRAPATI
@@ -462,15 +1242,92 @@ hindu_liberal_republic_federal = {
 		5 = RAASHTRAPATI
 		6 = RAASHTRAPATI
 	}
-	
-	trigger = {
-		liberal_republic_trigger = yes
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		religion_group = hindu
 	}
 }
-
-
-

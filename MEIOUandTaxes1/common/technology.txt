@@ -1,22 +1,11 @@
-# Do not change tags in here without changing every other reference to them.
-# If adding new technology, make sure they are uniquely named.
-
-# Armies get a insufficient support penalty when the ratio cav / (inf+cav) is _higher_ than "# cav_to_inf_ratio". This applies for the "unit_type" of a country.
-
-# Groups must be defined BEFORE tables.
-
-
-groups = {
-	western = {
-		# modifier = 0.00
+groups = { 
+	western = { 
 		start_level = 5
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
-		# trade_company = yes
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -27,17 +16,13 @@ groups = {
 			value = 75
 		}
 	}
-	
-	eastern = {
-		# modifier = 0.15
+	eastern = { 
 		start_level = 5
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.7
-		# trade_company = yes
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -48,17 +33,13 @@ groups = {
 			value = 75
 		}
 	}
-	
-	ottoman = {
-		# modifier = 0.15
+	ottoman = { 
 		start_level = 6
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
-		# trade_company = yes
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -69,17 +50,13 @@ groups = {
 			value = 75
 		}
 	}
-	
-	muslim = {
-		# modifier = 0.20
+	muslim = { 
 		start_level = 5
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.8
-		# trade_company = yes
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -90,16 +67,13 @@ groups = {
 			value = 75
 		}
 	}
-	
-	indian = {
-		# modifier = 0.30
+	indian = { 
 		start_level = 5
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -110,32 +84,23 @@ groups = {
 			value = 75
 		}
 	}
-	
-	east_african = {
-		# modifier = 0.35
+	east_african = { 
 		start_level = 5
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
 		nation_designer_unit_type = soudantech
 	}
-	
-	central_african = {
-		# modifier = 0.65
+	central_african = { 
 		start_level = 2
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
 		nation_designer_unit_type = sub_saharan
 	}
-	
-	chinese = {
-		# modifier = 0.50
+	chinese = { 
 		start_level = 7
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -146,15 +111,13 @@ groups = {
 			value = 75
 		}
 	}
-	nomad_group = {
-		# modifier = 0.90
+	nomad_group = { 
 		start_level = 3
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 1.0
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -165,58 +128,40 @@ groups = {
 			value = 75
 		}
 	}
-	
-	sub_saharan = {
-		# modifier = 0.60
+	sub_saharan = { 
 		start_level = 3
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.0
 		is_primitive = yes
 	}
-	
-	north_american = {
-		# modifier = 2.5
+	north_american = { 
 		start_level = 2
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
 		is_primitive = yes
 	}
-	
-	mesoamerican = {
-		# modifier = 2.0
+	mesoamerican = { 
 		start_level = 2
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
 		is_primitive = yes
 	}
-	
-	south_american = {
-		# modifier = 2.0
+	south_american = { 
 		start_level = 2
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
 		is_primitive = yes
 	}
-	
-	andean = {
-		# modifier = 1.5
+	andean = { 
 		start_level = 1
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
 		nation_designer_unit_type = south_american
 		is_primitive = yes
 	}
-	
-	high_american = {
-		# modifier = 0
+	high_american = { 
 		start_level = 3
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
 		nation_designer_unit_type = north_american
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -227,16 +172,13 @@ groups = {
 			value = 75
 		}
 	}
-	
-	southeast_asian = {
-		# modifier = 0.50
+	southeast_asian = { 
 		start_level = 5
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -247,16 +189,13 @@ groups = {
 			value = 75
 		}
 	}
-	
-	tibetan = {
-		# modifier = 0.50
+	tibetan = { 
 		start_level = 6
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -267,16 +206,13 @@ groups = {
 			value = 75
 		}
 	}
-	
-	japanese = {
-		# modifier = 0.50
+	japanese = { 
 		start_level = 6
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.5
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -287,62 +223,40 @@ groups = {
 			value = 75
 		}
 	}
-	
-	austranesian = {
-		# modifier = 0.35
+	austranesian = { 
 		start_level = 5
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.1
 	}
-	
-	steppestech = {
-		# modifier = 0.40
+	steppestech = { 
 		start_level = 3
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.8
 	}
-	
-	soudantech = {
-		# modifier = 0.50
+	soudantech = { 
 		start_level = 3
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.4
 	}
-	
-	malagasy_tech = {
-		# modifier = 0.65
+	malagasy_tech = { 
 		start_level = 2
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.0
 		nation_designer_unit_type = sub_saharan
 	}
-	
-	mongol_tech = {
-		# modifier = 0.00
+	mongol_tech = { 
 		start_level = 2
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.9
 		is_primitive = yes
 	}
-	
-	hawaii_tech = {
-		# modifier = 0.70
+	hawaii_tech = { 
 		start_level = 1
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.0
 		is_primitive = yes
 	}
-	
-	byzantine = {
-		# modifier = 0.15
+	byzantine = { 
 		start_level = 6
 		start_cost_modifier = 0
-		# cav_to_inf_ratio = 0.7
-		# trade_company = yes
-		nation_designer_cost = {
-			trigger = {
-				capital_scope = {
-					OR = {
+		nation_designer_cost = { 
+			trigger = { 
+				capital_scope = { 
+					OR = { 
 						continent = new_world
 						continent = north_america
 						continent = south_america
@@ -353,10 +267,8 @@ groups = {
 			value = 75
 		}
 	}
-	
 }
-
-tables = {
+tables = { 
 	adm_tech = "technologies/adm.txt"
 	dip_tech = "technologies/dip.txt"
 	mil_tech = "technologies/mil.txt"

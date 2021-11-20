@@ -1,88 +1,82 @@
-########################################
-# Ottoman Harem Events		           #
-# Written by Henrik Lohmander		   #
-########################################
-
 namespace = harem_events
-
-# The Sons of [Root.Monarch.GetName]
-country_event = {
+country_event = { 
 	id = harem_events.1
 	title = harem_events.1.t
 	picture = 3_SONS_eventPicture
-	
-	trigger = {
+	trigger = { 
 		has_dlc = "Rights of Man"
 		ruler_age = 30
 		has_heir = no
 		has_government_attribute = heir
-		OR = {
-			is_key_equal = { lhs = Pol_Family value = 2 }
-			is_key_equal = { lhs = Pol_Family value = 3 }
+		OR = { 
+			is_variable_equal = { 
+				which = hwv
+				value = 2
+			}
+			is_variable_equal = { 
+				which = hwv
+				value = 3
+			}
 		}
 	}
-	
-	desc = {
-		trigger = {
+	desc = { 
+		trigger = { 
 			is_female = yes
 		}
-		desc = harem_events.1.female #Fallback, not likely to ever be used in vanilla.
+		desc = harem_events.1.female
 	}
-	desc = {
-		trigger = {
+	desc = { 
+		trigger = { 
 			is_female = no
 		}
-		desc = harem_events.1.desc #Fallback, not likely to ever be used in vanilla.
+		desc = harem_events.1.desc
 	}
-
-	immediate = {
-		hidden_effect = {
-			random_list = {
-				33 = {
-					set_country_flag = harem_fairest_heir #Completely Random
+	immediate = { 
+		hidden_effect = { 
+			random_list = { 
+				33 = { 
+					set_country_flag = harem_fairest_heir
 				}
-				33 = {
-					set_country_flag = harem_strong_heir #Atleast 1 MIl
+				33 = { 
+					set_country_flag = harem_strong_heir
 				}
-				33 = {
-					set_country_flag = harem_leadership_heir #Atleast 1 MIL
+				33 = { 
+					set_country_flag = harem_leadership_heir
 				}
-				1 = {
-					set_country_flag = harem_genious_heir #Atleast 1 in every stat.
-				}
-			}
-			random_list = {
-				33 = {
-					set_country_flag = harem_studious_heir #Atleast 1 ADM
-				}
-				33 = {
-					set_country_flag = harem_pious_heir #Atleast 1 ADM
-				}
-				33 = {
-					set_country_flag = harem_inquisitive_heir #Completely Random
+				1 = { 
+					set_country_flag = harem_genious_heir
 				}
 			}
-			random_list = {
-				33 = {
-					set_country_flag = harem_gregarious_heir #Atleast 1 DIP
+			random_list = { 
+				33 = { 
+					set_country_flag = harem_studious_heir
 				}
-				33 = {
-					set_country_flag = harem_entrepreneurial_heir #Atleast 1 DIP
+				33 = { 
+					set_country_flag = harem_pious_heir
 				}
-				33 = {
-					set_country_flag = harem_generous_heir #Completely Random
+				33 = { 
+					set_country_flag = harem_inquisitive_heir
+				}
+			}
+			random_list = { 
+				33 = { 
+					set_country_flag = harem_gregarious_heir
+				}
+				33 = { 
+					set_country_flag = harem_entrepreneurial_heir
+				}
+				33 = { 
+					set_country_flag = harem_generous_heir
 				}
 			}
 		}
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 6
 	}
-
-	option = {
-		name = harem_events.1.a #Pious
-		trigger = {
+	option = { 
+		name = harem_events.1.a
+		trigger = { 
 			ai = no
 			has_country_flag = harem_pious_heir
 		}
@@ -96,7 +90,7 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			ADM = 1
@@ -105,9 +99,9 @@ country_event = {
 			hidden = yes
 		}
 	}
-	option = {	 
-		name = harem_events.1.b #Strong
-		trigger = {
+	option = { 
+		name = harem_events.1.b
+		trigger = { 
 			ai = no
 			has_country_flag = harem_strong_heir
 		}
@@ -121,7 +115,7 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			MIL = 1
@@ -130,9 +124,9 @@ country_event = {
 			hidden = yes
 		}
 	}
-	option = {	 
-		name = harem_events.1.c #Studious
-		trigger = {
+	option = { 
+		name = harem_events.1.c
+		trigger = { 
 			ai = no
 			has_country_flag = harem_studious_heir
 		}
@@ -146,7 +140,7 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			ADM = 1
@@ -155,9 +149,9 @@ country_event = {
 			hidden = yes
 		}
 	}
-	option = {	 
-		name = harem_events.1.e #leadership
-		trigger = {
+	option = { 
+		name = harem_events.1.e
+		trigger = { 
 			ai = no
 			has_country_flag = harem_leadership_heir
 		}
@@ -171,7 +165,7 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			MIL = 1
@@ -180,9 +174,9 @@ country_event = {
 			hidden = yes
 		}
 	}
-	option = {	 
+	option = { 
 		name = harem_events.1.d
-		trigger = {
+		trigger = { 
 			ai = no
 			has_country_flag = harem_gregarious_heir
 		}
@@ -196,7 +190,7 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			DIP = 1
@@ -205,9 +199,9 @@ country_event = {
 			hidden = yes
 		}
 	}
-	option = {	 
+	option = { 
 		name = harem_events.1.f
-		trigger = {
+		trigger = { 
 			ai = no
 			has_country_flag = harem_fairest_heir
 		}
@@ -221,16 +215,16 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			age = 10
 			hidden = yes
 		}
 	}
-	option = {	 
+	option = { 
 		name = harem_events.1.g
-		trigger = {
+		trigger = { 
 			ai = no
 			has_country_flag = harem_entrepreneurial_heir
 		}
@@ -244,7 +238,7 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			DIP = 1
@@ -253,9 +247,11 @@ country_event = {
 			hidden = yes
 		}
 	}
-	option = {	 
+	option = { 
 		name = harem_events.1.h
-		trigger = { has_country_flag = harem_inquisitive_heir }
+		trigger = { 
+			has_country_flag = harem_inquisitive_heir
+		}
 		clr_country_flag = harem_pious_heir
 		clr_country_flag = harem_strong_heir
 		clr_country_flag = harem_leadership_heir
@@ -266,16 +262,16 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			age = 10
 			hidden = yes
 		}
 	}
-	option = {	 
+	option = { 
 		name = harem_events.1.i
-		trigger = {
+		trigger = { 
 			ai = no
 			has_country_flag = harem_genious_heir
 		}
@@ -289,7 +285,7 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			DIP = 1
@@ -299,9 +295,9 @@ country_event = {
 			hidden = yes
 		}
 	}
-	option = {	 
+	option = { 
 		name = harem_events.1.j
-		trigger = {
+		trigger = { 
 			ai = no
 			has_country_flag = harem_generous_heir
 		}
@@ -315,15 +311,17 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			age = 10
 			hidden = yes
 		}
 	}
-	option = {
-		trigger = { ai = yes } #Because the AI cannot tell the candidates apart (like a human would) it instead gets a small boost to every stat.
+	option = { 
+		trigger = { 
+			ai = yes
+		}
 		name = harem_events.1.j
 		clr_country_flag = harem_pious_heir
 		clr_country_flag = harem_strong_heir
@@ -335,7 +333,7 @@ country_event = {
 		clr_country_flag = harem_entrepreneurial_heir
 		clr_country_flag = harem_generous_heir
 		clr_country_flag = harem_fairest_heir
-		define_heir = {
+		define_heir = { 
 			dynasty = original_dynasty
 			male = yes
 			age = 10
@@ -346,29 +344,30 @@ country_event = {
 		}
 	}
 }
-# Kiliç alayi
-country_event = {
+country_event = { 
 	id = harem_events.2
 	title = harem_events.2.t
 	desc = harem_events.2.d
 	picture = SWORD_OF_OSMAN_eventPicture
-	
-	trigger = { has_dlc = "Rights of Man" }
-	
-	immediate = {
-		hidden_effect = {
-			if = {
-				limit = {
+	trigger = { 
+		has_dlc = "Rights of Man"
+	}
+	immediate = { 
+		hidden_effect = { 
+			if = { 
+				limit = { 
 					has_country_flag = Horde_Timur
 				}
-				if = {
-					limit = {
-						NOT = { is_year = 1480 }
+				if = { 
+					limit = { 
+						NOT = { 
+							is_year = 1480
+						}
 						ai = yes
 					}
-					random_list = {
-						5 = {
-							define_ruler = {
+					random_list = { 
+						5 = { 
+							define_ruler = { 
 								dynasty = "Timurid"
 								culture = chaghatai
 								male = yes
@@ -378,8 +377,8 @@ country_event = {
 								max_random_dip = 5
 							}
 						}
-						2 = {
-							define_ruler = {
+						2 = { 
+							define_ruler = { 
 								dynasty = "Timurid"
 								culture = chaghatai
 								male = yes
@@ -389,8 +388,8 @@ country_event = {
 								max_random_dip = 5
 							}
 						}
-						2 = {
-							define_ruler = {
+						2 = { 
+							define_ruler = { 
 								dynasty = "Timurid"
 								culture = chaghatai
 								male = yes
@@ -400,8 +399,8 @@ country_event = {
 								max_random_dip = 6
 							}
 						}
-						1 = {
-							define_ruler = {
+						1 = { 
+							define_ruler = { 
 								dynasty = "Timurid"
 								culture = chaghatai
 								male = yes
@@ -413,10 +412,10 @@ country_event = {
 						}
 					}
 				}
-				else = {
-					random_list = {
-						7 = {
-							define_ruler = {
+				else = { 
+					random_list = { 
+						7 = { 
+							define_ruler = { 
 								dynasty = "Timurid"
 								male = yes
 								age = 24
@@ -425,8 +424,8 @@ country_event = {
 								max_random_dip = 6
 							}
 						}
-						2 = {
-							define_ruler = {
+						2 = { 
+							define_ruler = { 
 								dynasty = "Timurid"
 								male = yes
 								age = 14
@@ -435,8 +434,8 @@ country_event = {
 								max_random_dip = 6
 							}
 						}
-						1 = {
-							define_ruler = {
+						1 = { 
+							define_ruler = { 
 								dynasty = "Timurid"
 								male = yes
 								age = 4
@@ -448,10 +447,10 @@ country_event = {
 					}
 				}
 			}
-			else = {
-				random_list = {
-					7 = {
-						define_ruler = {
+			else = { 
+				random_list = { 
+					7 = { 
+						define_ruler = { 
 							dynasty = original_dynasty
 							male = yes
 							age = 24
@@ -460,8 +459,8 @@ country_event = {
 							max_random_dip = 6
 						}
 					}
-					2 = {
-						define_ruler = {
+					2 = { 
+						define_ruler = { 
 							dynasty = original_dynasty
 							male = yes
 							age = 14
@@ -470,8 +469,8 @@ country_event = {
 							max_random_dip = 6
 						}
 					}
-					1 = {
-						define_ruler = {
+					1 = { 
+						define_ruler = { 
 							dynasty = original_dynasty
 							male = yes
 							age = 4
@@ -484,10 +483,8 @@ country_event = {
 			}
 		}
 	}
-
 	is_triggered_only = yes
-
-	option = {
+	option = { 
 		name = harem_events.2.a
 		custom_tooltip = harem_events.2.a.tt
 	}

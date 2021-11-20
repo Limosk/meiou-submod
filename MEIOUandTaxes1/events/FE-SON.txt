@@ -1,32 +1,31 @@
 namespace = hee_SON
-
-country_event = {
+country_event = { 
 	id = hee_SON.1
 	title = hee_SON.1.t
 	desc = hee_SON.1.d
 	picture = BATTLE_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = SON
-		NOT = {
+		NOT = { 
 			is_year = 1490
 		}
 		is_year = 1480
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 8
 	}
-	option = {
+	option = { 
 		name = hee_SON.1.a
-		define_general = {
+		define_general = { 
 			name = "Muhammad Ture"
 			fire = 3
 			shock = 5
 			manuever = 4
 			siege = 2
 		}
-		hidden_effect = {
-			add_country_modifier = {
+		hidden_effect = { 
+			add_country_modifier = { 
 				name = hee_general_ture
 				duration = 7200
 				hidden = yes
@@ -34,50 +33,50 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = hee_SON.2
 	title = hee_SON.2.t
 	desc = hee_SON.2.d
 	picture = RELIGIOUS_CONVERSION_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = SON
-		NOT = {
+		NOT = { 
 			is_year = 1510
 		}
 		is_year = 1485
 		religion = sunni
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 30
-		modifier = {
+		modifier = { 
 			factor = 0.6
 			has_country_flag = hee_general_ture
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.3
 			ADM = 5
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.2
 			DIP = 5
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.2
 			MIL = 5
 		}
 	}
-	option = {
+	option = { 
 		name = hee_SON.2.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 85
 		}
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = ruler_deposed
 			duration = -1
 			hidden = yes
 		}
-		define_ruler = {
+		define_ruler = { 
 			name = "Askia Muhammad"
 			dynasty = "Askia"
 			adm = 6
@@ -87,41 +86,64 @@ country_event = {
 			claim = 30
 		}
 		kill_heir = yes
-		#add_piety = 0.15
-		Stab_Subtract1 = yes
-		random_owned_province = {
-			limit = {
-				NOT = {
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -1
+			}
+		}
+		tooltip = { 
+			add_stability = -1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -5
+		}
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
 					has_province_modifier = pretender_organizing
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
 			custom_tooltip = pretender_organizing_tt
 			add_unrest = 5
 		}
-		random_owned_province = {
-			limit = {
-				NOT = {
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
 					has_province_modifier = pretender_organizing
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
 			custom_tooltip = pretender_organizing_tt
 			add_unrest = 5
 		}
-		random_owned_province = {
-			limit = {
-				NOT = {
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
 					has_province_modifier = pretender_organizing
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
@@ -129,23 +151,47 @@ country_event = {
 			add_unrest = 5
 		}
 	}
-	option = {
+	option = { 
 		name = hee_SON.2.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 15
 		}
 		kill_ruler = yes
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_heir = no
 			}
-			define_ruler = {
+			define_ruler = { 
 				name = "Baru"
 				dynasty = "Sonni"
 				age = 15
 			}
 		}
 		change_religion = west_african_pagan_reformed
-		Stab_Subtract2 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -2
+			}
+		}
+		tooltip = { 
+			add_stability = -2
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -10
+		}
 	}
 }

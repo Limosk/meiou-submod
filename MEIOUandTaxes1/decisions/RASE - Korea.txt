@@ -1,23 +1,23 @@
-country_decisions = {
-	found_hall_of_worthies = {
-		potential = {
+country_decisions = { 
+	found_hall_of_worthies = { 
+		potential = { 
 			primary_culture = korean
 			owns = 735
 			religion = confucianism
-			NOT = {
+			NOT = { 
 				has_country_flag = hall_of_worthies
 			}
 		}
-		allow = {
-			OR = {
-				OR = {
+		allow = { 
+			OR = { 
+				OR = { 
 					advisor = philosopher_BU
 					advisor = philosopher_BG
 					advisor = philosopher_TR
 					advisor = philosopher_NO
 					advisor = philosopher_CL
 				}
-				OR = {
+				OR = { 
 					advisor = natural_scientist_BG
 					advisor = natural_scientist_NO
 					advisor = natural_scientist_BU
@@ -28,28 +28,28 @@ country_decisions = {
 			treasury = 50
 			adm_power = 30
 		}
-		effect = {
+		effect = { 
 			add_prestige = 30
 			add_treasury = -50
 			add_adm_power = -30
 			set_country_flag = hall_of_worthies
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	build_gyeongbok = {
+	build_gyeongbok = { 
 		major = yes
-		potential = {
+		potential = { 
 			tag = JOS
-			NOT = {
+			NOT = { 
 				has_country_flag = gyeongbok_build
 			}
 		}
-		allow = {
+		allow = { 
 			is_at_war = no
-			AND = {
-				OR = {
+			AND = { 
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
@@ -57,27 +57,27 @@ country_decisions = {
 			}
 			treasury = 300
 			adm_power = 30
-			OR = {
-				OR = {
+			OR = { 
+				OR = { 
 					advisor = architect_BG
 					advisor = architect_BU
 				}
 				adm = 4
 			}
 		}
-		effect = {
-			capital_scope = {
-				if = {
-					limit = {
-						NOT = {
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							OR = { 
-								has_building = bureaucracy_1 
-								has_building = bureaucracy_2 
-								has_building = bureaucracy_3 
-								has_building = bureaucracy_4 
-								has_building = bureaucracy_5 
-								has_building = bureaucracy_6 
-								has_building = bureaucracy_7 
+								has_building = bureaucracy_1
+								has_building = bureaucracy_2
+								has_building = bureaucracy_3
+								has_building = bureaucracy_4
+								has_building = bureaucracy_5
+								has_building = bureaucracy_6
+								has_building = bureaucracy_7
 							}
 						}
 					}
@@ -88,47 +88,47 @@ country_decisions = {
 			add_prestige = 10
 			set_country_flag = gyeongbok_build
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	form_goryeo = {
+	form_goryeo = { 
 		major = yes
-		potential = {
+		potential = { 
 			tag = CSE
 			dynasty = "Wang"
-			KOR = {
+			KOR = { 
 				exists = no
 			}
-			NOT = {
+			NOT = { 
 				has_country_flag = mandate_of_heaven_claimed
 			}
 		}
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = korea_region
 		}
-		allow = {
+		allow = { 
 			is_at_war = no
-			AND = {
-				OR = {
+			AND = { 
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
 				}
 			}
 			has_regency = no
-			num_of_owned_provinces_with = {
+			num_of_owned_provinces_with = { 
 				region = korea_region
 				is_core = ROOT
 				value = 12
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 			change_tag = KOR
 			swap_free_idea_group = yes
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 		ai_importance = 400

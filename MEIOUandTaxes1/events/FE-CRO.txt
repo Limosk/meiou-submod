@@ -1,55 +1,54 @@
 namespace = flavor_cro
-
-country_event = {
+country_event = { 
 	id = flavor_cro.1
 	title = flavor_cro.1.t
 	desc = flavor_cro.1.d
 	picture = COURT_eventPicture
 	fire_only_once = yes
 	major = yes
-	trigger = {
-		CRO = {
+	trigger = { 
+		CRO = { 
 			has_country_flag = pacta_conventa
 		}
 		tag = HUN
-		OR = {
+		OR = { 
 			overlord_of = CRO
 			senior_union_with = CRO
 		}
-		NOT = {
+		NOT = { 
 			has_country_flag = pacta_conventa_accepted
 		}
 		is_at_war = no
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 2
 	}
-	option = {
+	option = { 
 		name = flavor_cro.1.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 85
 		}
 		set_country_flag = pacta_conventa_accepted
-		create_subject = {
+		create_subject = { 
 			subject_type = permanent_union
 			subject = CRO
 		}
-		CRO = {
+		CRO = { 
 			add_liberty_desire = -50
-			add_opinion = {
-				who = ROOT 
+			add_opinion = { 
+				who = ROOT
 				modifier = pacta_conventa_accepted
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_cro.1.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 15
 		}
-		CRO = {
+		CRO = { 
 			clr_country_flag = pacta_conventa
-			add_opinion = {
+			add_opinion = { 
 				who = ROOT
 				modifier = pacta_conventa_revoked
 			}

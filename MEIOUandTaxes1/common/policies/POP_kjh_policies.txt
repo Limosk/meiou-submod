@@ -1,17 +1,21 @@
-promote_construction_pol = {
-	
+promote_construction_pol = { 
 	monarch_power = ADM
-	
-	potential = {
+	potential = { 
 		always = no
 		adm = 4
 	}
-	allow = {
-		policy_trigger = yes
+	allow = { 
+		if = { 
+			limit = { 
+				always = no
+			}
+			full_idea_group = default_policy_1_ideas
+			full_idea_group = default_policy_2_ideas
+		}
 		is_at_war = no
 		treasury = 200
 	}
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
 }

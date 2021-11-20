@@ -1,14 +1,14 @@
-country_decisions = {
-	treaty_of_vilnius = {
-		potential = {
+country_decisions = { 
+	treaty_of_vilnius = { 
+		potential = { 
 			owns = 1264
-			OR = {
+			OR = { 
 				tag = LIV
 				tag = LVO
 			}
-			OR = {
-				AND = {
-					OR = {
+			OR = { 
+				AND = { 
+					OR = { 
 						is_subject_of = LIT
 						is_subject_of = POL
 						is_subject_of = PLC
@@ -16,44 +16,72 @@ country_decisions = {
 					has_global_flag = livonian_war_decided
 				}
 				AND = { 
-					is_free_or_tributary_trigger = yes
-					OR = {
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+					OR = { 
 						religion = protestant
 						religion = reformed
 					}
 				}
-				NOT = {
+				NOT = { 
 					government = theocracy
 				}
 			}
-			NOT = {
+			NOT = { 
 				has_global_flag = treaty_of_vilnius
 			}
 		}
-		allow = {
+		allow = { 
 			is_at_war = no
 		}
-		effect = {
+		effect = { 
 			set_global_flag = treaty_of_vilnius
-			Effect_set_capital = { target = 1264 }
-			if = {
-				limit = {
-					AND = {
+			if = { 
+				limit = { 
+					is_part_of_hre = yes
+					ROOT = { 
+						is_part_of_hre = no
+					}
+				}
+				set_in_empire = no
+				swap_non_generic_missions = yes
+				emperor = { 
+					add_opinion = { 
+						who = ROOT
+						modifier = hre_province_left
+					}
+				}
+				add_imperial_influence = -1
+			}
+			set_capital = 1264
+			hidden_effect = { 
+				set_country_flag = tf_recalculate_communication_efficiency
+				set_country_flag = ai_tax_recalc
+			}
+			if = { 
+				limit = { 
+					AND = { 
 						is_subject = yes
-						NOT = {
+						NOT = { 
 							is_subject_of_type = tributary_state
 						}
-						NOT = {
+						NOT = { 
 							is_subject_of_type = close_tributary_state
 						}
 					}
 				}
-				every_owned_province = {
-					limit = {
-						NOT = {
+				every_owned_province = { 
+					limit = { 
+						NOT = { 
 							province_id = 39
 						}
-						NOT = {
+						NOT = { 
 							province_id = 1264
 						}
 						owned_by = ROOT
@@ -61,32 +89,32 @@ country_decisions = {
 					remove_core = ROOT
 					set_province_flag = to_cede_treaty_of_vilnius
 				}
-				overlord = {
-					every_province = {
-						limit = {
+				overlord = { 
+					every_province = { 
+						limit = { 
 							has_province_flag = to_cede_treaty_of_vilnius
 						}
 						clr_province_flag = to_cede_treaty_of_vilnius
 						cede_province = PREV
 						add_claim = PREV
 						add_local_autonomy = 10
-						if = {
-							limit = {
+						if = { 
+							limit = { 
 								is_core = ROOT
 							}
 							add_local_autonomy = -10
 						}
-						else = {
+						else = { 
 							add_territorial_core = ROOT
 						}
 					}
 				}
 			}
 			change_tag = KUR
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					government = monarchy
-					OR = {
+					OR = { 
 						has_country_modifier = title_1
 						has_country_modifier = title_2
 					}
@@ -96,7 +124,7 @@ country_decisions = {
 				remove_country_modifier = title_3
 				remove_country_modifier = title_4
 				remove_country_modifier = title_6
-				add_country_modifier = {
+				add_country_modifier = { 
 					name = title_5
 					duration = -1
 				}
@@ -107,54 +135,991 @@ country_decisions = {
 				clr_country_flag = title_5
 				clr_country_flag = title_6
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					government = theocracy
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						adm_tech = 35
 					}
-					Pol_ChangeGovMonarchy = { Succession=1 Assembly=3 } 
+					change_government = monarchy
+					add_government_reform = Pol_Succession1
+					if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							OR = { 
+								NOT = { 
+									religion_group = muslim
+								}
+								culture_group = tartar_group
+								culture_group = old_turkic
+								culture_group = altaic
+								primary_culture = turkish
+							}
+							NOT = { 
+								religion_group = christian
+							}
+							NOT = { 
+								culture_group = japanese_g
+							}
+						}
+						add_government_reform = Pol_Family4
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							religion_group = muslim
+							NOT = { 
+								culture_group = tartar_group
+							}
+							NOT = { 
+								culture_group = old_turkic
+							}
+							NOT = { 
+								culture_group = altaic
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family3
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+								religion_group = muslim
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family2
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_tribal = no
+						}
+						add_government_reform = Pol_Family1
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					add_government_reform = Pol_Assembly3
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Structure1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Structure2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Structure3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Structure4
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 4
+							}
+						}
+						add_government_reform = Pol_Structure5
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Centralisation1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Centralisation2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Centralisation3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Centralisation4
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 4
+							}
+						}
+						add_government_reform = Pol_Centralisation5
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Autonomy1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Autonomy2
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Provincial1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Provincial2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Provincial3
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Military1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Military2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Military3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Military4
+					}
+					add_government_reform = Pol_Privileges1
 					add_government_reform = Pol_Nobility3
 				}
-				else_if = {
-					limit = {
+				else_if = { 
+					limit = { 
 						adm_tech = 22
 					}
-					Pol_ChangeGovMonarchy = { Succession=1 Assembly=2 } 
+					change_government = monarchy
+					add_government_reform = Pol_Succession1
+					if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							OR = { 
+								NOT = { 
+									religion_group = muslim
+								}
+								culture_group = tartar_group
+								culture_group = old_turkic
+								culture_group = altaic
+								primary_culture = turkish
+							}
+							NOT = { 
+								religion_group = christian
+							}
+							NOT = { 
+								culture_group = japanese_g
+							}
+						}
+						add_government_reform = Pol_Family4
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							religion_group = muslim
+							NOT = { 
+								culture_group = tartar_group
+							}
+							NOT = { 
+								culture_group = old_turkic
+							}
+							NOT = { 
+								culture_group = altaic
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family3
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+								religion_group = muslim
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family2
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_tribal = no
+						}
+						add_government_reform = Pol_Family1
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					add_government_reform = Pol_Assembly2
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Structure1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Structure2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Structure3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Structure4
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 4
+							}
+						}
+						add_government_reform = Pol_Structure5
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Centralisation1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Centralisation2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Centralisation3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Centralisation4
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 4
+							}
+						}
+						add_government_reform = Pol_Centralisation5
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Autonomy1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Autonomy2
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Provincial1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Provincial2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Provincial3
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Military1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Military2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Military3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Military4
+					}
+					add_government_reform = Pol_Privileges1
 					add_government_reform = Pol_Nobility2
 				}
-				else = {
-					Pol_ChangeGovMonarchy = { Succession=1 Assembly=1 } 
+				else = { 
+					change_government = monarchy
+					add_government_reform = Pol_Succession1
+					if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							OR = { 
+								NOT = { 
+									religion_group = muslim
+								}
+								culture_group = tartar_group
+								culture_group = old_turkic
+								culture_group = altaic
+								primary_culture = turkish
+							}
+							NOT = { 
+								religion_group = christian
+							}
+							NOT = { 
+								culture_group = japanese_g
+							}
+						}
+						add_government_reform = Pol_Family4
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							religion_group = muslim
+							NOT = { 
+								culture_group = tartar_group
+							}
+							NOT = { 
+								culture_group = old_turkic
+							}
+							NOT = { 
+								culture_group = altaic
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family3
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+								religion_group = muslim
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family2
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_tribal = no
+						}
+						add_government_reform = Pol_Family1
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gri
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					add_government_reform = Pol_Assembly1
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Structure1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Structure2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Structure3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Structure4
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 4
+							}
+						}
+						add_government_reform = Pol_Structure5
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Centralisation1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Centralisation2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Centralisation3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Centralisation4
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 4
+							}
+						}
+						add_government_reform = Pol_Centralisation5
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Autonomy1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Autonomy2
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Provincial1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Provincial2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Provincial3
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 0
+							}
+						}
+						add_government_reform = Pol_Military1
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 1
+							}
+						}
+						add_government_reform = Pol_Military2
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 2
+							}
+						}
+						add_government_reform = Pol_Military3
+					}
+					else_if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 3
+							}
+						}
+						add_government_reform = Pol_Military4
+					}
+					add_government_reform = Pol_Privileges1
 					add_government_reform = Pol_Nobility1
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						religion = catholic
 						exists = PAP
 					}
-					PAP = {
-						add_opinion = {
+					PAP = { 
+						add_opinion = { 
 							who = ROOT
 							modifier = opinion_displeased
 						}
 					}
 				}
 			}
-			baltic_region = {
-				hidden_effect = {
+			baltic_region = { 
+				hidden_effect = { 
 					remove_core = LIV
 				}
 				add_core = LIV
 			}
-			LIV = {
+			LIV = { 
 				change_primary_culture = latvian
 			}
-			Stab_Add1 = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					add_stability = 1
+				}
+			}
+			tooltip = { 
+				add_stability = 1
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = 5
+			}
 			add_legitimacy = 100
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}

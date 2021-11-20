@@ -1,8 +1,5 @@
-# Fallback defaults
-# Will pick the first valid one it finds in list
-
-default_monarchy_title_1 = {
-	rank = {
+default_monarchy_title_1 = { 
+	rank = { 
 		1 = COUNTY
 		2 = COUNTY
 		3 = COUNTY
@@ -10,8 +7,7 @@ default_monarchy_title_1 = {
 		5 = COUNTY
 		6 = COUNTY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = COUNT
 		2 = COUNT
 		3 = COUNT
@@ -19,8 +15,7 @@ default_monarchy_title_1 = {
 		5 = COUNT
 		6 = COUNT
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = COUNTESS
 		2 = COUNTESS
 		3 = COUNTESS
@@ -28,8 +23,7 @@ default_monarchy_title_1 = {
 		5 = COUNTESS
 		6 = COUNTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = COUNT
 		2 = COUNT
 		3 = COUNT
@@ -37,8 +31,7 @@ default_monarchy_title_1 = {
 		5 = COUNT
 		6 = COUNT
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = COUNTESS
 		2 = COUNTESS
 		3 = COUNTESS
@@ -46,9 +39,7 @@ default_monarchy_title_1 = {
 		5 = COUNTESS
 		6 = COUNTESS
 	}
-	
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -56,8 +47,7 @@ default_monarchy_title_1 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -65,17 +55,25 @@ default_monarchy_title_1 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = monarchy_mechanic
-	
-	trigger = {
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+	trigger = { 
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-
-default_monarchy_title_2 = {
-	rank = {
+default_monarchy_title_2 = { 
+	rank = { 
 		1 = MARGRAVIATE
 		2 = MARGRAVIATE
 		3 = MARGRAVIATE
@@ -83,8 +81,7 @@ default_monarchy_title_2 = {
 		5 = MARGRAVIATE
 		6 = MARGRAVIATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = MARGRAVE
 		2 = MARGRAVE
 		3 = MARGRAVE
@@ -92,8 +89,7 @@ default_monarchy_title_2 = {
 		5 = MARGRAVE
 		6 = MARGRAVE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = MARGRAVINE
 		2 = MARGRAVINE
 		3 = MARGRAVINE
@@ -101,8 +97,7 @@ default_monarchy_title_2 = {
 		5 = MARGRAVINE
 		6 = MARGRAVINE
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = MARGRAVE
 		2 = MARGRAVE
 		3 = MARGRAVE
@@ -110,8 +105,7 @@ default_monarchy_title_2 = {
 		5 = MARGRAVE
 		6 = MARGRAVE
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = MARGRAVINE
 		2 = MARGRAVINE
 		3 = MARGRAVINE
@@ -119,9 +113,7 @@ default_monarchy_title_2 = {
 		5 = MARGRAVINE
 		6 = MARGRAVINE
 	}
-	
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -129,8 +121,7 @@ default_monarchy_title_2 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -138,17 +129,25 @@ default_monarchy_title_2 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = monarchy_mechanic
-	
-	trigger = {
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+	trigger = { 
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-
-default_monarchy_title_3 = {
-	rank = {
+default_monarchy_title_3 = { 
+	rank = { 
 		1 = DUCHY
 		2 = DUCHY
 		3 = DUCHY
@@ -156,8 +155,7 @@ default_monarchy_title_3 = {
 		5 = DUCHY
 		6 = DUCHY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DUKE
 		2 = DUKE
 		3 = DUKE
@@ -165,8 +163,7 @@ default_monarchy_title_3 = {
 		5 = DUKE
 		6 = DUKE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DUCHESS
 		2 = DUCHESS
 		3 = DUCHESS
@@ -174,8 +171,7 @@ default_monarchy_title_3 = {
 		5 = DUCHESS
 		6 = DUCHESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = DUKE
 		2 = DUKE
 		3 = DUKE
@@ -183,8 +179,7 @@ default_monarchy_title_3 = {
 		5 = DUKE
 		6 = DUKE
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = DUCHESS
 		2 = DUCHESS
 		3 = DUCHESS
@@ -192,9 +187,7 @@ default_monarchy_title_3 = {
 		5 = DUCHESS
 		6 = DUCHESS
 	}
-	
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -202,8 +195,7 @@ default_monarchy_title_3 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -211,17 +203,25 @@ default_monarchy_title_3 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = monarchy_mechanic
-	
-	trigger = {
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+	trigger = { 
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-
-default_monarchy_title_4 = {
-	rank = {
+default_monarchy_title_4 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -229,8 +229,7 @@ default_monarchy_title_4 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PRINCE
 		2 = PRINCE
 		3 = PRINCE
@@ -238,8 +237,7 @@ default_monarchy_title_4 = {
 		5 = PRINCE
 		6 = PRINCE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = PRINCESS
 		2 = PRINCESS
 		3 = PRINCESS
@@ -247,8 +245,7 @@ default_monarchy_title_4 = {
 		5 = PRINCESS
 		6 = PRINCESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = PRINCE
 		2 = PRINCE
 		3 = PRINCE
@@ -256,8 +253,7 @@ default_monarchy_title_4 = {
 		5 = PRINCE
 		6 = PRINCE
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = PRINCESS
 		2 = PRINCESS
 		3 = PRINCESS
@@ -265,8 +261,7 @@ default_monarchy_title_4 = {
 		5 = PRINCESS
 		6 = PRINCESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -274,8 +269,7 @@ default_monarchy_title_4 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -283,17 +277,25 @@ default_monarchy_title_4 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = monarchy_mechanic
-	
-	trigger = {
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+	trigger = { 
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-
-default_monarchy_title_5 = {
-	rank = {
+default_monarchy_title_5 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -301,8 +303,7 @@ default_monarchy_title_5 = {
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = KING
 		2 = KING
 		3 = KING
@@ -310,8 +311,7 @@ default_monarchy_title_5 = {
 		5 = KING
 		6 = KING
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = QUEEN
 		2 = QUEEN
 		3 = QUEEN
@@ -319,8 +319,7 @@ default_monarchy_title_5 = {
 		5 = QUEEN
 		6 = QUEEN
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = KING
 		2 = KING
 		3 = KING
@@ -328,8 +327,7 @@ default_monarchy_title_5 = {
 		5 = KING
 		6 = KING
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = QUEEN
 		2 = QUEEN
 		3 = QUEEN
@@ -337,8 +335,7 @@ default_monarchy_title_5 = {
 		5 = QUEEN
 		6 = QUEEN
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = CROWN_PRINCE
 		2 = CROWN_PRINCE
 		3 = CROWN_PRINCE
@@ -346,8 +343,7 @@ default_monarchy_title_5 = {
 		5 = CROWN_PRINCE
 		6 = CROWN_PRINCE
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = CROWN_PRINCESS
 		2 = CROWN_PRINCESS
 		3 = CROWN_PRINCESS
@@ -355,17 +351,25 @@ default_monarchy_title_5 = {
 		5 = CROWN_PRINCESS
 		6 = CROWN_PRINCESS
 	}
-
 	government_reform = monarchy_mechanic
-	
-	trigger = {
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+	trigger = { 
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-
-default_monarchy_title_6 = {
-	rank = {
+default_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -373,8 +377,7 @@ default_monarchy_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = EMPEROR
 		2 = EMPEROR
 		3 = EMPEROR
@@ -382,8 +385,7 @@ default_monarchy_title_6 = {
 		5 = EMPEROR
 		6 = EMPEROR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = EMPRESS
 		2 = EMPRESS
 		3 = EMPRESS
@@ -391,8 +393,7 @@ default_monarchy_title_6 = {
 		5 = EMPRESS
 		6 = EMPRESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = EMPEROR
 		2 = EMPEROR
 		3 = EMPEROR
@@ -400,8 +401,7 @@ default_monarchy_title_6 = {
 		5 = EMPEROR
 		6 = EMPEROR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = EMPRESS
 		2 = EMPRESS
 		3 = EMPRESS
@@ -409,8 +409,7 @@ default_monarchy_title_6 = {
 		5 = EMPRESS
 		6 = EMPRESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = CROWN_PRINCE
 		2 = CROWN_PRINCE
 		3 = CROWN_PRINCE
@@ -418,8 +417,7 @@ default_monarchy_title_6 = {
 		5 = CROWN_PRINCE
 		6 = CROWN_PRINCE
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = CROWN_PRINCESS
 		2 = CROWN_PRINCESS
 		3 = CROWN_PRINCESS
@@ -427,17 +425,25 @@ default_monarchy_title_6 = {
 		5 = CROWN_PRINCESS
 		6 = CROWN_PRINCESS
 	}
-
 	government_reform = monarchy_mechanic
-	
-	trigger = {
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+	trigger = { 
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-default_republic_title_1 = {
-	rank = {
+default_republic_title_1 = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -445,8 +451,7 @@ default_republic_title_1 = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CONSUL
 		2 = CONSUL
 		3 = CONSUL
@@ -454,8 +459,7 @@ default_republic_title_1 = {
 		5 = CONSUL
 		6 = CONSUL
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CONSUL
 		2 = CONSUL
 		3 = CONSUL
@@ -463,17 +467,25 @@ default_republic_title_1 = {
 		5 = CONSUL
 		6 = CONSUL
 	}
-
 	government_reform = republic_mechanic
-	
-	trigger = {
+	trigger = { 
 		government = republic
-		is_subject_other_than_tributary_trigger = yes
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 	}
 }
-
-default_republic_title_2 = {
-	rank = {
+default_republic_title_2 = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -481,8 +493,7 @@ default_republic_title_2 = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CONSUL
 		2 = CONSUL
 		3 = CONSUL
@@ -490,8 +501,7 @@ default_republic_title_2 = {
 		5 = CONSUL
 		6 = CONSUL
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CONSUL
 		2 = CONSUL
 		3 = CONSUL
@@ -499,17 +509,28 @@ default_republic_title_2 = {
 		5 = CONSUL
 		6 = CONSUL
 	}
-
 	government_reform = republic_mechanic
-	
-	trigger = {
+	trigger = { 
 		government = republic
-		federal_republic_trigger = no
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
 	}
 }
-
-default_republic_title_3 = {
-	rank = {
+default_republic_title_3 = { 
+	rank = { 
 		1 = REPUBLICS
 		2 = REPUBLICS
 		3 = REPUBLICS
@@ -517,8 +538,7 @@ default_republic_title_3 = {
 		5 = REPUBLICS
 		6 = REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CONSUL
 		2 = CONSUL
 		3 = CONSUL
@@ -526,8 +546,7 @@ default_republic_title_3 = {
 		5 = CONSUL
 		6 = CONSUL
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CONSUL
 		2 = CONSUL
 		3 = CONSUL
@@ -535,17 +554,26 @@ default_republic_title_3 = {
 		5 = CONSUL
 		6 = CONSUL
 	}
-
 	government_reform = republic_mechanic
-	
-	trigger = {
+	trigger = { 
 		government = republic
-		federal_republic_trigger = yes
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
 	}
 }
-
-default_theocracy_title_1 = {
-	rank = {
+default_theocracy_title_1 = { 
+	rank = { 
 		1 = THEOCRACY
 		2 = THEOCRACY
 		3 = THEOCRACY
@@ -553,8 +581,7 @@ default_theocracy_title_1 = {
 		5 = THEOCRACY
 		6 = THEOCRACY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = BISHOP
 		2 = BISHOP
 		3 = BISHOP
@@ -562,8 +589,7 @@ default_theocracy_title_1 = {
 		5 = BISHOP
 		6 = BISHOP
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = BISHOP
 		2 = BISHOP
 		3 = BISHOP
@@ -571,17 +597,19 @@ default_theocracy_title_1 = {
 		5 = BISHOP
 		6 = BISHOP
 	}
-	
 	government_reform = theocracy_mechanic
-	
-	trigger = {
+	trigger = { 
 		government = theocracy
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-
-default_theocracy_title_2 = {
-	rank = {
+default_theocracy_title_2 = { 
+	rank = { 
 		1 = THEOCRACY
 		2 = THEOCRACY
 		3 = THEOCRACY
@@ -589,8 +617,7 @@ default_theocracy_title_2 = {
 		5 = THEOCRACY
 		6 = THEOCRACY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = BISHOP
 		2 = BISHOP
 		3 = BISHOP
@@ -598,8 +625,7 @@ default_theocracy_title_2 = {
 		5 = BISHOP
 		6 = BISHOP
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = BISHOP
 		2 = BISHOP
 		3 = BISHOP
@@ -607,17 +633,19 @@ default_theocracy_title_2 = {
 		5 = BISHOP
 		6 = BISHOP
 	}
-	
 	government_reform = theocracy_mechanic
-	
-	trigger = {
+	trigger = { 
 		government = theocracy
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-
-default_theocracy_title_3 = {
-	rank = {
+default_theocracy_title_3 = { 
+	rank = { 
 		1 = THEOCRACY
 		2 = THEOCRACY
 		3 = THEOCRACY
@@ -625,8 +653,7 @@ default_theocracy_title_3 = {
 		5 = THEOCRACY
 		6 = THEOCRACY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = BISHOP
 		2 = BISHOP
 		3 = BISHOP
@@ -634,8 +661,7 @@ default_theocracy_title_3 = {
 		5 = BISHOP
 		6 = BISHOP
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = BISHOP
 		2 = BISHOP
 		3 = BISHOP
@@ -643,17 +669,19 @@ default_theocracy_title_3 = {
 		5 = BISHOP
 		6 = BISHOP
 	}
-	
 	government_reform = theocracy_mechanic
-	
-	trigger = {
+	trigger = { 
 		government = theocracy
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-
-default_theocracy_title_4 = {
-	rank = {
+default_theocracy_title_4 = { 
+	rank = { 
 		1 = THEOCRACY
 		2 = THEOCRACY
 		3 = THEOCRACY
@@ -661,8 +689,7 @@ default_theocracy_title_4 = {
 		5 = THEOCRACY
 		6 = THEOCRACY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = BISHOP
 		2 = BISHOP
 		3 = BISHOP
@@ -670,8 +697,7 @@ default_theocracy_title_4 = {
 		5 = BISHOP
 		6 = BISHOP
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = BISHOP
 		2 = BISHOP
 		3 = BISHOP
@@ -679,17 +705,19 @@ default_theocracy_title_4 = {
 		5 = BISHOP
 		6 = BISHOP
 	}
-	
 	government_reform = theocracy_mechanic
-	
-	trigger = {
+	trigger = { 
 		government = theocracy
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-
-default_theocracy_title_5 = {
-	rank = {
+default_theocracy_title_5 = { 
+	rank = { 
 		1 = ARCHBISHOPRIC
 		2 = ARCHBISHOPRIC
 		3 = ARCHBISHOPRIC
@@ -697,8 +725,7 @@ default_theocracy_title_5 = {
 		5 = ARCHBISHOPRIC
 		6 = ARCHBISHOPRIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ARCHBISHOP
 		2 = ARCHBISHOP
 		3 = ARCHBISHOP
@@ -706,8 +733,7 @@ default_theocracy_title_5 = {
 		5 = ARCHBISHOP
 		6 = ARCHBISHOP
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ARCHBISHOP
 		2 = ARCHBISHOP
 		3 = ARCHBISHOP
@@ -715,17 +741,19 @@ default_theocracy_title_5 = {
 		5 = ARCHBISHOP
 		6 = ARCHBISHOP
 	}
-	
 	government_reform = theocracy_mechanic
-	
-	trigger = {
+	trigger = { 
 		government = theocracy
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-
-default_theocracy_title_6 = {
-	rank = {
+default_theocracy_title_6 = { 
+	rank = { 
 		1 = PATRIARCHATE
 		2 = PATRIARCHATE
 		3 = PATRIARCHATE
@@ -733,8 +761,7 @@ default_theocracy_title_6 = {
 		5 = PATRIARCHATE
 		6 = PATRIARCHATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PATRIARCH
 		2 = PATRIARCH
 		3 = PATRIARCH
@@ -742,8 +769,7 @@ default_theocracy_title_6 = {
 		5 = PATRIARCH
 		6 = PATRIARCH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = MATRIARCH
 		2 = MATRIARCH
 		3 = MATRIARCH
@@ -751,17 +777,19 @@ default_theocracy_title_6 = {
 		5 = MATRIARCH
 		6 = MATRIARCH
 	}
-	
 	government_reform = theocracy_mechanic
-	
-	trigger = {
+	trigger = { 
 		government = theocracy
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-default_tribal_title_1 = {
-	rank = {
+default_tribal_title_1 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -769,8 +797,7 @@ default_tribal_title_1 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -778,8 +805,7 @@ default_tribal_title_1 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -787,8 +813,7 @@ default_tribal_title_1 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -796,8 +821,7 @@ default_tribal_title_1 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -805,8 +829,7 @@ default_tribal_title_1 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -814,8 +837,7 @@ default_tribal_title_1 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -823,17 +845,19 @@ default_tribal_title_1 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = tribe_mechanic
-
-	trigger = {
+	trigger = { 
 		government = tribal
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-
-default_tribal_title_2 = {
-	rank = {
+default_tribal_title_2 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -841,8 +865,7 @@ default_tribal_title_2 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -850,8 +873,7 @@ default_tribal_title_2 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -859,8 +881,7 @@ default_tribal_title_2 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -868,8 +889,7 @@ default_tribal_title_2 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -877,8 +897,7 @@ default_tribal_title_2 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -886,8 +905,7 @@ default_tribal_title_2 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -895,17 +913,19 @@ default_tribal_title_2 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = tribe_mechanic
-
-	trigger = {
+	trigger = { 
 		government = tribal
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-
-default_tribal_title_3 = {
-	rank = {
+default_tribal_title_3 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -913,8 +933,7 @@ default_tribal_title_3 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -922,8 +941,7 @@ default_tribal_title_3 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -931,8 +949,7 @@ default_tribal_title_3 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -940,8 +957,7 @@ default_tribal_title_3 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -949,8 +965,7 @@ default_tribal_title_3 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -958,8 +973,7 @@ default_tribal_title_3 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -967,17 +981,19 @@ default_tribal_title_3 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = tribe_mechanic
-
-	trigger = {
+	trigger = { 
 		government = tribal
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-
-default_tribal_title_4 = {
-	rank = {
+default_tribal_title_4 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -985,8 +1001,7 @@ default_tribal_title_4 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -994,8 +1009,7 @@ default_tribal_title_4 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -1003,8 +1017,7 @@ default_tribal_title_4 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -1012,8 +1025,7 @@ default_tribal_title_4 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -1021,8 +1033,7 @@ default_tribal_title_4 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1030,8 +1041,7 @@ default_tribal_title_4 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1039,17 +1049,19 @@ default_tribal_title_4 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = tribe_mechanic
-
-	trigger = {
+	trigger = { 
 		government = tribal
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-
-default_tribal_title_5 = {
-	rank = {
+default_tribal_title_5 = { 
+	rank = { 
 		1 = TRIBAL_KINGDOM
 		2 = TRIBAL_KINGDOM
 		3 = TRIBAL_KINGDOM
@@ -1057,8 +1069,7 @@ default_tribal_title_5 = {
 		5 = TRIBAL_KINGDOM
 		6 = TRIBAL_KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = KING
 		2 = KING
 		3 = KING
@@ -1066,8 +1077,7 @@ default_tribal_title_5 = {
 		5 = KING
 		6 = KING
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = QUEEN
 		2 = QUEEN
 		3 = QUEEN
@@ -1075,8 +1085,7 @@ default_tribal_title_5 = {
 		5 = QUEEN
 		6 = QUEEN
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = KING
 		2 = KING
 		3 = KING
@@ -1084,8 +1093,7 @@ default_tribal_title_5 = {
 		5 = KING
 		6 = KING
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = QUEEN
 		2 = QUEEN
 		3 = QUEEN
@@ -1093,8 +1101,7 @@ default_tribal_title_5 = {
 		5 = QUEEN
 		6 = QUEEN
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1102,8 +1109,7 @@ default_tribal_title_5 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1111,17 +1117,19 @@ default_tribal_title_5 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = tribe_mechanic
-
-	trigger = {
+	trigger = { 
 		government = tribal
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-
-default_tribal_title_6 = {
-	rank = {
+default_tribal_title_6 = { 
+	rank = { 
 		1 = TRIBAL_EMPIRE
 		2 = TRIBAL_EMPIRE
 		3 = TRIBAL_EMPIRE
@@ -1129,8 +1137,7 @@ default_tribal_title_6 = {
 		5 = TRIBAL_EMPIRE
 		6 = TRIBAL_EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = EMPEROR
 		2 = EMPEROR
 		3 = EMPEROR
@@ -1138,8 +1145,7 @@ default_tribal_title_6 = {
 		5 = EMPEROR
 		6 = EMPEROR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = EMPRESS
 		2 = EMPRESS
 		3 = EMPRESS
@@ -1147,8 +1153,7 @@ default_tribal_title_6 = {
 		5 = EMPRESS
 		6 = EMPRESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = EMPEROR
 		2 = EMPEROR
 		3 = EMPEROR
@@ -1156,8 +1161,7 @@ default_tribal_title_6 = {
 		5 = EMPEROR
 		6 = EMPEROR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = EMPRESS
 		2 = EMPRESS
 		3 = EMPRESS
@@ -1165,8 +1169,7 @@ default_tribal_title_6 = {
 		5 = EMPRESS
 		6 = EMPRESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1174,8 +1177,7 @@ default_tribal_title_6 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1183,17 +1185,19 @@ default_tribal_title_6 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = tribe_mechanic
-
-	trigger = {
+	trigger = { 
 		government = tribal
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-default_native_title_1 = {
-	rank = {
+default_native_title_1 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -1201,8 +1205,7 @@ default_native_title_1 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -1210,8 +1213,7 @@ default_native_title_1 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -1219,8 +1221,7 @@ default_native_title_1 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -1228,8 +1229,7 @@ default_native_title_1 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -1237,8 +1237,7 @@ default_native_title_1 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1246,8 +1245,7 @@ default_native_title_1 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1255,17 +1253,19 @@ default_native_title_1 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = native_mechanic
-
-	trigger = {
+	trigger = { 
 		government = native
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-
-default_native_title_2 = {
-	rank = {
+default_native_title_2 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -1273,8 +1273,7 @@ default_native_title_2 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -1282,8 +1281,7 @@ default_native_title_2 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -1291,8 +1289,7 @@ default_native_title_2 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -1300,8 +1297,7 @@ default_native_title_2 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -1309,8 +1305,7 @@ default_native_title_2 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1318,8 +1313,7 @@ default_native_title_2 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1327,17 +1321,19 @@ default_native_title_2 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = native_mechanic
-
-	trigger = {
+	trigger = { 
 		government = native
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-
-default_native_title_3 = {
-	rank = {
+default_native_title_3 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -1345,8 +1341,7 @@ default_native_title_3 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -1354,8 +1349,7 @@ default_native_title_3 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -1363,8 +1357,7 @@ default_native_title_3 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -1372,8 +1365,7 @@ default_native_title_3 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -1381,8 +1373,7 @@ default_native_title_3 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1390,8 +1381,7 @@ default_native_title_3 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1399,17 +1389,19 @@ default_native_title_3 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = native_mechanic
-
-	trigger = {
+	trigger = { 
 		government = native
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-
-default_native_title_4 = {
-	rank = {
+default_native_title_4 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -1417,8 +1409,7 @@ default_native_title_4 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -1426,8 +1417,7 @@ default_native_title_4 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -1435,8 +1425,7 @@ default_native_title_4 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -1444,8 +1433,7 @@ default_native_title_4 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -1453,8 +1441,7 @@ default_native_title_4 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1462,8 +1449,7 @@ default_native_title_4 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1471,17 +1457,19 @@ default_native_title_4 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = native_mechanic
-
-	trigger = {
+	trigger = { 
 		government = native
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-
-default_native_title_5 = {
-	rank = {
+default_native_title_5 = { 
+	rank = { 
 		1 = TRIBAL_KINGDOM
 		2 = TRIBAL_KINGDOM
 		3 = TRIBAL_KINGDOM
@@ -1489,8 +1477,7 @@ default_native_title_5 = {
 		5 = TRIBAL_KINGDOM
 		6 = TRIBAL_KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = KING
 		2 = KING
 		3 = KING
@@ -1498,8 +1485,7 @@ default_native_title_5 = {
 		5 = KING
 		6 = KING
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = QUEEN
 		2 = QUEEN
 		3 = QUEEN
@@ -1507,8 +1493,7 @@ default_native_title_5 = {
 		5 = QUEEN
 		6 = QUEEN
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = KING
 		2 = KING
 		3 = KING
@@ -1516,8 +1501,7 @@ default_native_title_5 = {
 		5 = KING
 		6 = KING
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = QUEEN
 		2 = QUEEN
 		3 = QUEEN
@@ -1525,8 +1509,7 @@ default_native_title_5 = {
 		5 = QUEEN
 		6 = QUEEN
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1534,8 +1517,7 @@ default_native_title_5 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1543,17 +1525,19 @@ default_native_title_5 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = native_mechanic
-
-	trigger = {
+	trigger = { 
 		government = native
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-
-default_native_title_6 = {
-	rank = {
+default_native_title_6 = { 
+	rank = { 
 		1 = TRIBAL_EMPIRE
 		2 = TRIBAL_EMPIRE
 		3 = TRIBAL_EMPIRE
@@ -1561,8 +1545,7 @@ default_native_title_6 = {
 		5 = TRIBAL_EMPIRE
 		6 = TRIBAL_EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = EMPEROR
 		2 = EMPEROR
 		3 = EMPEROR
@@ -1570,8 +1553,7 @@ default_native_title_6 = {
 		5 = EMPEROR
 		6 = EMPEROR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = EMPRESS
 		2 = EMPRESS
 		3 = EMPRESS
@@ -1579,8 +1561,7 @@ default_native_title_6 = {
 		5 = EMPRESS
 		6 = EMPRESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = EMPEROR
 		2 = EMPEROR
 		3 = EMPEROR
@@ -1588,8 +1569,7 @@ default_native_title_6 = {
 		5 = EMPEROR
 		6 = EMPEROR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = EMPRESS
 		2 = EMPRESS
 		3 = EMPRESS
@@ -1597,8 +1577,7 @@ default_native_title_6 = {
 		5 = EMPRESS
 		6 = EMPRESS
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1606,8 +1585,7 @@ default_native_title_6 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -1615,11 +1593,14 @@ default_native_title_6 = {
 		5 = HEIR
 		6 = HEIR
 	}
-
 	government_reform = native_mechanic
-
-	trigger = {
+	trigger = { 
 		government = native
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }

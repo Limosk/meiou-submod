@@ -1,9 +1,9 @@
-hol_missions_5 = {
+hol_missions_5 = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = c_of_hol
 			has_country_flag = d_of_gel
 			has_country_flag = d_of_utr
@@ -12,168 +12,202 @@ hol_missions_5 = {
 		}
 	}
 	has_country_shield = yes
-	
-	hol_gelderland = {
+	hol_gelderland = { 
 		icon = mission_have_two_subjects
 		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = gelderland_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			num_of_owned_provinces_with = {
+		trigger = { 
+			num_of_owned_provinces_with = { 
 				area = gelderland_area
 				value = 3
 			}
 		}
-		effect = {
-			north_brabant_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			north_brabant_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	hol_south_brabant = {
+	hol_south_brabant = { 
 		icon = mission_conquer_50_development
-		required_missions = { hol_form_ned }
+		required_missions = { hol_form_ned}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = south_brabant_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			num_of_owned_provinces_with = {
+		trigger = { 
+			num_of_owned_provinces_with = { 
 				area = south_brabant_area
 				value = 3
 			}
 		}
-		effect = {
-			artois_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			artois_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	hol_picardie = {
+	hol_picardie = { 
 		icon = mission_unite_home_region
-		required_missions = { hol_south_brabant }
+		required_missions = { hol_south_brabant}
 		position = 5
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = artois_area
 				area = picardy_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			num_of_owned_provinces_with = {
+		trigger = { 
+			num_of_owned_provinces_with = { 
 				area = artois_area
 				value = 3
 			}
-			num_of_owned_provinces_with = {
+			num_of_owned_provinces_with = { 
 				area = picardy_area
 				value = 3
 			}
 		}
-		effect = {
+		effect = { 
 			add_absolutism = 10
 		}
 	}
-	hol_normandie = {
+	hol_normandie = { 
 		icon = mission_european_fort
-		required_missions = { hol_picardie }
+		required_missions = { hol_picardie}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = normandy_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			num_of_owned_provinces_with = {
+		trigger = { 
+			num_of_owned_provinces_with = { 
 				area = normandy_area
 				value = 5
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	hol_brittany = {
+	hol_brittany = { 
 		icon = mission_cannons_firing
-		required_missions = { hol_normandie }
+		required_missions = { hol_normandie}
 		position = 7
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = brittany_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			brittany_area = {
+		trigger = { 
+			brittany_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = hegemonic_ambition
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	hol_fleet = {
+	hol_fleet = { 
 		icon = mission_sea_battles
-		required_missions = { hol_brittany }
+		required_missions = { hol_brittany}
 		position = 8
-		trigger = {
-			AND = {
-				OR = {
-					NOT = { exists = ENG }
+		trigger = { 
+			AND = { 
+				OR = { 
+					NOT = { 
+						exists = ENG
+					}
 					num_of_light_ship = ENG
 				}
-				OR = {
-					NOT = { exists = GBR }
+				OR = { 
+					NOT = { 
+						exists = GBR
+					}
 					num_of_light_ship = GBR
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_navy_tradition = 10
 		}
 	}
-	hol_atlantic = {
+	hol_atlantic = { 
 		icon = mission_dominate_home_trade_node
-		required_missions = { hol_fleet }
+		required_missions = { hol_fleet}
 		position = 9
-
-		trigger = {
-			2360 = { #Antwerpen
-				trade_share = {
+		trigger = { 
+			2360 = { 
+				trade_share = { 
 					country = ROOT
 					share = 60
 				}
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "merchant_society"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
 }
-hol_missions_6 = {
+hol_missions_6 = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = c_of_hol
 			has_country_flag = d_of_gel
 			has_country_flag = d_of_utr
@@ -182,209 +216,270 @@ hol_missions_6 = {
 		}
 	}
 	has_country_shield = yes
-	
-	hol_holland = {
+	hol_holland = { 
 		icon = mission_monarch_in_throne_room
 		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = holland_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			num_of_owned_provinces_with = {
+		trigger = { 
+			num_of_owned_provinces_with = { 
 				area = holland_area
 				value = 3
 			}
 		}
-		effect = {
-			flanders_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			flanders_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	hol_north_brabant = {
+	hol_north_brabant = { 
 		icon = mission_conquer_50_development
-		required_missions = { hol_gelderland hol_holland hol_friesland }
+		required_missions = { hol_gelderland hol_holland hol_friesland}
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = north_brabant_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			num_of_owned_provinces_with = {
+		trigger = { 
+			num_of_owned_provinces_with = { 
 				area = north_brabant_area
 				value = 3
 			}
 		}
-		effect = {
-			south_brabant_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			south_brabant_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	hol_form_ned = {
+	hol_form_ned = { 
 		icon = mission_empire
-		required_missions = { hol_north_brabant }
+		required_missions = { hol_north_brabant}
 		position = 3
-		trigger = {
-			OR = {
-				NOT = { exists = NED }
+		trigger = { 
+			OR = { 
+				NOT = { 
+					exists = NED
+				}
 				tag = NED
 			}
-			NOT = { tag = PAP }
-			NOT = { tag = ERG }
-			NOT = { tag = GER }
-			NOT = { tag = PRU }
-			NOT = { tag = EBU }
-			NOT = { tag = LOT }
-			NOT = { tag = ROM }
+			NOT = { 
+				tag = PAP
+			}
+			NOT = { 
+				tag = ERG
+			}
+			NOT = { 
+				tag = GER
+			}
+			NOT = { 
+				tag = PRU
+			}
+			NOT = { 
+				tag = EBU
+			}
+			NOT = { 
+				tag = LOT
+			}
+			NOT = { 
+				tag = ROM
+			}
 			culture_group = low_frankish
-			# NOT = { primary_culture = burgundian }
 			is_colonial_nation = no
-			is_free_or_tributary_trigger = yes
-			OR = {
+			AND = { 
+				OR = { 
+					is_subject = no
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+			OR = { 
 				adm_tech = 25
 				ADM = 5
-				AND = {
+				AND = { 
 					full_idea_group = mercantilism_ideas
 					full_idea_group = humanist_ideas
-					NOT = { absolutism = 70 }
+					NOT = { 
+						absolutism = 70
+					}
 					stability = 1
 				}
 			}
 			is_at_war = no
 		}
-		effect = {
-			country_event = { id = mission_event.044 }
+		effect = { 
+			country_event = { 
+				id = mission_event.044
+			}
 		}
 	}
-	hol_flanders = {
+	hol_flanders = { 
 		icon = mission_sexy_flanders
-		required_missions = { hol_form_ned }
+		required_missions = { hol_form_ned}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = flanders_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			num_of_owned_provinces_with = {
+		trigger = { 
+			num_of_owned_provinces_with = { 
 				area = flanders_area
 				value = 3
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	hol_low_rhine = {
+	hol_low_rhine = { 
 		icon = mission_assemble_an_army
-		required_missions = { hol_flanders }
+		required_missions = { hol_flanders}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = lower_rhine_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			lower_rhine_area = {
+		trigger = { 
+			lower_rhine_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 20
 		}
 	}
-	hol_westphalia = {
+	hol_westphalia = { 
 		icon = mission_build_up_to_force_limit
-		required_missions = { hol_low_rhine }
+		required_missions = { hol_low_rhine}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = westphalia_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			westphalia_area = {
+		trigger = { 
+			westphalia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 100
 		}
 	}
-	hol_mid_rhine = {
+	hol_mid_rhine = { 
 		icon = mission_conquer_5_states
-		required_missions = { hol_westphalia }
+		required_missions = { hol_westphalia}
 		position = 7
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = middle_rhine_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			middle_rhine_area = {
+		trigger = { 
+			middle_rhine_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 20
 		}
 	}
-	hol_up_rhine = {
+	hol_up_rhine = { 
 		icon = mission_cossack_cavalry
-		required_missions = { hol_mid_rhine }
+		required_missions = { hol_mid_rhine}
 		position = 8
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = upper_rhine_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			upper_rhine_area = {
+		trigger = { 
+			upper_rhine_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 15
 		}
 	}
-	hol_german = {
+	hol_german = { 
 		icon = mission_high_income
-		required_missions = { hol_up_rhine }
+		required_missions = { hol_up_rhine}
 		position = 9
-		trigger = {
-			2451 = { #Loöen
-				trade_share = {
+		trigger = { 
+			2451 = { 
+				trade_share = { 
 					country = ROOT
 					share = 60
 				}
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "merchant_society"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
 }
-hol_missions_7 = {
+hol_missions_7 = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = c_of_hol
 			has_country_flag = d_of_gel
 			has_country_flag = d_of_utr
@@ -393,128 +488,139 @@ hol_missions_7 = {
 		}
 	}
 	has_country_shield = yes
-	
-	hol_friesland = {
+	hol_friesland = { 
 		icon = mission_cannons_firing
 		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = frisia_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			num_of_owned_provinces_with = {
+		trigger = { 
+			num_of_owned_provinces_with = { 
 				area = frisia_area
 				value = 3
 			}
 		}
-		effect = {
-			wallonia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			wallonia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	hol_wallonia = {
+	hol_wallonia = { 
 		icon = mission_european_fort
-		required_missions = { hol_form_ned }
+		required_missions = { hol_form_ned}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = wallonia_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			wallonia_area = {
+		trigger = { 
+			wallonia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = hegemonic_ambition
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	hol_ems = {
+	hol_ems = { 
 		icon = mission_invade_island
-		required_missions = { hol_wallonia }
+		required_missions = { hol_wallonia}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = ems_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			ems_area = {
+		trigger = { 
+			ems_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 10
 		}
 	}
-	hol_weser = {
+	hol_weser = { 
 		icon = mission_conquer_50_development
-		required_missions = { hol_ems }
+		required_missions = { hol_ems}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = weser_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			weser_area = {
+		trigger = { 
+			weser_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "morale_boost"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 			add_mil_power = 50
 		}
 	}
-	hol_lubeck = {
+	hol_lubeck = { 
 		icon = mission_have_two_subjects
-		required_missions = { hol_weser }
+		required_missions = { hol_weser}
 		position = 7
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = holstein_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			holstein_area = {
+		trigger = { 
+			holstein_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 15
 		}
 	}
-	hol_north_sea = {
+	hol_north_sea = { 
 		icon = mission_trade_company_region_abroad
-		required_missions = { hol_lubeck }
+		required_missions = { hol_lubeck}
 		position = 8
-
-		trigger = {
-			45 = { #Lubeck
-				trade_share = {
+		trigger = { 
+			45 = { 
+				trade_share = { 
 					country = ROOT
 					share = 60
 				}
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "merchant_society"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}

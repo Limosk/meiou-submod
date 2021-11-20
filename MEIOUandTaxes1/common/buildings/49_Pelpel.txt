@@ -1,26 +1,20 @@
-pelpel = {
+pelpel = { 
 	cost = 1
 	time = 1
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		always = no
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		has_building = pelpel
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
+	on_destroyed = { 
 		add_building = pelpel
 	}
 }

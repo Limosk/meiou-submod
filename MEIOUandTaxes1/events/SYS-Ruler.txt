@@ -1,445 +1,393 @@
 namespace = Ruler
-
-country_event = {
-    id = Ruler.001
-    title = Ruler.001.title
-    desc = Ruler.001.desc
+country_event = { 
+	id = Ruler.001
+	title = Ruler.001.title
+	desc = Ruler.001.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
-		name = Ruler.001.a # Reform the Council
-		trigger = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
+		name = Ruler.001.a
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.010 }
-    }
-
-    option = {
-		name = Ruler.001.b # Chancellor
-		trigger = {
+		country_event = { 
+			id = Ruler.010
+		}
+	}
+	option = { 
+		name = Ruler.001.b
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.020 }
-    }
-
-    option = {
-		name = Ruler.001.c # Finance
-		trigger = {
+		country_event = { 
+			id = Ruler.020
+		}
+	}
+	option = { 
+		name = Ruler.001.c
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.030 }
-    }
-
-    option = {
-		name = Ruler.001.d # State
-		trigger = {
+		country_event = { 
+			id = Ruler.030
+		}
+	}
+	option = { 
+		name = Ruler.001.d
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.040 }
-    }
-
-    option = {
-		name = Ruler.001.e # Diplomacy
-		trigger = {
+		country_event = { 
+			id = Ruler.040
+		}
+	}
+	option = { 
+		name = Ruler.001.e
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.050 }
-    }
-
-    option = {
-		name = Ruler.001.f # Army
-		trigger = {
+		country_event = { 
+			id = Ruler.050
+		}
+	}
+	option = { 
+		name = Ruler.001.f
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.060 }
-    }
-
-    option = {
-		name = Ruler.001.g # Navy
-		trigger = {
+		country_event = { 
+			id = Ruler.060
+		}
+	}
+	option = { 
+		name = Ruler.001.g
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.070 }
-    }
-
-    option = {
-		name = Ruler.001.h # Heir
-		trigger = {
+		country_event = { 
+			id = Ruler.070
+		}
+	}
+	option = { 
+		name = Ruler.001.h
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.080 }
-    }
-
-    option = {
-		name = Ruler.001.i # Noble representatives
-		trigger = {
+		country_event = { 
+			id = Ruler.080
+		}
+	}
+	option = { 
+		name = Ruler.001.i
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.090 }
-    }
-
-    option = {
-		name = Ruler.001.j # Burgher representatives
-		trigger = {
+		country_event = { 
+			id = Ruler.090
+		}
+	}
+	option = { 
+		name = Ruler.001.j
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.100 }
-    }
-
-    option = {
-		name = Ruler.001.k # Clergy representatives
-		trigger = {
+		country_event = { 
+			id = Ruler.100
+		}
+	}
+	option = { 
+		name = Ruler.001.k
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.110 }
-    }
-
-    option = {
-		name = Ruler.001.l # Head of Church
-		trigger = {
+		country_event = { 
+			id = Ruler.110
+		}
+	}
+	option = { 
+		name = Ruler.001.l
+		trigger = { 
 			always = no
 		}
-		country_event = { id = Ruler.120 }
-    }
+		country_event = { 
+			id = Ruler.120
+		}
+	}
 }
-
-## Reform the Council
-country_event = {
-    id = Ruler.010
-    title = Ruler.010.title
-    desc = Ruler.010.desc
+country_event = { 
+	id = Ruler.010
+	title = Ruler.010.title
+	desc = Ruler.010.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
-		name = Ruler.010.a # Reform the Council
-		trigger = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
+		name = Ruler.010.a
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.020
-    title = Ruler.020.title
-    desc = Ruler.020.desc
+country_event = { 
+	id = Ruler.020
+	title = Ruler.020.title
+	desc = Ruler.020.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.020.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.030
-    title = Ruler.030.title
-    desc = Ruler.030.desc
+country_event = { 
+	id = Ruler.030
+	title = Ruler.030.title
+	desc = Ruler.030.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.030.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.040
-    title = Ruler.040.title
-    desc = Ruler.040.desc
+country_event = { 
+	id = Ruler.040
+	title = Ruler.040.title
+	desc = Ruler.040.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.040.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.050
-    title = Ruler.050.title
-    desc = Ruler.050.desc
+country_event = { 
+	id = Ruler.050
+	title = Ruler.050.title
+	desc = Ruler.050.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.050.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.060
-    title = Ruler.060.title
-    desc = Ruler.060.desc
+country_event = { 
+	id = Ruler.060
+	title = Ruler.060.title
+	desc = Ruler.060.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.060.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.070
-    title = Ruler.070.title
-    desc = Ruler.070.desc
+country_event = { 
+	id = Ruler.070
+	title = Ruler.070.title
+	desc = Ruler.070.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.070.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.080
-    title = Ruler.080.title
-    desc = Ruler.080.desc
+country_event = { 
+	id = Ruler.080
+	title = Ruler.080.title
+	desc = Ruler.080.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.080.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.090
-    title = Ruler.090.title
-    desc = Ruler.090.desc
+country_event = { 
+	id = Ruler.090
+	title = Ruler.090.title
+	desc = Ruler.090.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.090.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.100
-    title = Ruler.100.title
-    desc = Ruler.100.desc
+country_event = { 
+	id = Ruler.100
+	title = Ruler.100.title
+	desc = Ruler.100.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.100.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.110
-    title = Ruler.110.title
-    desc = Ruler.110.desc
+country_event = { 
+	id = Ruler.110
+	title = Ruler.110.title
+	desc = Ruler.110.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.110.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }
-
-## Chancellor
-country_event = {
-    id = Ruler.120
-    title = Ruler.120.title
-    desc = Ruler.120.desc
+country_event = { 
+	id = Ruler.120
+	title = Ruler.120.title
+	desc = Ruler.120.desc
 	picture = REFORM_eventPicture
-
-    is_triggered_only = yes
-
-    immediate = {
-    }
-
-    option = {
+	is_triggered_only = yes
+	immediate = { }
+	option = { 
 		name = Ruler.120.a
-		trigger = {
+		trigger = { 
 			always = no
 		}
-    }
-
-    option = {
+	}
+	option = { 
 		name = PTM_BACK
-		trigger = {
+		trigger = { 
 			always = yes
 		}
-		country_event = { id = Ruler.001 }
-    }
+		country_event = { 
+			id = Ruler.001
+		}
+	}
 }

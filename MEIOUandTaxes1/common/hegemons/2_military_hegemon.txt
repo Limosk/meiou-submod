@@ -1,16 +1,8 @@
-military_hegemon = {
-	allow = {
+military_hegemon = { 
+	allow = { 
 		always = no
 	}
-	
-	base = {
-	}
-	
-	# At max 100% tickup.
-	scale = {
-	}
-	
-	max = {
-	}
-	
+	base = { }
+	scale = { }
+	max = { }
 }

@@ -1,15 +1,14 @@
 name = "Orsini-Uros War"
-war_goal = {
+war_goal = { 
 	type = take_claim
 	casus_belli = cb_conquest
-	province = 1399 # Angelocastron
+	province = 1399
 }
-
-1356.1.1 = {
+1356.1.1 = { 
 	add_attacker = EPI
 	add_defender = TSL
 }
-1356.10.1 = {
+1356.10.1 = { 
 	rem_attacker = EPI
 	rem_defender = TSL
 }

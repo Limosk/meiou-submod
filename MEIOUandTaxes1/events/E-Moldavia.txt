@@ -1,39 +1,36 @@
-#Moldavian Events
 namespace = hee_MOL
-country_event = {
+country_event = { 
 	id = fe_MOL.1
 	title = fe_MOL.1.title
 	desc = fe_MOL.1.desc
 	picture = CONQUEST_eventPicture
-	is_triggered_only = yes	
-	immediate = {
-		HUN = {
-				free_vassal = MOL
-				country_event = {
-                    id = fe_MOL.2
-                    days = 7
-                }
+	is_triggered_only = yes
+	immediate = { 
+		HUN = { 
+			free_vassal = MOL
+			country_event = { 
+				id = fe_MOL.2
+				days = 7
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "OPT.MOLHURRAH"
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
 		add_prestige = 25
 	}
 }
-
-country_event = {
+country_event = { 
 	id = fe_MOL.2
 	title = fe_MOL.2.title
 	desc = fe_MOL.2.desc
-	picture = CONQUEST_eventPicture	
+	picture = CONQUEST_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "OPT.HUNDAMN"
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
 		add_prestige = -5

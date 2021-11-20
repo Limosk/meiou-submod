@@ -1,129 +1,139 @@
-#############################################
-# Austrian Consolidation of the Erblande	#
-#############################################
-
 namespace = flavor_hab
-
-# Magarete of Tyrols heir dies
-country_event = {
+country_event = { 
 	id = flavor_hab.1010
 	title = flavor_hab.1010.title
 	desc = flavor_hab.1010.desc
 	picture = DEATH_OF_HEIR_eventPicture
-	
 	fire_only_once = yes
-	
-	trigger = {
+	trigger = { 
 		tag = TIR
 		is_female = yes
 		has_ruler = "Margarete von Tirol - Görz"
-		#has_heir = yes
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 20
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			HAB = {
+			HAB = { 
 				dynasty = "von Habsburg"
 				marriage_with = ROOT
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			HAB = {
+			HAB = { 
 				dynasty = "von Habsburg"
 				alliance_with = ROOT
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			has_heir = no
 		}
 	}
-	
-	immediate = {
-		if = {
-			limit = {
+	immediate = { 
+		if = { 
+			limit = { 
 				has_heir = yes
 			}
 			kill_heir = yes
 			custom_tooltip = flavor_hab.ct.1
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_heir = no
 			}
 			custom_tooltip = flavor_hab.ct.2
 		}
 	}
-	
-	option = {
-		#Give the Land to the Habsburgs
+	option = { 
 		name = flavor_hab.1010.a
-		ai_chance = { factor = 100 }
+		ai_chance = { 
+			factor = 100
+		}
 		set_global_flag = habsburgs_in_tyrol
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:Magarete of Tyrols heir died, the next ruler will be Habsburg:flavor_hab.1010"
-		define_heir = {
-			#The next ruler is going to be a Habsburg
+		define_heir = { 
 			claim = 75
 			dynasty = "von Habsburg"
 			age = 20
 		}
-		if = {
-			#Tyrol is now part of the Habsburg domains
-			limit = { HAB = { dynasty = "von Habsburg" } }
+		if = { 
+			limit = { 
+				HAB = { 
+					dynasty = "von Habsburg"
+				}
+			}
 			create_alliance = HAB
 			create_marriage = HAB
-			#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:alliance and marriage with Austria set:flavor_hab.1010"
 		}
-		if = {
-			#The Witteslbachers have claims if the ruler is Margarete
-			limit = { has_ruler = "Margarete von Tirol - Görz" }
-			if = {
-				limit = { BAV = { dynasty = "von Wittelsbach" } }
-				BAV	= {
-					add_casus_belli = {
+		if = { 
+			limit = { 
+				has_ruler = "Margarete von Tirol - Görz"
+			}
+			if = { 
+				limit = { 
+					BAV = { 
+						dynasty = "von Wittelsbach"
+					}
+				}
+				BAV = { 
+					add_casus_belli = { 
 						target = TIR
 						type = cb_restore_personal_union
 						months = 24
 					}
 				}
 			}
-			if = {
-				limit = { BAW = { dynasty = "von Wittelsbach" } }
-				BAW	= {
-					add_casus_belli = {
+			if = { 
+				limit = { 
+					BAW = { 
+						dynasty = "von Wittelsbach"
+					}
+				}
+				BAW = { 
+					add_casus_belli = { 
 						target = TIR
 						type = cb_restore_personal_union
 						months = 24
 					}
 				}
 			}
-			if = {
-				limit = { BAX = { dynasty = "von Wittelsbach" } }
-				BAX	= {
-					add_casus_belli = {
+			if = { 
+				limit = { 
+					BAX = { 
+						dynasty = "von Wittelsbach"
+					}
+				}
+				BAX = { 
+					add_casus_belli = { 
 						target = TIR
 						type = cb_restore_personal_union
 						months = 24
 					}
 				}
 			}
-			if = {
-				limit = { BAY = { dynasty = "von Wittelsbach" } }
-				BAY	= {
-					add_casus_belli = {
+			if = { 
+				limit = { 
+					BAY = { 
+						dynasty = "von Wittelsbach"
+					}
+				}
+				BAY = { 
+					add_casus_belli = { 
 						target = TIR
 						type = cb_restore_personal_union
 						months = 24
 					}
 				}
 			}
-			if = {
-				limit = { BAZ = { dynasty = "von Wittelsbach" } }
-				BAZ	= {
-					add_casus_belli = {
+			if = { 
+				limit = { 
+					BAZ = { 
+						dynasty = "von Wittelsbach"
+					}
+				}
+				BAZ = { 
+					add_casus_belli = { 
 						target = TIR
 						type = cb_restore_personal_union
 						months = 24
@@ -132,16 +142,19 @@ country_event = {
 			}
 		}
 	}
-	
-	option = {
-		#Retain our Dynasty
+	option = { 
 		name = flavor_hab.1010.b
-		ai_chance = { factor = 0 }
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:decided to reject the Habsburgs and keep their dynasty:flavor_hab.1010"
-		if = {
-			limit = { HAB = { dynasty = "von Habsburg" } }
-			HAB = {
-				add_casus_belli = {
+		ai_chance = { 
+			factor = 0
+		}
+		if = { 
+			limit = { 
+				HAB = { 
+					dynasty = "von Habsburg"
+				}
+			}
+			HAB = { 
+				add_casus_belli = { 
 					target = TIR
 					type = cb_restore_personal_union
 					months = 24
@@ -150,483 +163,486 @@ country_event = {
 		}
 	}
 }
-
-# Loss of the Habsburg dynasty
-country_event = {
+country_event = { 
 	id = flavor_hab.1011
 	title = flavor_hab.1011.title
 	desc = flavor_hab.1011.desc
 	picture = KING_SICK_IN_BED_eventPicture
-	
 	major = yes
 	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
-			#You need to be part of the core Austrian Lands OR Tyrol that has Habsburg rulers through the Event
+	trigger = { 
+		OR = { 
 			tag = HAB
 			tag = STY
-			AND = {
+			AND = { 
 				tag = TIR
 				has_global_flag = habsburgs_in_tyrol
 			}
 		}
 		is_at_war = no
-		OR = {
-			#One of the other core parts of Austria must be ruled by a Habsburg
-			AND = {
-				HAB = {
+		OR = { 
+			AND = { 
+				HAB = { 
 					dynasty = "von Habsburg"
 					exists = yes
 				}
-				NOT = {
+				NOT = { 
 					tag = HAB
 				}
 			}
-			AND = {
-				STY = {
+			AND = { 
+				STY = { 
 					dynasty = "von Habsburg"
 					exists = yes
 				}
-				NOT = {
+				NOT = { 
 					tag = STY
 				}
 			}
-			AND = {
-				TIR = {
+			AND = { 
+				TIR = { 
 					dynasty = "von Habsburg"
 					exists = yes
 				}
-				NOT = {
+				NOT = { 
 					tag = TIR
 				}
 			}
 		}
-		NOT = {
+		NOT = { 
 			dynasty = "von Habsburg"
 			has_country_flag = no_habsburgs
 			has_country_flag = habsburg_inheritance
 		}
 	}
-	
-	option = {
-		#Give Austria back its lands
+	option = { 
 		name = flavor_hab.1011.a
-		ai_chance = { factor = 1 }
-		#Inheritance by HAB is prioritised over STY and TIR, if HAB doesn't exist but STY does, then STY will inherit, if HAB and STY don't exist, TIR will inherit
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:decided to give back the lands to Habsburgs:flavor_hab.1011"
-
-		if = {
-			limit = {
+		ai_chance = { 
+			factor = 1
+		}
+		if = { 
+			limit = { 
 				exists = HAB
-				NOT = {	tag = HAB }
-				HAB = {
+				NOT = { 
+					tag = HAB
+				}
+				HAB = { 
 					dynasty = "von Habsburg"
 				}
 			}
-			HAB = {
-				country_event = { id = flavor_hab.1012 }
+			HAB = { 
+				country_event = { 
+					id = flavor_hab.1012
+				}
 			}
-			#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:inheriting country is Austria (HAB):flavor_hab.1011"
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				exists = STY
-				NOT = {
+				NOT = { 
 					exists = HAB
 					tag = STY
 				}
-				STY = {
+				STY = { 
 					dynasty = "von Habsburg"
 				}
 			}
 			set_country_flag = habsburg_going_to_be_inherited
-			STY = {
-				country_event = { id = flavor_hab.1012 }
+			STY = { 
+				country_event = { 
+					id = flavor_hab.1012
+				}
 			}
-			#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:inheriting country is Styria (STY):flavor_hab.1011"
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				exists = TIR
-				NOT = {
+				NOT = { 
 					exists = HAB
 					exists = STY
 					tag = TIR
 				}
-				TIR = {
+				TIR = { 
 					dynasty = "von Habsburg"
 				}
 			}
-			TIR = {
-				country_event = { id = flavor_hab.1012 }
+			TIR = { 
+				country_event = { 
+					id = flavor_hab.1012
+				}
 			}
 		}
 		set_country_flag = habsburg_inheritance
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:inheriting country is Tirol (TIR):flavor_hab.1011"
 	}
-	
-	option = {
-		#Never!
+	option = { 
 		name = flavor_hab.1011.b
-		ai_chance = { factor = 0 }
+		ai_chance = { 
+			factor = 0
+		}
 		set_country_flag = no_habsburgs
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:decided not to give back the lands to Habsburgs:flavor_hab.1011"
-
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				tag = TIR
 			}
 			clr_global_flag = habsburgs_in_tyrol
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				exists = HAB
-				NOT = {	tag = HAB }
-				HAB = {
+				NOT = { 
+					tag = HAB
+				}
+				HAB = { 
 					dynasty = "von Habsburg"
 				}
 			}
-			HAB = {
-				country_event = { id = flavor_hab.1013 }
+			HAB = { 
+				country_event = { 
+					id = flavor_hab.1013
+				}
 			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				exists = STY
-				NOT = {	tag = STY }
-				STY = {
+				NOT = { 
+					tag = STY
+				}
+				STY = { 
 					dynasty = "von Habsburg"
 				}
 			}
-			STY = {
-				country_event = { id = flavor_hab.1013 }
+			STY = { 
+				country_event = { 
+					id = flavor_hab.1013
+				}
 			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				exists = TIR
-				NOT = {	tag = TIR }
-				TIR = {
+				NOT = { 
+					tag = TIR
+				}
+				TIR = { 
 					dynasty = "von Habsburg"
 				}
 			}
-			TIR = {
-				country_event = { id = flavor_hab.1013 }
+			TIR = { 
+				country_event = { 
+					id = flavor_hab.1013
+				}
 			}
 		}
 		set_country_flag = habsburg_inheritance
 	}
 }
-
-# Notification of inheritance
-country_event = {
+country_event = { 
 	id = flavor_hab.1012
 	title = flavor_hab.1012.title
 	desc = flavor_hab.1012.desc
 	picture = KING_SICK_IN_BED_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
-		#Good!
+	option = { 
 		name = "flavor_hab.1012.a"
-		ai_chance = { factor = 1 }
+		ai_chance = { 
+			factor = 1
+		}
 		inherit = FROM
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:accepted the inheritance:flavor_hab.1012"
 	}
-	
-	option = {
-		#What?! We don't want that!
+	option = { 
 		name = "flavor_hab.1012.b"
-		ai_chance = { factor = 0 }
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:rejected the inheritance:flavor_hab.1012"
+		ai_chance = { 
+			factor = 0
+		}
 	}
 }
-
-# Notification of resistance
-country_event = {
+country_event = { 
 	id = flavor_hab.1013
 	title = flavor_hab.1013.title
 	desc = flavor_hab.1013.desc
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
-		#What?! Bastards!
+	option = { 
 		name = "flavor_hab.1013.a"
-		ai_chance = { factor = 1 }
-		#Give cores on all of FROMs land that is in the austrian region
-		FROM = {
-			every_core_province = {
-				limit = {
+		ai_chance = { 
+			factor = 1
+		}
+		FROM = { 
+			every_core_province = { 
+				limit = { 
 					region = austrian_circle_region
 				}
 				add_core = HAB
 			}
 		}
 	}
-	
-	option = {
-		#We don't want that land anyway.
+	option = { 
 		name = "flavor_hab.1013.b"
-		ai_chance = { factor = 0 }
+		ai_chance = { 
+			factor = 0
+		}
 	}
 }
-
-# Your Habsburg ruler has died, Austria might acquire your land
-country_event = {
+country_event = { 
 	id = flavor_hab.1018
 	title = flavor_hab.1014.title
 	desc = flavor_hab.1014.desc
 	picture = KING_SICK_IN_BED_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
-			#You need to be one of the core parts of Austria OR a Tyrol that has gotten Habsburgs per event
+	trigger = { 
+		OR = { 
 			tag = HAB
 			tag = STY
-			AND = {
+			AND = { 
 				tag = TIR
 				has_global_flag = habsburgs_in_tyrol
 			}
 		}
 		dynasty = "von Habsburg"
 		is_at_war = no
-		OR = {
-			#Another of the core parts of Austria, OR a Tyrol that has gotten Habsburg per event, must have a Habsburg ruler
-			AND = {
-				HAB = {
+		OR = { 
+			AND = { 
+				HAB = { 
 					dynasty = "von Habsburg"
 					exists = yes
 				}
-				NOT = {	tag = HAB }
+				NOT = { 
+					tag = HAB
+				}
 			}
-			AND = {
-				STY = {
+			AND = { 
+				STY = { 
 					dynasty = "von Habsburg"
 					exists = yes
 				}
-				NOT = {	tag = STY }
+				NOT = { 
+					tag = STY
+				}
 			}
-			AND = {
-				TIR = {
+			AND = { 
+				TIR = { 
 					dynasty = "von Habsburg"
 					exists = yes
 				}
-				NOT = {	tag = TIR }
+				NOT = { 
+					tag = TIR
+				}
 			}
 		}
-		NOT = {
+		NOT = { 
 			has_country_flag = habsburg_inheritance
-			}
+		}
 	}
-	
-	immediate = {
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:Habsburg ruler has died, other branch might acquire the land:flavor_hab.1014"
-	}
-	
-	option = {
-		#Damn.
+	immediate = { }
+	option = { 
 		name = flavor_hab.1014.a
-		ai_chance = { factor = 1 }
-		#25% chance for the other countries to inherit you
-		#Chance not set in stone
-		random_list = {
-			25 = {
-				if = {
-					limit = {
+		ai_chance = { 
+			factor = 1
+		}
+		random_list = { 
+			25 = { 
+				if = { 
+					limit = { 
 						exists = HAB
-						NOT = {	tag = HAB }
-						HAB = {
+						NOT = { 
+							tag = HAB
+						}
+						HAB = { 
 							dynasty = "von Habsburg"
 						}
 					}
-					HAB = {
-						country_event = { id = flavor_hab.1015 }
+					HAB = { 
+						country_event = { 
+							id = flavor_hab.1015
+						}
 					}
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						exists = STY
-						NOT = {
+						NOT = { 
 							exists = HAB
 							tag = STY
 						}
-						STY = {
+						STY = { 
 							dynasty = "von Habsburg"
 						}
 					}
 					set_country_flag = habsburg_going_to_be_inherited
-					STY = {
-						country_event = { id = flavor_hab.1015 }
+					STY = { 
+						country_event = { 
+							id = flavor_hab.1015
+						}
 					}
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						exists = TIR
-						NOT = {
+						NOT = { 
 							exists = HAB
 							exists = STY
 							tag = TIR
 						}
-						TIR = {
+						TIR = { 
 							dynasty = "von Habsburg"
 						}
 					}
-					TIR = {
-						country_event = { id = flavor_hab.1015 }
+					TIR = { 
+						country_event = { 
+							id = flavor_hab.1015
+						}
 					}
 				}
 				set_country_flag = habsburg_inheritance
 			}
-			75 = {
-				#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:No aquisition of land by other Habsburg branch:flavor_hab.1014"
-			}
+			75 = { }
 		}
 	}
 }
-
-# Notification of inheritance through pressure on new monarch
-country_event = {
+country_event = { 
 	id = flavor_hab.1015
 	title = flavor_hab.1015.title
 	desc = flavor_hab.1015.desc
 	picture = KING_SICK_IN_BED_eventPicture
-	
 	major = yes
 	is_triggered_only = yes
-	
-	immediate = {
-		FROM = {
+	immediate = { 
+		FROM = { 
 			clr_country_flag = habsburg_going_to_be_inherited
 		}
 	}
-	
-	option = {
-		#Good!
+	option = { 
 		name = "flavor_hab.1015.a"
-		ai_chance = { factor = 1 }
+		ai_chance = { 
+			factor = 1
+		}
 		inherit = FROM
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:inherited land of [From.GetName]:flavor_hab.1015"
 	}
-	
-	option = {
-		#What?! We don't want that!
+	option = { 
 		name = "flavor_hab.1015.b"
-		ai_chance = { factor = 0 }
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:declined land of [From.GetName]:flavor_hab.1015"
-
+		ai_chance = { 
+			factor = 0
+		}
 	}
 }
-
-# Tyrol is in a war that is being lost and is in debt, local nobles pressure the ruler to give their lands to the Habsburgs
-country_event = {
+country_event = { 
 	id = flavor_hab.1016
 	title = flavor_hab.1016.title
 	desc = flavor_hab.1016.desc
 	picture = COURT_eventPicture
-	
-	trigger = {
+	trigger = { 
 		tag = TIR
 		has_global_flag = habsburgs_in_tyrol
 		dynasty = "von Habsburg"
 		is_at_war = yes
-		NOT = {	war_score = -49 }
+		NOT = { 
+			war_score = -49
+		}
 		num_of_loans = 2
 		NOT = { 
-		 has_country_flag = habsburg_inheritance
-		 }
+			has_country_flag = habsburg_inheritance
+		}
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 100
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			emperor = {
+			emperor = { 
 				dynasty = "von Habsburg"
 			}
 		}
 	}
-	
-	option = {
-		#Very well.
+	option = { 
 		name = "flavor_hab.1016.a"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:accepted pressure of local nobles to give land to Habsburg:flavor_hab.1016"
-		ai_chance = { factor = 10 }
-		if = {
-			limit = {
+		ai_chance = { 
+			factor = 10
+		}
+		if = { 
+			limit = { 
 				exists = HAB
-				NOT = {	tag = HAB }
-				HAB = {
+				NOT = { 
+					tag = HAB
+				}
+				HAB = { 
 					dynasty = "von Habsburg"
 				}
 			}
-			HAB = {
-				country_event = { id = flavor_hab.1017 }
+			HAB = { 
+				country_event = { 
+					id = flavor_hab.1017
+				}
 			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				exists = STY
-				NOT = {
+				NOT = { 
 					exists = HAB
 					tag = STY
 				}
-				STY = {
+				STY = { 
 					dynasty = "von Habsburg"
 				}
 			}
 			set_country_flag = habsburg_going_to_be_inherited
-			STY = {
-				country_event = { id = flavor_hab.1017 }
+			STY = { 
+				country_event = { 
+					id = flavor_hab.1017
+				}
 			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				exists = TIR
-				NOT = {
+				NOT = { 
 					exists = HAB
 					exists = STY
 					tag = TIR
 				}
-				TIR = {
+				TIR = { 
 					dynasty = "von Habsburg"
 				}
 			}
-			TIR = {
-				country_event = { id = flavor_hab.1017 }
+			TIR = { 
+				country_event = { 
+					id = flavor_hab.1017
+				}
 			}
 		}
 		set_country_flag = habsburg_inheritance
 	}
-	
-	option = {
-		#I will not be robbed of my lands!
+	option = { 
 		name = "flavor_hab.1016.b"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:declined pressure of local nobles to give land to Habsburg:flavor_hab.1016"
-		ai_chance = { factor = 1 }
-		random_owned_province = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { has_province_modifier = nobles_organizing }
+		ai_chance = { 
+			factor = 1
+		}
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
+					is_core = ROOT
+				}
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
 			custom_tooltip = nobles_organizing_tt
 			add_unrest = 5
 		}
-		random_owned_province = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { has_province_modifier = nobles_organizing }
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
+					is_core = ROOT
+				}
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
@@ -636,266 +652,263 @@ country_event = {
 		set_country_flag = habsburg_inheritance
 	}
 }
-
-# Notification of inheritance of Tyrol through the local nobles
-country_event = {
+country_event = { 
 	id = flavor_hab.1017
 	title = flavor_hab.1017.title
 	desc = flavor_hab.1017.desc
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
-	
-	immediate = {
-		FROM = {
+	immediate = { 
+		FROM = { 
 			clr_country_flag = habsburg_going_to_be_inherited
 		}
 	}
-	
-	option = {
-		#Good!
+	option = { 
 		name = "flavor_hab.1017.a"
-		ai_chance = { factor = 1 }
+		ai_chance = { 
+			factor = 1
+		}
 		inherit = FROM
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:accepted the inheritance:flavor_hab.1017"
 	}
-	
-	option = {
-		#What?! We don't want that!
+	option = { 
 		name = "flavor_hab.1017.b"
-		ai_chance = { factor = 0 }
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:declined the inheritance:flavor_hab.1017"
+		ai_chance = { 
+			factor = 0
+		}
 	}
 }
-
-country_event = {
-	id = flavor_hab.3188 #The Imperial Parliament at Augsburg
+country_event = { 
+	id = flavor_hab.3188
 	title = "flavor_hab.EVTNAME3188"
 	desc = "flavor_hab.EVTDESC3188"
 	picture = HRE_eventPicture
-	trigger = {
+	trigger = { 
 		tag = HAB
 		is_emperor = yes
-		#is_year = 1550 #covered by is_religion_enabled
-		#NOT = { is_year = 1650 }
-		NOT = {	has_country_flag = HAB_had_event_3188 }
+		NOT = { 
+			has_country_flag = HAB_had_event_3188
+		}
 		is_religion_enabled = protestant
-		any_country = {
+		any_country = { 
 			is_part_of_hre = yes
 			religion = protestant
 		}
-		any_country = {
+		any_country = { 
 			is_part_of_hre = yes
 			religion = catholic
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 166
-		modifier = {
+		modifier = { 
 			factor = 0.75
 			religion = catholic
 		}
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_3188
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA3188"
-		ai_chance = {
+		ai_chance = { 
 			factor = 50
 		}
 		add_prestige = -20
-		every_country = {
-			limit = {
+		every_country = { 
+			limit = { 
 				is_part_of_hre = yes
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = ROOT
 				modifier = religious_compromise
 			}
 		}
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]: went for a middle ground at the Imperial Parliament at Augsburg:flavor_hab.3188"
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTB3188"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]: supported Catholics at the Imperial Parliament at Augsburg:flavor_hab.3188"
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
-			modifier = {
+			modifier = { 
 				factor = 0
 				religion = protestant
 			}
 		}
-		every_country = {
-			limit = {
+		every_country = { 
+			limit = { 
 				is_part_of_hre = yes
 				religion = catholic
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = ROOT
 				modifier = favors_catholics_catholics
 			}
 		}
-		every_country = {
-			limit = {
+		every_country = { 
+			limit = { 
 				is_part_of_hre = yes
 				religion = protestant
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = ROOT
 				modifier = favors_catholics_protestants
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTC3188"
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
-			modifier = {
+			modifier = { 
 				factor = 0
 				religion = catholic
 			}
 		}
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]: supported Protestants at the Imperial Parliament at Augsburg:flavor_hab.3188"
 		add_papal_influence = -50
-		every_country = {
-			limit = {
+		every_country = { 
+			limit = { 
 				is_part_of_hre = yes
 				religion = protestant
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = ROOT
 				modifier = favors_protestants_protestants
 			}
 		}
-		every_country = {
-			limit = {
+		every_country = { 
+			limit = { 
 				is_part_of_hre = yes
 				religion = catholic
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = ROOT
 				modifier = favors_protestants_catholics
 			}
 		}
 	}
 }
-country_event = {
-	id = flavor_hab.3193 #The Royal Letter of Bohemia
+country_event = { 
+	id = flavor_hab.3193
 	title = "flavor_hab.EVTNAME3193"
 	desc = "flavor_hab.EVTDESC3193"
 	picture = REFORM_eventPicture
-	trigger = {
+	trigger = { 
 		tag = HAB
 		is_emperor = yes
-		#is_year = 1600 #should not be time-specific
-		#NOT = { is_year = 1650 } #should not be time-specific
-		NOT = { has_country_flag = HAB_had_event_3193 }
-		NOT = {	has_country_flag = HAB_had_event_3194 }
+		NOT = { 
+			has_country_flag = HAB_had_event_3193
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_3194
+		}
 		is_religion_enabled = protestant
-		BOH = {
+		BOH = { 
 			exists = yes
 			religion = protestant
 			junior_union_with = HAB
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 50
-		modifier = {
+		modifier = { 
 			factor = 0.75
 			dynasty = "von Habsburg"
 		}
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_3193
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA3193"
 		set_country_flag = royal_letter_of_bohemia
-		BOH = {
-			add_opinion = {
+		BOH = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = royal_letter_of_bohemia
 			}
 		}
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]: gave religious freedom for protestants in Bohemia:flavor_hab.3193"
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTB3193"
 		set_country_flag = refused_royal_letter_of_bohemia
-		BOH = {
-			add_opinion = {
+		BOH = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = refused_royal_letter_of_bohemia
 			}
 		}
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]: refused religious freedom for protestants in Bohemia:flavor_hab.3193"
 	}
 }
-country_event = {
-	id = flavor_hab.3194 #The Defenestration of Prague
+country_event = { 
+	id = flavor_hab.3194
 	title = "flavor_hab.EVTNAME3194"
 	desc = "flavor_hab.EVTDESC3194"
 	picture = LIBERUM_VETO_eventPicture
-	trigger = {
+	trigger = { 
 		is_religion_enabled = protestant
-		tag = HAB 
+		tag = HAB
 		is_emperor = yes
 		is_year = 1600
-		NOT = { is_year = 1650 }
-		NOT = {	has_country_flag = HAB_had_event_3194 }
-		NOT = {	has_country_flag = royal_letter_of_bohemia }
+		NOT = { 
+			is_year = 1650
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_3194
+		}
+		NOT = { 
+			has_country_flag = royal_letter_of_bohemia
+		}
 		religion = catholic
-		
-		OR = {
-			AND = {
-				NOT = {	senior_union_with = BOH	}
-				268 = {
+		OR = { 
+			AND = { 
+				NOT = { 
+					senior_union_with = BOH
+				}
+				268 = { 
 					owned_by = ROOT
 					religion = protestant
 				}
 			}
-			BOH = {
+			BOH = { 
 				exists = yes
 				religion = protestant
 				junior_union_with = HAB
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 83
-		modifier = {
+		modifier = { 
 			factor = 0.75
 			dynasty = "von Habsburg"
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			has_country_flag = refused_royal_letter_of_bohemia
 		}
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_3194
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA3194"
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				senior_union_with = BOH
 			}
 			break_union = BOH
 		}
-		if = {
-			limit = {
-				NOT = {
+		if = { 
+			limit = { 
+				NOT = { 
 					senior_union_with = BOH
 				}
-				268 = {
+				268 = { 
 					owned_by = ROOT
 					religion = protestant
 				}
 			}
-			268 = {
-				add_province_modifier = {
+			268 = { 
+				add_province_modifier = { 
 					name = "nationalists_organizing"
 					duration = 5475
 				}
@@ -905,33 +918,39 @@ country_event = {
 		}
 	}
 }
-country_event = {
-	id = flavor_hab.3201 #Noble Revolt in Hungary
+country_event = { 
+	id = flavor_hab.3201
 	title = "flavor_hab.EVTNAME3201"
 	desc = "flavor_hab.EVTDESC3201"
 	picture = ANGRY_MOB_eventPicture
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		tag = HAB
 		is_year = 1550
-		NOT = {	is_year = 1750 }
-		NOT = { has_country_flag = HAB_had_event_3201 }
-		NOT = {	exists = HUN }
-		any_owned_province = {
-			OR = {
+		NOT = { 
+			is_year = 1750
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_3201
+		}
+		NOT = { 
+			exists = HUN
+		}
+		any_owned_province = { 
+			OR = { 
 				region = magyar_plains_region
 				region = north_carpathia_region
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_3201
-		random_owned_province = {
-			limit = {
-				OR = {
+		random_owned_province = { 
+			limit = { 
+				OR = { 
 					region = magyar_plains_region
 					region = north_carpathia_region
 				}
@@ -939,55 +958,61 @@ country_event = {
 			set_province_flag = hungarian_revolt
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA3201"
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
-				NOT = {	has_province_modifier = nobles_organizing }
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
-			custom_tooltip = nobles_organizing_tt 
+			custom_tooltip = nobles_organizing_tt
 			add_unrest = 5
 			clr_province_flag = hungarian_revolt
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
-				NOT = {	has_province_modifier = nobles_organizing }
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
-			custom_tooltip = nobles_organizing_tt 
+			custom_tooltip = nobles_organizing_tt
 			add_unrest = 5
 			clr_province_flag = hungarian_revolt
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
-				NOT = {	has_province_modifier = nobles_organizing }
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
-			custom_tooltip = nobles_organizing_tt 
+			custom_tooltip = nobles_organizing_tt
 			add_unrest = 5
 			clr_province_flag = hungarian_revolt
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTB3201"
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = local_autonomy_modifier
 				duration = 3650
 			}
@@ -995,70 +1020,279 @@ country_event = {
 		}
 	}
 }
-country_event = {
-	id = flavor_hab.3203 #The Purge of the Archbishop of Salzburg
+country_event = { 
+	id = flavor_hab.3203
 	title = "flavor_hab.EVTNAME3203"
 	desc = "flavor_hab.EVTDESC3203"
 	picture = ANGRY_MOB_eventPicture
-	is_triggered_only = yes #from on_five_year_pulse_2
-
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		tag = HAB
-		owns = 76 #Salzburg
+		owns = 76
 		is_year = 1700
-		NOT = { is_year = 1800 }
-		NOT = {	has_country_flag = HAB_had_event_3203 }
-		NOT = {	exists = SLZ }
-		76 = {
+		NOT = { 
+			is_year = 1800
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_3203
+		}
+		NOT = { 
+			exists = SLZ
+		}
+		76 = { 
 			religion = catholic
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_3203
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA3203"
-		Stab_Add50Percent = yes
-		76 = {}
-	}
-	option = {
-		name = "flavor_hab.EVTOPTB3203"
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
+		76 = { }
+	}
+	option = { 
+		name = "flavor_hab.EVTOPTB3203"
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
+			}
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
 			}
 		}
 	}
 }
-country_event = {
-	id = flavor_hab.3202 #Wenzel Anton Kaunitz
+country_event = { 
+	id = flavor_hab.3202
 	title = "flavor_hab.EVTNAME3206"
 	desc = "flavor_hab.EVTDESC3206"
 	picture = ADVISOR_eventPicture
-	is_triggered_only = yes #from on_five_year_pulse_2
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		tag = HAB
 		is_year = 1741
-		NOT = {	is_year = 1794 }
-		NOT = {	has_country_flag = HAB_had_event_3206 }
+		NOT = { 
+			is_year = 1794
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_3206
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_3206
 	}
-	option = {
+	option = { 
 		name = "EXCELLENTCMNISTER"
 		add_adm_power = 25
-		define_advisor = {
+		define_advisor = { 
 			type = diplomat_NO
 			name = "Wenzel Anton Kaunitz"
 			skill = 3
@@ -1066,28 +1300,32 @@ country_event = {
 		}
 	}
 }
-country_event = {
-	id = flavor_hab.3208 #Metternich
+country_event = { 
+	id = flavor_hab.3208
 	title = "flavor_hab.EVTNAME3208"
 	desc = "flavor_hab.EVTDESC3208"
 	picture = ADVISOR_eventPicture
-	is_triggered_only = yes #from on_five_year_pulse_2
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		tag = HAB
 		is_year = 1803
-		NOT = { is_year = 1859 }
-		NOT = { has_country_flag = HAB_had_event_3208 }
+		NOT = { 
+			is_year = 1859
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_3208
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_3208
 	}
-	option = {
+	option = { 
 		name = "EXCELLENTCMNISTER"
 		add_adm_power = 25
-		define_advisor = {
+		define_advisor = { 
 			type = diplomat_NO
 			name = "Metternich"
 			skill = 3
@@ -1095,36 +1333,42 @@ country_event = {
 		}
 	}
 }
-country_event = {
-	id = flavor_hab.3099 #The Protestant Rebellion in Hungary
+country_event = { 
+	id = flavor_hab.3099
 	title = "flavor_hab.EVTNAME3099"
 	desc = "flavor_hab.EVTDESC3099"
 	picture = ANGRY_MOB_eventPicture
-	is_triggered_only = yes #from on_five_year_pulse_2
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		is_religion_enabled = protestant
 		tag = HAB
 		is_year = 1575
-		NOT = {	is_year = 1625 }
-		NOT = {	has_country_flag = HAB_had_event_3099 }
-		NOT = {	exists = HUN }
-		any_owned_province = {
-			OR = {
+		NOT = { 
+			is_year = 1625
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_3099
+		}
+		NOT = { 
+			exists = HUN
+		}
+		any_owned_province = { 
+			OR = { 
 				region = magyar_plains_region
 				region = north_carpathia_region
 			}
 			religion = protestant
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
-		hidden_effect = {
+	immediate = { 
+		hidden_effect = { 
 			set_country_flag = HAB_had_event_3099
-			random_owned_province = {
-				limit = {
-					OR = {
+			random_owned_province = { 
+				limit = { 
+					OR = { 
 						region = magyar_plains_region
 						region = north_carpathia_region
 					}
@@ -1132,14 +1376,14 @@ country_event = {
 				}
 				set_province_flag = hungarian_revolt
 			}
-			random_owned_province = {
-				limit = {
-					OR = {
+			random_owned_province = { 
+				limit = { 
+					OR = { 
 						region = magyar_plains_region
 						region = north_carpathia_region
 					}
 					religion = protestant
-					NOT = {
+					NOT = { 
 						has_province_flag = second_hungarian_revolt
 					}
 				}
@@ -1147,14 +1391,16 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA3099"
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
-				NOT = {	has_province_modifier = nobles_organizing }
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
@@ -1162,12 +1408,14 @@ country_event = {
 			add_unrest = 5
 			clr_province_flag = hungarian_revolt
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
-				NOT = {	has_province_modifier = nobles_organizing }
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
@@ -1175,12 +1423,14 @@ country_event = {
 			add_unrest = 5
 			clr_province_flag = hungarian_revolt
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
-				NOT = {	has_province_modifier = nobles_organizing }
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
@@ -1188,12 +1438,14 @@ country_event = {
 			add_unrest = 5
 			clr_province_flag = hungarian_revolt
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = second_hungarian_revolt
-				NOT = {	has_province_modifier = nobles_organizing }
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
@@ -1201,12 +1453,14 @@ country_event = {
 			add_unrest = 5
 			clr_province_flag = second_hungarian_revolt
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = second_hungarian_revolt
-				NOT = {	has_province_modifier = nobles_organizing }
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
@@ -1215,23 +1469,23 @@ country_event = {
 			clr_province_flag = second_hungarian_revolt
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTB3099"
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = local_autonomy_modifier
 				duration = 3650
 			}
 			clr_province_flag = hungarian_revolt
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = second_hungarian_revolt
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = local_autonomy_modifier
 				duration = 3650
 			}
@@ -1239,81 +1493,291 @@ country_event = {
 		}
 	}
 }
-country_event = {
-	id = flavor_hab.3328 #Reichshofrat
+country_event = { 
+	id = flavor_hab.3328
 	title = "flavor_hab.EVTNAME3328"
 	desc = "flavor_hab.EVTDESC3328"
 	picture = DEBATE_REPUBLICAN_eventPicture
-	trigger = {
+	trigger = { 
 		tag = HAB
 		is_year = 1480
-		NOT = {	is_year = 1530 }
-		NOT = {	has_country_flag = HAB_had_event_3328 }
+		NOT = { 
+			is_year = 1530
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_3328
+		}
 	}
-	mean_time_to_happen = {
-		days = 1 
+	mean_time_to_happen = { 
+		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_3328
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA3328"
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
 			}
 		}
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = reichshofrat
 			duration = 7300
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTB3328"
 		custom_tooltip = stability_points_gained_50
-		Stab_Add50Percent = yes
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
 	}
 }
-country_event = {
-	id = flavor_hab.3332 #The Chastening of Hungary
+country_event = { 
+	id = flavor_hab.3332
 	title = "flavor_hab.EVTNAME3332"
 	desc = "flavor_hab.EVTDESC3332"
 	picture = DEBATE_REPUBLICAN_eventPicture
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		tag = HAB
 		is_year = 1650
-		NOT = { is_year = 1700 }
-		NOT = { has_country_flag = HAB_had_event_3332 }
-		NOT = { exists = HUN }
-		any_owned_province = {
-			OR = {
+		NOT = { 
+			is_year = 1700
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_3332
+		}
+		NOT = { 
+			exists = HUN
+		}
+		any_owned_province = { 
+			OR = { 
 				region = magyar_plains_region
 				region = north_carpathia_region
 			}
 		}
-		TUR = {
-			any_owned_province = {
-				OR = {
+		TUR = { 
+			any_owned_province = { 
+				OR = { 
 					region = magyar_plains_region
 					region = north_carpathia_region
 				}
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
-		hidden_effect = {
+	immediate = { 
+		hidden_effect = { 
 			set_country_flag = HAB_had_event_3332
-			random_owned_province = {
-				limit = {
-					OR = {
+			random_owned_province = { 
+				limit = { 
+					OR = { 
 						region = magyar_plains_region
 						region = north_carpathia_region
 					}
@@ -1322,67 +1786,271 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA3332"
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
 			}
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
-				NOT = {	has_province_modifier = nobles_organizing }
-			}
-			add_province_modifier = {
-				name = "nobles_organizing"
-				duration = 1825
-			}
-			custom_tooltip = nobles_organizing_tt 
-			add_unrest = 5
-			clr_province_flag = hungarian_revolt
-		}
-		random_owned_province = {
-			limit = {
-				has_province_flag = hungarian_revolt
-				NOT = {
+				NOT = { 
 					has_province_modifier = nobles_organizing
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
-			custom_tooltip = nobles_organizing_tt 
+			custom_tooltip = nobles_organizing_tt
 			add_unrest = 5
 			clr_province_flag = hungarian_revolt
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
-				NOT = { has_province_modifier = nobles_organizing }
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nobles_organizing"
 				duration = 1825
 			}
-			custom_tooltip = nobles_organizing_tt 
+			custom_tooltip = nobles_organizing_tt
+			add_unrest = 5
+			clr_province_flag = hungarian_revolt
+		}
+		random_owned_province = { 
+			limit = { 
+				has_province_flag = hungarian_revolt
+				NOT = { 
+					has_province_modifier = nobles_organizing
+				}
+			}
+			add_province_modifier = { 
+				name = "nobles_organizing"
+				duration = 1825
+			}
+			custom_tooltip = nobles_organizing_tt
 			add_unrest = 5
 			clr_province_flag = hungarian_revolt
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTB3332"
-		Stab_Add50Percent = yes
-		random_owned_province = {
-			limit = {
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = local_autonomy_modifier
 				duration = 3650
 			}
@@ -1390,28 +2058,34 @@ country_event = {
 		}
 	}
 }
-country_event = {
-	id = flavor_hab.3333 #The Insurrection of Duke Imre Thokoly
+country_event = { 
+	id = flavor_hab.3333
 	title = "flavor_hab.EVTNAME3333"
 	desc = "flavor_hab.EVTDESC3333"
 	picture = MILITARY_CAMP_eventPicture
-	trigger = {
+	trigger = { 
 		tag = HAB
 		is_year = 1650
-		NOT = {	is_year = 1700 }
-		NOT = {	has_country_flag = HAB_had_event_3333 }
+		NOT = { 
+			is_year = 1700
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_3333
+		}
 		religion = catholic
-		NOT = {	exists = HUN }
-		any_owned_province = {
-			OR = {
+		NOT = { 
+			exists = HUN
+		}
+		any_owned_province = { 
+			OR = { 
 				region = magyar_plains_region
 				region = north_carpathia_region
 			}
 			religion = catholic
 		}
-		NOT = {
-			any_owned_province = {
-				OR = {
+		NOT = { 
+			any_owned_province = { 
+				OR = { 
 					region = magyar_plains_region
 					region = north_carpathia_region
 				}
@@ -1419,15 +2093,15 @@ country_event = {
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
-		hidden_effect = {
+	immediate = { 
+		hidden_effect = { 
 			set_country_flag = HAB_had_event_3333
-			random_owned_province = {
-				limit = {
-					OR = {
+			random_owned_province = { 
+				limit = { 
+					OR = { 
 						region = magyar_plains_region
 						region = north_carpathia_region
 					}
@@ -1437,91 +2111,191 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA3333"
-		Stab_Subtract50Percent = yes
-		random_owned_province = {
-			limit = {
-				has_province_flag = hungarian_revolt
-				NOT = {	has_province_modifier = nationalists_organizing	}
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = -600
 			}
-			add_province_modifier = {
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabSubtract50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -2.5
+		}
+		random_owned_province = { 
+			limit = { 
+				has_province_flag = hungarian_revolt
+				NOT = { 
+					has_province_modifier = nationalists_organizing
+				}
+			}
+			add_province_modifier = { 
 				name = "nationalists_organizing"
 				duration = 1825
 			}
 			custom_tooltip = nationalists_organizing_tt
 			add_unrest = 5
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
-				NOT = {	has_province_modifier = nationalists_organizing	}
+				NOT = { 
+					has_province_modifier = nationalists_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nationalists_organizing"
 				duration = 1825
 			}
 			custom_tooltip = nationalists_organizing_tt
 			add_unrest = 5
 		}
-		random_owned_province = {
-			limit = {
+		random_owned_province = { 
+			limit = { 
 				has_province_flag = hungarian_revolt
-				NOT = {	has_province_modifier = nationalists_organizing	}
+				NOT = { 
+					has_province_modifier = nationalists_organizing
+				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "nationalists_organizing"
 				duration = 1825
 			}
 			custom_tooltip = nationalists_organizing_tt
 			add_unrest = 5
 		}
-		if = {
-			limit = {
-				any_owned_province = {
-					OR = {
+		if = { 
+			limit = { 
+				any_owned_province = { 
+					OR = { 
 						region = magyar_plains_region
 						region = north_carpathia_region
 					}
-					NOT = {	has_province_flag = hungarian_revolt }
+					NOT = { 
+						has_province_flag = hungarian_revolt
+					}
 				}
 			}
-			every_owned_province = {
-				limit = {
-					OR = {
+			every_owned_province = { 
+				limit = { 
+					OR = { 
 						region = magyar_plains_region
 						region = north_carpathia_region
 					}
-					NOT = {	has_province_flag = hungarian_revolt }
-					NOT = {	has_province_modifier = nationalists_organizing	}
+					NOT = { 
+						has_province_flag = hungarian_revolt
+					}
+					NOT = { 
+						has_province_modifier = nationalists_organizing
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "nationalists_organizing"
 					duration = 1825
 				}
 				custom_tooltip = nationalists_organizing_tt
-			add_unrest = 5
+				add_unrest = 5
 			}
 		}
-		hidden_effect = {
-			every_owned_province = {
-				limit = {
+		hidden_effect = { 
+			every_owned_province = { 
+				limit = { 
 					has_province_flag = hungarian_revolt
 				}
 				clr_province_flag = hungarian_revolt
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTB3333"
-		every_owned_province = {
-			limit = {
-				OR = {
+		every_owned_province = { 
+			limit = { 
+				OR = { 
 					region = magyar_plains_region
 					region = north_carpathia_region
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = local_autonomy_modifier
 				duration = 3650
 			}
@@ -1529,45 +2303,54 @@ country_event = {
 		}
 	}
 }
-country_event = {
-	id = flavor_hab.1 #Privilegium Maius
+country_event = { 
+	id = flavor_hab.1
 	title = "flavor_hab.EVTNAME1"
 	desc = "flavor_hab.EVTDESC1"
 	picture = REFORM_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = HAB
 		is_emperor = yes
-		NOT = {	has_country_flag = austrian_archduchy }
-		OR = {
+		NOT = { 
+			has_country_flag = austrian_archduchy
+		}
+		OR = { 
 			has_country_modifier = title_1
 			has_country_modifier = title_2
 			has_country_modifier = title_3
 			has_country_modifier = title_4
 		}
-		NOT = {	is_year = 1515 }
-		#dynasty = "von Habsburg" #It is about Austria, not about Habsburgs only
+		NOT = { 
+			is_year = 1515
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 4
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA1"
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
-		if = {
-			limit = {
-				NOT = {	has_country_modifier = title_4 }
-				NOT = {	has_country_modifier = title_5 }
-				NOT = {	has_country_modifier = title_6 }
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_4
+				}
+				NOT = { 
+					has_country_modifier = title_5
+				}
+				NOT = { 
+					has_country_modifier = title_6
+				}
 			}
 			remove_country_modifier = title_1
 			remove_country_modifier = title_2
 			remove_country_modifier = title_3
 			remove_country_modifier = title_5
 			remove_country_modifier = title_6
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = title_4
 				duration = -1
 			}
@@ -1580,176 +2363,188 @@ country_event = {
 		}
 		set_country_flag = austrian_archduchy
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTB1"
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 		add_prestige = 10
 	}
 }
-country_event = {
-	id = flavor_hab.2 #The Golden Roof
+country_event = { 
+	id = flavor_hab.2
 	title = "flavor_hab.EVTNAME2"
 	desc = "flavor_hab.EVTDESC2"
 	picture = UNIVERSITY_eventPicture
-	is_triggered_only = yes #from on_five_year_pulse_2
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		tag = HAB
 		is_emperor = yes
-		owns = 73 #Innsbruck
-		NOT = {	has_country_flag = HAB_had_event_2 }
+		owns = 73
+		NOT = { 
+			has_country_flag = HAB_had_event_2
+		}
 		is_year = 1480
-		NOT = { is_year = 1530 }
+		NOT = { 
+			is_year = 1530
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_2
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA2"
 		add_prestige = 10
 	}
 }
-country_event = {
-	id = flavor_hab.4 #The Triumphal Procession
+country_event = { 
+	id = flavor_hab.4
 	title = "flavor_hab.EVTNAME4"
 	desc = "flavor_hab.EVTDESC4"
 	picture = IMPORTANT_STATUE_eventPicture
-	is_triggered_only = yes #from on_five_year_pulse_2
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		tag = HAB
 		is_emperor = yes
-		NOT = {	has_country_flag = HAB_had_event_4 }
+		NOT = { 
+			has_country_flag = HAB_had_event_4
+		}
 		is_year = 1500
-		NOT = { is_year = 1550 }
+		NOT = { 
+			is_year = 1550
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_4
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA4"
 		add_years_of_income = -0.2
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = the_triumphal_procession
 			duration = 9125
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTB4"
 	}
 }
-
-country_event = {
-	id = flavor_hab.6 #The Meteorite of Ensisheim
+country_event = { 
+	id = flavor_hab.6
 	title = "flavor_hab.EVTNAME6"
 	desc = "flavor_hab.EVTDESC6"
 	picture = COMET_SIGHTED_eventPicture
-	is_triggered_only = yes #from on_five_year_pulse_2
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		tag = HAB
 		owns = 1356
-		NOT = {	has_country_flag = HAB_had_event_6 }
+		NOT = { 
+			has_country_flag = HAB_had_event_6
+		}
 		is_year = 1450
-		NOT = {	is_year = 1550 }
+		NOT = { 
+			is_year = 1550
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_6
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA6"
 		add_prestige = 5
 	}
 }
-country_event = {
-	id = flavor_hab.7 #The Habsburg Dynasty
+country_event = { 
+	id = flavor_hab.7
 	title = "flavor_hab.EVTNAME7"
 	desc = "flavor_hab.EVTDESC7"
 	picture = COURT_eventPicture
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		tag = HAB
 		has_heir = no
-		AND = {
-			OR = {
+		AND = { 
+			OR = { 
 				is_subject = no
 				is_subject_of_type = tributary_state
 				is_subject_of_type = close_tributary_state
 			}
 		}
-		NOT = { dynasty = "von Habsburg" }
+		NOT = { 
+			dynasty = "von Habsburg"
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
-		random_list = {
-			90 = {
+	immediate = { 
+		random_list = { 
+			90 = { 
 				set_country_flag = habsburg_male_heir
 			}
-			10 = {
+			10 = { 
 				set_country_flag = habsburg_female_heir
 			}
 		}
-		random_list = {
-			40 = {
+		random_list = { 
+			40 = { 
 				set_country_flag = habsburg_adm_heir
 			}
-			40 = {
+			40 = { 
 				set_country_flag = habsburg_dip_heir
 			}
-			20 = {
+			20 = { 
 				set_country_flag = habsburg_mil_heir
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTA7"
 		add_legitimacy = 10
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTB7"
 		add_legitimacy = -50
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:found a Habsburg heir to take over from their dynasty (no heir):flavor_hab.7"
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = habsburg_male_heir
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_country_flag = habsburg_adm_heir
 				}
-				define_heir = {
+				define_heir = { 
 					dynasty = "von Habsburg"
 					ADM = 4
 					claim = 80
 				}
 				clr_country_flag = habsburg_adm_heir
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_country_flag = habsburg_dip_heir
 				}
-				define_heir = {
+				define_heir = { 
 					dynasty = "von Habsburg"
 					DIP = 4
 					claim = 80
 				}
 				clr_country_flag = habsburg_dip_heir
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_country_flag = habsburg_mil_heir
 				}
-				define_heir = {
+				define_heir = { 
 					dynasty = "von Habsburg"
 					MIL = 4
 					claim = 80
@@ -1758,15 +2553,15 @@ country_event = {
 			}
 			clr_country_flag = habsburg_male_heir
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = habsburg_female_heir
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_country_flag = habsburg_adm_heir
 				}
-				define_heir = {
+				define_heir = { 
 					dynasty = "von Habsburg"
 					female = yes
 					ADM = 4
@@ -1774,11 +2569,11 @@ country_event = {
 				}
 				clr_country_flag = habsburg_adm_heir
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_country_flag = habsburg_dip_heir
 				}
-				define_heir = {
+				define_heir = { 
 					dynasty = "von Habsburg"
 					female = yes
 					DIP = 4
@@ -1786,11 +2581,11 @@ country_event = {
 				}
 				clr_country_flag = habsburg_dip_heir
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_country_flag = habsburg_mil_heir
 				}
-				define_heir = {
+				define_heir = { 
 					dynasty = "von Habsburg"
 					female = yes
 					MIL = 4
@@ -1802,269 +2597,310 @@ country_event = {
 		}
 	}
 }
-country_event = {
-	id = flavor_hab.5190 #Ludwig van Beethoven
+country_event = { 
+	id = flavor_hab.5190
 	title = "flavor_hab.EVTNAME5190"
 	desc = "flavor_hab.EVTDESC5190"
 	picture = THEATRE_eventPicture
-	is_triggered_only = yes #from on_five_year_pulse_2
-	trigger = {
-		owns = 83 #Wien
+	is_triggered_only = yes
+	trigger = { 
+		owns = 83
 		is_year = 1790
-		NOT = { is_year = 1821 }
-		NOT = {	has_country_flag = HAB_had_event_5190 }
+		NOT = { 
+			is_year = 1821
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_5190
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_5190
 	}
-	option = {
+	option = { 
 		name = "EXCELLENT"
 		add_prestige = 10
 	}
 }
-country_event = {
-	id = flavor_hab.5191 #Wolfgang Amadeus Mozart
+country_event = { 
+	id = flavor_hab.5191
 	title = "flavor_hab.EVTNAME5191"
 	desc = "flavor_hab.EVTDESC5191"
 	picture = THEATRE_eventPicture
-	trigger = {
-		owns = 83 #Wien
+	trigger = { 
+		owns = 83
 		is_year = 1774
-		NOT = { is_year = 1791 }
-		NOT = { has_country_flag = HAB_had_event_5191 }
+		NOT = { 
+			is_year = 1791
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_5191
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_5191
 	}
-	option = {
+	option = { 
 		name = "EXCELLENT"
 		add_prestige = 10
 	}
 }
-country_event = {
-	id = flavor_hab.1007 #The Italian Wars
+country_event = { 
+	id = flavor_hab.1007
 	title = "flavor_spa.EVTNAME1007"
 	desc = "flavor_spa.EVTDESC1007"
 	picture = MILITARY_CAMP_eventPicture
 	is_triggered_only = yes
-	trigger = {
-		#tag = HAB #it is about HRE itself, do not require Austrian ruler to be an Emperor
+	trigger = { 
 		is_emperor = yes
 		is_year = 1490
-		NOT = { is_year = 1590 }
-		NOT = {	has_country_flag = HAB_had_event_1007 }
-		NOT = {	alliance_with = FRA }
-		NOT = {	is_subject_of = FRA	}
-		NOT = {	war_with = FRA }
-		italy_superregion = {
+		NOT = { 
+			is_year = 1590
+		}
+		NOT = { 
+			has_country_flag = HAB_had_event_1007
+		}
+		NOT = { 
+			alliance_with = FRA
+		}
+		NOT = { 
+			is_subject_of = FRA
+		}
+		NOT = { 
+			war_with = FRA
+		}
+		italy_superregion = { 
 			is_part_of_hre = yes
 		}
-		italy_superregion = {
+		italy_superregion = { 
 			owned_by = FRA
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = HAB_had_event_1007
 	}
-	option = {
+	option = { 
 		name = "flavor_spa.EVTOPTA1007"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:as HRE emperor, claimed all French land in Italy:flavor_hab.1007" 
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
-		FRA = {
-			add_opinion = {
+		FRA = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = claimed_italy
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					superregion = italy_superregion
 				}
 				add_claim = ROOT
 			}
-			hidden_effect = {
-				country_event = {
+			hidden_effect = { 
+				country_event = { 
 					id = flavor_hab.1008
 					days = 10
 				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_spa.EVTOPTB1007"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:as HRE emperor, have not claimed French land in Italy:flavor_hab.1007" 
-		ai_chance = {
+		ai_chance = { 
 			factor = 10
 		}
 		add_prestige = -10
 	}
 }
-country_event = {
-	id = flavor_hab.1008 #The Italian Wars (counterclaim event for France)
+country_event = { 
+	id = flavor_hab.1008
 	title = "flavor_spa.EVTNAME1008"
 	desc = "flavor_spa.EVTDESC1008"
 	picture = LAND_MILITARY_eventPicture
-	is_triggered_only = yes #from flavor_hab.1007
-	option = {
+	is_triggered_only = yes
+	option = { 
 		name = "flavor_spa.EVTOPTA1008"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:counter-claimed lands in Italy:flavor_hab.1008" 
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:escalated conflict in Italy:flavor_hab.1008" 
-		trigger = {
-			italy_superregion = {
+		trigger = { 
+			italy_superregion = { 
 				owned_by = FROM
 			}
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
-		FROM = {
-			every_owned_province = {
-				limit = {
+		FROM = { 
+			every_owned_province = { 
+				limit = { 
 					superregion = italy_superregion
 				}
 				add_claim = ROOT
 			}
-			hidden_effect = {
-				country_event = {
+			hidden_effect = { 
+				country_event = { 
 					id = flavor_hab.1009
 					days = 10
 				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_spa.EVTOPTB1008"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:have not counter-claimed lands in Italy:flavor_hab.1008" 
-		ai_chance = {
+		ai_chance = { 
 			factor = 10
 		}
 		add_prestige = -10
 	}
-	option = {
+	option = { 
 		name = "flavor_hab.EVTOPTC1008"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:escalated conflict in Italy:flavor_hab.1008" 
-
-		trigger = {
-			NOT = {
-				italy_superregion = {
+		trigger = { 
+			NOT = { 
+				italy_superregion = { 
 					owned_by = FROM
 				}
 			}
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
 		add_prestige = 10
-		FROM = {
-			add_opinion = {
+		FROM = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = claimed_italy
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hab.1009
 	title = "flavor_spa.EVTNAME1009"
 	desc = "flavor_spa.EVTDESC1009"
 	picture = MILITARY_CAMP_eventPicture
-	is_triggered_only = yes #from flavor_hab.1008
-	option = {
+	is_triggered_only = yes
+	option = { 
 		name = "flavor_spa.EVTOPTA1009"
-		add_opinion = {
+		add_opinion = { 
 			who = FROM
 			modifier = claimed_italy
 		}
 	}
 }
-
-country_event = {
-	id = hee_HAB.1 #The Reforms of the 1495 Diet of Worms
+country_event = { 
+	id = hee_HAB.1
 	title = hee_HAB.1.t
 	desc = hee_HAB.1.d
 	picture = LIBERUM_VETO_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = HAB
 		is_emperor = yes
 		is_year = 1495
-		NOT = {	is_religion_enabled = protestant }
-		NOT = {	hre_reform_passed = reichsreform }
+		NOT = { 
+			is_religion_enabled = protestant
+		}
+		NOT = { 
+			hre_reform_passed = reichsreform
+		}
 		imperial_influence = 10
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 1
 	}
-	option = {
+	option = { 
 		name = hee_HAB.1.a
 		add_imperial_influence = 20
-		Stab_Subtract1 = yes
-		add_country_modifier = {
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -1
+			}
+		}
+		tooltip = { 
+			add_stability = -1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -5
+		}
+		add_country_modifier = { 
 			name = hee_diet_worms
 			duration = 7300
 		}
 	}
-	option = {
+	option = { 
 		name = hee_HAB.1.b
 		add_imperial_influence = -20
-		every_country = {
-			limit = {
+		every_country = { 
+			limit = { 
 				is_part_of_hre = yes
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = HAB
 				modifier = hee_diet_worms_opinion
 			}
 		}
 	}
 }
-country_event = {
-	id = hee_HAB.2 #The Rise of the Ottomans in Europe
+country_event = { 
+	id = hee_HAB.2
 	title = hee_HAB.2.t
 	desc = hee_HAB.2.d
 	picture = HORDE_ON_HORSEBACK_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			tag = HAB
 			is_emperor = yes
-			AND = {
+			AND = { 
 				is_great_power = yes
 				religion = catholic
 			}
 		}
-		TUR = {
-			religion = sunni #for a random chance of Turkey converted
-			NOT = { war_with = ROOT }
-			NOT = { alliance_with = ROOT }
-			OR = {
+		TUR = { 
+			religion = sunni
+			NOT = { 
+				war_with = ROOT
+			}
+			NOT = { 
+				alliance_with = ROOT
+			}
+			OR = { 
 				is_great_power = yes
-				army_strength = {
+				army_strength = { 
 					who = ROOT
 					value = 2
 				}
 			}
 		}
-		OR = {
-			any_owned_province = {
-				any_neighbor_province = {
+		OR = { 
+			any_owned_province = { 
+				any_neighbor_province = { 
 					owned_by = TUR
 					continent = europe
 				}
 			}
-			any_subject_country = {
-				any_owned_province = {
-					any_neighbor_province = {
+			any_subject_country = { 
+				any_owned_province = { 
+					any_neighbor_province = { 
 						owned_by = TUR
 						continent = europe
 					}
@@ -2072,121 +2908,213 @@ country_event = {
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 6
 	}
-	option = {
+	option = { 
 		name = hee_HAB.2.a
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:opposed rise of Ottomans in Europe:hee_HAB.2" 
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
 		add_mil_power = 50
 		add_army_tradition = 5.0
-		reverse_add_opinion = {
+		reverse_add_opinion = { 
 			who = TUR
 			modifier = hee_defense_of_christendom
 		}
 	}
-	option = {
+	option = { 
 		name = hee_HAB.2.b
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:backed out of opposing rise of Ottomans in Europe:hee_HAB.2" 
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 		add_dip_power = 25
 	}
 }
-country_event = {
-	id = hee_HAB.3 #The Austrian Baroque
+country_event = { 
+	id = hee_HAB.3
 	title = hee_HAB.3.t
 	desc = hee_HAB.3.d
 	picture = COURT_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		tag = HAB
 		is_year = 1650
-		NOT = {	is_year = 1730 }
-		monarchy_or_harem_gov = yes
+		NOT = { 
+			is_year = 1730
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
 		num_of_cities = 10
 		legitimacy = 70
 		stability = 1
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	option = {
+	option = { 
 		name = hee_HAB.3.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 85
 		}
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = hee_austrian_baroque
 			duration = -1
 		}
 		custom_tooltip = hee_HAB.3.tt
 	}
-	option = {
+	option = { 
 		name = hee_HAB.3.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 15
 		}
-		Stab_Add50Percent = yes
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
 		add_adm_power = 10
 		add_dip_power = 10
 	}
 }
-country_event = {
-	id = hee_HAB.4 #Austria Into the Future
+country_event = { 
+	id = hee_HAB.4
 	title = hee_HAB.4.t
 	desc = hee_HAB.4.d
 	picture = COURT_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		has_country_modifier = hee_austrian_baroque
 		is_year = 1715
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 25
-#		modifier = {
-#			factor = 0.1
-#			has_disaster = aspiration_for_liberty
-#		}
-		modifier = {
+		modifier = { 
 			factor = 0.3
 			is_year = 1740
 		}
 	}
-	option = {
+	option = { 
 		name = hee_HAB.4.a
 		remove_country_modifier = hee_austrian_baroque
 	}
 }
-country_event = {
-	id = hee_HAB.5 #Build Beautiful Palaces
+country_event = { 
+	id = hee_HAB.5
 	title = hee_HAB.5.t
 	desc = hee_HAB.5.d
 	picture = GREAT_BUILDING_eventPicture
-	trigger = {
+	trigger = { 
 		tag = HAB
 		has_country_modifier = hee_austrian_baroque
-		NOT = {	has_country_modifier = hee_baroque_building_timer }
+		NOT = { 
+			has_country_modifier = hee_baroque_building_timer
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 7
 	}
-	option = {
+	option = { 
 		name = hee_HAB.5.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
-			modifier = {
+			modifier = { 
 				factor = 0
 				num_of_loans = 5
 			}
 		}
-		hidden_effect = {
-			add_country_modifier = {
+		hidden_effect = { 
+			add_country_modifier = { 
 				name = hee_baroque_building_timer
 				duration = 365
 				hidden = yes
@@ -2195,11 +3123,11 @@ country_event = {
 		add_treasury = -50
 		add_prestige = 5
 	}
-	option = {
+	option = { 
 		name = hee_HAB.5.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
-			modifier = {
+			modifier = { 
 				factor = 75
 				num_of_loans = 1
 			}
@@ -2208,30 +3136,32 @@ country_event = {
 		add_adm_power = 5
 	}
 }
-country_event = {
+country_event = { 
 	id = hee_HAB.6
 	title = hee_HAB.6.t
 	desc = hee_HAB.6.d
 	picture = LAND_MILITARY_eventPicture
-	trigger = {
+	trigger = { 
 		tag = HAB
 		has_country_modifier = hee_austrian_baroque
-		NOT = {	has_country_modifier = hee_baroque_building_timer }
+		NOT = { 
+			has_country_modifier = hee_baroque_building_timer
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 7
 	}
-	option = {
+	option = { 
 		name = hee_HAB.6.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
-			modifier = {
+			modifier = { 
 				factor = 0
 				num_of_loans = 5
 			}
 		}
-		hidden_effect = {
-			add_country_modifier = {
+		hidden_effect = { 
+			add_country_modifier = { 
 				name = hee_baroque_building_timer
 				duration = 365
 				hidden = yes
@@ -2240,11 +3170,11 @@ country_event = {
 		add_treasury = -50
 		add_prestige = 5
 	}
-	option = {
+	option = { 
 		name = hee_HAB.6.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
-			modifier = {
+			modifier = { 
 				factor = 75
 				num_of_loans = 1
 			}
@@ -2253,30 +3183,32 @@ country_event = {
 		add_mil_power = 5
 	}
 }
-country_event = {
+country_event = { 
 	id = hee_HAB.7
 	title = hee_HAB.7.t
 	desc = hee_HAB.7.d
 	picture = HARBOUR_eventPicture
-	trigger = {
+	trigger = { 
 		tag = HAB
 		has_country_modifier = hee_austrian_baroque
-		NOT = {	has_country_modifier = hee_baroque_building_timer }
+		NOT = { 
+			has_country_modifier = hee_baroque_building_timer
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 7
 	}
-	option = {
+	option = { 
 		name = hee_HAB.7.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
-			modifier = {
+			modifier = { 
 				factor = 0
 				num_of_loans = 5
 			}
 		}
-		hidden_effect = {
-			add_country_modifier = {
+		hidden_effect = { 
+			add_country_modifier = { 
 				name = hee_baroque_building_timer
 				duration = 365
 				hidden = yes
@@ -2285,11 +3217,11 @@ country_event = {
 		add_treasury = -50
 		add_prestige = 5
 	}
-	option = {
+	option = { 
 		name = hee_HAB.7.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
-			modifier = {
+			modifier = { 
 				factor = 75
 				num_of_loans = 1
 			}

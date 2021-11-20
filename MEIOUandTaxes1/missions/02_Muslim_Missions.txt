@@ -1,136 +1,171 @@
-
-muslim_site_slots = {
+muslim_site_slots = { 
 	slot = 7
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		religion_group = muslim
 	}
-	
-#	muslim_religous_unity = {
-#		icon = mission_arabian_fort
-#		required_missions = { }
-#		position = 1
-#		trigger = {
-#			#is_defender_of_faith = yes
-#			religious_unity = 1
-#			if = {
-#				limit = {
-#					uses_piety = yes
-#				}
-#				NOT = { piety = -0.75 }
-#			}
-#		}
-#		effect = {
-#			add_country_modifier = {
-#				name = "gen_eur_defender"
-#				duration = 5475
-#			}
-#		}
-#	}
-	
-	muslim_holy_makka = {
+	muslim_holy_makka = { 
 		icon = mission_mosque
-		required_missions = {  }
+		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 385
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			385 = {
+		trigger = { 
+			385 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 				religion = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
-			385 = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+			385 = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-	muslim_holy_madina = {
+	muslim_holy_madina = { 
 		icon = mission_mosque
-		required_missions = {  }
+		required_missions = { }
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 384
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			384 = {
+		trigger = { 
+			384 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 				religion = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_legitimacy = 10
-			384 = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+			384 = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
 }
-
-sunni_site_slots = {
+sunni_site_slots = { 
 	slot = 7
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		religion = sunni
 	}
-	
-	sunni_holy_jerusalem = {
+	sunni_holy_jerusalem = { 
 		icon = mission_mosque
-		required_missions = {  }
+		required_missions = { }
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 379
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			379 = {
+		trigger = { 
+			379 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 				religion = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
-			379 = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+			379 = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
 }
-
-shia_site_slots = {
+shia_site_slots = { 
 	slot = 7
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		religion = shiite
 	}
-	
-	shia_holy_najaf = {
+	shia_holy_najaf = { 
 		icon = mission_mosque
-		required_missions = {  }
+		required_missions = { }
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 1330
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			1330 = {
+		trigger = { 
+			1330 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 				religion = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
-			1330 = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+			1330 = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}

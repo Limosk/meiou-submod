@@ -1,102 +1,107 @@
 namespace = flavor_mam
-
-country_event = {
+country_event = { 
 	id = flavor_mam.1
 	title = flavor_mam.1.t
 	desc = flavor_mam.1.d
 	picture = HORDE_ON_HORSEBACK_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = MAM
-		NOT = {
+		NOT = { 
 			is_rival = TUR
 		}
-		TUR = {
+		TUR = { 
 			owns = 1402
 		}
-		1402 = {
-			NOT = {
+		1402 = { 
+			NOT = { 
 				months_since_defection = 24
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 7
 	}
-	option = {
-		ai_chance = {
+	option = { 
+		ai_chance = { 
 			factor = 90
 		}
 		name = flavor_mam.1.b
-		TUR = {
-			add_opinion = {
+		TUR = { 
+			add_opinion = { 
 				who = root
 				modifier = mam_poem_recieved
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_mam.1.a
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = mam_large_festitives
 			duration = 3650
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.2
 	title = flavor_mam.2.t
 	desc = flavor_mam.2.d
 	picture = UNIVERSITY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = MAM
 		is_year = 1457
 		owns = 361
-		NOT = {
+		NOT = { 
 			is_year = 1459
 		}
 		has_regency = no
 		is_female = no
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 12
 	}
-	option = {
+	option = { 
 		name = flavor_mam.2.a
 		add_prestige = 5
-		361 = {
-			add_province_modifier = {
+		361 = { 
+			add_province_modifier = { 
 				name = "public_works_of_cairo"
 				duration = -1
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.3
 	title = flavor_mam.3.t
 	desc = flavor_mam.3.d
 	picture = NEW_HEIR_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = MAM
 		is_year = 1458
 		is_at_war = no
 		exists = CYP
-		CYP = {
+		CYP = { 
 			owns = 321
-			AND = {
-				OR = {
+			AND = { 
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
 				}
 			}
 			is_at_war = no
-			monarchy_or_harem_gov = yes
-			OR = {
-				AND = {
+			custom_trigger_tooltip = { 
+				tooltip = is_monarchy_tt
+				OR = { 
+					government = monarchy
+					government = has_harem
+				}
+			}
+			OR = { 
+				AND = { 
 					is_female = yes
 					has_consort_regency = no
 				}
@@ -105,16 +110,16 @@ country_event = {
 			religion_group = christian
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 5
 	}
-	option = {
+	option = { 
 		name = flavor_mam.3.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
-		CYP = {
-			country_event = {
+		CYP = { 
+			country_event = { 
 				id = flavor_mam.4
 				days = 5
 				random = 8
@@ -123,24 +128,24 @@ country_event = {
 		}
 		add_prestige = 5
 	}
-	option = {
+	option = { 
 		name = flavor_mam.3.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 10
 		}
 		add_prestige = -5
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.4
 	title = flavor_mam.4.t
 	desc = flavor_mam.4.d
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.4.a
-		MAM = {
-			country_event = {
+		MAM = { 
+			country_event = { 
 				id = flavor_mam.5
 				days = 2
 				random = 7
@@ -148,27 +153,27 @@ country_event = {
 			}
 		}
 		add_prestige = -5
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_heir = yes
 			}
-			hidden_effect = {
+			hidden_effect = { 
 				kill_heir = yes
 			}
 		}
-		define_ruler = {
+		define_ruler = { 
 			name = "Jacques"
 			dynasty = "de Lusignan"
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_mam.4.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 		add_years_of_income = -1.0
-		MAM = {
-			country_event = {
+		MAM = { 
+			country_event = { 
 				id = flavor_mam.6
 				days = 2
 				random = 7
@@ -176,36 +181,36 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_mam.4.c
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 		add_prestige = 5
-		MAM = {
-			country_event = {
+		MAM = { 
+			country_event = { 
 				id = flavor_mam.7
 				days = 2
 				random = 7
 				tooltip = flavor_mam.4.7
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = root
 				modifier = mam_refused_james
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.5
 	title = flavor_mam.5.t
 	desc = flavor_mam.5.d
 	picture = NEW_HEIR_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.5.a
-		CYP = {
-			add_opinion = {
+		CYP = { 
+			add_opinion = { 
 				who = root
 				modifier = mam_installed_ruler
 			}
@@ -214,47 +219,47 @@ country_event = {
 		add_prestige = 10
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.6
 	title = flavor_mam.6.t
 	desc = flavor_mam.6.d
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.6.a
 		add_years_of_income = 0.25
 		add_prestige = 5
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.7
 	title = flavor_mam.7.t
 	desc = flavor_mam.7.d
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.7.a
 		add_claim = 321
 		add_claim = 2750
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.8
 	title = flavor_mam.8.t
 	desc = flavor_mam.8.d
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = MAM
 		is_year = 1460
 		dip_power = 50
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 10
 	}
-	option = {
+	option = { 
 		name = flavor_mam.8.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
 		add_dip_power = -20
@@ -262,127 +267,94 @@ country_event = {
 		add_legitimacy = 10
 		add_prestige = 15
 	}
-	option = {
+	option = { 
 		name = flavor_mam.8.b
 		add_prestige = -5
 	}
 }
-#country_event = { #Commented out as it is a regular elite interaction in 3.0
-#	id = flavor_mam.9
-#	title = flavor_mam.9.t
-#	desc = flavor_mam.9.d
-#	picture = DEBATE_REPUBLICAN_eventPicture
-#	fire_only_once = yes
-#	trigger = {
-#		tag = MAM
-#		is_year = 1465
-#		adm_power = 50
-#	}
-#	mean_time_to_happen = {
-#		years = 1
-#	}
-#	option = {
-#		name = flavor_mam.9.a
-#		ai_chance = {
-#			factor = 90
-#		}
-#		add_adm_power = -50
-#	}
-#	option = {
-#		name = flavor_mam.9.b
-#		361 = {
-#			add_province_modifier = {
-#				name = "nobles_organizing"
-#				duration = 1825
-#			}
-#			custom_tooltip = nobles_organizing_tt
-#			add_unrest = 5
-#		}
-#	}
-#}
-country_event = {
+country_event = { 
 	id = flavor_mam.10
 	title = flavor_mam.10.t
 	desc = flavor_mam.10.d
 	picture = REVOLUTION_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = MAM
 		is_year = 1481
 		adm_power = 20
 		owns = 384
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 1
 	}
-	option = {
+	option = { 
 		name = flavor_mam.10.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
 		add_adm_power = -20
 		add_legitimacy = 5
 	}
-	option = {
+	option = { 
 		name = flavor_mam.10.b
 		add_legitimacy = -5
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.11
 	title = flavor_mam.11.t
 	desc = flavor_mam.11.d
 	picture = DIPLOMACY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = MAM
 		is_year = 1480
-		TUR = {
+		TUR = { 
 			is_neighbor_of = MAM
 		}
-		OR = {
-			TUR = {
+		OR = { 
+			TUR = { 
 				is_rival = MAM
 			}
 			is_rival = TUR
 		}
-		NOT = {
+		NOT = { 
 			is_rival = SPA
 		}
-		NOT = {
-			SPA = {
+		NOT = { 
+			SPA = { 
 				is_rival = MAM
 			}
 		}
-		NOT = {
+		NOT = { 
 			war_with = SPA
 		}
-		NOT = {
+		NOT = { 
 			truce_with = SPA
 		}
-		TUR = {
+		TUR = { 
 			owns = 141
 			owns = 1402
 			owns = 146
 		}
 		exists = SPA
-		SPA = {
+		SPA = { 
 			owns = 333
 			owns = 213
 			owns = 126
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 1
 	}
-	option = {
+	option = { 
 		name = flavor_mam.11.a
-		SPA = {
-			add_opinion = {
+		SPA = { 
+			add_opinion = { 
 				who = root
 				modifier = mam_anti_ottoman_friends
 			}
-			country_event = {
+			country_event = { 
 				id = flavor_mam.12
 				days = 1
 				tooltip = flavor_mam.11.12
@@ -390,68 +362,68 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.12
 	title = flavor_mam.12.t
 	desc = flavor_mam.12.d
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.12.a
-		MAM = {
-			add_opinion = {
+		MAM = { 
+			add_opinion = { 
 				who = root
 				modifier = mam_anti_ottoman_friends
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.14
 	title = flavor_mam.14.t
 	desc = flavor_mam.14.d
 	picture = ECONOMY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = MAM
 		is_year = 1490
 		has_regency = no
-		NOT = {
+		NOT = { 
 			months_of_ruling = 12
 		}
-		NOT = {
+		NOT = { 
 			years_of_income = 0.5
 		}
 		adm_power = 1
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 3
 	}
-	option = {
-		ai_chance = {
+	option = { 
+		ai_chance = { 
 			factor = 90
 		}
 		name = flavor_mam.14.a
 		add_years_of_income = 2.0
 		add_adm_power = -50
-		random_owned_province = {
-			add_province_modifier = {
+		random_owned_province = { 
+			add_province_modifier = { 
 				name = "peasants_organizing"
 				duration = 1825
 			}
 			custom_tooltip = peasants_organizing_tt
 			add_unrest = 5
 		}
-		random_owned_province = {
-			add_province_modifier = {
+		random_owned_province = { 
+			add_province_modifier = { 
 				name = "peasants_organizing"
 				duration = 1825
 			}
 			custom_tooltip = peasants_organizing_tt
 			add_unrest = 5
 		}
-		capital_scope = {
-			add_province_modifier = {
+		capital_scope = { 
+			add_province_modifier = { 
 				name = "peasants_organizing"
 				duration = 3650
 			}
@@ -459,34 +431,38 @@ country_event = {
 			add_unrest = 10
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_mam.14.b
 		add_years_of_income = 0.10
 	}
 }
-country_event = {
-	id = flavor_mam.15 #The Portuguese-Mamluk Trade Wars
+country_event = { 
+	id = flavor_mam.15
 	title = flavor_mam.15.t
 	desc = flavor_mam.15.d
 	picture = MERCHANTS_TALKING_eventPicture
 	fire_only_once = yes
-	is_triggered_only = yes #from succesful expedition
-
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		tag = MAM
-		NOT = { alliance_with = FROM }
-		NOT = { overlord_of	= FROM }
-		owns_or_non_sovereign_subject_of = 361 #Cairo
-		owns_or_non_sovereign_subject_of = 359 #Suez
-		
-		FROM = {
+		NOT = { 
+			alliance_with = FROM
+		}
+		NOT = { 
+			overlord_of = FROM
+		}
+		owns_or_non_sovereign_subject_of = 361
+		owns_or_non_sovereign_subject_of = 359
+		FROM = { 
 			capital_scope = { 
 				continent = europe
 			}
-			NOT = { overlord_of = ROOT }
-			num_of_owned_provinces_with = {
+			NOT = { 
+				overlord_of = ROOT
+			}
+			num_of_owned_provinces_with = { 
 				value = 3
-				OR = {
+				OR = { 
 					trade_company_region = colonial_arabia
 					trade_company_region = trade_company_persia
 					trade_company_region = trade_company_kutch
@@ -497,58 +473,114 @@ country_event = {
 			}
 		}
 	}
-
-	option = {
-		ai_chance = {
+	option = { 
+		ai_chance = { 
 			factor = 10
-			modifier = {
+			modifier = { 
 				factor = 3
 				army_size = FROM
 			}
-			modifier = {
+			modifier = { 
 				factor = 3
 				navy_size = FROM
 			}
 		}
 		log = "FE-MAM:[GetYear]:[Root.GetName]:decided to oppose presence of [From.GetName] in the Indian Ocean trade:flavor_mam.15"
-		name = flavor_mam.15.a #They have to be stopped
+		name = flavor_mam.15.a
 		set_country_flag = indian_ocean_trade_conflict_side
-		add_opinion = {
+		add_opinion = { 
 			who = FROM
 			modifier = indian_ocean_trade_confronted
 		}
-		every_subject_country = {
-			add_opinion = {
+		every_subject_country = { 
+			add_opinion = { 
 				who = FROM
 				modifier = indian_ocean_trade_confronted
 			}
 		}
-		hidden_effect = { #check if Venice wants to take sides into this conflict
-			VEN = { country_event = { id = flavor_ven.13 days = 2 } }
+		hidden_effect = { 
+			VEN = { 
+				country_event = { 
+					id = flavor_ven.13
+					days = 2
+				}
+			}
 		}
-		FROM = {
-			add_opinion = {
+		FROM = { 
+			add_opinion = { 
 				who = root
 				modifier = indian_ocean_trade_confronted
 			}
 			set_country_flag = indian_ocean_trade_conflict_side
-			country_event = {
+			country_event = { 
 				id = flavor_mam.16
 				days = 2
-				tooltip = flavor_mam.15.16 #They may view this a major threat, and they may go to war with us.
+				tooltip = flavor_mam.15.16
 			}
 		}
 	}
-	option = {
-		name = flavor_mam.15.b #We have other sources of income
-		ai_chance = {
+	option = { 
+		name = flavor_mam.15.b
+		ai_chance = { 
 			factor = 10
 		}
 		log = "FE-MAM:[GetYear]:[Root.GetName]:decided not to oppose presence of [From.GetName] in the Indian Ocean trade:flavor_mam.15"
 		add_prestige = -15
-		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=BG Amount=-15 }
-		388 = {
-			add_trade_modifier = {
+		hidden_effect = { 
+			every_owned_province = { 
+				limit = { 
+					AND = { 
+						OR = { 
+							is_city = yes
+							is_colony = yes
+						}
+						has_province_flag = Data
+					}
+					check_variable = { 
+						which = ass
+						value = 0.001
+					}
+				}
+				change_variable = { 
+					which = asv
+					value = -15
+				}
+				change_variable = { 
+					which = asw
+					value = -15
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = asv
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = asv
+						value = 100
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = asv
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = asv
+						value = 0
+					}
+				}
+				set_province_flag = Unrest_Update
+			}
+		}
+		custom_tooltip = POP_BGLoyProv_-15
+		388 = { 
+			add_trade_modifier = { 
 				who = root
 				duration = 3650
 				power = -5
@@ -557,73 +589,73 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.16
 	title = flavor_mam.16.t
 	desc = flavor_mam.16.d
 	picture = MERCHANTS_TALKING_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.16.a
-		add_casus_belli = {
+		add_casus_belli = { 
 			target = MAM
 			type = cb_trade_war_triggered
 			months = 36
 		}
 	}
-	option = {
+	option = { 
 		name = "OPT.DONOTHING"
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.17
 	title = flavor_mam.17.t
 	desc = flavor_mam.17.d
 	picture = DIPLOMACY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = PER
 		is_year = 1500
-		NOT = {
+		NOT = { 
 			is_year = 1520
 		}
 		exists = MAM
 		exists = VEN
 		exists = TUR
-		MAM = {
+		MAM = { 
 			is_in_coalition = no
 		}
-		PER = {
+		PER = { 
 			is_in_coalition = no
 		}
-		VEN = {
+		VEN = { 
 			is_in_coalition = no
 		}
-		PER = {
+		PER = { 
 			is_neighbor_of = TUR
 		}
-		MAM = {
+		MAM = { 
 			is_neighbor_of = TUR
 		}
-		NOT = {
-			PER = {
+		NOT = { 
+			PER = { 
 				alliance_with = TUR
 			}
-			VEN = {
+			VEN = { 
 				alliance_with = TUR
 			}
-			MAM = {
+			MAM = { 
 				alliance_with = TUR
 			}
 		}
-		TUR = {
+		TUR = { 
 			owns = 141
 			owns = 1402
 			owns = 146
 		}
-		TUR = {
-			NOT = {
-				has_opinion = {
+		TUR = { 
+			NOT = { 
+				has_opinion = { 
 					who = PER
 					value = 0
 				}
@@ -631,16 +663,16 @@ country_event = {
 		}
 		num_of_ports = 1
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 36
 	}
-	option = {
+	option = { 
 		name = flavor_mam.17.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 99
 		}
-		MAM = {
-			country_event = {
+		MAM = { 
+			country_event = { 
 				id = flavor_mam.18
 				days = 2
 				random = 4
@@ -648,31 +680,31 @@ country_event = {
 			}
 		}
 		add_piety = -0.05
-		TUR = {
-			add_opinion = {
+		TUR = { 
+			add_opinion = { 
 				who = root
 				modifier = mam_persian_scheming
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_mam.17.b
 		add_prestige = 5
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.18
 	title = flavor_mam.18.t
 	desc = flavor_mam.18.d
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.18.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 99
 		}
-		VEN = {
-			country_event = {
+		VEN = { 
+			country_event = { 
 				id = flavor_mam.19
 				days = 2
 				random = 4
@@ -681,24 +713,24 @@ country_event = {
 		}
 		add_prestige = -5
 	}
-	option = {
+	option = { 
 		name = flavor_mam.18.b
 		add_prestige = 5
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.19
 	title = flavor_mam.19.t
 	desc = flavor_mam.19.d
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.19.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 99
 		}
-		MAM = {
-			country_event = {
+		MAM = { 
+			country_event = { 
 				id = flavor_mam.20
 				days = 2
 				random = 4
@@ -707,90 +739,90 @@ country_event = {
 		}
 		add_prestige = 5
 	}
-	option = {
+	option = { 
 		name = flavor_mam.19.b
 		add_prestige = -5
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.20
 	title = flavor_mam.20.t
 	desc = flavor_mam.20.d
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.20.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
-		hidden_effect = {
-			VEN = {
-				country_event = {
+		hidden_effect = { 
+			VEN = { 
+				country_event = { 
 					id = flavor_mam.21
 					days = 1
 				}
 			}
-			PER = {
-				country_event = {
+			PER = { 
+				country_event = { 
 					id = flavor_mam.21
 					days = 1
 				}
 			}
 		}
-		TUR = {
-			country_event = {
+		TUR = { 
+			country_event = { 
 				id = flavor_mam.22
 				days = 1
 				tooltip = flavor_mam.20.TUR
 			}
 		}
-		PER = {
+		PER = { 
 			form_coalition_against = TUR
 		}
-		VEN = {
+		VEN = { 
 			form_coalition_against = TUR
 		}
 		add_prestige = 5
 	}
-	option = {
+	option = { 
 		name = flavor_mam.20.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 		add_prestige = -5
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.21
 	title = flavor_mam.21.t
 	desc = flavor_mam.21.d
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.21.a
 		add_prestige = 5
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_mam.22
 	title = flavor_mam.22.t
 	desc = flavor_mam.22.d
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mam.22.a
-		add_casus_belli = {
+		add_casus_belli = { 
 			target = MAM
 			type = cb_annex
 			months = 1200
 		}
-		MAM = {
-			every_owned_province = {
-				limit = {
-					NOT = {
+		MAM = { 
+			every_owned_province = { 
+				limit = { 
+					NOT = { 
 						is_claim = TUR
 					}
-					NOT = {
+					NOT = { 
 						is_core = TUR
 					}
 				}

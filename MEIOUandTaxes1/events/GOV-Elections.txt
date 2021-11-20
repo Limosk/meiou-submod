@@ -1,407 +1,498 @@
 namespace = elections
-
-# Election!
-country_event = {
+country_event = { 
 	id = 700
 	title = "EVTNAME700"
 	picture = ELECTION_REPUBLICAN_eventPicture
-	
-	desc = {
-		trigger = { NOT = { has_ruler_flag = leader_has_been_pushed_out } }
+	desc = { 
+		trigger = { 
+			NOT = { 
+				has_ruler_flag = leader_has_been_pushed_out
+			}
+		}
 		desc = EVTDESC700
 	}
-	
-	desc = {
-		trigger = { has_ruler_flag = leader_has_been_pushed_out }
+	desc = { 
+		trigger = { 
+			has_ruler_flag = leader_has_been_pushed_out
+		}
 		desc = elections.700.d
 	}
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		sortition_trigger = no
-	}
-	immediate = {
-		hidden_effect = {
-			set_key = {
-				lhs = Gov_Tmp0
-				value = 0
-			}
-			change_key = { 
-				lhs = Gov_Tmp0
-				which = Ruler_SkillADM 
-			}
-			change_key = { 
-				lhs = Gov_Tmp0
-				which = Ruler_SkillDIP
-			}
-			change_key = { 
-				lhs = Gov_Tmp0
-				which = Ruler_SkillMIL 
+	trigger = { 
+		NOT = { 
+			AND = { 
+				has_government_attribute = lottery_election
 			}
 		}
 	}
-
-	option = {
-		name = "EVTOPTA700"	# Current ruler stays
-		trigger = {
+	immediate = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = jxa
+				value = 0
+			}
+			change_variable = { 
+				which = jxa
+				which = hui
+			}
+			change_variable = { 
+				which = jxa
+				which = huj
+			}
+			change_variable = { 
+				which = jxa
+				which = huk
+			}
+		}
+	}
+	option = { 
+		name = "EVTOPTA700"
+		trigger = { 
 			has_regency = no
-			NOT = { has_ruler_flag = leader_has_been_pushed_out }
+			NOT = { 
+				has_ruler_flag = leader_has_been_pushed_out
+			}
 		}
 		ai_chance = { 
 			factor = 20
-			modifier = {
+			modifier = { 
 				factor = 0
-				NOT = { republican_tradition = 25 }
-			}	
-			modifier = {
+				NOT = { 
+					republican_tradition = 25
+				}
+			}
+			modifier = { 
 				factor = 0.5
-				NOT = { republican_tradition = 50 }
-			}				
-			modifier = {
+				NOT = { 
+					republican_tradition = 50
+				}
+			}
+			modifier = { 
 				factor = 0.5
-				NOT = { republican_tradition = 75 }
-			}	
-			modifier = {
+				NOT = { 
+					republican_tradition = 75
+				}
+			}
+			modifier = { 
 				factor = 2.0
 				republican_tradition = 90
-			}	
-			modifier = {
+			}
+			modifier = { 
 				factor = 2.0
-				check_key = { lhs = Gov_Tmp0 value = 12 }
-			}			
-			modifier = {
+				check_variable = { 
+					which = jxa
+					value = 12
+				}
+			}
+			modifier = { 
 				factor = 2.0
-				check_key = { lhs = Gov_Tmp0 value = 15 }
-			}	
+				check_variable = { 
+					which = jxa
+					value = 15
+				}
+			}
 		}
 		custom_tooltip = remains_ruler
-		if = {
+		if = { 
 			limit = { 
 				is_tribal = yes
 				government = republic
-				NOT = { republican_tradition = 20 }	
-			}	
+				NOT = { 
+					republican_tradition = 20
+				}
+			}
 			add_government_reform = Pol_Leadership1
 		}
-		else_if = {
-			limit = {
-				is_tribal = no 
+		else_if = { 
+			limit = { 
+				is_tribal = no
 				government = republic
-				NOT = { republican_tradition = 20 }
+				NOT = { 
+					republican_tradition = 20
+				}
 			}
 			add_government_reform = Pol_ExtraPowers2
 		}
-		#else_if = {
-		#	limit = {
-		#		government = republic
-		#		NOT = { republican_tradition = 20 }	
-		#		has_reform = revolutionary_republic_reform
-		#	}
-		#	change_government = monarchy
-		#	add_government_reform = revolutionary_empire_reform
-		#}
-		if = {
-			limit = {
-				is_tribal = no  
+		if = { 
+			limit = { 
+				is_tribal = no
 				government = republic
-				NOT = { republican_tradition = 20 }
-				NOT = { has_dlc = "Res Publica" }
+				NOT = { 
+					republican_tradition = 20
+				}
+				NOT = { 
+					has_dlc = "Res Publica"
+				}
 			}
 			change_government = monarchy
 			add_government_reform = Pol_Succession1
 			add_government_reform = Pol_Assembly1
 			add_government_reform = Pol_Nobility2
 		}
-		if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 0 } # Life
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 0
+				}
 			}
 			add_scaled_republican_tradition = -25
 			add_corruption = 15
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 1 } # 10
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 1
+				}
 			}
 			add_scaled_republican_tradition = -10
 			add_corruption = 8
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 2 } # 7
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 2
+				}
 			}
 			add_scaled_republican_tradition = -7
 			add_corruption = 5
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 3 } # 5
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 3
+				}
 			}
 			add_scaled_republican_tradition = -5
 			add_corruption = 3
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 4 } # 4
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 4
+				}
 			}
 			add_scaled_republican_tradition = -4
 			add_corruption = 2
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 7 } # 1
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 7
+				}
 			}
 			add_scaled_republican_tradition = -1
 			add_corruption = 0.5
 		}
-		random_list = {
-			10 = {
+		random_list = { 
+			10 = { 
 				add_adm_power = 50
 			}
-			10 = {
+			10 = { 
 				add_dip_power = 50
 			}
-			10 = {
+			10 = { 
 				add_mil_power = 50
 			}
 		}
 		add_karma = -5
 	}
-	option = {
-		name = "EVTOPTB700"	# An administrator type
-		ai_chance = { factor = 20 }
-		if = {
-			limit = { always = no } #no gender reform
-			define_ruler = {
-				random_gender = yes # Allows random gender for republics
+	option = { 
+		name = "EVTOPTB700"
+		ai_chance = { 
+			factor = 20
+		}
+		if = { 
+			limit = { 
+				always = no
+			}
+			define_ruler = { 
+				random_gender = yes
 			}
 		}
-		else = {
-			define_ruler = {	
-			}
-		}
-		add_karma = 10
-	}
-	option = {
-		name = "EVTOPTC700"	# A diplomat
-		ai_chance = { factor = 20 }
-		if = {
-			limit = { always = no } #no gender reform
-			define_ruler = {			
-				random_gender = yes # Allows random gender for republics
-			}
-		}
-		else = {
-			define_ruler = {
-			}
-		}
-		add_karma = 10
-		
-	}
-	option = {
-		name = "EVTOPTD700"	# A military man
-		ai_chance = { factor = 20 }
-		if = {
-			limit = { always = no } #no gender reform
-			define_ruler = {
-			}
-		}
-		else = {
-			define_ruler = {
-			}
+		else = { 
+			define_ruler = { }
 		}
 		add_karma = 10
 	}
-
-	option = { # Nepotism choice, re-electing within dynasty
+	option = { 
+		name = "EVTOPTC700"
+		ai_chance = { 
+			factor = 20
+		}
+		if = { 
+			limit = { 
+				always = no
+			}
+			define_ruler = { 
+				random_gender = yes
+			}
+		}
+		else = { 
+			define_ruler = { }
+		}
+		add_karma = 10
+	}
+	option = { 
+		name = "EVTOPTD700"
+		ai_chance = { 
+			factor = 20
+		}
+		if = { 
+			limit = { 
+				always = no
+			}
+			define_ruler = { }
+		}
+		else = { 
+			define_ruler = { }
+		}
+		add_karma = 10
+	}
+	option = { 
 		name = "EVTOPTE700"
-		trigger = {
+		trigger = { 
 			has_government_attribute = enables_nepotism
 		}
-		ai_chance = { factor = 20 }
-		if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 0 } # Life
+		ai_chance = { 
+			factor = 20
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 0
+				}
 			}
 			add_scaled_republican_tradition = -30
 			add_corruption = 16
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 1 } # 10
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 1
+				}
 			}
 			add_scaled_republican_tradition = -11
 			add_corruption = 9
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 2 } # 7
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 2
+				}
 			}
 			add_scaled_republican_tradition = -8
 			add_corruption = 6
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 3 } # 5
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 3
+				}
 			}
 			add_scaled_republican_tradition = -6
 			add_corruption = 4
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 4 } # 4
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 4
+				}
 			}
 			add_scaled_republican_tradition = -5
 			add_corruption = 3
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 7 } # 1
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 7
+				}
 			}
 			add_scaled_republican_tradition = -2
 			add_corruption = 1
 		}
-		if = {
-			limit = { always = no } #no gender reform
-			define_ruler = {
+		if = { 
+			limit = { 
+				always = no
+			}
+			define_ruler = { 
 				min_age = 30
 				max_age = 50
 				name = "lastname"
-				random_gender = yes # Allows random gender for republics
+				random_gender = yes
 			}
 		}
-		else = {
-			define_ruler = {
+		else = { 
+			define_ruler = { 
 				min_age = 30
 				max_age = 50
 				name = "lastname"
 			}
 		}
 	}
-	after = {
-		set_key = {
-			lhs = Gov_Tmp0
+	after = { 
+		set_variable = { 
+			which = jxa
 			value = 0
 		}
 	}
 }
-
-# Election!
-country_event = {
+country_event = { 
 	id = 701
 	title = "EVTNAME700"
 	desc = "EVTDESC701"
 	picture = ELECTION_REPUBLICAN_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		sortition_trigger = no
-	}
-	
-	
-	option = {
-		name = "EVTOPTB700"	# An administrator type
-		ai_chance = { factor = 30 }
-		if = {
-			limit = { always = no } #no gender reform
-			define_ruler = {
-				random_gender = yes # Allows random gender for republics
-			}
-		}
-		else = {
-			define_ruler = {			
+	trigger = { 
+		NOT = { 
+			AND = { 
+				has_government_attribute = lottery_election
 			}
 		}
 	}
-	option = {
-		name = "EVTOPTC700"	# A diplomat
-		ai_chance = { factor = 30 }
-		if = {
-			limit = { always = no } #no gender reform
-			define_ruler = {
-				random_gender = yes # Allows random gender for republics
+	option = { 
+		name = "EVTOPTB700"
+		ai_chance = { 
+			factor = 30
+		}
+		if = { 
+			limit = { 
+				always = no
+			}
+			define_ruler = { 
+				random_gender = yes
 			}
 		}
-		else = {
-			define_ruler = {
-			}
-		}
-	}
-	option = {
-		name = "EVTOPTD700"	# A military man
-		ai_chance = { factor = 30 }
-		if = {
-			limit = { always = no } #no gender reform
-			define_ruler = {
-				random_gender = yes # Allows random gender for republics
-			}
-		}
-		else = {
-			define_ruler = {
-			}
+		else = { 
+			define_ruler = { }
 		}
 	}
-	option = { # Nepotism choice, re-electing within dynasty
+	option = { 
+		name = "EVTOPTC700"
+		ai_chance = { 
+			factor = 30
+		}
+		if = { 
+			limit = { 
+				always = no
+			}
+			define_ruler = { 
+				random_gender = yes
+			}
+		}
+		else = { 
+			define_ruler = { }
+		}
+	}
+	option = { 
+		name = "EVTOPTD700"
+		ai_chance = { 
+			factor = 30
+		}
+		if = { 
+			limit = { 
+				always = no
+			}
+			define_ruler = { 
+				random_gender = yes
+			}
+		}
+		else = { 
+			define_ruler = { }
+		}
+	}
+	option = { 
 		name = "EVTOPTE701"
-		trigger = {
+		trigger = { 
 			has_government_attribute = enables_nepotism
 		}
-		ai_chance = { factor = 10 }
-		if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 0 } # Life
+		ai_chance = { 
+			factor = 10
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 0
+				}
 			}
 			add_scaled_republican_tradition = -30
 			add_corruption = 16
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 1 } # 10
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 1
+				}
 			}
 			add_scaled_republican_tradition = -11
 			add_corruption = 9
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 2 } # 7
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 2
+				}
 			}
 			add_scaled_republican_tradition = -8
 			add_corruption = 6
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 3 } # 5
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 3
+				}
 			}
 			add_scaled_republican_tradition = -6
 			add_corruption = 4
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 4 } # 4
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 4
+				}
 			}
 			add_scaled_republican_tradition = -5
 			add_corruption = 3
 		}
-		else_if = {
-			limit = {
-				is_key_equal = { lhs = Pol_TermOfOffice value = 7 } # 1
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = grr
+					value = 7
+				}
 			}
 			add_scaled_republican_tradition = -2
 			add_corruption = 1
 		}
-		if = {
-			limit = { always = no } #no gender reform
-			define_ruler = {
+		if = { 
+			limit = { 
+				always = no
+			}
+			define_ruler = { 
 				min_age = 30
 				max_age = 50
 				name = "lastname"
-				random_gender = yes # Allows random gender for republics
+				random_gender = yes
 			}
 		}
-		else = {
-			define_ruler = {
+		else = { 
+			define_ruler = { 
 				min_age = 30
 				max_age = 50
 				name = "lastname"
@@ -409,110 +500,82 @@ country_event = {
 		}
 	}
 }
-
-########################################
-# Colonial Nations                     #
-########################################
-
-# Election!
-country_event = {
+country_event = { 
 	id = elections.707
 	title = "elections.EVTNAME707"
 	desc = "elections.EVTDESC707"
 	picture = ELECTION_REPUBLICAN_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
-		name = "elections.EVTOPTB707"	# Bureaucrat Candidate
-		ai_chance = { factor = 20 }
-		FROM = {
-			define_ruler = {
-			adm = 3
+	option = { 
+		name = "elections.EVTOPTB707"
+		ai_chance = { 
+			factor = 20
+		}
+		FROM = { 
+			define_ruler = { 
+				adm = 3
 			}
 			set_ruler_flag = appointed_by_overlord
 		}
 	}
-	option = {
-		name = "elections.EVTOPTC707"	# Diplomat Candidate
-		ai_chance = { factor = 20 }
-		FROM = {
-			define_ruler = {
-			dip = 3
+	option = { 
+		name = "elections.EVTOPTC707"
+		ai_chance = { 
+			factor = 20
+		}
+		FROM = { 
+			define_ruler = { 
+				dip = 3
 			}
 			set_ruler_flag = appointed_by_overlord
 		}
 	}
-	option = {
-		name = "elections.EVTOPTD707"	# Military Candidate
-		ai_chance = { factor = 20 }
-		FROM = {
-			define_ruler = {
-			mil = 3
-			}	
+	option = { 
+		name = "elections.EVTOPTD707"
+		ai_chance = { 
+			factor = 20
+		}
+		FROM = { 
+			define_ruler = { 
+				mil = 3
+			}
 			set_ruler_flag = appointed_by_overlord
 		}
 	}
 }
-
-# Colonial Assembly
-country_event = {
+country_event = { 
 	id = elections.711
 	title = "elections.EVTNAME711"
 	desc = "elections.EVTDESC711"
 	picture = ELECTION_REPUBLICAN_eventPicture
-	
 	is_triggered_only = yes
-
-	option = {
-		name = "elections.EVTOPTB711"	# Suspicious indeed...
-		tooltip = {
-			FROM = {
+	option = { 
+		name = "elections.EVTOPTB711"
+		tooltip = { 
+			FROM = { 
 				add_liberty_desire = 10
 			}
 		}
 	}
 }
-
-## Winds of Liberty
-#country_event = {
-#	id = elections.712
-#	title = "elections.EVTNAME712"
-#	desc = "elections.EVTDESC712"
-#	picture = ELECTION_REPUBLICAN_eventPicture
-#	
-#	is_triggered_only = yes
-#
-#	option = {
-#		name = "elections.EVTOPTB712"	# Most worrisome...
-#		tooltip = {
-#			FROM = {
-#				add_liberty_desire = -25
-#			}
-#		}
-#	}
-#}
-
-# Lottery Election by Daniel Tolman
-country_event = {
+country_event = { 
 	id = elections.800
 	title = elections.800.t
 	desc = elections.800.d
 	picture = ELECTION_REPUBLICAN_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		sortition_trigger = yes
+	trigger = { 
+		AND = { 
+			has_government_attribute = lottery_election
+		}
 	}
-	
-	immediate = {
-		hidden_effect = {
-			if = {
-				limit = {
+	immediate = { 
+		hidden_effect = { 
+			if = { 
+				limit = { 
 					has_active_policy = mandatory_service
 				}
-				define_exiled_ruler = {
+				define_exiled_ruler = { 
 					exiled_as = lottery_candidate_a_@ROOT
 					random_gender = yes
 					min_age = 50
@@ -520,20 +583,19 @@ country_event = {
 					option = 0
 				}
 			}
-			else = {
-				define_exiled_ruler = {
+			else = { 
+				define_exiled_ruler = { 
 					exiled_as = lottery_candidate_a_@ROOT
 					min_age = 50
 					max_age = 75
 					option = 0
 				}
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_active_policy = mandatory_service
 				}
-				
-				define_exiled_ruler = {
+				define_exiled_ruler = { 
 					exiled_as = lottery_candidate_b_@ROOT
 					min_age = 50
 					max_age = 75
@@ -541,20 +603,19 @@ country_event = {
 					option = 1
 				}
 			}
-			else = {
-				define_exiled_ruler = {
+			else = { 
+				define_exiled_ruler = { 
 					exiled_as = lottery_candidate_b_@ROOT
 					min_age = 50
 					max_age = 75
 					option = 1
 				}
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_active_policy = mandatory_service
 				}
-				
-				define_exiled_ruler = {
+				define_exiled_ruler = { 
 					exiled_as = lottery_candidate_c_@ROOT
 					min_age = 50
 					max_age = 75
@@ -562,8 +623,8 @@ country_event = {
 					option = 2
 				}
 			}
-			else = {
-				define_exiled_ruler = {
+			else = { 
+				define_exiled_ruler = { 
 					exiled_as = lottery_candidate_c_@ROOT
 					min_age = 50
 					max_age = 75
@@ -572,88 +633,6838 @@ country_event = {
 			}
 		}
 	}
-	
-	after = {
+	after = { 
 		clear_exiled_ruler = lottery_candidate_a_@ROOT
 		clear_exiled_ruler = lottery_candidate_b_@ROOT
 		clear_exiled_ruler = lottery_candidate_c_@ROOT
 	}
-	
-	option = {
+	option = { 
 		name = elections.800.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 		set_ruler = lottery_candidate_a_@ROOT
-		hidden_effect = {
-			Ruler_Calc = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = hut
+				value = 0
+			}
+			set_variable = { 
+				which = hut
+				value = 0
+			}
+			change_variable = { 
+				which = hut
+				which = iao
+			}
+			set_variable = { 
+				which = arf
+				value = 150
+			}
+			subtract_variable = { 
+				which = arf
+				which = hum
+			}
+			divide_variable = { 
+				which = arf
+				value = 1.5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = hut
+						which = arf
+					}
+				}
+				set_variable = { 
+					which = hut
+					which = arf
+				}
+			}
+			if = { 
+				limit = { 
+					has_global_flag = POP_Sim
+				}
+				set_variable = { 
+					which = hul
+					which = hut
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = huv
+					which = hut
+				}
+				subtract_variable = { 
+					which = huv
+					which = hul
+				}
+				multiply_variable = { 
+					which = huv
+					value = 0.1
+				}
+				change_variable = { 
+					which = hul
+					which = huv
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = hul
+							value = 100
+						}
+					}
+					set_variable = { 
+						which = hul
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = hul
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = hul
+						value = 0
+					}
+				}
+			}
+			set_variable = { 
+				which = huu
+				value = 0
+			}
+			set_variable = { 
+				which = huu
+				value = 0
+			}
+			change_variable = { 
+				which = huu
+				which = iap
+			}
+			set_variable = { 
+				which = arf
+				value = 150
+			}
+			subtract_variable = { 
+				which = arf
+				which = hul
+			}
+			divide_variable = { 
+				which = arf
+				value = 1.5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = huu
+						which = arf
+					}
+				}
+				set_variable = { 
+					which = huu
+					which = arf
+				}
+			}
+			if = { 
+				limit = { 
+					has_global_flag = POP_Sim
+				}
+				set_variable = { 
+					which = hum
+					which = huu
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = huw
+					which = huu
+				}
+				subtract_variable = { 
+					which = huw
+					which = hum
+				}
+				multiply_variable = { 
+					which = huw
+					value = 0.1
+				}
+				change_variable = { 
+					which = hum
+					which = huw
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = hum
+							value = 100
+						}
+					}
+					set_variable = { 
+						which = hum
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = hum
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = hum
+						value = 0
+					}
+				}
+			}
+			set_variable = { 
+				which = hui
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = adm
+				6 = { 
+					set_variable = { 
+						which = hui
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = hui
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = hui
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = hui
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = hui
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = hui
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huj
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = dip
+				6 = { 
+					set_variable = { 
+						which = huj
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = huj
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = huj
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = huj
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = huj
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = huj
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huk
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = mil
+				6 = { 
+					set_variable = { 
+						which = huk
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = huk
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = huk
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = huk
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = huk
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = huk
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huo
+				value = 0
+			}
+			change_variable = { 
+				which = huo
+				which = hui
+			}
+			change_variable = { 
+				which = huo
+				which = huj
+			}
+			change_variable = { 
+				which = huo
+				which = huk
+			}
+			set_variable = { 
+				which = bcn
+				value = 0
+			}
+			set_variable = { 
+				which = hux
+				which = hul
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = hux
+						value = 100
+					}
+				}
+				set_variable = { 
+					which = hux
+					value = 100
+				}
+			}
+			set_variable = { 
+				which = hup
+				which = hui
+			}
+			set_variable = { 
+				which = huq
+				which = huj
+			}
+			set_variable = { 
+				which = hur
+				which = huk
+			}
+			multiply_variable = { 
+				which = hup
+				which = hux
+			}
+			multiply_variable = { 
+				which = huq
+				which = hux
+			}
+			multiply_variable = { 
+				which = hur
+				which = hux
+			}
+			multiply_variable = { 
+				which = hup
+				value = 0.01
+			}
+			multiply_variable = { 
+				which = huq
+				value = 0.01
+			}
+			multiply_variable = { 
+				which = hur
+				value = 0.01
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = hup
+				which = arf
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = huq
+				which = arf
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = hur
+				which = arf
+			}
+			set_variable = { 
+				which = amn
+				which = hup
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = hup
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = hup
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = hup
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = amn
+				which = huq
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = huq
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = huq
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = huq
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = amn
+				which = hur
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = hur
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = hur
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = hur
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = bcn
+				which = hup
+			}
+			change_variable = { 
+				which = bcn
+				which = huq
+			}
+			change_variable = { 
+				which = bcn
+				which = hur
+			}
+			set_variable = { 
+				which = hus
+				which = bcn
+			}
+			divide_variable = { 
+				which = bcn
+				value = 18
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = bcn
+						value = 1
+					}
+				}
+				set_variable = { 
+					which = bcn
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = arf
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = adm
+				6 = { 
+					set_variable = { 
+						which = arf
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arf
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arf
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arf
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arf
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arf
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = dip
+				6 = { 
+					set_variable = { 
+						which = arg
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arg
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arg
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arg
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arg
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arg
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = mil
+				6 = { 
+					set_variable = { 
+						which = arh
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arh
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arh
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arh
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arh
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arh
+						value = 1
+					}
+				}
+			}
+			subtract_variable = { 
+				which = arf
+				which = hup
+			}
+			subtract_variable = { 
+				which = arg
+				which = huq
+			}
+			subtract_variable = { 
+				which = arh
+				which = hur
+			}
+			multiply_variable = { 
+				which = arf
+				value = -1
+			}
+			multiply_variable = { 
+				which = arg
+				value = -1
+			}
+			multiply_variable = { 
+				which = arh
+				value = -1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_6
+				}
+				remove_country_modifier = Ruler_ADM_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_5
+				}
+				remove_country_modifier = Ruler_ADM_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_4
+				}
+				remove_country_modifier = Ruler_ADM_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_3
+				}
+				remove_country_modifier = Ruler_ADM_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_2
+				}
+				remove_country_modifier = Ruler_ADM_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_1
+				}
+				remove_country_modifier = Ruler_ADM_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_6_neg
+				}
+				remove_country_modifier = Ruler_ADM_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_5_neg
+				}
+				remove_country_modifier = Ruler_ADM_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_4_neg
+				}
+				remove_country_modifier = Ruler_ADM_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_3_neg
+				}
+				remove_country_modifier = Ruler_ADM_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_2_neg
+				}
+				remove_country_modifier = Ruler_ADM_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_1_neg
+				}
+				remove_country_modifier = Ruler_ADM_1_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_6
+				}
+				remove_country_modifier = Ruler_DIP_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_5
+				}
+				remove_country_modifier = Ruler_DIP_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_4
+				}
+				remove_country_modifier = Ruler_DIP_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_3
+				}
+				remove_country_modifier = Ruler_DIP_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_2
+				}
+				remove_country_modifier = Ruler_DIP_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_1
+				}
+				remove_country_modifier = Ruler_DIP_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_6_neg
+				}
+				remove_country_modifier = Ruler_DIP_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_5_neg
+				}
+				remove_country_modifier = Ruler_DIP_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_4_neg
+				}
+				remove_country_modifier = Ruler_DIP_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_3_neg
+				}
+				remove_country_modifier = Ruler_DIP_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_2_neg
+				}
+				remove_country_modifier = Ruler_DIP_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_1_neg
+				}
+				remove_country_modifier = Ruler_DIP_1_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_6
+				}
+				remove_country_modifier = Ruler_MIL_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_5
+				}
+				remove_country_modifier = Ruler_MIL_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_4
+				}
+				remove_country_modifier = Ruler_MIL_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_3
+				}
+				remove_country_modifier = Ruler_MIL_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_2
+				}
+				remove_country_modifier = Ruler_MIL_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_1
+				}
+				remove_country_modifier = Ruler_MIL_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_6_neg
+				}
+				remove_country_modifier = Ruler_MIL_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_5_neg
+				}
+				remove_country_modifier = Ruler_MIL_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_4_neg
+				}
+				remove_country_modifier = Ruler_MIL_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_3_neg
+				}
+				remove_country_modifier = Ruler_MIL_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_2_neg
+				}
+				remove_country_modifier = Ruler_MIL_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_1_neg
+				}
+				remove_country_modifier = Ruler_MIL_1_neg
+			}
+			set_variable = { 
+				which = hun
+				value = 1
+			}
+			subtract_variable = { 
+				which = hun
+				which = bcn
+			}
+			multiply_variable = { 
+				which = hun
+				which = hun
+			}
+			multiply_variable = { 
+				which = hun
+				value = 100
+			}
+			multiply_variable = { 
+				which = bcn
+				value = 100
+			}
+			set_variable = { 
+				which = arf
+				value = 0
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
 		}
 		add_republican_tradition = -25
 		custom_tooltip = lottery_candidate_bonus_one
 	}
-	option = {
+	option = { 
 		name = elections.800.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 		set_ruler = lottery_candidate_b_@ROOT
-		hidden_effect = {
-			Ruler_Calc = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = hut
+				value = 0
+			}
+			set_variable = { 
+				which = hut
+				value = 0
+			}
+			change_variable = { 
+				which = hut
+				which = iao
+			}
+			set_variable = { 
+				which = arf
+				value = 150
+			}
+			subtract_variable = { 
+				which = arf
+				which = hum
+			}
+			divide_variable = { 
+				which = arf
+				value = 1.5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = hut
+						which = arf
+					}
+				}
+				set_variable = { 
+					which = hut
+					which = arf
+				}
+			}
+			if = { 
+				limit = { 
+					has_global_flag = POP_Sim
+				}
+				set_variable = { 
+					which = hul
+					which = hut
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = huv
+					which = hut
+				}
+				subtract_variable = { 
+					which = huv
+					which = hul
+				}
+				multiply_variable = { 
+					which = huv
+					value = 0.1
+				}
+				change_variable = { 
+					which = hul
+					which = huv
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = hul
+							value = 100
+						}
+					}
+					set_variable = { 
+						which = hul
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = hul
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = hul
+						value = 0
+					}
+				}
+			}
+			set_variable = { 
+				which = huu
+				value = 0
+			}
+			set_variable = { 
+				which = huu
+				value = 0
+			}
+			change_variable = { 
+				which = huu
+				which = iap
+			}
+			set_variable = { 
+				which = arf
+				value = 150
+			}
+			subtract_variable = { 
+				which = arf
+				which = hul
+			}
+			divide_variable = { 
+				which = arf
+				value = 1.5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = huu
+						which = arf
+					}
+				}
+				set_variable = { 
+					which = huu
+					which = arf
+				}
+			}
+			if = { 
+				limit = { 
+					has_global_flag = POP_Sim
+				}
+				set_variable = { 
+					which = hum
+					which = huu
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = huw
+					which = huu
+				}
+				subtract_variable = { 
+					which = huw
+					which = hum
+				}
+				multiply_variable = { 
+					which = huw
+					value = 0.1
+				}
+				change_variable = { 
+					which = hum
+					which = huw
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = hum
+							value = 100
+						}
+					}
+					set_variable = { 
+						which = hum
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = hum
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = hum
+						value = 0
+					}
+				}
+			}
+			set_variable = { 
+				which = hui
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = adm
+				6 = { 
+					set_variable = { 
+						which = hui
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = hui
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = hui
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = hui
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = hui
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = hui
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huj
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = dip
+				6 = { 
+					set_variable = { 
+						which = huj
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = huj
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = huj
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = huj
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = huj
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = huj
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huk
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = mil
+				6 = { 
+					set_variable = { 
+						which = huk
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = huk
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = huk
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = huk
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = huk
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = huk
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huo
+				value = 0
+			}
+			change_variable = { 
+				which = huo
+				which = hui
+			}
+			change_variable = { 
+				which = huo
+				which = huj
+			}
+			change_variable = { 
+				which = huo
+				which = huk
+			}
+			set_variable = { 
+				which = bcn
+				value = 0
+			}
+			set_variable = { 
+				which = hux
+				which = hul
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = hux
+						value = 100
+					}
+				}
+				set_variable = { 
+					which = hux
+					value = 100
+				}
+			}
+			set_variable = { 
+				which = hup
+				which = hui
+			}
+			set_variable = { 
+				which = huq
+				which = huj
+			}
+			set_variable = { 
+				which = hur
+				which = huk
+			}
+			multiply_variable = { 
+				which = hup
+				which = hux
+			}
+			multiply_variable = { 
+				which = huq
+				which = hux
+			}
+			multiply_variable = { 
+				which = hur
+				which = hux
+			}
+			multiply_variable = { 
+				which = hup
+				value = 0.01
+			}
+			multiply_variable = { 
+				which = huq
+				value = 0.01
+			}
+			multiply_variable = { 
+				which = hur
+				value = 0.01
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = hup
+				which = arf
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = huq
+				which = arf
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = hur
+				which = arf
+			}
+			set_variable = { 
+				which = amn
+				which = hup
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = hup
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = hup
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = hup
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = amn
+				which = huq
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = huq
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = huq
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = huq
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = amn
+				which = hur
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = hur
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = hur
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = hur
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = bcn
+				which = hup
+			}
+			change_variable = { 
+				which = bcn
+				which = huq
+			}
+			change_variable = { 
+				which = bcn
+				which = hur
+			}
+			set_variable = { 
+				which = hus
+				which = bcn
+			}
+			divide_variable = { 
+				which = bcn
+				value = 18
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = bcn
+						value = 1
+					}
+				}
+				set_variable = { 
+					which = bcn
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = arf
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = adm
+				6 = { 
+					set_variable = { 
+						which = arf
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arf
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arf
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arf
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arf
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arf
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = dip
+				6 = { 
+					set_variable = { 
+						which = arg
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arg
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arg
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arg
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arg
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arg
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = mil
+				6 = { 
+					set_variable = { 
+						which = arh
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arh
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arh
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arh
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arh
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arh
+						value = 1
+					}
+				}
+			}
+			subtract_variable = { 
+				which = arf
+				which = hup
+			}
+			subtract_variable = { 
+				which = arg
+				which = huq
+			}
+			subtract_variable = { 
+				which = arh
+				which = hur
+			}
+			multiply_variable = { 
+				which = arf
+				value = -1
+			}
+			multiply_variable = { 
+				which = arg
+				value = -1
+			}
+			multiply_variable = { 
+				which = arh
+				value = -1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_6
+				}
+				remove_country_modifier = Ruler_ADM_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_5
+				}
+				remove_country_modifier = Ruler_ADM_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_4
+				}
+				remove_country_modifier = Ruler_ADM_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_3
+				}
+				remove_country_modifier = Ruler_ADM_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_2
+				}
+				remove_country_modifier = Ruler_ADM_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_1
+				}
+				remove_country_modifier = Ruler_ADM_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_6_neg
+				}
+				remove_country_modifier = Ruler_ADM_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_5_neg
+				}
+				remove_country_modifier = Ruler_ADM_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_4_neg
+				}
+				remove_country_modifier = Ruler_ADM_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_3_neg
+				}
+				remove_country_modifier = Ruler_ADM_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_2_neg
+				}
+				remove_country_modifier = Ruler_ADM_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_1_neg
+				}
+				remove_country_modifier = Ruler_ADM_1_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_6
+				}
+				remove_country_modifier = Ruler_DIP_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_5
+				}
+				remove_country_modifier = Ruler_DIP_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_4
+				}
+				remove_country_modifier = Ruler_DIP_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_3
+				}
+				remove_country_modifier = Ruler_DIP_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_2
+				}
+				remove_country_modifier = Ruler_DIP_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_1
+				}
+				remove_country_modifier = Ruler_DIP_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_6_neg
+				}
+				remove_country_modifier = Ruler_DIP_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_5_neg
+				}
+				remove_country_modifier = Ruler_DIP_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_4_neg
+				}
+				remove_country_modifier = Ruler_DIP_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_3_neg
+				}
+				remove_country_modifier = Ruler_DIP_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_2_neg
+				}
+				remove_country_modifier = Ruler_DIP_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_1_neg
+				}
+				remove_country_modifier = Ruler_DIP_1_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_6
+				}
+				remove_country_modifier = Ruler_MIL_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_5
+				}
+				remove_country_modifier = Ruler_MIL_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_4
+				}
+				remove_country_modifier = Ruler_MIL_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_3
+				}
+				remove_country_modifier = Ruler_MIL_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_2
+				}
+				remove_country_modifier = Ruler_MIL_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_1
+				}
+				remove_country_modifier = Ruler_MIL_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_6_neg
+				}
+				remove_country_modifier = Ruler_MIL_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_5_neg
+				}
+				remove_country_modifier = Ruler_MIL_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_4_neg
+				}
+				remove_country_modifier = Ruler_MIL_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_3_neg
+				}
+				remove_country_modifier = Ruler_MIL_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_2_neg
+				}
+				remove_country_modifier = Ruler_MIL_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_1_neg
+				}
+				remove_country_modifier = Ruler_MIL_1_neg
+			}
+			set_variable = { 
+				which = hun
+				value = 1
+			}
+			subtract_variable = { 
+				which = hun
+				which = bcn
+			}
+			multiply_variable = { 
+				which = hun
+				which = hun
+			}
+			multiply_variable = { 
+				which = hun
+				value = 100
+			}
+			multiply_variable = { 
+				which = bcn
+				value = 100
+			}
+			set_variable = { 
+				which = arf
+				value = 0
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
 		}
 		add_republican_tradition = -25
 		custom_tooltip = lottery_candidate_bonus_one
 	}
-	option = {
+	option = { 
 		name = elections.800.c
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 		set_ruler = lottery_candidate_c_@ROOT
-		hidden_effect = {
-			Ruler_Calc = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = hut
+				value = 0
+			}
+			set_variable = { 
+				which = hut
+				value = 0
+			}
+			change_variable = { 
+				which = hut
+				which = iao
+			}
+			set_variable = { 
+				which = arf
+				value = 150
+			}
+			subtract_variable = { 
+				which = arf
+				which = hum
+			}
+			divide_variable = { 
+				which = arf
+				value = 1.5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = hut
+						which = arf
+					}
+				}
+				set_variable = { 
+					which = hut
+					which = arf
+				}
+			}
+			if = { 
+				limit = { 
+					has_global_flag = POP_Sim
+				}
+				set_variable = { 
+					which = hul
+					which = hut
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = huv
+					which = hut
+				}
+				subtract_variable = { 
+					which = huv
+					which = hul
+				}
+				multiply_variable = { 
+					which = huv
+					value = 0.1
+				}
+				change_variable = { 
+					which = hul
+					which = huv
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = hul
+							value = 100
+						}
+					}
+					set_variable = { 
+						which = hul
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = hul
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = hul
+						value = 0
+					}
+				}
+			}
+			set_variable = { 
+				which = huu
+				value = 0
+			}
+			set_variable = { 
+				which = huu
+				value = 0
+			}
+			change_variable = { 
+				which = huu
+				which = iap
+			}
+			set_variable = { 
+				which = arf
+				value = 150
+			}
+			subtract_variable = { 
+				which = arf
+				which = hul
+			}
+			divide_variable = { 
+				which = arf
+				value = 1.5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = huu
+						which = arf
+					}
+				}
+				set_variable = { 
+					which = huu
+					which = arf
+				}
+			}
+			if = { 
+				limit = { 
+					has_global_flag = POP_Sim
+				}
+				set_variable = { 
+					which = hum
+					which = huu
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = huw
+					which = huu
+				}
+				subtract_variable = { 
+					which = huw
+					which = hum
+				}
+				multiply_variable = { 
+					which = huw
+					value = 0.1
+				}
+				change_variable = { 
+					which = hum
+					which = huw
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = hum
+							value = 100
+						}
+					}
+					set_variable = { 
+						which = hum
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = hum
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = hum
+						value = 0
+					}
+				}
+			}
+			set_variable = { 
+				which = hui
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = adm
+				6 = { 
+					set_variable = { 
+						which = hui
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = hui
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = hui
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = hui
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = hui
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = hui
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huj
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = dip
+				6 = { 
+					set_variable = { 
+						which = huj
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = huj
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = huj
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = huj
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = huj
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = huj
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huk
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = mil
+				6 = { 
+					set_variable = { 
+						which = huk
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = huk
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = huk
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = huk
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = huk
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = huk
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huo
+				value = 0
+			}
+			change_variable = { 
+				which = huo
+				which = hui
+			}
+			change_variable = { 
+				which = huo
+				which = huj
+			}
+			change_variable = { 
+				which = huo
+				which = huk
+			}
+			set_variable = { 
+				which = bcn
+				value = 0
+			}
+			set_variable = { 
+				which = hux
+				which = hul
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = hux
+						value = 100
+					}
+				}
+				set_variable = { 
+					which = hux
+					value = 100
+				}
+			}
+			set_variable = { 
+				which = hup
+				which = hui
+			}
+			set_variable = { 
+				which = huq
+				which = huj
+			}
+			set_variable = { 
+				which = hur
+				which = huk
+			}
+			multiply_variable = { 
+				which = hup
+				which = hux
+			}
+			multiply_variable = { 
+				which = huq
+				which = hux
+			}
+			multiply_variable = { 
+				which = hur
+				which = hux
+			}
+			multiply_variable = { 
+				which = hup
+				value = 0.01
+			}
+			multiply_variable = { 
+				which = huq
+				value = 0.01
+			}
+			multiply_variable = { 
+				which = hur
+				value = 0.01
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = hup
+				which = arf
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = huq
+				which = arf
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = hur
+				which = arf
+			}
+			set_variable = { 
+				which = amn
+				which = hup
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = hup
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = hup
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = hup
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = amn
+				which = huq
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = huq
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = huq
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = huq
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = amn
+				which = hur
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = hur
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = hur
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = hur
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = bcn
+				which = hup
+			}
+			change_variable = { 
+				which = bcn
+				which = huq
+			}
+			change_variable = { 
+				which = bcn
+				which = hur
+			}
+			set_variable = { 
+				which = hus
+				which = bcn
+			}
+			divide_variable = { 
+				which = bcn
+				value = 18
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = bcn
+						value = 1
+					}
+				}
+				set_variable = { 
+					which = bcn
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = arf
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = adm
+				6 = { 
+					set_variable = { 
+						which = arf
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arf
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arf
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arf
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arf
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arf
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = dip
+				6 = { 
+					set_variable = { 
+						which = arg
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arg
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arg
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arg
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arg
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arg
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = mil
+				6 = { 
+					set_variable = { 
+						which = arh
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arh
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arh
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arh
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arh
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arh
+						value = 1
+					}
+				}
+			}
+			subtract_variable = { 
+				which = arf
+				which = hup
+			}
+			subtract_variable = { 
+				which = arg
+				which = huq
+			}
+			subtract_variable = { 
+				which = arh
+				which = hur
+			}
+			multiply_variable = { 
+				which = arf
+				value = -1
+			}
+			multiply_variable = { 
+				which = arg
+				value = -1
+			}
+			multiply_variable = { 
+				which = arh
+				value = -1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_6
+				}
+				remove_country_modifier = Ruler_ADM_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_5
+				}
+				remove_country_modifier = Ruler_ADM_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_4
+				}
+				remove_country_modifier = Ruler_ADM_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_3
+				}
+				remove_country_modifier = Ruler_ADM_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_2
+				}
+				remove_country_modifier = Ruler_ADM_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_1
+				}
+				remove_country_modifier = Ruler_ADM_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_6_neg
+				}
+				remove_country_modifier = Ruler_ADM_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_5_neg
+				}
+				remove_country_modifier = Ruler_ADM_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_4_neg
+				}
+				remove_country_modifier = Ruler_ADM_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_3_neg
+				}
+				remove_country_modifier = Ruler_ADM_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_2_neg
+				}
+				remove_country_modifier = Ruler_ADM_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_1_neg
+				}
+				remove_country_modifier = Ruler_ADM_1_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_6
+				}
+				remove_country_modifier = Ruler_DIP_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_5
+				}
+				remove_country_modifier = Ruler_DIP_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_4
+				}
+				remove_country_modifier = Ruler_DIP_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_3
+				}
+				remove_country_modifier = Ruler_DIP_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_2
+				}
+				remove_country_modifier = Ruler_DIP_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_1
+				}
+				remove_country_modifier = Ruler_DIP_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_6_neg
+				}
+				remove_country_modifier = Ruler_DIP_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_5_neg
+				}
+				remove_country_modifier = Ruler_DIP_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_4_neg
+				}
+				remove_country_modifier = Ruler_DIP_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_3_neg
+				}
+				remove_country_modifier = Ruler_DIP_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_2_neg
+				}
+				remove_country_modifier = Ruler_DIP_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_1_neg
+				}
+				remove_country_modifier = Ruler_DIP_1_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_6
+				}
+				remove_country_modifier = Ruler_MIL_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_5
+				}
+				remove_country_modifier = Ruler_MIL_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_4
+				}
+				remove_country_modifier = Ruler_MIL_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_3
+				}
+				remove_country_modifier = Ruler_MIL_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_2
+				}
+				remove_country_modifier = Ruler_MIL_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_1
+				}
+				remove_country_modifier = Ruler_MIL_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_6_neg
+				}
+				remove_country_modifier = Ruler_MIL_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_5_neg
+				}
+				remove_country_modifier = Ruler_MIL_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_4_neg
+				}
+				remove_country_modifier = Ruler_MIL_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_3_neg
+				}
+				remove_country_modifier = Ruler_MIL_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_2_neg
+				}
+				remove_country_modifier = Ruler_MIL_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_1_neg
+				}
+				remove_country_modifier = Ruler_MIL_1_neg
+			}
+			set_variable = { 
+				which = hun
+				value = 1
+			}
+			subtract_variable = { 
+				which = hun
+				which = bcn
+			}
+			multiply_variable = { 
+				which = hun
+				which = hun
+			}
+			multiply_variable = { 
+				which = hun
+				value = 100
+			}
+			multiply_variable = { 
+				which = bcn
+				value = 100
+			}
+			set_variable = { 
+				which = arf
+				value = 0
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
 		}
 		add_republican_tradition = -25
 		custom_tooltip = lottery_candidate_bonus_one
 	}
-	option = { # lottery
+	option = { 
 		name = elections.800.da
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
-		random_list = {
+		random_list = { 
 			33 = { 
-				set_ruler = lottery_candidate_a_@ROOT 
+				set_ruler = lottery_candidate_a_@ROOT
 			}
 			33 = { 
-				set_ruler = lottery_candidate_b_@ROOT 
+				set_ruler = lottery_candidate_b_@ROOT
 			}
 			33 = { 
-				set_ruler = lottery_candidate_c_@ROOT 
+				set_ruler = lottery_candidate_c_@ROOT
 			}
 		}
-		hidden_effect = {
-			Ruler_Calc = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = hut
+				value = 0
+			}
+			set_variable = { 
+				which = hut
+				value = 0
+			}
+			change_variable = { 
+				which = hut
+				which = iao
+			}
+			set_variable = { 
+				which = arf
+				value = 150
+			}
+			subtract_variable = { 
+				which = arf
+				which = hum
+			}
+			divide_variable = { 
+				which = arf
+				value = 1.5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = hut
+						which = arf
+					}
+				}
+				set_variable = { 
+					which = hut
+					which = arf
+				}
+			}
+			if = { 
+				limit = { 
+					has_global_flag = POP_Sim
+				}
+				set_variable = { 
+					which = hul
+					which = hut
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = huv
+					which = hut
+				}
+				subtract_variable = { 
+					which = huv
+					which = hul
+				}
+				multiply_variable = { 
+					which = huv
+					value = 0.1
+				}
+				change_variable = { 
+					which = hul
+					which = huv
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = hul
+							value = 100
+						}
+					}
+					set_variable = { 
+						which = hul
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = hul
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = hul
+						value = 0
+					}
+				}
+			}
+			set_variable = { 
+				which = huu
+				value = 0
+			}
+			set_variable = { 
+				which = huu
+				value = 0
+			}
+			change_variable = { 
+				which = huu
+				which = iap
+			}
+			set_variable = { 
+				which = arf
+				value = 150
+			}
+			subtract_variable = { 
+				which = arf
+				which = hul
+			}
+			divide_variable = { 
+				which = arf
+				value = 1.5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = huu
+						which = arf
+					}
+				}
+				set_variable = { 
+					which = huu
+					which = arf
+				}
+			}
+			if = { 
+				limit = { 
+					has_global_flag = POP_Sim
+				}
+				set_variable = { 
+					which = hum
+					which = huu
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = huw
+					which = huu
+				}
+				subtract_variable = { 
+					which = huw
+					which = hum
+				}
+				multiply_variable = { 
+					which = huw
+					value = 0.1
+				}
+				change_variable = { 
+					which = hum
+					which = huw
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = hum
+							value = 100
+						}
+					}
+					set_variable = { 
+						which = hum
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = hum
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = hum
+						value = 0
+					}
+				}
+			}
+			set_variable = { 
+				which = hui
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = adm
+				6 = { 
+					set_variable = { 
+						which = hui
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = hui
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = hui
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = hui
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = hui
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = hui
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huj
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = dip
+				6 = { 
+					set_variable = { 
+						which = huj
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = huj
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = huj
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = huj
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = huj
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = huj
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huk
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = mil
+				6 = { 
+					set_variable = { 
+						which = huk
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = huk
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = huk
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = huk
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = huk
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = huk
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huo
+				value = 0
+			}
+			change_variable = { 
+				which = huo
+				which = hui
+			}
+			change_variable = { 
+				which = huo
+				which = huj
+			}
+			change_variable = { 
+				which = huo
+				which = huk
+			}
+			set_variable = { 
+				which = bcn
+				value = 0
+			}
+			set_variable = { 
+				which = hux
+				which = hul
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = hux
+						value = 100
+					}
+				}
+				set_variable = { 
+					which = hux
+					value = 100
+				}
+			}
+			set_variable = { 
+				which = hup
+				which = hui
+			}
+			set_variable = { 
+				which = huq
+				which = huj
+			}
+			set_variable = { 
+				which = hur
+				which = huk
+			}
+			multiply_variable = { 
+				which = hup
+				which = hux
+			}
+			multiply_variable = { 
+				which = huq
+				which = hux
+			}
+			multiply_variable = { 
+				which = hur
+				which = hux
+			}
+			multiply_variable = { 
+				which = hup
+				value = 0.01
+			}
+			multiply_variable = { 
+				which = huq
+				value = 0.01
+			}
+			multiply_variable = { 
+				which = hur
+				value = 0.01
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = hup
+				which = arf
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = huq
+				which = arf
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = hur
+				which = arf
+			}
+			set_variable = { 
+				which = amn
+				which = hup
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = hup
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = hup
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = hup
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = amn
+				which = huq
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = huq
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = huq
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = huq
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = amn
+				which = hur
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = hur
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = hur
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = hur
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = bcn
+				which = hup
+			}
+			change_variable = { 
+				which = bcn
+				which = huq
+			}
+			change_variable = { 
+				which = bcn
+				which = hur
+			}
+			set_variable = { 
+				which = hus
+				which = bcn
+			}
+			divide_variable = { 
+				which = bcn
+				value = 18
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = bcn
+						value = 1
+					}
+				}
+				set_variable = { 
+					which = bcn
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = arf
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = adm
+				6 = { 
+					set_variable = { 
+						which = arf
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arf
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arf
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arf
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arf
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arf
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = dip
+				6 = { 
+					set_variable = { 
+						which = arg
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arg
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arg
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arg
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arg
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arg
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = mil
+				6 = { 
+					set_variable = { 
+						which = arh
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arh
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arh
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arh
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arh
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arh
+						value = 1
+					}
+				}
+			}
+			subtract_variable = { 
+				which = arf
+				which = hup
+			}
+			subtract_variable = { 
+				which = arg
+				which = huq
+			}
+			subtract_variable = { 
+				which = arh
+				which = hur
+			}
+			multiply_variable = { 
+				which = arf
+				value = -1
+			}
+			multiply_variable = { 
+				which = arg
+				value = -1
+			}
+			multiply_variable = { 
+				which = arh
+				value = -1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_6
+				}
+				remove_country_modifier = Ruler_ADM_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_5
+				}
+				remove_country_modifier = Ruler_ADM_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_4
+				}
+				remove_country_modifier = Ruler_ADM_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_3
+				}
+				remove_country_modifier = Ruler_ADM_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_2
+				}
+				remove_country_modifier = Ruler_ADM_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_1
+				}
+				remove_country_modifier = Ruler_ADM_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_6_neg
+				}
+				remove_country_modifier = Ruler_ADM_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_5_neg
+				}
+				remove_country_modifier = Ruler_ADM_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_4_neg
+				}
+				remove_country_modifier = Ruler_ADM_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_3_neg
+				}
+				remove_country_modifier = Ruler_ADM_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_2_neg
+				}
+				remove_country_modifier = Ruler_ADM_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_1_neg
+				}
+				remove_country_modifier = Ruler_ADM_1_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_6
+				}
+				remove_country_modifier = Ruler_DIP_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_5
+				}
+				remove_country_modifier = Ruler_DIP_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_4
+				}
+				remove_country_modifier = Ruler_DIP_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_3
+				}
+				remove_country_modifier = Ruler_DIP_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_2
+				}
+				remove_country_modifier = Ruler_DIP_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_1
+				}
+				remove_country_modifier = Ruler_DIP_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_6_neg
+				}
+				remove_country_modifier = Ruler_DIP_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_5_neg
+				}
+				remove_country_modifier = Ruler_DIP_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_4_neg
+				}
+				remove_country_modifier = Ruler_DIP_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_3_neg
+				}
+				remove_country_modifier = Ruler_DIP_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_2_neg
+				}
+				remove_country_modifier = Ruler_DIP_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_1_neg
+				}
+				remove_country_modifier = Ruler_DIP_1_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_6
+				}
+				remove_country_modifier = Ruler_MIL_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_5
+				}
+				remove_country_modifier = Ruler_MIL_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_4
+				}
+				remove_country_modifier = Ruler_MIL_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_3
+				}
+				remove_country_modifier = Ruler_MIL_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_2
+				}
+				remove_country_modifier = Ruler_MIL_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_1
+				}
+				remove_country_modifier = Ruler_MIL_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_6_neg
+				}
+				remove_country_modifier = Ruler_MIL_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_5_neg
+				}
+				remove_country_modifier = Ruler_MIL_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_4_neg
+				}
+				remove_country_modifier = Ruler_MIL_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_3_neg
+				}
+				remove_country_modifier = Ruler_MIL_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_2_neg
+				}
+				remove_country_modifier = Ruler_MIL_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_1_neg
+				}
+				remove_country_modifier = Ruler_MIL_1_neg
+			}
+			set_variable = { 
+				which = hun
+				value = 1
+			}
+			subtract_variable = { 
+				which = hun
+				which = bcn
+			}
+			multiply_variable = { 
+				which = hun
+				which = hun
+			}
+			multiply_variable = { 
+				which = hun
+				value = 100
+			}
+			multiply_variable = { 
+				which = bcn
+				value = 100
+			}
+			set_variable = { 
+				which = arf
+				value = 0
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
 		}
 		custom_tooltip = lottery_candidate_bonus_plural
 	}
-	option = { # nepotism
+	option = { 
 		name = elections.800.e
-		trigger = {
+		trigger = { 
 			has_government_attribute = enables_nepotism
 		}
-		ai_chance = { factor = 10 }
+		ai_chance = { 
+			factor = 10
+		}
 		add_republican_tradition = -15
-		if = {
-			limit = { always = no } #no gender reform
-			define_ruler = {
+		if = { 
+			limit = { 
+				always = no
+			}
+			define_ruler = { 
 				min_age = 30
 				max_age = 50
 				name = "lastname"
-				random_gender = yes # Allows random gender for republics
+				random_gender = yes
 			}
 		}
-		else = {
-			define_ruler = {
+		else = { 
+			define_ruler = { 
 				min_age = 30
 				max_age = 50
 				name = "lastname"

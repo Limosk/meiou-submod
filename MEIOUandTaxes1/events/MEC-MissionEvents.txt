@@ -1,1111 +1,5954 @@
 namespace = mission_event
-######################################################
-#          Mission-related Nation Formation          #
-######################################################
-country_event = {
+country_event = { 
 	id = mission_event.001
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		owns = 183
 	}
-
-	option = {
+	option = { 
 		name = "mission_event.001.opta"
-		form_FRA_effect = yes
+		france_superregion = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		france_superregion = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = FRA
+				}
+			}
+			change_tag = FRA
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 183
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = french_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		every_country = { 
+			limit = { 
+				OR = { 
+					culture_group = langue_d_oc
+					culture_group = langue_d_oil
+					capital_scope = { 
+						region = east_france_region
+					}
+				}
+				NOT = { 
+					tag = ROOT
+				}
+			}
+			add_historical_rival = FRA
+			ROOT = { 
+				add_historical_rival = PREV
+			}
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.002
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.002.opta"
-		form_ARL_effect = yes
+		provence_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		provence_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		high_countries_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		high_countries_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_global_flag = additional_tags_enabled
+				NOT = { 
+					exists = ARL
+				}
+				NOT = { 
+					tag = FRA
+				}
+				NOT = { 
+					tag = ITA
+				}
+				NOT = { 
+					tag = LOT
+				}
+				NOT = { 
+					tag = TOU
+				}
+			}
+			change_tag = ARL
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 201
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = ARL_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.003
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.003.opta"
-		form_LOT_effect = yes
+		high_countries_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		high_countries_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		low_countries_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		low_countries_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		belgii_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		belgii_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = LOT
+				}
+			}
+			change_tag = LOT
+		}
+		add_absolutism = 10
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.004
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.004.opta"
-		form_TOU_effect = yes
+		toulouse_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		toulouse_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = TOU
+				}
+				NOT = { 
+					tag = FRA
+				}
+			}
+			change_tag = TOU
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.005
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.005.opta"
-		form_OCC_effect = yes
+		languedoc_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		languedoc_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		provence_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		provence_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_global_flag = additional_tags_enabled
+				NOT = { 
+					exists = OCC
+				}
+				NOT = { 
+					tag = FRA
+				}
+			}
+			change_tag = OCC
+		}
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = OCC_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.006
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.006.opta"
-		form_BRI_effect = yes
+		brittany_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		brittany_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				OR = { 
+					has_country_modifier = title_1
+					has_country_modifier = title_2
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = BRI
+				}
+			}
+			change_tag = BRI
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = breton_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.007
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.007.opta"
-		form_NAV_effect = yes
+		toulouse_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		toulouse_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = NAV
+				}
+				NOT = { 
+					tag = FRA
+				}
+			}
+			change_tag = NAV
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = breton_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.008
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.008.opta"
-		form_CAS_effect = yes
+		castille_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		castille_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		leon_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		leon_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_absolutism = 5
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = CAS
+				}
+			}
+			change_tag = CAS
+		}
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = castillian_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		every_country = { 
+			limit = { 
+				capital_scope = { 
+					region = andalucia_region
+				}
+				NOT = { 
+					tag = ROOT
+				}
+			}
+			add_historical_rival = CAS
+			ROOT = { 
+				add_historical_rival = PREV
+			}
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.009
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		owns = 217
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.009.opta"
-		form_SPA_effect = yes
+		castille_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		castille_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		leon_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		leon_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		aragon_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		aragon_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		andalucia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		andalucia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				OR = { 
+					ARA = { 
+						is_subject_of = ROOT
+					}
+					CAS = { 
+						is_subject_of = ROOT
+					}
+				}
+			}
+			add_absolutism = -10
+		}
+		else_if = { 
+			limit = { 
+				NOT = { 
+					OR = { 
+						ARA = { 
+							is_subject_of = ROOT
+						}
+						CAS = { 
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			add_absolutism = 10
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				ARA = { 
+					is_subject_of = ROOT
+				}
+			}
+			inherit = ARA
+			every_owned_province = { 
+				limit = { 
+					OR = { 
+						culture = aragonese
+						culture = catalan
+						culture_group = basque_group
+					}
+					OR = { 
+						is_core = ARA
+						is_core = NAV
+					}
+				}
+				add_local_autonomy = 60
+			}
+		}
+		else_if = { 
+			limit = { 
+				CAS = { 
+					is_subject_of = ROOT
+				}
+			}
+			inherit = CAS
+			every_owned_province = { 
+				limit = { 
+					OR = { 
+						culture = castillian
+						culture = asturleonese
+					}
+					is_core = CAS
+				}
+				add_local_autonomy = 60
+			}
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = SPA
+				}
+			}
+			change_tag = SPA
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = castillian_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		every_country = { 
+			limit = { 
+				OR = { 
+					capital_scope = { 
+						region = aragon_region
+					}
+					capital_scope = { 
+						region = castille_region
+					}
+					capital_scope = { 
+						region = leon_region
+					}
+					capital_scope = { 
+						region = andalucia_region
+					}
+				}
+				NOT = { 
+					tag = ROOT
+				}
+			}
+			add_historical_rival = SPA
+			ROOT = { 
+				add_historical_rival = PREV
+			}
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.010
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.010.opta"
-		form_SCO_effect = yes
+		scotland_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		scotland_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = SCO
+				}
+			}
+			change_tag = SCO
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = english_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.011
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.011.opta"
-		form_GBR_effect = yes
+		south_england_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		south_england_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		north_england_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		north_england_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		scotland_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		scotland_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		ireland_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		ireland_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = GBR
+				}
+			}
+			change_tag = GBR
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 236
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = english_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		if = { 
+			limit = { 
+				exists = SCO
+				NOT = { 
+					tag = SCO
+				}
+			}
+			inherit = SCO
+		}
+		if = { 
+			limit = { 
+				exists = ENG
+				NOT = { 
+					tag = ENG
+				}
+			}
+			inherit = ENG
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.012
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.012.opta"
-		form_ILL_effect = yes
+		west_balkan_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		west_balkan_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		central_balkan_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		central_balkan_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_global_flag = additional_tags_enabled
+				NOT = { 
+					exists = ILL
+				}
+				NOT = { 
+					tag = BYZ
+				}
+				NOT = { 
+					tag = ROOT
+				}
+			}
+			change_tag = ILL
+		}
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = ILL_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.013
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.013.opta"
-		form_SER_effect = yes
+		north_serbia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		north_serbia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		south_serbia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		south_serbia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		1392 = { 
+			if = { 
+				limit = { 
+					owned_by = ROOT
+				}
+				hidden_effect = { 
+					remove_core = ROOT
+				}
+				add_core = ROOT
+			}
+		}
+		1392 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+		138 = { 
+			if = { 
+				limit = { 
+					owned_by = ROOT
+				}
+				hidden_effect = { 
+					remove_core = ROOT
+				}
+				add_core = ROOT
+			}
+		}
+		138 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+		macedonia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		macedonia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = SER
+				}
+				NOT = { 
+					tag = BYZ
+				}
+			}
+			change_tag = SER
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = serbian_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.014
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.014.opta"
-		form_ROU_effect = yes
+		south_carpathia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		south_carpathia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				WAL = { 
+					is_subject_of = ROOT
+				}
+			}
+			inherit = WAL
+		}
+		if = { 
+			limit = { 
+				MOL = { 
+					is_subject_of = ROOT
+				}
+			}
+			inherit = MOL
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = ROU
+				}
+				NOT = { 
+					tag = BYZ
+				}
+			}
+			change_tag = ROU
+		}
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = RMN_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		add_absolutism = 10
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.015
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = old_saxon
 			primary_culture = eastphalian
 			primary_culture = westphalian
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.015.opta"
-		form_LSA_effect = yes
+		westphalian_circle_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		westphalian_circle_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		eastphalia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		eastphalia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_prestige = 20
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				OR = { 
+					has_country_modifier = title_1
+					has_country_modifier = title_2
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					hre_size = 1
+				}
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		change_tag = LSA
+		add_absolutism = 10
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
+		trigger = { 
+			ai = no
+		}
 		capital_scope = { 
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.016
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		primary_culture = bavarian
-	}
-	
-	option = {
-		name = "mission_event.016.opta"
-		form_BAV_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.017
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
-			culture_group = high_germanic
-			culture_group = low_germanic
-		}
-	}
-	
-	option = {
-		name = "mission_event.017.opta"
-		form_GER_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.018
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
-			has_country_flag = k_of_cnn
-			has_country_flag = k_of_lei
-			has_country_flag = k_of_mns
-			has_country_flag = k_of_uls
-		}
-	}
-	
-	option = {
-		name = "mission_event.018.opta"
-		form_CNN_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.019
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
-			has_country_flag = k_of_cnn
-			has_country_flag = k_of_lei
-			has_country_flag = k_of_mns
-			has_country_flag = k_of_uls
-		}
-	}
-	
-	option = {
-		name = "mission_event.019.opta"
-		form_LEI_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.020
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
-			has_country_flag = k_of_cnn
-			has_country_flag = k_of_lei
-			has_country_flag = k_of_mns
-			has_country_flag = k_of_uls
-		}
-	}
-	
-	option = {
-		name = "mission_event.020.opta"
-		form_MNS_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.021
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
-			has_country_flag = k_of_cnn
-			has_country_flag = k_of_lei
-			has_country_flag = k_of_mns
-			has_country_flag = k_of_uls
-		}
-	}
-	
-	option = {
-		name = "mission_event.021.opta"
-		form_TYR_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.022
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
-			has_country_flag = k_of_cnn
-			has_country_flag = k_of_lei
-			has_country_flag = k_of_mns
-			has_country_flag = k_of_uls
-		}
-	}
-	
-	option = {
-		name = "mission_event.022.opta"
-		change_government = monarchy
-		form_IRE_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.023
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		owns = 116
-	}
-	
-	option = {
-		name = "mission_event.023.opta"
-		form_TUS_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.024
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {	
-		owns = 125
-		owns = 2531
-	}
-	
-	option = {
-		name = "mission_event.024.opta"
-		form_NAP_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.025
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	# trigger = {		Comment this out since you can trigger this event without owning Pavia, gonna place the check elsewhere
-	# 	owns = 1347
-	# }
-	
-	option = {
-		name = "mission_event.025.opta"
-		form_ITA_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.026
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		baltic_region = {
-			type = all
-			owned_by = ROOT
-		}
-	}
-	
-	option = {
-		name = "mission_event.026.opta"
-		form_TEU_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-}
-
-country_event = {
-	id = mission_event.027
-	title = "mission_event.xxx.name"
-	desc = "mission_event.xxx.desc"
-	picture = OVERLORDVASSAL_eventPicture
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		prussia_region = {
-			type = all
-			owned_by = ROOT
-		}
-	}
-	
-	option = {
-		name = "mission_event.027.opta"
-		form_PRU_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-		}
-	}
-	
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { OR = { has_country_flag = teu_crusader has_country_flag = lvo_crusader } }
-				country_event = { id = mission_event.903 days = 1 }
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
+	id = mission_event.016
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		primary_culture = bavarian
+	}
+	option = { 
+		name = "mission_event.016.opta"
+		lower_bavaria_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		lower_bavaria_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		upper_bavaria_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		upper_bavaria_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_prestige = 20
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				OR = { 
+					has_country_modifier = title_1
+					has_country_modifier = title_2
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					hre_size = 1
+				}
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		change_tag = BAV
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = danubian_alpine_german_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		add_absolutism = 10
+		swap_non_generic_missions = yes
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.017
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		OR = { 
+			culture_group = high_germanic
+			culture_group = low_germanic
+		}
+	}
+	option = { 
+		name = "mission_event.017.opta"
+		lower_saxon_circle_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		lower_saxon_circle_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		upper_saxon_circle_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		upper_saxon_circle_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		westphalian_circle_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		westphalian_circle_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		upper_rhenish_circle_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		upper_rhenish_circle_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		swabia_bavarian_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		swabia_bavarian_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_prestige = 20
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		change_tag = GER
+		add_absolutism = 10
+		emperor = { 
+			add_opinion = { 
+				who = root
+				modifier = opinion_left_empire
+			}
+		}
+		set_in_empire = no
+		swap_non_generic_missions = yes
+		emperor = { 
+			country_event = { 
+				id = hre_event.5
+			}
+		}
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.018
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		OR = { 
+			has_country_flag = k_of_cnn
+			has_country_flag = k_of_lei
+			has_country_flag = k_of_mns
+			has_country_flag = k_of_uls
+		}
+	}
+	option = { 
+		name = "mission_event.018.opta"
+		connacht_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		connacht_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = CNN
+				}
+			}
+			change_tag = CNN
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_3
+					has_country_modifier = title_4
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.019
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		OR = { 
+			has_country_flag = k_of_cnn
+			has_country_flag = k_of_lei
+			has_country_flag = k_of_mns
+			has_country_flag = k_of_uls
+		}
+	}
+	option = { 
+		name = "mission_event.019.opta"
+		leinster_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		leinster_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = LEI
+				}
+			}
+			change_tag = LEI
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_3
+					has_country_modifier = title_4
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.020
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		OR = { 
+			has_country_flag = k_of_cnn
+			has_country_flag = k_of_lei
+			has_country_flag = k_of_mns
+			has_country_flag = k_of_uls
+		}
+	}
+	option = { 
+		name = "mission_event.020.opta"
+		munster_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		munster_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = MNS
+				}
+			}
+			change_tag = MNS
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_3
+					has_country_modifier = title_4
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.021
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		OR = { 
+			has_country_flag = k_of_cnn
+			has_country_flag = k_of_lei
+			has_country_flag = k_of_mns
+			has_country_flag = k_of_uls
+		}
+	}
+	option = { 
+		name = "mission_event.021.opta"
+		ulaid_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		ulaid_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = TYR
+				}
+			}
+			change_tag = TYR
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_3
+					has_country_modifier = title_4
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.022
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		OR = { 
+			has_country_flag = k_of_cnn
+			has_country_flag = k_of_lei
+			has_country_flag = k_of_mns
+			has_country_flag = k_of_uls
+		}
+	}
+	option = { 
+		name = "mission_event.022.opta"
+		change_government = monarchy
+		ireland_region = { 
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = IRE
+				}
+			}
+			change_tag = IRE
+		}
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		add_absolutism = 10
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.023
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		owns = 116
+	}
+	option = { 
+		name = "mission_event.023.opta"
+		tuscany_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		tuscany_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_prestige = 20
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_4
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_4
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		change_tag = TUS
+		add_absolutism = 10
+		swap_non_generic_missions = yes
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.024
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		owns = 125
+		owns = 2531
+	}
+	option = { 
+		name = "mission_event.024.opta"
+		sicily_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		sicily_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		naples_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		naples_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = NAP
+				}
+			}
+			change_tag = NAP
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = neapolitan_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.025
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	option = { 
+		name = "mission_event.025.opta"
+		set_global_flag = iron_crown_relinquished
+		east_italy_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		east_italy_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		west_italy_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		west_italy_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		central_italy_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		central_italy_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				has_institution = Nationalism
+			}
+			naples_region = { 
+				limit = { 
+					owned_by = ROOT
+				}
+				hidden_effect = { 
+					remove_core = ROOT
+				}
+				add_core = ROOT
+			}
+			naples_region = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			sicily_region = { 
+				limit = { 
+					owned_by = ROOT
+				}
+				hidden_effect = { 
+					remove_core = ROOT
+				}
+				add_core = ROOT
+			}
+			sicily_region = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = ITA
+				}
+				NOT = { 
+					exists = ITE
+				}
+			}
+			if = { 
+				limit = { 
+					NOT = { 
+						has_institution = Nationalism
+					}
+				}
+				change_tag = ITA
+				if = { 
+					limit = { 
+						is_part_of_hre = yes
+						ROOT = { 
+							is_part_of_hre = no
+						}
+					}
+					set_in_empire = no
+					swap_non_generic_missions = yes
+					emperor = { 
+						add_opinion = { 
+							who = ROOT
+							modifier = hre_province_left
+						}
+					}
+					add_imperial_influence = -1
+				}
+				set_capital = 1347
+				hidden_effect = { 
+					set_country_flag = tf_recalculate_communication_efficiency
+					set_country_flag = ai_tax_recalc
+				}
+			}
+			else = { 
+				change_tag = ITE
+				if = { 
+					limit = { 
+						owns = 2530
+					}
+					if = { 
+						limit = { 
+							is_part_of_hre = yes
+							ROOT = { 
+								is_part_of_hre = no
+							}
+						}
+						set_in_empire = no
+						swap_non_generic_missions = yes
+						emperor = { 
+							add_opinion = { 
+								who = ROOT
+								modifier = hre_province_left
+							}
+						}
+						add_imperial_influence = -1
+					}
+					set_capital = 2530
+					hidden_effect = { 
+						set_country_flag = tf_recalculate_communication_efficiency
+						set_country_flag = ai_tax_recalc
+					}
+				}
+				else_if = { 
+					limit = { 
+						owns = 1347
+					}
+					if = { 
+						limit = { 
+							is_part_of_hre = yes
+							ROOT = { 
+								is_part_of_hre = no
+							}
+						}
+						set_in_empire = no
+						swap_non_generic_missions = yes
+						emperor = { 
+							add_opinion = { 
+								who = ROOT
+								modifier = hre_province_left
+							}
+						}
+						add_imperial_influence = -1
+					}
+					set_capital = 1347
+					hidden_effect = { 
+						set_country_flag = tf_recalculate_communication_efficiency
+						set_country_flag = ai_tax_recalc
+					}
+				}
+			}
+		}
+		add_absolutism = 10
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.026
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		baltic_region = { 
+			type = all
+			owned_by = ROOT
+		}
+	}
+	option = { 
+		name = "mission_event.026.opta"
+		prussia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		prussia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = TEU
+				}
+			}
+			change_tag = TEU
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 1844
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+}
+country_event = { 
+	id = mission_event.027
+	title = "mission_event.xxx.name"
+	desc = "mission_event.xxx.desc"
+	picture = OVERLORDVASSAL_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+		prussia_region = { 
+			type = all
+			owned_by = ROOT
+		}
+	}
+	option = { 
+		name = "mission_event.027.opta"
+		change_tag = PRU
+		add_absolutism = 10
+		prussia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		prussia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				OR = { 
+					has_country_flag = teu_crusader
+					has_country_flag = lvo_crusader
+				}
+			}
+			change_primary_culture = prussian
+			baltic_region = { 
+				limit = { 
+					owned_by = ROOT
+				}
+				hidden_effect = { 
+					remove_core = ROOT
+				}
+				add_core = ROOT
+			}
+			baltic_region = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = elbe_river_german_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_5
+				}
+				NOT = { 
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+	}
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+	after = { 
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					OR = { 
+						has_country_flag = teu_crusader
+						has_country_flag = lvo_crusader
+					}
+				}
+				country_event = { 
+					id = mission_event.903
+					days = 1
+				}
+			}
+		}
+	}
+}
+country_event = { 
 	id = mission_event.028
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		lithuania_region = {
+	trigger = { 
+		lithuania_region = { 
 			type = all
 			owned_by = ROOT
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.028.opta"
-		form_LVO_effect = yes
+		baltic_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		baltic_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = LVO
+				}
+			}
+			change_tag = LVO
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 38
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.029
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		lithuania_region = {
+	trigger = { 
+		lithuania_region = { 
 			type = all
 			owned_by = ROOT
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.029.opta"
-		form_LIV_effect = yes
-	}
-	
-	option = {
-		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		change_tag = LIV
+		add_absolutism = 10
+		prussia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		prussia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		baltic_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		baltic_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = teutonic_order_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_5
+				}
+				NOT = { 
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
 		}
 	}
-	
-	after = {
-		hidden_effect = {
-			country_event = { id = mission_event.904 days = 1 }
+	option = { 
+		name = "mission_event.xxx.optz"
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+		}
+	}
+	after = { 
+		hidden_effect = { 
+			country_event = { 
+				id = mission_event.904
+				days = 1
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.030
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		owns = 379
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.030.opta"
-		form_KOJ_effect = yes
-		secularisation_effect = yes
+		palestine_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		palestine_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = KOJ
+				}
+			}
+			change_tag = KOJ
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 379
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		add_absolutism = 10
+		364 = { 
+			rename_capital = "Acre"
+			change_province_name = "Acre"
+		}
+		379 = { 
+			rename_capital = "Jerusalem"
+			change_province_name = "Jerusalem"
+		}
+		1331 = { 
+			rename_capital = "Val Moyse"
+			change_province_name = "Val Moyse"
+		}
+		2634 = { 
+			rename_capital = "Ascalon"
+			change_province_name = "Ascalon"
+		}
+		2635 = { 
+			rename_capital = "Tyr"
+			change_province_name = "Tyr"
+		}
+		2636 = { 
+			rename_capital = "Adraa"
+			change_province_name = "Adraa"
+		}
+		2575 = { 
+			rename_capital = "Krak de Montr�al"
+			change_province_name = "Montr�al"
+		}
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = KOJ_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		if = { 
+			limit = { 
+				government = theocracy
+			}
+			if = { 
+				limit = { 
+					adm_tech = 35
+				}
+				change_government = monarchy
+				add_government_reform = Pol_Succession4
+				add_government_reform = Pol_Assembly1
+				add_government_reform = Pol_Nobility1
+			}
+			else = { 
+				change_government = monarchy
+				add_government_reform = Pol_Succession1
+				add_government_reform = Pol_Assembly1
+				add_government_reform = Pol_Nobility1
+				add_government_reform = Pol_NominalEmpire
+			}
+			if = { 
+				limit = { 
+					religion = catholic
+					exists = PAP
+				}
+				PAP = { 
+					add_opinion = { 
+						who = ROOT
+						modifier = opinion_displeased
+					}
+				}
+			}
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.031
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.031.opta"
-		form_KOR_effect = yes
+		korea_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		korea_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = KOR
+				}
+			}
+			change_tag = KOR
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 2802
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = KOR_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.032
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.032.opta"
-		form_TIB_effect = yes
+		tibet_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		tibet_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = TIB
+				}
+			}
+			change_tag = TIB
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			add_country_modifier = { 
+				name = title_6
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = TIB_ideas_dg
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		if = { 
+			limit = { 
+				BHU = { 
+					AND = { 
+						OR = { 
+							is_subject_of_type = vassal
+							is_subject_of_type = custom_vassal
+						}
+						if = { 
+							limit = { 
+								always = yes
+							}
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			inherit = BHU
+		}
+		if = { 
+			limit = { 
+				MDO = { 
+					AND = { 
+						OR = { 
+							is_subject_of_type = vassal
+							is_subject_of_type = custom_vassal
+						}
+						if = { 
+							limit = { 
+								always = yes
+							}
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			inherit = MDO
+		}
+		if = { 
+			limit = { 
+				GUG = { 
+					AND = { 
+						OR = { 
+							is_subject_of_type = vassal
+							is_subject_of_type = custom_vassal
+						}
+						if = { 
+							limit = { 
+								always = yes
+							}
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			inherit = GUG
+		}
+		if = { 
+			limit = { 
+				UTS = { 
+					AND = { 
+						OR = { 
+							is_subject_of_type = vassal
+							is_subject_of_type = custom_vassal
+						}
+						if = { 
+							limit = { 
+								always = yes
+							}
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			inherit = UTS
+		}
+		if = { 
+			limit = { 
+				LDK = { 
+					AND = { 
+						OR = { 
+							is_subject_of_type = vassal
+							is_subject_of_type = custom_vassal
+						}
+						if = { 
+							limit = { 
+								always = yes
+							}
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			inherit = LDK
+		}
+		if = { 
+			limit = { 
+				SKK = { 
+					AND = { 
+						OR = { 
+							is_subject_of_type = vassal
+							is_subject_of_type = custom_vassal
+						}
+						if = { 
+							limit = { 
+								always = yes
+							}
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			inherit = SKK
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.033
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.033.opta"
-		form_RUS_effect = yes
+		north_russia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		north_russia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		russia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		russia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		east_russia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		east_russia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		steppes_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		steppes_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		sloboda_ukraine_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		sloboda_ukraine_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			add_country_modifier = { 
+				name = title_6
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = RUS
+				}
+			}
+			change_tag = RUS
+		}
+		set_country_flag = rus_formed
+		add_absolutism = 10
+		clr_country_flag = great_predator_plan_set
+		every_province = { 
+			limit = { 
+				has_province_flag = conquest_expansion_target_MOS
+			}
+			clr_province_flag = conquest_expansion_target_MOS
+			set_province_flag = conquest_expansion_target_MOS
+		}
+		set_country_flag = great_predator
+		every_country = { 
+			limit = { 
+				OR = { 
+					primary_culture = russian
+					capital_scope = { 
+						region = north_russia_region
+					}
+					capital_scope = { 
+						region = russia_region
+					}
+					capital_scope = { 
+						region = east_russia_region
+					}
+					tag = LIT
+					tag = POL
+					tag = PLC
+				}
+				NOT = { 
+					tag = ROOT
+				}
+				NOT = { 
+					is_subject_of = ROOT
+				}
+			}
+			add_historical_rival = RUS
+			ROOT = { 
+				add_historical_rival = PREV
+			}
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.034
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			has_country_flag = k_of_den
 			has_country_flag = k_of_nor
 			has_country_flag = k_of_swe
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.034.opta"
-		form_DAN_effect = yes
+		danish_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		danish_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		norwegian_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		norwegian_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = DAN
+				}
+			}
+			change_tag = DAN
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = scandanavian_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		every_country = { 
+			limit = { 
+				OR = { 
+					primary_culture = norwegian
+					primary_culture = danish
+					capital_scope = { 
+						region = danish_region
+					}
+					capital_scope = { 
+						region = norwegian_region
+					}
+				}
+				NOT = { 
+					tag = ROOT
+				}
+			}
+			add_historical_rival = DAN
+			ROOT = { 
+				add_historical_rival = PREV
+			}
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.035
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			has_country_flag = k_of_den
 			has_country_flag = k_of_nor
 			has_country_flag = k_of_swe
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.035.opta"
-		form_KAL_effect = yes
+		scandinavia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		scandinavia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		danish_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		danish_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		norwegian_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		norwegian_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		finland_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		finland_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = KAL
+				}
+			}
+			change_tag = KAL
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = scandanavian_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.036
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		owns = 1402
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.036.opta"
-		trigger = { OR = { religion = orthodox religion = coptic religion = chaldean } }
-		form_BYZ_effect = yes
+		trigger = { 
+			OR = { 
+				religion = orthodox
+				religion = coptic
+				religion = chaldean
+			}
+		}
+		greece_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		greece_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		north_anatolia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		north_anatolia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		south_anatolia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		south_anatolia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			add_country_modifier = { 
+				name = title_6
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = BYZ
+				}
+			}
+			change_tag = BYZ
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 1402
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = BYZ_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.036.optb"
-		trigger = { religion = catholic }
-		form_LAT_effect = yes
+		trigger = { 
+			religion = catholic
+		}
+		thrace_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		thrace_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		greece_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		greece_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		north_anatolia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		north_anatolia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			add_country_modifier = { 
+				name = title_6
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = LAT
+				}
+			}
+			change_tag = LAT
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 1402
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = LAT_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.036.optc"
-		trigger = { OR = { ai = no AND = { ai = yes NOT = { religion = orthodox } NOT = { religion = catholic } } } }
-		add_country_modifier = {
+		trigger = { 
+			OR = { 
+				ai = no
+				AND = { 
+					ai = yes
+					NOT = { 
+						religion = orthodox
+					}
+					NOT = { 
+						religion = catholic
+					}
+				}
+			}
+		}
+		add_country_modifier = { 
 			name = "defeated_byzantine_empire"
-			duration = 9125 #25 years
+			duration = 9125
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.037
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = d_of_sar
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.037.opta"
-		form_SAR_effect = yes
+		corsica_sardinia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		corsica_sardinia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				OR = { 
+					has_country_modifier = title_1
+					has_country_modifier = title_2
+					has_country_modifier = title_3
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_4
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = SAR
+				}
+			}
+			change_tag = SAR
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 2242
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = SAR_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.038
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		primary_culture = schwabisch
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.038.opta"
-		form_SWA_effect = yes
+		lower_swabia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		lower_swabia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		upper_swabia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		upper_swabia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_prestige = 20
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				OR = { 
+					has_country_modifier = title_1
+					has_country_modifier = title_2
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					hre_size = 1
+				}
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		change_tag = SWA
+		add_absolutism = 10
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.039
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		culture = pommeranian
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.039.opta"
-		form_POM_effect = yes
+		vorpommern_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		vorpommern_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		hinterpommern_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		hinterpommern_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_prestige = 20
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				OR = { 
+					has_country_modifier = title_1
+					has_country_modifier = title_2
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		change_tag = POM
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = elbe_river_german_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.040
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		east_armenia_area = {
+	trigger = { 
+		east_armenia_area = { 
 			type = all
 			country_or_non_sovereign_subject_holds = ROOT
 		}
-		west_armenia_area = {
+		west_armenia_area = { 
 			type = all
 			country_or_non_sovereign_subject_holds = ROOT
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.040.opta"
-		form_ARM_effect = yes
+		cilicia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		cilicia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		malatya_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		malatya_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		sophene_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		sophene_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		upper_armenia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		upper_armenia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		van_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		van_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		west_armenia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		west_armenia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		east_armenia_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		east_armenia_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_prestige = 20
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = ARM
+				}
+			}
+			change_tag = ARM
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 1445
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_5
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		add_absolutism = 10
+		hidden_effect = { 
+			country_event = { 
+				id = ideagroups.9000
+				days = 1
+			}
+		}
+		custom_tooltip = swap_national_ideas
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.041
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = austrian
 			primary_culture = slovenian
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.041.opta"
-		form_HAB_effect = yes
+		austrian_circle_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		austrian_circle_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_prestige = 10
+		change_tag = HAB
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = danubian_alpine_german_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.042
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			has_country_flag = k_of_fez
 			has_country_flag = k_of_mor
 			has_country_flag = k_of_alg
@@ -1113,249 +5956,967 @@ country_event = {
 			has_country_flag = k_of_haf
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.042.opta"
-		form_ALM_effect = yes
+		andalucia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			add_core = ROOT
+		}
+		andalucia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		west_maghreb_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			add_core = ROOT
+		}
+		west_maghreb_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		toledo_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			add_core = ROOT
+		}
+		toledo_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		alentejo_area = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			add_core = ROOT
+		}
+		alentejo_area = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_prestige = 10
+		if = { 
+			limit = { 
+				has_global_flag = additional_tags_enabled
+			}
+			change_tag = ALM
+		}
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			add_country_modifier = { 
+				name = title_6
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		set_country_flag = al_andalus_claimed
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = ALM_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.043
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = high_saxon
 			primary_culture = thuringian
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.043.opta"
-		form_SAX_effect = yes
+		upper_saxon_circle_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		upper_saxon_circle_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		add_prestige = 20
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				OR = { 
+					has_country_modifier = title_1
+					has_country_modifier = title_2
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					hre_size = 1
+				}
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				NOT = { 
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_5
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		change_tag = SAX
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = elbe_river_german_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		if = { 
+			limit = { 
+				has_country_flag = wettin_succession
+			}
+			clr_country_flag = wettin_succession
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.044
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		culture_group = low_frankish
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.044.opta"
-		form_NED_effect = yes
-		secularisation_effect = yes
+		belgii_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		belgii_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		low_countries_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		low_countries_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_3
+					has_country_modifier = title_4
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		add_prestige = 20
+		change_tag = NED
+		add_absolutism = 10
+		if = { 
+			limit = { 
+				has_custom_ideas = no
+				NOT = { 
+					has_idea_group = NED_ideas
+				}
+			}
+			hidden_effect = { 
+				country_event = { 
+					id = ideagroups.9000
+					days = 1
+				}
+			}
+			custom_tooltip = swap_national_ideas
+		}
+		clr_global_flag = dutch_rebellion_start
+		set_global_flag = dutch_rebellion_end
+		NED = { 
+			every_owned_province = { 
+				remove_province_modifier = estates_general_1
+				remove_province_modifier = estates_general_2
+				remove_province_modifier = estates_general_3
+			}
+		}
+		if = { 
+			limit = { 
+				government = theocracy
+			}
+			if = { 
+				limit = { 
+					adm_tech = 35
+				}
+				change_government = monarchy
+				add_government_reform = Pol_Succession4
+				add_government_reform = Pol_Assembly1
+				add_government_reform = Pol_Nobility1
+			}
+			else = { 
+				change_government = monarchy
+				add_government_reform = Pol_Succession1
+				add_government_reform = Pol_Assembly1
+				add_government_reform = Pol_Nobility1
+				add_government_reform = Pol_NominalEmpire
+			}
+			if = { 
+				limit = { 
+					religion = catholic
+					exists = PAP
+				}
+				PAP = { 
+					add_opinion = { 
+						who = ROOT
+						modifier = opinion_displeased
+					}
+				}
+			}
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.045
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.045.opta"
-		form_LOR_effect = yes
+		prussia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		prussia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = LOR
+				}
+			}
+			change_tag = LOR
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 189
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.046
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = s_of_rum
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.046.opta"
-		form_TUR_effect = yes
+		greece_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		greece_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		north_anatolia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		north_anatolia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		south_anatolia_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		south_anatolia_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_3
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			add_country_modifier = { 
+				name = title_6
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+		}
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+			}
+			change_tag = TUR
+		}
+		if = { 
+			limit = { 
+				government = republic
+			}
+			change_tag = TUY
+		}
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 1402
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+		add_absolutism = 10
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.047
 	title = "mission_event.xxx.name"
 	desc = "mission_event.xxx.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		culture_group = low_frankish
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.047.opta"
-		form_EBU_effect = yes
-		secularisation_effect = yes
+		belgii_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		belgii_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		low_countries_region = { 
+			limit = { 
+				owned_by = ROOT
+			}
+			hidden_effect = { 
+				remove_core = ROOT
+			}
+			add_core = ROOT
+		}
+		low_countries_region = { 
+			limit = { 
+				NOT = { 
+					owned_by = ROOT
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					has_country_modifier = title_3
+					has_country_modifier = title_4
+					has_country_modifier = title_5
+					has_country_modifier = title_6
+				}
+			}
+			remove_country_modifier = title_1
+			remove_country_modifier = title_2
+			remove_country_modifier = title_4
+			remove_country_modifier = title_5
+			remove_country_modifier = title_6
+			add_country_modifier = { 
+				name = title_3
+				duration = -1
+			}
+			clr_country_flag = title_1
+			clr_country_flag = title_2
+			clr_country_flag = title_3
+			clr_country_flag = title_4
+			clr_country_flag = title_5
+			clr_country_flag = title_6
+			set_country_flag = title_3
+		}
+		add_prestige = 20
+		change_tag = EBU
+		add_absolutism = 10
+		clr_global_flag = dutch_rebellion_start
+		set_global_flag = dutch_rebellion_end
+		EBU = { 
+			every_owned_province = { 
+				remove_province_modifier = estates_general_1
+				remove_province_modifier = estates_general_2
+				remove_province_modifier = estates_general_3
+			}
+		}
+		if = { 
+			limit = { 
+				government = theocracy
+			}
+			if = { 
+				limit = { 
+					adm_tech = 35
+				}
+				change_government = monarchy
+				add_government_reform = Pol_Succession4
+				add_government_reform = Pol_Assembly1
+				add_government_reform = Pol_Nobility1
+			}
+			else = { 
+				change_government = monarchy
+				add_government_reform = Pol_Succession1
+				add_government_reform = Pol_Assembly1
+				add_government_reform = Pol_Nobility1
+				add_government_reform = Pol_NominalEmpire
+			}
+			if = { 
+				limit = { 
+					religion = catholic
+					exists = PAP
+				}
+				PAP = { 
+					add_opinion = { 
+						who = ROOT
+						modifier = opinion_displeased
+					}
+				}
+			}
+		}
 	}
-	
-	option = {
+	option = { 
 		name = "mission_event.xxx.optz"
-		trigger = { ai = no }
-		capital_scope = {
-			add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		trigger = { 
+			ai = no
+		}
+		capital_scope = { 
+			if = { 
+				limit = { 
+					has_province_modifier = mis_prov_growth
+				}
+				extend_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
+			else = { 
+				add_province_modifier = { 
+					name = mis_prov_growth
+					duration = 36560
+				}
+			}
 		}
 	}
 }
-
-# Mission-related event
-country_event = {
+country_event = { 
 	id = mission_event.901
 	title = "mission_event.901.name"
 	desc = "mission_event.901.desc"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "mission_event.901.opta"
-		ai_chance = {
+		ai_chance = { 
 			factor = 40
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 2330
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 2240
 			}
-			modifier = {
+			modifier = { 
 				factor = 0
-				NOT = { owns = 2330 }
-				NOT = { owns = 2240 }
+				NOT = { 
+					owns = 2330
+				}
+				NOT = { 
+					owns = 2240
+				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 2514
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 2550
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 179
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.3
 				dynasty = "d'�vreux"
 			}
 		}
-		if = {
-			limit = { NOT = { dynasty = "d'Evreux" } }
+		if = { 
+			limit = { 
+				NOT = { 
+					dynasty = "d'Evreux"
+				}
+			}
 			set_dynasty = "de Navarre"
 		}
 		change_primary_culture = normand
 		set_country_flag = normand_king
 		swap_non_generic_missions = yes
 	}
-	option = {
+	option = { 
 		name = "mission_event.901.optb"
-		ai_chance = {
+		ai_chance = { 
 			factor = 60
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 210
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 3370
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 1421
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 198
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 209
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 1409
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 211
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 3368
 			}
-			modifier = {
+			modifier = { 
 				factor = 1.1
 				owns = 3369
 			}
 		}
-		if = {
-			limit = { dynasty = "d'Evreux" }
-			random_list = {
-				50 = { set_dynasty = "Nafarrokoa" }
-				50 = { set_dynasty = "Normandiakoa" }
+		if = { 
+			limit = { 
+				dynasty = "d'Evreux"
+			}
+			random_list = { 
+				50 = { 
+					set_dynasty = "Nafarrokoa"
+				}
+				50 = { 
+					set_dynasty = "Normandiakoa"
+				}
 			}
 		}
 		change_primary_culture = basque
@@ -1363,8 +6924,7 @@ country_event = {
 		swap_non_generic_missions = yes
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.902
 	title = "mission_event.902.name"
 	desc = "mission_event.902.desc"
@@ -1392,91 +6952,116 @@ country_event = {
 		swap_non_generic_missions = yes
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.903
 	title = "mission_event.903.name"
 	desc = "mission_event.903.desc"
 	picture = OVERLORDVASSAL_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "mission_event.903.opta"
 		set_country_flag = baltic_crus_west
 		set_country_flag = baltic_crus_secul
 		swap_non_generic_missions = yes
 	}
-	option = {
+	option = { 
 		name = "mission_event.903.optb"
-		trigger = { ai = no }
+		trigger = { 
+			ai = no
+		}
 		set_country_flag = baltic_crus_east
 		set_country_flag = baltic_crus_secul
 		swap_non_generic_missions = yes
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.904
 	title = "mission_event.904.name"
 	desc = "mission_event.903.desc"
 	picture = OVERLORDVASSAL_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "mission_event.903.opta"
 		set_country_flag = baltic_crus_west
 		set_country_flag = baltic_crus_secul
 		swap_non_generic_missions = yes
 	}
-	option = {
+	option = { 
 		name = "mission_event.903.optb"
-		trigger = { ai = no }
+		trigger = { 
+			ai = no
+		}
 		set_country_flag = baltic_crus_east
 		set_country_flag = baltic_crus_secul
 		swap_non_generic_missions = yes
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mission_event.905
 	title = "mission_event.905.name"
 	desc = "mission_event.905.desc"
 	picture = OVERLORDVASSAL_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "mission_event.905.opta"
 		set_country_flag = por_iberian_wedding
 		swap_non_generic_missions = yes
 	}
-	option = {
+	option = { 
 		name = "mission_event.905.optb"
-		trigger = { ai = no }
+		trigger = { 
+			ai = no
+		}
 		set_country_flag = por_iberian_conquest
 		swap_non_generic_missions = yes
 	}
 }
-
-# Mission-related Census event (replaces some mission-related flavour for missions the AI can't comlplete
-country_event = {
+country_event = { 
 	id = mission_event.999
 	title = "AI_Event"
 	desc = "AI_Event"
 	picture = OVERLORDVASSAL_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "AI_Event"
-		92 = {
-			if = {
-				limit = { is_year = 1470 NOT = { is_year = 1476 } }
+		92 = { 
+			if = { 
+				limit = { 
+					is_year = 1470
+					NOT = { 
+						is_year = 1476
+					}
+				}
 				change_province_name = "Mecheln"
 				rename_capital = "Mecheln"
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
-			if = {
-				limit = { is_year = 1670 NOT = { is_year = 1676 } }
+			if = { 
+				limit = { 
+					is_year = 1670
+					NOT = { 
+						is_year = 1676
+					}
+				}
 				change_province_name = "Bruxelle"
 				rename_capital = "Bruxelle"
-				owner = { add_years_of_income = 1 }
+				owner = { 
+					add_years_of_income = 1
+				}
 			}
 		}
 	}

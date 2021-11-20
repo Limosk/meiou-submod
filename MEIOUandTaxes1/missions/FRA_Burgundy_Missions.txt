@@ -1,117 +1,147 @@
-
-bur_conquest_zero = {
-
+bur_conquest_zero = { 
 	slot = 1
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bur
 	}
 	has_country_shield = yes
-	
-	bur_trade_ghent = {
+	bur_trade_ghent = { 
 		icon = mission_early_game_buildings
-		required_missions = { bur_subjugate_flanders }
+		required_missions = { bur_subjugate_flanders}
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 2363
 		}
-		trigger = {
-			2363 = {
+		trigger = { 
+			2363 = { 
 				owned_by = ROOT
-				has_local_modifier_value = { which = trade_value value = 15 }
+				has_local_modifier_value = { 
+					which = trade_value
+					value = 15
+				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_years_of_income = 1
 		}
 	}
-	
-	bur_university_leuven = {
+	bur_university_leuven = { 
 		icon = mission_early_game_buildings
-		required_missions = { bur_subjugate_brabant }
+		required_missions = { bur_subjugate_brabant}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 92
 		}
-		trigger = {
-			92 = {
+		trigger = { 
+			92 = { 
 				owned_by = ROOT
-				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				hidden_trigger = { check_key = { lhs = TN_ProvSply41 value = 20 } }
-				custom_trigger_tooltip = { tooltip = fra_big_university_knowout }
+				OR = { 
+					has_building = urban_infrastructure_2
+					custom_trigger_tooltip = { 
+						tooltip = hasbuildingorbetter_tooltip
+						OR = { 
+							has_building = urban_infrastructure_3
+							has_building = urban_infrastructure_4
+							has_building = urban_infrastructure_5
+							has_building = urban_infrastructure_6
+						}
+					}
+				}
+				hidden_trigger = { 
+					check_variable = { 
+						which = ajy
+						value = 20
+					}
+				}
+				custom_trigger_tooltip = { 
+					tooltip = fra_big_university_knowout
+				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 15
 		}
 	}
-	
-	bur_capitol_mecheln = {
+	bur_capitol_mecheln = { 
 		icon = mission_early_game_buildings
-		required_missions = { bur_university_leuven }
+		required_missions = { bur_university_leuven}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 92
 		}
-		trigger = {
-			92 = {
+		trigger = { 
+			92 = { 
 				owned_by = ROOT
-				check_key = { lhs = Infra_Capitol value = 1 }
+				check_variable = { 
+					which = gcl
+					value = 1
+				}
 			}
 		}
-		effect = {
-			92 = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			92 = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 				change_province_name = "Mecheln"
 				rename_capital = "Mecheln"
 			}
 		}
 	}
-	
-	bur_capitol_bruxelle = {
+	bur_capitol_bruxelle = { 
 		icon = mission_early_game_buildings
-		required_missions = { bur_capitol_mecheln }
+		required_missions = { bur_capitol_mecheln}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 92
 		}
-		trigger = {
-			92 = {
+		trigger = { 
+			92 = { 
 				owned_by = ROOT
-				has_local_modifier_value = { which = trade_value value = 15 }
+				has_local_modifier_value = { 
+					which = trade_value
+					value = 15
+				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_years_of_income = 1
-			92 = {
+			92 = { 
 				change_province_name = "Bruxelle"
 				rename_capital = "Bruxelle"
 			}
 		}
 	}
 }
-
-bur_conquest_zero = {
-
+bur_conquest_zero = { 
 	slot = 1
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bur
 	}
 	has_country_shield = yes
-	
-	bur_centralise_state = {
+	bur_centralise_state = { 
 		icon = mission_conquer_50_development
-		required_missions = { bur_lorraine }
+		required_missions = { bur_lorraine}
 		position = 7
-		trigger = {
+		trigger = { 
 			absolutism = 30
 		}
-		effect = {
+		effect = { 
 			add_legitimacy = 10
 			add_horde_unity = 10
 			add_devotion = 10
@@ -119,50 +149,46 @@ bur_conquest_zero = {
 		}
 	}
 }
-
-bur_conquest_one = {
-
+bur_conquest_one = { 
 	slot = 2
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bur
 	}
 	has_country_shield = yes
-	
-	bur_subjugate_flanders = {
+	bur_subjugate_flanders = { 
 		icon = mission_sexy_flanders
-		required_missions = {  }
+		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = flanders_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			flanders_area = {
+		trigger = { 
+			flanders_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			if = {
-				limit = {
+		effect = { 
+			if = { 
+				limit = { 
 					exists = HAI
 				}
-				add_casus_belli = {
+				add_casus_belli = { 
 					type = cb_vassalize_mission
 					months = 1200
 					target = HAI
 				}
 			}
-			else = {
-				91 = {
-					if = {
-						limit = {
-							NOT = {
+			else = { 
+				91 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -170,10 +196,10 @@ bur_conquest_one = {
 						add_permanent_claim = ROOT
 					}
 				}
-				2364 = {
-					if = {
-						limit = {
-							NOT = {
+				2364 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -184,79 +210,76 @@ bur_conquest_one = {
 			}
 		}
 	}
-	
-	bur_subjugate_hainaut = {
+	bur_subjugate_hainaut = { 
 		icon = mission_have_two_subjects
-		required_missions = { bur_subjugate_flanders }
+		required_missions = { bur_subjugate_flanders}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 91
 				province_id = 2364
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			91 = {
+		trigger = { 
+			91 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2364 = {
+			2364 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 20
 		}
 	}
 }
-
-bur_conquest_two = {
-
+bur_conquest_two = { 
 	slot = 3
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bur
 	}
 	has_country_shield = yes
-
-	bur_defeat_armagnac = {
+	bur_defeat_armagnac = { 
 		icon = mission_have_two_subjects
-		required_missions = {  }
+		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 2332
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			2332 = {
+		trigger = { 
+			2332 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			belgii_region = {
-				NOT = { country_or_non_sovereign_subject_holds = AMG }
+			belgii_region = { 
+				NOT = { 
+					country_or_non_sovereign_subject_holds = AMG
+				}
 			}
 		}
-		effect = {
-			if = {
-				limit = {
+		effect = { 
+			if = { 
+				limit = { 
 					exists = LUX
 				}
-				add_casus_belli = {
+				add_casus_belli = { 
 					type = cb_vassalize_mission
 					months = 1200
 					target = LUX
 				}
 			}
-			else = {
-				94 = {
-					if = {
-						limit = {
-							NOT = {
+			else = { 
+				94 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -264,10 +287,10 @@ bur_conquest_two = {
 						add_permanent_claim = ROOT
 					}
 				}
-				1511 = {
-					if = {
-						limit = {
-							NOT = {
+				1511 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -278,44 +301,43 @@ bur_conquest_two = {
 			}
 		}
 	}
-	
-	bur_subjugate_luxemburg = {
+	bur_subjugate_luxemburg = { 
 		icon = mission_have_two_subjects
-		required_missions = { bur_defeat_armagnac }
+		required_missions = { bur_defeat_armagnac}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 94
 				province_id = 1511
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			94 = {
+		trigger = { 
+			94 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1511 = {
+			1511 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			if = {
-				limit = {
+		effect = { 
+			if = { 
+				limit = { 
 					exists = BRB
 				}
-				add_casus_belli = {
+				add_casus_belli = { 
 					type = cb_vassalize_mission
 					months = 1200
 					target = BRB
 				}
 			}
-			else = {
-				92 = {
-					if = {
-						limit = {
-							NOT = {
+			else = { 
+				92 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -323,10 +345,10 @@ bur_conquest_two = {
 						add_permanent_claim = ROOT
 					}
 				}
-				2367 = {
-					if = {
-						limit = {
-							NOT = {
+				2367 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -334,10 +356,10 @@ bur_conquest_two = {
 						add_permanent_claim = ROOT
 					}
 				}
-				95 = {
-					if = {
-						limit = {
-							NOT = {
+				95 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -349,58 +371,55 @@ bur_conquest_two = {
 		}
 	}
 }
-
-bur_conquest_three = {
+bur_conquest_three = { 
 	slot = 2
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bur
 	}
 	has_country_shield = yes
-	
-	bur_subjugate_brabant = {
+	bur_subjugate_brabant = { 
 		icon = mission_have_two_subjects
-		required_missions = { bur_subjugate_hainaut bur_subjugate_luxemburg }
+		required_missions = { bur_subjugate_hainaut bur_subjugate_luxemburg}
 		position = 3
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 92
 				province_id = 95
 				province_id = 2367
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			92 = {
+		trigger = { 
+			92 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			95 = {
+			95 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2367 = {
+			2367 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			if = {
-				limit = {
+		effect = { 
+			if = { 
+				limit = { 
 					exists = HOL
 				}
-				add_casus_belli = {
+				add_casus_belli = { 
 					type = cb_vassalize_mission
 					months = 1200
 					target = HOL
 				}
 			}
-			else = {
-				holland_area = {
-					if = {
-						limit = {
-							NOT = {
+			else = { 
+				holland_area = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -412,49 +431,46 @@ bur_conquest_three = {
 		}
 	}
 }
-
-bur_conquest_four = {
+bur_conquest_four = { 
 	slot = 2
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bur
 	}
 	has_country_shield = yes
-
-	bur_subjugate_holland = {
+	bur_subjugate_holland = { 
 		icon = mission_have_two_subjects
-		required_missions = { bur_subjugate_brabant }
+		required_missions = { bur_subjugate_brabant}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = holland_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			holland_area = {
+		trigger = { 
+			holland_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			if = {
-				limit = {
+		effect = { 
+			if = { 
+				limit = { 
 					exists = GEL
 				}
-				add_casus_belli = {
+				add_casus_belli = { 
 					type = cb_vassalize_mission
 					months = 1200
 					target = GEL
 				}
 			}
-			else = {
-				2449 = {
-					if = {
-						limit = {
-							NOT = {
+			else = { 
+				2449 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -462,10 +478,10 @@ bur_conquest_four = {
 						add_permanent_claim = ROOT
 					}
 				}
-				99 = {
-					if = {
-						limit = {
-							NOT = {
+				99 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -473,10 +489,10 @@ bur_conquest_four = {
 						add_permanent_claim = ROOT
 					}
 				}
-				1372 = {
-					if = {
-						limit = {
-							NOT = {
+				1372 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -484,10 +500,10 @@ bur_conquest_four = {
 						add_permanent_claim = ROOT
 					}
 				}
-				2450 = {
-					if = {
-						limit = {
-							NOT = {
+				2450 = { 
+					if = { 
+						limit = { 
+							NOT = { 
 								owned_by = ROOT
 								is_core = ROOT
 							}
@@ -499,259 +515,270 @@ bur_conquest_four = {
 		}
 	}
 }
-
-bur_conquest_five = {
+bur_conquest_five = { 
 	slot = 3
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bur
 	}
 	has_country_shield = yes
-	
-	bur_subjugate_gelre = {
+	bur_subjugate_gelre = { 
 		icon = mission_have_two_subjects
-		required_missions = { bur_subjugate_brabant }
+		required_missions = { bur_subjugate_brabant}
 		position = 4
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 2449
 				province_id = 99
 				province_id = 1372
 				province_id = 2450
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			2449 = {
+		trigger = { 
+			2449 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			99 = {
+			99 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1372 = {
+			1372 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			2450 = {
+			2450 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 20
 		}
 	}
 }
-
-bur_conquest_six = {
+bur_conquest_six = { 
 	slot = 2
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bur
 	}
 	has_country_shield = yes
-
-	bur_subjects = {
+	bur_subjects = { 
 		icon = mission_alliances
-		required_missions = { bur_subjugate_holland bur_subjugate_gelre }
+		required_missions = { bur_subjugate_holland bur_subjugate_gelre}
 		position = 5
-		trigger = {
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = bur_subjects.tooltip
-				NOT = {
-					any_subject_country = {
+				NOT = { 
+					any_subject_country = { 
 						liberty_desire = 1
 					}
 				}
 			}
 		}
-		
-		effect = {
-			lorraine_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			lorraine_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	
-	bur_lorraine = {
+	bur_lorraine = { 
 		icon = mission_conquer_50_development
-		required_missions = { bur_subjects }
+		required_missions = { bur_subjects}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = lorraine_area
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 		}
-		
-		trigger = {
-			lorraine_area = {
+		trigger = { 
+			lorraine_area = { 
 				type = all
 				owned_by = ROOT
 			}
-			emperor = { has_opinion = { who = ROOT value = 100 } }
+			emperor = { 
+				has_opinion = { 
+					who = ROOT
+					value = 100
+				}
+			}
 			prestige = 25
 		}
-		
-		effect = {
-			93 = {
+		effect = { 
+			93 = { 
 				add_permanent_claim = ROOT
 			}
-			2451 = {
+			2451 = { 
 				add_permanent_claim = ROOT
 			}
-			country_event = { id = mission_event.003 }
-			hidden_effect = { complete_mission = bur_lorraine }
+			country_event = { 
+				id = mission_event.003
+			}
+			hidden_effect = { 
+				complete_mission = bur_lorraine
+			}
 		}
 	}
-	
-	bur_liege = {
+	bur_liege = { 
 		icon = mission_have_two_subjects
-		required_missions = { bur_lorraine }
+		required_missions = { bur_lorraine}
 		position = 7
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 93
 				province_id = 2451
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		
-		trigger = {
-			93 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			2451 = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
-		effect = {
+		trigger = { 
+			93 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			2451 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
 			add_prestige = 15
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = "bur_diplo_mod"
-				duration = 9125 #25 years
+				duration = 9125
 			}
-			frisia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			frisia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
 }
-
-bur_conquest_seven = {
+bur_conquest_seven = { 
 	slot = 3
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bur
 	}
 	has_country_shield = yes
-	
-	bur_frisia = {
+	bur_frisia = { 
 		icon = mission_cannons_firing
-		required_missions = { bur_lorraine }
+		required_missions = { bur_lorraine}
 		position = 7
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = frisia_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		
-		trigger = {
-			frisia_area = {
+		trigger = { 
+			frisia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
-		effect = {
+		effect = { 
 			add_prestige = 20
 			add_mil_power = 100
-			1975 = {
-				add_trade_modifier = {
+			1975 = { 
+				add_trade_modifier = { 
 					who = root
-					duration = 9125 #25 years
+					duration = 9125
 					power = 20
 					key = bur_channel_ambition
 				}
 			}
 		}
 	}
-	
 }
-
-bur_arles = {
-
+bur_arles = { 
 	slot = 2
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = d_of_bur
 	}
 	has_country_shield = yes
-
-	bur_nevers = {
+	bur_nevers = { 
 		icon = mission_have_two_subjects
 		required_missions = { }
 		position = 8
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 191
-			NOT = { owned_by = ROOT }
-		}
-		trigger = {
-			191 = {
+			NOT = { 
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			romandie_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		trigger = { 
+			191 = { 
+				owned_by = ROOT
+			}
+		}
+		effect = { 
+			romandie_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	
-	bur_romandie = {
+	bur_romandie = { 
 		icon = mission_unite_home_region
-		required_missions = { bur_nevers }
+		required_missions = { bur_nevers}
 		position = 9
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = romandie_area
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 		}
-		trigger = {
-			romandie_area = {
+		trigger = { 
+			romandie_area = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			savoy_dauphine_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			savoy_dauphine_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			2385 = {
-				if = {
-					limit = {
-						NOT = {
+			2385 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -761,32 +788,33 @@ bur_arles = {
 			}
 		}
 	}
-	
-	bur_cisjurania = {
+	bur_cisjurania = { 
 		icon = mission_monarch_in_throne_room
-		required_missions = { bur_romandie }
+		required_missions = { bur_romandie}
 		position = 10
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = savoy_dauphine_area
 				province_id = 2385
 			}
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 		}
-		trigger = {
-			savoy_dauphine_area = {
+		trigger = { 
+			savoy_dauphine_area = { 
 				type = all
 				owned_by = ROOT
 			}
-			2385 = {
+			2385 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			1512 = {
-				if = {
-					limit = {
-						NOT = {
+		effect = { 
+			1512 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -794,10 +822,10 @@ bur_arles = {
 					add_permanent_claim = ROOT
 				}
 			}
-			3860 = {
-				if = {
-					limit = {
-						NOT = {
+			3860 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -805,10 +833,10 @@ bur_arles = {
 					add_permanent_claim = ROOT
 				}
 			}
-			201 = {
-				if = {
-					limit = {
-						NOT = {
+			201 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -816,10 +844,10 @@ bur_arles = {
 					add_permanent_claim = ROOT
 				}
 			}
-			3377 = {
-				if = {
-					limit = {
-						NOT = {
+			3377 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -829,41 +857,46 @@ bur_arles = {
 			}
 		}
 	}
-	
-	bur_provence = {
+	bur_provence = { 
 		icon = mission_monarch_in_throne_room
-		required_missions = { bur_cisjurania }
+		required_missions = { bur_cisjurania}
 		position = 11
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 201
 				province_id = 1512
 				province_id = 3377
 				province_id = 3860
 			}
-			NOT = { owned_by = ROOT }
-		}
-		trigger = {
-			201 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			1512 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			3377 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			3860 = {
-				country_or_non_sovereign_subject_holds = ROOT
+			NOT = { 
+				owned_by = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		trigger = { 
+			201 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1512 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			3377 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			3860 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			add_country_modifier = { 
 				name = "bur_arles_mod"
-				duration = 9125 #25 years
+				duration = 9125
 			}
-			country_event = { id = mission_event.002 }
-			hidden_effect = { complete_mission = bur_provence }
+			country_event = { 
+				id = mission_event.002
+			}
+			hidden_effect = { 
+				complete_mission = bur_provence
+			}
 		}
 	}
 }

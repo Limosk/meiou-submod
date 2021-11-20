@@ -1,5 +1,5 @@
-protestant_rebels = {
-	color = { 230 175 175 }
+protestant_rebels = { 
+	color = { 230 175 175}
 	area = nation
 	government = theocracy
 	religion = protestant
@@ -8,7 +8,7 @@ protestant_rebels = {
 	independence = none
 	unit_transfer = yes
 	gfx_type = culture_province
-    will_relocate = yes
+	will_relocate = yes
 	resilient = no
 	reinforcing = no
 	general = yes
@@ -21,224 +21,456 @@ protestant_rebels = {
 	handle_action_stability = no
 	handle_action_build_core = no
 	handle_action_send_missionary = yes
-	spawn_chance = {
+	spawn_chance = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = { is_religion_enabled = protestant }
+			NOT = { 
+				is_religion_enabled = protestant
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2
-			owner = {
-				NOT = {
+			owner = { 
+				NOT = { 
 					protestant = -2
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2
-			owner = {
-				NOT = {
+			owner = { 
+				NOT = { 
 					protestant = 0
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			owner = {
+			owner = { 
 				protestant = 1
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			owner = {
+			owner = { 
 				protestant = 3
 			}
 		}
-		modifier = {
-			NOT = {
+		modifier = { 
+			NOT = { 
 				religion = protestant
 			}
 			factor = 0.5
 		}
-		modifier = {
-			NOT = { MN_CheckProp = { religion = 2 type = TotP prop = 40 } }
+		modifier = { 
+			NOT = { 
+				OR = { 
+					AND = { 
+						is_variable_equal = { 
+							which = adv
+							value = 2
+						}
+						check_variable = { 
+							which = ayr
+							value = 40
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adx
+							value = 2
+						}
+						check_variable = { 
+							which = ays
+							value = 40
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adz
+							value = 2
+						}
+						check_variable = { 
+							which = ayt
+							value = 40
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aeb
+							value = 2
+						}
+						check_variable = { 
+							which = ayu
+							value = 40
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aed
+							value = 2
+						}
+						check_variable = { 
+							which = ayv
+							value = 40
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aef
+							value = 2
+						}
+						check_variable = { 
+							which = ayw
+							value = 40
+						}
+					}
+				}
+			}
 			factor = 0.5
 		}
-		modifier = {
-			NOT = { MN_CheckProp = { religion = 2 type = TotP prop = 30 } }
-		 	factor = 0.5
+		modifier = { 
+			NOT = { 
+				OR = { 
+					AND = { 
+						is_variable_equal = { 
+							which = adv
+							value = 2
+						}
+						check_variable = { 
+							which = ayr
+							value = 30
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adx
+							value = 2
+						}
+						check_variable = { 
+							which = ays
+							value = 30
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adz
+							value = 2
+						}
+						check_variable = { 
+							which = ayt
+							value = 30
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aeb
+							value = 2
+						}
+						check_variable = { 
+							which = ayu
+							value = 30
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aed
+							value = 2
+						}
+						check_variable = { 
+							which = ayv
+							value = 30
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aef
+							value = 2
+						}
+						check_variable = { 
+							which = ayw
+							value = 30
+						}
+					}
+				}
+			}
+			factor = 0.5
 		}
-		modifier = {
-			NOT = { MN_CheckProp = { religion = 2 type = TotP prop = 20 } }
+		modifier = { 
+			NOT = { 
+				OR = { 
+					AND = { 
+						is_variable_equal = { 
+							which = adv
+							value = 2
+						}
+						check_variable = { 
+							which = ayr
+							value = 20
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adx
+							value = 2
+						}
+						check_variable = { 
+							which = ays
+							value = 20
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = adz
+							value = 2
+						}
+						check_variable = { 
+							which = ayt
+							value = 20
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aeb
+							value = 2
+						}
+						check_variable = { 
+							which = ayu
+							value = 20
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aed
+							value = 2
+						}
+						check_variable = { 
+							which = ayv
+							value = 20
+						}
+					}
+					AND = { 
+						is_variable_equal = { 
+							which = aef
+							value = 2
+						}
+						check_variable = { 
+							which = ayw
+							value = 20
+						}
+					}
+				}
+			}
 			factor = 0.0
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			has_province_modifier = religious_autonomy
 		}
-		modifier = {
+		modifier = { 
 			factor = 50
 			has_missionary = yes
 			religion = protestant
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			any_neighbor_province = {
+			any_neighbor_province = { 
 				has_missionary = yes
 				religion = protestant
 			}
 		}
-		# modifier = {
-		# 	owner = {
-		# 		has_country_flag = religious_turmoil_protestant
-		# 	}
-		# 	has_province_modifier = heretic_bastion
-		# 	factor = 10
-		# }
-		modifier = {
+		modifier = { 
 			factor = 1.4
-			owner = {
-				NOT = {
+			owner = { 
+				NOT = { 
 					religious_unity = 0.80
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.4
-			owner = {
-				NOT = {
+			owner = { 
+				NOT = { 
 					religious_unity = 0.60
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.4
-			owner = {
-				NOT = {
+			owner = { 
+				NOT = { 
 					religious_unity = 0.40
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.4
-			owner = {
-				NOT = {
+			owner = { 
+				NOT = { 
 					religious_unity = 0.20
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			is_overseas = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.4
-			owner = {
+			owner = { 
 				advisor = inquisitor_CL
 			}
 		}
-		modifier = {
-			owner = {
+		modifier = { 
+			owner = { 
 				at_war_with_religious_enemy = yes
-				any_country = {
+				any_country = { 
 					war_with = PREV
 					religion = protestant
 				}
 			}
 			factor = 1.4
 		}
-		modifier = {
-			owner = {
+		modifier = { 
+			owner = { 
 				at_war_with_religious_enemy = yes
-				any_country = {
+				any_country = { 
 					war_with = PREV
 					religion = protestant
-					#is_defender_of_faith = yes
 				}
 			}
 			factor = 1.4
 		}
-		modifier = {
-			owner = {
+		modifier = { 
+			owner = { 
 				at_war_with_religious_enemy = yes
-				any_country = {
+				any_country = { 
 					war_with = PREV
 					religion_group = christian
 				}
 			}
 			factor = 1.4
 		}
-		modifier = {
+		modifier = { 
 			has_province_modifier = fanatics_organizing
 			factor = 1.4
 		}
-		modifier = {
+		modifier = { 
 			has_province_modifier = religious_uprising_cooldown
 			factor = 0.1
 		}
 	}
-	movement_evaluation = {
+	movement_evaluation = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 10
 			controlled_by = protestant_rebels
 			has_province_modifier = heretic_bastion
 			has_siege = yes
 		}
-		modifier = {
+		modifier = { 
 			has_province_modifier = church_bastion
 			factor = 5
 		}
-		# modifier = {
-		# 	has_province_modifier = expulsion_of_heretics
-		# 	factor = 2
-		# }
-		modifier = {
+		modifier = { 
 			factor = 2
 			controlled_by = protestant_rebels
 			has_siege = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
 			controlled_by = protestant_rebels
 			has_siege = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.4
-			MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+			OR = { 
+				AND = { 
+					is_variable_equal = { 
+						which = adv
+						value = 2
+					}
+					check_variable = { 
+						which = ayr
+						value = 20
+					}
+				}
+				AND = { 
+					is_variable_equal = { 
+						which = adx
+						value = 2
+					}
+					check_variable = { 
+						which = ays
+						value = 20
+					}
+				}
+				AND = { 
+					is_variable_equal = { 
+						which = adz
+						value = 2
+					}
+					check_variable = { 
+						which = ayt
+						value = 20
+					}
+				}
+				AND = { 
+					is_variable_equal = { 
+						which = aeb
+						value = 2
+					}
+					check_variable = { 
+						which = ayu
+						value = 20
+					}
+				}
+				AND = { 
+					is_variable_equal = { 
+						which = aed
+						value = 2
+					}
+					check_variable = { 
+						which = ayv
+						value = 20
+					}
+				}
+				AND = { 
+					is_variable_equal = { 
+						which = aef
+						value = 2
+					}
+					check_variable = { 
+						which = ayw
+						value = 20
+					}
+				}
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.4
 			religion = protestant
 		}
-		# modifier = {
-		# 	factor = 0.1
-		# 	has_province_modifier = forced_conversion
-		# }
-		# modifier = {
-		# 	factor = 0.1
-		# 	has_province_modifier = religious_massacre
-		# }
-		modifier = {
+		modifier = { 
 			factor = 1.4
 			unrest = 2
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.4
 			unrest = 4
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.4
 			unrest = 6
 		}
 	}
-	siege_won_trigger = {
-		OR = {
+	siege_won_trigger = { 
+		OR = { 
 			fort_level = 1
 			is_capital = yes
-			NOT = {
-				any_neighbor_province = {
+			NOT = { 
+				any_neighbor_province = { 
 					owned_by = ROOT
 					controlled_by = ROOT
 					fort_level = 1
@@ -246,141 +478,101 @@ protestant_rebels = {
 			}
 		}
 	}
-	siege_won_effect = {
-		hidden_effect = {
-			add_province_modifier = {
+	siege_won_effect = { 
+		hidden_effect = { 
+			add_province_modifier = { 
 				name = religious_uprising_cooldown
 				duration = 7300
 				hidden = yes
 			}
 		}
-		#Set_province_flag = protestant_rebel_victory
-		owner = {
+		owner = { 
 			set_country_flag = religious_rebel_victory
 		}
-		##remove_province_modifier = expulsion_of_heretics
-		if = {
-			limit = {
-				NOT = {
-					any_neighbor_province = {
+		if = { 
+			limit = { 
+				NOT = { 
+					any_neighbor_province = { 
 						has_province_modifier = heretic_bastion
 					}
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = heretic_bastion
 				duration = 2000
 			}
 		}
 	}
-	can_negotiate_trigger = {
-		OR = {
-			any_owned_province = {
+	can_negotiate_trigger = { 
+		OR = { 
+			any_owned_province = { 
 				controlled_by = protestant_rebels
 			}
 			protestant = 1
 		}
 	}
-	can_enforce_trigger = {
-		# NOT = {
-		# 	any_owned_province = {
-		# 		has_province_modifier = church_bastion
-		# 	}
-		# }
-		any_owned_province = {
+	can_enforce_trigger = { 
+		any_owned_province = { 
 			controlled_by = protestant_rebels
 		}
 	}
 	demands_description = "protestant_rebels_demand"
-	demands_enforced_effect = {
+	demands_enforced_effect = { 
 		add_prestige = -50
-		hidden_effect = {
-			every_owned_province = {
-				add_province_modifier = {
+		hidden_effect = { 
+			every_owned_province = { 
+				add_province_modifier = { 
 					name = religious_uprising_cooldown
 					duration = 7300
 					hidden = yes
 				}
 			}
 		}
-		# if = {
-		# 	limit = {
-		# 		has_disaster = religious_civil_war
-		# 		OR = {
-		# 			capital_scope = {
-		# 				religion = protestant
-		# 			}
-		# 			overlord = {
-		# 				religion = protestant
-		# 			}
-		# 			any_owned_province = {
-		# 				religion = protestant
-		# 				culture_group = owner
-		# 				is_overseas = no
-		# 			}
-		# 		}
-		# 	}
-		# 	country_event = {
-		# 		id = dg_turmoil.048
-		# 		days = 0
-		# 	}
-		# }
-		# if = {
-		# 	limit = {
-		# 		has_disaster = religious_civil_war
-		# 		NOT = {
-		# 			OR = {
-		# 				capital_scope = {
-		# 					religion = protestant
-		# 				}
-		# 				overlord = {
-		# 					religion = protestant
-		# 				}
-		# 				any_owned_province = {
-		# 					religion = protestant
-		# 					culture_group = owner
-		# 					is_overseas = no
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# 	country_event = {
-		# 		id = dg_turmoil.047
-		# 		days = 0
-		# 	}
-		# }
-		every_owned_province = {
-			#clr_province_flag = protestant_rebel_victory
-		}
-		if = {
-			limit = {
+		every_owned_province = { }
+		if = { 
+			limit = { 
 				religion = protestant
 			}
 			remove_country_modifier = religious_tolerance
 			remove_country_modifier = edict_of_tolerance
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = religious_intolerance
 				duration = 2000
 			}
 			add_legitimacy = -25
 			add_prestige = -50
 		}
-		else_if = {
-			limit = {
-				NOT = { religion = protestant }
-				NOT = { government = theocracy }
-				OR = {
-					AND = {
-						capital_scope = { religion = protestant }
-						OR = {
-							western_christian = yes
+		else_if = { 
+			limit = { 
+				NOT = { 
+					religion = protestant
+				}
+				NOT = { 
+					government = theocracy
+				}
+				OR = { 
+					AND = { 
+						capital_scope = { 
+							religion = protestant
+						}
+						OR = { 
+							OR = { 
+								religion = catholic
+								religion = protestant
+								religion = reformed
+								religion = hussite
+								religion = waldensian
+								religion = lollard
+								religion = fraticelli
+								religion = holyleague
+							}
 							dominant_religion = protestant
 						}
 					}
-					overlord = {
+					overlord = { 
 						religion = protestant
 					}
-					any_owned_province = {
+					any_owned_province = { 
 						religion = protestant
 						culture_group = owner
 						is_overseas = no
@@ -390,12 +582,73 @@ protestant_rebels = {
 			change_religion = protestant
 			force_converted = yes
 		}
-		else = {
-			every_owned_province = {
-				limit = {
-					MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+		else = { 
+			every_owned_province = { 
+				limit = { 
+					OR = { 
+						AND = { 
+							is_variable_equal = { 
+								which = adv
+								value = 2
+							}
+							check_variable = { 
+								which = ayr
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adx
+								value = 2
+							}
+							check_variable = { 
+								which = ays
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adz
+								value = 2
+							}
+							check_variable = { 
+								which = ayt
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aeb
+								value = 2
+							}
+							check_variable = { 
+								which = ayu
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aed
+								value = 2
+							}
+							check_variable = { 
+								which = ayv
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aef
+								value = 2
+							}
+							check_variable = { 
+								which = ayw
+								value = 20
+							}
+						}
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = religious_autonomy
 					duration = 10000
 				}

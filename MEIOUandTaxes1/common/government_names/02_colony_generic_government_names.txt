@@ -1,10 +1,5 @@
-# For specific combinations of culture, religion and other such triggers
-# Will pick the first valid one it finds in list
-
-
-
-generic_colonial_government_title_1 = {
-	rank = {
+generic_colonial_government_title_1 = { 
+	rank = { 
 		1 = CAPTAINCY
 		2 = CAPTAINCY
 		3 = CAPTAINCY
@@ -12,8 +7,7 @@ generic_colonial_government_title_1 = {
 		5 = CAPTAINCY
 		6 = CAPTAINCY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CAPTAIN_MAJOR
 		2 = CAPTAIN_MAJOR
 		3 = CAPTAIN_MAJOR
@@ -21,8 +15,7 @@ generic_colonial_government_title_1 = {
 		5 = CAPTAIN_MAJOR
 		6 = CAPTAIN_MAJOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CAPTAIN_MAJOR
 		2 = CAPTAIN_MAJOR
 		3 = CAPTAIN_MAJOR
@@ -30,15 +23,25 @@ generic_colonial_government_title_1 = {
 		5 = CAPTAIN_MAJOR
 		6 = CAPTAIN_MAJOR
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-generic_colonial_government_title_2 = {
-	rank = {
+generic_colonial_government_title_2 = { 
+	rank = { 
 		1 = CAPTAINCY
 		2 = CAPTAINCY
 		3 = CAPTAINCY
@@ -46,8 +49,7 @@ generic_colonial_government_title_2 = {
 		5 = CAPTAINCY
 		6 = CAPTAINCY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CAPTAIN_MAJOR
 		2 = CAPTAIN_MAJOR
 		3 = CAPTAIN_MAJOR
@@ -55,8 +57,7 @@ generic_colonial_government_title_2 = {
 		5 = CAPTAIN_MAJOR
 		6 = CAPTAIN_MAJOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CAPTAIN_MAJOR
 		2 = CAPTAIN_MAJOR
 		3 = CAPTAIN_MAJOR
@@ -64,15 +65,25 @@ generic_colonial_government_title_2 = {
 		5 = CAPTAIN_MAJOR
 		6 = CAPTAIN_MAJOR
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-generic_colonial_government_title_3 = {
-	rank = {
+generic_colonial_government_title_3 = { 
+	rank = { 
 		1 = CAPTAINCY_GENERAL
 		2 = CAPTAINCY_GENERAL
 		3 = CAPTAINCY_GENERAL
@@ -80,8 +91,7 @@ generic_colonial_government_title_3 = {
 		5 = CAPTAINCY_GENERAL
 		6 = CAPTAINCY_GENERAL
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CAPTAIN_GENERAL
 		2 = CAPTAIN_GENERAL
 		3 = CAPTAIN_GENERAL
@@ -89,8 +99,7 @@ generic_colonial_government_title_3 = {
 		5 = CAPTAIN_GENERAL
 		6 = CAPTAIN_GENERAL
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CAPTAIN_GENERAL
 		2 = CAPTAIN_GENERAL
 		3 = CAPTAIN_GENERAL
@@ -98,15 +107,25 @@ generic_colonial_government_title_3 = {
 		5 = CAPTAIN_GENERAL
 		6 = CAPTAIN_GENERAL
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-generic_colonial_government_title_4 = {
-	rank = {
+generic_colonial_government_title_4 = { 
+	rank = { 
 		1 = CAPTAINCY_GENERAL
 		2 = CAPTAINCY_GENERAL
 		3 = CAPTAINCY_GENERAL
@@ -114,8 +133,7 @@ generic_colonial_government_title_4 = {
 		5 = CAPTAINCY_GENERAL
 		6 = CAPTAINCY_GENERAL
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CAPTAIN_GENERAL
 		2 = CAPTAIN_GENERAL
 		3 = CAPTAIN_GENERAL
@@ -123,8 +141,7 @@ generic_colonial_government_title_4 = {
 		5 = CAPTAIN_GENERAL
 		6 = CAPTAIN_GENERAL
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CAPTAIN_GENERAL
 		2 = CAPTAIN_GENERAL
 		3 = CAPTAIN_GENERAL
@@ -132,15 +149,25 @@ generic_colonial_government_title_4 = {
 		5 = CAPTAIN_GENERAL
 		6 = CAPTAIN_GENERAL
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-generic_colonial_government_title_5 = {
-	rank = {
+generic_colonial_government_title_5 = { 
+	rank = { 
 		1 = VICEROYALTY
 		2 = VICEROYALTY
 		3 = VICEROYALTY
@@ -148,8 +175,7 @@ generic_colonial_government_title_5 = {
 		5 = VICEROYALTY
 		6 = VICEROYALTY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = VICEROY
 		2 = VICEROY
 		3 = VICEROY
@@ -157,8 +183,7 @@ generic_colonial_government_title_5 = {
 		5 = VICEROY
 		6 = VICEROY
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = VICEREINE
 		2 = VICEREINE
 		3 = VICEREINE
@@ -166,15 +191,25 @@ generic_colonial_government_title_5 = {
 		5 = VICEREINE
 		6 = VICEREINE
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-generic_colonial_government_title_6 = {
-	rank = {
+generic_colonial_government_title_6 = { 
+	rank = { 
 		1 = VICEROYALTY
 		2 = VICEROYALTY
 		3 = VICEROYALTY
@@ -182,8 +217,7 @@ generic_colonial_government_title_6 = {
 		5 = VICEROYALTY
 		6 = VICEROYALTY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = VICEROY
 		2 = VICEROY
 		3 = VICEROY
@@ -191,8 +225,7 @@ generic_colonial_government_title_6 = {
 		5 = VICEROY
 		6 = VICEROY
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = VICEREINE
 		2 = VICEREINE
 		3 = VICEREINE
@@ -200,10 +233,20 @@ generic_colonial_government_title_6 = {
 		5 = VICEREINE
 		6 = VICEREINE
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }

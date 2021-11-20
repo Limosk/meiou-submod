@@ -1,260 +1,244 @@
-##############
-# Harbourage #
-##############
-
-harbour_infrastructure_0 = {
+harbour_infrastructure_0 = { 
 	cost = 1
 	time = 1
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 0 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 0
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 0 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 0
+		}
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.102
 		}
 	}
 }
-
-# Fishing harbour
-harbour_infrastructure_1 = {
+harbour_infrastructure_1 = { 
 	cost = 100
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 1 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 1
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 1 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 1
+		}
 	}
-	
-	modifier = {
-		#naval_forcelimit = 2
+	modifier = { 
 		local_ship_repair = 0.1
 		ship_recruit_speed = -0.1
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.102
 		}
 	}
 }
-
-# Trading harbour
-harbour_infrastructure_2 = {
+harbour_infrastructure_2 = { 
 	cost = 250
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 2 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 2
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 2 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 2
+		}
 	}
-	
-	modifier = {
-		#naval_forcelimit = 10
+	modifier = { 
 		local_ship_repair = 0.2
 		ship_recruit_speed = -0.2
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.102
 		}
 	}
 }
-
-# Huge Trading Harbour
-harbour_infrastructure_3 = {
+harbour_infrastructure_3 = { 
 	cost = 400
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 3 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 3
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 3 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 3
+		}
 	}
-	
-	modifier = {
-		#naval_forcelimit = 20
+	modifier = { 
 		local_ship_repair = 0.3
 		ship_recruit_speed = -0.3
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.102
 		}
 	}
 }
-
-# Great Warehouse
-harbour_infrastructure_4 = {
+harbour_infrastructure_4 = { 
 	cost = 600
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 4 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 4
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 4 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 4
+		}
 	}
-	
-	modifier = {
-		#naval_forcelimit = 30
+	modifier = { 
 		local_ship_repair = 0.4
 		ship_recruit_speed = -0.4
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.102
 		}
 	}
 }
-
-# Big Lighthouse
-harbour_infrastructure_5 = {
+harbour_infrastructure_5 = { 
 	cost = 800
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 5 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 5
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 5 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 5
+		}
 	}
-	
-	modifier = {
-		#naval_forcelimit = 40
+	modifier = { 
 		local_ship_repair = 0.5
 		ship_recruit_speed = -0.5
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.102
 		}
 	}
 }
-
-harbour_infrastructure_6 = {
+harbour_infrastructure_6 = { 
 	cost = 1200
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 6 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 6
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 6 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 6
+		}
 	}
-	
-	modifier = {
-		#naval_forcelimit = 80
+	modifier = { 
 		local_ship_repair = 0.75
 		ship_recruit_speed = -0.75
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.102
 		}
 	}
 }
-
-harbour_infrastructure_7 = {
+harbour_infrastructure_7 = { 
 	cost = 1200
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 7 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 7
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Harbourage value = 7 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gci
+			value = 7
+		}
 	}
-	
-	modifier = {
-		#naval_forcelimit = 80
+	modifier = { 
 		local_ship_repair = 0.9
 		ship_recruit_speed = -0.9
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.102
 		}
 	}

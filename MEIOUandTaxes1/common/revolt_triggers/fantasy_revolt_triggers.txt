@@ -1,37 +1,27 @@
-UEF = {
+UEF = { 
 	always = no
 }
-
-# Royal Hungary
-RHU = {
+RHU = { 
 	always = no
 }
-
-# Other unification nations
-ASE = {
+ASE = { 
 	always = no
 }
-
-CEL = {
+CEL = { 
 	always = no
 }
-
-JBC = {
+JBC = { 
 	always = no
 }
-
-ARL = {
+ARL = { 
 	always = no
 }
-
-NSE = {
+NSE = { 
 	always = no
 }
-
-OCC = {
+OCC = { 
 	always = no
 }
-
-GUP = {
+GUP = { 
 	always = no
 }

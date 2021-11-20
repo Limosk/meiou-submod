@@ -1,29 +1,26 @@
-# New World Conquest
-cb_new_world = {
-	is_triggered_only = yes # See cb_types.1
+cb_new_world = { 
+	is_triggered_only = yes
 	months = 12000
 	ai_peace_desire = -30
-
-	prerequisites = {
-		OR = {
-			AND = {
+	prerequisites = { 
+		OR = { 
+			AND = { 
 				has_idea = exploration_ideas_6
-	
-				NOT = {
-					capital_scope = {
-						OR = {
+				NOT = { 
+					capital_scope = { 
+						OR = { 
 							continent = south_america
 							continent = north_america
 						}
 					}
 				}
 			}
-			AND = {
+			AND = { 
 				is_colonial_nation = yes
-				overlord = {
-					NOT = {
-						capital_scope = {
-							OR = {
+				overlord = { 
+					NOT = { 
+						capital_scope = { 
+							OR = { 
 								continent = south_america
 								continent = north_america
 							}
@@ -32,24 +29,19 @@ cb_new_world = {
 				}
 			}
 		}
-		
-		FROM = {
-			capital_scope = {
-				OR = {
+		FROM = { 
+			capital_scope = { 
+				OR = { 
 					continent = south_america
 					continent = north_america
 				}
 			}
-			
 			is_colonial_nation = no
-			
-			NOT = {
+			NOT = { 
 				has_institution = Banking
 			}
 		}
-		
 		is_revolutionary = no
 	}
-
 	war_goal = new_world_conquest
 }

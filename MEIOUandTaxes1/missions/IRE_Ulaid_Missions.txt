@@ -1,48 +1,53 @@
-
-### Ulster Uniting Ireland
-ulaid_unification_missions_1 = {
+ulaid_unification_missions_1 = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_uls
 	}
 	has_country_shield = yes
-	
-	ulaid_conquer_ulster = {
+	ulaid_conquer_ulster = { 
 		icon = mission_unite_home_region
 		required_missions = { }
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = ulaid_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			ulaid_area = {
+		trigger = { 
+			ulaid_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			connacht_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			connacht_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			munster_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+			munster_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			3327 = {
-				if = {
-					limit = {
-						NOT = {
+			3327 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -50,10 +55,10 @@ ulaid_unification_missions_1 = {
 					add_permanent_claim = ROOT
 				}
 			}
-			3329 = {
-				if = {
-					limit = {
-						NOT = {
+			3329 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -61,10 +66,10 @@ ulaid_unification_missions_1 = {
 					add_permanent_claim = ROOT
 				}
 			}
-			3328 = {
-				if = {
-					limit = {
-						NOT = {
+			3328 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -72,40 +77,43 @@ ulaid_unification_missions_1 = {
 					add_permanent_claim = ROOT
 				}
 			}
-			country_event = { id = mission_event.021 }
-			hidden_effect = { complete_mission = ulaid_conquer_ulster }
+			country_event = { 
+				id = mission_event.021
+			}
+			hidden_effect = { 
+				complete_mission = ulaid_conquer_ulster
+			}
 		}
 	}
-		
-	ulaid_conquer_leinster = {
+	ulaid_conquer_leinster = { 
 		icon = mission_unite_home_region
-		required_missions = { ulaid_conquer_ulster }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { ulaid_conquer_ulster}
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 3327
 				province_id = 3329
 				province_id = 3328
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			3327 = {
+		trigger = { 
+			3327 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3329 = {
+			3329 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3328 = {
+			3328 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			373 = {
-				if = {
-					limit = {
-						NOT = {
+		effect = { 
+			373 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -116,37 +124,35 @@ ulaid_unification_missions_1 = {
 		}
 	}
 }
-
-ulaid_unification_missions_2 = {
+ulaid_unification_missions_2 = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_uls
 	}
 	has_country_shield = yes
-	
-	ulaid_conquer_connacht = {
+	ulaid_conquer_connacht = { 
 		icon = mission_unite_home_region
-		required_missions = { ulaid_conquer_ulster }
+		required_missions = { ulaid_conquer_ulster}
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = connacht_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			connacht_area = {
+		trigger = { 
+			connacht_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			1514 = {
-				if = {
-					limit = {
-						NOT = {
+		effect = { 
+			1514 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -154,10 +160,10 @@ ulaid_unification_missions_2 = {
 					add_permanent_claim = ROOT
 				}
 			}
-			1417 = {
-				if = {
-					limit = {
-						NOT = {
+			1417 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -165,10 +171,10 @@ ulaid_unification_missions_2 = {
 					add_permanent_claim = ROOT
 				}
 			}
-			3719 = {
-				if = {
-					limit = {
-						NOT = {
+			3719 = { 
+				if = { 
+					limit = { 
+						NOT = { 
 							owned_by = ROOT
 							is_core = ROOT
 						}
@@ -179,398 +185,578 @@ ulaid_unification_missions_2 = {
 		}
 	}
 }
-
-ulaid_unification_missions_3 = {
+ulaid_unification_missions_3 = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_uls
 	}
 	has_country_shield = yes
-	
-	ulaid_conquer_munster = {
+	ulaid_conquer_munster = { 
 		icon = mission_unite_home_region
-		required_missions = { ulaid_conquer_ulster }
+		required_missions = { ulaid_conquer_ulster}
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = munster_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			munster_area = {
+		trigger = { 
+			munster_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			brittany_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			brittany_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
 }
-
-### Ireland Conquer the Pale
-ulaid_finish_unification_missions = {
+ulaid_finish_unification_missions = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_uls
 	}
 	has_country_shield = yes
-	
-	ulaid_modernise_government = {
+	ulaid_modernise_government = { 
 		icon = mission_empire
-		required_missions = { ulaid_conquer_leinster ulaid_conquer_connacht ulaid_conquer_munster }
+		required_missions = { ulaid_conquer_leinster ulaid_conquer_connacht ulaid_conquer_munster}
 		position = 3
-		trigger = {
-			#NOT = { government = tribal }
+		trigger = { 
 			adm_tech = 7
 			stability = 1
 			legitimacy_equivalent = 80
-			OR = {
+			OR = { 
 				adm = 5
-				Advisor_HasMana = { ADM=yes Level=2 }
+				AND = { 
+					if = { 
+						limit = { 
+							always = yes
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Advisor_HasADM2
+							OR = { 
+								OR = { 
+									cardinal_CL = 1
+								}
+								OR = { 
+									philosopher_CL = 1
+									philosopher_NO = 1
+									philosopher_BU = 1
+									philosopher_BG = 1
+									philosopher_TR = 1
+								}
+								OR = { 
+									natural_scientist_BU = 1
+									natural_scientist_NO = 1
+									natural_scientist_BG = 1
+								}
+								OR = { 
+									artist_BG = 1
+									artist_NO = 1
+									artist_BU = 1
+									artist_TR = 1
+								}
+								OR = { 
+									treasurer_BG = 1
+									treasurer_NO = 1
+									treasurer_BU = 1
+									treasurer_TR = 1
+								}
+								OR = { 
+									theologian_CL = 1
+								}
+								OR = { 
+									master_of_mint_BG = 1
+									master_of_mint_BU = 1
+									master_of_mint_NO = 1
+								}
+								OR = { 
+									inquisitor_CL = 1
+								}
+								OR = { 
+									alderman_NO = 1
+									alderman_BU = 1
+									alderman_BG = 1
+								}
+								OR = { 
+									architect_BU = 1
+									architect_BG = 1
+								}
+								OR = { 
+									high_judge_BU = 1
+								}
+								OR = { 
+									astronomist_NO = 1
+									astronomist_BU = 1
+									astronomist_BG = 1
+								}
+								OR = { 
+									composer_BG = 1
+									composer_NO = 1
+									composer_BU = 1
+								}
+							}
+						}
+					}
+				}
 			}
-			OR = {
+			OR = { 
 				mil = 5
-				Advisor_HasMana = { MIL=yes Level=2 }
+				AND = { 
+					if = { 
+						limit = { 
+							always = yes
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Advisor_HasMIL2
+							OR = { 
+								OR = { 
+									army_reformer_NO = 1
+									army_reformer_TR = 1
+									army_reformer_BU = 1
+									army_reformer_CL = 1
+								}
+								OR = { 
+									army_organiser_NO = 1
+									army_organiser_TR = 1
+									army_organiser_BU = 1
+								}
+								OR = { 
+									commandant_NO = 1
+									commandant_TR = 1
+									commandant_BU = 1
+								}
+								OR = { 
+									quartermaster_NO = 1
+									quartermaster_TR = 1
+									quartermaster_BU = 1
+								}
+								OR = { 
+									recruitmaster_NO = 1
+									recruitmaster_TR = 1
+									recruitmaster_BU = 1
+								}
+								OR = { 
+									fortification_expert_NO = 1
+									fortification_expert_TR = 1
+									fortification_expert_BU = 1
+									fortification_expert_CL = 1
+								}
+								OR = { 
+									grand_captain_NO = 1
+									grand_captain_BU = 1
+									grand_captain_BG = 1
+								}
+								OR = { 
+									colonel_BU = 1
+									colonel_NO = 1
+								}
+							}
+						}
+					}
+				}
 			}
 			is_at_war = no
 		}
-		effect = {
-			country_event = { id = mission_event.022 }
-			hidden_effect = { complete_mission = ulaid_modernise_government }
+		effect = { 
+			country_event = { 
+				id = mission_event.022
+			}
+			hidden_effect = { 
+				complete_mission = ulaid_modernise_government
+			}
 		}
 	}
-	ulaid_conquer_the_pale = {
+	ulaid_conquer_the_pale = { 
 		icon = mission_unite_home_region
-		required_missions = { ulaid_modernise_government }
-		provinces_to_highlight = {
+		required_missions = { ulaid_modernise_government}
+		provinces_to_highlight = { 
 			province_id = 373
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			373 = {
+		trigger = { 
+			373 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			wales_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			wales_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
 }
-
-### Ireland Expanding to Wales
-ulaid_expansion_wales_missions = {
+ulaid_expansion_wales_missions = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_uls
 	}
 	has_country_shield = yes
-	
-	ulaid_conquer_wales = {
+	ulaid_conquer_wales = { 
 		icon = mission_unite_home_region
-		required_missions = { ulaid_conquer_the_pale }
+		required_missions = { ulaid_conquer_the_pale}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = wales_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			wales_area = {
+		trigger = { 
+			wales_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 25
 		}
 	}
-	
-	ulaid_conquer_england = {
+	ulaid_conquer_england = { 
 		icon = mission_unite_home_region
-		required_missions = { ulaid_conquer_wales }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { ulaid_conquer_wales}
+		provinces_to_highlight = { 
+			OR = { 
 				region = north_england_region
 				region = south_england_region
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			north_england_region = {
+		trigger = { 
+			north_england_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			south_england_region = {
+			south_england_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			country_event = { id = mission_event.011 }
-			hidden_effect = { complete_mission = ulaid_conquer_england }
+		effect = { 
+			country_event = { 
+				id = mission_event.011
+			}
+			hidden_effect = { 
+				complete_mission = ulaid_conquer_england
+			}
 		}
 	}
 }
-
-### Ireland Expanding to Scotland
-ulaid_expansion_scotland_missions = {
+ulaid_expansion_scotland_missions = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_uls
 	}
 	has_country_shield = yes
-	
-	ulaid_conquer_the_isles = {
+	ulaid_conquer_the_isles = { 
 		icon = mission_unite_home_region
-		required_missions = { ulaid_modernise_government }
+		required_missions = { ulaid_modernise_government}
 		position = 4
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 1514
 				province_id = 1417
 				province_id = 3719
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			1514 = {
+		trigger = { 
+			1514 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1417 = {
+			1417 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			3719 = {
+			3719 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			if = {
-				limit = {
+		effect = { 
+			if = { 
+				limit = { 
 					exists = SCO
 				}
-				add_casus_belli = {
+				add_casus_belli = { 
 					type = cb_vassalize_mission
 					months = 1200
 					target = SCO
 				}
 			}
-			isles_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
-					NOT = { owned_by SCO }
-					#culture = highland_scottish
+			isles_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { owned_by SCO}
 				}
 				add_permanent_claim = ROOT
 			}
-			highlands_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
-					NOT = { owned_by SCO }
-					#culture = highland_scottish
+			highlands_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { owned_by SCO}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	ulaid_conquer_scotland = {
+	ulaid_conquer_scotland = { 
 		icon = mission_unite_home_region
-		required_missions = { ulaid_conquer_the_isles }
-		provinces_to_highlight = {
+		required_missions = { ulaid_conquer_the_isles}
+		provinces_to_highlight = { 
 			region = scotland_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			scotland_region = {
+		trigger = { 
+			scotland_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 20
 		}
 	}
-	ulaid_fortify_scotland = {
+	ulaid_fortify_scotland = { 
 		icon = mission_european_fort
-		required_missions = { ulaid_conquer_scotland }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { ulaid_conquer_scotland}
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 1416
 				province_id = 3337
 			}
 		}
-		trigger = {
-			OR = {
+		trigger = { 
+			OR = { 
 				1416 = { 
-				HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th } 
-				owned_by = ROOT
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
+					owned_by = ROOT
 				}
 				3337 = { 
-				HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th } 
-				owned_by = ROOT
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
+					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 50
 		}
 	}
-	ulaid_conquer_iceland = {
+	ulaid_conquer_iceland = { 
 		icon = mission_unite_home_region
-		required_missions = { ulaid_fortify_scotland }
-		provinces_to_highlight = {
+		required_missions = { ulaid_fortify_scotland}
+		provinces_to_highlight = { 
 			area = subarctic_islands_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			subarctic_islands_area = {
+		trigger = { 
+			subarctic_islands_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 		}
 	}
 }
-
-### Alliance with Castille/Spain
-ulaid_alliance_missions = {
+ulaid_alliance_missions = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_uls
-		OR = {
+		OR = { 
 			exists = SPA
 			exists = CAS
 			exists = FRA
 		}
 	}
 	has_country_shield = yes
-	
-	ulaid_ally_spain = {
+	ulaid_ally_spain = { 
 		icon = mission_alliances
-		required_missions = { ulaid_modernise_government }
+		required_missions = { ulaid_modernise_government}
 		position = 4
-		trigger = {
-			if = {
-				limit = { exists = SPA }
+		trigger = { 
+			if = { 
+				limit = { 
+					exists = SPA
+				}
 				alliance_with = SPA
 			}
-			else_if = {
-				limit = { exists = CAS }
+			else_if = { 
+				limit = { 
+					exists = CAS
+				}
 				alliance_with = CAS
 			}
-			else = {
+			else = { 
 				alliance_with = FRA
 			}
 		}
-		effect = {
-			if = {
-				limit = { exists = SPA }
+		effect = { 
+			if = { 
+				limit = { 
+					exists = SPA
+				}
 				add_historical_friend = SPA
-				SPA = { add_historical_friend = ROOT }
+				SPA = { 
+					add_historical_friend = ROOT
+				}
 			}
-			else_if = {
-				limit = { exists = CAS }
+			else_if = { 
+				limit = { 
+					exists = CAS
+				}
 				add_historical_friend = CAS
-				CAS = { add_historical_friend = ROOT }
+				CAS = { 
+					add_historical_friend = ROOT
+				}
 			}
-			else = {
+			else = { 
 				add_historical_friend = FRA
-				FRA = { add_historical_friend = ROOT }
+				FRA = { 
+					add_historical_friend = ROOT
+				}
 			}
 		}
 	}
 }
-
-### Ireland Conquer Bretagne
-ulaid_expansion_bretagne_missions = {
+ulaid_expansion_bretagne_missions = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_uls
 	}
 	has_country_shield = yes
-	
-	ulaid_conquer_bretagne = {
+	ulaid_conquer_bretagne = { 
 		icon = mission_unite_home_region
 		position = 5
-		required_missions = { ulaid_conquer_the_pale }
-		provinces_to_highlight = {
+		required_missions = { ulaid_conquer_the_pale}
+		provinces_to_highlight = { 
 			area = brittany_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			brittany_area = {
+		trigger = { 
+			brittany_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_navy_tradition = 10
 		}
 	}
-	ulaid_fortify_bretagne = {
+	ulaid_fortify_bretagne = { 
 		icon = mission_european_fort
-		required_missions = { ulaid_conquer_bretagne }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { ulaid_conquer_bretagne}
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 169
 				province_id = 1388
 			}
 		}
-		trigger = {
-			OR = {
+		trigger = { 
+			OR = { 
 				169 = { 
-				HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th } 
-				owned_by = ROOT
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
+					owned_by = ROOT
 				}
 				1388 = { 
-				HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th } 
-				owned_by = ROOT
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
+					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 50
 		}
 	}

@@ -1,7 +1,3 @@
-# No previous file for Bohai Sea
-# Actually Volga
-# This province is a river
-
 discovered_by = western
 discovered_by = eastern
 discovered_by = byzantine
@@ -9,7 +5,3 @@ discovered_by = muslim
 discovered_by = steppestech
 discovered_by = YUA
 discovered_by = ottoman
-
-#1519.1.1 = {
-#	discovered_by = POR
-#} # Tome Pires

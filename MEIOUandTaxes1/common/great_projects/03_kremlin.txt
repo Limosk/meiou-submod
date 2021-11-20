@@ -1,10 +1,8 @@
-
-kremlin_moscow = {
+kremlin_moscow = { 
 	ambient_object = kremlin_moscow
 	province = 295
 	time = 120
-	
-	modifier = {
+	modifier = { 
 		local_defensiveness = 0.2
 		local_unrest = -1
 		local_autonomy = -0.05
@@ -12,13 +10,11 @@ kremlin_moscow = {
 		prestige = 0.1
 	}
 }
-
-kremlin_astrakhan = {
+kremlin_astrakhan = { 
 	ambient_object = kremlin_astrakhan
 	province = 1293
 	time = 120
-	
-	modifier = {
+	modifier = { 
 		local_defensiveness = 0.2
 		local_unrest = -1
 		local_autonomy = -0.05
@@ -26,13 +22,11 @@ kremlin_astrakhan = {
 		prestige = 0.1
 	}
 }
-
-kremlin_novgorod = {
+kremlin_novgorod = { 
 	ambient_object = kremlin_novgorod
 	province = 309
 	time = 120
-	
-	modifier = {
+	modifier = { 
 		local_defensiveness = 0.2
 		local_unrest = -1
 		local_autonomy = -0.05
@@ -40,13 +34,11 @@ kremlin_novgorod = {
 		prestige = 0.1
 	}
 }
-
-kremlin_kazan = {
+kremlin_kazan = { 
 	ambient_object = kremlin_kazan
 	province = 1307
 	time = 120
-	
-	modifier = {
+	modifier = { 
 		local_defensiveness = 0.2
 		local_unrest = -1
 		local_autonomy = -0.05
@@ -54,13 +46,11 @@ kremlin_kazan = {
 		prestige = 0.1
 	}
 }
-
-kremlin_nizhny = {
+kremlin_nizhny = { 
 	ambient_object = kremlin_nizhny
 	province = 1292
 	time = 120
-	
-	modifier = {
+	modifier = { 
 		local_defensiveness = 0.2
 		local_unrest = -1
 		local_autonomy = -0.05
@@ -68,13 +58,11 @@ kremlin_nizhny = {
 		prestige = 0.1
 	}
 }
-
-kremlin_smolensk = {
+kremlin_smolensk = { 
 	ambient_object = kremlin_smolensk
 	province = 293
 	time = 120
-	
-	modifier = {
+	modifier = { 
 		local_defensiveness = 0.2
 		local_unrest = -1
 		local_autonomy = -0.05
@@ -82,13 +70,11 @@ kremlin_smolensk = {
 		prestige = 0.1
 	}
 }
-
-kremlin_pskov = {
+kremlin_pskov = { 
 	ambient_object = kremlin_pskov
 	province = 274
 	time = 120
-	
-	modifier = {
+	modifier = { 
 		local_defensiveness = 0.2
 		local_unrest = -1
 		local_autonomy = -0.05

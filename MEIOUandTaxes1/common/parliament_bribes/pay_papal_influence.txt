@@ -1,15 +1,15 @@
-pay_papal_influence = {
-	trigger = {
+pay_papal_influence = { 
+	trigger = { 
 		religion = catholic
-		FROM = { religion = catholic }
+		FROM = { 
+			religion = catholic
+		}
 		papal_influence = 20
 	}
-	
-	effect = {
+	effect = { 
 		add_papal_influence = -2
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
 	}
 }

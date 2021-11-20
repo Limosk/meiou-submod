@@ -1,17 +1,13 @@
-# For specific combinations of culture, religion and other such triggers
-# Will pick the first valid one it finds in list
-
-holy_roman_electors_monarchy_title_1 = {
-	rank = {
-		1 = COUNTY #PALATINATE
-		2 = COUNTY #PALATINATE
-		3 = COUNTY #PALATINATE
-		4 = COUNTY #PALATINATE
-		5 = COUNTY #PALATINATE
-		6 = COUNTY #PALATINATE
+holy_roman_electors_monarchy_title_1 = { 
+	rank = { 
+		1 = COUNTY
+		2 = COUNTY
+		3 = COUNTY
+		4 = COUNTY
+		5 = COUNTY
+		6 = COUNTY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ELECTOR_PALATINE
 		2 = ELECTOR_PALATINE
 		3 = ELECTOR_PALATINE
@@ -19,8 +15,7 @@ holy_roman_electors_monarchy_title_1 = {
 		5 = ELECTOR_PALATINE
 		6 = ELECTOR_PALATINE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ELECTOR_PALATINE
 		2 = ELECTOR_PALATINE
 		3 = ELECTOR_PALATINE
@@ -28,8 +23,7 @@ holy_roman_electors_monarchy_title_1 = {
 		5 = ELECTOR_PALATINE
 		6 = ELECTOR_PALATINE
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = ELECTOR
 		2 = ELECTOR
 		3 = ELECTOR
@@ -37,8 +31,7 @@ holy_roman_electors_monarchy_title_1 = {
 		5 = ELECTOR
 		6 = ELECTOR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = ELECTRESS
 		2 = ELECTRESS
 		3 = ELECTRESS
@@ -46,26 +39,37 @@ holy_roman_electors_monarchy_title_1 = {
 		5 = ELECTRESS
 		6 = ELECTRESS
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		is_emperor = no
-		NOT = { tag = HAB }
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		NOT = { 
+			tag = HAB
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-holy_roman_electors_monarchy_title_2 = {
-	rank = {
-		1 = MARGRAVIATE #BRANDENBURG
-		2 = MARGRAVIATE #BRANDENBURG
-		3 = MARGRAVIATE #BRANDENBURG
-		4 = MARGRAVIATE #BRANDENBURG
-		5 = MARGRAVIATE #BRANDENBURG
-		6 = MARGRAVIATE #BRANDENBURG
+holy_roman_electors_monarchy_title_2 = { 
+	rank = { 
+		1 = MARGRAVIATE
+		2 = MARGRAVIATE
+		3 = MARGRAVIATE
+		4 = MARGRAVIATE
+		5 = MARGRAVIATE
+		6 = MARGRAVIATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PRINCE_ELECTOR
 		2 = PRINCE_ELECTOR
 		3 = PRINCE_ELECTOR
@@ -73,8 +77,7 @@ holy_roman_electors_monarchy_title_2 = {
 		5 = PRINCE_ELECTOR
 		6 = PRINCE_ELECTOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = PRINCESS_ELECTOR
 		2 = PRINCESS_ELECTOR
 		3 = PRINCESS_ELECTOR
@@ -82,8 +85,7 @@ holy_roman_electors_monarchy_title_2 = {
 		5 = PRINCESS_ELECTOR
 		6 = PRINCESS_ELECTOR
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = ELECTOR
 		2 = ELECTOR
 		3 = ELECTOR
@@ -91,8 +93,7 @@ holy_roman_electors_monarchy_title_2 = {
 		5 = ELECTOR
 		6 = ELECTOR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = ELECTRESS
 		2 = ELECTRESS
 		3 = ELECTRESS
@@ -100,26 +101,37 @@ holy_roman_electors_monarchy_title_2 = {
 		5 = ELECTRESS
 		6 = ELECTRESS
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		is_emperor = no
-		NOT = { tag = HAB }
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		NOT = { 
+			tag = HAB
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-holy_roman_electors_monarchy_title_3 = {
-	rank = {
-		1 = DUCHY #SAXONY
-		2 = DUCHY #SAXONY
-		3 = DUCHY #SAXONY
-		4 = DUCHY #SAXONY
-		5 = DUCHY #SAXONY
-		6 = DUCHY #SAXONY
+holy_roman_electors_monarchy_title_3 = { 
+	rank = { 
+		1 = DUCHY
+		2 = DUCHY
+		3 = DUCHY
+		4 = DUCHY
+		5 = DUCHY
+		6 = DUCHY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PRINCE_ELECTOR
 		2 = PRINCE_ELECTOR
 		3 = PRINCE_ELECTOR
@@ -127,8 +139,7 @@ holy_roman_electors_monarchy_title_3 = {
 		5 = PRINCE_ELECTOR
 		6 = PRINCE_ELECTOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = PRINCESS_ELECTOR
 		2 = PRINCESS_ELECTOR
 		3 = PRINCESS_ELECTOR
@@ -136,8 +147,7 @@ holy_roman_electors_monarchy_title_3 = {
 		5 = PRINCESS_ELECTOR
 		6 = PRINCESS_ELECTOR
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = ELECTOR
 		2 = ELECTOR
 		3 = ELECTOR
@@ -145,8 +155,7 @@ holy_roman_electors_monarchy_title_3 = {
 		5 = ELECTOR
 		6 = ELECTOR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = ELECTRESS
 		2 = ELECTRESS
 		3 = ELECTRESS
@@ -154,26 +163,37 @@ holy_roman_electors_monarchy_title_3 = {
 		5 = ELECTRESS
 		6 = ELECTRESS
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		is_emperor = no
-		NOT = { tag = HAB }
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		NOT = { 
+			tag = HAB
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-holy_roman_electors_monarchy_title_4 = {
-	rank = {
-		1 = GRAND_DUCHY #HESSE, WURZBURG, BERG, LUXEMBOURG, ETC in the NAPOLEONIC ERA
-		2 = GRAND_DUCHY #HESSE, WURZBURG, BERG, LUXEMBOURG, ETC in the NAPOLEONIC ERA
-		3 = GRAND_DUCHY #HESSE, WURZBURG, BERG, LUXEMBOURG, ETC in the NAPOLEONIC ERA
-		4 = GRAND_DUCHY #HESSE, WURZBURG, BERG, LUXEMBOURG, ETC in the NAPOLEONIC ERA
-		5 = GRAND_DUCHY #HESSE, WURZBURG, BERG, LUXEMBOURG, ETC in the NAPOLEONIC ERA
-		6 = GRAND_DUCHY #HESSE, WURZBURG, BERG, LUXEMBOURG, ETC in the NAPOLEONIC ERA
+holy_roman_electors_monarchy_title_4 = { 
+	rank = { 
+		1 = GRAND_DUCHY
+		2 = GRAND_DUCHY
+		3 = GRAND_DUCHY
+		4 = GRAND_DUCHY
+		5 = GRAND_DUCHY
+		6 = GRAND_DUCHY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GRAND_DUKE
 		2 = GRAND_DUKE
 		3 = GRAND_DUKE
@@ -181,8 +201,7 @@ holy_roman_electors_monarchy_title_4 = {
 		5 = GRAND_DUKE
 		6 = GRAND_DUKE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GRAND_DUCHESS
 		2 = GRAND_DUCHESS
 		3 = GRAND_DUCHESS
@@ -190,8 +209,7 @@ holy_roman_electors_monarchy_title_4 = {
 		5 = GRAND_DUCHESS
 		6 = GRAND_DUCHESS
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = ELECTOR
 		2 = ELECTOR
 		3 = ELECTOR
@@ -199,8 +217,7 @@ holy_roman_electors_monarchy_title_4 = {
 		5 = ELECTOR
 		6 = ELECTOR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = ELECTRESS
 		2 = ELECTRESS
 		3 = ELECTRESS
@@ -208,26 +225,37 @@ holy_roman_electors_monarchy_title_4 = {
 		5 = ELECTRESS
 		6 = ELECTRESS
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		is_emperor = no
-		NOT = { tag = HAB }
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		NOT = { 
+			tag = HAB
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-holy_roman_electors_monarchy_title_5 = {
-	rank = {
-		1 = KINGDOM #BOHEMIA
-		2 = KINGDOM #BOHEMIA
-		3 = KINGDOM #BOHEMIA
-		4 = KINGDOM #BOHEMIA
-		5 = KINGDOM #BOHEMIA
-		6 = KINGDOM #BOHEMIA
+holy_roman_electors_monarchy_title_5 = { 
+	rank = { 
+		1 = KINGDOM
+		2 = KINGDOM
+		3 = KINGDOM
+		4 = KINGDOM
+		5 = KINGDOM
+		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = KING
 		2 = KING
 		3 = KING
@@ -235,8 +263,7 @@ holy_roman_electors_monarchy_title_5 = {
 		5 = KING
 		6 = KING
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = QUEEN
 		2 = QUEEN
 		3 = QUEEN
@@ -244,8 +271,7 @@ holy_roman_electors_monarchy_title_5 = {
 		5 = QUEEN
 		6 = QUEEN
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = ELECTOR
 		2 = ELECTOR
 		3 = ELECTOR
@@ -253,8 +279,7 @@ holy_roman_electors_monarchy_title_5 = {
 		5 = ELECTOR
 		6 = ELECTOR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = ELECTRESS
 		2 = ELECTRESS
 		3 = ELECTRESS
@@ -262,17 +287,29 @@ holy_roman_electors_monarchy_title_5 = {
 		5 = ELECTRESS
 		6 = ELECTRESS
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		is_emperor = no
-		NOT = { tag = HAB }
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+		NOT = { 
+			tag = HAB
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-holy_roman_electors_monarchy_title_6 = {
-	rank = {
+holy_roman_electors_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -280,8 +317,7 @@ holy_roman_electors_monarchy_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = EMPEROR
 		2 = EMPEROR
 		3 = EMPEROR
@@ -289,8 +325,7 @@ holy_roman_electors_monarchy_title_6 = {
 		5 = EMPEROR
 		6 = EMPEROR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = EMPRESS
 		2 = EMPRESS
 		3 = EMPRESS
@@ -298,8 +333,7 @@ holy_roman_electors_monarchy_title_6 = {
 		5 = EMPRESS
 		6 = EMPRESS
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = ELECTOR
 		2 = ELECTOR
 		3 = ELECTOR
@@ -307,8 +341,7 @@ holy_roman_electors_monarchy_title_6 = {
 		5 = ELECTOR
 		6 = ELECTOR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = ELECTRESS
 		2 = ELECTRESS
 		3 = ELECTRESS
@@ -316,18 +349,29 @@ holy_roman_electors_monarchy_title_6 = {
 		5 = ELECTRESS
 		6 = ELECTRESS
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		is_emperor = no
-		NOT = { tag = HAB }
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+		NOT = { 
+			tag = HAB
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-holy_roman_electors_bishoprics_title_1 = {
-	rank = {
+holy_roman_electors_bishoprics_title_1 = { 
+	rank = { 
 		1 = BISHOPRIC
 		2 = BISHOPRIC
 		3 = BISHOPRIC
@@ -335,8 +379,7 @@ holy_roman_electors_bishoprics_title_1 = {
 		5 = BISHOPRIC
 		6 = BISHOPRIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = BISHOP_ELECTOR
 		2 = BISHOP_ELECTOR
 		3 = BISHOP_ELECTOR
@@ -344,8 +387,7 @@ holy_roman_electors_bishoprics_title_1 = {
 		5 = BISHOP_ELECTOR
 		6 = BISHOP_ELECTOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = BISHOP_ELECTOR
 		2 = BISHOP_ELECTOR
 		3 = BISHOP_ELECTOR
@@ -353,16 +395,20 @@ holy_roman_electors_bishoprics_title_1 = {
 		5 = BISHOP_ELECTOR
 		6 = BISHOP_ELECTOR
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		government = theocracy
 		is_emperor = no
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-holy_roman_electors_bishoprics_title_2 = {
-	rank = {
+holy_roman_electors_bishoprics_title_2 = { 
+	rank = { 
 		1 = BISHOPRIC
 		2 = BISHOPRIC
 		3 = BISHOPRIC
@@ -370,8 +416,7 @@ holy_roman_electors_bishoprics_title_2 = {
 		5 = BISHOPRIC
 		6 = BISHOPRIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = BISHOP_ELECTOR
 		2 = BISHOP_ELECTOR
 		3 = BISHOP_ELECTOR
@@ -379,8 +424,7 @@ holy_roman_electors_bishoprics_title_2 = {
 		5 = BISHOP_ELECTOR
 		6 = BISHOP_ELECTOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = BISHOP_ELECTOR
 		2 = BISHOP_ELECTOR
 		3 = BISHOP_ELECTOR
@@ -388,16 +432,20 @@ holy_roman_electors_bishoprics_title_2 = {
 		5 = BISHOP_ELECTOR
 		6 = BISHOP_ELECTOR
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		government = theocracy
 		is_emperor = no
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-holy_roman_electors_bishoprics_title_3 = {
-	rank = {
+holy_roman_electors_bishoprics_title_3 = { 
+	rank = { 
 		1 = BISHOPRIC
 		2 = BISHOPRIC
 		3 = BISHOPRIC
@@ -405,8 +453,7 @@ holy_roman_electors_bishoprics_title_3 = {
 		5 = BISHOPRIC
 		6 = BISHOPRIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = BISHOP_ELECTOR
 		2 = BISHOP_ELECTOR
 		3 = BISHOP_ELECTOR
@@ -414,8 +461,7 @@ holy_roman_electors_bishoprics_title_3 = {
 		5 = BISHOP_ELECTOR
 		6 = BISHOP_ELECTOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = BISHOP_ELECTOR
 		2 = BISHOP_ELECTOR
 		3 = BISHOP_ELECTOR
@@ -423,16 +469,20 @@ holy_roman_electors_bishoprics_title_3 = {
 		5 = BISHOP_ELECTOR
 		6 = BISHOP_ELECTOR
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		government = theocracy
 		is_emperor = no
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-holy_roman_electors_bishoprics_title_4 = {
-	rank = {
+holy_roman_electors_bishoprics_title_4 = { 
+	rank = { 
 		1 = BISHOPRIC
 		2 = BISHOPRIC
 		3 = BISHOPRIC
@@ -440,8 +490,7 @@ holy_roman_electors_bishoprics_title_4 = {
 		5 = BISHOPRIC
 		6 = BISHOPRIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = BISHOP_ELECTOR
 		2 = BISHOP_ELECTOR
 		3 = BISHOP_ELECTOR
@@ -449,8 +498,7 @@ holy_roman_electors_bishoprics_title_4 = {
 		5 = BISHOP_ELECTOR
 		6 = BISHOP_ELECTOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = BISHOP_ELECTOR
 		2 = BISHOP_ELECTOR
 		3 = BISHOP_ELECTOR
@@ -458,16 +506,20 @@ holy_roman_electors_bishoprics_title_4 = {
 		5 = BISHOP_ELECTOR
 		6 = BISHOP_ELECTOR
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		government = theocracy
 		is_emperor = no
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-holy_roman_electors_bishoprics_title_5 = {
-	rank = {
+holy_roman_electors_bishoprics_title_5 = { 
+	rank = { 
 		1 = ARCHBISHOPRIC
 		2 = ARCHBISHOPRIC
 		3 = ARCHBISHOPRIC
@@ -475,8 +527,7 @@ holy_roman_electors_bishoprics_title_5 = {
 		5 = ARCHBISHOPRIC
 		6 = ARCHBISHOPRIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ARCHBISHOP_ELECTOR
 		2 = ARCHBISHOP_ELECTOR
 		3 = ARCHBISHOP_ELECTOR
@@ -484,8 +535,7 @@ holy_roman_electors_bishoprics_title_5 = {
 		5 = ARCHBISHOP_ELECTOR
 		6 = ARCHBISHOP_ELECTOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ARCHBISHOP_ELECTOR
 		2 = ARCHBISHOP_ELECTOR
 		3 = ARCHBISHOP_ELECTOR
@@ -493,16 +543,20 @@ holy_roman_electors_bishoprics_title_5 = {
 		5 = ARCHBISHOP_ELECTOR
 		6 = ARCHBISHOP_ELECTOR
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		government = theocracy
 		is_emperor = no
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-holy_roman_electors_bishoprics_title_6 = {
-	rank = {
+holy_roman_electors_bishoprics_title_6 = { 
+	rank = { 
 		1 = PATRIARCHATE
 		2 = PATRIARCHATE
 		3 = PATRIARCHATE
@@ -510,8 +564,7 @@ holy_roman_electors_bishoprics_title_6 = {
 		5 = PATRIARCHATE
 		6 = PATRIARCHATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PATRIARCH_ELECTOR
 		2 = PATRIARCH_ELECTOR
 		3 = PATRIARCH_ELECTOR
@@ -519,8 +572,7 @@ holy_roman_electors_bishoprics_title_6 = {
 		5 = PATRIARCH_ELECTOR
 		6 = PATRIARCH_ELECTOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = MATRIARCH_ELECTOR
 		2 = MATRIARCH_ELECTOR
 		3 = MATRIARCH_ELECTOR
@@ -528,17 +580,20 @@ holy_roman_electors_bishoprics_title_6 = {
 		5 = MATRIARCH_ELECTOR
 		6 = MATRIARCH_ELECTOR
 	}
-	
-	trigger = {
+	trigger = { 
 		is_elector = yes
 		government = theocracy
 		is_emperor = no
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-timur_title_6 = {
-	# Settled Empire
-	rank = {
+timur_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -546,8 +601,7 @@ timur_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = AMIR
 		2 = AMIR
 		3 = AMIR
@@ -555,8 +609,7 @@ timur_title_6 = {
 		5 = AMIR
 		6 = AMIR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = AMIRA
 		2 = AMIRA
 		3 = AMIRA
@@ -564,17 +617,27 @@ timur_title_6 = {
 		5 = AMIRA
 		6 = AMIRA
 	}
-	
-	trigger = {
+	trigger = { 
 		tag = TIM
-		NOT = { has_country_modifier = timurid_khanate }
-		Timur_Has = yes ## timur alive
-		title_trigger = { rank = 6 }
+		NOT = { 
+			has_country_modifier = timurid_khanate
+		}
+		AND = { 
+			has_country_flag = Horde_Timur
+			NOT = { 
+				has_country_flag = Timur_Dead
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-genghis_timur_title_6 = {
-	# Nomadic Khaganate, mongol-style
-	rank = {
+genghis_timur_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -582,8 +645,7 @@ genghis_timur_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GURKANI
 		2 = GURKANI
 		3 = GURKANI
@@ -591,8 +653,7 @@ genghis_timur_title_6 = {
 		5 = GURKANI
 		6 = GURKANI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GURKANI
 		2 = GURKANI
 		3 = GURKANI
@@ -600,19 +661,25 @@ genghis_timur_title_6 = {
 		5 = GURKANI
 		6 = GURKANI
 	}
-	
-	trigger = {
+	trigger = { 
 		tag = TIM
 		has_country_modifier = timurid_khanate
-		Timur_Has = yes # timur alive
-		title_trigger = { rank = 6 }
+		AND = { 
+			has_country_flag = Horde_Timur
+			NOT = { 
+				has_country_flag = Timur_Dead
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-# this exists to provide separate naming post-timur death, if west.
-# if east, successors adopt whatever territory/culture they rule. assume the Khaganate
-# if west, they continue puppet khans, so Amir? some say they didnt style that why, this should be reviewed
-post_timur_title_6 = {
-	rank = {
+post_timur_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -620,9 +687,7 @@ post_timur_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	# Amir or Sultan? or Padshah? Unclear. assume sultan for now
-	ruler_male = {
+	ruler_male = { 
 		1 = AMIR
 		2 = AMIR
 		3 = AMIR
@@ -630,8 +695,7 @@ post_timur_title_6 = {
 		5 = AMIR
 		6 = AMIR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = AMIRA
 		2 = AMIRA
 		3 = AMIRA
@@ -639,17 +703,28 @@ post_timur_title_6 = {
 		5 = AMIRA
 		6 = AMIRA
 	}
-	
-	trigger = {
+	trigger = { 
 		tag = TIM
-		has_country_flag = Timur_West #West (didnt focus on making a horde)
-		Timur_Has = no # timur dead
-		culture_group = tartar_group # still inbetween, if they adopt persian (theres an event) just use persian naming
-		title_trigger = { rank = 6 }
+		has_country_flag = Timur_West
+		NOT = { 
+			AND = { 
+				has_country_flag = Horde_Timur
+				NOT = { 
+					has_country_flag = Timur_Dead
+				}
+			}
+		}
+		culture_group = tartar_group
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-puppet_mongol_horde_title_4 = {
-	rank = {
+puppet_mongol_horde_title_4 = { 
+	rank = { 
 		1 = KHANATE
 		2 = KHANATE
 		3 = KHANATE
@@ -657,8 +732,7 @@ puppet_mongol_horde_title_4 = {
 		5 = KHANATE
 		6 = KHANATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = AMIR
 		2 = AMIR
 		3 = AMIR
@@ -666,8 +740,7 @@ puppet_mongol_horde_title_4 = {
 		5 = AMIR
 		6 = AMIR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = AMIRA
 		2 = AMIRA
 		3 = AMIRA
@@ -675,8 +748,7 @@ puppet_mongol_horde_title_4 = {
 		5 = AMIRA
 		6 = AMIRA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = KHAN
 		2 = KHAN
 		3 = KHAN
@@ -684,8 +756,7 @@ puppet_mongol_horde_title_4 = {
 		5 = KHAN
 		6 = KHAN
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = KHATUN
 		2 = KHATUN
 		3 = KHATUN
@@ -693,26 +764,75 @@ puppet_mongol_horde_title_4 = {
 		5 = KHATUN
 		6 = KHATUN
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			culture_group = altaic
 			culture_group = tartar_group
 		}
-		OR = {
-			nomad_trigger = yes
-			steppe_trigger = yes
+		OR = { 
+			is_nomad = yes
+			AND = { 
+				OR = { 
+					AND = { 
+						government = tribal
+						check_variable = { 
+							which = grs
+							value = 1
+						}
+						is_variable_equal = { 
+							which = grt
+							value = 0
+						}
+						is_variable_equal = { 
+							which = hqx
+							value = 3
+						}
+					}
+					AND = { 
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
+						is_variable_equal = { 
+							which = gro
+							value = 8
+						}
+					}
+				}
+			}
 			government = tribal
-			dynastic_monarchy_trigger = yes
+			AND = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_variable_equal = { 
+					which = grj
+					value = 4
+				}
+			}
 		}
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 		has_country_modifier = puppet_khanate
 		religion_group = muslim
-		NOT = { has_country_flag = Horde_Timur }
+		NOT = { 
+			has_country_flag = Horde_Timur
+		}
 	}
 }
-puppet_mongol_horde_title_5 = {
-	rank = {
+puppet_mongol_horde_title_5 = { 
+	rank = { 
 		1 = KHANATE
 		2 = KHANATE
 		3 = KHANATE
@@ -720,8 +840,7 @@ puppet_mongol_horde_title_5 = {
 		5 = KHANATE
 		6 = KHANATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = AMIR
 		2 = AMIR
 		3 = AMIR
@@ -729,8 +848,7 @@ puppet_mongol_horde_title_5 = {
 		5 = AMIR
 		6 = AMIR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = AMIRA
 		2 = AMIRA
 		3 = AMIRA
@@ -738,8 +856,7 @@ puppet_mongol_horde_title_5 = {
 		5 = AMIRA
 		6 = AMIRA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = KHAN
 		2 = KHAN
 		3 = KHAN
@@ -747,8 +864,7 @@ puppet_mongol_horde_title_5 = {
 		5 = KHAN
 		6 = KHAN
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = KHATUN
 		2 = KHATUN
 		3 = KHATUN
@@ -756,26 +872,75 @@ puppet_mongol_horde_title_5 = {
 		5 = KHATUN
 		6 = KHATUN
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			culture_group = altaic
 			culture_group = tartar_group
 		}
-		OR = {
-			nomad_trigger = yes
-			steppe_trigger = yes
+		OR = { 
+			is_nomad = yes
+			AND = { 
+				OR = { 
+					AND = { 
+						government = tribal
+						check_variable = { 
+							which = grs
+							value = 1
+						}
+						is_variable_equal = { 
+							which = grt
+							value = 0
+						}
+						is_variable_equal = { 
+							which = hqx
+							value = 3
+						}
+					}
+					AND = { 
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
+						is_variable_equal = { 
+							which = gro
+							value = 8
+						}
+					}
+				}
+			}
 			government = tribal
-			dynastic_monarchy_trigger = yes
+			AND = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_variable_equal = { 
+					which = grj
+					value = 4
+				}
+			}
 		}
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 		has_country_modifier = puppet_khanate
 		religion_group = muslim
-		NOT = { has_country_flag = Horde_Timur }
+		NOT = { 
+			has_country_flag = Horde_Timur
+		}
 	}
 }
-puppet_mongol_horde_title_6 = {
-	rank = {
+puppet_mongol_horde_title_6 = { 
+	rank = { 
 		1 = KHAGANATE
 		2 = KHAGANATE
 		3 = KHAGANATE
@@ -783,8 +948,7 @@ puppet_mongol_horde_title_6 = {
 		5 = KHAGANATE
 		6 = KHAGANATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = AMIR
 		2 = AMIR
 		3 = AMIR
@@ -792,8 +956,7 @@ puppet_mongol_horde_title_6 = {
 		5 = AMIR
 		6 = AMIR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = AMIRA
 		2 = AMIRA
 		3 = AMIRA
@@ -801,8 +964,7 @@ puppet_mongol_horde_title_6 = {
 		5 = AMIRA
 		6 = AMIRA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = KHAAN
 		2 = KHAAN
 		3 = KHAAN
@@ -810,8 +972,7 @@ puppet_mongol_horde_title_6 = {
 		5 = KHAAN
 		6 = KHAAN
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = KHATUN
 		2 = KHATUN
 		3 = KHATUN
@@ -819,23 +980,72 @@ puppet_mongol_horde_title_6 = {
 		5 = KHATUN
 		6 = KHATUN
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = altaic
-		OR = {
-			nomad_trigger = yes
-			steppe_trigger = yes
+		OR = { 
+			is_nomad = yes
+			AND = { 
+				OR = { 
+					AND = { 
+						government = tribal
+						check_variable = { 
+							which = grs
+							value = 1
+						}
+						is_variable_equal = { 
+							which = grt
+							value = 0
+						}
+						is_variable_equal = { 
+							which = hqx
+							value = 3
+						}
+					}
+					AND = { 
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
+						is_variable_equal = { 
+							which = gro
+							value = 8
+						}
+					}
+				}
+			}
 			government = tribal
-			dynastic_monarchy_trigger = yes
+			AND = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_variable_equal = { 
+					which = grj
+					value = 4
+				}
+			}
 		}
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 		has_country_modifier = puppet_khanate
 		religion_group = muslim
-		NOT = { has_country_flag = Horde_Timur }
+		NOT = { 
+			has_country_flag = Horde_Timur
+		}
 	}
 }
-puppet_tatar_horde_title_6 = {
-	rank = {
+puppet_tatar_horde_title_6 = { 
+	rank = { 
 		1 = KHAGANATE
 		2 = KHAGANATE
 		3 = KHAGANATE
@@ -843,8 +1053,7 @@ puppet_tatar_horde_title_6 = {
 		5 = KHAGANATE
 		6 = KHAGANATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = AMIR
 		2 = AMIR
 		3 = AMIR
@@ -852,8 +1061,7 @@ puppet_tatar_horde_title_6 = {
 		5 = AMIR
 		6 = AMIR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = AMIRA
 		2 = AMIRA
 		3 = AMIRA
@@ -861,8 +1069,7 @@ puppet_tatar_horde_title_6 = {
 		5 = AMIRA
 		6 = AMIRA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = KHAGAN
 		2 = KHAGAN
 		3 = KHAGAN
@@ -870,8 +1077,7 @@ puppet_tatar_horde_title_6 = {
 		5 = KHAGAN
 		6 = KHAGAN
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = KHATUN
 		2 = KHATUN
 		3 = KHATUN
@@ -879,18 +1085,67 @@ puppet_tatar_horde_title_6 = {
 		5 = KHATUN
 		6 = KHATUN
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = tartar_group
-		OR = {
-			nomad_trigger = yes
-			steppe_trigger = yes
+		OR = { 
+			is_nomad = yes
+			AND = { 
+				OR = { 
+					AND = { 
+						government = tribal
+						check_variable = { 
+							which = grs
+							value = 1
+						}
+						is_variable_equal = { 
+							which = grt
+							value = 0
+						}
+						is_variable_equal = { 
+							which = hqx
+							value = 3
+						}
+					}
+					AND = { 
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
+						is_variable_equal = { 
+							which = gro
+							value = 8
+						}
+					}
+				}
+			}
 			government = tribal
-			dynastic_monarchy_trigger = yes
+			AND = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_variable_equal = { 
+					which = grj
+					value = 4
+				}
+			}
 		}
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 		has_country_modifier = puppet_khanate
 		religion_group = muslim
-		NOT = { has_country_flag = Horde_Timur }
+		NOT = { 
+			has_country_flag = Horde_Timur
+		}
 	}
 }

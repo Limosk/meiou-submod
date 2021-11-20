@@ -1,11 +1,11 @@
-province = {
-	peace = {
-		active = {
+province = { 
+	peace = { 
+		active = { 
 			is_at_war = no
 		}
-		eval_multiply = {
+		eval_multiply = { 
 			factor = 10
-			modifier = {
+			modifier = { 
 				is_in_capital_area = yes
 			}
 		}

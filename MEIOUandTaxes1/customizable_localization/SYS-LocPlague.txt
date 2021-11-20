@@ -1,37 +1,33 @@
-defined_text = {
+defined_text = { 
 	name = Plague_CustomLoc
 	random = no
-	text = {
+	text = { 
 		localisation_key = Disp_Bubonic
-        trigger = {
+		trigger = { 
 			has_province_flag = Plague0
 		}
 	}
-    text = {
+	text = { 
 		localisation_key = Disp_Smallpox
-
-		trigger = {
+		trigger = { 
 			has_province_flag = Plague1
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Disp_Influenza
-
-		trigger = {
+		trigger = { 
 			has_province_flag = Plague2
 		}
 	}
-    text = {
+	text = { 
 		localisation_key = Disp_Typhus
-	
-		trigger = {
+		trigger = { 
 			has_province_flag = Plague3
 		}
 	}
-    text = {
+	text = { 
 		localisation_key = Disp_Malaria
-	
-		trigger = {
+		trigger = { 
 			has_province_flag = Plague4
 		}
 	}

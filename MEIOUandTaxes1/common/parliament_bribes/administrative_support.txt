@@ -1,13 +1,11 @@
-administrative_support = {
-	trigger = {
+administrative_support = { 
+	trigger = { 
 		always = yes
 	}
-	
-	effect = {
+	effect = { 
 		adm_power_cost = 10
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
 	}
 }

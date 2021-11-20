@@ -1,102 +1,109 @@
-byz_slot_5 = {
-	slot = 1 #upper left column
-	generic = no #if a mission without generic = yes wants this slot then it overrides this.
+byz_slot_5 = { 
+	slot = 1
+	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = e_of_ero
 	}
 	has_country_shield = yes
-	
-	byz_recover_greece = {
+	byz_recover_greece = { 
 		icon = mission_parthenon
-		required_missions = {  } #None
-		ai_weight = {
+		required_missions = { }
+		ai_weight = { 
 			factor = 5
 		}
-		ai_priority = {
+		ai_priority = { 
 			factor = 5
 		}
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = greece_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
-				OR = {
-					#Part of Eastern Isles
+				OR = { 
 					area = aegean_area
-					#Part of Foothold in Italy (Starts under PU of KNP)
 					province_id = 142
 					province_id = 1436
 				}
 			}
 		}
-		trigger = {
-			greece_region = {
+		trigger = { 
+			greece_region = { 
 				type = all
-				OR = {
-					#Part of Eastern Isles
+				OR = { 
 					area = aegean_area
-					#Part of Foothold in Italy (Starts under PU of KNP)
 					province_id = 142
 					province_id = 1436
 					country_or_non_sovereign_subject_holds = ROOT
 				}
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "byzantium_resurgent"
-				duration = 9125 #25 years - was 3650
+				duration = 9125
 			}
-			north_bulgaria_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			north_bulgaria_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			south_bulgaria_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			south_bulgaria_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			dobrogea_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			dobrogea_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			macedonia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			macedonia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			greece_region = {
-				limit = {
-					NOT = {
-						#Part of Eastern Isles
+			greece_region = { 
+				limit = { 
+					NOT = { 
 						area = aegean_area
-						#Part of Foothold in Italy (Starts under PU of KNP)
 						province_id = 142
 						province_id = 1436
 					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 5475
+					duration = 9125
 				}
 			}
-			hidden_effect = {
-				greece_region = {
-					limit = {
-						NOT = {
-							#Part of Eastern Isles
+			hidden_effect = { 
+				greece_region = { 
+					limit = { 
+						NOT = { 
 							area = aegean_area
-							#Part of Foothold in Italy (Starts under PU of KNP)
 							province_id = 142
 							province_id = 1436
 							is_core = ROOT
@@ -108,9 +115,8 @@ byz_slot_5 = {
 				}
 			}
 			custom_tooltip = byz_mis_territorial_cores_tt
-			#PP decision, slashed in half
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -118,51 +124,59 @@ byz_slot_5 = {
 			}
 		}
 	}
-	
-	byz_recover_albania = {
+	byz_recover_albania = { 
 		icon = mission_pf_soldier
-		required_missions = { byz_recover_greece }
+		required_missions = { byz_recover_greece}
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = albania_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			albania_area = {
+		trigger = { 
+			albania_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			central_balkan_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			central_balkan_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			apulia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			apulia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			142 = {
+			142 = { 
 				add_permanent_claim = ROOT
 			}
-			1436 = {
+			1436 = { 
 				add_permanent_claim = ROOT
 			}
-			albania_area = {
-				add_province_modifier = {
+			albania_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			#PP decision, halved, AT split in three for the balkan missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -170,54 +184,66 @@ byz_slot_5 = {
 			}
 		}
 	}
-	
-	byz_recover_serbia = {
+	byz_recover_serbia = { 
 		icon = mission_build_up_to_force_limit
-		required_missions = { byz_recover_albania }
-		provinces_to_highlight = {
+		required_missions = { byz_recover_albania}
+		provinces_to_highlight = { 
 			region = central_balkan_region
-			NOT = {	area = albania_area }
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				area = albania_area
+			}
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			central_balkan_region = {
+		trigger = { 
+			central_balkan_region = { 
 				type = all
-				OR = {
+				OR = { 
 					country_or_non_sovereign_subject_holds = ROOT
 					area = albania_area
 				}
 			}
 		}
-		effect = {
-			bosnia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			bosnia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			east_adriatic_coast_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			east_adriatic_coast_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			1450 = {
+			1450 = { 
 				add_permanent_claim = ROOT
 			}
-			central_balkan_region = {
-				limit = {
-					NOT = { area = albania_area }
+			central_balkan_region = { 
+				limit = { 
+					NOT = { 
+						area = albania_area
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			#PP decision, halved, AT split in three for the balkan missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -225,286 +251,338 @@ byz_slot_5 = {
 			}
 		}
 	}
-	
-	byz_recover_illyria = {
+	byz_recover_illyria = { 
 		icon = mission_conquer_5_states
-		required_missions = { byz_recover_serbia }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_serbia}
+		provinces_to_highlight = { 
+			OR = { 
 				region = west_balkan_region
 				area = carinthia_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			west_balkan_region = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			carinthia_area = {
-				type = all
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			venetia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		trigger = { 
+			west_balkan_region = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			carinthia_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			venetia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			west_balkan_region = {
-				add_province_modifier = {
+			west_balkan_region = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			carinthia_area = {
-				add_province_modifier = {
+			carinthia_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
 		}
 	}
-	
-	byz_destroy_venice = {
+	byz_destroy_venice = { 
 		icon = mission_conquer_50_development
-		required_missions = { byz_recover_illyria }
-		provinces_to_highlight = {
+		required_missions = { byz_recover_illyria}
+		provinces_to_highlight = { 
 			area = venetia_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			venetia_area = {
+		trigger = { 
+			venetia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			NOT = { exists = VEN }
+			NOT = { 
+				exists = VEN
+			}
 		}
-		effect = {
-			#country_event = { id = flavor_byz.1 }
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "venetian_revenge"
-				duration = 9125 #25 years - was 7300
+				duration = 9125
 			}
 		}
 	}
-	
-	byz_recover_sicily = {
+	byz_recover_sicily = { 
 		icon = mission_sea_battles
-		required_missions = { byz_recover_naples }
-		provinces_to_highlight = {
+		required_missions = { byz_recover_naples}
+		provinces_to_highlight = { 
 			region = sicily_region
-			NOT = { province_id = 126 } #Part of Western Islands
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				province_id = 126
+			}
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			sicily_region = {
+		trigger = { 
+			sicily_region = { 
 				type = all
-				OR = {
+				OR = { 
 					province_id = 126
 					country_or_non_sovereign_subject_holds = ROOT
 				}
 			}
 		}
-		effect = {
-			sicily_region = {
-				limit = {
-					NOT = { province_id = 126 }
+		effect = { 
+			sicily_region = { 
+				limit = { 
+					NOT = { 
+						province_id = 126
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
-			#add_country_modifier = {
-			#	name = "theme_of_sicily"
-			#	duration = 9125 #25 years - was 5475
-			#}
 		}
 	}
-	
-	byz_recover_tunis = {
+	byz_recover_tunis = { 
 		icon = mission_pf_soldier
-		required_missions = {
-			byz_recover_sicily
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_sicily}
+		provinces_to_highlight = { 
+			OR = { 
 				region = east_maghreb_region
 				area = kabylia_area
 			}
-			NOT = { area = tripolitania_area } #Part of Reconquer Tripolis
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				area = tripolitania_area
+			}
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			east_maghreb_region = {
+		trigger = { 
+			east_maghreb_region = { 
 				type = all
-				OR = {
+				OR = { 
 					area = tripolitania_area
 					country_or_non_sovereign_subject_holds = ROOT
 				}
 			}
-			kabylia_area = {
+			kabylia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			east_maghreb_region = {
-				limit = {
-					NOT = { area = tripolitania_area }
+		effect = { 
+			east_maghreb_region = { 
+				limit = { 
+					NOT = { 
+						area = tripolitania_area
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
-			kabylia_area = {
-				add_province_modifier = {
+			kabylia_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
 		}
 	}
-	
-	byz_recover_mauretania = {
+	byz_recover_mauretania = { 
 		icon = mission_arabian_fort
-		required_missions = {
-			byz_recover_tunis
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_tunis}
+		provinces_to_highlight = { 
+			OR = { 
 				region = central_maghreb_region
 				region = west_maghreb_region
 			}
-			NOT = { area = kabylia_area } #Part of Reconquer Africa
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				area = kabylia_area
+			}
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			central_maghreb_region = {
+		trigger = { 
+			central_maghreb_region = { 
 				type = all
-				OR = {
+				OR = { 
 					area = kabylia_area
 					country_or_non_sovereign_subject_holds = ROOT
 				}
 			}
-			west_maghreb_region = {
+			west_maghreb_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			central_maghreb_region = {
-				limit = {
-					NOT = { area = kabylia_area }
+		effect = { 
+			central_maghreb_region = { 
+				limit = { 
+					NOT = { 
+						area = kabylia_area
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 365
+					duration = 9125
 				}
 			}
-			west_maghreb_region = {
-				add_province_modifier = {
+			west_maghreb_region = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 365
+					duration = 9125
 				}
 			}
 		}
 	}
 }
-
-byz_slot_6 = {
+byz_slot_6 = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = e_of_ero
 	}
 	has_country_shield = yes
-	
-	byz_restore_konstantinoupolis = {
+	byz_restore_konstantinoupolis = { 
 		icon = mission_hagia_sophia
 		required_missions = { }
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 1402
-			OR = {
-				NOT = { base_production = 20 }
-				NOT = { is_core = ROOT }
-				NOT = { country_or_non_sovereign_subject_holds = ROOT } #WTF ARE YOU DOING?
+			OR = { 
+				NOT = { 
+					base_production = 20
+				}
+				NOT = { 
+					is_core = ROOT
+				}
+				NOT = { 
+					country_or_non_sovereign_subject_holds = ROOT
+				}
 			}
 		}
-		trigger = {
+		trigger = { 
 			country_or_non_sovereign_subject_holds = 1402
 			is_core = 1402
-			1402 = {
+			1402 = { 
 				base_production = 30
 			}
 		}
-		effect = {
-			1402 = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			1402 = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 			add_prestige = 10
 			add_legitimacy = 5
 			add_horde_unity = 5
 			add_republican_tradition = 5
-			Stab_Add1 = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					add_stability = 1
+				}
+			}
+			tooltip = { 
+				add_stability = 1
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = 5
+			}
 		}
 	}
-	
-	byz_recover_bulgaria = {
-		#BULGARIA
+	byz_recover_bulgaria = { 
 		icon = mission_unite_home_region
-		required_missions = { byz_recover_greece }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_greece}
+		provinces_to_highlight = { 
+			OR = { 
 				area = north_bulgaria_area
 				area = south_bulgaria_area
 				area = dobrogea_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		
-		trigger = {
-			north_bulgaria_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			south_bulgaria_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			dobrogea_area = {
-				type = all
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			north_bulgaria_area = {
-				add_province_modifier = {
+		trigger = { 
+			north_bulgaria_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			south_bulgaria_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			dobrogea_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			north_bulgaria_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			south_bulgaria_area = {
-				add_province_modifier = {
+			south_bulgaria_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			dobrogea_area = {
-				add_province_modifier = {
+			dobrogea_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			#PP decision, halved, AT split in three for the balkan missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -512,55 +590,56 @@ byz_slot_6 = {
 			}
 		}
 	}
-	
-	byz_foothold_in_italy = {
+	byz_foothold_in_italy = { 
 		icon = mission_cannons_firing
-		required_missions = {
-			byz_recover_bulgaria
-			byz_recover_albania
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_bulgaria byz_recover_albania}
+		provinces_to_highlight = { 
+			OR = { 
 				area = apulia_area
 				province_id = 142
 				province_id = 1436
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			apulia_area = {
+		trigger = { 
+			apulia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 			owns_or_non_sovereign_subject_of = 142
 			owns_or_non_sovereign_subject_of = 1436
 		}
-		effect = {
-			apulia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			apulia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			142 = {
-				add_province_modifier = {
+			142 = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			1436 = {
-				add_province_modifier = {
+			1436 = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			#PP decision, slashed in half, split in six to distribute amongst italy missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -568,42 +647,40 @@ byz_slot_6 = {
 			}
 		}
 	}
-	
-	byz_recover_naples = {
+	byz_recover_naples = { 
 		icon = mission_cannons_firing
 		position = 5
-		required_missions = {
-			byz_foothold_in_italy
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_foothold_in_italy}
+		provinces_to_highlight = { 
 			region = naples_region
-			NOT = {
+			NOT = { 
 				area = apulia_area
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			naples_region = {
+		trigger = { 
+			naples_region = { 
 				type = all
-				OR = {
+				OR = { 
 					area = apulia_area
 					country_or_non_sovereign_subject_holds = ROOT
 				}
 			}
 		}
-		effect = {
-			naples_region = {
-				limit = {
-					NOT = { area = apulia_area }
+		effect = { 
+			naples_region = { 
+				limit = { 
+					NOT = { 
+						area = apulia_area
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			#PP decision, slashed in half, split in six to distribute amongst italy missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -611,314 +688,296 @@ byz_slot_6 = {
 			}
 		}
 	}
-	
-	byz_recover_rome = {
+	byz_recover_rome = { 
 		icon = mission_pf_cross
-		required_missions = {
-			byz_recover_naples
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_recover_naples}
+		provinces_to_highlight = { 
 			area = lazio_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			lazio_area = {
+		trigger = { 
+			lazio_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			lazio_area = {
-				add_province_modifier = {
+		effect = { 
+			lazio_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			#PP decision, slashed in half, split in six to distribute amongst italy missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
 				add_army_tradition = 2
 			}
-			#add_country_modifier = {
-			#	name = "roman_italy"
-			#	duration = 9125 #25 years - was 1095
-			#}
 		}
 	}
-	
-	byz_recover_west_islands = {
+	byz_recover_west_islands = { 
 		icon = mission_invade_island
-		required_missions = {
-			byz_recover_sicily
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_sicily}
+		provinces_to_highlight = { 
+			OR = { 
 				area = corsica_sardinia_area
 				area = baleares_area
 				province_id = 126
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			corsica_sardinia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			baleares_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			126 = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			corsica_sardinia_area = {
-				add_province_modifier = {
+		trigger = { 
+			corsica_sardinia_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			baleares_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			126 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			corsica_sardinia_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
-			baleares_area = {
-				add_province_modifier = {
+			baleares_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
-			126 = {
-				add_province_modifier = {
+			126 = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
 		}
 	}
-	
-	byz_recover_south_spain = {
+	byz_recover_south_spain = { 
 		icon = mission_build_up_to_force_limit
-		required_missions = {
-			byz_recover_west_islands
-			byz_recover_tunis
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_west_islands byz_recover_tunis}
+		provinces_to_highlight = { 
+			OR = { 
 				area = lower_guadalquivir_area
 				area = upper_guadalquivir_area
 				area = upper_andalucia_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			lower_guadalquivir_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			upper_guadalquivir_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			upper_andalucia_area = {
-				type = all
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			upper_andalucia_area = {
-				add_province_modifier = {
+		trigger = { 
+			lower_guadalquivir_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_guadalquivir_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_andalucia_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			upper_andalucia_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 365
+					duration = 9125
 				}
 			}
-			upper_guadalquivir_area = {
-				add_province_modifier = {
+			upper_guadalquivir_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 365
+					duration = 9125
 				}
 			}
-			lower_guadalquivir_area = {
-				add_province_modifier = {
+			lower_guadalquivir_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 365
+					duration = 9125
 				}
 			}
 		}
 	}
-	
-	byz_recover_spain = {
+	byz_recover_spain = { 
 		icon = mission_unite_home_region
-		required_missions = {
-			byz_recover_south_spain
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_recover_south_spain}
+		provinces_to_highlight = { 
 			superregion = iberia_superregion
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			iberia_superregion = {
+		trigger = { 
+			iberia_superregion = { 
 				type = all
-				OR = {
+				OR = { 
 					country_or_non_sovereign_subject_holds = ROOT
 					is_city = no
 				}
 			}
 		}
-		effect = {
-			#iberia_superregion = {
-			#	limit = {
-			#		NOT = {
-			#			OR = {
-			#				area = upper_andalucia_area
-			#				area = upper_guadalquivir_area
-			#				area = lower_guadalquivir_area
-			#			}
-			#		}
-			#	}
-			#	add_province_modifier = {
-			#		name = "faster_integration"
-			#		duration = 9125 #25 years - was 365
-			#	}
-			#}
+		effect = { 
 			add_prestige = 20
 		}
 	}
-	
-	byz_recover_britannia = {
+	byz_recover_britannia = { 
 		icon = mission_establish_high_seas_navy
-		required_missions = {
-			byz_recover_france
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_france}
+		provinces_to_highlight = { 
+			OR = { 
 				region = south_england_region
 				region = north_england_region
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			south_england_region = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			north_england_region = {
-				type = all
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			#south_england_region = {
-			#	add_province_modifier = {
-			#		name = "faster_integration"
-			#		duration = 9125 #25 years - was 5475
-			#	}
-			#}
-			#north_england_region = {
-			#	add_province_modifier = {
-			#		name = "faster_integration"
-			#		duration = 9125 #25 years - was 5475
-			#	}
-			#}
+		trigger = { 
+			south_england_region = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			north_england_region = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
 			add_prestige = 20
 		}
 	}
 }
-
-byz_slot_3_1 = {
+byz_slot_3_1 = { 
 	slot = 3
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = e_of_ero
 	}
-	
 	has_country_shield = yes
-	
-	byz_recover_the_coast_of_asia_minor = {
+	byz_recover_the_coast_of_asia_minor = { 
 		icon = mission_galleys_in_port
 		position = 1
-		required_missions = {  }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { }
+		provinces_to_highlight = { 
+			OR = { 
 				area = manisa_area
 				area = aydin_area
-				AND = {
+				AND = { 
 					area = hudavendigar_area
 					has_port = yes
 				}
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			manisa_area = {
+		trigger = { 
+			manisa_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			aydin_area = {
+			aydin_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			hudavendigar_area = {
+			hudavendigar_area = { 
 				type = all
-				OR = {
+				OR = { 
 					has_port = no
 					country_or_non_sovereign_subject_holds = ROOT
 				}
 			}
 		}
-		effect = {
-			kutahya_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			kutahya_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			hudavendigar_area = {
-				limit = {
+			hudavendigar_area = { 
+				limit = { 
 					has_port = no
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			kastamonu_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			kastamonu_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			1439 = {
-				if = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { owned_by = ROOT }
+			1439 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
+						NOT = { 
+							owned_by = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
-			4064 = {
-				if = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { owned_by = ROOT }
+			4064 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
+						NOT = { 
+							owned_by = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
-			manisa_area = {
-				add_province_modifier = {
+			manisa_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 5475
+					duration = 9125
 				}
 			}
-			hidden_effect = {
-				manisa_area = {
-					limit = {
-						NOT = {	is_core = ROOT }
+			hidden_effect = { 
+				manisa_area = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
 						culture_group = ROOT
 						religion = ROOT
 					}
@@ -926,16 +985,18 @@ byz_slot_3_1 = {
 				}
 			}
 			custom_tooltip = byz_mis_territorial_cores_tt
-			aydin_area = {
-				add_province_modifier = {
+			aydin_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 5475
+					duration = 9125
 				}
 			}
-			hidden_effect = {
-				aydin_area = {
-					limit = {
-						NOT = {	is_core = ROOT }
+			hidden_effect = { 
+				aydin_area = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
 						culture_group = ROOT
 						religion = ROOT
 					}
@@ -943,34 +1004,38 @@ byz_slot_3_1 = {
 				}
 			}
 			custom_tooltip = byz_mis_territorial_cores_tt
-			hudavendigar_area = {
-				limit = {
+			hudavendigar_area = { 
+				limit = { 
 					has_port = no
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 5475
+					duration = 9125
 				}
 			}
-			hidden_effect = {
-				hudavendigar_area = {
-					limit = {
-						NOT = {	is_core = ROOT }
+			hidden_effect = { 
+				hudavendigar_area = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
 						culture_group = ROOT
 						religion = ROOT
 					}
 					add_territorial_core = ROOT
 				}
 			}
-			1439 = {
-				add_province_modifier = {
+			1439 = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 5475
+					duration = 9125
 				}
-				hidden_effect = {
-					if = {
-						limit = {
-							NOT = {	is_core = ROOT }
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								is_core = ROOT
+							}
 							culture_group = ROOT
 							religion = ROOT
 						}
@@ -978,15 +1043,17 @@ byz_slot_3_1 = {
 					}
 				}
 			}
-			4064 = {
-				add_province_modifier = {
+			4064 = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 5475
+					duration = 9125
 				}
-				hidden_effect = {
-					if = {
-						limit = {
-							NOT = {	is_core = ROOT }
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								is_core = ROOT
+							}
 							culture_group = ROOT
 							religion = ROOT
 						}
@@ -995,9 +1062,8 @@ byz_slot_3_1 = {
 				}
 			}
 			custom_tooltip = byz_mis_territorial_cores_tt
-			#PP decision, slashed in half
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -1005,34 +1071,35 @@ byz_slot_3_1 = {
 			}
 		}
 	}
-	
-	byz_recover_east_islands = {
+	byz_recover_east_islands = { 
 		icon = mission_aegean_map
 		position = 2
-		required_missions = {
-			byz_recover_the_coast_of_asia_minor
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_recover_the_coast_of_asia_minor}
+		provinces_to_highlight = { 
 			area = aegean_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			aegean_area = {
+		trigger = { 
+			aegean_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			aegean_area = {
-				add_province_modifier = {
+		effect = { 
+			aegean_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 5475
+					duration = 9125
 				}
 			}
-			hidden_effect = {
-				aegean_area = {
-					limit = {
-						NOT = {	is_core = ROOT }
+			hidden_effect = { 
+				aegean_area = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
 						culture_group = ROOT
 						religion = ROOT
 					}
@@ -1042,98 +1109,95 @@ byz_slot_3_1 = {
 			custom_tooltip = byz_mis_territorial_cores_tt
 		}
 	}
-	
-	byz_recover_tripoli = {
+	byz_recover_tripoli = { 
 		icon = mission_arabian_fort
 		position = 3
-		required_missions = {
-			byz_recover_east_islands
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_east_islands}
+		provinces_to_highlight = { 
+			OR = { 
 				area = tripolitania_area
 				area = cyrenaica_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			tripolitania_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			cyrenaica_area = {
-				type = all
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			tripolitania_area = {
-				add_province_modifier = {
+		trigger = { 
+			tripolitania_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			cyrenaica_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			tripolitania_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			cyrenaica_area = {
-				add_province_modifier = {
+			cyrenaica_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
 		}
 	}
 }
-
-byz_slot_5_2 = {
+byz_slot_5_2 = { 
 	slot = 5
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = e_of_ero
 	}
-	
 	has_country_shield = yes
-	
-	byz_recover_antioch = {
+	byz_recover_antioch = { 
 		icon = mission_pf_cross
 		position = 4
-		required_missions = {
-			byz_recover_central_anatolia
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_central_anatolia}
+		provinces_to_highlight = { 
+			OR = { 
 				area = aleppo_area
 				area = cilicia_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			aleppo_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			cilicia_area = {
-				type = all
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			aleppo_area = {
-				add_province_modifier = {
+		trigger = { 
+			aleppo_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			cilicia_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			aleppo_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			cilicia_area = {
-				add_province_modifier = {
+			cilicia_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			hidden_effect = {
-				cilicia_area = {
-					limit = {
-						NOT = {	is_core = ROOT }
+			hidden_effect = { 
+				cilicia_area = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
 						culture_group = ROOT
 						religion = ROOT
 					}
@@ -1141,179 +1205,178 @@ byz_slot_5_2 = {
 				}
 			}
 			custom_tooltip = byz_mis_territorial_cores_tt
-			syria_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			syria_region = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	
-	byz_recover_jerusalem = {
+	byz_recover_jerusalem = { 
 		icon = mission_pf_cross
 		position = 5
-		required_missions = {
-			byz_recover_antioch
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_antioch}
+		provinces_to_highlight = { 
+			OR = { 
 				area = lebanon_area
 				area = dimashq_area
 				area = palestine_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			lebanon_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			palestine_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			dimashq_area = {
-				type = all
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			lebanon_area = {
-				add_province_modifier = {
+		trigger = { 
+			lebanon_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			palestine_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			dimashq_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			lebanon_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			palestine_area = {
-				add_province_modifier = {
+			palestine_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			dimashq_area = {
-				add_province_modifier = {
+			dimashq_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
 		}
 	}
-	
-	byz_recover_egypt = {
+	byz_recover_egypt = { 
 		icon = mission_pf_cross
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = egypt_region
 			is_empty = no
-			NOT = { area = cyrenaica_area }
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				area = cyrenaica_area
+			}
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		required_missions = {
-			byz_recover_jerusalem
-		}
-		trigger = {
-			egypt_region = {
+		required_missions = { byz_recover_jerusalem}
+		trigger = { 
+			egypt_region = { 
 				type = all
-				OR = {
+				OR = { 
 					area = cyrenaica_area
 					is_empty = yes
 					country_or_non_sovereign_subject_holds = ROOT
 				}
 			}
 		}
-		effect = {
-			egypt_region = {
-				limit = {
-					NOT = {
-						OR = {
+		effect = { 
+			egypt_region = { 
+				limit = { 
+					NOT = { 
+						OR = { 
 							area = cyrenaica_area
 							is_empty = yes
 						}
 					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
 		}
 	}
 }
-
-byz_slot_3_3 = {
+byz_slot_3_3 = { 
 	slot = 3
 	generic = no
 	ai = yes
-	
-	potential = {
+	potential = { 
 		has_country_flag = e_of_ero
 	}
-	
 	has_country_shield = yes
-
-	byz_recover_central_italy = {
+	byz_recover_central_italy = { 
 		icon = mission_pf_map_table
 		position = 7
-		required_missions = {
-			byz_recover_rome
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_rome}
+		provinces_to_highlight = { 
+			OR = { 
 				area = tuscany_area
 				area = emilia_romagna_area
 				area = marche_area
 				area = siena_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			tuscany_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			emilia_romagna_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			marche_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			siena_area = {
-				type = all
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			tuscany_area = {
-				add_province_modifier = {
+		trigger = { 
+			tuscany_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			emilia_romagna_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			marche_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			siena_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			tuscany_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
-			emilia_romagna_area = {
-				add_province_modifier = {
+			emilia_romagna_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
-			marche_area = {
-				add_province_modifier = {
+			marche_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
-			siena_area = {
-				add_province_modifier = {
+			siena_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1095
+					duration = 9125
 				}
 			}
-			#PP decision, slashed in half, split in six to distribute amongst italy missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -1321,33 +1384,31 @@ byz_slot_3_3 = {
 			}
 		}
 	}
-	
-	byz_recover_north_italy = {
+	byz_recover_north_italy = { 
 		icon = mission_iron_crown
 		position = 8
-		required_missions = {
-			byz_recover_central_italy
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_recover_central_italy}
+		provinces_to_highlight = { 
 			region = west_italy_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			west_italy_region = {
+		trigger = { 
+			west_italy_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			west_italy_region = {
-				add_province_modifier = {
+		effect = { 
+			west_italy_region = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 365
+					duration = 9125
 				}
 			}
-			#PP decision, slashed in half, split in six to distribute amongst italy missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -1355,73 +1416,65 @@ byz_slot_3_3 = {
 			}
 		}
 	}
-	
-	byz_recover_france = {
+	byz_recover_france = { 
 		icon = mission_cannons_firing
 		position = 9
-		required_missions = {
-			byz_recover_north_italy
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_recover_north_italy}
+		provinces_to_highlight = { 
 			superregion = france_superregion
-			NOT = { region = belgii_region }
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				region = belgii_region
+			}
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			france_superregion = {
+		trigger = { 
+			france_superregion = { 
 				type = all
-				OR = {
+				OR = { 
 					country_or_non_sovereign_subject_holds = ROOT
 					region = belgii_region
 					is_city = no
 				}
 			}
 		}
-		effect = {
-			#france_superregion = {
-			#	add_province_modifier = {
-			#		name = "faster_integration"
-			#		duration = 9125 #25 years - was 5475
-			#	}
-			#}
+		effect = { 
 			add_prestige = 20
 		}
 	}
-	
-	####################################
-	#
-	byz_to_the_rhine_and_danube = {
+	byz_to_the_rhine_and_danube = { 
 		icon = mission_empire
 		position = 10
-		required_missions = {
-			byz_recover_france
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_recover_france}
+		provinces_to_highlight = { 
 			province_group = roman_dejure_group
-			OR = {
+			OR = { 
 				region = belgii_region
 				superregion = germany_superregion
 				superregion = greater_austrian_circle_superregion
 				area = transdanubia_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			roman_dejure_group = {
+		trigger = { 
+			roman_dejure_group = { 
 				type = all
-				OR = {
+				OR = { 
 					region = belgii_region
 					superregion = germany_superregion
 					superregion = greater_austrian_circle_superregion
 					area = transdanubia_area
 				}
-				OR = {
+				OR = { 
 					country_or_non_sovereign_subject_holds = ROOT
 					is_city = no
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_legitimacy = 10
 			add_horde_unity = 10
 			add_republican_tradition = 10
@@ -1429,56 +1482,50 @@ byz_slot_3_3 = {
 		}
 	}
 }
-
-byz_slot_8 = {
+byz_slot_8 = { 
 	slot = 4
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = e_of_ero
 	}
 	has_country_shield = yes
-	
-	byz_stabilize_the_empire = {
+	byz_stabilize_the_empire = { 
 		icon = mission_high_income
 		position = 1
-		required_missions = {  }
-		provinces_to_highlight = {
+		required_missions = { }
+		provinces_to_highlight = { 
 			owned_by = ROOT
 		}
-		trigger = {
+		trigger = { 
 			stability = 2
 			is_at_war = no
-			NOT = { average_home_autonomy = 50 }
-			NOT = { average_effective_unrest = 5 }
+			NOT = { 
+				average_home_autonomy = 50
+			}
+			NOT = { 
+				average_effective_unrest = 5
+			}
 			num_of_cities = 25
 			prestige = -20
 			legitimacy_equivalent = 80
 			has_heir = yes
-			#NOT = { has_country_modifier = obstacle_succession }
-			#NOT = { has_country_modifier = obstacle_military_administration }
 		}
-		effect = {
-			#add_estate_greater_nobles_loyalty_effect_preset = { amount = 5 }
-			#add_estate_lesser_nobles_loyalty_effect_preset = { amount = 10 }
-			#add_estate_burghers_loyalty_effect_preset = { amount = 10 }
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mission_byz_stability_restored"
-				duration = 9125 #25 years - was 5475
+				duration = 9125
 			}
 		}
 	}
-	
-	byz_recover_west_anatolia = {
+	byz_recover_west_anatolia = { 
 		icon = mission_non-western_cavalry_raid
 		position = 2
-		required_missions = {
-			byz_recover_the_coast_of_asia_minor
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_the_coast_of_asia_minor}
+		provinces_to_highlight = { 
+			OR = { 
 				area = kutahya_area
-				AND = {
+				AND = { 
 					area = hudavendigar_area
 					has_port = no
 				}
@@ -1486,90 +1533,108 @@ byz_slot_8 = {
 				province_id = 1439
 				province_id = 4064
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		trigger = {
-			kutahya_area = {
+		trigger = { 
+			kutahya_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			hudavendigar_area = {
+			hudavendigar_area = { 
 				type = all
-				OR = {
+				OR = { 
 					has_port = yes
 					country_or_non_sovereign_subject_holds = ROOT
 				}
 			}
-			kastamonu_area = {
+			kastamonu_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1439 = {
+			1439 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			4064 = {
+			4064 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			karaman_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			karaman_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			rum_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			rum_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			cappadocia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			cappadocia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
-			kutahya_area = {
-				add_province_modifier = {
+			kutahya_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			hudavendigar_area = {
-				limit = {
-					NOT = { has_port = yes }
+			hudavendigar_area = { 
+				limit = { 
+					NOT = { 
+						has_port = yes
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			kastamonu_area = {
-				add_province_modifier = {
+			kastamonu_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			1439 = {
-				add_province_modifier = {
+			1439 = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			4064 = {
-				add_province_modifier = {
+			4064 = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			hidden_effect = {
-				kastamonu_area = {
-					limit = {
-						NOT = {	is_core = ROOT }
+			hidden_effect = { 
+				kastamonu_area = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
 						culture_group = ROOT
 						religion = ROOT
 					}
@@ -1577,9 +1642,8 @@ byz_slot_8 = {
 				}
 			}
 			custom_tooltip = byz_mis_territorial_cores_tt
-			#PP decision, slashed in half, then halved again to distribute on anatolia missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -1587,100 +1651,120 @@ byz_slot_8 = {
 			}
 		}
 	}
-	
-	byz_recover_central_anatolia = {
+	byz_recover_central_anatolia = { 
 		icon = mission_pf_soldier
 		position = 3
-		required_missions = {
-			byz_recover_west_anatolia
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_west_anatolia}
+		provinces_to_highlight = { 
+			OR = { 
 				area = karaman_area
 				area = rum_area
 				area = cappadocia_area
 				area = teke_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			NOT = { province_id = 1439 }
-			NOT = { province_id = 4064 }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = { 
+				province_id = 1439
+			}
+			NOT = { 
+				province_id = 4064
+			}
 		}
-		trigger = {
-			karaman_area = {
+		trigger = { 
+			karaman_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			rum_area = {
+			rum_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			cappadocia_area = {
+			cappadocia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			teke_area = {
+			teke_area = { 
 				type = all
-				OR = {
+				OR = { 
 					province_id = 1439
 					province_id = 4064
 					country_or_non_sovereign_subject_holds = ROOT
 				}
 			}
 		}
-		effect = {
-			karaman_area = {
-				add_province_modifier = {
+		effect = { 
+			karaman_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			rum_area = {
-				add_province_modifier = {
+			rum_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			cappadocia_area = {
-				add_province_modifier = {
+			cappadocia_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			teke_area = {
-				limit = {
-					NOT = {	province_id = 1439 }
-					NOT = {	province_id = 4064 }
+			teke_area = { 
+				limit = { 
+					NOT = { 
+						province_id = 1439
+					}
+					NOT = { 
+						province_id = 4064
+					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			sophene_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
-					NOT = { province_id = 2224 }
+			sophene_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						province_id = 2224
+					}
 				}
 				add_claim = ROOT
 			}
-			malatya_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			malatya_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_claim = ROOT
 			}
-			cilicia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			cilicia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_claim = ROOT
 			}
-			#PP decision, slashed in half, then halved again to distribute on anatolia missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -1688,69 +1772,71 @@ byz_slot_8 = {
 			}
 		}
 	}
-	
-	byz_armenian_highlands = {
+	byz_armenian_highlands = { 
 		icon = mission_pf_map_table
 		position = 4
-		required_missions = {
-			byz_recover_central_anatolia
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_central_anatolia}
+		provinces_to_highlight = { 
+			OR = { 
 				area = van_area
 				area = upper_armenia_area
 				area = malatya_area
 				area = sophene_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			van_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			upper_armenia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			malatya_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			sophene_area = {
-				type = all
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			van_area = {
-				add_province_modifier = {
+		trigger = { 
+			van_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_armenia_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			malatya_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			sophene_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			van_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			malatya_area = {
-				add_province_modifier = {
+			malatya_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			sophene_area = {
-				add_province_modifier = {
+			sophene_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 1825
+					duration = 9125
 				}
 			}
-			upper_armenia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+			upper_armenia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_claim = ROOT
 			}
-			#PP decision, slashed in half, then halved again to distribute on anatolia missions
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_dlc = "Purple Phoenix"
 				}
 				add_prestige = 5
@@ -1758,34 +1844,35 @@ byz_slot_8 = {
 			}
 		}
 	}
-	
-	byz_recover_trebizond = {
+	byz_recover_trebizond = { 
 		icon = mission_build_up_to_force_limit
 		position = 5
-		required_missions = {
-			byz_armenian_highlands
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_armenian_highlands}
+		provinces_to_highlight = { 
 			area = trebizond_area
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 		}
-		trigger = {
-			trebizond_area = {
+		trigger = { 
+			trebizond_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			trebizond_area = {
-				add_province_modifier = {
+		effect = { 
+			trebizond_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			hidden_effect = {
-				trebizond_area = {
-					limit = {
-						NOT = {	is_core = ROOT }
+			hidden_effect = { 
+				trebizond_area = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
 						culture_group = ROOT
 						religion = ROOT
 					}
@@ -1793,53 +1880,50 @@ byz_slot_8 = {
 				}
 			}
 			custom_tooltip = byz_mis_territorial_cores_tt
-			#2573 = {
-			#	add_trade_modifier = {
-			#		who = root
-			#		duration = 9125 #25 years - was 7300
-			#		power = 35
-			#		key = byzantine_kaffa
-			#	}
-			#}
-			1449 = {
-				if = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { owned_by = ROOT }
+			1449 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
+						NOT = { 
+							owned_by = ROOT
+						}
 					}
 					add_claim = ROOT
 				}
 			}
 		}
 	}
-	
-	byz_recover_crimea = {
+	byz_recover_crimea = { 
 		icon = mission_galleys_in_port
 		position = 6
-		required_missions = {
-			byz_recover_trebizond
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_recover_trebizond}
+		provinces_to_highlight = { 
 			area = crimea_area
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 		}
-		trigger = {
-			crimea_area = {
+		trigger = { 
+			crimea_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			crimea_area = {
-				add_province_modifier = {
+		effect = { 
+			crimea_area = { 
+				add_province_modifier = { 
 					name = "faster_integration"
-					duration = 9125 #25 years - was 3650
+					duration = 9125
 				}
 			}
-			hidden_effect = {
-				crimea_area = {
-					limit = {
-						NOT = {	is_core = ROOT }
+			hidden_effect = { 
+				crimea_area = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
 						culture_group = ROOT
 						religion = ROOT
 					}
@@ -1847,140 +1931,162 @@ byz_slot_8 = {
 				}
 			}
 			custom_tooltip = byz_mis_territorial_cores_tt
-			#2573 = {
-			#	add_trade_modifier = {
-			#		who = root
-			#		duration = 9125 #25 years - was 7300
-			#		power = 35
-			#		key = byzantine_kaffa
-			#	}
-			#}
 		}
 	}
 }
-
-byz_slot_9 = {
+byz_slot_9 = { 
 	slot = 4
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = e_of_ero
 		religion = orthodox
 	}
 	has_country_shield = yes
-	
-	byz_the_pentarchy = {
+	byz_the_pentarchy = { 
 		icon = mission_pf_cross
 		position = 7
-		required_missions = {
-			byz_recover_rome
-			byz_recover_egypt
-		}
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { byz_recover_rome byz_recover_egypt}
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 2530
 				province_id = 1402
 				province_id = 358
 				province_id = 379
 				province_id = 332
 			}
-			OR = {
-				NOT = { country_or_non_sovereign_subject_holds = ROOT }
-				NOT = { religion = ROOT }
+			OR = { 
+				NOT = { 
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				NOT = { 
+					religion = ROOT
+				}
 			}
 		}
-		trigger = {
-			owns = 2530 #Rome
-			2530 = {
+		trigger = { 
+			owns = 2530
+			2530 = { 
 				religion = ROOT
 			}
-			owns = 1402 #Constantinople
-			1402 = {
+			owns = 1402
+			1402 = { 
 				religion = ROOT
 			}
-			owns = 358 #Alexandria
-			358 = {
+			owns = 358
+			358 = { 
 				religion = ROOT
 			}
-			owns = 379 #Jerusalem
-			379 = {
+			owns = 379
+			379 = { 
 				religion = ROOT
 			}
-			owns = 332 #Antioch
-			332 = {
+			owns = 332
+			332 = { 
 				religion = ROOT
 			}
 		}
-		effect = {
-			# Vanilla
-			#add_country_modifier = {
-			#	name = "healing_the_schism"
-			#	duration = 9125 #25 years - was -1
-			#}
-			
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mission_byz_pentarchy"
-				duration = 9125 #25 years - was 1095
+				duration = 9125
 			}
 		}
 	}
 }
-
-byz_slot_10 = {
+byz_slot_10 = { 
 	slot = 4
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = e_of_ero
 	}
 	has_country_shield = yes
-	
-	byz_restore_rome_to_glory = {
+	byz_restore_rome_to_glory = { 
 		icon = mission_pf_cross
 		position = 8
-		required_missions = {
-			byz_recover_central_italy
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_recover_central_italy}
+		provinces_to_highlight = { 
 			province_id = 2530
-			OR = {
-				NOT = { base_production = 20 }
-				NOT = { is_core = ROOT }
-				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			OR = { 
+				NOT = { 
+					base_production = 20
+				}
+				NOT = { 
+					is_core = ROOT
+				}
+				NOT = { 
+					country_or_non_sovereign_subject_holds = ROOT
+				}
 			}
 		}
-		trigger = {
+		trigger = { 
 			country_or_non_sovereign_subject_holds = 2530
 			is_core = 2530
-			2530 = {
+			2530 = { 
 				base_production = 20
 			}
 		}
-		effect = {
-			2530 = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			2530 = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 			add_prestige = 10
 			add_legitimacy = 5
 			add_horde_unity = 5
 			add_republican_tradition = 5
-			Stab_Add1 = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					add_stability = 1
+				}
+			}
+			tooltip = { 
+				add_stability = 1
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = 5
+			}
 		}
 	}
-	
-	byz_depose_false_emperor = {
+	byz_depose_false_emperor = { 
 		icon = mission_empire
 		position = 9
-		required_missions = {
-			byz_recover_north_italy
-		}
-		provinces_to_highlight = {
+		required_missions = { byz_recover_north_italy}
+		provinces_to_highlight = { 
 			is_part_of_hre = yes
 		}
-		trigger = {
-			NOT = { hre_size = 1 }
+		trigger = { 
+			NOT = { 
+				hre_size = 1
+			}
 		}
-		effect = {
+		effect = { 
 			add_legitimacy = 25
 			add_horde_unity = 25
 			add_republican_tradition = 25

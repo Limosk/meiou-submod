@@ -1,8 +1,4 @@
-# 5209 - Hymalaya
-# This province is a wasteland
-
 culture = balti
-
 discovered_by = chinese
 discovered_by = japanese
 discovered_by = tibetan

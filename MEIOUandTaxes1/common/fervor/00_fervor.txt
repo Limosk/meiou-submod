@@ -1,73 +1,79 @@
-fervor_trade = {
+fervor_trade = { 
 	cost = 5
-	effect = {
+	effect = { 
 		global_trade_power = 0.1
 	}
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			government = republic
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			NOT = { trade_income_percentage = 0.1 }
+			NOT = { 
+				trade_income_percentage = 0.1
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			trade_income_percentage = 0.25
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			trade_income_percentage = 0.5
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = { fervor = 75 }
+			NOT = { 
+				fervor = 75
+			}
 			has_active_fervor = no
 		}
 	}
 }
-
-fervor_war = {
+fervor_war = { 
 	cost = 5
-	effect = {
+	effect = { 
 		land_morale = 0.15
 		naval_morale = 0.15
 	}
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 0
 			is_at_war = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 10
 			is_at_war = yes
 		}
 	}
 }
-
-fervor_stability = {
+fervor_stability = { 
 	cost = 5
-	effect = {
+	effect = { 
 		global_unrest = -2
 		diplomatic_reputation = 2
 	}
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			always = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 2
 			num_of_revolts = 1
 		}
-		modifier = {
+		modifier = { 
 			factor = 0
-			NOT = { fervor = 75 }
-			NOT = { num_of_revolts = 1 }
+			NOT = { 
+				fervor = 75
+			}
+			NOT = { 
+				num_of_revolts = 1
+			}
 			has_active_fervor = no
 		}
 	}

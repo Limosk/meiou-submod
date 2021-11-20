@@ -1,8 +1,2 @@
-# 2447 - Putoran
-# This province is a wasteland
-
 culture = evenki
 religion = tengri_pagan_reformed
-#1750.1.1 = {
-#	discovered_by = RUS
-#}

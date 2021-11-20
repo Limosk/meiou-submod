@@ -1,66 +1,311 @@
-country_decisions = {
-    resolve_cods_and_hooks_tension = {
+country_decisions = { 
+	resolve_cods_and_hooks_tension = { 
 		major = yes
-		potential = {
+		potential = { 
 			tag = HOL
-			AND = {
-				OR = {
+			AND = { 
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
 				}
 			}
-			NOT = {	has_country_flag = cods_and_hooks }
-			NOT = { has_country_modifier = cods_and_hooks_averted }
-			any_owned_province = {
-				OR = {
+			NOT = { 
+				has_country_flag = cods_and_hooks
+			}
+			NOT = { 
+				has_country_modifier = cods_and_hooks_averted
+			}
+			any_owned_province = { 
+				OR = { 
 					province_id = 97
 					province_id = 2370
 					province_id = 96
 				}
 			}
-			NOT = {is_year = 1450}
+			NOT = { 
+				is_year = 1450
+			}
 		}
-		allow = {
+		allow = { 
 			dip_power = 100
 			mil_power = 100
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = CaH_Aversion_decision_tt_1
-				OR = {
-					Advisor_HasFaction = { NO=yes Level=1 }
-					Advisor_HasFaction = { NO=yes Level=2 }
-					Advisor_HasFaction = { NO=yes Level=3 }
+				OR = { 
+					AND = { 
+						if = { 
+							limit = { 
+								always = yes
+							}
+							custom_trigger_tooltip = { 
+								tooltip = Advisor_HasNO1
+								OR = { 
+									ai = yes
+									philosopher_NO = 1
+									natural_scientist_NO = 1
+									artist_NO = 1
+									treasurer_NO = 1
+									master_of_mint_NO = 1
+									statesman_NO = 1
+									naval_reformer_NO = 1
+									spymaster_NO = 1
+									colonial_governor_NO = 1
+									diplomat_NO = 1
+									navigator_NO = 1
+									army_reformer_NO = 1
+									army_organiser_NO = 1
+									commandant_NO = 1
+									quartermaster_NO = 1
+									recruitmaster_NO = 1
+									fortification_expert_NO = 1
+									grand_captain_NO = 1
+									alderman_NO = 1
+									sheriff_NO = 1
+									grand_admiral_NO = 1
+									lord_proprietor_NO = 1
+									astronomist_NO = 1
+									rear_admiral_NO = 1
+									colonel_NO = 1
+									composer_NO = 1
+								}
+							}
+						}
+					}
+					AND = { 
+						if = { 
+							limit = { 
+								always = yes
+							}
+							custom_trigger_tooltip = { 
+								tooltip = Advisor_HasNO2
+								OR = { 
+									ai = yes
+									philosopher_NO = 2
+									natural_scientist_NO = 2
+									artist_NO = 2
+									treasurer_NO = 2
+									master_of_mint_NO = 2
+									statesman_NO = 2
+									naval_reformer_NO = 2
+									spymaster_NO = 2
+									colonial_governor_NO = 2
+									diplomat_NO = 2
+									navigator_NO = 2
+									army_reformer_NO = 2
+									army_organiser_NO = 2
+									commandant_NO = 2
+									quartermaster_NO = 2
+									recruitmaster_NO = 2
+									fortification_expert_NO = 2
+									grand_captain_NO = 2
+									alderman_NO = 2
+									sheriff_NO = 2
+									grand_admiral_NO = 2
+									lord_proprietor_NO = 2
+									astronomist_NO = 2
+									rear_admiral_NO = 2
+									colonel_NO = 2
+									composer_NO = 2
+								}
+							}
+						}
+					}
+					AND = { 
+						if = { 
+							limit = { 
+								always = yes
+							}
+							custom_trigger_tooltip = { 
+								tooltip = Advisor_HasNO3
+								OR = { 
+									ai = yes
+									philosopher_NO = 3
+									natural_scientist_NO = 3
+									artist_NO = 3
+									treasurer_NO = 3
+									master_of_mint_NO = 3
+									statesman_NO = 3
+									naval_reformer_NO = 3
+									spymaster_NO = 3
+									colonial_governor_NO = 3
+									diplomat_NO = 3
+									navigator_NO = 3
+									army_reformer_NO = 3
+									army_organiser_NO = 3
+									commandant_NO = 3
+									quartermaster_NO = 3
+									recruitmaster_NO = 3
+									fortification_expert_NO = 3
+									grand_captain_NO = 3
+									alderman_NO = 3
+									sheriff_NO = 3
+									grand_admiral_NO = 3
+									lord_proprietor_NO = 3
+									astronomist_NO = 3
+									rear_admiral_NO = 3
+									colonel_NO = 3
+									composer_NO = 3
+								}
+							}
+						}
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = CaH_Aversion_decision_tt_2
-				OR = {
-					Advisor_HasFaction = { BG=yes Level=1 }
-					Advisor_HasFaction = { BG=yes Level=2 }
-					Advisor_HasFaction = { BG=yes Level=3 }
+				OR = { 
+					AND = { 
+						if = { 
+							limit = { 
+								always = yes
+							}
+							custom_trigger_tooltip = { 
+								tooltip = Advisor_HasCL1
+								OR = { 
+									ai = yes
+									philosopher_BG = 1
+									natural_scientist_BG = 1
+									artist_BG = 1
+									treasurer_BG = 1
+									master_of_mint_BG = 1
+									statesman_BG = 1
+									naval_reformer_BG = 1
+									trader_BG = 1
+									spymaster_BG = 1
+									colonial_governor_BG = 1
+									diplomat_BG = 1
+									navigator_BG = 1
+									grand_captain_BG = 1
+									alderman_BG = 1
+									architect_BG = 1
+									banker_BG = 1
+									grand_admiral_BG = 1
+									lord_proprietor_BG = 1
+									astronomist_BG = 1
+									composer_BG = 1
+								}
+							}
+						}
+					}
+					AND = { 
+						if = { 
+							limit = { 
+								always = yes
+							}
+							custom_trigger_tooltip = { 
+								tooltip = Advisor_HasCL2
+								OR = { 
+									ai = yes
+									philosopher_BG = 2
+									natural_scientist_BG = 2
+									artist_BG = 2
+									treasurer_BG = 2
+									master_of_mint_BG = 2
+									statesman_BG = 2
+									naval_reformer_BG = 2
+									trader_BG = 2
+									spymaster_BG = 2
+									colonial_governor_BG = 2
+									diplomat_BG = 2
+									navigator_BG = 2
+									grand_captain_BG = 2
+									alderman_BG = 2
+									architect_BG = 2
+									banker_BG = 2
+									grand_admiral_BG = 2
+									lord_proprietor_BG = 2
+									astronomist_BG = 2
+									composer_BG = 2
+								}
+							}
+						}
+					}
+					AND = { 
+						if = { 
+							limit = { 
+								always = yes
+							}
+							custom_trigger_tooltip = { 
+								tooltip = Advisor_HasCL3
+								OR = { 
+									ai = yes
+									philosopher_BG = 3
+									natural_scientist_BG = 3
+									artist_BG = 3
+									treasurer_BG = 3
+									master_of_mint_BG = 3
+									statesman_BG = 3
+									naval_reformer_BG = 3
+									trader_BG = 3
+									spymaster_BG = 3
+									colonial_governor_BG = 3
+									diplomat_BG = 3
+									navigator_BG = 3
+									grand_captain_BG = 3
+									alderman_BG = 3
+									architect_BG = 3
+									banker_BG = 3
+									grand_admiral_BG = 3
+									lord_proprietor_BG = 3
+									astronomist_BG = 3
+									composer_BG = 3
+								}
+							}
+						}
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = CaH_Aversion_decision_tt_3
-				CaHAversionAllow = yes
+				AND = { 
+					NOT = { 
+						faction_influence = { 
+							faction = FC_NO
+							influence = 60
+						}
+					}
+					check_variable = { 
+						which = asq
+						value = 70
+					}
+					check_variable = { 
+						which = asv
+						value = 70
+					}
+				}
 			}
 		}
-		effect = {
-			country_event = {
-					id = CaHAversion.1000
+		effect = { 
+			country_event = { 
+				id = CaHAversion.1000
 			}
-			if = {
-                limit = {
-					CaHAversionAllow = yes
-                }
-                custom_tooltip = Rights_UI_Success
-            }
-            else = {
-                custom_tooltip = Rights_UI_Failed
-            }
-            #CaHAversionReqs = yes
+			if = { 
+				limit = { 
+					AND = { 
+						NOT = { 
+							faction_influence = { 
+								faction = FC_NO
+								influence = 60
+							}
+						}
+						check_variable = { 
+							which = asq
+							value = 70
+						}
+						check_variable = { 
+							which = asv
+							value = 70
+						}
+					}
+				}
+				custom_tooltip = Rights_UI_Success
+			}
+			else = { 
+				custom_tooltip = Rights_UI_Failed
+			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}

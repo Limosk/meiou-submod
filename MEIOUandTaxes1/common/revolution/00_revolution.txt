@@ -1,180 +1,178 @@
-revolution = {
-	# FROM = center of revolution
-	target_province_weights = {
+revolution = { 
+	target_province_weights = { 
 		factor = 1
-
-		modifier = {
+		modifier = { 
 			factor = 0
-			OR = {
+			OR = { 
 				is_empty = yes
 				is_wasteland = yes
 				is_sea = yes
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2
-			controller = {
+			controller = { 
 				is_revolutionary = yes
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.5
-			controller = {
+			controller = { 
 				is_revolutionary = no
 				is_revolutionary = yes
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
-			owner = {
+			owner = { 
 				is_revolutionary = no
 				is_subject = yes
-				overlord = {
+				overlord = { 
 					is_revolutionary = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			NOT = { same_continent = FROM }
+			NOT = { 
+				same_continent = FROM
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			NOT = { same_continent = FROM }
-			NOT = {
-				OR = {
+			NOT = { 
+				same_continent = FROM
+			}
+			NOT = { 
+				OR = { 
 					has_port = yes
-					any_neighbor_province = {
+					any_neighbor_province = { 
 						has_revolution_in_province = yes
 					}
-					controller = { is_revolutionary = yes }
+					controller = { 
+						is_revolutionary = yes
+					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			NOT = { superregion = FROM }
+			NOT = { 
+				superregion = FROM
+			}
 			same_continent = FROM
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.2
 			culture_group = FROM
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			NOT = { religion = FROM }
+			NOT = { 
+				religion = FROM
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.6
-			NOT = { religion_group = FROM }
+			NOT = { 
+				religion_group = FROM
+			}
 		}
-		#modifier = {
-		#	factor = 1.5
-		#	unrest = 1
-		#	likely_rebels = revolutionary_rebels
-		#}
-		#modifier = {
-		#	factor = 2
-		#	controlled_by = revolutionary_rebels
-		#}
-		modifier = {
+		modifier = { 
 			factor = 1.2
-			owner = {
-				any_ally = {
+			owner = { 
+				any_ally = { 
 					is_revolutionary = yes
 				}
 			}
 		}
-		#target absolutist states more
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			NOT = { owner = { absolutism = 60 } }
+			NOT = { 
+				owner = { 
+					absolutism = 60
+				}
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.1
-			owner = { absolutism = 70 }
+			owner = { 
+				absolutism = 70
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.1
-			owner = { absolutism = 80 }
+			owner = { 
+				absolutism = 80
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.15
-			owner = { absolutism = 90 }
+			owner = { 
+				absolutism = 90
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.2
-			owner = { absolutism = 100 }
+			owner = { 
+				absolutism = 100
+			}
 		}
-		 #cities are breeding grounds for revolution
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			NOT = { development = 10 }
+			NOT = { 
+				development = 10
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.1
 			development = 15
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.1
 			development = 20
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.15
 			development = 25
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.15
 			development = 30
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.2
 			development = 35
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.2
 			province_has_center_of_trade_of_level = 2
 		}
-		#make it not be such a scatter gun
-		modifier = {
+		modifier = { 
 			factor = 2
-			any_neighbor_province = {
+			any_neighbor_province = { 
 				has_revolution_in_province = yes
 			}
 		}
-		modifier = { #so that it will get to islands like Britain
+		modifier = { 
 			factor = 1.6
 			has_port = yes
-			sea_zone = {
-				any_neighbor_province = {
+			sea_zone = { 
+				any_neighbor_province = { 
 					has_revolution_in_province = yes
 				}
 			}
-			NOT = {
-				any_neighbor_province = {
+			NOT = { 
+				any_neighbor_province = { 
 					has_revolution_in_province = yes
 				}
 			}
 		}
-		#modifier = { #so that it stays gone once removed
-		#	factor = 0
-		#	controller = { NOT = { is_revolutionary = yes } }
-		#	has_province_modifier = no_revolution_here_dummy
-		#}
-		#modifier = {
-		#	factor = 0
-		#	controller = { NOT = { is_revolutionary = yes } }
-		#	owner = { has_country_modifier = no_revolution_here_country_dummy }
-		#}
 	}
-
-	# Values at 100 Absolutism
-	revolution_province_modifiers = {
+	revolution_province_modifiers = { 
 		min_local_autonomy = 0.5
 	}
-
-	# Values at 100 Revolutionary Zeal
-	zeal_modifiers = {
+	zeal_modifiers = { 
 		administrative_efficiency = 0.3
 		special_unit_forcelimit = 0.2
 	}

@@ -1,54 +1,76 @@
-country_decisions = {
-	revoke_pacta_conventa = {
+country_decisions = { 
+	revoke_pacta_conventa = { 
 		major = yes
-		potential = {
-			CRO = {
+		potential = { 
+			CRO = { 
 				is_subject_of = ROOT
 				is_subject_of_type = permanent_union
 			}
 		}
-		allow = {
+		allow = { 
 			ADM = 4
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = POP_HasExecAuth_50
-				check_key = { lhs = Ruler_Power value = 50 }
+				check_variable = { 
+					which = bcn
+					value = 50
+				}
 			}
 			is_at_war = no
 			adm_power = 150
 			adm_tech = 12
-			NOT = { overextension_percentage = 0.01 }
-			custom_trigger_tooltip = {
+			NOT = { 
+				overextension_percentage = 0.01
+			}
+			custom_trigger_tooltip = { 
 				tooltip = Rights_NOGov3HasGreater
-				Rights_NOGov3HasGreater = yes
+				check_variable = { 
+					which = bba
+					value = 0
+				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = Rights_BUTax2HasGreater
-				Rights_BUTax2HasGreater = yes
+				check_variable = { 
+					which = bbu
+					value = 1
+				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = Rights_NOSer3HasGreater
-				Rights_NOSer3HasGreater = yes
+				check_variable = { 
+					which = bbg
+					value = 1
+				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = Rights_BUSer3HasGreater
-				Rights_BUSer3HasGreater = yes
+				check_variable = { 
+					which = bca
+					value = 2
+				}
 			}
 		}
-		effect = {
-			CRO = {
-				add_opinion = {
+		effect = { 
+			CRO = { 
+				add_opinion = { 
 					who = ROOT
 					modifier = pacta_conventa_revoked
 				}
-				ROOT = { create_subject = { subject_type = personal_union subject = PREV  } }
+				ROOT = { 
+					create_subject = { 
+						subject_type = personal_union
+						subject = PREV
+					}
+				}
 				add_liberty_desire = 25
 			}
 			add_adm_power = -150
-			hidden_effect = {
+			hidden_effect = { 
 				clr_country_flag = pacta_conventa_accepted
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}

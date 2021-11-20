@@ -1,15 +1,15 @@
-lose_navy_tradition = {
-	trigger = {
-		FROM = { has_port = yes }
+lose_navy_tradition = { 
+	trigger = { 
+		FROM = { 
+			has_port = yes
+		}
 	}
-	
-	effect = {
+	effect = { 
 		add_navy_tradition = -2
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 0.1
 			is_at_war = yes
 		}
