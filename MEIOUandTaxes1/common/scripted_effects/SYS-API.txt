@@ -939,6 +939,9 @@ Modi_ProdCountry = {
 		egyptian_ideas_3 = {
 			change_key = { lhs = Modi_KnowledgeOutput value = 0.05 }
 		}
+		roman_ideas_5 = {
+			change_key = { lhs = Modi_UrbanOutput value = 0.10 }
+		}
 		southern_african_ideas_4 = {
 			change_key = { lhs = Modi_MineOutput value = 0.10 }
 			if = {
@@ -2381,12 +2384,12 @@ Modi_InfraMaintenanceCountry = {
 			subtract_key = { lhs = Modi_IrrigationMaint value = 0.1 }
 		}
 		roman_ideas_2 = {
-			subtract_key = { lhs = Modi_CapitolMaint value = 0.20 }
+			subtract_key = { lhs = Modi_InfraMaint value = 0.33 }
 			if = {
 				limit = {
-					has_idea = roman_ideas_5
+					has_idea = roman_ideas_1
 				}
-				subtract_key = { lhs = Modi_HarbourageMaint value = 0.1 }
+				subtract_key = { lhs = Modi_PathingMaint value = 0.17 }
 			}
 		}
 		armenian_ideas_1 = {
@@ -5703,6 +5706,9 @@ Modi_CECountry = {
 		}
 		viet_ideas_1 = {
 			subtract_key = { lhs = Modi_CEForest value = 0.33 }
+		}
+        roman_ideas_1 = {
+			subtract_key = { lhs = Modi_CE value = 0.50 }
 		}
 		georgian_ideas_1 = {
 			subtract_key = { lhs = Modi_CEHeight value = 0.33 }

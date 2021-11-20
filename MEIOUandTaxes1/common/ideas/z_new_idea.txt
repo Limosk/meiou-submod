@@ -817,10 +817,10 @@ roman_ideas = {
 	}
 	roman_ideas_5 = {
 		build_cost = -0.33
-		global_own_trade_power = 0.20
 	    admiral_skill_gain_modifier = 0.33
 		movement_speed_onto_off_boat_modifier = 0.25
-        liberty_desire_from_subject_development = -0.33
+		#capital merchant
+		#urban output
 	}
 	roman_ideas_6 = {
 		diplomats = 2
