@@ -24,7 +24,7 @@ country_event = {
 		ai_chance = { factor = 95 }
 		create_alliance = HUN
 		set_country_flag = pol_louis_great_heir
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:made Louis d'Anjou heir to Casimir:flavor_pol.499"
+		log = "FE-POL:[GetYear]:[Root.GetName]:made Louis d'Anjou heir to Casimir:flavor_pol.499"
 	}
 	
 	option = {							#no louis rawr
@@ -37,7 +37,7 @@ country_event = {
 				kill_heir = yes
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:rejected Louis d'Anjou as heir to Casimir:flavor_pol.499"
+		log = "FE-POL:[GetYear]:[Root.GetName]:rejected Louis d'Anjou as heir to Casimir:flavor_pol.499"
 		define_heir = {
 			dynasty = "Piast"
 			name = "Kazimierz"
@@ -272,7 +272,7 @@ country_event = {
 		
 	option = {
 		name = "option.flavor_pol.502.a"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Poland had male heir - no union:flavor_pol.502"		
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Poland had male heir - no union:flavor_pol.502"		
 		add_prestige = 35
 		add_legitimacy = 30
 		#add_adm_power = 100
@@ -367,7 +367,7 @@ country_event = {
 		HUN = { create_union = POL }
 		set_country_flag = pol_louis_great_king
 		add_liberty_desire = 50
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (with Louis):flavor_pol.501"	
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (with Louis):flavor_pol.501"	
 	}
 	
 	option = { #make new male ruler PU
@@ -390,7 +390,7 @@ country_event = {
 				HUN = { has_consort_regency = yes } 
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (without Louis):flavor_pol.501"	
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (without Louis):flavor_pol.501"	
 		HUN = { create_union = POL }
 		add_liberty_desire = 100
 		set_country_flag = pol_louis_son_great_king
@@ -421,7 +421,7 @@ country_event = {
 			}
 		}
 		HUN = { create_union = POL }
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (without Louis):flavor_pol.501"	
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (without Louis):flavor_pol.501"	
 		add_liberty_desire = 100
 		set_country_flag = pol_louis_son_great_king
 	}
@@ -433,7 +433,7 @@ country_event = {
 		trigger = {
 			NOT = { HUN =  { has_ruler = "Louis the Great" } }
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, declined PU under Hungary (without Louis):flavor_pol.501"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, declined PU under Hungary (without Louis):flavor_pol.501"
 		add_legitimacy = -20
 		add_prestige = 15
 	}
@@ -459,7 +459,7 @@ country_event = { #hungary has no male and poland has no piast monarch either fe
 		}
 		add_liberty_desire = 100
 		set_country_flag = woman_great_king
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, union with Hungary (ruled by woman):flavor_pol.503"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, union with Hungary (ruled by woman):flavor_pol.503"
 	}
 	
 	option = { #no thx
@@ -467,7 +467,7 @@ country_event = { #hungary has no male and poland has no piast monarch either fe
 		ai_chance = { factor = 75 }
 		add_legitimacy = -15
 		add_prestige = 10
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, no union with Hungary (as it was ruled by woman):flavor_pol.503"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, no union with Hungary (as it was ruled by woman):flavor_pol.503"
 	}
 	
 	option = { #go with bohemia
@@ -475,8 +475,8 @@ country_event = { #hungary has no male and poland has no piast monarch either fe
 		ai_chance = { factor = 15 }
 		BOH = { create_union = POL }
 		add_liberty_desire = 75
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, no union with Hungary (as it was ruled by woman):flavor_pol.503"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, union with Bohemia:flavor_pol.503"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, no union with Hungary (as it was ruled by woman):flavor_pol.503"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, union with Bohemia:flavor_pol.503"
 	}
 }
 
@@ -562,7 +562,7 @@ country_event = {
 		trigger = { HUN = { has_ruler = "Louis the Great" } }
 		name = "flavor_pol.30234.a"
 		#HUN = { create_union = POL }
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (with Louis):flavor_pol.504"	
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (with Louis):flavor_pol.504"	
 		set_country_flag = pol_louis_great_king
 		add_liberty_desire = 40
 	}
@@ -590,7 +590,7 @@ country_event = {
 		}
 			
 		HUN = { create_union = POL }
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (without Louis):flavor_pol.504"	
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (without Louis):flavor_pol.504"	
 		add_liberty_desire = 75
 		set_country_flag = pol_louis_son_great_king
 	}
@@ -619,7 +619,7 @@ country_event = {
 				} 
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (without Louis):flavor_pol.504"	
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (without Louis):flavor_pol.504"	
 		HUN = { create_union = POL }
 		add_liberty_desire = 75
 		set_country_flag = pol_louis_son_great_king
@@ -632,8 +632,8 @@ country_event = {
 		trigger = {
 			NOT = { HUN =  { has_ruler = "Louis the Great" } }
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, declined PU under Hungary (without Louis):flavor_pol.504"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, local noble became ruler:flavor_pol.504"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, declined PU under Hungary (without Louis):flavor_pol.504"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, local noble became ruler:flavor_pol.504"
 		break_union = HUN
 		define_ruler = {
 			claim = 20
@@ -666,7 +666,7 @@ country_event = {
 		HUN = {
 			create_union = POL
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (ruler is a woman):flavor_pol.504"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Hungary (ruler is a woman):flavor_pol.504"
 		add_liberty_desire = 100
 		set_country_flag = woman_great_king
 	}
@@ -679,7 +679,7 @@ country_event = {
 		BOH = {
 			create_union = POL
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Bohemia:flavor_pol.504"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, PU under Bohemia:flavor_pol.504"
 		add_liberty_desire = 75
 	}
 }
@@ -730,7 +730,7 @@ country_event = {
 		name = "option.flavor_pol.506.a"
 		custom_tooltip = custom.option.flavor_pol.506.a
 		ai_chance = { factor = 10 }
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Mazovia became independent:flavor_pol.506"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Mazovia became independent:flavor_pol.506"
 		MAZ = { 
 			grant_independence = yes 
 		}
@@ -741,7 +741,7 @@ country_event = {
 				}
 			}
 			257 = { cede_province = MAZ }
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Plock ceded to Mazovia:flavor_pol.506"
+			log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Plock ceded to Mazovia:flavor_pol.506"
 		}
 		if = { 
 			limit = {
@@ -750,7 +750,7 @@ country_event = {
 				}
 			}
 			2506 = { cede_province = MAZ }
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Wizna ceded to Mazovia:flavor_pol.506"
+			log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Wizna ceded to Mazovia:flavor_pol.506"
 		}
 		if = { 
 			limit = {
@@ -759,7 +759,7 @@ country_event = {
 				}
 			}
 			2815 = { cede_province = MAZ }
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Dobrzyn ceded to Mazovia:flavor_pol.506"
+			log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Dobrzyn ceded to Mazovia:flavor_pol.506"
 		}
 		hidden_effect = {
 			if = { 
@@ -783,7 +783,7 @@ country_event = {
 		name = "option.flavor_pol.506.b"
 		ai_chance = { factor = 10 }
 		custom_tooltip = custom.option.flavor_pol.506.b
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Mazovia became independent, no provinces ceded:flavor_pol.506"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Mazovia became independent, no provinces ceded:flavor_pol.506"
 		MAZ = { 
 			grant_independence = yes 
 			set_country_flag = pol_meh_rights
@@ -817,7 +817,7 @@ country_event = {
 		name = "option.flavor_pol.507.a"
 		ai_chance = { factor = 70 }
 		custom_tooltip = custom.option.flavor_pol.506.a
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Mazovia became independent:flavor_pol.507"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Mazovia became independent:flavor_pol.507"
 		MAZ = { 
 			grant_independence = yes 
 		}
@@ -838,7 +838,7 @@ country_event = {
 	
 	option = { #Mazovia caves
 		name = "option.flavor_pol.507.b"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Mazovia did not became independent:flavor_pol.507"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Mazovia did not became independent:flavor_pol.507"
 		custom_tooltip = custom.option.flavor_pol.507.b
 		ai_chance = { factor = 100 }
 		trigger = {
@@ -848,8 +848,8 @@ country_event = {
 	
 	option = { #Mazovia rebels
 		name = "option.flavor_pol.507.c"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Mazovia did not became independent:flavor_pol.507"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, war started over Mazovian vassalage:flavor_pol.507"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, Mazovia did not became independent:flavor_pol.507"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Kazimierz III, war started over Mazovian vassalage:flavor_pol.507"
 		ai_chance = { factor = 30 }
 		trigger = {
 			NOT = { legitimacy = 75 }
@@ -927,7 +927,7 @@ country_event = {
 		trigger = {
 			has_country_flag = pol_louis_great_king
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Jadwiga became a ruler of Poland:flavor_pol.302"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Jadwiga became a ruler of Poland:flavor_pol.302"
 		if = {
 			limit = {
 				junior_union_with = HUN
@@ -972,7 +972,7 @@ country_event = {
 				has_country_flag = woman_great_king
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:d'Anjou woman (not Jadwiga) became a ruler of Poland:flavor_pol.302"
+		log = "FE-POL:[GetYear]:[Root.GetName]:d'Anjou woman (not Jadwiga) became a ruler of Poland:flavor_pol.302"
 		if = {
 			limit = {
 				junior_union_with = HUN
@@ -1018,7 +1018,7 @@ country_event = {
 			}	
 		}
 		add_liberty_desire = -20
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:stayed in PU (d'Anjou woman had not became a ruler of Poland):flavor_pol.302"
+		log = "FE-POL:[GetYear]:[Root.GetName]:stayed in PU (d'Anjou woman had not became a ruler of Poland):flavor_pol.302"
 	}
 	
 	after = {
@@ -1126,7 +1126,7 @@ country_event = {
 		trigger = {
 			has_country_flag = pol_louis_great_king
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, PU continues:flavor_pol.303"		
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, PU continues:flavor_pol.303"		
 		add_liberty_desire = -50
 	}
 	option = { # stay in the pu
@@ -1137,7 +1137,7 @@ country_event = {
 		trigger = {
 			has_country_flag = pol_louis_son_great_king
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, PU continues:flavor_pol.303"		
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, PU continues:flavor_pol.303"		
 		add_liberty_desire = -20
 	}
 	
@@ -1150,7 +1150,7 @@ country_event = {
 			has_country_flag = woman_great_king
 		}
 		add_liberty_desire = -10
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, PU continues:flavor_pol.303"	
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, PU continues:flavor_pol.303"	
 	}
 		
 	option = { # polands nobility doesnt accept heir
@@ -1167,8 +1167,8 @@ country_event = {
 		}
 		custom_tooltip = custom.flavor_pol.3023.e
 		POL = { break_union = HUN }
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, Polish nobility doesn't accept his heir:flavor_pol.303"	
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, end of personal union:flavor_pol.303"	
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, Polish nobility doesn't accept his heir:flavor_pol.303"	
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, end of personal union:flavor_pol.303"	
 		hidden_effect = {
 			HUN = {
 				country_event = { id = flavor_hun.90 days = 5 }
@@ -1185,7 +1185,7 @@ country_event = {
 		ai_chance = { 
 			factor = 90
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, Jadwiga becomes ruler:flavor_pol.303"	
+		log = "FE-POL:[GetYear]:[Root.GetName]:Death of Louis, Jadwiga becomes ruler:flavor_pol.303"	
 		custom_tooltip = custom.flavor_pol.3023.f
 		break_union = HUN
 		define_ruler = {
@@ -1307,7 +1307,7 @@ country_event = {
 				legitimacy = 90
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:male heir makes claim to Polish throne:flavor_pol.303"
+		log = "FE-POL:[GetYear]:[Root.GetName]:male heir makes claim to Polish throne:flavor_pol.303"
 		add_casus_belli = {
 			target = POL 
 			type = cb_restore_personal_union
@@ -1340,7 +1340,7 @@ country_event = {
 			}
 		}
 		add_prestige = -10
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:male heir do not make claims to Polish throne:flavor_pol.303"
+		log = "FE-POL:[GetYear]:[Root.GetName]:male heir do not make claims to Polish throne:flavor_pol.303"
 		tooltip = {
 			remove_casus_belli = {
 				target = POL
@@ -1406,7 +1406,7 @@ country_event = {
 				has_country_flag = hun_will_fight_pu
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:male heir declared war over claims to Polish throne:flavor_hun.90"
+		log = "FE-POL:[GetYear]:[Root.GetName]:male heir declared war over claims to Polish throne:flavor_hun.90"
 		declare_war_with_cb = {
 			who = POL
 			casus_belli = cb_restore_personal_union
@@ -1422,8 +1422,8 @@ country_event = {
 				has_country_flag = hun_will_fight_pu
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:male heir decided not to start war over claims to Polish throne:flavor_hun.90"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:end of Polish-Hungarian union:flavor_hun.90"
+		log = "FE-POL:[GetYear]:[Root.GetName]:male heir decided not to start war over claims to Polish throne:flavor_hun.90"
+		log = "FE-POL:[GetYear]:[Root.GetName]:end of Polish-Hungarian union:flavor_hun.90"
 		
 		POL = {
 			if = {
@@ -1538,7 +1538,7 @@ country_event = {
 				religion_group = european_pagan
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Accepted Lithuanian Duke on the throne, but demanded his christianisation:flavor_pol.100"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Accepted Lithuanian Duke on the throne, but demanded his christianisation:flavor_pol.100"
 		hidden_effect = {
 			LIT = {
 				if = {
@@ -1562,7 +1562,7 @@ country_event = {
 				mil = 4
 				female = yes
 			}
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Jadwiga d'Anjou set as Queen:flavor_pol.100"
+			log = "FE-POL:[GetYear]:[Root.GetName]:Jadwiga d'Anjou set as Queen:flavor_pol.100"
 			add_queen_personality = generous_personality
 			set_ruler_religion = catholic
 			#set_heir_religion = catholic
@@ -1650,7 +1650,7 @@ country_event = {
 				religion_group = christian
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Accepted Lithuanian Duke on the throne, he was already Christian:flavor_pol.100"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Accepted Lithuanian Duke on the throne, he was already Christian:flavor_pol.100"
 		hidden_effect = {
 			LIT = {
 				if = {
@@ -1731,7 +1731,7 @@ country_event = {
 		name = "flavor_pol.100.c"
 		ai_chance = { factor = 0 }
 		Stab_Add1 = yes
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Rejected Lithuanian Duke on the throne, married local noble:flavor_pol.100"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Rejected Lithuanian Duke on the throne, married local noble:flavor_pol.100"
 		LIT = {
 			add_opinion = {
 				who = ROOT
@@ -1809,7 +1809,7 @@ country_event = {
 	option = {		# Accept the crown of Grand Duchy and demand its christianisation
 		name = "flavor_pol.101.a"
 		ai_chance = { factor = 100 }
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Accepted the crown of Lithuanian Grand Duchy, but demanded its christianisation:flavor_pol.101"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Accepted the crown of Lithuanian Grand Duchy, but demanded its christianisation:flavor_pol.101"
 		trigger = {
 			LIT = {
 				religion_group = european_pagan
@@ -1893,7 +1893,7 @@ country_event = {
 				religion = catholic
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Accepted the crown of Lithuanian Grand Duchy, have not demanded its christianisation:flavor_pol.101"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Accepted the crown of Lithuanian Grand Duchy, have not demanded its christianisation:flavor_pol.101"
 		LIT = {
 			if = {
 				limit = { TRK = { ai = yes } }
@@ -1951,7 +1951,7 @@ country_event = {
 	
 	option = {		# Seach for an appropriate Polish bride
 		name = "flavor_pol.101.c"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Rejected the crown of Lithuanian Grand Duchy, married local noble:flavor_pol.101"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Rejected the crown of Lithuanian Grand Duchy, married local noble:flavor_pol.101"
 		ai_chance = { factor = 0 }
 		Stab_Add1 = yes
 		LIT = {
@@ -1991,7 +1991,7 @@ country_event = {
 		tooltip = {
 			POL = { vassalize = MAZ }
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:became loyal to Poland again:flavor_pol.509"
+		log = "FE-POL:[GetYear]:[Root.GetName]:became loyal to Poland again:flavor_pol.509"
 		hidden_effect = {
 			POL = { 
 				country_event = { id = flavor_pol.510 days = 1 }
@@ -2021,7 +2021,7 @@ country_event = {
 				}
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:did not became loyal to Poland again:flavor_pol.509"
+		log = "FE-POL:[GetYear]:[Root.GetName]:did not became loyal to Poland again:flavor_pol.509"
 		hidden_effect = {
 			POL = { 
 				country_event = { id = flavor_pol.511 days = 1 }
@@ -2107,7 +2107,7 @@ country_event = {
 		tooltip = {
 			HAB = { add_treasury = 100 }
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:paid compensation for Jadwiga behtrotal to Habsburgs:flavor_pol.512"
+		log = "FE-POL:[GetYear]:[Root.GetName]:paid compensation for Jadwiga behtrotal to Habsburgs:flavor_pol.512"
 		hidden_effect = {
 			HAB = { country_event = { id = flavor_pol.513 days = 1 } }
 		}
@@ -2143,7 +2143,7 @@ country_event = {
 				}	
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:refused to pay compensation for Jadwiga behtrotal to Habsburgs:flavor_pol.512"
+		log = "FE-POL:[GetYear]:[Root.GetName]:refused to pay compensation for Jadwiga behtrotal to Habsburgs:flavor_pol.512"
 		hidden_effect = {
 			HAB = { country_event = { id = flavor_pol.514 days = 1 } }
 		}
@@ -2199,7 +2199,6 @@ country_event = {
 	id = flavor_pol.313
 	title = "flavor_pol.313.title"
 	desc = "flavor_pol.313.desc"
-	#TODO: impact on Loyalty of Mazovian nobles only
 	picture = DIPLOMACY_eventPicture
 	fire_only_once = yes
 	trigger = {
@@ -2244,7 +2243,7 @@ country_event = {
 					owns_or_vassal_of = 271
 				}
 			}
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:ceded Bialystok to Poland:flavor_pol.313"
+			log = "FE-POL:[GetYear]:[Root.GetName]:ceded Bialystok to Poland:flavor_pol.313"
 			271 = { #Bialystok
 				cede_province = ROOT
 				add_core = ROOT
@@ -2261,7 +2260,7 @@ country_event = {
 					owns_or_vassal_of = 3759
 				}
 			}
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:ceded Drohiczyn to Poland:flavor_pol.313"
+			log = "FE-POL:[GetYear]:[Root.GetName]:ceded Drohiczyn to Poland:flavor_pol.313"
 			3759 = { #Drohiczyn
 				cede_province = ROOT
 				add_core = ROOT
@@ -2278,7 +2277,7 @@ country_event = {
 					owns_or_vassal_of = 3763
 				}
 			}
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:ceded Bielskas to Poland:flavor_pol.313"
+			log = "FE-POL:[GetYear]:[Root.GetName]:ceded Bielskas to Poland:flavor_pol.313"
 			3763 = { #Bielskas
 				cede_province = ROOT
 				add_core = ROOT
@@ -2296,7 +2295,22 @@ country_event = {
 			}
 		}
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
-		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=5 } 
+
+		hidden_effect = {
+			every_province = {
+				limit = { 
+					area = mazovia_area 
+					owner = {
+						OR = {
+							tag = ROOT
+							vassal_of = ROOT
+						}
+					}
+				}
+				Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=10 }
+			}
+		}
+		custom_tooltip = mazovia_NO_loy_plus_10_tt
 	}
 	option = {
 		name = "flavor_pol.313.b"
@@ -2314,7 +2328,7 @@ country_event = {
 					owns_or_vassal_of = 271
 				}
 			}
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:ceded Bialystok to Poland:flavor_pol.313"
+			log = "FE-POL:[GetYear]:[Root.GetName]:ceded Bialystok to Poland:flavor_pol.313"
 			271 = { #Bialystok
 				cede_province = ROOT
 				add_core = ROOT
@@ -2331,7 +2345,7 @@ country_event = {
 					owns_or_vassal_of = 3759
 				}
 			}
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:ceded Drohiczyn to Poland:flavor_pol.313"
+			log = "FE-POL:[GetYear]:[Root.GetName]:ceded Drohiczyn to Poland:flavor_pol.313"
 			3759 = { #Drohiczyn
 				cede_province = ROOT
 				add_core = ROOT
@@ -2348,7 +2362,7 @@ country_event = {
 					owns_or_vassal_of = 3763
 				}
 			}
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:ceded Bielskas to Poland:flavor_pol.313"
+			log = "FE-POL:[GetYear]:[Root.GetName]:ceded Bielskas to Poland:flavor_pol.313"
 			3763 = { #Bielskas
 				cede_province = ROOT
 				add_core = ROOT
@@ -2366,14 +2380,42 @@ country_event = {
 			}
 		}
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
-		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=5 } 
+		hidden_effect = {
+			every_province = {
+				limit = { 
+					area = mazovia_area 
+					owner = {
+						OR = {
+							tag = ROOT
+							vassal_of = ROOT
+						}
+					}
+				}
+				Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=10 }
+			}
+		}
+		custom_tooltip = mazovia_NO_loy_plus_10_tt
 	}
 	option = {
 		name = "flavor_pol.313.c"
 		add_prestige = -5
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:have not pushed Lithuania for ceding Podolia:flavor_pol.313"
+		log = "FE-POL:[GetYear]:[Root.GetName]:have not pushed Lithuania for ceding Podolia:flavor_pol.313"
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-5 }
-		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=-5 } 
+		hidden_effect = {
+			every_province = {
+				limit = { 
+					area = mazovia_area 
+					owner = {
+						OR = {
+							tag = ROOT
+							vassal_of = ROOT
+						}
+					}
+				}
+				Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=-10 }
+			}
+		}
+		custom_tooltip = mazovia_NO_loy_minus_10_tt
 	}
 }
 #Territorial disputes between Poland and Lithuania
@@ -2418,9 +2460,9 @@ country_event = {
 					ai = yes
 				}
 			}
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:removed cores and claims from Lithuania provinces:flavor_pol.306"
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Lithuania removed cores and claims from  Polish provinces:flavor_pol.306"
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:inherited Halych-Volhyna while settling border dispute with Lithunia:flavor_pol.306"
+			log = "FE-POL:[GetYear]:[Root.GetName]:removed cores and claims from Lithuania provinces:flavor_pol.306"
+			log = "FE-POL:[GetYear]:[Root.GetName]:Lithuania removed cores and claims from  Polish provinces:flavor_pol.306"
+			log = "FE-POL:[GetYear]:[Root.GetName]:inherited Halych-Volhyna while settling border dispute with Lithunia:flavor_pol.306"
 			POL = {
 				inherit = GVO
 			}
@@ -2462,7 +2504,7 @@ country_event = {
 						owned_by = POL
 					}
 				}
-				#_#_log = "FE-POL:[GetYear]:[Root.GetName]:inherited Cholm while settling border dispute with Lithunia:flavor_pol.306"
+				log = "FE-POL:[GetYear]:[Root.GetName]:inherited Cholm while settling border dispute with Lithunia:flavor_pol.306"
 				cede_province = POL
 				add_core = POL
 				remove_core = LIT
@@ -2481,7 +2523,7 @@ country_event = {
 						owned_by = POL
 					}
 				}
-				#_#_log = "FE-POL:[GetYear]:[Root.GetName]:inherited Ratne while settling border dispute with Lithunia:flavor_pol.306"
+				log = "FE-POL:[GetYear]:[Root.GetName]:inherited Ratne while settling border dispute with Lithunia:flavor_pol.306"
 				cede_province = POL
 				add_core = POL
 				remove_core = LIT
@@ -2506,13 +2548,13 @@ country_event = {
 							vassal_of = POL
 						}
 					}
-					#_#_log = "FE-POL:[GetYear]:[MAZ.GetName]:inherited Belz while settling border dispute with Lithunia:flavor_pol.306"
+					log = "FE-POL:[GetYear]:[MAZ.GetName]:inherited Belz while settling border dispute with Lithunia:flavor_pol.306"
 					cede_province = MAZ
 					add_core = MAZ
 					remove_core = LIT
 				}
 				else = {
-					#_#_log = "FE-POL:[GetYear]:[Root.GetName]:inherited Belz while settling border dispute with Lithunia:flavor_pol.306"
+					log = "FE-POL:[GetYear]:[Root.GetName]:inherited Belz while settling border dispute with Lithunia:flavor_pol.306"
 					cede_province = POL
 					add_core = POL
 					remove_core = LIT
@@ -2522,7 +2564,7 @@ country_event = {
 	}
 	option = {
 		name = "flavor_pol.306.b"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:decided not to settle border disputes with Lithuania, maintained status quo:flavor_pol.306"
+		log = "FE-POL:[GetYear]:[Root.GetName]:decided not to settle border disputes with Lithuania, maintained status quo:flavor_pol.306"
 	}
 }
 country_event = {
@@ -2547,7 +2589,7 @@ country_event = {
 	}
 	option = {
 		name = "flavor_pol.600.a"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:signed union of Krewo:flavor_pol.600"
+		log = "FE-POL:[GetYear]:[Root.GetName]:signed union of Krewo:flavor_pol.600"
 		ai_chance = {
 			factor = 100
 		}
@@ -2605,7 +2647,7 @@ country_event = {
 		ai_chance = {
 			factor = 90
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:signed union of Horodlo:flavor_pol.601"
+		log = "FE-POL:[GetYear]:[Root.GetName]:signed union of Horodlo:flavor_pol.601"
 		add_legitimacy = -10
 		add_dip_power = -100
 		add_absolutism = 10
@@ -2641,7 +2683,7 @@ country_event = {
 		ai_chance = {
 			factor = 10
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:refused union of Horodlo:flavor_pol.601"
+		log = "FE-POL:[GetYear]:[Root.GetName]:refused union of Horodlo:flavor_pol.601"
 		add_absolutism = -10
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker = NO Amount = 15 }
 		hidden_effect = {
@@ -2681,7 +2723,7 @@ country_event = {
 		ai_chance = {
 			factor = 90
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:signed union of Grodno:flavor_pol.602"
+		log = "FE-POL:[GetYear]:[Root.GetName]:signed union of Grodno:flavor_pol.602"
 		set_country_flag = 3_union_grodno
 		tooltip = {
 			custom_tooltip = flavor_pol.union_sign.3
@@ -2732,7 +2774,7 @@ country_event = {
 		ai_chance = {
 			factor = 10
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:refused union of Grodno:flavor_pol.602"
+		log = "FE-POL:[GetYear]:[Root.GetName]:refused union of Grodno:flavor_pol.602"
 		hidden_effect = {
 			change_variable = {
 				which = bow_to_nobles
@@ -2775,7 +2817,7 @@ country_event = {
 		ai_chance = {
 			factor = 80
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:signed union of Krakow and Vilna:flavor_pol.603"
+		log = "FE-POL:[GetYear]:[Root.GetName]:signed union of Krakow and Vilna:flavor_pol.603"
 		set_country_flag = 4_union_krakow
 		tooltip = {
 			custom_tooltip = flavor_pol.union_sign.4
@@ -2789,7 +2831,7 @@ country_event = {
 		ai_chance = {
 			factor = 20
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:refused union of Krakow and Vilna:flavor_pol.603"
+		log = "FE-POL:[GetYear]:[Root.GetName]:refused union of Krakow and Vilna:flavor_pol.603"
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker = NO Amount = 10 }
 		add_prestige = -10
 		hidden_effect = {
@@ -2840,7 +2882,7 @@ country_event = {
 		ai_chance = {
 			factor = 90
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:signed union of Lublin:flavor_pol.604"
+		log = "FE-POL:[GetYear]:[Root.GetName]:signed union of Lublin:flavor_pol.604"
 		custom_tooltip = flavor_pol.union_sign.5
 		set_country_flag = 5_union_lublin
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker = NO Amount = -10 }
@@ -2854,7 +2896,7 @@ country_event = {
 				has_global_flag = 1530_start_date
 			}
 		}
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:refused union of Lublin:flavor_pol.604"
+		log = "FE-POL:[GetYear]:[Root.GetName]:refused union of Lublin:flavor_pol.604"
 		add_legitimacy = -50
 		add_absolutism = -10
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker = NO Amount = 10 }
@@ -2933,7 +2975,7 @@ country_event = {
 	}
 	option = {
 		name = "flavor_pol.610.a"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:moved to elective monarchy:flavor_pol.610"
+		log = "FE-POL:[GetYear]:[Root.GetName]:moved to elective monarchy:flavor_pol.610"
 		Pol_ChangeGovMonarchy = { Succession=4 Assembly=2 } 
 		add_government_reform = Pol_Nobility1
 		set_variable = {
@@ -2964,7 +3006,7 @@ country_event = {
 	}
 	option = {
 		name = flavor_pol.17.a
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:ended historical rivalry with Teutonic Order:flavor_pol.17"
+		log = "FE-POL:[GetYear]:[Root.GetName]:ended historical rivalry with Teutonic Order:flavor_pol.17"
 		add_prestige = 10
 		remove_historical_rival = TEU
 		TEU = {
@@ -4408,7 +4450,7 @@ province_event = {
 		}
 		change_religion = orthodox
 		change_culture = ukrainian
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:[This.GetName] converted to Cossack culture:flavor_pol.735"
+		log = "FE-POL:[GetYear]:[Root.Owner.GetName]:[This.GetName] converted to Cossack culture:flavor_pol.735"
 	}
 }
 
@@ -4446,7 +4488,7 @@ country_event = {
         name = "flavor_pol.740.a"
 		set_country_flag = nalewajko_uprising
         Stab_Subtract1 = yes
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Nalevajko uprising of Cossacks started:flavor_pol.740"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Nalevajko uprising of Cossacks started:flavor_pol.740"
 		random_owned_province = {
 			limit = {
 				culture = ukrainian
@@ -4493,8 +4535,8 @@ country_event = {
     
 	option = { #Reach an agreement with Cossacks
         name = "flavor_pol.741.a"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Nalevajko uprising ended by reaching an agreement with Cossacks:flavor_pol.741"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Cossacks were added to regular army and Sich became a vassal:flavor_pol.741"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Nalevajko uprising ended by reaching an agreement with Cossacks:flavor_pol.741"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Cossacks were added to regular army and Sich became a vassal:flavor_pol.741"
 		
 		Stab_Add1 = yes
 		add_country_modifier = {
@@ -4518,7 +4560,7 @@ country_event = {
         name = "flavor_pol.741.b"
 		set_country_flag = angered_cossacks
 		Stab_Subtract1 = yes
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Nalevajko uprising ended by crushing the Cossacks:flavor_pol.741"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Nalevajko uprising ended by crushing the Cossacks:flavor_pol.741"
 		random_owned_province = {
 			limit = {
 				culture = ukrainian
@@ -4568,9 +4610,9 @@ country_event = {
         name = "flavor_pol.742.a"
         Stab_Subtract1 = yes
 		remove_country_modifier = cossacks_in_regular_army 
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Cossacks uprising disaster started:flavor_pol.742"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Cossacks removed from regular army:flavor_pol.742"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Cossacks unrest and liberty desire added:flavor_pol.742"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Cossacks uprising disaster started:flavor_pol.742"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Cossacks removed from regular army:flavor_pol.742"
+		log = "FE-POL:[GetYear]:[Root.GetName]:Cossacks unrest and liberty desire added:flavor_pol.742"
 		create_subject = {
             subject_type = rebellious_decentralized_vassal
             subject = ZAZ
@@ -4620,7 +4662,7 @@ country_event = {
 		    limit = {
 			    has_country_flag = bohdan_chmielnicki
 			}
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:rebellious hetman is Bogdam Chmielnicki:flavor_pol.743"
+			log = "FE-POL:[GetYear]:[Root.GetName]:rebellious hetman is Bogdam Chmielnicki:flavor_pol.743"
             define_ruler = {
 			    name = "Bohdan Chmielnicki"
 			    claim = 100
@@ -4700,7 +4742,7 @@ country_event = {
 	option = { #Crush those peasants!
         name = "flavor_pol.744.a"
 		set_country_flag = chmielnicki_uprising_2
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:angry mob spawned:flavor_pol.744"
+		log = "FE-POL:[GetYear]:[Root.GetName]:angry mob spawned:flavor_pol.744"
 		every_owned_province = {
 		    limit = {
 			    OR = {
@@ -4734,7 +4776,7 @@ country_event = {
 			    is_year = 1630
 				NOT = { is_year = 1651 } 
 			}
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Jeremi Wisniowiecki became general:flavor_pol.744"
+			log = "FE-POL:[GetYear]:[Root.GetName]:Jeremi Wisniowiecki became general:flavor_pol.744"
 			define_general = {
 		        name = "Jeremi Wisniowiecki"
                 shock = 5
@@ -4781,7 +4823,7 @@ province_event = {
     
 	option = { 
         name = "flavor_pol.745.a"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:[This.GetName] defected to Cossacks:flavor_pol.745"
+		log = "FE-POL:[GetYear]:[Root.GetName]:[This.GetName] defected to Cossacks:flavor_pol.745"
        	cede_province = ZAZ
 		add_core = ZAZ
         ZAZ = {
@@ -4844,7 +4886,7 @@ country_event = {
 				}
 			}
             set_country_flag = strong_muscovy
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Muscovy recognised as potential overlord:flavor_pol.746"
+			log = "FE-POL:[GetYear]:[Root.GetName]:Muscovy recognised as potential overlord:flavor_pol.746"
 		}
         if = {
 		    limit = {
@@ -4859,7 +4901,7 @@ country_event = {
 				}
 			}
             set_country_flag = strong_russia
-			#_#_log = "FE-POL:[GetYear]:[Root.GetName]:Russia recognised as potential overlord:flavor_pol.746"
+			log = "FE-POL:[GetYear]:[Root.GetName]:Russia recognised as potential overlord:flavor_pol.746"
 		}
 	}
 	
@@ -4881,7 +4923,7 @@ country_event = {
 		}
         MOS = { country_event = { id = flavor_pol.747 days = 1 } }
         grant_independence = yes
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:swore allegiance to Muscovy:flavor_pol.746"
+		log = "FE-POL:[GetYear]:[Root.GetName]:swore allegiance to Muscovy:flavor_pol.746"
 	}
 	
 	option = { #Swore our allegiance to Russians
@@ -4894,7 +4936,7 @@ country_event = {
 		}
         RUS = { country_event = { id = flavor_pol.747 days = 1 } }
         grant_independence = yes
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:swore allegiance to Russia:flavor_pol.746"
+		log = "FE-POL:[GetYear]:[Root.GetName]:swore allegiance to Russia:flavor_pol.746"
 	}
 	
 	option = { #Swore our allegiance to Sultan
@@ -4908,7 +4950,7 @@ country_event = {
 		}
         TUR = { country_event = { id = flavor_pol.747 days = 1 } }
         grant_independence = yes
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:swore allegiance to the Turkish Empire:flavor_pol.746"
+		log = "FE-POL:[GetYear]:[Root.GetName]:swore allegiance to the Turkish Empire:flavor_pol.746"
 	}
 }
 
@@ -4958,7 +5000,7 @@ country_event = {
 
 	option = { #Traitor, not a hetman!
         name = "flavor_pol.748.a"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:was forced to cede Cossack provinces by agreement of Pereyeslavl:flavor_pol.748"
+		log = "FE-POL:[GetYear]:[Root.GetName]:was forced to cede Cossack provinces by agreement of Pereyeslavl:flavor_pol.748"
 		every_owned_province = {
 		    limit = {
 			    OR = {
@@ -5005,7 +5047,7 @@ country_event = {
 
 	option = { #Make this union come true!
         name = "flavor_pol.749.a"
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:signed Union of Hadziacz:flavor_pol.749"
+		log = "FE-POL:[GetYear]:[Root.GetName]:signed Union of Hadziacz:flavor_pol.749"
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker = NO Amount = -10 }
         ZAZ = { change_tag = UKR }
         create_subject = {
@@ -5071,14 +5113,14 @@ country_event = {
 	option = { #No mercy for traitors!
         name = "flavor_pol.749.b"
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker = NO Amount = 15 }
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:refused Union of Hadziacz:flavor_pol.749"
+		log = "FE-POL:[GetYear]:[Root.GetName]:refused Union of Hadziacz:flavor_pol.749"
         add_prestige = 20
         #add_mil_power = 200
 	}
 	option = { #Give up ukrainian lands
         name = "flavor_pol.749.c"
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker = NO Amount = -15 }
-		#_#_log = "FE-POL:[GetYear]:[Root.GetName]:refused Union of Hadziacz and gave up Ukraine:flavor_pol.749"
+		log = "FE-POL:[GetYear]:[Root.GetName]:refused Union of Hadziacz and gave up Ukraine:flavor_pol.749"
         add_prestige = -20
 		ZAZ = {
 		    every_owned_province = {

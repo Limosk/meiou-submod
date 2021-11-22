@@ -129,7 +129,7 @@ lithuanian_missions_1 = {
 			280 = {
 				development = 20
 				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				check_key = { lhs = Modi_TradeOutput value = 0.2 }
+				custom_trigger_tooltip = { tooltip = miss_output_51_20 check_key = { lhs = TN_ProvSply51 value = 20 } }
 			}
 		}
 		effect = {
@@ -355,11 +355,11 @@ lithuanian_missions_2 = {
 			owns_core_province = 262
 			262 = {
 				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				check_key = { lhs = Modi_KnowledgeOutput value = 0.2 }
+				custom_trigger_tooltip = { tooltip = miss_output_41_10 check_key = { lhs = TN_ProvSply41 value = 10 } }
 			}
 			num_of_owned_provinces_with = {
 				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				check_key = { lhs = Modi_KnowledgeOutput value = 0.2 }
+				custom_trigger_tooltip = { tooltip = miss_output_41_10 check_key = { lhs = TN_ProvSply41 value = 10 } }
 				value = 3
 			}
 			has_institution = casual_literacy

@@ -2910,6 +2910,24 @@ malay = {
 			Vaite Vaitiare
 		}
 	}
+	bornean = {
+		primary = BEI
+		
+		dynasty_names = {
+			Melaka Johor Perak Kedah Pattani Pahang Kelantan Selangor Terengganu
+		}
+		male_names = {
+			"Sam Agi" "Paramesvara" "Megat Iskander" "Muhammad Shah" "Abu Syahid" "Muzaffar Shah" "Mansûr Shah" 
+			"Riayat Shah" "Mahmûd Shah" "'Abd al-Jalîl Shah" "Ma'ayat Shah" "Ibrahîm Shah" "Rahmat Shah" "Sulayman Badr Shah" 
+			"Mu'azzam Shah" "Mahmûd Ri'ayat Shah" "'Abd ar-Rahman Shah" "Rajah Qasim"
+		}
+		female_names = {
+			Azura Merenui Metetini Miri Moea Moeata Moerani Mohea Nanihi Nu’utea Orama Poe Pear Poehina Poenui Poerava Puaiti 
+			Puatea Puaura Ra’ihau Ra’imere Ra’inui Ranitea Rarahu Raunui Raurii Tahiata Taiana Taina Tania Taurua Tautiare Tehani 
+			Tehea Teora Tera Tevai Titaina Titaua Tuianu Tumata Unutea Urarii Vaea Vaiana Vaianu Vaiata Vaihere Vaimiti Vairea 
+			Vaite Vaitiare
+		}
+	}
 	indonesian = {
 		dynasty_names = {
 			Banten Demak Surabaya Cirebon Samprangan

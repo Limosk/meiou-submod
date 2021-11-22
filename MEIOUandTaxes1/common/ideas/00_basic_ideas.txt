@@ -770,30 +770,35 @@ expansion_ideas = { #over land colonisation
 	}
 	
 	ai_will_do = {
-		factor = 0.5
+		factor = 50
 		modifier = {
-			factor = 1000
+			factor = 20
 			capital_scope = {
 				superregion = greater_russia_superregion
 			}
 			num_of_cities = 5
+			# Must have adjacent empty province
+			any_owned_province = {
+				has_empty_adjacent_province = yes
+			}
 		}
 		modifier = {
-			factor = 100
-			is_colonial_nation = yes
-		}
-		modifier = { # Must have adjacent empty province
 			factor = 0
 			NOT = {
-				any_owned_province = {
-					has_empty_adjacent_province = yes
+				is_colonial_nation = yes
+				is_former_colonial_nation = yes
+				capital_scope = {
+					superregion = greater_russia_superregion
 				}
 			}
 		}
 		modifier = { # Colonial nations on islands won't take
 			factor = 0
 			AND = {
-				is_colonial_nation = yes
+				OR = {
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+				}
 				capital_scope = {
 					province_is_on_an_island = no
 				}

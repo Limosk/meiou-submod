@@ -1143,7 +1143,8 @@ MN_Autonomy = {
 			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
 			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
 		}
-		else = {
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Special value = 5 } }
 			add_province_modifier = { name = MN_A_Spec.05 duration = -1 hidden = yes }
 			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
 			else_if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
@@ -1154,6 +1155,18 @@ MN_Autonomy = {
 			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
 			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
 			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+		}
+		else = {
+			if = { limit = { has_province_modifier = MN_A_Spec.90 } remove_province_modifier = MN_A_Spec.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.80 } remove_province_modifier = MN_A_Spec.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.70 } remove_province_modifier = MN_A_Spec.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.60 } remove_province_modifier = MN_A_Spec.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.50 } remove_province_modifier = MN_A_Spec.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.40 } remove_province_modifier = MN_A_Spec.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.30 } remove_province_modifier = MN_A_Spec.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.20 } remove_province_modifier = MN_A_Spec.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.10 } remove_province_modifier = MN_A_Spec.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Spec.05 } remove_province_modifier = MN_A_Spec.05 }
 		}
 	}
 	if = {
@@ -1275,7 +1288,8 @@ MN_Autonomy = {
 			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
 			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
 		}
-		else = {
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heretic value = 5 } }
 			add_province_modifier = { name = MN_A_Here.05 duration = -1 hidden = yes }
 			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
 			else_if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
@@ -1286,6 +1300,18 @@ MN_Autonomy = {
 			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
 			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
 			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+		}
+		else = {
+			if = { limit = { has_province_modifier = MN_A_Here.90 } remove_province_modifier = MN_A_Here.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.80 } remove_province_modifier = MN_A_Here.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.70 } remove_province_modifier = MN_A_Here.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.60 } remove_province_modifier = MN_A_Here.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.50 } remove_province_modifier = MN_A_Here.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.40 } remove_province_modifier = MN_A_Here.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.30 } remove_province_modifier = MN_A_Here.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.20 } remove_province_modifier = MN_A_Here.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.10 } remove_province_modifier = MN_A_Here.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Here.05 } remove_province_modifier = MN_A_Here.05 }
 		}
 	}
 	if = {
@@ -1407,7 +1433,8 @@ MN_Autonomy = {
 			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
 			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
 		}
-		else = {
+		else_if = {
+			limit = { check_key = { lhs = MN_Autonomy_Heathen value = 5 } }
 			add_province_modifier = { name = MN_A_Heat.05 duration = -1 hidden = yes }
 			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
 			else_if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
@@ -1418,6 +1445,18 @@ MN_Autonomy = {
 			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
 			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
 			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+		}
+		else = {
+			if = { limit = { has_province_modifier = MN_A_Heat.90 } remove_province_modifier = MN_A_Heat.90 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.80 } remove_province_modifier = MN_A_Heat.80 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.70 } remove_province_modifier = MN_A_Heat.70 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.60 } remove_province_modifier = MN_A_Heat.60 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.50 } remove_province_modifier = MN_A_Heat.50 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.40 } remove_province_modifier = MN_A_Heat.40 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.30 } remove_province_modifier = MN_A_Heat.30 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.20 } remove_province_modifier = MN_A_Heat.20 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.10 } remove_province_modifier = MN_A_Heat.10 }
+			else_if = { limit = { has_province_modifier = MN_A_Heat.05 } remove_province_modifier = MN_A_Heat.05 }
 		}
 	}
 }

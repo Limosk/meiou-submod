@@ -234,7 +234,7 @@ cas_iberia_unification = {
 		required_missions = { }
 		position = 1
 		trigger = {
-			absolutism = 20
+			absolutism = 30
 		}
 		effect = {
 			add_legitimacy = 10

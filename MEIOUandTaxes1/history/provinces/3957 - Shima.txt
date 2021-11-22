@@ -1,9 +1,9 @@
-# 3957 - Musachi
+# 3957 - Saitama
 
 owner = NIK
 controller = NIK
 
-capital = "Saitama"
+capital = "Kumagaya"
 trade_goods = rice
 culture = kanto
 religion = mahayana

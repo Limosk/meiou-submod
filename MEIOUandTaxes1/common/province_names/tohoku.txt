@@ -68,7 +68,7 @@
 3954 = "Wagasa"
 3955 = "Suruga"
 3956 = "Migawa"
-3957 = "Sima"
+3957 = "Saitama"
 3958 = "Ega"
 3959 = "Kawazi"
 3960 = "Izimi"

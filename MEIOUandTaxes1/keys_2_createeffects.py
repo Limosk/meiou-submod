@@ -563,7 +563,7 @@ tmplt2H_locc = """
 
 if __name__ == "__main__":  
     dct = dict()
-    scopes = ["ROOT", "FROM", "THIS", "PREV", "emperor", "EMPEROR", "owner", "OWNER", "capital", "CAPITAL"]
+    scopes = ["ROOT", "FROM", "THIS", "PREV", "emperor", "EMPEROR", "owner", "OWNER", "capital", "CAPITAL", "AAA"]
 
     set_scopes(scopes, 'event_targets.txt')
     set_dct(dct, 'vars.txt')

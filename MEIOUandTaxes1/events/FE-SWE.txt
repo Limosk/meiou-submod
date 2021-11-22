@@ -1,35 +1,34 @@
 namespace = flavor_swe
 
 country_event = {
-	id = flavor_swe.3217
+	id = flavor_swe.3217 #The Engelbrekt Rebellion
 	title = "flavor_swe.EVTNAME3217"
 	desc = "flavor_swe.EVTDESC3217"
 	picture = ANGRY_MOB_eventPicture
+	fire_only_once = yes
 	trigger = {
 		tag = SWE
 		junior_union_with = DEN
-		stability = 2
-		DEN = {
+		#stability = 2 #why would only stable country rebel?
+		NOT = { is_year = 1600 }
+		OR = {
 			NOT = {
-				stability = 0
+				has_opinion = {
+					who = DEN
+					value = 50
+				}
 			}
-		}
-		is_year = 1500
-		NOT = {
-			is_year = 1600
-		}
-		NOT = {
-			has_opinion = {
-				who = DEN
-				value = 50
-			}
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3217
+			liberty_desire = 20
 		}
 	}
 	mean_time_to_happen = {
-		years = 166
+		years = 25
+		modifier = {
+			factor = 0.5
+			DEN = {
+				NOT = { stability = 0 }
+			}
+		}
 	}
 	immediate = {
 		hidden_effect = {
@@ -37,30 +36,25 @@ country_event = {
 			random_owned_province = {
 				limit = {
 					is_core = SWE
-					NOT = {
-						is_core = DEN
-					}
+					NOT = { is_core = DEN }
+					NOT = { is_overseas = yes }
 				}
 				set_province_flag = engelbrekt_rebellion_3
 			}
 			random_owned_province = {
 				limit = {
 					is_core = SWE
-					NOT = {
-						is_core = DEN
-					}
-					NOT = {
-						has_province_flag = engelbrekt_rebellion_3
-					}
+					NOT = { is_core = DEN }
+					NOT = { has_province_flag = engelbrekt_rebellion_3 }
+					NOT = { is_overseas = yes }
 				}
 				set_province_flag = engelbrekt_rebellion_2
 			}
 			every_owned_province = {
 				limit = {
 					is_core = DEN
-					NOT = {
-						is_core = SWE
-					}
+					NOT = { is_core = SWE }
+					NOT = { is_overseas = yes }
 				}
 				set_province_flag = strong_danish_support
 			}
@@ -68,6 +62,7 @@ country_event = {
 				limit = {
 					is_core = DEN
 					is_core = SWE
+					NOT = { is_overseas = yes }
 				}
 				set_province_flag = weak_danish_support
 			}
@@ -81,15 +76,10 @@ country_event = {
 				every_owned_province = {
 					limit = {
 						is_core = NOR
-						NOT = {
-							is_core = SWE
-						}
-						NOT = {
-							has_province_flag = strong_danish_support
-						}
-						NOT = {
-							has_province_flag = weak_danish_support
-						}
+						NOT = { is_core = SWE }
+						NOT = { has_province_flag = strong_danish_support }
+						NOT = { has_province_flag = weak_danish_support }
+						NOT = { is_overseas = yes }
 					}
 					set_province_flag = strong_norwegian_support
 				}
@@ -97,15 +87,10 @@ country_event = {
 					limit = {
 						is_core = NOR
 						is_core = SWE
-						NOT = {
-							has_province_flag = strong_danish_support
-						}
-						NOT = {
-							has_province_flag = weak_danish_support
-						}
-						NOT = {
-							has_province_flag = strong_norwegian_support
-						}
+						NOT = { has_province_flag = strong_danish_support }
+						NOT = { has_province_flag = weak_danish_support }
+						NOT = { has_province_flag = strong_norwegian_support }
+						NOT = { is_overseas = yes }
 					}
 					set_province_flag = weak_norwegian_support
 				}
@@ -114,6 +99,7 @@ country_event = {
 	}
 	option = {
 		name = "flavor_swe.EVTOPTA3217"
+		log = "FE-SWE:[GetYear]:[Root.GetName]:had Engelbrekt murdered:flavor_swe.3217"
 		ai_chance = {
 			factor = 20
 		}
@@ -129,9 +115,7 @@ country_event = {
 		random_owned_province = {
 			limit = {
 				has_province_flag = engelbrekt_rebellion_3
-				NOT = {
-					has_province_modifier = peasants_organizing
-				}
+				NOT = { has_province_modifier = peasants_organizing }
 			}
 			add_province_modifier = {
 				name = "peasants_organizing"
@@ -144,9 +128,7 @@ country_event = {
 		random_owned_province = {
 			limit = {
 				has_province_flag = engelbrekt_rebellion_3
-				NOT = {
-					has_province_modifier = peasants_organizing
-				}
+				NOT = { has_province_modifier = peasants_organizing }
 			}
 			add_province_modifier = {
 				name = "peasants_organizing"
@@ -204,6 +186,7 @@ country_event = {
 	}
 	option = {
 		name = "flavor_swe.EVTOPTB3217"
+		log = "FE-SWE:[GetYear]:[Root.GetName]:stood by the union in face of Engelbrekt rebellion:flavor_swe.3217"
 		ai_chance = {
 			factor = 20
 		}
@@ -221,13 +204,15 @@ country_event = {
 				who = ROOT
 				modifier = swe_supports_the_union
 			}
+			reverse_add_opinion = {
+				who = ROOT
+				modifier = swe_supports_the_union
+			}
 		}
 		random_owned_province = {
 			limit = {
 				has_province_flag = engelbrekt_rebellion_3
-				NOT = {
-					has_province_modifier = peasants_organizing
-				}
+				NOT = { has_province_modifier = peasants_organizing }
 			}
 			add_province_modifier = {
 				name = "peasants_organizing"
@@ -240,9 +225,7 @@ country_event = {
 		random_owned_province = {
 			limit = {
 				has_province_flag = engelbrekt_rebellion_3
-				NOT = {
-					has_province_modifier = peasants_organizing
-				}
+				NOT = { has_province_modifier = peasants_organizing }
 			}
 			add_province_modifier = {
 				name = "peasants_organizing"
@@ -255,9 +238,7 @@ country_event = {
 		random_owned_province = {
 			limit = {
 				has_province_flag = engelbrekt_rebellion_2
-				NOT = {
-					has_province_modifier = peasants_organizing
-				}
+				NOT = { has_province_modifier = peasants_organizing }
 			}
 			add_province_modifier = {
 				name = "peasants_organizing"
@@ -270,9 +251,7 @@ country_event = {
 		random_owned_province = {
 			limit = {
 				has_province_flag = engelbrekt_rebellion_2
-				NOT = {
-					has_province_modifier = peasants_organizing
-				}
+				NOT = { has_province_modifier = peasants_organizing }
 			}
 			add_province_modifier = {
 				name = "peasants_organizing"
@@ -285,37 +264,29 @@ country_event = {
 	}
 	option = {
 		name = "flavor_swe.EVTOPTC3217"
+		log = "FE-SWE:[GetYear]:[Root.GetName]:allowed Engelbrekt rebellion:flavor_swe.3217"
 		ai_chance = {
 			factor = 60
 		}
-		add_manpower = 10
 		DEN = {
 			add_opinion = {
 				who = ROOT
 				modifier = swe_renounced_the_union
 			}
+			reverse_add_opinion = {
+				who = DEN
+				modifier = swe_renounced_the_union
+			}
 		}
 		every_owned_province = {
 			limit = {
-				has_province_flag = strong_danish_support
-				NOT = {
-					has_province_modifier = nationalists_organizing
+				OR = {
+					has_province_flag = strong_danish_support
+					has_province_flag = strong_norwegian_support
+					has_province_flag = weak_danish_support
+					has_province_flag = weak_norwegian_support
 				}
-			}
-			add_province_modifier = {
-				name = "nationalists_organizing"
-				duration = 3650
-			}
-			custom_tooltip = nationalists_organizing_tt
-			add_unrest = 10
-			clr_province_flag = strong_danish_support
-		}
-		every_owned_province = {
-			limit = {
-				has_province_flag = weak_danish_support
-				NOT = {
-					has_province_modifier = nationalists_organizing
-				}
+				NOT = { has_province_modifier = nationalists_organizing }
 			}
 			add_province_modifier = {
 				name = "nationalists_organizing"
@@ -324,66 +295,41 @@ country_event = {
 			custom_tooltip = nationalists_organizing_tt
 			add_unrest = 5
 			clr_province_flag = weak_danish_support
-		}
-		every_owned_province = {
-			limit = {
-				has_province_flag = strong_norwegian_support
-				NOT = {
-					has_province_modifier = nationalists_organizing
-				}
-			}
-			add_province_modifier = {
-				name = "nationalists_organizing"
-				duration = 3650
-			}
-			custom_tooltip = nationalists_organizing_tt
-			add_unrest = 10
-			clr_province_flag = strong_norwegian_support
-		}
-		every_owned_province = {
-			limit = {
-				has_province_flag = weak_norwegian_support
-				NOT = {
-					has_province_modifier = nationalists_organizing
-				}
-			}
-			add_province_modifier = {
-				name = "nationalists_organizing"
-				duration = 1825
-			}
-			custom_tooltip = nationalists_organizing_tt
-			add_unrest = 5
 			clr_province_flag = weak_norwegian_support
 		}
-		hidden_effect = {
-			country_event = {
-				id = flavor_swe.3220
-				days = 1
+		every_owned_province = { #additional unrest from strong support
+			limit = {
+				OR = {
+					has_province_flag = strong_danish_support
+					has_province_flag = strong_norwegian_support
+				}
 			}
+			add_unrest = 5
+			clr_province_flag = strong_danish_support
+			clr_province_flag = strong_norwegian_support
+		}
+
+		country_event = {
+			id = flavor_swe.3220
+			days = 1
 		}
 	}
 }
 country_event = {
-	id = flavor_swe.3218
+	id = flavor_swe.3218 #The Kalmar Recess
 	title = "flavor_swe.EVTNAME3218"
 	desc = "flavor_swe.EVTDESC3218"
 	picture = DIPLOMACY_eventPicture
+	fire_only_once = yes
 	trigger = {
+		#TODO: trigger it from crushed rebellion in Sweden and limit MTTH?
 		tag = SWE
 		junior_union_with = DEN
 		is_year = 1450
-		NOT = {
-			is_year = 1600
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3218
-		}
+		NOT = { is_year = 1600 }
 	}
 	mean_time_to_happen = {
 		years = 166
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3218
 	}
 	option = {
 		name = "flavor_swe.EVTOPTA3218"
@@ -391,14 +337,17 @@ country_event = {
 			factor = 90
 			modifier = {
 				factor = 0
-				NOT = {
-					stability = 0
-				}
+				NOT = { stability = 0 }
 			}
 		}
+		log = "FE-SWE:[GetYear]:[Root.GetName]:rejected the Kalmar Recess:flavor_swe.3218"
 		Stab_Subtract2 = yes
 		DEN = {
 			add_opinion = {
+				who = ROOT
+				modifier = swe_rejected_the_kalmar_recess
+			}
+			reverse_add_opinion = {
 				who = ROOT
 				modifier = swe_rejected_the_kalmar_recess
 			}
@@ -409,8 +358,8 @@ country_event = {
 		ai_chance = {
 			factor = 10
 		}
+		log = "FE-SWE:[GetYear]:[Root.GetName]:honoured the Kalmar Recess:flavor_swe.3218"
 		Stab_Add50Percent = yes
-		add_years_of_income = 0.5
 		DEN = {
 			add_opinion = {
 				who = ROOT
@@ -420,77 +369,55 @@ country_event = {
 	}
 }
 country_event = {
-	id = flavor_swe.3219
+	id = flavor_swe.3219 #The End of the Kalmar Union
 	title = "flavor_swe.EVTNAME3219"
 	desc = "flavor_swe.EVTDESC3219"
 	picture = DIPLOMACY_eventPicture
+	fire_only_once = yes
 	trigger = {
 		tag = SWE
 		junior_union_with = DEN
 		is_year = 1500
-		NOT = {
-			is_year = 1600
-		}
+		NOT = { is_year = 1600 }
 		NOT = {
 			has_opinion = {
 				who = DEN
 				value = 50
 			}
 		}
-		stability = 2
+		#stability = 2
 		DEN = {
-			NOT = {
-				stability = 0
-			}
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3219
+			NOT = { stability = 0 }
 		}
 	}
 	mean_time_to_happen = {
 		years = 166
 	}
-	immediate = {
-		set_country_flag = SWE_had_event_3219
-	}
 	option = {
 		name = "flavor_swe.EVTOPTA3219"
+		log = "FE-SWE:[GetYear]:[Root.GetName]:decided to leave the Kalmar Union:flavor_swe.3219"
 		ai_chance = {
 			factor = 90
 			modifier = {
 				factor = 0
-				NOT = {
-					stability = 0
-				}
+				NOT = { stability = 0 }
 			}
 		}
 		Stab_Subtract2 = yes
-		if = {
-			limit = {
-				is_emperor_of_china = yes
-			}
-			add_mandate = -10
-		}
 		DEN = {
 			add_opinion = {
 				who = ROOT
 				modifier = swe_renounced_the_union
 			}
 		}
-		add_casus_belli = {
-			target = DEN
-			type = cb_independence_war
-			months = 12
-		}
-		hidden_effect = {
-			country_event = {
-				id = flavor_swe.3220
-				days = 1
-			}
+		country_event = {
+			id = flavor_swe.3220
+			days = 1
 		}
 	}
 	option = {
 		name = "flavor_swe.EVTOPTB3219"
+		log = "FE-SWE:[GetYear]:[Root.GetName]:decided to stay in the Kalmar Union:flavor_swe.3219"
 		ai_chance = {
 			factor = 10
 		}
@@ -502,13 +429,10 @@ country_event = {
 		}
 		random_owned_province = {
 			limit = {
-				NOT = {
-					is_core = DEN
-				}
+				NOT = { is_core = DEN }
 				is_capital = no
-				NOT = {
-					has_province_modifier = peasants_organizing
-				}
+				NOT = { is_overseas = yes }
+				NOT = { has_province_modifier = peasants_organizing }
 			}
 			add_province_modifier = {
 				name = "peasants_organizing"
@@ -519,13 +443,10 @@ country_event = {
 		}
 		random_owned_province = {
 			limit = {
-				NOT = {
-					is_core = DEN
-				}
+				NOT = { is_core = DEN }
 				is_capital = no
-				NOT = {
-					has_province_modifier = peasants_organizing
-				}
+				NOT = { is_overseas = yes }
+				NOT = { has_province_modifier = peasants_organizing }
 			}
 			add_province_modifier = {
 				name = "peasants_organizing"
@@ -538,124 +459,18 @@ country_event = {
 }
 country_event = {
 	id = flavor_swe.3220
+	#TODO: rework allowing for Denmark backing out of the union
 	title = "flavor_swe.EVTNAME3220"
 	desc = "flavor_swe.EVTDESC3220"
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	option = {
 		name = "flavor_swe.EVTOPTA3220"
-	}
-}
-country_event = {
-	id = flavor_swe.3223
-	title = "flavor_swe.EVTNAME3223"
-	desc = "flavor_swe.EVTDESC3223"
-	picture = REFORM_eventPicture
-	trigger = {
-		tag = SWE
-		AND = {
-			OR = {
-				is_subject = no
-				is_subject_of_type = tributary_state
-				is_subject_of_type = close_tributary_state
-			}
-		}
-		is_year = 1500
-		NOT = {
-			is_year = 1600
-		}
-		OR = {
-			AND = {
-				NOT = {
-					owns = 6
-				}
-				NOT = {
-					6 = {
-						is_claim = ROOT
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					owns = 25
-				}
-				NOT = {
-					25 = {
-						is_claim = ROOT
-					}
-				}
-			}
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3223
-		}
-	}
-	mean_time_to_happen = {
-		years = 166
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3223
-	}
-	option = {
-		name = "flavor_swe.EVTOPTA3223"
-		ai_chance = {
-			factor = 50
-		}
-		trigger = {
-			AND = {
-				NOT = {
-					owns = 6
-				}
-				NOT = {
-					6 = {
-						is_claim = ROOT
-					}
-				}
-			}
-		}
-		add_claim = 6
-		random_country = {
-			limit = {
-				owns = 6
-			}
-			add_opinion = {
-				who = ROOT
-				modifier = swe_claims_skane
-			}
-		}
-	}
-	option = {
-		name = "flavor_swe.EVTOPTB3223"
-		ai_chance = {
-			factor = 50
-		}
-		trigger = {
-			AND = {
-				NOT = {
-					owns = 25
-				}
-				NOT = {
-					25 = {
-						is_claim = ROOT
-					}
-				}
-			}
-		}
-		add_claim = 25
-		random_country = {
-			limit = {
-				owns = 25
-			}
-			add_opinion = {
-				who = ROOT
-				modifier = swe_claims_gotland
-			}
-		}
-	}
-	option = {
-		name = "flavor_swe.EVTOPTC3223"
-		ai_chance = {
-			factor = 0
+		add_liberty_desire = 50
+		add_casus_belli = {
+			target = DEN
+			type = cb_independence_war
+			months = 24
 		}
 	}
 }
@@ -664,66 +479,59 @@ country_event = {
 	title = "flavor_swe.EVTNAME3281"
 	desc = "flavor_swe.EVTDESC3281"
 	picture = ADVISOR_eventPicture
+	fire_only_once = yes
 	trigger = {
-		tag = SWE
-		owns = 1259
+		OR = {
+			tag = SWE
+			primary_culture = swedish
+		}
+		#owns = 1259 #he came back from Wittenberg, could settle anywhere
 		is_year = 1555
-		NOT = {
-			is_year = 1568
-		}
-		NOT = {
-			advisor_exists = 1098
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3281
-		}
+		NOT = { is_year = 1568 }
 	}
 	mean_time_to_happen = {
 		years = 25
 	}
-	immediate = {
-		set_country_flag = SWE_had_event_3281
-	}
 	option = {
 		name = "EXCELLENTCMNISTER"
-		add_adm_power = 25
 		define_advisor = {
-			type = spymaster_CL
-			name = "J�ran Persson"
-			location = 1259
+			type = spymaster_BG
+			name = "Joran Persson"
+			#location = 1259
 			skill = 3
 			discount = yes
 		}
+		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-5 }
+	}
+	option = {
+		name = "OPT.GOTOHELL"
+		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 	}
 }
 country_event = {
 	id = flavor_swe.3280
+	#TODO: possibly link with Dacke feud, to avoid MTTH event
 	title = "flavor_swe.EVTNAME3280"
 	desc = "flavor_swe.EVTDESC3280"
 	picture = ADVISOR_eventPicture
+	fire_only_once = yes
 	trigger = {
-		tag = SWE
+		OR = {
+			tag = SWE
+			primary_culture = swedish
+		}
 		is_year = 1550
-		NOT = {
-			is_year = 1590
-		}
-		owns = 1
-		NOT = {
-			has_country_flag = SWE_had_event_3280
-		}
+		NOT = { is_year = 1590 }
+		owns = 1 #Stockholm
 	}
 	mean_time_to_happen = {
 		years = 25
 	}
-	immediate = {
-		set_country_flag = SWE_had_event_3280
-	}
 	option = {
 		name = "EXCELLENTCMNISTER"
-		add_adm_power = 25
 		define_advisor = {
 			type = statesman_NO
-			name = "Per Brahe den �ldre"
+			name = "Per Brahe den aldre"
 			location = 1
 			skill = 3
 			discount = yes
@@ -735,65 +543,13 @@ country_event = {
 	title = "flavor_swe.EVTNAME3228"
 	desc = "flavor_swe.EVTDESC3228"
 	picture = REFORM_eventPicture
+	is_triggered_only = yes
+	fire_only_once = yes
 	trigger = {
 		tag = SWE
-		is_year = 1600
-		NOT = {
-			is_year = 1700
-		}
-		AND = {
-			OR = {
-				is_subject = no
-				is_subject_of_type = tributary_state
-				is_subject_of_type = close_tributary_state
-			}
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3228
-		}
-	}
-	mean_time_to_happen = {
-		years = 166
-		modifier = {
-			factor = 0.95
-			army_tradition = 25
-		}
-		modifier = {
-			factor = 0.95
-			army_tradition = 50
-		}
-		modifier = {
-			factor = 0.75
-			army_tradition = 75
-		}
-		modifier = {
-			factor = 0.5
-			army_tradition = 100
-		}
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3228
 	}
 	option = {
-		name = "flavor_swe.EVTOPTA3228"
-		ai_chance = {
-			factor = 80
-		}
-		add_army_tradition = 5
-	}
-	option = {
-		name = "flavor_swe.EVTOPTB3228"
-		ai_chance = {
-			factor = 5
-		}
-		add_manpower = 5
-	}
-	option = {
-		name = "flavor_swe.EVTOPTC3228"
-		ai_chance = {
-			factor = 15
-		}
-		add_navy_tradition = 5
+		name = "OPT.GOOD2"
 	}
 }
 country_event = {
@@ -801,54 +557,45 @@ country_event = {
 	title = "flavor_swe.EVTNAME1628"
 	desc = "flavor_swe.EVTDESC1628"
 	picture = SHIP_SAILING_eventPicture
+	fire_only_once = yes
 	trigger = {
-		tag = SWE
-		is_year = 1600
-		NOT = {
-			is_year = 1700
+		OR = {
+			tag = SWE
+			primary_culture = swedish
 		}
+		is_year = 1600
+		NOT = { is_year = 1700 }
 		capital_scope = {
 			has_port = yes
 			heavy_ships_in_province = 1
 		}
-		NOT = {
-			has_country_flag = SWE_had_event_1628
-		}
 	}
 	mean_time_to_happen = {
-		years = 166
+		years = 100
 		modifier = {
-			factor = 0.1
-			is_year = 1628
-			NOT = {
-				is_year = 1629
-			}
+			factor = 0.75
+			NOT = { navy_tradition = 40 }
 		}
 		modifier = {
 			factor = 0.75
-			NOT = {
-				navy_tradition = 30
-			}
+			NOT = { navy_tradition = 30 }
 		}
 		modifier = {
 			factor = 0.75
-			NOT = {
-				navy_tradition = 20
-			}
+			NOT = { navy_tradition = 20 }
 		}
-		modifier = {
-			factor = 0.75
-			NOT = {
-				navy_tradition = 10
-			}
-		}
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_1628
 	}
 	option = {
 		name = "flavor_swe.EVTOPTA1628"
-		add_prestige = -50
+		log = "FE-SWE:[GetYear]:[Root.GetName]:sinking of Vasa:flavor_swe.1628"
+		add_prestige = -5
+		capital_scope = {
+			kill_units = {
+				who = owner
+				type = heavy_ship
+				amount = 1
+			}
+		}
 	}
 }
 country_event = {
@@ -856,29 +603,21 @@ country_event = {
 	title = "flavor_swe.EVTNAME3282"
 	desc = "flavor_swe.EVTDESC3282"
 	picture = ADVISOR_eventPicture
+	fire_only_once = yes
 	trigger = {
-		tag = SWE
+		OR = {
+			tag = SWE
+			primary_culture = swedish
+		}
 		is_year = 1632
-		NOT = {
-			is_year = 1680
-		}
+		NOT = { is_year = 1680 }
 		owns = 1
-		NOT = {
-			advisor_exists = 1119
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3282
-		}
 	}
 	mean_time_to_happen = {
 		years = 25
 	}
-	immediate = {
-		set_country_flag = SWE_had_event_3282
-	}
 	option = {
 		name = "EXCELLENTCMNISTER"
-		add_adm_power = 25
 		define_advisor = {
 			type = statesman_NO
 			name = "Per Brahe den yngre"
@@ -893,31 +632,26 @@ country_event = {
 	title = "flavor_swe.EVTNAME3283"
 	desc = "flavor_swe.EVTDESC3283"
 	picture = ADVISOR_eventPicture
+	fire_only_once = yes
 	trigger = {
-		tag = SWE
+		OR = {
+			tag = SWE
+			primary_culture = swedish
+		}
 		is_year = 1652
-		NOT = {
-			is_year = 1686
-		}
+		NOT = { is_year = 1686 }
 		owns = 36
-		NOT = {
-			has_country_flag = SWE_had_event_3283
-		}
 	}
 	mean_time_to_happen = {
 		years = 25
 	}
-	immediate = {
-		set_country_flag = SWE_had_event_3283
-	}
 	option = {
 		name = "EXCELLENTCMNISTER"
-		add_adm_power = 25
 		define_advisor = {
-			type = statesman_NO
+			type = army_reformer_NO
 			name = "Magnus Gabriel De la Gardie"
 			location = 36
-			skill = 3
+			skill = 2
 			discount = yes
 		}
 	}
@@ -927,55 +661,17 @@ country_event = {
 	title = "flavor_swe.EVTNAME3232"
 	desc = "flavor_swe.EVTDESC3232"
 	picture = COURT_eventPicture
+	is_triggered_only = yes
+	fire_only_once = yes
 	trigger = {
 		tag = SWE
 		is_year = 1650
-		NOT = {
-			is_year = 1750
-		}
-		AND = {
-			OR = {
-				is_subject = no
-				is_subject_of_type = tributary_state
-				is_subject_of_type = close_tributary_state
-			}
-		}
+		NOT = { is_year = 1750 }
 		monarchy_or_harem_gov = yes
-		NOT = {
-			absolutism = 70
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3232
-		}
 	}
-	mean_time_to_happen = {
-		years = 166
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3232
-	}
+
 	option = {
-		name = "flavor_swe.EVTOPTA3232"
-		ai_chance = {
-			factor = 50
-		}
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
-			}
-			30 = {
-				Stab_Subtract1 = yes
-			}
-		}
-		add_absolutism = 5
-	}
-	option = {
-		name = "flavor_swe.EVTOPTB3232"
-		ai_chance = {
-			factor = 50
-		}
-		Stab_Add50Percent = yes
+		name = "OPT.GOOD2"
 	}
 }
 country_event = {
@@ -983,64 +679,50 @@ country_event = {
 	title = "flavor_swe.EVTNAME3233"
 	desc = "flavor_swe.EVTDESC3233"
 	picture = ADVISOR_eventPicture
+	fire_only_once = yes
 	trigger = {
-		tag = SWE
+		OR = {
+			tag = SWE
+			primary_culture = swedish
+		}
 		is_year = 1613
-		NOT = {
-			is_year = 1654
-		}
+		NOT = { is_year = 1654 }
 		owns = 1
-		NOT = {
-			advisor_exists = 1110
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3233
-		}
 	}
 	mean_time_to_happen = {
 		years = 25
 	}
-	immediate = {
-		set_country_flag = SWE_had_event_3233
-	}
 	option = {
 		name = "EXCELLENTCMNISTER"
-		add_adm_power = 25
 		define_advisor = {
 			type = statesman_NO
 			name = "Axel Oxenstierna"
 			location = 1
+			religion = reformed
 			skill = 3
 			discount = yes
 		}
 	}
 }
-country_event = {
-	id = flavor_swe.3235
-	title = "flavor_swe.EVTNAME3235"
-	desc = "flavor_swe.EVTDESC3235"
-	picture = LIBERUM_VETO_eventPicture
-	trigger = {
-		tag = SWE
-		NOT = {
-			has_country_flag = SWE_had_event_3235
-		}
-		is_year = 1600
-		NOT = {
-			is_year = 1700
-		}
-	}
-	mean_time_to_happen = {
-		years = 166
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3235
-	}
-	option = {
-		name = "flavor_swe.EVTOPTA3235"
-		Stab_Add50Percent = yes
-	}
-}
+# country_event = {
+# 	id = flavor_swe.3235
+# 	title = "flavor_swe.EVTNAME3235"
+# 	desc = "flavor_swe.EVTDESC3235"
+# 	picture = LIBERUM_VETO_eventPicture
+# 	is_triggered_only = yes
+# 	fire_only_once = yes
+# 	trigger = {
+# 		OR = {
+# 			tag = SWE
+# 			primary_culture = swedish
+# 		}
+# 		is_year = 1600
+# 		NOT = { is_year = 1700 }
+# 	}
+# 	option = {
+# 		name = "OPT.GOOD"
+# 	}
+# }
 # country_event = {
 # 	id = 3239
 # 	title = "flavor_swe.EVTNAME3239"
@@ -1108,29 +790,22 @@ country_event = {
 # 	}
 # }
 # country_event = {
-# 	id = flavor_swe.3248
+# 	id = flavor_swe.3248 #Pietism and the Conventicle Edict
 # 	title = "flavor_swe.EVTNAME3248"
 # 	desc = "flavor_swe.EVTDESC3248"
 # 	picture = RELIGION_eventPicture
+#	fire_only_once = yes
 # 	trigger = {
 # 		tag = SWE
 # 		is_year = 1700
-# 		NOT = {
-# 			is_year = 1800
-# 		}
+# 		NOT = { is_year = 1800 }
 # 		OR = {
 # 			religion = protestant
 # 			religion = reformed
 # 		}
-# 		NOT = {
-# 			has_country_flag = SWE_had_event_3248
-# 		}
 # 	}
 # 	mean_time_to_happen = {
 # 		years = 166
-# 	}
-# 	immediate = {
-# 		set_country_flag = SWE_had_event_3248
 # 	}
 # 	option = {
 # 		name = "flavor_swe.EVTOPTA3248"
@@ -1163,100 +838,81 @@ country_event = {
 # 				id = POP_Stability.003
 # 			}
 # 		}
-# 		if = {
-# 			limit = {
-# 				is_emperor_of_china = yes
-# 			}
-# 			add_mandate = -10
-# 		}
 # 		add_country_modifier = {
 # 			name = pietism
 # 			duration = -1
 # 		}
 # 	}
 # }
-country_event = {
-	id = flavor_swe.3260
-	title = "flavor_swe.EVTNAME3260"
-	desc = "flavor_swe.EVTDESC3260"
-	picture = COURT_eventPicture
-	trigger = {
-		tag = SWE
-		is_year = 1750
-		NOT = {
-			ADM = 4
-		}
-		NOT = {
-			DIP = 4
-		}
-		NOT = {
-			MIL = 4
-		}
-		is_female = no
-		AND = {
-			OR = {
-				is_subject = no
-				is_subject_of_type = tributary_state
-				is_subject_of_type = close_tributary_state
-			}
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3260
-		}
-	}
-	mean_time_to_happen = {
-		years = 166
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3260
-	}
-	option = {
-		name = "flavor_swe.EVTOPTA3260"
-		ai_chance = {
-			factor = 75
-		}
-		Stab_Add50Percent = yes
-		kill_ruler = yes
-	}
-	option = {
-		name = "flavor_swe.EVTOPTB3260"
-		ai_chance = {
-			factor = 25
-			modifier = {
-				factor = 0
-				NOT = {
-					stability = 1
-				}
-			}
-		}
-		Stab_Subtract2 = yes
-	}
-}
+# country_event = {
+# 	id = flavor_swe.3260
+# 	title = "flavor_swe.EVTNAME3260"
+# 	desc = "flavor_swe.EVTDESC3260"
+# 	picture = COURT_eventPicture
+# 	fire_only_once = yes
+# 	trigger = {
+# 		tag = SWE
+# 		is_year = 1750
+# 		NOT = { ADM = 4 }
+# 		NOT = { DIP = 4 }
+# 		NOT = { MIL = 4 }
+# 		is_female = no
+# 		AND = {
+# 			OR = {
+# 				is_subject = no
+# 				is_subject_of_type = tributary_state
+# 				is_subject_of_type = close_tributary_state
+# 			}
+# 		}
+# 	}
+# 	mean_time_to_happen = {
+# 		years = 166
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTA3260"
+# 		ai_chance = {
+# 			factor = 75
+# 		}
+# 		Stab_Add50Percent = yes
+# 		kill_ruler = yes
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTB3260"
+# 		ai_chance = {
+# 			factor = 25
+# 			modifier = {
+# 				factor = 0
+# 				NOT = { stability = 1 }
+# 			}
+# 		}
+# 		Stab_Subtract2 = yes
+# 	}
+# }
 country_event = {
 	id = flavor_swe.5030
 	title = "flavor_swe.EVTNAME5030"
 	desc = "flavor_swe.EVTDESC5030"
 	picture = ADVISOR_eventPicture
+	fire_only_once = yes
 	trigger = {
-		tag = SWE
+		OR = {
+			tag = SWE
+			primary_culture = swedish
+		}
+		owns = 1
 		is_year = 1660
-		NOT = {
-			is_year = 1703
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_5030
-		}
+		NOT = { is_year = 1703 }
 	}
 	mean_time_to_happen = {
 		years = 25
 	}
-	immediate = {
-		set_country_flag = SWE_had_event_5030
-	}
 	option = {
 		name = "EXCELLENT"
-		add_adm_power = 10
-		add_prestige = 10
+		define_advisor = {
+			type = fortification_expert_BU
+			name = "Erik Dahlbergh"
+			skill = 2
+		}
 	}
 }
 country_event = {
@@ -1264,25 +920,17 @@ country_event = {
 	title = "flavor_swe.EVTNAME5031"
 	desc = "flavor_swe.EVTDESC5031"
 	picture = ADVISOR_eventPicture
+	fire_only_once = yes
 	trigger = {
 		tag = SWE
 		is_year = 1660
-		NOT = {
-			is_year = 1702
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_5031
-		}
+		NOT = { is_year = 1702 }
 	}
 	mean_time_to_happen = {
 		years = 25
 	}
-	immediate = {
-		set_country_flag = SWE_had_event_5031
-	}
 	option = {
 		name = "EXCELLENT"
-		add_adm_power = 50
 		add_prestige = 10
 	}
 }
@@ -1291,25 +939,21 @@ country_event = {
 	title = "flavor_swe.EVTNAME5032"
 	desc = "flavor_swe.EVTDESC5032"
 	picture = INVENTION_eventPicture
+	fire_only_once = yes
+
 	trigger = {
-		tag = SWE
+		OR = {
+			tag = SWE
+			primary_culture = swedish
+		}
 		is_year = 1718
-		NOT = {
-			is_year = 1772
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_5032
-		}
+		NOT = { is_year = 1772 }
 	}
 	mean_time_to_happen = {
 		years = 25
 	}
-	immediate = {
-		set_country_flag = SWE_had_event_5032
-	}
 	option = {
 		name = "EXCELLENT"
-		add_adm_power = 50
 		add_prestige = 10
 	}
 }
@@ -1318,779 +962,763 @@ country_event = {
 	title = "flavor_swe.EVTNAME5033"
 	desc = "flavor_swe.EVTDESC5033"
 	picture = IMPORTANT_STATUE_eventPicture
+	fire_only_once = yes
 	trigger = {
-		tag = SWE
+		OR = {
+			tag = SWE
+			primary_culture = swedish
+		}
 		is_year = 1737
-		NOT = {
-			is_year = 1778
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_5033
-		}
+		NOT = { is_year = 1778 }
 	}
 	mean_time_to_happen = {
 		years = 25
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_5033
 	}
 	option = {
 		name = "EXCELLENT"
 		add_prestige = 2
 	}
 }
-country_event = {
-	id = flavor_swe.3254
-	title = "flavor_swe.EVTNAME3254"
-	desc = "flavor_swe.EVTDESC3254"
-	picture = LIBERUM_VETO_eventPicture
-	trigger = {
-		had_country_flag = {
-			flag = SWE_had_event_3246
-			days = 100
-		}
-		tag = SWE
-		is_year = 1700
-		NOT = {
-			is_year = 1800
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3254
-		}
-	}
-	mean_time_to_happen = {
-		months = 24
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3254
-	}
-	option = {
-		name = "flavor_swe.EVTOPTA3254"
-		if = {
-			limit = {
-				has_country_flag = swedish_hats
-			}
-			add_adm_power = -25
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		if = {
-			limit = {
-				has_country_flag = swedish_caps
-			}
-			add_adm_power = -50
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		clr_country_flag = swedish_caps
-		set_country_flag = swedish_hats
-	}
-	option = {
-		name = "flavor_swe.EVTOPTB3254"
-		if = {
-			limit = {
-				has_country_flag = swedish_caps
-			}
-			add_adm_power = -25
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		if = {
-			limit = {
-				has_country_flag = swedish_hats
-			}
-			add_adm_power = -50
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		clr_country_flag = swedish_hats
-		set_country_flag = swedish_caps
-	}
-}
-country_event = {
-	id = flavor_swe.3255
-	title = "flavor_swe.EVTNAME3255"
-	desc = "flavor_swe.EVTDESC3255"
-	picture = LIBERUM_VETO_eventPicture
-	trigger = {
-		has_country_flag = SWE_had_event_3246
-		had_country_flag = {
-			flag = SWE_had_event_3254
-			days = 365
-		}
-		tag = SWE
-		is_year = 1700
-		NOT = {
-			is_year = 1800
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3255
-		}
-	}
-	mean_time_to_happen = {
-		months = 24
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3255
-	}
-	option = {
-		name = "flavor_swe.EVTOPTA3255"
-		if = {
-			limit = {
-				has_country_flag = swedish_hats
-			}
-			add_adm_power = -25
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		if = {
-			limit = {
-				has_country_flag = swedish_caps
-			}
-			add_adm_power = -50
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		clr_country_flag = swedish_caps
-		set_country_flag = swedish_hats
-	}
-	option = {
-		name = "flavor_swe.EVTOPTB3255"
-		if = {
-			limit = {
-				has_country_flag = swedish_caps
-			}
-			add_adm_power = -25
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		if = {
-			limit = {
-				has_country_flag = swedish_hats
-			}
-			add_adm_power = -50
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		clr_country_flag = swedish_hats
-		set_country_flag = swedish_caps
-	}
-}
-country_event = {
-	id = flavor_swe.3256
-	title = "flavor_swe.EVTNAME3256"
-	desc = "flavor_swe.EVTDESC3256"
-	picture = ASSASSINATION_eventPicture
-	trigger = {
-		had_country_flag = {
-			flag = SWE_had_event_3246
-			days = 730
-		}
-		tag = SWE
-		is_year = 1700
-		NOT = {
-			is_year = 1800
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3256
-		}
-	}
-	mean_time_to_happen = {
-		years = 25
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3256
-	}
-	option = {
-		name = "flavor_swe.EVTOPTA3256"
-		ai_chance = {
-			factor = 50
-		}
-		Stab_Add50Percent = yes
-	}
-	option = {
-		name = "flavor_swe.EVTOPTB3256"
-		ai_chance = {
-			factor = 50
-			modifier = {
-				factor = 0
-				NOT = {
-					stability = 1
-				}
-			}
-		}
-		Stab_Subtract2 = yes
-		add_adm_power = 50
-		set_country_flag = more_royal_power
-	}
-}
-country_event = {
-	id = 3257
-	title = "flavor_swe.EVTNAME3257"
-	desc = "flavor_swe.EVTDESC3257"
-	picture = LIBERUM_VETO_eventPicture
-	trigger = {
-		has_country_flag = SWE_had_event_3246
-		had_country_flag = {
-			flag = SWE_had_event_3255
-			days = 365
-		}
-		tag = SWE
-		is_year = 1700
-		NOT = {
-			is_year = 1800
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3257
-		}
-	}
-	mean_time_to_happen = {
-		months = 24
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3257
-	}
-	option = {
-		name = "flavor_swe.EVTOPTA3257"
-		if = {
-			limit = {
-				has_country_flag = swedish_hats
-			}
-			add_adm_power = -25
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		if = {
-			limit = {
-				has_country_flag = swedish_caps
-			}
-			add_adm_power = -50
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		clr_country_flag = swedish_caps
-		set_country_flag = swedish_hats
-	}
-	option = {
-		name = "flavor_swe.EVTOPTB3257"
-		if = {
-			limit = {
-				has_country_flag = swedish_caps
-			}
-			add_adm_power = -25
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		if = {
-			limit = {
-				has_country_flag = swedish_hats
-			}
-			add_adm_power = -50
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		clr_country_flag = swedish_hats
-		set_country_flag = swedish_caps
-	}
-}
-country_event = {
-	id = flavor_swe.3258
-	title = "flavor_swe.EVTNAME3258"
-	desc = "flavor_swe.EVTDESC3258"
-	picture = LIBERUM_VETO_eventPicture
-	trigger = {
-		has_country_flag = SWE_had_event_3246
-		had_country_flag = {
-			flag = SWE_had_event_3257
-			days = 365
-		}
-		tag = SWE
-		is_year = 1700
-		NOT = {
-			is_year = 1800
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3258
-		}
-	}
-	mean_time_to_happen = {
-		months = 24
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3258
-	}
-	option = {
-		name = "flavor_swe.EVTOPTA3258"
-		if = {
-			limit = {
-				has_country_flag = swedish_hats
-			}
-			add_adm_power = -25
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		if = {
-			limit = {
-				has_country_flag = swedish_caps
-			}
-			add_adm_power = -50
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		clr_country_flag = swedish_caps
-		set_country_flag = swedish_hats
-	}
-	option = {
-		name = "flavor_swe.EVTOPTB3258"
-		if = {
-			limit = {
-				has_country_flag = swedish_caps
-			}
-			add_adm_power = -25
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		if = {
-			limit = {
-				has_country_flag = swedish_hats
-			}
-			add_adm_power = -50
-			random_owned_province = {
-				limit = {
-					is_core = SWE
-					is_capital = no
-					NOT = {
-						has_province_modifier = nobles_organizing
-					}
-				}
-				add_province_modifier = {
-					name = "nobles_organizing"
-					duration = 1825
-				}
-				custom_tooltip = nobles_organizing_tt
-				add_unrest = 5
-			}
-		}
-		clr_country_flag = swedish_hats
-		set_country_flag = swedish_caps
-	}
-}
-country_event = {
-	id = flavor_swe.3262
-	title = "flavor_swe.EVTNAME3262"
-	desc = "flavor_swe.EVTDESC3262"
-	picture = COURT_eventPicture
-	trigger = {
-		had_country_flag = {
-			flag = SWE_had_event_3246
-			days = 3650
-		}
-		tag = SWE
-		is_year = 1700
-		NOT = {
-			is_year = 1800
-		}
-		NOT = {
-			has_country_flag = SWE_had_event_3262
-		}
-	}
-	mean_time_to_happen = {
-		months = 48
-		modifier = {
-			factor = 0.75
-			has_country_flag = SWE_had_event_3254
-		}
-		modifier = {
-			factor = 0.75
-			has_country_flag = SWE_had_event_3255
-		}
-		modifier = {
-			factor = 0.75
-			has_country_flag = SWE_had_event_3257
-		}
-		modifier = {
-			factor = 0.75
-			has_country_flag = SWE_had_event_3258
-		}
-		modifier = {
-			factor = 0.5
-			has_country_flag = SWE_had_event_3256
-			has_country_flag = more_royal_power
-		}
-		modifier = {
-			factor = 0.75
-			ADM = 4
-		}
-		modifier = {
-			factor = 0.75
-			ADM = 5
-		}
-		modifier = {
-			factor = 0.75
-			ADM = 6
-		}
-	}
-	immediate = {
-		set_country_flag = SWE_had_event_3262
-		clr_country_flag = more_royal_power
-		clr_country_flag = swedish_hats
-		clr_country_flag = swedish_caps
-	}
-	option = {
-		name = "flavor_swe.EVTOPTA3262"
-		ai_chance = {
-			factor = 50
-			modifier = {
-				factor = 0
-				NOT = {
-					stability = 1
-				}
-			}
-		}
-		Stab_Subtract3 = yes
-		add_adm_power = 50
-	}
-	option = {
-		name = "flavor_swe.EVTOPTB3262"
-		ai_chance = {
-			factor = 50
-			modifier = {
-				factor = 0
-				stability = 2
-			}
-		}
-		Stab_Add50Percent = yes
-		add_adm_power = -50
-	}
-}
-country_event = {
-	id = flavor_swe.1974
-	title = flavor_swe.1974.t
-	desc = flavor_swe.1974.d
-	picture = REVOLUTION_eventPicture
-	fire_only_once = yes
-	is_triggered_only = yes
-	option = {
-		name = flavor_swe.1974.a
-		
-		Effect_set_capital = { target=183 }
-	}
-}
+
+#TODO:starting from here, events are broke by lack of SWE_had_event_3246 flag about parliament, set by vanilla event Arvid Horn and the Age of Freedom. At the moment, chain is commented out.
+# country_event = {
+# 	id = flavor_swe.3254
+# 	title = "flavor_swe.EVTNAME3254"
+# 	desc = "flavor_swe.EVTDESC3254"
+# 	picture = LIBERUM_VETO_eventPicture
+# 	fire_only_once = yes
+# 	trigger = {
+# 		had_country_flag = {
+# 			flag = SWE_had_event_3246
+# 			days = 100
+# 		}
+# 		tag = SWE
+# 		is_year = 1700
+# 		NOT = { is_year = 1800 }
+# 		NOT = {
+# 			has_country_flag = SWE_had_event_3254
+# 		}
+# 	}
+# 	mean_time_to_happen = {
+# 		months = 24
+# 	}
+# 	immediate = {
+# 		set_country_flag = SWE_had_event_3254
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTA3254"
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_hats
+# 			}
+# 			add_adm_power = -25
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_caps
+# 			}
+# 			add_adm_power = -50
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		clr_country_flag = swedish_caps
+# 		set_country_flag = swedish_hats
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTB3254"
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_caps
+# 			}
+# 			add_adm_power = -25
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_hats
+# 			}
+# 			add_adm_power = -50
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		clr_country_flag = swedish_hats
+# 		set_country_flag = swedish_caps
+# 	}
+# }
+# country_event = {
+# 	id = flavor_swe.3255
+# 	title = "flavor_swe.EVTNAME3255"
+# 	desc = "flavor_swe.EVTDESC3255"
+# 	picture = LIBERUM_VETO_eventPicture
+# 	trigger = {
+# 		has_country_flag = SWE_had_event_3246
+# 		had_country_flag = {
+# 			flag = SWE_had_event_3254
+# 			days = 365
+# 		}
+# 		tag = SWE
+# 		is_year = 1700
+# 		NOT = {
+# 			is_year = 1800
+# 		}
+# 		NOT = {
+# 			has_country_flag = SWE_had_event_3255
+# 		}
+# 	}
+# 	mean_time_to_happen = {
+# 		months = 24
+# 	}
+# 	immediate = {
+# 		set_country_flag = SWE_had_event_3255
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTA3255"
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_hats
+# 			}
+# 			add_adm_power = -25
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_caps
+# 			}
+# 			add_adm_power = -50
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		clr_country_flag = swedish_caps
+# 		set_country_flag = swedish_hats
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTB3255"
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_caps
+# 			}
+# 			add_adm_power = -25
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_hats
+# 			}
+# 			add_adm_power = -50
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		clr_country_flag = swedish_hats
+# 		set_country_flag = swedish_caps
+# 	}
+# }
+# country_event = {
+# 	id = flavor_swe.3256
+# 	title = "flavor_swe.EVTNAME3256"
+# 	desc = "flavor_swe.EVTDESC3256"
+# 	picture = ASSASSINATION_eventPicture
+# 	trigger = {
+# 		had_country_flag = {
+# 			flag = SWE_had_event_3246
+# 			days = 730
+# 		}
+# 		tag = SWE
+# 		is_year = 1700
+# 		NOT = {
+# 			is_year = 1800
+# 		}
+# 		NOT = {
+# 			has_country_flag = SWE_had_event_3256
+# 		}
+# 	}
+# 	mean_time_to_happen = {
+# 		years = 25
+# 	}
+# 	immediate = {
+# 		set_country_flag = SWE_had_event_3256
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTA3256"
+# 		ai_chance = {
+# 			factor = 50
+# 		}
+# 		Stab_Add50Percent = yes
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTB3256"
+# 		ai_chance = {
+# 			factor = 50
+# 			modifier = {
+# 				factor = 0
+# 				NOT = {
+# 					stability = 1
+# 				}
+# 			}
+# 		}
+# 		Stab_Subtract2 = yes
+# 		add_adm_power = 50
+# 		set_country_flag = more_royal_power
+# 	}
+# }
+# country_event = {
+# 	id = 3257
+# 	title = "flavor_swe.EVTNAME3257"
+# 	desc = "flavor_swe.EVTDESC3257"
+# 	picture = LIBERUM_VETO_eventPicture
+# 	trigger = {
+# 		has_country_flag = SWE_had_event_3246
+# 		had_country_flag = {
+# 			flag = SWE_had_event_3255
+# 			days = 365
+# 		}
+# 		tag = SWE
+# 		is_year = 1700
+# 		NOT = {
+# 			is_year = 1800
+# 		}
+# 		NOT = {
+# 			has_country_flag = SWE_had_event_3257
+# 		}
+# 	}
+# 	mean_time_to_happen = {
+# 		months = 24
+# 	}
+# 	immediate = {
+# 		set_country_flag = SWE_had_event_3257
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTA3257"
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_hats
+# 			}
+# 			add_adm_power = -25
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_caps
+# 			}
+# 			add_adm_power = -50
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		clr_country_flag = swedish_caps
+# 		set_country_flag = swedish_hats
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTB3257"
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_caps
+# 			}
+# 			add_adm_power = -25
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_hats
+# 			}
+# 			add_adm_power = -50
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		clr_country_flag = swedish_hats
+# 		set_country_flag = swedish_caps
+# 	}
+# }
+# country_event = {
+# 	id = flavor_swe.3258
+# 	title = "flavor_swe.EVTNAME3258"
+# 	desc = "flavor_swe.EVTDESC3258"
+# 	picture = LIBERUM_VETO_eventPicture
+# 	trigger = {
+# 		has_country_flag = SWE_had_event_3246
+# 		had_country_flag = {
+# 			flag = SWE_had_event_3257
+# 			days = 365
+# 		}
+# 		tag = SWE
+# 		is_year = 1700
+# 		NOT = {
+# 			is_year = 1800
+# 		}
+# 		NOT = {
+# 			has_country_flag = SWE_had_event_3258
+# 		}
+# 	}
+# 	mean_time_to_happen = {
+# 		months = 24
+# 	}
+# 	immediate = {
+# 		set_country_flag = SWE_had_event_3258
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTA3258"
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_hats
+# 			}
+# 			add_adm_power = -25
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_caps
+# 			}
+# 			add_adm_power = -50
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		clr_country_flag = swedish_caps
+# 		set_country_flag = swedish_hats
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTB3258"
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_caps
+# 			}
+# 			add_adm_power = -25
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_country_flag = swedish_hats
+# 			}
+# 			add_adm_power = -50
+# 			random_owned_province = {
+# 				limit = {
+# 					is_core = SWE
+# 					is_capital = no
+# 					NOT = {
+# 						has_province_modifier = nobles_organizing
+# 					}
+# 				}
+# 				add_province_modifier = {
+# 					name = "nobles_organizing"
+# 					duration = 1825
+# 				}
+# 				custom_tooltip = nobles_organizing_tt
+# 				add_unrest = 5
+# 			}
+# 		}
+# 		clr_country_flag = swedish_hats
+# 		set_country_flag = swedish_caps
+# 	}
+# }
+# country_event = {
+# 	id = flavor_swe.3262
+# 	title = "flavor_swe.EVTNAME3262"
+# 	desc = "flavor_swe.EVTDESC3262"
+# 	picture = COURT_eventPicture
+# 	trigger = {
+# 		had_country_flag = {
+# 			flag = SWE_had_event_3246
+# 			days = 3650
+# 		}
+# 		tag = SWE
+# 		is_year = 1700
+# 		NOT = {
+# 			is_year = 1800
+# 		}
+# 		NOT = {
+# 			has_country_flag = SWE_had_event_3262
+# 		}
+# 	}
+# 	mean_time_to_happen = {
+# 		months = 48
+# 		modifier = {
+# 			factor = 0.75
+# 			has_country_flag = SWE_had_event_3254
+# 		}
+# 		modifier = {
+# 			factor = 0.75
+# 			has_country_flag = SWE_had_event_3255
+# 		}
+# 		modifier = {
+# 			factor = 0.75
+# 			has_country_flag = SWE_had_event_3257
+# 		}
+# 		modifier = {
+# 			factor = 0.75
+# 			has_country_flag = SWE_had_event_3258
+# 		}
+# 		modifier = {
+# 			factor = 0.5
+# 			has_country_flag = SWE_had_event_3256
+# 			has_country_flag = more_royal_power
+# 		}
+# 		modifier = {
+# 			factor = 0.75
+# 			ADM = 4
+# 		}
+# 		modifier = {
+# 			factor = 0.75
+# 			ADM = 5
+# 		}
+# 		modifier = {
+# 			factor = 0.75
+# 			ADM = 6
+# 		}
+# 	}
+# 	immediate = {
+# 		set_country_flag = SWE_had_event_3262
+# 		clr_country_flag = more_royal_power
+# 		clr_country_flag = swedish_hats
+# 		clr_country_flag = swedish_caps
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTA3262"
+# 		ai_chance = {
+# 			factor = 50
+# 			modifier = {
+# 				factor = 0
+# 				NOT = {
+# 					stability = 1
+# 				}
+# 			}
+# 		}
+# 		Stab_Subtract3 = yes
+# 		add_adm_power = 50
+# 	}
+# 	option = {
+# 		name = "flavor_swe.EVTOPTB3262"
+# 		ai_chance = {
+# 			factor = 50
+# 			modifier = {
+# 				factor = 0
+# 				stability = 2
+# 			}
+# 		}
+# 		Stab_Add50Percent = yes
+# 		add_adm_power = -50
+# 	}
+# }
 
 #####################################
 #
@@ -2126,6 +1754,7 @@ country_event = {
 	
 	option = {
 		name = "OPT.VICTORY1"
+		log = "FE-SWE:[GetYear]:[Root.GetName]:wins the war against [RSW.GetName], Erik's Rebellion is over:flavor_swe.4303"
 		RSW = {
 			every_subject_country = {
 				hidden_effect = {
@@ -2137,10 +1766,11 @@ country_event = {
 						add_core = RSW
 					}
 					grant_independence = yes
+					log = "FE-SWE:[GetYear]:[This.GetName]:got vassalised by [Root.GetName] during [RSW.GetName]'s integration:flavor_swe.4303"
 				}
 				ROOT = {
 					create_subject = {
-						subject_type = vassal
+						subject_type = vassal #TODO: type of vassal
 						subject = PREV
 					}
 				}
@@ -2202,6 +1832,7 @@ country_event = {
 	
 	option = {
 		name = "OPT.VICTORY1"
+		log = "FE-SWE:[GetYear]:[Root.GetName]:wins the war against [SWE.GetName], Erik's Rebellion is over:flavor_swe.4304"
 		SWE = {
 			every_subject_country = {
 				hidden_effect = {
@@ -2213,6 +1844,7 @@ country_event = {
 						add_core = SWE
 					}
 					grant_independence = yes
+					log = "FE-SWE:[GetYear]:[This.GetName]:got vassalised by [Root.GetName] during [SWE.GetName]'s integration:flavor_swe.4304"
 				}
 				ROOT = {
 					create_subject = {
@@ -2253,12 +1885,12 @@ country_event = {
 	
 	trigger = {
 		tag = SWE
+		NOT = { war_with = RSW }
+		num_of_cities = 16 #having less than 16 provinces should trigger end of war event
 		RSW = {
 			exists = yes
-			num_of_cities = 16
-			NOT = { num_of_cities = 17 }
+			num_of_cities = 16 #having less than 16 provinces should trigger end of war event
 		}
-		NOT = { war_with = RSW }
 	}
 	
 	mean_time_to_happen = {
@@ -2267,9 +1899,10 @@ country_event = {
 	
 	option = {
 		name = "OPT.SENDTROOPS"
+		log = "FE-SWE:[GetYear]:[Root.GetName]:declared war on [RSW.GetName] to solve Erik's rebellion:flavor_swe.4305"
 		declare_war_with_cb = {
 			who = RSW
-			casus_belli = cb_core
+			casus_belli = cb_core #TODO: check if it causes stability hit from breaking truce
 		}
 	}
 }
@@ -2286,26 +1919,24 @@ country_event = {
 	
 	option = {
 		name = "OPT.HONOUR1"
+		log = "FE-SWE:[GetYear]:[Root.GetName]:honored the aggrement and passed Skaneland to [DEN.GetName]:flavor_swe.4306"
 		ai_chance = {
-			factor = 100
+			factor = 90
 		}
 		every_owned_province = {
 			limit = {
 				area = skaneland_area
 			}
 			cede_province = DEN
+			remove_core = ROOT
 		}
-		remove_core = 6
-		remove_core = 18
-		remove_core = 26
-		remove_core = 2515
 	}
 	option = {
 		name = "OPT.RENEGE1"
 		ai_chance = {
-			factor = 0
+			factor = 10
 		}
-		add_prestige = 10
+		log = "FE-SWE:[GetYear]:[Root.GetName]:ignored the aggrement and refused to pass Skaneland to [DEN.GetName]:flavor_swe.4306"
 		DEN = {
 			country_event = { id = flavor_swe.4307 days = 5 }
 		}
@@ -2314,6 +1945,10 @@ country_event = {
 				who = SWE
 				modifier = swe_political_aggressions
 			}
+		}
+		add_country_modifier = {
+			name = ignored_aggrements
+			duration = 7300 #20 years
 		}
 	}
 }
@@ -2327,27 +1962,45 @@ country_event = {
 	picture = CIVIL_WAR_eventPicture
 	
 	is_triggered_only = yes
+
+	immediate = { 
+		add_opinion = { who = SWE modifier = swe_political_aggressions }
+	}
 	
 	option = {
-		name = "OPT.SENDTROOPS"
+		name = "OPT.RETAKEN"
 		ai_chance = {
-			factor = 0
+			factor = 10
+			modifier = {
+				factor = 9 #makes it 50/50
+				army_strength = {
+					who = FROM
+					value = 1.5
+				}
+				num_of_allies = FROM
+			}
 		}
 		add_core = 6
 		add_core = 18
 		add_core = 26
 		add_core = 2515
-		declare_war_with_cb = {
-			who = SWE
-			casus_belli = cb_core
+		add_casus_belli = { #to not wait for re-calculation event
+			target = FROM
+			type = cb_core
+			months = 24
 		}
+		# declare_war_with_cb = {
+		# 	who = SWE
+		# 	casus_belli = cb_core
+		# }
+		log = "FE-SWE:[GetYear]:[Root.GetName]:claimed Skaneland from [From.GetName]:flavor_swe.4307"
 	}
 	option = {
 		name = "OPT.ACCEPT2"
+		log = "FE-SWE:[GetYear]:[Root.GetName]:accepted [From.GetName]'s refusal to pass Skaneland:flavor_swe.4307"
 		ai_chance = {
-			factor = 100
+			factor = 90
 		}
-		add_opinion = { who = SWE modifier = swe_political_aggressions }
 	}
 }
 

@@ -51,7 +51,7 @@ country_event = {
 		}
 		add_legitimacy = 5
 		add_prestige = 5
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:chose to oppose Habsburgs:flavor_bav.3"
+		log = "FE-BAV:[GetYear]:[Root.GetName]:chose to oppose Habsburgs:flavor_bav.3"
 	}
 	option = {
 		name = flavor_bav.3.b
@@ -62,7 +62,7 @@ country_event = {
 			}
 		}
 		add_prestige = -25
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:chose to reconcile with Habsburgs:flavor_bav.3"
+		log = "FE-BAV:[GetYear]:[Root.GetName]:chose to reconcile with Habsburgs:flavor_bav.3"
 	}
 }
 country_event = {
@@ -270,7 +270,7 @@ country_event = {
 				}
 			}
 			inherit = BAW
-			#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:inherited BAW by being Bavaria and rule of primogeniture:flavor_bav.202"
+			log = "FE-BAV:[GetYear]:[Root.GetName]:inherited [BAW.GetName] by being Bavaria and rule of primogeniture:flavor_bav.202"
 		}
 		if = {
 			limit = {
@@ -286,7 +286,7 @@ country_event = {
 				}
 			}
 			inherit = BAX
-			#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:inherited BAX by being Bavaria and rule of primogeniture:flavor_bav.202"
+			log = "FE-BAV:[GetYear]:[Root.GetName]:inherited [BAX.GetName] by being Bavaria and rule of primogeniture:flavor_bav.202"
 		}
 		if = {
 			limit = {
@@ -302,7 +302,7 @@ country_event = {
 				}
 			}
 			inherit = BAY
-			#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:inherited BAY by being Bavaria and rule of primogeniture:flavor_bav.202"
+			log = "FE-BAV:[GetYear]:[Root.GetName]:inherited [BAY.GetName] by being Bavaria and rule of primogeniture:flavor_bav.202"
 		}
 		if = {
 			limit = {
@@ -318,7 +318,7 @@ country_event = {
 				}
 			}
 			inherit = BAZ
-			#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:inherited BAZ by being Bavaria and rule of primogeniture:flavor_bav.202"
+			log = "FE-BAV:[GetYear]:[Root.GetName]:inherited [BAZ.GetName] by being Bavaria and rule of primogeniture:flavor_bav.202"
 		}
 		lower_bavaria_area = {
 			limit = {
@@ -436,7 +436,7 @@ country_event = {
 		}
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=5 }
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Ingolstadt to BAW on ruler death:flavor_bav.203"		
+		log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Ingolstadt to [BAW.GetName] on ruler death:flavor_bav.203"		
 		BAW = {
 			define_ruler = {
 				dynasty = "von Wittelsbach"
@@ -459,7 +459,7 @@ country_event = {
 		}
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=5 }
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Landshut to BAX on ruler death:flavor_bav.203"		
+		log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Landshut to [BAX.GetName] on ruler death:flavor_bav.203"		
 		BAX = {
 			define_ruler = {
 				dynasty = "von Wittelsbach"
@@ -482,7 +482,7 @@ country_event = {
 		}
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=5 }
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Munich to BAY on ruler death:flavor_bav.203"		
+		log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Munich to [BAY.GetName] on ruler death:flavor_bav.203"		
 		BAY = {
 			define_ruler = {
 				dynasty = "von Wittelsbach"
@@ -505,7 +505,7 @@ country_event = {
 		}
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=5 }
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Straubing to BAZ on ruler death:flavor_bav.203"
+		log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Straubing to [BAZ.GetName] on ruler death:flavor_bav.203"
 		BAZ = {
 			define_ruler = {
 				dynasty = "von Wittelsbach"
@@ -532,7 +532,7 @@ country_event = {
 				Stab_Subtract1 = yes
 			}
 		}
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:ignored rule of primogeniture on ruler death:flavor_bav.203"
+		log = "FE-BAV:[GetYear]:[Root.GetName]:ignored rule of primogeniture on ruler death:flavor_bav.203"
 	}
 	after = {
 		BAW = { clr_country_flag = stop_event_bav_204 }
@@ -606,7 +606,7 @@ country_event = {
 	option = {
 		name = "flavor_bav.204.opta"
 		trigger = {	exists = BAV }
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:end of Wittlesbach dynasty, BAV will inherit:flavor_bav.204"
+		log = "FE-BAV:[GetYear]:[Root.GetName]:end of Wittlesbach dynasty, BAV will inherit:flavor_bav.204"
 
 		BAV = {
 			country_event = {
@@ -620,7 +620,7 @@ country_event = {
 		trigger = {
 			NOT = { exists = BAV }
 		}
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:end of Wittlesbach dynasty, elder branch will inherit:flavor_bav.204"
+		log = "FE-BAV:[GetYear]:[Root.GetName]:end of Wittlesbach dynasty, elder branch will inherit:flavor_bav.204"
 
 		random_country = {
 			limit = {
@@ -650,7 +650,7 @@ country_event = {
 	option = {
 		name = "flavor_bav.205.opta"
 		inherit = FROM
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:inherited lands of [From.GetName]:flavor_bav.205"
+		log = "FE-BAV:[GetYear]:[Root.GetName]:inherited lands of [From.GetName]:flavor_bav.205"
 
 		lower_bavaria_area = {
 			limit = {
@@ -762,7 +762,7 @@ country_event = {
 				modifier = flavor_bav_reconcile_habsburgs
 			}
 		}
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:chose to reconcile with Habsburgs:flavor_bav.303"
+		log = "FE-BAV:[GetYear]:[Root.GetName]:chose to reconcile with Habsburgs:flavor_bav.303"
 	}
 	option = {
 		name = flavor_bav.303.b
@@ -778,7 +778,7 @@ country_event = {
 				modifier = flavor_bav_against_habsburgs
 			}
 		}
-		#_#_log = "FE-BAV:[GetYear]:[Root.GetName]:chose to continue opposing the Habsburgs:flavor_bav.303"
+		log = "FE-BAV:[GetYear]:[Root.GetName]:chose to continue opposing the Habsburgs:flavor_bav.303"
 		add_legitimacy = 5
 		add_prestige = 5
 	}

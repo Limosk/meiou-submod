@@ -1522,3 +1522,49 @@
 
 ### Map
 - Fixes positions in the Canarias and on the coast between Lisboa and Genoa
+
+
+##### Open Alpha 6
+### System Changes
+
+### New content 
+
+### Changes & Balance
+- Increased badboy factor (AE) for Reconquest CB (from .25 to .4)
+- Removed impact of Colonial Nations on Land Forcelimit
+- Adjustments to Songhai events about the rise of new dynasty
+- Adjustments to Saxony flavor, especially Treaty of Leipzig
+- Minor adjustments to The Knights, Hansa, Dai Viet, Anjou, Fiume, Freiburg, Swedish and Norwegian flavor events
+- Rework of Iron Crown events
+	- Italian state can ask for Iron Crown once per Emperor rule (used to be 100 years)
+	- other Italian tags (e.g. Ferrara) can ask for the title, too, if meeting criteria
+	- already being either ITA or ITE blocks the decision
+- Adjustments to Castillian Civil War and War of the Roses disasters
+- Limited affect on loyalty from "Territorial disputes between Poland and Lithuania" event to Mazovia area only
+
+### Miscellaneous
+- Activated logging in events where it was switched off by default
+- Missions about Neapolitan expasion north do not rely on having Sicily
+- Conquer Marrakech mission is not checking for barbary_port flag as it is about expansion inland
+- Tweaks to Hungarian missions
+- Removed requirement for owning Malta to get mission about uniting Two Sicilies and forming a new tag
+- Fixes Siena and Pisa missing mission tree
+- Fixes knowledge and commerce triggers in the mission trees
+
+### Fixes
+- Hungarian mission hun_hungarian_progress was checking for has_institution = renaissance and was not winnable
+- Fix to Byzantine names (especially monarch names) by Sobi and Mosbech Duvniask
+- Fixes to province highlighting in nation-forming decisions
+- Added fix to prevent Sforza becoming the general twice (once from event, once as a ruler converted to general)
+- applied fix by Karasca: declaring war was blocked for a daimyo if your overlord is anything but a nominal empire. Now it also allow you to declare war if it's a shogunate overlord like such
+- Block Burgundian decisions to expand via marriage if lesser part of the PU
+- Block Timber Excise tax in provinces with no timber industry
+
+#### Localization
+- Unified wording for ideas modifying Modi_CEHeight (Topography Impact on CE)
+- Added missing localization to dhufar_area
+- Removed custom tooltips from decisions to form some nations to directly present the requirements
+- Removed mention of force limit contribution from vassal tooltip in the diplomacy screen
+
+### Map
+- Circassianisation of two Circassia province names

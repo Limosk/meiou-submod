@@ -22,6 +22,7 @@ sic_missions_one = {
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
+				province_id = 126 #Malta
 			}
 		}
 		trigger = {
@@ -33,7 +34,10 @@ sic_missions_one = {
 			}
 			sicily_region = {
 				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+				OR = {
+					country_or_non_sovereign_subject_holds = ROOT
+					province_id = 126 #Malta
+				}
 			}
 			OR = { #There can only be one Sicily alive
 				AND = {
@@ -77,7 +81,7 @@ sic_missions_one = {
 	
 	sic_conquer_lazio = {
 		icon = mission_unite_home_region
-		required_missions = { sic_unify_two_sicilies }
+		required_missions = {  }
 		position = 2
 		provinces_to_highlight = {
 			OR = {

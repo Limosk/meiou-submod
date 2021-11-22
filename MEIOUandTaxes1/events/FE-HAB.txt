@@ -63,7 +63,7 @@ country_event = {
 		name = flavor_hab.1010.a
 		ai_chance = { factor = 100 }
 		set_global_flag = habsburgs_in_tyrol
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:Magarete of Tyrols heir died, the next ruler will be Habsburg:flavor_hab.1010"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:Magarete of Tyrols heir died, the next ruler will be Habsburg:flavor_hab.1010"
 		define_heir = {
 			#The next ruler is going to be a Habsburg
 			claim = 75
@@ -75,7 +75,7 @@ country_event = {
 			limit = { HAB = { dynasty = "von Habsburg" } }
 			create_alliance = HAB
 			create_marriage = HAB
-			#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:alliance and marriage with Austria set:flavor_hab.1010"
+			log = "FE-HAB:[GetYear]:[Root.GetName]:alliance and marriage with Austria set:flavor_hab.1010"
 		}
 		if = {
 			#The Witteslbachers have claims if the ruler is Margarete
@@ -137,7 +137,7 @@ country_event = {
 		#Retain our Dynasty
 		name = flavor_hab.1010.b
 		ai_chance = { factor = 0 }
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:decided to reject the Habsburgs and keep their dynasty:flavor_hab.1010"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:decided to reject the Habsburgs and keep their dynasty:flavor_hab.1010"
 		if = {
 			limit = { HAB = { dynasty = "von Habsburg" } }
 			HAB = {
@@ -214,7 +214,7 @@ country_event = {
 		name = flavor_hab.1011.a
 		ai_chance = { factor = 1 }
 		#Inheritance by HAB is prioritised over STY and TIR, if HAB doesn't exist but STY does, then STY will inherit, if HAB and STY don't exist, TIR will inherit
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:decided to give back the lands to Habsburgs:flavor_hab.1011"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:decided to give back the lands to Habsburgs:flavor_hab.1011"
 
 		if = {
 			limit = {
@@ -227,7 +227,7 @@ country_event = {
 			HAB = {
 				country_event = { id = flavor_hab.1012 }
 			}
-			#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:inheriting country is Austria (HAB):flavor_hab.1011"
+			log = "FE-HAB:[GetYear]:[Root.GetName]:inheriting country is Austria (HAB):flavor_hab.1011"
 		}
 		if = {
 			limit = {
@@ -244,7 +244,7 @@ country_event = {
 			STY = {
 				country_event = { id = flavor_hab.1012 }
 			}
-			#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:inheriting country is Styria (STY):flavor_hab.1011"
+			log = "FE-HAB:[GetYear]:[Root.GetName]:inheriting country is Styria (STY):flavor_hab.1011"
 		}
 		if = {
 			limit = {
@@ -263,7 +263,7 @@ country_event = {
 			}
 		}
 		set_country_flag = habsburg_inheritance
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:inheriting country is Tirol (TIR):flavor_hab.1011"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:inheriting country is Tirol (TIR):flavor_hab.1011"
 	}
 	
 	option = {
@@ -271,7 +271,7 @@ country_event = {
 		name = flavor_hab.1011.b
 		ai_chance = { factor = 0 }
 		set_country_flag = no_habsburgs
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:decided not to give back the lands to Habsburgs:flavor_hab.1011"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:decided not to give back the lands to Habsburgs:flavor_hab.1011"
 
 		if = {
 			limit = {
@@ -333,14 +333,14 @@ country_event = {
 		name = "flavor_hab.1012.a"
 		ai_chance = { factor = 1 }
 		inherit = FROM
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:accepted the inheritance:flavor_hab.1012"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:accepted the inheritance:flavor_hab.1012"
 	}
 	
 	option = {
 		#What?! We don't want that!
 		name = "flavor_hab.1012.b"
 		ai_chance = { factor = 0 }
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:rejected the inheritance:flavor_hab.1012"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:rejected the inheritance:flavor_hab.1012"
 	}
 }
 
@@ -426,7 +426,7 @@ country_event = {
 	}
 	
 	immediate = {
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:Habsburg ruler has died, other branch might acquire the land:flavor_hab.1014"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:Habsburg ruler has died, other branch might acquire the land:flavor_hab.1014"
 	}
 	
 	option = {
@@ -484,7 +484,7 @@ country_event = {
 				set_country_flag = habsburg_inheritance
 			}
 			75 = {
-				#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:No aquisition of land by other Habsburg branch:flavor_hab.1014"
+				log = "FE-HAB:[GetYear]:[Root.GetName]:No aquisition of land by other Habsburg branch:flavor_hab.1014"
 			}
 		}
 	}
@@ -511,14 +511,14 @@ country_event = {
 		name = "flavor_hab.1015.a"
 		ai_chance = { factor = 1 }
 		inherit = FROM
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:inherited land of [From.GetName]:flavor_hab.1015"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:inherited land of [From.GetName]:flavor_hab.1015"
 	}
 	
 	option = {
 		#What?! We don't want that!
 		name = "flavor_hab.1015.b"
 		ai_chance = { factor = 0 }
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:declined land of [From.GetName]:flavor_hab.1015"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:declined land of [From.GetName]:flavor_hab.1015"
 
 	}
 }
@@ -555,7 +555,7 @@ country_event = {
 	option = {
 		#Very well.
 		name = "flavor_hab.1016.a"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:accepted pressure of local nobles to give land to Habsburg:flavor_hab.1016"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:accepted pressure of local nobles to give land to Habsburg:flavor_hab.1016"
 		ai_chance = { factor = 10 }
 		if = {
 			limit = {
@@ -607,7 +607,7 @@ country_event = {
 	option = {
 		#I will not be robbed of my lands!
 		name = "flavor_hab.1016.b"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:declined pressure of local nobles to give land to Habsburg:flavor_hab.1016"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:declined pressure of local nobles to give land to Habsburg:flavor_hab.1016"
 		ai_chance = { factor = 1 }
 		random_owned_province = {
 			limit = {
@@ -657,14 +657,14 @@ country_event = {
 		name = "flavor_hab.1017.a"
 		ai_chance = { factor = 1 }
 		inherit = FROM
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:accepted the inheritance:flavor_hab.1017"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:accepted the inheritance:flavor_hab.1017"
 	}
 	
 	option = {
 		#What?! We don't want that!
 		name = "flavor_hab.1017.b"
 		ai_chance = { factor = 0 }
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:declined the inheritance:flavor_hab.1017"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:declined the inheritance:flavor_hab.1017"
 	}
 }
 
@@ -714,11 +714,11 @@ country_event = {
 				modifier = religious_compromise
 			}
 		}
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]: went for a middle ground at the Imperial Parliament at Augsburg:flavor_hab.3188"
+		log = "FE-HAB:[GetYear]:[Root.GetName]: went for a middle ground at the Imperial Parliament at Augsburg:flavor_hab.3188"
 	}
 	option = {
 		name = "flavor_hab.EVTOPTB3188"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]: supported Catholics at the Imperial Parliament at Augsburg:flavor_hab.3188"
+		log = "FE-HAB:[GetYear]:[Root.GetName]: supported Catholics at the Imperial Parliament at Augsburg:flavor_hab.3188"
 		ai_chance = {
 			factor = 25
 			modifier = {
@@ -756,7 +756,7 @@ country_event = {
 				religion = catholic
 			}
 		}
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]: supported Protestants at the Imperial Parliament at Augsburg:flavor_hab.3188"
+		log = "FE-HAB:[GetYear]:[Root.GetName]: supported Protestants at the Imperial Parliament at Augsburg:flavor_hab.3188"
 		add_papal_influence = -50
 		every_country = {
 			limit = {
@@ -818,7 +818,7 @@ country_event = {
 				modifier = royal_letter_of_bohemia
 			}
 		}
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]: gave religious freedom for protestants in Bohemia:flavor_hab.3193"
+		log = "FE-HAB:[GetYear]:[Root.GetName]: gave religious freedom for protestants in Bohemia:flavor_hab.3193"
 	}
 	option = {
 		name = "flavor_hab.EVTOPTB3193"
@@ -829,7 +829,7 @@ country_event = {
 				modifier = refused_royal_letter_of_bohemia
 			}
 		}
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]: refused religious freedom for protestants in Bohemia:flavor_hab.3193"
+		log = "FE-HAB:[GetYear]:[Root.GetName]: refused religious freedom for protestants in Bohemia:flavor_hab.3193"
 	}
 }
 country_event = {
@@ -1718,7 +1718,7 @@ country_event = {
 	option = {
 		name = "flavor_hab.EVTOPTB7"
 		add_legitimacy = -50
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:found a Habsburg heir to take over from their dynasty (no heir):flavor_hab.7"
+		log = "FE-HAB:[GetYear]:[Root.GetName]:found a Habsburg heir to take over from their dynasty (no heir):flavor_hab.7"
 		if = {
 			limit = {
 				has_country_flag = habsburg_male_heir
@@ -1877,7 +1877,7 @@ country_event = {
 	}
 	option = {
 		name = "flavor_spa.EVTOPTA1007"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:as HRE emperor, claimed all French land in Italy:flavor_hab.1007" 
+		log = "FE-HAB:[GetYear]:[Root.GetName]:as HRE emperor, claimed all French land in Italy:flavor_hab.1007" 
 		ai_chance = {
 			factor = 90
 		}
@@ -1902,7 +1902,7 @@ country_event = {
 	}
 	option = {
 		name = "flavor_spa.EVTOPTB1007"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:as HRE emperor, have not claimed French land in Italy:flavor_hab.1007" 
+		log = "FE-HAB:[GetYear]:[Root.GetName]:as HRE emperor, have not claimed French land in Italy:flavor_hab.1007" 
 		ai_chance = {
 			factor = 10
 		}
@@ -1917,8 +1917,8 @@ country_event = {
 	is_triggered_only = yes #from flavor_hab.1007
 	option = {
 		name = "flavor_spa.EVTOPTA1008"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:counter-claimed lands in Italy:flavor_hab.1008" 
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:escalated conflict in Italy:flavor_hab.1008" 
+		log = "FE-HAB:[GetYear]:[Root.GetName]:counter-claimed lands in Italy:flavor_hab.1008" 
+		log = "FE-HAB:[GetYear]:[Root.GetName]:escalated conflict in Italy:flavor_hab.1008" 
 		trigger = {
 			italy_superregion = {
 				owned_by = FROM
@@ -1944,7 +1944,7 @@ country_event = {
 	}
 	option = {
 		name = "flavor_spa.EVTOPTB1008"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:have not counter-claimed lands in Italy:flavor_hab.1008" 
+		log = "FE-HAB:[GetYear]:[Root.GetName]:have not counter-claimed lands in Italy:flavor_hab.1008" 
 		ai_chance = {
 			factor = 10
 		}
@@ -1952,7 +1952,7 @@ country_event = {
 	}
 	option = {
 		name = "flavor_hab.EVTOPTC1008"
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:escalated conflict in Italy:flavor_hab.1008" 
+		log = "FE-HAB:[GetYear]:[Root.GetName]:escalated conflict in Italy:flavor_hab.1008" 
 
 		trigger = {
 			NOT = {
@@ -2077,7 +2077,7 @@ country_event = {
 	}
 	option = {
 		name = hee_HAB.2.a
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:opposed rise of Ottomans in Europe:hee_HAB.2" 
+		log = "FE-HAB:[GetYear]:[Root.GetName]:opposed rise of Ottomans in Europe:hee_HAB.2" 
 		ai_chance = {
 			factor = 100
 		}
@@ -2090,7 +2090,7 @@ country_event = {
 	}
 	option = {
 		name = hee_HAB.2.b
-		#_#_log = "FE-HAB:[GetYear]:[Root.GetName]:backed out of opposing rise of Ottomans in Europe:hee_HAB.2" 
+		log = "FE-HAB:[GetYear]:[Root.GetName]:backed out of opposing rise of Ottomans in Europe:hee_HAB.2" 
 		ai_chance = {
 			factor = 0
 		}

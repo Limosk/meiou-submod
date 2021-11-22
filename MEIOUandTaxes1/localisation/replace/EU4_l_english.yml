@@ -258,7 +258,7 @@
  TRADE_GOODS_LBL:1 "Rural Production"
  GLOBAL_TRADEGOODS_SIZE_DESC:0 "This factor increases the amount of goods produced by our rural population."
 
- COL_MERCH_BONUS:1 "Colonial nations provide us with base §G+1§! Merchant, §G+2.50§! naval forcelimit and §G+1.00§! land forcelimit.\nAt 100 Development they provide us with §G+2§! Merchants, §G+5.00§! naval forcelimit and §G+2.50§! land forcelimit.\nAt 400 Development provide us with §G+3§! Merchants, §G+10.00§! naval forcelimit and §G+5.00§! land forcelimit."
+ COL_MERCH_BONUS:1 "Colonial nations provide us with base §G+1§! Merchant and §G+2.50§! naval forcelimit \nAt 100 Development they provide us with §G+2§! Merchants and §G+5.00§! naval forcelimit.\nAt 400 Development provide us with §G+3§! Merchants and §G+10.00§! naval forcelimit ."
  COL_MERCH_BONUS_SMALL:1 "used if cities_required_for_bonuses is not met which we currently don't require"
  WARN_LOW_ARMY_MAINTENANCE:0 "§YYou are not at 100% Army Maintenance!§!"
  SIBERIAN_FRONTIER_LACKS_IDEA:0 "Without a national idea, it's impossible to establish a Colonial frontier."

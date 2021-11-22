@@ -1358,7 +1358,7 @@ country_event = {
 		name = "OPT.UNFORTUNATE"
 		add_prestige = -15
 		add_legitimacy = -5
-		#_#_log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title in the HRE was rejected"
+		log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title in the HRE was rejected"
 	}
 }
 
@@ -1375,7 +1375,7 @@ country_event = {
 		name = "OPT.HURRAH"
 		add_prestige = 10
 		add_legitimacy = 5
-		#_#_log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title in the HRE was accepted"
+		log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title in the HRE was accepted"
 	}
 }
 
@@ -1392,7 +1392,7 @@ country_event = {
 		name = "OPT.UNFORTUNATE"
 		add_prestige = -15
 		add_legitimacy = -5
-		#_#_log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title as a vassal was rejected"
+		log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title as a vassal was rejected"
 	}
 }
 
@@ -1409,7 +1409,7 @@ country_event = {
 		name = "OPT.HURRAH"
 		add_prestige = 10
 		add_legitimacy = 10
-		#_#_log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title as a vassal was accepted"
+		log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title as a vassal was accepted"
 	}
 }
 
@@ -1426,7 +1426,7 @@ country_event = {
 		name = "OPT.UNFORTUNATE"
 		add_prestige = -15
 		add_legitimacy = -5
-		#_#_log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title was rejected by the Pope"
+		log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title was rejected by the Pope"
 	}
 }
 
@@ -1443,7 +1443,7 @@ country_event = {
 		name = "OPT.HURRAH"
 		add_prestige = 10
 		add_legitimacy = 10
-		#_#_log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title was accepted by the Pope"
+		log = "MEC-Title_Change:[GetYear]:[This.GetName]:request for increased title was accepted by the Pope"
 	}
 }
 

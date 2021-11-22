@@ -1,5 +1,6 @@
-fir_missions_conquer = {
-	slot = 1
+
+fir_missions_conquer_1 = {
+	slot = 2
 	generic = no
 	ai = yes
 	
@@ -34,7 +35,7 @@ fir_missions_conquer = {
 				name = "mediterranean_ambition"
 				duration = 9125 #25 years
 			}
-			117 = { #Siena
+			116 = { #Siena
 				if = {
 					limit = {
 						NOT = {
@@ -122,6 +123,294 @@ fir_missions_conquer = {
 			add_army_tradition = 5
 		}
 	}
+}
+
+sie_missions_conquer_1 = {
+	slot = 2
+	generic = no
+	ai = yes
+	
+	potential = {
+		has_country_flag = c_of_sie
+	}
+	
+	has_country_shield = yes
+	
+	sie_conquer_pisa = {
+		icon = mission_conquer_50_development
+		position = 1
+		required_missions = {  }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1380 #Pisa
+				province_id = 3868 #Livorno
+				province_id = 115  #Lucca
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 1380
+			owns_or_non_sovereign_subject_of = 3868
+			owns_or_non_sovereign_subject_of = 115
+		}
+		
+		effect = {
+			set_country_flag = conquered_pisa
+			add_country_modifier = {
+				name = "mediterranean_ambition"
+				duration = 9125 #25 years
+			}
+			116 = {
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			2563 = {
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			3697 = {
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+	sie_conquer_firenze = {
+		icon = mission_build_up_to_force_limit
+		position = 2
+		required_missions = { sie_conquer_pisa }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 116
+				province_id = 2563
+				province_id = 3697
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 116
+			owns_or_non_sovereign_subject_of = 2563
+			owns_or_non_sovereign_subject_of = 3697
+		}
+		
+		effect = {
+			2564 = { #Masa
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			3699 = { #Perugia
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+	sie_consolidate_power = {
+		icon = mission_assemble_an_army
+		position = 3
+		required_missions = { sie_conquer_firenze }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2564 #Masa
+				province_id = 3699 #Perugia
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 2564
+			owns_or_non_sovereign_subject_of = 3699
+		}
+		
+		effect = {
+			add_mil_power = 50
+			add_army_tradition = 5
+		}
+	}
+}
+
+pis_missions_conquer_1 = {
+	slot = 2
+	generic = no
+	ai = yes
+	
+	potential = {
+		has_country_flag = c_of_pis
+	}
+	
+	has_country_shield = yes
+	
+	pis_conquer_siena = {
+		icon = mission_build_up_to_force_limit
+		position = 1
+		required_missions = {  }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 117
+				province_id = 3698
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 117
+			owns_or_non_sovereign_subject_of = 3698
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "mediterranean_ambition"
+				duration = 9125 #25 years
+			}
+			116 = {
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			2563 = {
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			3697 = {
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+	pis_conquer_firenze = {
+		icon = mission_build_up_to_force_limit
+		position = 2
+		required_missions = { pis_conquer_siena }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 116
+				province_id = 2563
+				province_id = 3697
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 116
+			owns_or_non_sovereign_subject_of = 2563
+			owns_or_non_sovereign_subject_of = 3697
+		}
+		
+		effect = {
+			2564 = { #Masa
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			3699 = { #Perugia
+				if = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+	pis_consolidate_power = {
+		icon = mission_assemble_an_army
+		position = 3
+		required_missions = { pis_conquer_siena }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2564 #Masa
+				province_id = 3699 #Perugia
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 2564
+			owns_or_non_sovereign_subject_of = 3699
+		}
+		
+		effect = {
+			add_mil_power = 50
+			add_army_tradition = 5
+		}
+	}
+}
+
+fir_missions_conquer_2 = {
+	slot = 1
+	generic = no
+	ai = yes
+	
+	potential = {
+		has_country_flag = c_of_fir
+	}
+	
+	has_country_shield = yes
+	
 	fir_conquer_genoa = {
 		icon = mission_invade_island
 		position = 6
@@ -169,14 +458,136 @@ fir_missions_conquer = {
 		}
 	}
 }
-	
-fir_missions_diplomacy = {
-	slot = 2
+
+sie_missions_conquer_2 = {
+	slot = 1
 	generic = no
 	ai = yes
 	
 	potential = {
-		has_country_flag = c_of_fir
+		has_country_flag = c_of_sie
+	}
+	
+	has_country_shield = yes
+	
+	sie_conquer_genoa = {
+		icon = mission_invade_island
+		position = 6
+		required_missions = { sie_across_the_mountains }
+		provinces_to_highlight = {
+			area = liguria_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			liguria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			lombardy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	sie_conquer_milan = {
+		icon = mission_conquer_5_states
+		position = 7
+		required_missions = { sie_conquer_genoa }
+		provinces_to_highlight = {
+			area = lombardy_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			lombardy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			add_mil_power = 100
+		}
+	}
+}
+
+pis_missions_conquer_2 = {
+	slot = 1
+	generic = no
+	ai = yes
+	
+	potential = {
+		has_country_flag = c_of_pis
+	}
+	
+	has_country_shield = yes
+	
+	pis_conquer_genoa = {
+		icon = mission_invade_island
+		position = 6
+		required_missions = { pis_across_the_mountains }
+		provinces_to_highlight = {
+			area = liguria_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			liguria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			lombardy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	pis_conquer_milan = {
+		icon = mission_conquer_5_states
+		position = 7
+		required_missions = { pis_conquer_genoa }
+		provinces_to_highlight = {
+			area = lombardy_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			lombardy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			add_mil_power = 100
+		}
+	}
+}
+
+tus_missions_diplomacy = {
+	slot = 3
+	generic = no
+	ai = yes
+	
+	potential = {
+		OR = {
+			has_country_flag = c_of_fir
+			has_country_flag = c_of_sie
+			has_country_flag = c_of_pis
+		}
 	}
 	
 	has_country_shield = yes
@@ -296,6 +707,19 @@ fir_missions_diplomacy = {
 			}
 		}
 	}
+}
+
+fir_missions_diplomacy = {
+	slot = 2
+	generic = no
+	ai = yes
+	
+	potential = {
+		has_country_flag = c_of_fir
+	}
+	
+	has_country_shield = yes
+	
 	fir_duchy_of_tuscany = {
 		icon = mission_empire
 		position = 4
@@ -479,13 +903,405 @@ fir_missions_diplomacy = {
 	}
 }
 
-fir_missions_infrastructure = {
-	slot = 3
+sie_missions_diplomacy = {
+	slot = 2
 	generic = no
 	ai = yes
 	
 	potential = {
-		has_country_flag = c_of_fir
+		has_country_flag = c_of_sie
+	}
+	
+	has_country_shield = yes
+	
+	sie_duchy_of_tuscany = {
+		icon = mission_empire
+		position = 4
+		required_missions = { sie_consolidate_power fir_machiavellian_diplomacy }
+		
+		provinces_to_highlight = {
+			province_id = 116
+		}
+		
+		trigger = {
+			NOT = { exists = TUS }
+			primary_culture = tuscan
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			prestige = 15 #reduced from 25 (lower resting point in 3.0)
+			OR = {
+				adm_tech = 20
+				AND = {
+					NOT = { absolutism = 90 }
+					stability = 1
+					full_idea_group = culture_ideas
+				}
+				AND = {
+					ADM = 5
+					Advisor_HasMana = { ADM=yes Level=2 }
+				}
+			}
+			owns = 116
+			#monarchy_or_harem_gov = yes
+		}
+		
+		effect = {
+			country_event = { id = mission_event.023 }
+		}
+	}
+	sie_across_the_mountains = {
+		icon = mission_unite_home_region
+		position = 5
+		required_missions = { sie_duchy_of_tuscany }
+		provinces_to_highlight = {
+			area = emilia_romagna_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			emilia_romagna_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			liguria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			padan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	sie_conquer_padua = {
+		icon = mission_galleys_in_port
+		position = 6
+		required_missions = { sie_across_the_mountains }
+		provinces_to_highlight = {
+			area = padan_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			padan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			venetia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	sie_conquer_venetia = {
+		icon = mission_sea_battles
+		position = 7
+		required_missions = { sie_conquer_padua }
+		provinces_to_highlight = {
+			area = venetia_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			venetia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			central_italy_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	sie_central_italy = {
+		icon = mission_build_up_to_force_limit
+		position = 8
+		required_missions = { sie_conquer_milan sie_conquer_venetia }
+		
+		provinces_to_highlight = {
+			region = central_italy_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			central_italy_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			add_prestige = 15
+		}
+	}
+	sie_form_italy = {
+		icon = mission_iron_crown
+		position = 9
+		required_missions = { sie_central_italy }
+		
+		provinces_to_highlight = {
+			province_id = 1347
+		}
+		
+		trigger = {
+			OR = {
+				AND = {
+					monarchy_or_harem_gov = yes
+					NOT = { has_institution = Nationalism }
+				}
+				has_institution = Nationalism
+			}
+			# OR = {
+			# 	NOT = { hre_size = 1 }
+			# 	is_part_of_hre = no
+			# 	is_emperor = yes
+			# 	has_country_flag = iron_crown_granted
+			# }
+			owns = 1347
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			is_at_war = no
+		}
+		effect = {
+			if = {
+				limit = {
+					is_part_of_hre = yes
+				}
+				emperor = {
+					country_event = { id = flavor_ita.1 days = 5}
+				}
+			}
+			else = { country_event = { id = mission_event.025 } }
+		}
+	}
+}
+
+pis_missions_diplomacy = {
+	slot = 2
+	generic = no
+	ai = yes
+	
+	potential = {
+		has_country_flag = c_of_pis
+	}
+	
+	has_country_shield = yes
+	
+	pis_duchy_of_tuscany = {
+		icon = mission_empire
+		position = 4
+		required_missions = { pis_consolidate_power fir_machiavellian_diplomacy }
+		
+		provinces_to_highlight = {
+			province_id = 116
+		}
+		
+		trigger = {
+			NOT = { exists = TUS }
+			primary_culture = tuscan
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			prestige = 15 #reduced from 25 (lower resting point in 3.0)
+			OR = {
+				adm_tech = 20
+				AND = {
+					NOT = { absolutism = 90 }
+					stability = 1
+					full_idea_group = culture_ideas
+				}
+				AND = {
+					ADM = 5
+					Advisor_HasMana = { ADM=yes Level=2 }
+				}
+			}
+			owns = 116
+			#monarchy_or_harem_gov = yes
+		}
+		
+		effect = {
+			country_event = { id = mission_event.023 }
+		}
+	}
+	pis_across_the_mountains = {
+		icon = mission_unite_home_region
+		position = 5
+		required_missions = { pis_duchy_of_tuscany }
+		provinces_to_highlight = {
+			area = emilia_romagna_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			emilia_romagna_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			liguria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			padan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	pis_conquer_padua = {
+		icon = mission_galleys_in_port
+		position = 6
+		required_missions = { pis_across_the_mountains }
+		provinces_to_highlight = {
+			area = padan_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			padan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			venetia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	pis_conquer_venetia = {
+		icon = mission_sea_battles
+		position = 7
+		required_missions = { pis_conquer_padua }
+		provinces_to_highlight = {
+			area = venetia_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			venetia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			central_italy_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	pis_central_italy = {
+		icon = mission_build_up_to_force_limit
+		position = 8
+		required_missions = { pis_conquer_milan pis_conquer_venetia }
+		
+		provinces_to_highlight = {
+			region = central_italy_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			central_italy_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			add_prestige = 15
+		}
+	}
+	pis_form_italy = {
+		icon = mission_iron_crown
+		position = 9
+		required_missions = { pis_central_italy }
+		
+		provinces_to_highlight = {
+			province_id = 1347
+		}
+		
+		trigger = {
+			OR = {
+				AND = {
+					monarchy_or_harem_gov = yes
+					NOT = { has_institution = Nationalism }
+				}
+				has_institution = Nationalism
+			}
+			# OR = {
+			# 	NOT = { hre_size = 1 }
+			# 	is_part_of_hre = no
+			# 	is_emperor = yes
+			# 	has_country_flag = iron_crown_granted
+			# }
+			owns = 1347
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			is_at_war = no
+		}
+		effect = {
+			if = {
+				limit = {
+					is_part_of_hre = yes
+				}
+				emperor = {
+					country_event = { id = flavor_ita.1 days = 5}
+				}
+			}
+			else = { country_event = { id = mission_event.025 } }
+		}
+	}
+}
+
+tus_missions_infrastructure = {
+	slot = 5
+	generic = no
+	ai = yes
+	
+	potential = {
+		OR = {
+			has_country_flag = c_of_fir
+			has_country_flag = c_of_sie
+			has_country_flag = c_of_pis
+		}
 	}
 	
 	has_country_shield = yes
@@ -496,8 +1312,15 @@ fir_missions_infrastructure = {
 		required_missions = {  }
 		
 		trigger = {
-			116 = { #Florence
-				#HasBuildingOrBetter = { b1=merchant_guild b2=trade_depot b3=customs_house }
+			capital_scope = {				
+				HasBuildingOrBetter = { b1=urban_infrastructure_3 b2=urban_infrastructure_4 b3=urban_infrastructure_5 b4=urban_infrastructure_6 }
+				custom_trigger_tooltip = {
+					tooltip = miss_output_51_20
+					check_key = { lhs = TN_ProvSply51 value = 20 }
+				}
+			}
+			116 = {
+				check_key = { lhs = TN_ProvSply41 value = 3 }
 			}
 		}
 		
@@ -514,11 +1337,13 @@ fir_missions_infrastructure = {
 		required_missions = { fir_tuscan_trade }
 		
 		trigger = {
-			#116 = { #Florence
-			#	#has_building = warehouse_district
-			#	#HasBuildingOrBetter = { b1=urban_manufactory b2=factory b3=steam_powered_factory }
-            #    
-			#}
+			capital_scope = {				
+				HasBuildingOrBetter = { b1=urban_infrastructure_4 b2=urban_infrastructure_5 b3=urban_infrastructure_6 }
+				custom_trigger_tooltip = {
+					tooltip = miss_output_51_30
+					check_key = { lhs = TN_ProvSply51 value = 30 }
+				}
+			}
 		}
 		
 		effect = {
@@ -562,6 +1387,19 @@ fir_missions_infrastructure = {
 			add_dip_power = 50
 		}
 	}
+}
+
+fir_missions_infrastructure = {
+	slot = 4
+	generic = no
+	ai = yes
+	
+	potential = {
+		has_country_flag = c_of_fir
+	}
+	
+	has_country_shield = yes
+	
 	fir_road_to_port = {
 		icon = mission_early_game_buildings
 		position = 5
@@ -609,14 +1447,173 @@ fir_missions_infrastructure = {
 		required_missions = { fir_centralize }
 		
 		trigger = {
-			116 = { #Florence
-				#HasBuildingOrBetter = { b1=fine_arts_academy b2=opera }
+			capital_scope = {
 				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				check_key = { lhs = Modi_KnowledgeOutput value = 0.2 }
-				OR = {
-					has_province_modifier = median_center_of_art
-					has_province_modifier = important_center_of_art
+				custom_trigger_tooltip = {
+					tooltip = miss_output_41_10
+					check_key = { lhs = TN_ProvSply41 value = 10 }
 				}
+				#OR = {
+				#	has_province_modifier = median_center_of_art
+				#	has_province_modifier = important_center_of_art
+				#}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "fir_tuscan_culture_mod"
+				duration = 9125 #25 years
+			}
+		}
+	}
+}
+
+sie_missions_infrastructure = {
+	slot = 4
+	generic = no
+	ai = yes
+	
+	potential = {
+		has_country_flag = c_of_sie
+	}
+	
+	has_country_shield = yes
+	
+	sie_road_to_port = {
+		icon = mission_early_game_buildings
+		position = 5
+		required_missions = { sie_duchy_of_tuscany }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 116  #Florence
+				province_id = 1380 #Pisa
+				province_id = 3868 #Livorno
+			}
+		}
+		
+		trigger = {
+			116 = {
+				HasBuildingOrBetter = { b1=paved_road_network b2=highway_network b3=road_and_rail_network }
+			}
+			1380 = {
+				HasBuildingOrBetter = { b1=paved_road_network b2=highway_network b3=road_and_rail_network }
+			}
+			3868 = {
+				HasBuildingOrBetter = { b1=paved_road_network b2=highway_network b3=road_and_rail_network }
+			}
+		}
+		
+		effect = {
+			add_years_of_income = 2
+		}
+	}
+	sie_centralize = {
+		icon = mission_have_two_subjects
+		position = 6
+		required_missions = { sie_road_to_port }
+		
+		trigger = {
+			absolutism = 30
+		}
+		
+		effect = {
+			Stab_Add1 = yes
+		}
+	}
+	sie_tuscan_culture = {
+		icon = mission_dominate_home_trade_node
+		position = 7
+		required_missions = { sie_centralize }
+		
+		trigger = {
+			capital_scope = {
+				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
+				custom_trigger_tooltip = {
+					tooltip = miss_output_41_10
+					check_key = { lhs = TN_ProvSply41 value = 10 }
+				}
+				#OR = {
+				#	has_province_modifier = median_center_of_art
+				#	has_province_modifier = important_center_of_art
+				#}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "fir_tuscan_culture_mod"
+				duration = 9125 #25 years
+			}
+		}
+	}
+}
+
+pis_missions_infrastructure = {
+	slot = 4
+	generic = no
+	ai = yes
+	
+	potential = {
+		has_country_flag = c_of_pis
+	}
+	
+	has_country_shield = yes
+	
+	pis_road_to_port = {
+		icon = mission_early_game_buildings
+		position = 5
+		required_missions = { pis_duchy_of_tuscany }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 116  #Florence
+				province_id = 1380 #Pisa
+				province_id = 3868 #Livorno
+			}
+		}
+		
+		trigger = {
+			116 = {
+				HasBuildingOrBetter = { b1=paved_road_network b2=highway_network b3=road_and_rail_network }
+			}
+			1380 = {
+				HasBuildingOrBetter = { b1=paved_road_network b2=highway_network b3=road_and_rail_network }
+			}
+			3868 = {
+				HasBuildingOrBetter = { b1=paved_road_network b2=highway_network b3=road_and_rail_network }
+			}
+		}
+		
+		effect = {
+			add_years_of_income = 2
+		}
+	}
+	pis_centralize = {
+		icon = mission_have_two_subjects
+		position = 6
+		required_missions = { pis_road_to_port }
+		
+		trigger = {
+			absolutism = 30
+		}
+		
+		effect = {
+			Stab_Add1 = yes
+		}
+	}
+	pis_tuscan_culture = {
+		icon = mission_dominate_home_trade_node
+		position = 7
+		required_missions = { pis_centralize }
+		
+		trigger = {
+			capital_scope = {
+				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
+				custom_trigger_tooltip = { tooltip = miss_output_41_10 check_key = { lhs = TN_ProvSply41 value = 10 } }
+				#OR = {
+				#	has_province_modifier = median_center_of_art
+				#	has_province_modifier = important_center_of_art
+				#}
 			}
 		}
 		

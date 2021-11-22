@@ -1607,6 +1607,8 @@
  overlord_illegitimate:0 "Low Overlord Legitimacy"
  fez_political_anarchy:0 "Political Anarchy"
  rus_subject:0 "Overlord is Master of the Rus"
+ ignored_aggrements:0 "Ignored Diplomatic Aggreements"
+ desc_ignored_aggrements:0 "Breaking the oaths made in previous diplomatic aggreement has made life more difficult for our diplomats trying to negotiate new ones."
  
  Mil_Skill_0: "Armed Civilians"
  Mil_Skill_1: "Marshalled Levy"
@@ -1636,6 +1638,7 @@
  refusal_of_petition_of_rights_tt: "Feudal Taxes Cost §R+20%§!"
  rebel_refugees_tt: "Feudal Taxes Cost §R+40%§!"
  rebel_stronghold_tt: "Feudal Taxes Cost §R+100%§!"
+ post_war_of_the_roses_loyalty_shift_rebels_won: "Every province that supported the rebels: §G+30§!£estate_greater_nobles_icon_small£§O[Prov_Noble]§! loyalty\nEvery province that supported the ruler: §R-30§!£estate_greater_nobles_icon_small£§O[Prov_Noble]§! loyalty"
 
  Privilege_BUOffice0: "Sale of Office: Common Practice (0)"
  Privilege_BUOffice1: "Sale of Office: Restricted Sale (1)"
@@ -1679,6 +1682,9 @@
  Stat_Crpt_0.32: "State Corruption"
  Stat_Crpt_0.64: "State Corruption"
  Stat_Crpt_1.28: "State Corruption"
+ Stat_Crpt_2.56: "State Corruption"
+ Stat_Crpt_5.12: "State Corruption"
+ Stat_Crpt_10.00: "State Corruption"
  
  statGlobalManpowerNeg_0.01: "Raised Regiments"
  statGlobalManpowerNeg_0.02: "Raised Regiments"

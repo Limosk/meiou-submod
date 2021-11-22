@@ -9,6 +9,7 @@ country_event = {
 	major = yes
 	trigger = {
 		has_country_flag = wettin_succession
+		NOT = { has_country_flag = succession_event_paused }
 		OR = {
 			tag = MEI
 			tag = SWR
@@ -23,7 +24,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([SAX.GetName]):wettin_dynastic.1"
+		log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([SAX.GetName]):wettin_dynastic.1"
 		clr_country_flag = wettin_succession
 
 		SAX = {	country_event = { id = welfs_dynastic.6	days = 1 } }
@@ -43,6 +44,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		has_country_flag = wettin_succession
+		NOT = { has_country_flag = succession_event_paused }
 		OR = {
 			tag = SAX
 			tag = SWR
@@ -59,7 +61,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([MEI.GetName]):wettin_dynastic.2"
+		log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([MEI.GetName]):wettin_dynastic.2"
 		clr_country_flag = wettin_succession
 
 		MEI = {	country_event = { id = welfs_dynastic.6	days = 1 } }
@@ -79,6 +81,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		has_country_flag = wettin_succession
+		NOT = { has_country_flag = succession_event_paused }
 		OR = {
 			tag = SAX
 			tag = MEI
@@ -96,7 +99,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([SWR.GetName]):wettin_dynastic.3"
+		log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([SWR.GetName]):wettin_dynastic.3"
 		clr_country_flag = wettin_succession
 
 		SWR = {	country_event = { id = welfs_dynastic.6	days = 1 } }
@@ -116,6 +119,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		has_country_flag = wettin_succession
+		NOT = { has_country_flag = succession_event_paused }
 		OR = {
 			tag = SAX
 			tag = MEI
@@ -134,7 +138,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([SWT.GetName]):wettin_dynastic.4"
+		log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([SWT.GetName]):wettin_dynastic.4"
 		clr_country_flag = wettin_succession
 
 		SWT = {	country_event = { id = welfs_dynastic.6	days = 1 } }
@@ -154,6 +158,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		has_country_flag = wettin_succession
+		NOT = { has_country_flag = succession_event_paused }
 		OR = {
 			tag = SAX
 			tag = MEI
@@ -173,7 +178,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([SGO.GetName]):wettin_dynastic.5"
+		log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([SGO.GetName]):wettin_dynastic.5"
 		clr_country_flag = wettin_succession
 
 		SGO = {	country_event = { id = welfs_dynastic.6	days = 1 } }
@@ -193,6 +198,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		has_country_flag = wettin_succession
+		NOT = { has_country_flag = succession_event_paused }
 		OR = {
 			tag = SAX
 			tag = MEI
@@ -213,7 +219,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([SCB.GetName]):wettin_dynastic.6"
+		log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([SCB.GetName]):wettin_dynastic.6"
 		clr_country_flag = wettin_succession
 
 		SCB = {	country_event = { id = welfs_dynastic.6	days = 1 } }
@@ -234,6 +240,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		has_country_flag = wettin_succession
+		NOT = { has_country_flag = succession_event_paused }
 		OR = {
 			tag = SAX
 			tag = MEI
@@ -255,7 +262,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([REU.GetName]):wettin_dynastic.7"
+		log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([REU.GetName]):wettin_dynastic.7"
 		clr_country_flag = wettin_succession
 
 		REU = {	country_event = { id = welfs_dynastic.6	days = 1 } }
@@ -275,6 +282,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		has_country_flag = wettin_succession
+		NOT = { has_country_flag = succession_event_paused }
 		OR = {
 			tag = SAX
 			tag = MEI
@@ -297,7 +305,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([THU.GetName]):wettin_dynastic.8"
+		log = "Fe-Wettins:[GetYear]:[Root.GetName]:von Wettin dynasty died out, land inherited by other branch ([THU.GetName]):wettin_dynastic.8"
 		clr_country_flag = wettin_succession
 
 		THU = {	country_event = { id = welfs_dynastic.6	days = 1 } }

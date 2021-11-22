@@ -6,7 +6,7 @@ add_core = BEI
 
 capital = "Sibu"
 trade_goods = rice # gold
-culture = malayan
+culture = bornean
 religion = vajrayana #FB this region began to be Islamified c1360
 
 hre = no

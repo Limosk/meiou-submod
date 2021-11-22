@@ -2062,7 +2062,7 @@ TN_effect14 = {
 								owner = {
 									Rights_BGCom3HasGreater = no
 									OR = {
-										culture_group = andean_american
+										culture_group = andean_group
 										culture_group = north_central_tradition_group
 										}
 								}

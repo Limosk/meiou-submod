@@ -5911,39 +5911,6 @@ east_slavic = {
 			Yaroslava Yuliya
 		}
 	}
-	cossack = {
-		primary = ZAZ
-		
-		male_names = {
-			Afanasiy Akim Aleksandr Alexei Anatoliy Andrei Arkadiy
-			Boris
-			Daniil Dmitriy Dorofey
-			Feodosiy Feofilakt Fyodor
-			Gavriil Gleb
-			Igor Ingvar Innokentiy Iosif Ivan Izyaslav
-			Lavrentiy
-			Makariy Matveiy Mikhail Mstislav
-			Nazariy Nikifor
-			Oleg Onisim
-			Pavel Prokopiy Pyotr
-			Radomir Roman Rostislav Ryurik
-			Saveliy Semen Sergei Stanislav Svyatoslav
-			Terentiy
-			Valeriy Vladimir Vsevolod Vyacheslav
-			Yakim Yaropolk Yaroslav Yevgeniy Yuriy
-		}
-		female_names = {
-			Aleksandra Alla
-			Bronislava
-			Gavriila
-			Larisa Lyudmila
-			Nadejda
-			Rostislava
-			Svetlana
-			Vladislava
-			Yaroslava Yuliya
-		}
-	}
 	russian_colonial = {
 		
 		male_names = {

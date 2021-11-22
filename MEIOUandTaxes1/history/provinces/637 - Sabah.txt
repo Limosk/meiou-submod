@@ -9,7 +9,7 @@ add_core = BEI
 
 capital = "Sabah"
 trade_goods = fish #FB too much clove
-culture = malayan
+culture = bornean
 religion = vajrayana #FB this region began to be Islamified c1500
 
 hre = no

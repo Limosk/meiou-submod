@@ -359,6 +359,12 @@ Pol_Structure5 = {				#Unitary; A centralised state, where the central governing
 			}
 			country_event = { id = flavor_tur.10 }
 		}
+		else_if = {
+			limit = {
+				tag = SWE
+			}
+			country_event = { id = flavor_swe.3232 } #notification event
+		}
 	}
 }
 
@@ -705,6 +711,12 @@ Pol_Military3 = {					#Regional Garrisons; Abolish all militias and local armies
 				tag = SAV
 			}
 			country_event = { id = hee_SAV.2 } #flavor notification event
+		}
+		else_if = {
+			limit = {
+				tag = SWE
+			}
+			country_event = { id = flavor_swe.3228 } #flavor notification event
 		}
 	}
 }

@@ -77,7 +77,10 @@ Tax_TaxSaltCan = {
 	Rights_BUTax2HasGreater = yes
 }
 Tax_TaxTimberCan = {
-	Rights_BUTax2HasGreater = yes
+	AND = {
+		Rights_BUTax2HasGreater = yes
+		PREV = { Prod_HasProd = { Prod = 13 } } #timber industry present in the province
+	}
 }
 Tax_TaxSubstCan = {
 	Rights_BUInd2HasGreater = yes

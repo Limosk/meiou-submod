@@ -250,7 +250,9 @@ country_decisions = {
 	italian_nation_in_hre = { #Already exists in missions, to be removed when the relevant missions get added back in #Entirely commented out since the only effect is an event that is not in 3.0
 		major = yes
 		potential = {
-			has_country_flag = iron_crown_refused
+			emperor = {
+				NOT = { has_country_modifier = iron_crown_refused }
+			}
 			OR = {
 				has_country_flag = c_of_fir
 				has_country_flag = r_of_ven
@@ -258,6 +260,12 @@ country_decisions = {
 				has_country_flag = d_of_sav
 				has_country_flag = m_of_sal
 				has_country_flag = m_of_mft
+				culture_group = latin
+				culture_group = napolitan
+			}
+			NOT = {
+				tag = ITA
+				tag = ITE
 			}
 			AND = { 
 					hre_size = 1
@@ -275,7 +283,6 @@ country_decisions = {
 			}
 		}
 		allow = {
-			had_country_flag = { flag = iron_crown_refused days = 36500 }
 			OR = {
 				check_variable = { which = "Demesne_in_Italy" value = 30 }
 				AND = {
@@ -293,7 +300,7 @@ country_decisions = {
 		}
 		effect = {
 			emperor = {
-				country_event = { id = "flavor_ita.1" days = 1 }
+				country_event = { id = "flavor_ita.1" }
 			}
 		}
 		ai_will_do = {
@@ -305,7 +312,6 @@ country_decisions = {
 	italian_nation_no_hre = { #Already exists in missions, to be removed when the relevant missions get added back in
 		major = yes
 		potential = {
-			has_country_flag = iron_crown_refused
 			OR = {
 				has_country_flag = c_of_fir
 				has_country_flag = r_of_ven
@@ -313,10 +319,16 @@ country_decisions = {
 				has_country_flag = d_of_sav
 				has_country_flag = m_of_sal
 				has_country_flag = m_of_mft
+				culture_group = latin
+				culture_group = napolitan
+			}
+			NOT = {
+				tag = ITA
+				tag = ITE
 			}
 			is_part_of_hre = no
 			is_colonial_nation = no
-			NOT = { has_institution = Nationalism }
+			#NOT = { has_institution = Nationalism } #path for Nationalism existing is covered in scripted effect
 		}
 		provinces_to_highlight = {
 			superregion = italy_superregion

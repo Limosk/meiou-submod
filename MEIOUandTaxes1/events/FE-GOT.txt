@@ -33,7 +33,7 @@ country_event = {
 
 	option = {
 		name = hee_GOT.2.a
-		#_#_log = "FE-GOT:[GetYear]:[Root.GetName]:did not pushback against centralising overlord:hee_GOT.2"
+		log = "FE-GOT:[GetYear]:[Root.GetName]:did not pushback against centralising overlord:hee_GOT.2"
 		25 = { #nationalists unhappy by lack of pushback
 			add_province_modifier = {
 				name = "nationalists_organizing"
@@ -44,7 +44,7 @@ country_event = {
 	}
 	option = {
 		name = hee_GOT.2.b #pushback to centralising overlord
-		#_#_log = "FE-GOT:[GetYear]:[Root.GetName]:pushed back against centralising overlord:hee_GOT.2"
+		log = "FE-GOT:[GetYear]:[Root.GetName]:pushed back against centralising overlord:hee_GOT.2"
 		add_liberty_desire = 20
 		overlord = {
 			country_event = { id = hee_GOT.3 days = 5 }

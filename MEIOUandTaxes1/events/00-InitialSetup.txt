@@ -305,7 +305,7 @@ country_event = {
 				NOT = { is_year = 1453 }
 			}
 			set_global_flag = hundred_years_war
-			#_#_log = "FE-TempHYW:[GetYear]::flag hundred_years_war was set:00_InitialSetup"
+			log = "FE-TempHYW:[GetYear]::flag hundred_years_war was set:00_InitialSetup"
 		}
 		
 		if = {

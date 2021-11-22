@@ -470,7 +470,8 @@
 
  nav_vasconia_tt: "Gain claims on the territories of the old Kingdom of Vasconia"
  
- ccw_tagchange_tt: "Validate the §YCastilian Civil War§! to change tag to Castile."
+ ccw_tagchange_tt: "Validate the §YCastilian Civil War§! mission to change tag to Castile."
+ ccw_duel_info_tt: "Duel will happen in 5 days."
  scw_tagchange_tt: "Validate the §YEnd Civil War§! to change tag to Sweden."
  bcw_tagchange_tt: "Validate the §YUnify Brittany§! to change tag to Sweden."
  erg_tagchange_tt: "Take the §YImperical Crown§! decision."

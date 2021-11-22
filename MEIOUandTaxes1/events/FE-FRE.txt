@@ -23,6 +23,12 @@ country_event = {
 	option = {		#Accept
 		name = "flavor_fre.1.opta"
 		ai_chance = { factor = 90 }
+		#TODO: Transfer of wealth from BG to NO on province level?
+		log = "FE-FRE:[GetYear]:[Root.GetName]:accepted petition from people of Freiburg to buy their freedom:flavor_fre.1"
+		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=-20 }
+		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=BG Amount=20 }
+		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-20 }
+		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=20 }
 		HAB = {
 			country_event = { id = flavor_fre.2 }
 		}
@@ -32,6 +38,11 @@ country_event = {
 		ai_chance = { factor = 10 }
 		add_prestige = 10
 		Stab_Subtract2 = yes
+		log = "FE-FRE:[GetYear]:[Root.GetName]:refused petition from people of Freiburg to buy their freedom:flavor_fre.1"
+		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=20 }
+		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=BG Amount=-20 }
+		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=20 }
+		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=-20 }
 		69 = {
 			add_province_modifier = {
 				name = "burghers_organizing"
@@ -60,4 +71,5 @@ country_event = {
 			add_core = HAB
 		}
 	}
+	#TODO: option to refuse, turning city into republic/free city?
 }

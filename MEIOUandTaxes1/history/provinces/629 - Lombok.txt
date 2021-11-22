@@ -11,7 +11,7 @@ add_core = PTN
 
 capital = "Sidiniang"
 trade_goods = rice # rice	 #FB too much clove
-culture = malayan
+culture = bornean
 religion = vajrayana
 
 hre = no

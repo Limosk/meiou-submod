@@ -60,6 +60,7 @@ country_decisions = {
 			owns = 641   # Makassar
 		}
 		effect = {
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [IND.GetName]:indonesian_nation"
 			sumatra_region = { limit = { owned_by = ROOT } hidden_effect = { remove_core = IND } add_core = IND }
 			sumatra_region = { limit = { NOT = { owned_by = ROOT } } add_permanent_claim = IND }
 			java_region = { limit = { owned_by = ROOT } hidden_effect = { remove_core = IND } add_core = IND }
@@ -76,6 +77,7 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):indonesian_nation"
 			}
 			
 			change_tag = IND
@@ -98,11 +100,11 @@ country_decisions = {
 			NOT = { exists = SRV }
 			NOT = { tag = MPH }
 			NOT = { tag = IND }
-#			NOT = { tag = MLC }
+			#NOT = { tag = MLC }
 		}
 		provinces_to_highlight = {
-#			superregion = east_indies_superregion
-#			NOT = { region = philippines_region }
+			#superregion = east_indies_superregion
+			#NOT = { region = philippines_region }
 			OR = {
 				region = sumatra_region
 				region = java_region
@@ -127,6 +129,7 @@ country_decisions = {
 			owns = 641   # Makassar
 		}
 		effect = {
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [SRV.GetName]:srivijaya_nation"
 			sumatra_region = { limit = { owned_by = ROOT } hidden_effect = { remove_core = SRV } add_core = SRV }
 			sumatra_region = { limit = { NOT = { owned_by = ROOT } } add_permanent_claim = SRV }
 			java_region = { limit = { owned_by = ROOT } hidden_effect = { remove_core = SRV } add_core = SRV }
@@ -143,6 +146,7 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):srivijaya_nation"
 			}
 			change_tag = SRV
 			add_absolutism = 10
@@ -235,6 +239,7 @@ country_decisions = {
 			if = {
 				limit = { NOT = { has_country_modifier = title_6 } }
 				change_title_6 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 6 (Empire equivalent):mongol_nation"
 			}
 			add_absolutism = 10
 			add_horde_unity = 50
@@ -247,6 +252,7 @@ country_decisions = {
 					NOT = { tag = MGH }
 				}
 				inherit = MGH
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:inherited [MGH.GetName] while forming [GGK.GetName]:mongol_nation"
 			}
 			if = {
 				limit = {
@@ -257,6 +263,7 @@ country_decisions = {
 					NOT = { tag = BLU }
 				}
 				inherit = BLU
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:inherited [BLU.GetName] while forming [GGK.GetName]:mongol_nation"
 			}
 			if = {
 				limit = {
@@ -267,6 +274,7 @@ country_decisions = {
 					NOT = { tag = WHI }
 				}
 				inherit = WHI
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:inherited [WHI.GetName] while forming [GGK.GetName]:mongol_nation"
 			}
 			if = {
 				limit = {
@@ -277,6 +285,7 @@ country_decisions = {
 					NOT = { tag = GOL }
 				}
 				inherit = GOL
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:inherited [GOL.GetName] while forming [GGK.GetName]:mongol_nation"
 			}
 			if = {
 				limit = {
@@ -287,6 +296,7 @@ country_decisions = {
 					NOT = { tag = CHU }
 				}
 				inherit = CHU
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:inherited [CHU.GetName] while forming [GGK.GetName]:mongol_nation"
 			}
 			if = {
 				limit = {
@@ -297,7 +307,9 @@ country_decisions = {
 					NOT = { tag = YUA }
 				}
 				inherit = YUA
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:inherited [YUA.GetName] while forming [GGK.GetName]:mongol_nation"
 			}
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [GGK.GetName]:mongol_nation"
 			change_tag = GGK
 		}
 		ai_will_do = {
@@ -330,7 +342,12 @@ country_decisions = {
 			NOT = { exists = KOJ }
 		}
 		provinces_to_highlight = {
-			area = palestine_area
+			OR = {
+				area = palestine_area
+				area = lebanon_area
+				area = dimashq_area
+				area = aleppo_area 
+			}
 		}
 		allow = {
 			owns = 379 # Al Quds
@@ -355,8 +372,10 @@ country_decisions = {
 			if = {
 				limit = { NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):become_kingdom_of_jerusalem"
 			}
 			#secularisation_effect = yes
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [KOJ.GetName]:become_kingdom_of_jerusalem"
 			change_tag = KOJ
 			add_absolutism = 10
 			379 = {
@@ -364,6 +383,7 @@ country_decisions = {
 				rename_capital = "Jerusalem"
 			}
 			Effect_set_capital = { target=379 }
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:moved capital to Jerusalem:become_kingdom_of_jerusalem"
 			#if = {
 			#	limit = {
 			#		has_custom_ideas = no
@@ -412,10 +432,9 @@ country_decisions = {
 			}
 		}
 		allow = {
-			owns = 1402	#Kostantiniyye
+			owns_core_province = 1402	#Kostantiniyye
 			is_free_or_tributary_trigger = yes
 			is_at_war = no
-			is_core = 1402
 			OR = {
 				check_variable = { which = "Demesne_in_Constantinople" value = 25 }
 				check_variable = { which = "Cores_on_Constantinople" value = 15 }
@@ -429,11 +448,13 @@ country_decisions = {
 			south_anatolia_region = { limit = { owned_by = ROOT } hidden_effect = { remove_core = BYZ } add_core = BYZ }
 			south_anatolia_region = { limit = { NOT = { owned_by = ROOT } } add_permanent_claim = BYZ }
 			add_prestige = 20
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [BYZ.GetName]:byzantium_empire"
 			change_tag = BYZ
 			BYZ = { Effect_set_capital = { target=1402 } }
 			if = {
 				limit = { NOT = { has_country_modifier = title_6 } }
 				change_title_6 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 6 (Empire equivalent):byzantium_empire"
 			}
 			add_absolutism = 10
 			#if = {
@@ -546,7 +567,9 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):lothar_nation"
 			}
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [LOT.GetName]:lothar_nation"
 			change_tag = LOT
 			add_absolutism = 10
 			#if = {
@@ -636,7 +659,9 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):unite_scandinavia"
 			}
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [KAL.GetName]:unite_scandinavia"
 			change_tag = KAL
 			add_absolutism = 10
 			#if = {
@@ -710,7 +735,9 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):form_suvarnabhumi"
 			}
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [SUV.GetName]:form_suvarnabhumi"
 			change_tag = SUV
 			add_absolutism = 10
 			#if = {
@@ -759,7 +786,9 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):form_burma"
 			}
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [BRM.GetName]:form_burma"
 			change_tag = BRM
 			add_absolutism = 10
 			#if = {
@@ -828,7 +857,9 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):form_dai_viet"
 			}
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [DAI.GetName]:form_dai_viet"
 			#if = {
 			#	limit = { has_country_modifier = puppet_le_emperor }
 			#	remove_country_modifier = puppet_le_emperor
@@ -887,7 +918,9 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):form_lan_xang"
 			}
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [LXA.GetName]:form_lan_xang"
 			change_tag = LXA
 			
 			add_absolutism = 10
@@ -930,7 +963,7 @@ country_decisions = {
 				AND = {
 					is_free_or_tributary_trigger = yes
 					custom_trigger_tooltip = {
-						num_of_owned_provinces_with = {
+						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 							value = 7
 							OR = {
 								area = lower_silesia_area
@@ -943,7 +976,7 @@ country_decisions = {
 				AND = {
 					is_subject_other_than_tributary_trigger = yes
 					custom_trigger_tooltip = {
-						num_of_owned_provinces_with = {
+						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 							value = 4
 							OR = {
 								area = lower_silesia_area
@@ -962,6 +995,7 @@ country_decisions = {
 			upper_silesia_area = { limit = { owned_by = ROOT } hidden_effect = { remove_core = SIL } add_core = SIL }
 			upper_silesia_area = { limit = { NOT = { owned_by = ROOT } } add_permanent_claim = SIL }
 			change_tag = SIL
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [SIL.GetName]:silesia_nation"
 			add_absolutism = 10
 			#if = {
 			#	limit = {
@@ -997,69 +1031,55 @@ country_decisions = {
 		}
 		allow = {
 			is_at_war = no
-			owns_or_non_sovereign_subject_of = 45
-			owns_or_non_sovereign_subject_of = 44
-			owns_or_non_sovereign_subject_of = 1357
+			owns_or_non_sovereign_subject_of = 45 #Lubeck
+			owns_or_non_sovereign_subject_of = 44 #Hamburg
+			owns_or_non_sovereign_subject_of = 1357 #Bremen
 			OR = {
 				tag = FRL
-				NOT = {
-					exists = FRL
-				}
-				FRL = {
-					is_vassal_of_trigger = { scp_prev = yes }
-				}
+				NOT = { exists = FRL }
+				overlord_of = FRL
 			}
 			OR = {
 				tag = HAM
-				NOT = {
-					exists = HAM
-				}
-				HAM = {
-					is_vassal_of_trigger = { scp_prev = yes }
-				}
+				NOT = { exists = HAM }
+				overlord_of = HAM
 			}
 			OR = {
 				tag = FRB
-				NOT = {
-					exists = FRB
-				}
-				FRB = {
-					is_vassal_of_trigger = { scp_prev = yes }
-				}
+				NOT = { exists = FRB }
+				overlord_of = FRB
 			}
 		}
 		effect = {
 			add_prestige = 20
-			change_tag = HSA
 			#merchantisation_effect = yes
 			if = {
 				limit = {
 					exists = FRL
-					NOT = {
-						tag = FRL
-					}
+					NOT = { tag = FRL }
 				}
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:inherited [FRL.GetName] while forming [HSA.GetName]:hansa_nation"
 				inherit = FRL
 			}
 			if = {
 				limit = {
 					exists = HAM
-					NOT = {
-						tag = HAM
-					}
+					NOT = { tag = HAM }
 				}
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:inherited [HAM.GetName] while forming [HSA.GetName]:hansa_nation"
 				inherit = HAM
 			}
 			if = {
 				limit = {
 					exists = FRB
-					NOT = {
-						tag = FRB
-					}
+					NOT = { tag = FRB }
 				}
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:inherited [FRB.GetName] while forming [HSA.GetName]:hansa_nation"
 				inherit = FRB
 			}
 			add_absolutism = 10
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [HSA.GetName]:hansa_nation"
+			change_tag = HSA
 			#if = {
 			#	limit = {
 			#		has_custom_ideas = no
@@ -1089,23 +1109,19 @@ country_decisions = {
 		allow = {
 			is_at_war = no
 			primitives = no
-			custom_trigger_tooltip = {
-				west_mossi_area = {
-					type = all
-					owned_by = ROOT
-					is_core = ROOT
-				}
-				east_mossi_area = {
-					type = all
-					owned_by = ROOT
-					is_core = ROOT
-				}
-				tooltip = mossi_nation_claim
+			west_mossi_area = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
+			}
+			east_mossi_area = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
 			}
 		}
 		effect = {
 			add_prestige = 20
-			change_tag = MSI
 			every_province = {
 				limit = { culture = mossi }
 				hidden_effect = { remove_core = MSI } add_core = MSI
@@ -1113,7 +1129,10 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):mossi_nation"
 			}
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [MSI.GetName]:mossi_nation"
+			change_tag = MSI
 			add_absolutism = 10
 			#if = {
 			#	limit = {
@@ -1146,33 +1165,29 @@ country_decisions = {
 		allow = {
 			is_at_war = no
 			primitives = no
-			custom_trigger_tooltip = {
-				kano_area = {
-					type = all
-					owned_by = ROOT
-					is_core = ROOT
-				}
-				daura_area = {
-					type = all
-					OR = {
-						AND = {
-							owned_by = ROOT
-							is_core = ROOT
-						}
-						province_id = 1559
+			kano_area = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
+			}
+			daura_area = {
+				type = all
+				OR = {
+					AND = {
+						owned_by = ROOT
+						is_core = ROOT
 					}
+					province_id = 1559 #Damagara
 				}
-				sokoto_area = {
-					type = all
-					owned_by = ROOT
-					is_core = ROOT
-				}
-				tooltip = haussa_nation_claim
+			}
+			sokoto_area = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
 			}
 		}
 		effect = {
 			add_prestige = 20
-			change_tag = HAU
 			every_province = {
 				limit = { culture = haussa }
 				hidden_effect = { remove_core = HAU } add_core = HAU
@@ -1180,7 +1195,10 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):haussa_nation"
 			}
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [HAU.GetName]:haussa_nation"
+			change_tag = HAU
 			add_absolutism = 10
 			#if = {
 			#	limit = {
@@ -1211,26 +1229,24 @@ country_decisions = {
 		allow = {
 			is_at_war = no
 			primitives = no
-			custom_trigger_tooltip = {
-				toro_area = {
-					type = all
-					OR = {
-						owned_by = ROOT
-						is_empty = yes
-					}
+			toro_area = {
+				type = all
+				OR = {
+					owned_by = ROOT
+					is_empty = yes
 				}
-				volta_delta_area = {
-					type = all
-					OR = {
-						owned_by = ROOT
-						is_empty = yes
-					}
+			}
+			volta_delta_area = {
+				type = all
+				OR = {
+					owned_by = ROOT
+					is_empty = yes
 				}
-				tooltip = akaa_nation_claim
 			}
 		}
 		effect = {
 			add_prestige = 20
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [ASH.GetName]:akaa_nation"
 			change_tag = ASH
 			every_province = {
 				limit = { culture = akaa }
@@ -1243,7 +1259,8 @@ country_decisions = {
 			if = {
 				limit = { NOT = { has_country_modifier = title_6 } }
 				change_title_6 = yes
-			}
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 6 (Empire equivalent):akaa_nation"
+			}		
 			add_absolutism = 10
 			#if = {
 			#	limit = {
@@ -1273,28 +1290,28 @@ country_decisions = {
 		}
 		allow = {
 			is_at_war = no
-			custom_trigger_tooltip = {
-				oyo_area = {
-					type = all
-					owned_by = ROOT
-				}
-				ife_area = {
-					type = all
-					owned_by = ROOT
-				}
-				tooltip = yorumba_nation_claim
+			oyo_area = {
+				type = all
+				owned_by = ROOT
+			}
+			ife_area = {
+				type = all
+				owned_by = ROOT
 			}
 		}
 		effect = {
 			add_prestige = 20
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [YRB.GetName]:yorumba_nation"
 			change_tag = YRB
 			every_province = {
 				limit = { culture = yorumba }
-				hidden_effect = { remove_core = YRB } add_core = YRB
+				hidden_effect = { remove_core = YRB } 
+				add_core = YRB
 			}
 			if = {
 				limit = { NOT = { has_country_modifier = title_6 } }
 				change_title_6 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 6 (Empire equivalent):yorumba_nation"
 			}
 			add_absolutism = 10
 			#if = {
@@ -1323,18 +1340,15 @@ country_decisions = {
 		allow = {
 			is_at_war = no
 			primitives = no
-			owns = 2316			# Agadez
-			is_core = 2316		# Agadez
-			custom_trigger_tooltip = {
-				num_of_owned_provinces_with = {
-					value = 10
-					culture = tuareg
-				}
-				tooltip = tuareg_nation_claim
+			owns_core_province = 2316 #Agadez
+			num_of_owned_provinces_with = {
+				value = 10
+				culture = tuareg
 			}
 		}
 		effect = {
 			add_prestige = 20
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [AHA.GetName]:tuareg_nation"
 			change_tag = AHA
 			every_province = {
 				limit = { culture = tuareg }
@@ -1343,6 +1357,7 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):tuareg_nation"
 			}
 			add_absolutism = 10
 			#if = {
@@ -1385,32 +1400,39 @@ country_decisions = {
 					advisor = statesman_BU
 					advisor = statesman_TR
 				}
-				num_of_cities = 6
+				num_of_cities = 5
 			}
 		}
 		effect = {
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:became regular republic:imperial_city_to_republic"
 			if = {
 				limit = { tag = AUG }
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [AUH.GetName]:imperial_city_to_republic"
 				change_tag = AUH
 			}
 			else_if = {
 				limit = { tag = BSL }
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [SWI.GetName]:imperial_city_to_republic"
 				change_tag = SWI
 			}
 			else_if = {
 				limit = { tag = GNV }
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [SWI.GetName]:imperial_city_to_republic"
 				change_tag = SWI
 			}
 			else_if = {
 				limit = { tag = FRB }
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [BRE.GetName]:imperial_city_to_republic"
 				change_tag = BRE
 			}
 			else_if = {
 				limit = { tag = FRL }
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [HSA.GetName]:imperial_city_to_republic"
 				change_tag = HSA
 			}
 			else_if = {
 				limit = { tag = NUR }
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [NUS.GetName]:imperial_city_to_republic"
 				change_tag = NUS
 			}
 			#oligarchisation_effect = yes
@@ -1457,6 +1479,7 @@ country_decisions = {
 			east_adriatic_coast_area = { limit = { owned_by = ROOT } hidden_effect = { remove_core = DLM } add_core = DLM }
 			east_adriatic_coast_area = { limit = { NOT = { owned_by = ROOT } } add_permanent_claim = DLM }
 			add_prestige = 20
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [DLM.GetName]:dalmatia_nation"
 			change_tag = DLM
 			add_absolutism = 10
 		}
@@ -1531,11 +1554,13 @@ country_decisions = {
 			3802 = { if = { limit = { owned_by = ROOT } hidden_effect = { remove_core = ARM } add_core = ARM } }
 			3802 = { if = { limit = { NOT = { owned_by = ROOT } } add_permanent_claim = ARM } }
 			add_prestige = 20
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [ARM.GetName]:resurrect_armenian_kingdom"
 			change_tag = ARM
 			ARM = { Effect_set_capital = { target=1445 } }
 			if = {
 				limit = { NOT = { has_country_modifier = title_5 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):resurrect_armenian_kingdom"
 			}
 			add_absolutism = 10
 			#if = {
@@ -1619,13 +1644,6 @@ country_decisions = {
 		major = yes
 		potential = {
 			NOT = { exists = ABI }
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
 			culture_group = arabian
 		}
 		provinces_to_highlight = {
@@ -1637,10 +1655,6 @@ country_decisions = {
 				province_id = 400			#Muscat
 				province_id = 396 			#Bahrain
 				province_id = 2652		    #Riyadh
-			}
-			OR = {
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT }
 			}
 		}
 		allow = {
@@ -1658,11 +1672,13 @@ country_decisions = {
 			if = {
 				limit = { NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 				change_title_5 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 5 (Kingdom equivalent):arab_nation"
 			}
 			add_absolutism = 10
 			add_prestige = 25
 			arabia_region = { limit = { owned_by = ROOT } hidden_effect = { remove_core = ROOT } add_core = ROOT }
 			arabia_region = { limit = { NOT = { owned_by = ROOT } } add_permanent_claim = ROOT }
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [ABI.GetName]:arab_nation"
 			change_tag = ABI			
 		}
 		ai_will_do = {
@@ -1680,12 +1696,12 @@ country_decisions = {
 			province_id = 3041
 		}
 		allow = {
-			owns = 3041	#Harar
+			owns_core_province = 3041 #Harar
 			is_at_war = no
-			is_core = 3041
 		}
 		effect = {
 			add_prestige = 20
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [HAR.GetName]:elevate_harar"
 			change_tag = HAR
 			HAR = { Effect_set_capital = { target=3041 } }
 			add_absolutism = 10
@@ -1697,6 +1713,7 @@ country_decisions = {
 					NOT = { has_country_modifier = title_6 }
 				}
 				change_title_4 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 4 (Duchy equivalent):elevate_harar"
 			}
 		}
 		ai_will_do = {
@@ -1709,19 +1726,13 @@ country_decisions = {
 		major = yes
 		potential = {
 			culture_group = swahili_group
-			NOT = {
-				exists = SWH
-			}
+			NOT = { exists = SWH }
 		}
 		provinces_to_highlight = {
 			OR = {
 				province_id = 2352		#Mombasa
 				province_id = 1187		#Zanzibar
 				province_id = 1190		#Kilwa
-			}
-			OR = {
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT }
 			}
 		}
 		allow = {
@@ -1740,6 +1751,7 @@ country_decisions = {
 				hidden_effect = { remove_core = SWH } add_core = SWH
 			}
 			add_prestige = 10
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [SWH.GetName]:unify_the_swahili"
 			change_tag = SWH
 			add_absolutism = 10
 		}
@@ -1761,12 +1773,13 @@ country_decisions = {
 		allow = {
 			is_at_war = no
 			is_free_or_tributary_trigger = yes
-			is_core = 534
-			is_core = 535
-			is_core = 2570
+			owns_core_province = 534 
+			owns_core_province = 535
+			owns_core_province = 2570
 		}
 		effect = {
 			add_prestige = 25
+			log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:formed [MLR.GetName]:unite_kerala"
 			change_tag = MLR
 			every_province = {
 				limit = { culture = malayalam }
@@ -1775,6 +1788,7 @@ country_decisions = {
 			if = {
 				limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_6 } }
 				change_title_6 = yes
+				log = "FE-FormingNewNations:[GetYear]:[Root.GetName]:increased title level to 6 (Empire equivalent):unite_kerala"
 			}
 			add_absolutism = 10
 		}

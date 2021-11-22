@@ -617,7 +617,7 @@ country_event = { ### Forced exploration idea group progression
 				}
 				add_idea = exploration_ideas_3
 				add_dip_power = -250
-				#_#_log = "SYS-CensusNew:[GetYear]:[This.GetName]:forced progressed to exploration_idea_3"
+				log = "SYS-CensusNew:[GetYear]:[This.GetName]:forced progressed to exploration_idea_3"
 			}
 			else_if = {
 				limit = {
@@ -625,12 +625,12 @@ country_event = { ### Forced exploration idea group progression
 				}
 				add_idea = exploration_ideas_2
 				add_dip_power = -250
-				#_#_log = "SYS-CensusNew:[GetYear]:[This.GetName]:forced progressed to exploration_idea_2"
+				log = "SYS-CensusNew:[GetYear]:[This.GetName]:forced progressed to exploration_idea_2"
 			}
 			else = {
 				add_idea = exploration_ideas_1
 				add_dip_power = -250
-				#_#_log = "SYS-CensusNew:[GetYear]:[This.GetName]:forced progressed to exploration_idea_1"
+				log = "SYS-CensusNew:[GetYear]:[This.GetName]:forced progressed to exploration_idea_1"
 			}
 		}
 	option = {

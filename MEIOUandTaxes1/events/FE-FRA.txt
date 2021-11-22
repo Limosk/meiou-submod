@@ -106,7 +106,7 @@ country_event = {
 			}
 			remove_claim = ROOT
 		}
-		#_#_log = "FE-FRA:[GetYear]:[Root.GetName]:resigned from claims to Italy:flavor_fra.3108"
+		log = "FE-FRA:[GetYear]:[Root.GetName]:resigned from claims to Italy:flavor_fra.3108"
 	}
 	option = {
 		name = "flavor_fra.EVTOPTB3108" #We will never drop our claims on what is ours
@@ -119,7 +119,7 @@ country_event = {
 				Stab_Subtract1 = yes
 			}
 		}
-		#_#_log = "FE-FRA:[GetYear]:[Root.GetName]:kept their claims to Italy:flavor_fra.3108"
+		log = "FE-FRA:[GetYear]:[Root.GetName]:kept their claims to Italy:flavor_fra.3108"
 	}
 }
 country_event = {

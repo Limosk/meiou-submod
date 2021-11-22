@@ -24,6 +24,7 @@ historical_rival = GEN
 	#set_key = { lhs = centralization_decentralization value = 4 }
 	add_absolutism = -100
 	add_absolutism = 20
+	set_country_flag = c_of_pis
 }
 
 1356.1.1 = {

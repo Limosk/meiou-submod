@@ -17,7 +17,7 @@ ifrikiya_one = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_owned_provinces_with = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = west_maghreb_region
 				has_province_flag = barbary_port
 				value = 2
@@ -40,9 +40,8 @@ ifrikiya_one = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_owned_provinces_with = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = west_maghreb_region
-				has_province_flag = barbary_port
 				value = 12
 			}
 		}
@@ -74,7 +73,7 @@ ifrikiya_two = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_owned_provinces_with = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = central_maghreb_region
 				has_province_flag = barbary_port
 				value = 2
@@ -95,7 +94,7 @@ ifrikiya_two = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_owned_provinces_with = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = central_maghreb_region
 				value = 10
 			}
@@ -133,7 +132,7 @@ ifrikiya_three = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_owned_provinces_with = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = east_maghreb_region
 				has_province_flag = barbary_port
 				value = 2
@@ -156,7 +155,7 @@ ifrikiya_three = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_owned_provinces_with = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = central_maghreb_region
 				value = 8
 			}

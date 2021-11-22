@@ -17,7 +17,9 @@ country_event = {
 		define_ruler = {
 			dynasty = Lancaster
 			age = 31
+			claim = 60
 		}
+		convert_ruler_to_general = yes
 		if = {
 			limit = {
 				has_dlc = "Rights of Man"
@@ -26,9 +28,12 @@ country_event = {
 				add_ruler_personality = well_connected_personality
 			}
 		}
-		#add_yearly_manpower = -2.5
 		244 = { #Lancaster
 			Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=100 }			
+			add_province_modifier = {
+				name = wotr_local_support_for_lancaster
+				duration = 3650
+			}
 		}
 		if = {
 			limit = {
@@ -51,11 +56,27 @@ country_event = {
 					type = pretender_rebels
 					size = 3
 					leader = "Richard York"
+					leader_dynasty = "York"
 					win = yes
+				}
+				random_neighbor_province = {
+					limit = {
+						NOT = { province_id = 244 }
+						NOT = { is_capital = yes }
+					}
+					spawn_rebels = {
+						type = pretender_rebels
+						size = 0.5
+						win = yes
+					}
 				}
 			}
 			245 = { #York
 				Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=-100 }
+				add_province_modifier = {
+					name = wotr_local_support_for_york
+					duration = 3650
+				}
 			}			
 		}
 		else_if = {
@@ -75,7 +96,19 @@ country_event = {
 					type = pretender_rebels
 					size = 3
 					leader = "Richard York"
+					leader_dynasty = "York"
 					win = yes
+				}
+				random_neighbor_province = {
+					limit = {
+						NOT = { province_id = 244 }
+						NOT = { is_capital = yes }
+					}
+					spawn_rebels = {
+						type = pretender_rebels
+						size = 0.5
+						win = yes
+					}
 				}
 			}
 		}
@@ -87,7 +120,9 @@ country_event = {
 		define_ruler = {
 			dynasty = York
 			age = 31
+			claim = 60
 		}
+		convert_ruler_to_general = yes
 		if = {
 			limit = {
 				has_dlc = "Rights of Man"
@@ -98,8 +133,11 @@ country_event = {
 		}
 		245 = {
 			Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount= 100 }
+			add_province_modifier = {
+				name = wotr_local_support_for_york
+				duration = 3650
+			}
 		}
-		#add_yearly_manpower = -2.5
 		if = {
 			limit = {
 				owns = 244 #Lancaster
@@ -119,12 +157,29 @@ country_event = {
 				}
 				spawn_rebels = {
 					type = pretender_rebels
-					size = 3
+					size = 2.5
 					leader = "Edward Lancaster"
+					leader_dynasty = "Lancaster"
+					win = yes
+				}
+				random_neighbor_province = {
+					limit = {
+						NOT = { province_id = 245 }
+						NOT = { is_capital = yes }
+					}
+					spawn_rebels = {
+						type = pretender_rebels
+						size = 0.5
+						win = yes
+					}
 				}
 			}
 			244 = {
 				Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=-100 }
+				add_province_modifier = {
+					name = wotr_local_support_for_lancaster
+					duration = 3650
+				}
 			}
 		}
 		else_if = {
@@ -142,8 +197,21 @@ country_event = {
 				}
 				spawn_rebels = {
 					type = pretender_rebels
-					size = 3
+					size = 2.5
 					leader = "Edward Lancaster"
+					leader_dynasty = "Lancaster"
+					win = yes
+				}
+				random_neighbor_province = {
+					limit = {
+						NOT = { province_id = 245 }
+						NOT = { is_capital = yes }
+					}
+					spawn_rebels = {
+						type = pretender_rebels
+						size = 0.5
+						win = yes
+					}
 				}
 			}
 		}
@@ -156,7 +224,10 @@ country_event = {
 	picture = WAR_OF_THE_ROSES_eventPicture
 	trigger = {
 		any_owned_province = {
-			superregion = british_isles_superregion
+			OR = {
+				region = south_england_region
+				region = north_england_region
+			}
 			NOT = { has_province_modifier = wotr_local_support }
 			NOT = { has_province_modifier = wotr_local_support_for_lancaster }
 			NOT = { has_province_modifier = wotr_local_support_for_york }
@@ -169,7 +240,10 @@ country_event = {
 		name = war_of_the_roses.2.a
 		random_owned_province = {
 			limit = {
-				superregion = british_isles_superregion
+				OR = {
+					region = south_england_region
+					region = north_england_region
+				}
 				NOT = { has_province_modifier = wotr_local_support }
 				NOT = { has_province_modifier = wotr_local_support_for_lancaster }
 				NOT = { has_province_modifier = wotr_local_support_for_york }
@@ -294,6 +368,7 @@ country_event = {
 					owned_by = ROOT
 					NOT = { has_province_modifier = wotr_local_support }
 					NOT = { has_province_modifier = wotr_local_support_for_lancaster }
+					NOT = { has_province_modifier = wotr_local_support_for_york }
 				}
 				add_province_modifier = {
 					name = wotr_local_support_for_york
@@ -314,24 +389,13 @@ country_event = {
 			has_province_modifier = wotr_local_support
 			had_province_flag = {
 				flag = disgruntled_nobles_timer
-				days = 730
+				days = 547 #1.5 years
 			}
 		}
 	}
 	is_triggered_only = yes
 
-	option = {
-		name = war_of_the_roses.5.a
-		ai_chance = {
-			factor = 50
-		}
-		add_years_of_income = -0.25
-	}
-	option = {
-		name = war_of_the_roses.5.b
-		ai_chance = {
-			factor = 50
-		}
+	immediate = {
 		random_owned_province = {
 			limit = {
 				has_province_modifier = wotr_local_support
@@ -340,8 +404,36 @@ country_event = {
 					days = 730
 				}
 			}
+			set_province_flag = potential_disgruntled_nobles
+		}
+	}
+
+	option = {
+		name = war_of_the_roses.5.a
+		ai_chance = {
+			factor = 50
+		}
+		add_treasury = -15
+		random_owned_province = {
+			limit = {
+				has_province_flag = potential_disgruntled_nobles
+			}
+			Public_ChangeClassWealthVal = { class= NO type = value inp=15 }
+			clr_province_flag = potential_disgruntled_nobles
+		}
+	}
+	option = {
+		name = war_of_the_roses.5.b
+		ai_chance = {
+			factor = 50
+		}
+		random_owned_province = {
+			limit = {
+				has_province_flag = potential_disgruntled_nobles
+			}
 			Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=-30 }
 			remove_province_modifier = wotr_local_support
+			clr_province_flag = potential_disgruntled_nobles
 			hidden_effect = {
 				add_province_modifier = {
 					name = disgruntled_nobles
@@ -360,7 +452,7 @@ province_event = {
 	fire_only_once = yes
 	trigger = {
 		FROM = {
-			tag = REB
+			controller = { tag = REB }
 		}
 		owner = {
 			has_disaster = war_of_the_roses
@@ -429,7 +521,8 @@ country_event = {
 	desc = war_of_the_roses.8.d
 	picture = WAR_OF_THE_ROSES_eventPicture
 	trigger = {
-		NOT = { legitimacy = 50 }
+		NOT = { legitimacy = 75 }
+		months_of_ruling = 18
 	}
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -564,16 +657,16 @@ country_event = { #Support House of Lancaster
 		}
 		NOT = { has_disaster = war_of_the_roses }
 		army_strength = { #to filter out Irish minors
-			who = ENG
+			who = ENG #TODO: can be union tag
 			value = 0.6
 		}
-		ENG = {
+		ENG = { #TODO: can be union tag
 			has_disaster = war_of_the_roses
 			has_country_flag = supports_house_of_york
 		}
 		NOT = { has_country_flag = support_for_war_of_the_roses }
 		NOT = { has_country_flag = no_support_for_rose_rebels }
-		ENG = {
+		ENG = { #TODO: can be union tag
 			any_owned_province = {
 				OR = {
 					any_neighbor_province = {
@@ -589,7 +682,7 @@ country_event = { #Support House of Lancaster
 		months = 60
 		modifier = {
 			factor = 0.75
-			ENG = { has_country_modifier = rebel_leaders_executed }
+			ENG = { has_country_modifier = rebel_leaders_executed } #TODO: can be union tag
 		}
 	}
 	option = {
@@ -601,7 +694,7 @@ country_event = { #Support House of Lancaster
 		set_country_flag = support_for_war_of_the_roses
 		add_manpower = -3
 		hidden_effect = {
-			ENG = {
+			ENG = { #TODO: can be union tag
 				country_event = {
 					id = war_of_the_roses.14
 					days = 1
@@ -618,7 +711,7 @@ country_event = { #Support House of Lancaster
 		set_country_flag = support_for_war_of_the_roses
 		add_years_of_income = -0.5
 		hidden_effect = {
-			ENG = {
+			ENG = { #TODO: can be union tag
 				country_event = {
 					id = war_of_the_roses.14
 					days = 1
@@ -648,10 +741,10 @@ country_event = {
 		}
 		NOT = { has_disaster = war_of_the_roses }
 		army_strength = { #to filter out Irish minors
-			who = ENG
+			who = ENG #TODO: can be union tag
 			value = 0.6
 		}
-		ENG = {
+		ENG = { #TODO: can be union tag
 			has_disaster = war_of_the_roses
 			has_country_flag = supports_house_of_lancaster
 			any_owned_province = {
@@ -671,7 +764,7 @@ country_event = {
 		months = 60
 		modifier = {
 			factor = 0.75
-			ENG = { has_country_modifier = rebel_leaders_executed }
+			ENG = { has_country_modifier = rebel_leaders_executed } #TODO: can be union tag
 		}
 	}
 	option = {
@@ -683,7 +776,7 @@ country_event = {
 		set_country_flag = support_for_war_of_the_roses
 		add_manpower = -3
 		hidden_effect = {
-			ENG = {
+			ENG = { #TODO: can be union tag
 				country_event = {
 					id = war_of_the_roses.14
 					days = 1
@@ -700,7 +793,7 @@ country_event = {
 		set_country_flag = support_for_war_of_the_roses
 		add_years_of_income = -0.5
 		hidden_effect = {
-			ENG = {
+			ENG = { #TODO: can be union tag
 				country_event = {
 					id = war_of_the_roses.14
 					days = 1
@@ -879,6 +972,7 @@ country_event = {
 		244 = {
 			Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=100 }
 		}
+		custom_tooltip = post_war_of_the_roses_loyalty_shift_rebels_won
 		every_owned_province = {
 			limit = {
 				OR = {
@@ -887,13 +981,13 @@ country_event = {
 					has_province_modifier = rebel_stronghold
 				}
 			}
-			Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=30 }
+			hidden_effect = { Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=30 } }
 		}
 		every_owned_province = {
 			limit = {
 				has_country_flag = wotr_local_support
 			}
-			Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=-30 }
+			hidden_effect = { Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=-30 } }
 		}
 	}
 	after = {
@@ -967,6 +1061,7 @@ country_event = {
 			245 = {
 				Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=100 }
 			}
+			custom_tooltip = post_war_of_the_roses_loyalty_shift_rebels_won
 			every_owned_province = {
 				limit = {
 					OR = {
@@ -975,13 +1070,13 @@ country_event = {
 						has_province_modifier = rebel_stronghold
 					}
 				}
-				Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=30 }
+				hidden_effect = { Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=30 } }
 			}
 			every_owned_province = {
 				limit = {
 					has_country_flag = wotr_local_support
 				}
-				Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=-30 }
+				hidden_effect = { Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=-30 } }
 			}
 		}
 	}
@@ -1017,6 +1112,10 @@ country_event = {
 				who = ROOT
 				modifier = eng_support_during_war_of_the_roses
 			}
+			reverse_add_opinion = {
+				who = ROOT
+				modifier = eng_support_during_war_of_the_roses
+			}
 		}
 	}
 }
@@ -1038,6 +1137,10 @@ country_event = {
 				who = ROOT
 				modifier = eng_supported_rebels_during_war_of_the_roses
 			}
+			reverse_add_opinion = {
+				who = ROOT
+				modifier = eng_supported_rebels_during_war_of_the_roses
+			}
 		}
 		clr_country_flag = support_for_war_of_the_roses
 	}
@@ -1049,6 +1152,10 @@ country_event = {
 		}
 		FROM = {
 			add_opinion = {
+				who = ROOT
+				modifier = eng_didnt_support_rebels
+			}
+			reverse_add_opinion = {
 				who = ROOT
 				modifier = eng_didnt_support_rebels
 			}

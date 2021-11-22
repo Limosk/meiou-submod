@@ -496,6 +496,7 @@ form_ITA_effect = {
 	if = {
 		limit = { monarchy_or_harem_gov = yes NOT = { has_country_modifier = title_5 has_country_modifier = title_6 } }
 		change_title_5 = yes
+		add_absolutism = 10
 	}
 	if = {
 		limit = {
@@ -519,7 +520,6 @@ form_ITA_effect = {
 			}
 		}
 	}
-	add_absolutism = 10
 	# if = {
 	# 	limit = {
 	# 		has_custom_ideas = no

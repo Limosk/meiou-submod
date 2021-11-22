@@ -1,32 +1,30 @@
 namespace = dg_knights
 namespace = flavor_kni
 country_event = {
-	id = dg_knights.001
+	id = dg_knights.001 #Defeat of the Knights
 	title = dg_knights.001.t
 	desc = dg_knights.001.d
 	picture = BATTLE_eventPicture
 	trigger = {
-		AND = {
-			OR = {
-				owns = 126
-				owns = 320
-				owns = 2358
-				owns = 3367
-				owns = 333
-				owns = 142
-				owns = 1436
-				owns = 2572
-				owns = 164
-				owns = 1435
-				owns = 3875
-			}
+		#situation of the potential host
+		OR = {
+			owns = 126
+			owns = 320
+			owns = 2358
+			owns = 3367
+			owns = 333
+			owns = 142
+			owns = 1436
+			owns = 2572
+			owns = 164
+			owns = 1435
+			owns = 3875
 		}
 		num_of_cities = 8
 		religion = catholic
+		#situation of the Knights
 		KNI = {
-			NOT = {
-				num_of_cities = 2
-			}
+			NOT = { num_of_cities = 2 }
 			OR = {
 				AND = {
 					capital_scope = {
@@ -36,27 +34,20 @@ country_event = {
 						at_war_with_religious_enemy = yes
 					}
 				}
-				NOT = {
-					exists = KNI
-				}
+				NOT = { exists = KNI }
 			}
 			religion = catholic
 			government = theocracy
 		}
-		NOT = {
-			has_global_flag = knights_in_trouble
-		}
-		piety = -0.20
+		#piety = -0.20
 		is_excommunicated = no
-		NOT = {
-			has_country_flag = knights_abandoned
-		}
-		OR = {
-			NOT = {
-				government = republic
-			}
-			piety = 0.60
-		}
+		NOT = { has_country_flag = knights_abandoned }
+		#OR = {
+		#	NOT = {
+		#		government = republic
+		#	}
+		#	piety = 0.60
+		#}
 	}
 	mean_time_to_happen = {
 		months = 6
@@ -69,13 +60,11 @@ country_event = {
 			factor = 0.7
 		}
 		modifier = {
-			owns = 320
+			owns = 320 #Rodos
 			factor = 0.5
 		}
 	}
-	immediate = {
-		set_global_flag = knights_in_trouble
-	}
+
 	option = {
 		name = dg_knights.001.a
 		ai_chance = {
@@ -125,153 +114,91 @@ country_event = {
 				piety = 0.60
 				factor = 1.4
 			}
-			modifier = {
-				has_country_flag = helped_the_knights
-				factor = 0.5
-			}
+			#modifier = { #commented out as nothing sets this flag
+			#	has_country_flag = helped_the_knights
+			#	factor = 0.5
+			#}
 		}
 		add_papal_influence = 70
-		if = {
-			limit = {
-				piety = 0.60
-			}
-			add_prestige = 15
-		}
-		else_if = {
-			limit = {
-				piety = 0.20
-			}
-			add_prestige = 12
-		}
-		else_if = {
-			limit = {
-				piety = -0.20
-			}
-			add_prestige = 9
-		}
-		else_if = {
-			limit = {
-				piety = -0.60
-			}
-			add_prestige = 6
-		}
-		else = {
-			add_prestige = 3
-		}
-		if = {
-			limit = {
-				NOT = {
-					owns = 320
-				}
-				NOT = {
-					any_owned_province = {
-						AND = {
-							OR = {
-								province_id = 126
-								province_id = 320
-								province_id = 2358
-								province_id = 3367
-								province_id = 333
-								province_id = 142
-								province_id = 1436
-								province_id = 2572
-								province_id = 164
-								province_id = 1435
-								province_id = 3875
-							}
-						}
-						NOT = {
-							culture_group = ROOT
-						}
-						has_owner_accepted_culture = no
-					}
-				}
-			}
-			random_owned_province = {
-				limit = {
-					AND = {
-						OR = {
-							province_id = 126
-							province_id = 320
-							province_id = 2358
-							province_id = 3367
-							province_id = 333
-							province_id = 142
-							province_id = 1436
-							province_id = 2572
-							province_id = 164
-							province_id = 1435
-							province_id = 3875
-						}
-					}
-				}
-				set_province_flag = knights_new_home
-				add_core = KNI
-				cede_province = KNI
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					owns = 320
-				}
-				any_owned_province = {
-					AND = {
-						OR = {
-							province_id = 126
-							province_id = 320
-							province_id = 2358
-							province_id = 3367
-							province_id = 333
-							province_id = 142
-							province_id = 1436
-							province_id = 2572
-							province_id = 164
-							province_id = 1435
-							province_id = 3875
-						}
-					}
-					NOT = {
-						culture_group = ROOT
-					}
-					has_owner_accepted_culture = no
-				}
-			}
-			random_owned_province = {
-				limit = {
-					AND = {
-						OR = {
-							province_id = 126
-							province_id = 320
-							province_id = 2358
-							province_id = 3367
-							province_id = 333
-							province_id = 142
-							province_id = 1436
-							province_id = 2572
-							province_id = 164
-							province_id = 1435
-							province_id = 3875
-						}
-					}
-					NOT = {
-						culture_group = ROOT
-					}
-					has_owner_accepted_culture = no
-				}
-				set_province_flag = knights_new_home
-				add_core = KNI
-				cede_province = KNI
-			}
-		}
+		add_prestige = 15
+
+		#Rodos takes first place, if not owned - any province with "wrong" culture, if those do not exist: any province from the list
 		if = {
 			limit = {
 				owns = 320
+				NOT = { capital = 320 }
 			}
 			320 = {
 				set_province_flag = knights_new_home
 				add_core = KNI
 				cede_province = KNI
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_province = {
+					OR = {
+						province_id = 126
+						province_id = 320
+						province_id = 2358
+						province_id = 3367
+						province_id = 333
+						province_id = 142
+						province_id = 1436
+						province_id = 2572
+						province_id = 164
+						province_id = 1435
+						province_id = 3875
+					}
+					owned_by = ROOT
+					NOT = { culture_group = ROOT }
+					has_owner_accepted_culture = no
+				}				
+			}
+			random_owned_province = {
+				limit = {
+					OR = {
+						province_id = 126
+						province_id = 320
+						province_id = 2358
+						province_id = 3367
+						province_id = 333
+						province_id = 142
+						province_id = 1436
+						province_id = 2572
+						province_id = 164
+						province_id = 1435
+						province_id = 3875
+					}
+					NOT = { culture_group = ROOT }
+					has_owner_accepted_culture = no
+				}
+				set_province_flag = knights_new_home
+				add_core = KNI
+				cede_province = KNI
+			}
+		}
+		else = {
+			random_owned_province = {
+				limit = {
+					OR = {
+						province_id = 126
+						province_id = 320
+						province_id = 2358
+						province_id = 3367
+						province_id = 333
+						province_id = 142
+						province_id = 1436
+						province_id = 2572
+						province_id = 164
+						province_id = 1435
+						province_id = 3875
+					}
+				}
+				set_province_flag = knights_new_home
+				add_core = KNI
+				cede_province = KNI
+				log = "FE-Knights:[GetYear]:[Root.GetName]:decided to host The Knights, gave them [This.GetName]:dg_knights.001"
 			}
 		}
 		KNI = {
@@ -287,27 +214,14 @@ country_event = {
 			factor = 30
 		}
 		set_country_flag = knights_abandoned
-		clr_global_flag = knights_in_trouble
-		if = {
-			limit = {
-				piety = 0.60
-			}
-			add_prestige = -5
-		}
-		else_if = {
-			limit = {
-				piety = 0.20
-			}
-			add_prestige = -4
-		}
-		else = {
-			add_prestige = -3
-		}
+		log = "FE-Knights:[GetYear]:[Root.GetName]:refused to host The Knights:dg_knights.001"
+
+		add_prestige = -5
 		add_papal_influence = -5
 	}
 }
 country_event = {
-	id = dg_knights.002
+	id = dg_knights.002 #Retreat of the Knights
 	title = dg_knights.002.t
 	desc = dg_knights.002.d
 	picture = BATTLE_eventPicture
@@ -324,25 +238,17 @@ country_event = {
 			capital_scope = {
 				set_province_flag = abandoned_KNI_home
 			}
-			random_country = {
+			random_country = { #TODO: two tier, to get controller of Rodos first, if not working - random country
 				limit = {
 					war_with = ROOT
-					NOT = {
-						religion = catholic
-					}
+					NOT = { religion = catholic }
 					num_of_cities = 1
-					all_country = {
+					all_country = { #TODO: what this part does?
 						OR = {
-							NOT = {
-								war_with = ROOT
-							}
+							NOT = { war_with = ROOT }
 							religion = catholic
-							NOT = {
-								army_size = PREV
-							}
-							NOT = {
-								num_of_cities = PREV
-							}
+							NOT = { army_size = PREV }
+							NOT = { num_of_cities = PREV }
 						}
 					}
 				}
@@ -359,6 +265,7 @@ country_event = {
 				white_peace = ROOT
 			}
 		}
+		log = "FE-Knights:[GetYear]:[Root.GetName]:abandoned [KNI.Capital.GetName]:dg_knights.002"
 		random_owned_province = {
 			limit = {
 				has_province_flag = knights_new_home
@@ -370,6 +277,7 @@ country_event = {
 				country_event = { id = Init.1 }
 			}
 		}
+		log = "FE-Knights:[GetYear]:[Root.GetName]:moved capital to [KNI.Capital.GetName]:dg_knights.002"
 	}
 	option = {
 		name = dg_knights.002.b
@@ -383,10 +291,11 @@ country_event = {
 			clr_province_flag = knights_new_home
 			add_claim = ROOT
 		}
+		log = "FE-Knights:[GetYear]:[Root.GetName]:refused to abandonn [KNI.Capital.GetName]:dg_knights.002"
 	}
 }
 country_event = {
-	id = dg_knights.003
+	id = dg_knights.003 #Retreat of the Knights - reciving the abandonned province
 	title = dg_knights.002.t
 	desc = dg_knights.003.d
 	picture = BATTLE_eventPicture
@@ -405,19 +314,15 @@ country_event = {
 	}
 }
 province_event = {
-	id = flavor_kni.6
+	id = flavor_kni.6 #Knights of Malta
 	title = "flavor_kni.6.n"
 	desc = "flavor_kni.6.t"
 	picture = BATTLE_eventPicture
 	fire_only_once = yes
 	trigger = {
 		province_id = 126
-		NOT = {
-			exists = KNI
-		}
-		NOT = {
-			is_year = 1700
-		}
+		NOT = { exists = KNI }
+		NOT = { is_year = 1700 }
 		is_capital = no
 		owner = {
 			religion = catholic
@@ -457,6 +362,7 @@ province_event = {
 				}
 			}
 		}
+		log = "FE-Knights:[GetYear]:[Root.Owner.GetName]:ceded Malta to The Knights who are now their March:dg_knights.006"
 		add_core = KNI
 		cede_province = KNI
 		remove_core = ROOT
@@ -475,6 +381,7 @@ province_event = {
 		ai_chance = {
 			factor = 40
 		}
+		log = "FE-Knights:[GetYear]:[Root.Owner.GetName]:refused to cede Malta to The Knights:dg_knights.006"
 		event_target:former_owner = {
 			set_country_flag = knight_refuse_home
 			add_prestige = -10

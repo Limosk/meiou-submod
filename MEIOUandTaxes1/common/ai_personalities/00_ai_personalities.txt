@@ -499,12 +499,12 @@ ai_militarist = {
 		}
 		modifier = {
 			factor = 100
-			culture_group = andean_american
+			culture_group = andean_group
 			is_year = 1400
 		}
 		modifier = {
 			factor = 0.5
-			culture_group = andean_american
+			culture_group = andean_group
 			NOT = { is_year = 1400 }
 			NOT = { tag = CZC }
 		}

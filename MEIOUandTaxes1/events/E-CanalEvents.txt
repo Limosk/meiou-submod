@@ -1172,6 +1172,7 @@ province_event = {
 		owner = {
 			add_prestige = 30
 		}
+		log = "FE-CanalEvents:[GetYear]:[Root.Owner.GetName]:constructed Kiel Canal:canal_events.25"
 		custom_tooltip = add_canal_features_tt
 		hidden_effect = {
 			set_province_flag = TN_Canal
@@ -1223,6 +1224,7 @@ province_event = {
 		owner = {
 			add_prestige = 40
 		}
+		log = "FE-CanalEvents:[GetYear]:[Root.Owner.GetName]:constructed Suez Canal:canal_events.26"
 		custom_tooltip = add_canal_features_tt
 		hidden_effect = {
 			set_province_flag = TN_Canal
@@ -1267,6 +1269,7 @@ province_event = {
 		owner = {
 			add_prestige = 50
 		}
+		log = "FE-CanalEvents:[GetYear]:[Root.Owner.GetName]:constructed Panama Canal:canal_events.25"
 		custom_tooltip = add_canal_features_tt
 		hidden_effect = {
 			set_province_flag = TN_Canal

@@ -63,13 +63,11 @@ cossack_rebels = {
 		}
 		modifier = {
 			factor = 0
-			NOT = {
-				culture = cossack
-			}
+			NOT = { culture = ukrainian }
 		}
 		modifier = {
 			factor = 150.0
-			culture = cossack
+			culture = ukrainian
 		}
 		modifier = {
 			has_province_modifier = nobles_organizing

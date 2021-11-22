@@ -39,7 +39,7 @@ country_event = {
 	option = {		
 		name = "flavor_boh.9.opta" #Agree to concession
 		ai_chance = { factor = 90 }
-		#_#_log = "FE-BOH:[GetYear]:[Root.GetName]:agreed on concession of Belluno in treaty of Trnava:flavor_boh.9"
+		log = "FE-BOH:[GetYear]:[Root.GetName]:agreed on concession of Belluno in treaty of Trnava:flavor_boh.9"
 
 		BOH = {
 			add_prestige = 10
@@ -66,7 +66,7 @@ country_event = {
 	option = {		
 		name = "flavor_boh.9.optb" #Deny concession
 		ai_chance = { factor = 10 }
-		#_#_log = "FE-BOH:[GetYear]:[Root.GetName]:denied concession of Belluno in treaty of Trnava:flavor_boh.9"
+		log = "FE-BOH:[GetYear]:[Root.GetName]:denied concession of Belluno in treaty of Trnava:flavor_boh.9"
 		HUN = {
 			add_opinion = {
 				who = BOH
@@ -203,7 +203,7 @@ country_event = {
 		GOR = {
 			country_event = { id = flavor_boh.15 }
 		}
-		#_#_log = "FE-BOH:[GetYear]:[Root.GetName]:kept Belluno for themselves:flavor_boh.10"
+		log = "FE-BOH:[GetYear]:[Root.GetName]:kept Belluno for themselves:flavor_boh.10"
 	}
 }
 
@@ -256,7 +256,7 @@ country_event = {
 	
 	option = {
 		name = "flavor_boh.14.opta" #Explains transfer of Belluno
-		#_#_log = "FE-BOH:[GetYear]:[Root.GetName]:received Belluno from Hungary (as allies):flavor_boh.14"
+		log = "FE-BOH:[GetYear]:[Root.GetName]:received Belluno from Hungary (as allies):flavor_boh.14"
 	}
 }
 

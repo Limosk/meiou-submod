@@ -1361,7 +1361,7 @@ Modi_ProdProvince = {
 	if = {
 		limit = {
 			OR = {
-				culture_group = andean_american
+				culture_group = andean_group
 				culture_group = north_central_tradition_group
 				}
 			owner = {
@@ -6245,7 +6245,7 @@ Modi_TaxProvince = {
 			change_key = { lhs = Modi_TaxMana value = 1 }
 		}
 		hee_tuscan_toll_roads = {
-			subtract_key = { lhs = Modi_TaxTollCost = 0.2 }
+			subtract_key = { lhs = Modi_TaxTollCost value = 0.2 }
 		}
 	}
 }

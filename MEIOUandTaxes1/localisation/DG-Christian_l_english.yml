@@ -3028,7 +3028,7 @@
  dg_knights.001.a: "Give them a new home"
  dg_knights.001.b: "Leave them to their fate"
  dg_knights.002.t: "Retreat of the Knights"
- dg_knights.002.d: "Our order stands defeated, all but disbanded.  However, the Catholic [From.Monarch.GetTitle] of [From.GetName] has come to our aid by giving us a new home.  Perhaps the age of the Knights Hospitaller is not yet over!"
+ dg_knights.002.d: "Our order stands defeated, all but disbanded. However, the Catholic [From.Monarch.GetTitle] of [From.GetName] has come to our aid by giving us a new home. Perhaps the age of the Knights Hospitaller is not yet over!"
  dg_knights.002.a: "Abandon [Root.Capital.GetCapitalName]"
  dg_knights.002.b: "Fight on to the bitter end"
  dg_knights.003.d: "Our enemies the Knights Hospitaller have abandoned their resistance to our forces and surrendered their forts to us, leaving for a distant land in which they can practise their sordid religion."

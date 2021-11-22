@@ -47,7 +47,7 @@ country_event = {
 		clr_country_flag = ruler_prisonner_of_war
 		add_war_exhaustion = 10
 		set_variable = { which = the_heir_age value = 0 }
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Ruler ([Root.Monarch.GetName]) died in prison:prisonner_of_war.100"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Ruler ([Root.Monarch.GetName]) died in prison:prisonner_of_war.100"
 	}
 }
 
@@ -106,7 +106,7 @@ country_event = {
 			Ruler_Calc = yes
 		}
 		clr_country_flag = Ruler_ExileRestore
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Ruler ([Root.Monarch.GetName]) returned from prison:prisonner_of_war.102"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Ruler ([Root.Monarch.GetName]) returned from prison:prisonner_of_war.102"
 
 		if = {
 			limit = {
@@ -131,8 +131,8 @@ country_event = {
 		name = "prisonner_of_war.103.opta"
 		set_ruler = ruler_pow
 		clr_country_flag = ruler_prisonner_of_war
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Ruler ([Root.Monarch.GetName]) returned from prison:prisonner_of_war.103"
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) asked to step aside:prisonner_of_war.103"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Ruler ([Root.Monarch.GetName]) returned from prison:prisonner_of_war.103"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) asked to step aside:prisonner_of_war.103"
 
 		if = {
 			limit = { monarchy_or_harem_gov = yes }
@@ -155,7 +155,7 @@ country_event = {
 	
 	option = {
 		name = "prisonner_of_war.104.opta"
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) accepted to step aside:prisonner_of_war.104"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) accepted to step aside:prisonner_of_war.104"
 	}
 }
 
@@ -170,8 +170,8 @@ country_event = {
 	option = {
 		name = "prisonner_of_war.105.opta"
 		capital_scope = { spawn_rebels = { type = pretender_rebels size = 2 } }
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) refused to step aside:prisonner_of_war.105"
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) started rebellion:prisonner_of_war.105"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) refused to step aside:prisonner_of_war.105"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) started rebellion:prisonner_of_war.105"
 	}
 }
 
@@ -189,14 +189,14 @@ country_event = {
 			factor = 90
 		}
 		FRA = { country_event = { id = prisonner_of_war.511 days = 0 } }
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:asked for Aquitaine for releasing Jean II:prisonner_of_war.501"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:asked for Aquitaine for releasing Jean II:prisonner_of_war.501"
 	}
 	option = {
 		name = "prisonner_of_war.501.optb" # Aquitaine and Normandie
 		ai_chance = {
 			factor = 10
 		}
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:asked for Aquitaine and Normandy for releasing Jean II:prisonner_of_war.501"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:asked for Aquitaine and Normandy for releasing Jean II:prisonner_of_war.501"
 		FRA = { country_event = { id = prisonner_of_war.521 days = 0 } }
 	}
 	option = {
@@ -204,7 +204,7 @@ country_event = {
 		ai_chance = {
 			factor = 0
 		}
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:refused to negotiate releasing Jean II:prisonner_of_war.501"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:refused to negotiate releasing Jean II:prisonner_of_war.501"
 		FRA = { country_event = { id = prisonner_of_war.531 days = 0 } }
 	}
 }
@@ -226,7 +226,7 @@ country_event = {
 		ai_chance = {
 			factor = 90
 		}
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:ceded Aquitaine for releasing Jean II:prisonner_of_war.511"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:ceded Aquitaine for releasing Jean II:prisonner_of_war.511"
 		aquitaine_group = {
 			limit = {
 				is_city = yes
@@ -266,7 +266,7 @@ country_event = {
 		ai_chance = {
 			factor = 10
 		}
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:refused to cede Aquitaine for releasing Jean II:prisonner_of_war.511"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:refused to cede Aquitaine for releasing Jean II:prisonner_of_war.511"
 	}
 }
 
@@ -280,6 +280,7 @@ country_event = {
 	
 	immediate = {
 		clr_country_flag = negociating_release_jean
+		log = "FE-RulerPOW:[GetYear]:[FRA.GetName]:before the event it was ruled by [FRA.Monarch.GetName] [FRA.Monarch.Dynasty.GetName]:prisonner_of_war.521"
 	}
 	
 	option = {
@@ -287,7 +288,7 @@ country_event = {
 		ai_chance = {
 			factor = 90
 		}
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:ceded Aquitaine and Normandy for releasing Jean II:prisonner_of_war.521"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:ceded Aquitaine and Normandy for releasing Jean II:prisonner_of_war.521"
 		aquitaine_group = {
 			limit = {
 				is_city = yes
@@ -328,13 +329,15 @@ country_event = {
 		ENG = { white_peace = BLO }
 		NAV = { white_peace = BLO }
 		white_peace = MNF
+		log = "FE-RulerPOW:[GetYear]:[FRA.GetName]:after the event it was ruled by [FRA.Monarch.GetName] [FRA.Monarch.Dynasty.GetName]:prisonner_of_war.521"
 	}
 	option = {
 		name = "prisonner_of_war.501.optc" # No negociation
 		ai_chance = {
 			factor = 10
 		}
-		#_#_log = "FE-RulerPOW:[GetYear]:[Root.GetName]:refused to cede Aquitaine and Normandy for releasing Jean II:prisonner_of_war.521"
+		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:refused to cede Aquitaine and Normandy for releasing Jean II:prisonner_of_war.521"
+		log = "FE-RulerPOW:[GetYear]:[FRA.GetName]:after the event it was ruled by [FRA.Monarch.GetName] [FRA.Monarch.Dynasty.GetName]:prisonner_of_war.521"
 	}
 }
 

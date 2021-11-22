@@ -1,35 +1,31 @@
 namespace = flavor_nor
 
 country_event = {
-	id = flavor_nor.1
+	id = flavor_nor.1 #Sigurd Jonsson
 	title = "flavor_nor.EVTNAME1"
 	desc = "flavor_nor.EVTDESC1"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
 	trigger = {
 		tag = NOR
-		NOT = {
-			is_year = 1452
-		}
-		adm = 4
+		NOT = { is_year = 1452 }
 	}
 	mean_time_to_happen = {
 		years = 166
 	}
 	option = {
 		name = "flavor_nor.EVTOPTA1"
-		add_mil_power = 25
 		add_prestige = 10
 		define_advisor = {
 			type = statesman_NO
 			name = "Sigurd Jonsson"
-			skill = 3
+			skill = 2
 			discount = yes
 		}
 	}
 }
 country_event = {
-	id = flavor_nor.2
+	id = flavor_nor.2 #Nils Henriksson
 	title = "flavor_nor.EVTNAME2"
 	desc = "flavor_nor.EVTDESC2"
 	picture = ADVISOR_eventPicture
@@ -37,43 +33,35 @@ country_event = {
 	trigger = {
 		tag = NOR
 		is_year = 1475
-		NOT = {
-			is_year = 1523
-		}
-		dip = 4
+		NOT = { is_year = 1523 }
 	}
 	mean_time_to_happen = {
 		years = 166
 	}
 	option = {
 		name = "flavor_nor.EVTOPTA2"
-		add_dip_power = 25
 		add_prestige = 10
 		define_advisor = {
 			type = statesman_NO
 			name = "Nils Henriksson"
-			skill = 3
+			skill = 1
 			discount = yes
 		}
 	}
 }
 country_event = {
-	id = flavor_nor.3
+	id = flavor_nor.3 #Vardohus Fortress
 	title = "flavor_nor.EVTNAME3"
 	desc = "flavor_nor.EVTDESC3"
 	picture = FORT_eventPicture
 	fire_only_once = yes
 	trigger = {
-		tag = NOR
-		NOT = {
-			is_year = 1500
-		}
+		owns = 1255
+		controls = 1255
+		treasury = 250
+		NOT = { is_year = 1500 }
 		1255 = {
-			owned_by = NOR
-			controlled_by = NOR
-			NOT = {
-				has_building = fort_15th
-			}
+			NOT = { has_building = fort_15th }
 		}
 	}
 	mean_time_to_happen = {
@@ -87,54 +75,50 @@ country_event = {
 					has_building = fort_14th
 				}
 			}
-			add_treasury = -50
+			add_treasury = -300
 			1255 = {
 				add_building = fort_15th
 			}
 		}
-		if = {
-			limit = {
-				1255 = {
-					NOT = {
-						has_building = fort_14th
-					}
-				}
-			}
-			add_treasury = -25
+		else = {
+			add_treasury = -150
 			1255 = {
 				add_building = fort_14th
 			}
 		}
 	}
 	option = {
-		name = "flavor_nor.EVTOPTB3"
-		add_treasury = -50
-		add_mil_power = 50
-		add_manpower = 5
+		name = "FORTIFYAREA"
+		every_province = {
+			limit = {
+				area = northern_norway_area
+				owned_by = ROOT
+			}
+			add_province_modifier = {
+				name = local_fortress
+				duration = 18250 #50 years
+			}
+		}
+		add_treasury = -150
 	}
 	option = {
-		name = "flavor_nor.EVTOPTC3"
-		add_prestige = -1
+		name = "OPT.DONOTHING"
 	}
 }
 country_event = {
-	id = flavor_nor.4
+	id = flavor_nor.4 #Bohus Fortress
 	title = "flavor_nor.EVTNAME4"
 	desc = "flavor_nor.EVTDESC4"
 	picture = FORT_eventPicture
 	fire_only_once = yes
 	trigger = {
-		tag = NOR
-		NOT = {
-			is_year = 1470
-		}
+		owns = 1256
+		controls = 1256
+		treasury = 200
+		NOT = { is_year = 1470 }
 		1256 = {
-			owned_by = NOR
-			controlled_by = NOR
 			has_building = fort_15th
-			NOT = {
-				has_building = fort_16th
-			}
+			NOT = { has_building = fort_16th }
 		}
 	}
 	mean_time_to_happen = {
@@ -148,5 +132,6 @@ country_event = {
 				duration = -1
 			}
 		}
+		add_treasury = -150
 	}
 }

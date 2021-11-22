@@ -244,6 +244,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = "holyromanempire.1.a"
+		log = "FE-HRE:[GetYear]:[Root.GetName]:decided to leave the HRE:holyromanempire.1"
 		every_owned_province = {
 			limit = {
 				is_part_of_hre = yes
@@ -257,8 +258,8 @@ country_event = {
 				}
 			}
 			set_in_empire = no
-			swap_non_generic_missions = yes
 		}
+		swap_non_generic_missions = yes
 		emperor = {
 			add_opinion = {
 				who = ROOT
@@ -268,6 +269,7 @@ country_event = {
 	}
 	option = {
 		name = "holyromanempire.1.b"
+		log = "FE-ITA:[GetYear]:[Root.GetName]:decided to stay in the HRE:holyromanempire.1"
 		trigger = { ai = no }
 	}
 }

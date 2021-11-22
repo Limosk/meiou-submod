@@ -86,7 +86,7 @@ country_event = {
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-10 }
 		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=10 }
 
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:formed The Ambrosian Republic:flavor_mlo.1"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:formed The Ambrosian Republic:flavor_mlo.1"
 	}
 	option = {
 		name = flavor_mlo.1.b
@@ -97,7 +97,7 @@ country_event = {
 		add_legitimacy = 25
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=10 }
 		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=-10 }
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:have not formed The Ambrosian Republic:flavor_mlo.1"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:have not formed The Ambrosian Republic:flavor_mlo.1"
 	}
 }
 country_event = {
@@ -119,7 +119,7 @@ country_event = {
 		Stab_Add50Percent = yes
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=-5 }
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:sided with the Guelph:flavor_mlo.1"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:sided with the Guelph:flavor_mlo.1"
 	}
 	option = {
 		name = flavor_mlo.2.b
@@ -136,7 +136,7 @@ country_event = {
 				Stab_Subtract1 = yes
 			}
 		}
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:sided with the Ghibelline:flavor_mlo.1"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:sided with the Ghibelline:flavor_mlo.1"
 	}
 }
 country_event = {
@@ -217,7 +217,7 @@ country_event = {
 	}
 	option = {
 		name = flavor_mlo.4.a
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:signed The Treaty of Lodi:flavor_mlo.4"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:signed The Treaty of Lodi:flavor_mlo.4"
 
 		NAP = {
 			add_opinion = {
@@ -370,7 +370,7 @@ country_event = {
 	option = {
 		name = flavor_mlo.4.b
 		add_mil_power = 10
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:refused The Treaty of Lodi:flavor_mlo.4"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:refused The Treaty of Lodi:flavor_mlo.4"
 	}
 }
 country_event = {
@@ -578,7 +578,7 @@ country_event = {
 	}
 	option = {
 		name = "sforza_ascending.001.a"
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:Sforza signed as general:sforza_ascending.001"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:Sforza signed as general:sforza_ascending.001"
 
 		define_general = {
 			name = "Francesco Sforza"
@@ -607,7 +607,7 @@ country_event = {
 	}
 	option = {
 		name = "sforza_ascending.002.a"
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:kept autocratic ruler in power during crisis:sforza_ascending.002"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:kept autocratic ruler in power during crisis:sforza_ascending.002"
 
 		add_republican_tradition = -10
 		add_prestige = 10
@@ -623,8 +623,8 @@ country_event = {
 	}
 	option = {
 		name = "sforza_ascending.002.b"
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:expelled autocratic ruler and held elections during crisis:sforza_ascending.002"
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:Ghibellines in power:sforza_ascending.002"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:expelled autocratic ruler and held elections during crisis:sforza_ascending.002"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:Ghibellines in power:sforza_ascending.002"
 
 		kill_ruler = yes
 		add_republican_tradition = 10
@@ -643,7 +643,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = "sforza_ascending.003.a"
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:autocratic ruler killed leaders of The Ghibelline Conspiracy:sforza_ascending.003"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:autocratic ruler killed leaders of The Ghibelline Conspiracy:sforza_ascending.003"
 
 		104 = {
 			add_province_modifier = {
@@ -661,8 +661,8 @@ country_event = {
 	}
 	option = {
 		name = "sforza_ascending.003.b"
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:autocratic ruler fled from The Ghibelline Conspiracy:sforza_ascending.003"
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:Ghibellines in power:sforza_ascending.003"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:autocratic ruler fled from The Ghibelline Conspiracy:sforza_ascending.003"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:Ghibellines in power:sforza_ascending.003"
 
 		add_prestige = -10
 		kill_ruler = yes
@@ -689,8 +689,8 @@ country_event = {
 	}
 	option = {
 		name = "sforza_ascending.004.a"
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:Populace forces Election:sforza_ascending.004"
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:Ghibellines in power:sforza_ascending.004"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:Populace forces Election:sforza_ascending.004"
+		log = "FE-MLO:[GetYear]:[Root.GetName]:Ghibellines in power:sforza_ascending.004"
 
 		kill_ruler = yes
 		clr_country_flag = autocratic_guelph_ruler
@@ -699,6 +699,7 @@ country_event = {
 }
 country_event = {
 	id = sforza_ascending.005 #The Future of Milan
+
 	title = "sforza_ascending.005.t"
 	desc = "sforza_ascending.005.d"
 	picture = STREET_SPEECH_eventPicture
@@ -716,16 +717,19 @@ country_event = {
 	}
 	option = {
 		name = "sforza_ascending.005.a"
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:kept republic and rejected Sforza:sforza_ascending.005"
-
-		Stab_Add50Percent = yes
-		add_republican_tradition = 25
 		ai_chance = {
 			factor = 10
 		}
+		log = "FE-MLO:[GetYear]:[Root.GetName]:kept republic and rejected Sforza:sforza_ascending.005"
+
+		Stab_Add50Percent = yes
+		add_republican_tradition = 25
 	}
 	option = {
 		name = "sforza_ascending.005.b"
+		ai_chance = {
+			factor = 90
+		}
 		Pol_ChangeGovMonarchy = { Succession=1 Assembly=2 } 
 		add_government_reform = Pol_Nobility2
 		if = {
@@ -762,6 +766,13 @@ country_event = {
 			fixed = yes
 			claim = 70
 		}
+		kill_leader	= { type = "Francesco Sforza" }
+		define_ruler_to_general = {
+			fire = 4
+			shock = 5
+			manuever = 5
+			siege = 2
+		}
 		define_consort = {
 			name = "Bianca Maria"
 			dynasty = "Visconti"
@@ -784,10 +795,6 @@ country_event = {
 				claim = 70
 			}
 		}
-		#_#_log = "FE-MLO:[GetYear]:[Root.GetName]:selected Sforza as a leader, rejected republic:sforza_ascending.005"
-
-		ai_chance = {
-			factor = 90
-		}
+		log = "FE-MLO:[GetYear]:[Root.GetName]:selected Sforza as a leader, rejected republic:sforza_ascending.005"
 	}
 }

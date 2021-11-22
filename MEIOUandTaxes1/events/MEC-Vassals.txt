@@ -18,14 +18,14 @@ country_event = { # $Tag$ Reverts to the Crown, insp., Burgundy and France
 					is_overseas_subject = yes
 				}
 			}
-			#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:inherits their overseas fief [From.GetName]:mec_vassals.1"
+			log = "MEC-Vassals:[GetYear]:[Root.GetName]:inherits their overseas fief [From.GetName]:mec_vassals.1"
 			create_subject = {
 				subject_type = overseas_fief
 				subject = FROM
 			}
 		}
 		else = {
-			#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:got their appanage ([From.GetName]) into PU:mec_vassals.1"
+			log = "MEC-Vassals:[GetYear]:[Root.GetName]:got their appanage ([From.GetName]) into PU:mec_vassals.1"
 			create_subject = {
 				subject_type = personal_union
 				subject = FROM
@@ -88,7 +88,7 @@ country_event = { # $Tag$ Reverts to the Crown, insp., Burgundy and France
 	}
 	option = {
 		name = mec_vassals.1.b
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:continued treating [From.GetName] as appanage, refused PU:mec_vassals.1"
+		log = "MEC-Vassals:[GetYear]:[Root.GetName]:continued treating [From.GetName] as appanage, refused PU:mec_vassals.1"
 
 		FROM = {
 			set_country_flag = Had_Heir
@@ -163,7 +163,7 @@ country_event = { # Dissolution of the Realm, insp Serbia c. 1371
 					is_subject_of_type = rebellious_decentralized_vassal
 				}
 			}
-			#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:granted independence to  its decentralized vassals:mec_vassals.2"
+			log = "MEC-Vassals:[GetYear]:[Root.GetName]:granted independence to its decentralized vassal, [This.GetName]:mec_vassals.2"
 			grant_independence = yes
 			hidden_effect = {
 				every_owned_province = {
@@ -259,7 +259,7 @@ country_event = { # Dissolution of the Realm, insp Serbia c. 1371
 	}
 	option = {
 		name = mec_vassals.2.b
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:refused to give independence to its decentralized vassals, sent ultimatum:mec_vassals.2"
+		log = "MEC-Vassals:[GetYear]:[Root.GetName]:refused to give independence to its decentralized vassals, sent ultimatum:mec_vassals.2"
 
 		every_subject_country = {
 			limit = {
@@ -331,7 +331,7 @@ country_event = { # An Ultimatum
 		name = mec_vassals.3.a
 			add_prestige = -10
 			FROM = {
-				#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:was subjected back to the decentralized vassal of [From.GetName] status:mec_vassals.3"
+				log = "MEC-Vassals:[GetYear]:[Root.GetName]:was subjected back to the decentralized vassal of [From.GetName] status:mec_vassals.3"
 				create_subject = {
 					subject = ROOT
 					subject_type = decentralized_vassal
@@ -417,7 +417,7 @@ country_event = { # An Ultimatum
 			set_key = { lhs = Vassal_Tmp0 value = 0 }
 			set_key = { lhs = Vassal_Tmp1 value = 0 }
 		}
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:was attacked by [From.GetName] after rejecting to become theirs vassals:mec_vassals.3"
+		log = "MEC-Vassals:[GetYear]:[Root.GetName]:was attacked by [From.GetName] after rejecting to become theirs vassals:mec_vassals.3"
 
 		FROM = {
 			declare_war_with_cb = {
@@ -497,7 +497,7 @@ country_event = { # Releasing $Tag$
 			subject_centralisation_trigger = no
 			monarchy_or_harem_gov = yes
 		}
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:created an appanage from [From.GetName]:mec_vassals.5"
+		log = "MEC-Vassals:[GetYear]:[Root.GetName]:created an appanage from [From.GetName]:mec_vassals.5"
 		create_subject = {
 			subject_type = appanage_subject
 			subject = FROM
@@ -517,7 +517,7 @@ country_event = { # Releasing $Tag$
 		trigger = {
 			subject_centralisation_trigger = no
 		}
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:created feudatory from [From.GetName]:mec_vassals.5"
+		log = "MEC-Vassals:[GetYear]:[Root.GetName]:created feudatory from [From.GetName]:mec_vassals.5"
 		FROM = { hidden_effect = { set_key = { lhs = Vassal_Type value = 10 } } }
 		create_subject = {
 			subject_type = daimyo_vassal
@@ -538,7 +538,7 @@ country_event = { # Releasing $Tag$
                 has_country_flag = centralised_japan
 			}
 		}
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:created division from [From.GetName]:mec_vassals.5"
+		log = "MEC-Vassals:[GetYear]:[Root.GetName]:created division from [From.GetName]:mec_vassals.5"
 		create_subject = {
 			subject_type = decentralized_vassal
 			subject = FROM
@@ -1074,7 +1074,7 @@ country_event = {
 	
 	option = {
 		name = "mec_vassals.12.opta"
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:switched from their special status to regular PU with [Root.Overlord.GetName]:mec_vassals.21"
+		log = "MEC-Vassals:[GetYear]:[Root.GetName]:switched from their special status to regular PU with [Root.Overlord.GetName]:mec_vassals.21"
 	}
 }
 country_event = {
@@ -1099,7 +1099,7 @@ country_event = {
 	
 	option = {
 		name = "mec_vassals.12.opta"
-		#_#_log = "MEC-Vassals:[GetYear]:[Root.GetName]:switched from their special status to regular PU with [Root.Overlord.GetName]:mec_vassals.21"
+		log = "MEC-Vassals:[GetYear]:[Root.GetName]:switched from their special status to regular PU with [Root.Overlord.GetName]:mec_vassals.21"
 	}
 }
 country_event = {

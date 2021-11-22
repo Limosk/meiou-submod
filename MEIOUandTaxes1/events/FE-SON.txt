@@ -1,16 +1,14 @@
 namespace = hee_SON
 
 country_event = {
-	id = hee_SON.1
+	id = hee_SON.1 #General Muhammad Ture
 	title = hee_SON.1.t
 	desc = hee_SON.1.d
-	picture = BATTLE_eventPicture
+	picture = AFRICAN_WARRIORS_eventPicture
 	fire_only_once = yes
 	trigger = {
 		tag = SON
-		NOT = {
-			is_year = 1490
-		}
+		NOT = { is_year = 1490 }
 		is_year = 1480
 	}
 	mean_time_to_happen = {
@@ -18,6 +16,7 @@ country_event = {
 	}
 	option = {
 		name = hee_SON.1.a
+		log = "FE-SON:[GetYear]:[Root.GetName]:Muhammad Ture became a general:hee_SON.1"
 		define_general = {
 			name = "Muhammad Ture"
 			fire = 3
@@ -28,28 +27,26 @@ country_event = {
 		hidden_effect = {
 			add_country_modifier = {
 				name = hee_general_ture
-				duration = 7200
+				duration = 7300
 				hidden = yes
 			}
 		}
 	}
 }
 country_event = {
-	id = hee_SON.2
+	id = hee_SON.2 #The Heretic Heir
 	title = hee_SON.2.t
 	desc = hee_SON.2.d
-	picture = RELIGIOUS_CONVERSION_eventPicture
+	picture = muslim_mosque
 	fire_only_once = yes
 	trigger = {
 		tag = SON
-		NOT = {
-			is_year = 1510
-		}
+		NOT = { is_year = 1510 }
 		is_year = 1485
 		religion = sunni
 	}
 	mean_time_to_happen = {
-		years = 30
+		years = 25
 		modifier = {
 			factor = 0.6
 			has_country_flag = hee_general_ture
@@ -67,6 +64,11 @@ country_event = {
 			MIL = 5
 		}
 	}
+	immediate = {
+		hidden_effect = {
+			set_heir_religion = west_african_pagan_reformed
+		}
+	}
 	option = {
 		name = hee_SON.2.a
 		ai_chance = {
@@ -78,15 +80,39 @@ country_event = {
 			hidden = yes
 		}
 		define_ruler = {
-			name = "Askia Muhammad"
+			name = "Muhammad"
 			dynasty = "Askia"
 			adm = 6
 			dip = 5
 			mil = 4
+			fixed = yes
 			age = 35
 			claim = 30
+			religion = sunni
 		}
-		kill_heir = yes
+		if = {
+			limit = {
+				has_dlc = "Rights of Man"
+			}
+			add_ruler_personality = conqueror_personality
+			add_ruler_personality = zealot_personality
+		}
+		log = "FE-SON:[GetYear]:[Root.GetName]:Muhammad Ture became a ruler and started Askia dynasty:hee_SON.2"
+		hidden_effect = { #to avoid having both general and ruler at the same time
+			kill_leader = {
+				type = "Muhammad Ture"
+			}
+			define_ruler_to_general = {
+				fire = 3
+				shock = 5
+				manuever = 4
+				siege = 2
+			}
+		}
+		if = {
+			limit = { has_heir = yes }
+			kill_heir = yes
+		}
 		#add_piety = 0.15
 		Stab_Subtract1 = yes
 		random_owned_province = {
@@ -143,8 +169,11 @@ country_event = {
 				name = "Baru"
 				dynasty = "Sonni"
 				age = 15
+				religion = west_african_pagan_reformed
 			}
 		}
+		log = "FE-SON:[GetYear]:[Root.GetName]:refused to give Muhammad Ture a throne:hee_SON.2"
+		log = "FE-SON:[GetYear]:[Root.GetName]:changed religion to west_african_pagan_reformed:hee_SON.2"
 		change_religion = west_african_pagan_reformed
 		Stab_Subtract2 = yes
 	}

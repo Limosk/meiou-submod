@@ -467,6 +467,7 @@ declarewar = {
         allow = {
             overlord = {
                 is_key_equal = { lhs = Pol_Privileges value = 10 }
+                is_key_equal = { lhs = Pol_Privileges value = 4 } #will be revisited during Japan rework
             }
         }
     }

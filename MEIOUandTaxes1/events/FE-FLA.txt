@@ -26,7 +26,7 @@ country_event = {
 	option = {
 		name = "flavor_fla.1.a"
 		ARS = { inherit = FLA }
-		#_#_log = "FE-FLA:[GetYear]:[Root.GetName]:got inherited by Artois:flavor_fla.1"
+		log = "FE-FLA:[GetYear]:[Root.GetName]:got inherited by Artois:flavor_fla.1"
 	}
 }
 

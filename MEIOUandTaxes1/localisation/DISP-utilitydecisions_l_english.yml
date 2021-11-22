@@ -149,11 +149,11 @@
  UI_ssc_effect1: "Show all sector centers worldwide"
  UI_ssc_effect2: "Show your own sector centers only"
  
-Trade_Show_Modifier_title: "117) §M‡‡§! §OShow Trade on Trade Map Mode§!"
-Trade_Show_Modifier_desc: "Clicking on this decision will temporarily show the modifiers for the §TTrade Modifier Display§! in the §OTrade Map Mode§! for only 1 day. Therefore, this decision should be used with the game paused."
+ Trade_Show_Modifier_title: "117) §M‡‡§! §OShow Trade on Trade Map Mode§!"
+ Trade_Show_Modifier_desc: "Clicking on this decision will temporarily show the modifiers for the §TTrade Modifier Display§! in the §OTrade Map Mode§! for only 1 day. Therefore, this decision should be used with the game paused."
 
-Enable_AI_Trade_Display_title: "118) §M‡‡§! §OEnable§! Trade Display for AI"
-Enable_AI_Trade_Display_desc: "Toggle on/off calculations for AI sectors. Currently §ROFF§! (If you activate it you need to wait the year tick for the effect)"
+ Enable_AI_Trade_Display_title: "118) §M‡‡§! §OEnable§! Trade Display for AI"
+ Enable_AI_Trade_Display_desc: "Toggle on/off calculations for AI sectors. Currently §ROFF§! (If you activate it you need to wait the year tick for the effect)"
 
-Disable_AI_Trade_Display_title: "118) §M‡‡§! §ODisable§! Trade Display for AI"
-Disable_AI_Trade_Display_desc: "Toggle on/off calculations for AI sectors. Currently §GON§!"
+ Disable_AI_Trade_Display_title: "118) §M‡‡§! §ODisable§! Trade Display for AI"
+ Disable_AI_Trade_Display_desc: "Toggle on/off calculations for AI sectors. Currently §GON§!"

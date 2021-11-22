@@ -367,7 +367,7 @@ basque_ideas = {
 		enemy_core_creation = 0.25
     }
     basque_ideas_2 = {
-		#-20% Height for CE
+		#-20% Topography Impact on CE
 		#+10% Harbourage Cost
 		sailors_recovery_speed = 0.1
     }
@@ -413,7 +413,7 @@ tibetan_ideas = {
 	tibetan_ideas_1 = {
 		defensiveness = 0.20
 		#pathing cost
-		# CE impact from height
+		#Topography impact on CE
 	}
 	tibetan_ideas_2 = {
 		#fuel demand
@@ -457,7 +457,7 @@ viet_ideas = {
 	viet_ideas_1 = {
 		defensiveness = 0.20
 		#garrison cost
-		# CE impact from forest
+		#Forest Cover impact on CE
 	}
 	viet_ideas_2 = {
 		legitimacy = 0.20
@@ -836,7 +836,7 @@ georgian_ideas = {
 	georgian_ideas_1 = {
 		defensiveness = 0.20
 		# farmland cost
-		# CE impact from height
+		#Topography impact on CE
 	}
 	georgian_ideas_2 = {
 		diplomatic_upkeep = 1
@@ -885,7 +885,7 @@ armenian_ideas = {
 	armenian_ideas_1 = {
 		defensiveness = 0.30
 		# pathing cost
-		# CE impact from height
+		#Topography impact on CE
 	}
 	armenian_ideas_2 = {
 		cavalry_power = 0.10
@@ -1751,7 +1751,7 @@ persian_ideas = {
 	 
 	persian_ideas_1 = { 
 		#farmland cost
-		#reduced CE in difficult terrain
+		#Topography impact on CE
 		build_cost = -0.05
 	}
 	persian_ideas_2 = { 
@@ -1796,7 +1796,7 @@ mande_ideas = {
 	free = yes
 	 
 	mande_ideas_1 = { 
-		# CE impact from forest cover
+		#Forest Cover impact on CE
 		administrative_efficiency = 0.025
 		defensiveness = -0.10
 	}
@@ -1862,7 +1862,7 @@ chaghatai_ideas = {
 		institution_spread_from_true_faith = 0.10
 	}
 	chaghatai_ideas_4 = { # Persianate
-		# CE impact from elevation
+		# Topography Impact on CE
 		administrative_efficiency = 0.025
 	}
 	chaghatai_ideas_5 = { # The Silk Road
@@ -3192,7 +3192,7 @@ yemeni_ideas = {
     free = yes    # Will be added at load.
     
     yemeni_ideas_1 = {
-		#hill CE
+		#Topography Impact on CE
         global_trade_goods_size_modifier = 0.025
     }
     yemeni_ideas_2 = {
@@ -3239,7 +3239,7 @@ yoruba_ideas = {
     free = yes    # Will be added at load.
     
     yoruba_ideas_1 = {
-        #20% Forest CE
+        #20% Forest Cover Impact on CE
 		land_attrition = -0.1
     }
     yoruba_ideas_2 = {
@@ -3289,7 +3289,7 @@ akan_ideas = {
 		movement_speed = 0.1
     }
     akan_ideas_2 = {
-		# forest CE
+		# Forest Cover Impact on CE
 		leader_land_manuever = 1
     }
     akan_ideas_3 = {
@@ -3736,7 +3736,7 @@ malayali_ideas = {
 	malayali_ideas_1 = {	
 		movement_speed_onto_off_boat_modifier = 0.15
 		global_supply_limit_modifier = 0.15
-		#forest CE
+		#Forect Cover Impact on CE
 	}
 
 	malayali_ideas_2 = {	

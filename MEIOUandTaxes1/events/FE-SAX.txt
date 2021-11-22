@@ -2,30 +2,30 @@ namespace = flavor_sax
 namespace = hee_SAX
 
 country_event = {
-	id = flavor_sax.1
+	id = flavor_sax.1 #Johann Sebastian Bach
 	title = "flavor_sax.EVTNAME1"
 	desc = "flavor_sax.EVTDESC1"
 	picture = IMPORTANT_STATUE_eventPicture
 	fire_only_once = yes
 	trigger = {
-		tag = SAX
-		is_year = 1700
-		NOT = {
-			is_year = 1750
+		OR = { 
+			owns = 71 #Thuringen
+			owns = 2813 #Weimar
 		}
+		is_year = 1700
+		NOT = { is_year = 1750 }
 	}
 	mean_time_to_happen = {
 		years = 16
 	}
 	option = {
-		name = "flavor_sax.EVTOPTA1"
-		add_adm_power = 100
+		name = "OPT.EXCELLENT"
 		add_prestige = 10
 	}
 }
 
 country_event = {
-	id = hee_SAX.1
+	id = hee_SAX.1 #The Treaty of Leipzig
 	title = hee_SAX.1.t
 	desc = hee_SAX.1.d
 	picture = DIPLOMACY_eventPicture
@@ -33,17 +33,12 @@ country_event = {
 	trigger = {
 		tag = SAX
 		num_of_cities = 6
-		NOT = {
-			is_year = 1500
-		}
-		NOT = {
-			exists = THU
-		}
 		is_year = 1480
+		NOT = { is_year = 1500 }
+		NOT = { exists = THU }
 		is_lesser_in_union = no
-		owns = 71
-		owns = 2619
-		owns = 59
+		owns = 71 #Thuringen
+		owns = 59 #Wittemberg
 		dynasty = "von Wettin"
 		monarchy_or_harem_gov = yes
 	}
@@ -53,15 +48,52 @@ country_event = {
 	option = {
 		name = hee_SAX.1.a
 		ai_chance = {
-			factor = 75
+			factor = 65
+		}
+		log = "FE-SAX:[GetYear]:[Root.GetName]:divided the country by releasing [THU.GetName] through Treaty of Leipzig:hee_SAX.1"
+		
+		every_province = {
+			limit = {
+				owned_by = ROOT
+				OR = {
+					province_id = 71 #Thuringen
+					province_id = 59 #Wittenberg
+					province_id = 2619 #Vogtland
+				}
+			}
+			add_core = THU
+		}
+		if = {
+			limit = {
+				num_of_cities = 15
+			}
+			random_owned_province = {
+				limit = {
+					NOT = { is_core = THU }
+					NOT = { area = northern_saxony_area }
+					NOT = { area = southern_saxony_area }
+				}
+				add_core = THU
+			}
+		}
+		if = {
+			limit = {
+				num_of_cities = 15
+			}
+			random_owned_province = {
+				limit = {
+					NOT = { is_core = THU }
+					NOT = { area = northern_saxony_area }
+					NOT = { area = southern_saxony_area }
+				}
+				add_core = THU
+			}
 		}
 		THU = {
-			add_core = 71
-			add_core = 2619
-			add_core = 59
+			set_country_flag = succession_event_paused
 		}
 		release = THU
-		create_union = THU
+		custom_tooltip = hee_SAX_treaty_of_leipzig_tt
 		add_country_modifier = {
 			name = hee_treaty_of_leipzig
 			duration = -1
@@ -71,28 +103,101 @@ country_event = {
 				name = hee_treaty_of_leipzig
 				duration = -1
 			}
+			define_ruler = {
+				dynasty = "von Wettin"
+				min_age = 20
+				max_age = 40
+				claim = 95
+				culture = ROOT
+				religion = ROOT
+				hide_skills = yes
+			}
+			hidden_effect = {
+				change_religion = ROOT
+				if = {
+					limit = {
+						NOT = { has_country_flag = POP_Init }
+					}
+					country_event = { id = Init.1 }
+				}
+			}
+			clr_country_flag = succession_event_paused
 		}
+		create_subject = {
+			subject_type = appanage_subject
+			subject = THU
+		}
+		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=30 }
+		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=10 }
+	}
+	option = {
+		name = hee_SAX.1.c
+		ai_chance = {
+			factor = 10
+		}
+		log = "FE-SAX:[GetYear]:[Root.GetName]:divided the country by releasing [THU.GetName] through Treaty of Leipzig, but gave them less territory:hee_SAX.1"
+		
+		THU = {
+			set_country_flag = succession_event_paused
+		}
+		release = THU
+		custom_tooltip = hee_SAX_treaty_of_leipzig_only_cores_tt
+
+		add_country_modifier = {
+			name = hee_treaty_of_leipzig
+			duration = -1
+		}
+		THU = {
+			add_country_modifier = {
+				name = hee_treaty_of_leipzig
+				duration = -1
+			}
+			define_ruler = {
+				dynasty = "von Wettin"
+				min_age = 20
+				max_age = 40
+				claim = 95
+				culture = ROOT
+				religion = ROOT
+				hide_skills = yes
+			}
+			hidden_effect = {
+				change_religion = ROOT
+				if = {
+					limit = {
+						NOT = { has_country_flag = POP_Init }
+					}
+					country_event = { id = Init.1 }
+				}
+			}
+			clr_country_flag = succession_event_paused
+		}
+		create_subject = {
+			subject_type = appanage_subject
+			subject = THU
+		}
+		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-5 }
 	}
 	option = {
 		name = hee_SAX.1.b
 		ai_chance = {
 			factor = 25
 		}
+		log = "FE-SAX:[GetYear]:[Root.GetName]:decided not to divide the country by releasing [THU.GetName] through Treaty of Leipzig:hee_SAX.1"
 		Stab_Subtract1 = yes
-		add_prestige = 10
+		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-30 }
+		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=-10 }
 	}
 }
 country_event = {
-	id = hee_SAX.2
+	id = hee_SAX.2 #Rivalry With the Hohenzollerns
 	title = hee_SAX.2.t
 	desc = hee_SAX.2.d
 	picture = COURT_eventPicture
 	fire_only_once = yes
 	trigger = {
 		tag = SAX
-		BRA = {
-			num_of_cities = 4
-		}
+		BRA = { num_of_cities = 4 }
 		num_of_cities = BRA
 		AND = {
 			OR = {
@@ -431,61 +536,58 @@ country_event = {
 # 	}
 # }
 country_event = {
-	id = hee_SAX.8
+	id = hee_SAX.8 #The Frauenkirche and the Hofkirche of Dresden
 	title = hee_SAX.8.t
 	desc = hee_SAX.8.d
 	picture = CITY_VIEW_eventPicture
 	fire_only_once = yes
 	trigger = {
-		tag = SAX
 		is_year = 1730
-		owns = 3851
-		NOT = {
-			is_year = 1760
+		owns = 3851 #Dresden
+		NOT = { is_year = 1760 }
+		ruler_religion = catholic
+		3851 = { #at least 20% of urban population is Lutheran
+			MN_CheckProp = { religion = 2 type = UrbP prop = 20 }
 		}
-		ADM = 4
 	}
 	mean_time_to_happen = {
 		years = 10
 	}
 	option = {
 		name = hee_SAX.8.a
-		3851 = {}
-		add_treasury = -15
+		add_treasury = -75
 		add_prestige = 10
 	}
 	option = {
 		name = hee_SAX.8.b
-		add_adm_power = 10
-		Stab_Add50Percent = yes
 	}
 }
-country_event = {
-	id = hee_SAX.9
-	title = hee_SAX.9.t
-	desc = hee_SAX.9.d
-	picture = wihgfx_FEMALE_RULER_eventPicture
-	fire_only_once = yes
-	trigger = {
-		tag = SAX
-		is_year = 1730
-		NOT = {
-			is_year = 1760
-		}
-		is_at_war = yes
-	}
-	mean_time_to_happen = {
-		months = 12
-	}
-	option = {
-		name = hee_SAX.9.a
-		Stab_Add50Percent = yes
-		add_adm_power = 25
-		add_dip_power = 25
-		add_war_exhaustion = -2
-		#add_church_power = -50
-	}
-}
+# country_event = {
+# 	id = hee_SAX.9 #Maria Josepha of Austria
+# 	title = hee_SAX.9.t
+# 	desc = hee_SAX.9.d
+# 	picture = wihgfx_FEMALE_RULER_eventPicture
+# 	fire_only_once = yes
+# 	trigger = {
+# 		tag = SAX
+# 		is_year = 1730
+# 		NOT = {
+# 			is_year = 1760
+# 		}
+# 		is_at_war = yes
+# 	}
+# 	mean_time_to_happen = {
+# 		months = 12
+# 	}
+# 	option = {
+# 		name = hee_SAX.9.a
+# 		Stab_Add50Percent = yes
+# 		add_adm_power = 25
+# 		add_dip_power = 25
+# 		add_war_exhaustion = -2
+# 		add_church_power = -50
+# 	}
+# }
 # country_event = {
 # 	id = hee_SAX.10
 # 	title = hee_SAX.10.t

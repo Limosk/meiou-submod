@@ -620,12 +620,9 @@ country_event = {
 	
 	is_triggered_only = yes
 	
-	# trigger = {		Comment this out since you can trigger this event without owning Pavia, gonna place the check elsewhere
-	# 	owns = 1347
-	# }
-	
 	option = {
 		name = "mission_event.025.opta"
+		log = "MEC-MissionEvents:[GetYear]:[Root.GetName]:formed Italy:mission_event.025"
 		form_ITA_effect = yes
 	}
 	

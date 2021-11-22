@@ -353,7 +353,7 @@ Culture_GetGroupData = {
 			set_key = { lhs = Culture_Tmp6 value = 82 }
 			set_key = { lhs = Culture_Tmp7 value = 54 } #Je Tupi
 		}
-		andean_american = {
+		andean_group = {
 			set_key = { lhs = Culture_Tmp6 value = 83 }
 			set_key = { lhs = Culture_Tmp7 value = 55 } #Andean
 		}

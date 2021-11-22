@@ -109,7 +109,7 @@ country_event = {
 	}
 	option = {
 		name = Ottomans.003.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:asked Rome for help with finding of Halil:Ottomans.003"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:asked Rome for help with finding of Halil:Ottomans.003"
 		add_prestige = -25
 		BYZ = { country_event = { id = Ottomans.004 days = 5 } }
 		ai_chance = { factor = 1 }
@@ -117,7 +117,7 @@ country_event = {
 	option = {
 		name = Ottomans.003.b
 		add_prestige = -25
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:refused to ask Rome for help with finding of Halil:Ottomans.003"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:refused to ask Rome for help with finding of Halil:Ottomans.003"
 		random_list = {
 			70 = {
 				country_event = { id = Ottomans.007 days = 365 }
@@ -136,7 +136,7 @@ country_event = {
 	}
 	option = {
 		name = Ottomans.003.c
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:have not tried to find Halil:Ottomans.003"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:have not tried to find Halil:Ottomans.003"
 		add_prestige = -50
 		ai_chance = { factor = 0 }
 	}
@@ -151,7 +151,7 @@ country_event = {
 	
 	option = {
 		name = Ottomans.004.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:aggreed to help in finding Halil for a truce:Ottomans.004"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:aggreed to help in finding Halil for a truce:Ottomans.004"
 		OTT = {
 			add_opinion = {
 				who = BYZ
@@ -165,7 +165,7 @@ country_event = {
 	}
 	option = {
 		name = Ottomans.004.b
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:refused to help in finding Halil (no truce):Ottomans.004"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:refused to help in finding Halil (no truce):Ottomans.004"
 		OTT = {
 			add_opinion = {
 				who = BYZ
@@ -225,7 +225,7 @@ country_event = {
 	
 	option = {
 		name = Ottomans.007.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:failed to retrieve Halil, stability hit:Ottomans.007"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:failed to retrieve Halil, stability hit:Ottomans.007"
 		add_prestige = -25
 		Stab_Subtract1 = yes
 	}
@@ -240,7 +240,7 @@ country_event = {
 	
 	option = {
 		name = Ottomans.008.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:succeded in retrieving Halil:Ottomans.008"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:succeded in retrieving Halil:Ottomans.008"
 		add_prestige = 25
 		hidden_effect = { set_country_flag = Halil_Alive }
 	}
@@ -255,14 +255,14 @@ country_event = {
 	
 	option = {
 		name = Ottomans.009.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:returned Halil to Ottomans:Ottomans.009"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:returned Halil to Ottomans:Ottomans.009"
 		add_prestige = 25
 		OTT = { country_event = { id = Ottomans.010 days = 5 } }
 		ai_chance = { factor = 85 }
 	}
 	option = {
 		name = Ottomans.009.b
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:returned Halil to Ottomans, influencing him earlier:Ottomans.009"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:returned Halil to Ottomans, influencing him earlier:Ottomans.009"
 		add_prestige = 25
 		add_treasury = -100
 		add_dip_power = -100
@@ -319,7 +319,7 @@ country_event = {
 	
 	option = {
 		name = Ottomans.012.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:Halil started a rebellion, stability hit:Ottomans.012"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:Halil started a rebellion, stability hit:Ottomans.012"
 		1446 = { #Izmit
 			spawn_rebels = {
 				leader = "Halil Osmanli"
@@ -353,7 +353,7 @@ country_event = {
 	
 	option = {
 		name = Ottomans.013.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:Halil failed to start a rebellion, stability buff:Ottomans.013"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:Halil failed to start a rebellion, stability buff:Ottomans.013"
 		Stab_Add1 = yes
 		add_legitimacy = 25
 	}
@@ -378,7 +378,7 @@ country_event = {
 	
 	option = {
 		name = Ottomans.014.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:Halil won his rebellion, stability hit, peace with Rome:Ottomans.014"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:Halil won his rebellion, stability hit, peace with Rome:Ottomans.014"
 		define_ruler = {
 			name = "Sehzade Halil"
 			dynasty = "Osmanli"
@@ -446,11 +446,11 @@ country_event = {
 				}
 			}
 			declare_war_with_cb = { who = BYZ casus_belli = cb_crusade }
-			#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:started war for Thrace (Crusade CB):Ottomans.016"
+			log = "FE-OTT:[GetYear]:[Root.GetName]:started war for Thrace (Crusade CB):Ottomans.016"
 		}
 		else = {
 			declare_war_with_cb = { who = BYZ casus_belli = cb_conquest }
-			#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:started war for Thrace (Conquest CB):Ottomans.016"
+			log = "FE-OTT:[GetYear]:[Root.GetName]:started war for Thrace (Conquest CB):Ottomans.016"
 		}
 		ai_chance = { factor = 100 }
 	}
@@ -459,7 +459,7 @@ country_event = {
 		add_legitimacy = -10
 		add_prestige = -25
 		ai_chance = { factor = 0 }
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:refused to start war for Thrace:Ottomans.016"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:refused to start war for Thrace:Ottomans.016"
 	}
 }
 country_event = {
@@ -481,7 +481,7 @@ country_event = {
 	
 	option = {
 		name = Ottomans.017.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:formed Janissaries:Ottomans.017"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:formed Janissaries:Ottomans.017"
 		add_prestige = 10
 		add_country_modifier = { name = Ottoman_Janissaries duration = -1 }
 		add_country_modifier = { name = Ottoman_RiseArmy duration = 4000 }
@@ -551,7 +551,7 @@ country_event = {
 
 	option = {
 		name = Ottomans.018.a #"We have no choice, give the emissary our offer of surrender."
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:Rome surrendered, ceded Thrace:Ottomans.018"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:Rome surrendered, ceded Thrace:Ottomans.018"
 		custom_tooltip = Rome_Surrender_TT
 		add_prestige = -10
 		OTT = { country_event = { id = Ottomans.019 } }
@@ -559,7 +559,7 @@ country_event = {
 	}
 	option = {
 		name = Ottomans.018.b #Never! [From.GetName] will not fall so long as I live!
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:Rome refused to surrend:Ottomans.018"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:Rome refused to surrend:Ottomans.018"
 		add_prestige = 10
 		add_country_modifier = { name = Rome_Defiant duration = 3650 }
 		hidden_effect = {
@@ -723,7 +723,7 @@ country_event = {
 
 	option = {
 		name = Ottomans.023.a #Accept surrender
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:Rome became a vassal:Ottomans.023"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:Rome became a vassal:Ottomans.023"
 		hidden_effect = { BYZ = { set_key = { lhs = Vassal_Type value = 10 } } }
 		create_subject = {
 			subject_type = muscovite_tributary_state
@@ -803,7 +803,7 @@ country_event = {
 
 	option = {
 		name = Ottomans.026.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:broke their vassalage:Ottomans.026"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:broke their vassalage:Ottomans.026"
 		add_prestige = 25
 		grant_independence = yes
 		hidden_effect = { set_global_flag = byz_independence }
@@ -814,7 +814,7 @@ country_event = {
 
 	option = {
 		name = Ottomans.026.b
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:decided to accept their vassalage:Ottomans.026"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:decided to accept their vassalage:Ottomans.026"
 		hidden_effect = { set_global_flag = byz_independence }
 		ai_chance = {
 			factor = 0
@@ -851,7 +851,7 @@ country_event = {
 
 	option = {
 		name = Ottomans.027.a
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:revoked Rome vassalage:Ottomans.027"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:revoked Rome vassalage:Ottomans.027"
 		add_prestige = 25
 		BYZ = { grant_independence = yes }
 		hidden_effect = { set_global_flag = byz_independence }
@@ -862,7 +862,7 @@ country_event = {
 
 	option = {
 		name = Ottomans.027.b
-		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:decided to keep Rome vassalage:Ottomans.027"
+		log = "FE-OTT:[GetYear]:[Root.GetName]:decided to keep Rome vassalage:Ottomans.027"
 		hidden_effect = { set_global_flag = byz_independence }
 		ai_chance = {
 			factor = 0
@@ -1155,11 +1155,11 @@ country_event = {
 							}
 						}
 						declare_war_with_cb = { who = PREV casus_belli = cb_crusade }
-						#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:started war to utilize Serbian disunity (Crusade CB):Ottomans.028"
+						log = "FE-OTT:[GetYear]:[Root.GetName]:started war to utilize Serbian disunity (Crusade CB):Ottomans.028"
 					}
 					else = {
 						declare_war_with_cb = { who = PREV casus_belli = cb_conquest }
-						#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:started war to utilize Serbian disunity (conquest CB):Ottomans.028"
+						log = "FE-OTT:[GetYear]:[Root.GetName]:started war to utilize Serbian disunity (conquest CB):Ottomans.028"
 					}
 				}
 			}
@@ -1197,7 +1197,7 @@ country_event = {
 #	option = {
 #		name = Ottomans.029.a
 #		add_prestige = 25
-#		#_#_log = "FE-OTT:[GetYear]:[Root.GetName]:professionalised their army (NOSer5) by event:Ottomans.029"
+#		log = "FE-OTT:[GetYear]:[Root.GetName]:professionalised their army (NOSer5) by event:Ottomans.029"
 #		hidden_effect = {
 #			if = {
 #				limit = {

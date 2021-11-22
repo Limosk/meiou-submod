@@ -45,7 +45,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:The treaty of Pavia - Root event 0 happened:treaty_pavia.1000"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:The treaty of Pavia - Root event 0 happened:treaty_pavia.1000"
 		hidden_effect = {
 			if = {
 				limit = {
@@ -162,7 +162,7 @@ country_event = {
 		ai_chance = {
 			factor = 85
 		}
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:lands will stay with the house of Wittelsbach:treaty_pavia.1010"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:lands will stay with the house of Wittelsbach:treaty_pavia.1010"
 		hidden_effect = {
 			country_event = {
 				id = treaty_pavia.1011
@@ -178,7 +178,7 @@ country_event = {
 		}
 		hidden_effect = {
 			set_country_flag = treaty_of_pavia_ignored
-			#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:lands will not be transferred to the house of Wittelsbach:treaty_pavia.1010"
+			log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:lands will not be transferred to the house of Wittelsbach:treaty_pavia.1010"
 			country_event = {
 				id = treaty_pavia.1012
 				days = 0
@@ -195,7 +195,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = "treaty_pavia.1020.a"
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:respected the treaty and abdicated:treaty_pavia.1020"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:respected the treaty and abdicated:treaty_pavia.1020"
 		ai_chance = {
 			factor = 50
 		}
@@ -212,7 +212,7 @@ country_event = {
 		ai_chance = {
 			factor = 50
 		}
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:have not respected the treaty and not abdicated:treaty_pavia.1020"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:have not respected the treaty and not abdicated:treaty_pavia.1020"
 		hidden_effect = {
 			country_event = {
 				id = treaty_pavia.1022
@@ -554,7 +554,7 @@ province_event = {
 	is_triggered_only = yes
 	hidden = yes
 	immediate = {
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Owner.GetName]:division of provinces, [Root.GetName] ceded:treaty_pavia.3001"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.Owner.GetName]:division of provinces, [Root.GetName] ceded:treaty_pavia.3001"
 		hidden_effect = {
 			if = {
 				limit = {
@@ -787,7 +787,7 @@ province_event = {
 	}
 	option = {
 		name = "EVT_AI"
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Owner.GetName]:division of provinces, [Root.GetName] received:treaty_pavia.3001"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.Owner.GetName]:division of provinces, [Root.GetName] received:treaty_pavia.3001"
 	}
 }
 country_event = {
@@ -822,7 +822,7 @@ country_event = {
 		months = 1
 	}
 	immediate = {
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:The treaty of Pavia - Root event 1 happened:treaty_pavia.1001"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:The treaty of Pavia - Root event 1 happened:treaty_pavia.1001"
 		hidden_effect = {
 			if = {
 				limit = {
@@ -919,7 +919,7 @@ country_event = {
 		ai_chance = {
 			factor = 85
 		}
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:respected the treaty and ended the personal union:treaty_pavia.1030"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:respected the treaty and ended the personal union:treaty_pavia.1030"
 		hidden_effect = {
 			every_country = {
 				limit = {
@@ -943,7 +943,7 @@ country_event = {
 		ai_chance = {
 			factor = 15
 		}
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:have not respected the treaty and kept the PU:treaty_pavia.1030"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:have not respected the treaty and kept the PU:treaty_pavia.1030"
 		hidden_effect = {
 			FROM = {
 				set_country_flag = overlord_treaty_of_pavia_ignored
@@ -969,7 +969,7 @@ country_event = {
 		ai_chance = {
 			factor = 85
 		}
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:respected the treaty and ended the personal union:treaty_pavia.1040"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:respected the treaty and ended the personal union:treaty_pavia.1040"
 		hidden_effect = {
 			every_country = {
 				limit = {
@@ -993,7 +993,7 @@ country_event = {
 		ai_chance = {
 			factor = 15
 		}
-		#_#_log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:have not respected the treaty and kept the PU:treaty_pavia.1040"
+		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:have not respected the treaty and kept the PU:treaty_pavia.1040"
 		hidden_effect = {
 			FROM = {
 				set_country_flag = overlord_treaty_of_pavia_ignored

@@ -36,97 +36,97 @@ historical_units = { # Greek Group
 }
 
 monarch_names = {
-	"Ionnes #5" = 40
-	"Alxios #5" = 30
-	"Konstantnos #10" = 20
-	"Andrnikos #4" = 20
-	"Manoul #1" = 20
-	"Rhomans #4" = 20
-	"Demtrios #0" = 15
-	"Thedoros #2" = 15
-	"Michal #9" = 10
-	"Andras #0" = 10
-	"Thoms #0" = 10
-	"Isskios #2" = 10
-	"Basleios #2" = 10
-	"Lon #6" = 10
-	"Hadrians #1" = 5
-	"Anastsios #2" = 5
-	"Ioulians #3" = 5
-	"Ioustinians #2"= 5
-	"Ioustnos #2" = 5
-	"Konstntios #3" = 5
-	"Mrkos #1" = 5
-	"Nikephros #3" = 5
-	"Thephilos #1" = 5
-	"Theodsios #3" = 5
-	"Tibrios #3" = 5
-	"Traans #1" = 5
-	"Alxandros #1" = 5
-	"Phlippos #1" = 5
-	"Herkleios #1" = 5
-	"Athansios #0" = 1
-	"Antnios #0" = 1
-	"Bartholomaos #0" = 1
-	"Christphoros #0" = 1
-	"Diognes #0" = 1
-	"Dionsios #0" = 1
-	"Eirenaos #0" = 1
-	"Elpdios #0" = 1
-	"Gergios #0" = 1
-	"Gregrios #0" = 1
-	"Hektrios #0" = 1
-	"Ison #0" = 1
-	"Krillos #0" = 1
-	"Matthaos #0" = 1
-	"Niktas #0" = 1
-	"Niklaos #0" = 1
-	"Nikdemos #0" = 1
-	"Srgios #0" = 1
-	"Porphrios #0" = 1
-	"Palos #0" = 1
-	"Panagites #0" = 1
-	"Ptros #0" = 1
-	"Philmon #0" = 1
-	"Prokpios #0" = 1
-	"Stphanos #0" = 1
+	"Ioánnes #5" = 40
+	"Aléxios #5" = 30
+	"Konstantínos #10" = 20
+	"Andrónikos #4" = 20
+	"Manouél #1" = 20
+	"Rhomanós #4" = 20
+	"Demétrios #0" = 15
+	"Theódoros #2" = 15
+	"Michaél #9" = 10
+	"Andréas #0" = 10
+	"Thomás #0" = 10
+	"Issákios #2" = 10
+	"Basíleios #2" = 10
+	"Léon #6" = 10
+	"Hadrianós #1" = 5
+	"Anastásios #2" = 5
+	"Ioulianós #3" = 5
+	"Ioustinianós #2"= 5
+	"Ioustínos #2" = 5
+	"Konstántios #3" = 5
+	"Márkos #1" = 5
+	"Nikephóros #3" = 5
+	"Theóphilos #1" = 5
+	"Theodósios #3" = 5
+	"Tibérios #3" = 5
+	"Traíanós #1" = 5
+	"Aléxandros #1" = 5
+	"Phílippos #1" = 5
+	"Herákleios #1" = 5
+	"Athanásios #0" = 1
+	"Antónios #0" = 1
+	"Bartholomaíos #0" = 1
+	"Christóphoros #0" = 1
+	"Diogénes #0" = 1
+	"Dionísios #0" = 1
+	"Eirenaíos #0" = 1
+	"Elpídios #0" = 1
+	"Geórgios #0" = 1
+	"Gregórios #0" = 1
+	"Hektórios #0" = 1
+	"Iáson #0" = 1
+	"Kýrillos #0" = 1
+	"Matthaíos #0" = 1
+	"Nikítas #0" = 1
+	"Nióklaos #0" = 1
+	"Nikódemos #0" = 1
+	"Sérgios #0" = 1
+	"Porphýrios #0" = 1
+	"Paúlos #0" = 1
+	"Panagiótes #0" = 1
+	"Pétros #0" = 1
+	"Philémon #0" = 1
+	"Prokópios #0" = 1
+	"Stéphanos #0" = 1
 	
 	"Eirne #1" = -20
-	"Theodra #1" = -20
-	"Zo #1" = -10
-	"Helne #0" = -10
-	"Alexndra #0" = -10
+	"Theodóra #1" = -20
+	"Zoé #1" = -10
+	"Heléne #0" = -10
+	"Alexándra #0" = -10
 	"Antona #0" = -5
-	"nna #0" = -5
-	"Artemsia #0" = -1
-	"Euphrosne #0" = -1
-	"Laskarna #0" = -1
-	"Mant #0" = -1
-	"Thala #0" = -1
-	"Sebast #0" = -1
-	"Sopha #0" = -1
+	"Ánna #0" = -5
+	"Artemísia #0" = -1
+	"Euphrosýne #0" = -1
+	"Laskarína #0" = -1
+	"Mantá #0" = -1
+	"Thalía #0" = -1
+	"Sebastí #0" = -1
+	"Sophía #0" = -1
 }
 
 leader_names = {
-	Aarnios Abores Akropoltes Agllon Anems ngelos Aonos Apon Apokpes Apkaukos prenos Arbantens Argyrs Ariantes Aspites Atraps Axoch Axochos
-	Balsamn Battzes Blasts Botaneites Boumbles Bourtzs Brans Brynnios
-	Chalkokondles Chandrens Choniats Chomnos Chrysphes Chrysolors
-	Daimonoonnes Dalassens Dermokates Diasrenos Diognes Diplobattzes Dokeians Dokas Dox
-	Eireniks Exzenos
-	Gabrs Grontas Glabs
-	Hadrians
-	Igares
-	Kabkes Kaballrios Kaballres Kabsilas Kalamnos Kallrges Kalethes Kalthetos Kamaters Kamtzes Kantakouzens Karatzs Kastamontes Katakaln Katakals
-	Katrres Kaukadens Keroulrios Komnens Kontstaulos Kontostphanos Korsses Kourkoas Kourtiks Kourtkios
-	Lskaris Lebdes Limpidres
-	Machneos Makremboltes Malkes Malenos Maliasens Mmales Mandromnos Manoueltes Matarngos Maurognes Maurognous Melachrins Melissins Mesopotamtes
-	Metochtes Monomchos Mourozes Mortzouphlos Mouzka Mouzkios Mouzlon
-	Neokaisaretes Nestngos
-	Palaiolgos Pantchnes Parsakoutens Paraspndylos Petralphas Petzikpoulos Philanthropens Phils Phoks Plestes Prasomles Prnkips Psllos
-	Rhadens Rhaol Rhendkis Rhendkios Rhentkios Rhosstas Rhogrios
-	Sarantnos Sebastpoulos Serblas Sgourpoulos Sgours Sklers Sprtenos Sphrantzs Strabomtes Synadnos Sraneres Syrpoulos
-	Tgaris Tarchaneites Tarontes Tornkes Tornkios Trchas Tsaphs Tzamplkon Tzanichtes Tzykandles
-	Zardes
+	Aarónios Abores Akropolítes Agéllon Anemís Ángelos Aónios Apíon Apokápes Apókaukos Aprenós Arbantenós Argyrós Arianítes Aspiétes Atrápes Axoúch Axoúchos
+	Balsamón Batátzes Blastós Botaneiátes Basilákes Boúrtzis Branás Bryénnios
+	Chalkokondýles Chandrenós Choniátis Choúmnos Chrysáphes Chrysolorás
+	Daimonoioánnis Dalassenós Dermokaítes Diasórenos Diogénes Diplobatátzes Dokeianós Doúkas Doúx
+	Eirenikós Exzeníos
+	Gabrás Gérontas Glabás
+	Hadrianós
+	Iágares
+	Kabúkes Kaballários Kaballáres Kabásilas Kalaménos Kallérgis Kalethes Kalóthetos Kamaterós Kamýtzes Kantakouzenós Karatzás Kastamonítes Katakalón Katakalós
+	Katórres Kaukadenós Keroulários Komnenós Kontóstaulos Kontostéphanos Korésses Kourkoúas Kourtíkes Kourtíkios
+	Láskaris Lebédes Limpidáres
+	Machóneos Makrembolítes Malákes Maleínos Maliasenós Mámalis Mandroménos Manouelítes Matarángos Maurogénes Maurogénous Melachrinós Melissinós Mesopotamítes
+	Metochítes Monomáchos Mouroúzes Moúrtzouphlos Mouzáka Mouzákios Mouzálon
+	Neokaisareítes Nestóngos
+	Palaiológos Pantéchnes Parsakoutenós Paraspóndylos Petralíphas Petzikópoulos Philanthropenós Philés Phokás Pleústes Prasomáles Prínkips Pséllos
+	Rhadenós Rhaoúl Rhendákis Rhendákios Rhentákios Rhossátas Rhogérios
+	Saranténos Sebastópoulos Serblías Sgourópoulos Sgourós Sklerós Spártenos Sphrantzés Strabomýtes Synadénos Sýraneres Syrópoulos
+	Tágaris Tarchaneiótes Taronítes Torníkes Torníkios Tríchas Tsaphás Tzamplákon Tzanichítes Tzykandéles
+	Zarídes
 }
 
 ship_names = {
@@ -189,27 +189,27 @@ ship_names = {
 }
 
 army_names = {
-	# Tgmata
-	"Schola" "Exkobitoi" "Bgla" "Hikantoi" "Nomeroi" "Optimtoi" "Hetairea" "Brangoi" "Bestiartai" "Bardaritai"
+	# Tágmata
+	"Scholaí" "Exkoúbitoi" "Bígla" "Hikanátoi" "Noúmeroi" "Optimátoi" "Hetaireía" "Bárangoi" "Bestiarítai" "Bardariótai"
 	
-	# Eastern Thmata
-	"Thma Thrkes" "Thma Makedonas" "Thma Anatolikn" "Thma rmenikon" "Thma Kappadokas" "Thma Charsiano" "Thma Thrakeson" "Thma Opsikou" "Thma Optimton"
-	"Thma Boukellaron" "Thma Paphlagonas" "Thma Chaldas" "Thma Mesopotamas" "Thma Koloneas" "Thma Sebasteas" "Thma Lykando" "Thma Seleukeas"
+	# Eastern Thémata
+	"Théma Thrákes" "Théma Makedonas" "Théma Anatolikón" "Théma Ármenikon" "Théma Kappadokías" "Théma Charsianón" "Théma Thrakesíon" "Théma Opsikou" "Théma Optimatón"
+	"Théma Boukelláríon" "Théma Paphlagonías" "Théma Chaldías" "Théma Mesopotamías" "Théma Koloneías" "Théma Sebasteías" "Théma Lykandós" "Théma Seleukíeas"
 	
-	# Western Thmata
-	"Thma Strymnos" "Thma Thessalonkes" "Thma Helldos" "Thma Peloponnsou" "Thma Kephallenas" "Thma Nikopleos" "Thma Dyrrachou" "Thma Sikelas"
-	"Thma Longobarda" "Thma Chersnos" "Thma Dalmatas"
+	# Western Thémata
+	"Théma Strymónos" "Théma Thessaloníkes" "Théma Helládos" "Théma Peloponnísou" "Théma Kephallenías" "Théma Nikopóleos" "Théma Dyrrachíou" "Théma Sikelías"
+	"Théma Longobardía" "Théma Chersónos" "Théma Dalmatías"
 	
-	"Thma $PROVINCE$"
+	"Théma $PROVINCE$"
 }
 
 fleet_names = {
 	# Imperial Fleets
-	"Basilikn Plmon" "Karabisinoi"
+	"Basilikón Ploímon" "Karabisiánoi"
 	
-	# Naval Thmata
-	"Thma Kibyrraiotn" "Thma Kprou" "Thma Smou" "Thma to Aigaou Pelgous" "Thma Krtes"
+	# Naval Thémata
+	"Théma Kibyrraiotón" "Théma Kýprou" "Théma Sámou" "Théma toú Aigaíou Pelágous" "Théma Krétes"
 	
-	# Support Thmata
-	"Thma Helldos" "Thma Peloponnsou" "Thma Sikelas" "Thma Kephallenas" "Thma Longobarda" "Thma Paphlagonas" "Thma Chaldas"
+	# Support Thémata
+	"Théma Helládos" "Théma Peloponnísou" "Théma Sikelías" "Théma Kephallenías" "Théma Longobardía" "Théma Paphlagonías" "Théma Chaldías"
 }

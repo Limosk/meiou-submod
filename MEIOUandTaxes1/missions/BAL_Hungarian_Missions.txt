@@ -29,7 +29,6 @@ hun_slot_5 = {
 		position = 2
 		provinces_to_highlight = { }
 		trigger = {
-			has_institution = renaissance
 			OR = {
 				has_institution = Casual_Literacy
 				# Pest
@@ -54,18 +53,9 @@ hun_slot_5 = {
 			province_id = 153
 		}
 		trigger = {
-			# TODO
 			absolutism = 30
-			
-			# He eliminated tax exemptions
-			# and raised the serfs' obligations to the crown to
-			# fund his court and the military
-			
-			# Pecs - TODO
-			153 = {
-				owned_by = ROOT
-				HasBuildingOrBetter = { b1=urban_infrastructure_3 b2=urban_infrastructure_4 b3=urban_infrastructure_5 b4=urban_infrastructure_6 } #HasBuildingOrBetter = { b1=art_corporation b2=fine_arts_academy b3=opera }
-			}
+			Privilege_HasGreater = { Privilege=BUFarm Lvl=1 }
+			NOT = {Privilege_HasGreater = { Privilege=NOTaxE Lvl=2 }}
 		}
 		
 		effect = {
@@ -84,9 +74,11 @@ hun_slot_5 = {
 			is_at_war = no
 			OR = {
 				all_subject_country = {
-					NOT = {
-						liberty_desire = 10
-						num_of_cities = HUN
+					NOT = {	
+						AND = { #no important vassal has liberty desire
+							liberty_desire = 10 
+							development_of_overlord_fraction = 0.2
+						}
 					}
 				}
 				NOT = { vassal = 1 }
@@ -1082,7 +1074,7 @@ hun_slot_8 = {
 			153 = {
 				owned_by = ROOT
 				HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-				check_key = { lhs = Modi_KnowledgeOutput value = 0.2 }
+				custom_trigger_tooltip = { tooltip = miss_output_41_10 check_key = { lhs = TN_ProvSply41 value = 10 } }
 			}
 		}
 		

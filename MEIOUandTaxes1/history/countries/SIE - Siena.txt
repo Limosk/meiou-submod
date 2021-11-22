@@ -24,6 +24,7 @@ add_army_professionalism = 0.05
 	#set_key = { lhs = centralization_decentralization value = 4 }
 	add_absolutism = -100
 	add_absolutism = 20
+	set_country_flag = c_of_sie
 }
 
 1355.1.1 = {

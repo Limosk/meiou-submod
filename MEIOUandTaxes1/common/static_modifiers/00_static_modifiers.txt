@@ -1346,7 +1346,7 @@ large_colonial_nation = {
 
 very_large_colonial_nation = {
 	merchants = 2
-	naval_forcelimit = 5
+	#naval_forcelimit = 5
 	#land_forcelimit = 2.5
 }
 

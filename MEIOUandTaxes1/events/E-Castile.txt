@@ -8,14 +8,14 @@ namespace = castilian_civil_war
 
 # Civil War in Castile
 country_event = {
-	id = castilian_civil_war.1
+	id = castilian_civil_war.1 #Castilian Civil War
 	title = "castilian_civil_war.1.name"
 	desc = "castilian_civil_war.1.desc"
 	picture = CIVIL_WAR_eventPicture
 	
 	is_triggered_only = yes
 	
-	immediate = {
+#	immediate = {
 #		subtract_stability_2 = yes
 #		hidden_effect = {
 #			random_owned_province = {
@@ -68,14 +68,15 @@ country_event = {
 #				}
 #			}
 #		}
-	}
+#	}
 	
 	option = {
 		name = "castilian_civil_war.1.opta"
 		set_country_flag = civil_war_in_castile
 		custom_tooltip = "castilian_civil_war.1.a.tt"
 		add_legitimacy = -20
-		random_owned_province = {
+		log = "FE-Castile:[GetYear]:[Root.GetName]:supported [Root.Heir.GetName] (option towards Portugal):castilian_civil_war.1"
+		random_owned_province = { #TODO: should it be only border, or non-capitol?
 			spawn_rebels = {
 				type = pretender_rebels
 				culture = ROOT
@@ -84,7 +85,7 @@ country_event = {
 				size = 1
 				win = yes
 			}
-			clr_province_flag = cas_civil_war_start
+			#clr_province_flag = cas_civil_war_start #nothing sets this flag at the moment
 		}
 		POR = {
 			country_event = { id = castilian_civil_war.3 days = 10 }
@@ -93,7 +94,7 @@ country_event = {
 			country_event = { id = castilian_civil_war.5 days = 20 }
 		}
 		ENR = {
-			set_country_flag = cas_aragon_candidate
+			#set_country_flag = cas_aragon_candidate #not used at the moment
 			set_country_flag = civil_war_in_castile
 		}
 	}
@@ -141,6 +142,7 @@ country_event = {
 			limit = { has_province_flag = revolt_3 }
 			cede_province = ENR
 			clr_province_flag = revolt_3
+			log = "FE-Castile:[GetYear]:[Root.GetName]:[This.GetName] defected to [ENR.GetName]:castilian_civil_war.2"
 		}
 		random_owned_province = {
 			limit = { has_province_flag = revolt_2 }
@@ -152,6 +154,7 @@ country_event = {
 				size = 2
 			}
 			clr_province_flag = revolt_2
+			log = "FE-Castile:[GetYear]:[Root.GetName]:[This.GetName] rebelled in suport of [ENR.GetName]:castilian_civil_war.2"
 		}
 		random_owned_province = {
 			limit = { has_province_flag = revolt_1 }
@@ -163,12 +166,13 @@ country_event = {
 				size = 1
 			}
 			clr_province_flag = revolt_1
+			log = "FE-Castile:[GetYear]:[Root.GetName]:[This.GetName] rebelled in suport of [ENR.GetName]:castilian_civil_war.2"
 		}
 	}
 }
 
 country_event = {
-	id = castilian_civil_war.13
+	id = castilian_civil_war.13 #Nobility Revolt
 	title = "castilian_civil_war.13.name"
 	desc = "castilian_civil_war.13.desc"
 	picture = BATTLE_eventPicture
@@ -180,6 +184,7 @@ country_event = {
 		random_owned_province = {
 			limit = { controlled_by = ROOT }
 			add_local_autonomy = 50
+			Public_ChangePowerbrokerLoyaltyTooltip = { Powerbroker=NO Amount=-30 }
 			add_province_modifier = {
 				name = "nobles_organizing"
 				duration = 1825
@@ -191,9 +196,9 @@ country_event = {
 }
 
 country_event = {
-	id = castilian_civil_war.18
-	title = "castilian_civil_war.18.name"
-	desc = "castilian_civil_war.18.desc"
+	id = castilian_civil_war.18 #Ruler is dead, hidden event setting flags and directing the chain
+	title = "EVT_AI"
+	desc = "EVT_AI"
 	picture = BATTLE_eventPicture
 	
 	fire_only_once = yes
@@ -252,7 +257,7 @@ country_event = {
 }
 
 country_event = {
-	id = castilian_civil_war.19
+	id = castilian_civil_war.19 #Ruler is dead
 	title = "castilian_civil_war.18.name"
 	desc = {
 		trigger = {
@@ -279,6 +284,7 @@ country_event = {
 	option = {
 		name = "castilian_civil_war.18.opta"
 		ROOT = { kill_ruler = yes }
+		log = "FE-Castile:[GetYear]:[Root.GetName]:ruler died:castilian_civil_war.19"
 		hidden_effect = {
 			clr_country_flag = death_by_plague
 			clr_country_flag = death_by_dagger
@@ -288,7 +294,7 @@ country_event = {
 }
 
 country_event = {
-	id = castilian_civil_war.21
+	id = castilian_civil_war.21 #Peace of Terrer
 	title = "castilian_civil_war.21.name"
 	desc = "castilian_civil_war.21.desc"
 	picture = DIPLOMACY_eventPicture
@@ -305,45 +311,62 @@ country_event = {
 	option = {
 		name = "castilian_civil_war.21.opta"
 		white_peace = ARA
+		log = "FE-Castile:[GetYear]:[Root.GetName]:signed peace with [ARA.GetName], ending their participation in war (Peace of Terrer):castilian_civil_war.21"
 	}
 }
 
-province_event = {
-	id = castilian_civil_war.22
-	title = "war_dynamism.PROV_NAME"
-	desc = "war_dynamism.02.d"
+country_event = {
+	id = castilian_civil_war.22 
+	title = "war_dynamism.4.t"
+	desc = "war_dynamism.04.d"
 	picture = COURT_eventPicture
 	
+	is_triggered_only = yes
+
 	trigger = {
-		owned_by = CAS
-		controlled_by = REB
-		exists = ENR
-		NOT = { has_siege = yes }
-		religion = catholic
-		is_capital = no
-		OR = {
-			region = leon_region
-			region = castille_region
-			region = andalucia_region
+		any_owned_province ={
+			owned_by = CAS
+			controlled_by = REB
+			exists = ENR
+			NOT = { has_siege = yes }
+			religion = catholic
+			is_capital = no
+			OR = {
+				region = leon_region
+				region = castille_region
+				region = andalucia_region
+			}
 		}
-	}
-	
-	mean_time_to_happen = {
-		months = 12
 	}
 	
 	option = {
 		name = "war_dynamism.02.opta"
-		add_local_autonomy = 25
-		cede_province = ENR
+		random_owned_province = {
+			limit = {
+				owned_by = CAS
+				controlled_by = REB
+				exists = ENR
+				NOT = { has_siege = yes }
+				religion = catholic
+				is_capital = no
+				OR = {
+					region = leon_region
+					region = castille_region
+					region = andalucia_region
+				}
+			}
+			add_local_autonomy = 25
+			log = "FE-Castile:[GetYear]:[Root.GetName]:[This.GetName] defected to [ENR.GetName]:castilian_civil_war.22"
+			cede_province = ENR
+		}
 	}
 }
 
 # Contender Captured
 country_event = {
-	id = castilian_civil_war.30
-	title = "castilian_civil_war.30.name"
-	desc = "castilian_civil_war.30.desc"
+	id = castilian_civil_war.30 #Capture of the faction leader, AI-event setting who was captured
+	title = "EVT_AI"
+	desc = "EVT_AI"
 	picture = COURT_eventPicture
 	
 	is_triggered_only = yes
@@ -364,6 +387,7 @@ country_event = {
 					country_event = { id = castilian_civil_war.31 days = 5 }
 					save_global_event_target_as = faction_leader_success
 				}
+				log = "FE-Castile:[GetYear]:[CAS.GetName]:got their leader captured:castilian_civil_war.30"
 			}
 			25 = {
 				ENR = {
@@ -373,17 +397,18 @@ country_event = {
 					country_event = { id = castilian_civil_war.31 days = 5 }
 					save_global_event_target_as = faction_leader_success
 				}
+				log = "FE-Castile:[GetYear]:[ENR.GetName]:got their leader captured:castilian_civil_war.30"
 			}
 		}
 	}
 	
 	option = {
-		name = "castilian_civil_war.31.opta"
+		name = "EVT_AI"
 	}
 }
 
 country_event = {
-	id = castilian_civil_war.31
+	id = castilian_civil_war.31 ##Capture of the faction leader
 	title = "castilian_civil_war.31.name"
 	desc = "castilian_civil_war.31.desc"
 	picture = COURT_eventPicture
@@ -395,54 +420,63 @@ country_event = {
 		ai_chance = {
 			factor = 0
 		}
-		random_list = {
-			60 = {
-				event_target:faction_leader_success = {
-					country_event = { id = castilian_civil_war.32 days = 5 }
+		log = "FE-Castile:[GetYear]:[Root.GetName]:as a captor, offered a fair duel:castilian_civil_war.31"
+		hidden_effect = {
+			random_list = {
+				60 = {
+					event_target:faction_leader_success = {
+						country_event = { id = castilian_civil_war.32 days = 5 }
+					}
+					event_target:faction_leader_captured = {
+						country_event = { id = castilian_civil_war.33 days = 5 }
+					}
 				}
-				event_target:faction_leader_captured = {
-					country_event = { id = castilian_civil_war.33 days = 5 }
-				}
-			}
-			40 = {
-				event_target:faction_leader_captured = {
-					country_event = { id = castilian_civil_war.34 days = 5 }
-				}
-				event_target:faction_leader_success = {
-					country_event = { id = castilian_civil_war.35 days = 5 }
+				40 = {
+					event_target:faction_leader_captured = {
+						country_event = { id = castilian_civil_war.34 days = 5 }
+					}
+					event_target:faction_leader_success = {
+						country_event = { id = castilian_civil_war.35 days = 5 }
+					}
 				}
 			}
 		}
+		custom_tooltip = ccw_duel_info_tt
 	}
 	option = {
 		name = "castilian_civil_war.31.optb"
 		ai_chance = {
 			factor = 100
 		}
-		random_list = {
-			95 = {
-				event_target:faction_leader_success = {
-					country_event = { id = castilian_civil_war.32 days = 5 }
+		log = "FE-Castile:[GetYear]:[Root.GetName]:as a captor, offered a rigged duel:castilian_civil_war.31"
+		hidden_effect = {
+			random_list = {
+				95 = {
+					event_target:faction_leader_success = {
+						country_event = { id = castilian_civil_war.32 days = 5 }
+					}
+					event_target:faction_leader_captured = {
+						country_event = { id = castilian_civil_war.33 days = 5 }
+					}
 				}
-				event_target:faction_leader_captured = {
-					country_event = { id = castilian_civil_war.33 days = 5 }
-				}
-			}
-			5 = {
-				event_target:faction_leader_captured = {
-					country_event = { id = castilian_civil_war.34 days = 5 }
-				}
-				event_target:faction_leader_success = {
-					country_event = { id = castilian_civil_war.35 days = 5 }
+				5 = {
+					event_target:faction_leader_captured = {
+						country_event = { id = castilian_civil_war.34 days = 5 }
+					}
+					event_target:faction_leader_success = {
+						country_event = { id = castilian_civil_war.35 days = 5 }
+					}
 				}
 			}
 		}
+		custom_tooltip = ccw_duel_info_tt
 	}
 	option = {
 		name = "castilian_civil_war.31.optc"
 		ai_chance = {
 			factor = 0
 		}
+		log = "FE-Castile:[GetYear]:[Root.GetName]:as a captor, negotiated a settlement:castilian_civil_war.31"
 		event_target:faction_leader_captured = {
 			country_event = { id = castilian_civil_war.36 days = 5 }
 		}
@@ -458,7 +492,8 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "castilian_civil_war.32.opta"
+		name = "OPT.VICTORY1"
+		log = "FE-Castile:[GetYear]:[Root.GetName]:[Root.Monarch.GetName] [Root.Monarch.Dynasty.GetName] won the duel:castilian_civil_war.32"
 	}
 }
 
@@ -471,7 +506,8 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "castilian_civil_war.33.opta"
+		name = "OPT.DAMN"
+		log = "FE-Castile:[GetYear]:[Root.GetName]:[Root.Monarch.GetName] [Root.Monarch.Dynasty.GetName] died in the duel:castilian_civil_war.33"
 		kill_ruler = yes
 	}
 }
@@ -485,7 +521,8 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "castilian_civil_war.34.opta"
+		name = "OPT.VICTORY1"
+		log = "FE-Castile:[GetYear]:[Root.GetName]:[Root.Monarch.GetName] [Root.Monarch.Dynasty.GetName] won the duel:castilian_civil_war.34"
 	}
 }
 
@@ -498,13 +535,14 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "castilian_civil_war.35.opta"
+		name = "OPT.DAMN"
+		log = "FE-Castile:[GetYear]:[Root.GetName]:[Root.Monarch.GetName] [Root.Monarch.Dynasty.GetName] died in the duel:castilian_civil_war.35"
 		kill_ruler = yes
 	}
 }
 
 country_event = {
-	id = castilian_civil_war.36
+	id = castilian_civil_war.36 #Negotiating Peace
 	title = "castilian_civil_war.36.name"
 	desc = "castilian_civil_war.36.desc"
 	picture = COURT_eventPicture
@@ -513,18 +551,18 @@ country_event = {
 	
 	trigger = {
 		is_lesser_in_union = no
-		ENR = { is_lesser_in_union = no }
+		FROM = { is_lesser_in_union = no }
 	}
 	
 	option = {
-		name = "castilian_civil_war.36.opta"
+		name = "OPT.NOCHOICE"
 		ai_chance = {
 			factor = 100
 		}
 		FROM = { country_event = { id = castilian_civil_war.37 days = 5 }	}
 	}
 	option = {
-		name = "castilian_civil_war.36.optb"
+		name = "OPT.NEVER"
 		ai_chance = {
 			factor = 0
 		}
@@ -533,7 +571,7 @@ country_event = {
 }
 
 country_event = {
-	id = castilian_civil_war.37
+	id = castilian_civil_war.37 #Submission
 	title = "castilian_civil_war.37.name"
 	desc = "castilian_civil_war.37.desc"
 	picture = COURT_eventPicture
@@ -543,6 +581,7 @@ country_event = {
 	option = {
 		name = "castilian_civil_war.37.opta"
 		create_union = FROM
+		log = "FE-Castile:[GetYear]:[Root.GetName]:agreed on union with [From.GetName] as a lesser partner:castilian_civil_war.37"
 	}
 }
 
@@ -556,6 +595,7 @@ country_event = {
 	
 	option = {
 		name = "castilian_civil_war.38.opta"
+		log = "FE-Castile:[GetYear]:[Root.GetName]:refused union with [From.GetName] as a lesser partner:castilian_civil_war.38"
 		FROM = { country_event = { id = castilian_civil_war.39 days = 25 } }
 	}
 }
@@ -570,6 +610,7 @@ country_event = {
 	
 	option = {
 		name = "castilian_civil_war.39.opta"
+		log = "FE-Castile:[GetYear]:[Root.GetName]:ruler died in captivity after negotiations:castilian_civil_war.39"
 		kill_ruler = yes
 	}
 }
@@ -617,6 +658,7 @@ country_event = {
 		}
 		set_global_flag = enrique_wins
 		ENR = { country_event = { id = castilian_civil_war.102 days = 0 } }
+		log = "FE-Castile:[GetYear]:[Root.GetName]:Enrique wins (succes of Aragonese supporters):castilian_civil_war.100"
 	}
 	option = {
 		name = "castilian_civil_war.100.optb" # Portugal Triumphs
@@ -654,11 +696,13 @@ country_event = {
 				modifier = cas_civil_war_winner
 			}
 		}
+		log = "FE-Castile:[GetYear]:[Root.GetName]:Pedro wins (succes of Portuguese supporters):castilian_civil_war.100"
 		hidden_effect = { GRA = { set_key = { lhs = Vassal_Type value = 10 } } }
 		create_subject = {
 			subject_type = muscovite_tributary_state
 			who = GRA
 		}
+		log = "FE-Castile:[GetYear]:[Root.GetName]:Granada set as tributary:castilian_civil_war.100"
 		set_global_flag = pedro_wins
 	}
 	option = {
@@ -670,6 +714,7 @@ country_event = {
 		}
 		switch_tag = ENR
 		country_event = { id = castilian_civil_war.102 days = 0 }
+		log = "FE-Castile:[GetYear]:[Root.GetName]:Switch to Trastamara and continue playing:castilian_civil_war.100"
 	}
 	option = {
 		name = "castilian_civil_war.100.opta"
@@ -680,15 +725,17 @@ country_event = {
 		}
 		ENR = { country_event = { id = castilian_civil_war.102 days = 0 } }
 		set_global_flag = enrique_wins
+		log = "FE-Castile:[GetYear]:[Root.GetName]:[ENR.GetName] wins (succes of Aragonese supporters):castilian_civil_war.100"
 	}
 	
 	after = {
 		hidden_effect = { europe = { limit = { is_core = ENR } remove_core = ENR } }
+		log = "FE-Castile:[GetYear]:[Root.GetName]:end of Castilian Civil War:castilian_civil_war.100"
 	}
 }
 
 country_event = {
-	id = castilian_civil_war.101
+	id = castilian_civil_war.101 #Death of Enrique II
 	title = "castilian_civil_war.101.name"
 	desc = "castilian_civil_war.101.desc"
 	picture = CIVIL_WAR_eventPicture
@@ -748,11 +795,12 @@ country_event = {
 			subject_type = muscovite_tributary_state
 			who = GRA
 		}
+		log = "FE-Castile:[GetYear]:[Root.GetName]:Granada set as tributary:castilian_civil_war.102"
 	}
 }
 
 country_event = {
-	id = castilian_civil_war.103
+	id = castilian_civil_war.103 #Crown of Castile
 	title = "castilian_civil_war.103.n"
 	desc = "castilian_civil_war.103.t"
 	picture = COURT_eventPicture

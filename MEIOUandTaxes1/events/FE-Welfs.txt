@@ -21,7 +21,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "FE-Welfs:[GetYear]:[Root.GetName]:von Welf dynasty died out, land inherited by other branch ([HAN.GetName]):welfs_dynastic.1"
+		log = "FE-Welfs:[GetYear]:[Root.GetName]:von Welf dynasty died out, land inherited by other branch ([HAN.GetName]):welfs_dynastic.1"
 		clr_country_flag = welf_succession
 		
 		HAN = {	country_event = { id = welfs_dynastic.6	days = 1 } }
@@ -53,7 +53,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "FE-Welfs:[GetYear]:[Root.GetName]:von Welf dynasty died out, land inherited by other branch ([LUN.GetName]):welfs_dynastic.3"
+		log = "FE-Welfs:[GetYear]:[Root.GetName]:von Welf dynasty died out, land inherited by other branch ([LUN.GetName]):welfs_dynastic.3"
 		clr_country_flag = welf_succession
 		
 		LUN = {	country_event = { id = welfs_dynastic.6	days = 1 } }
@@ -86,7 +86,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "FE-Welfs:[GetYear]:[Root.GetName]:von Welf dynasty died out, land inherited by other branch ([BRU.GetName]):welfs_dynastic.4"
+		log = "FE-Welfs:[GetYear]:[Root.GetName]:von Welf dynasty died out, land inherited by other branch ([BRU.GetName]):welfs_dynastic.4"
 		clr_country_flag = welf_succession
 
 		BRU = {	country_event = { id = welfs_dynastic.6	days = 1 } }
@@ -120,7 +120,7 @@ country_event = {
 
 	option = {
 		name = "hindustani_unification.2a"
-		#_#_log = "FE-Welfs:[GetYear]:[Root.GetName]:von Welf dynasty died out, land inherited by other branch ([GTG.GetName]):welfs_dynastic.5"
+		log = "FE-Welfs:[GetYear]:[Root.GetName]:von Welf dynasty died out, land inherited by other branch ([GTG.GetName]):welfs_dynastic.5"
 		clr_country_flag = welf_succession
 		
 		GTG = {	country_event = { id = welfs_dynastic.6	days = 1 } }

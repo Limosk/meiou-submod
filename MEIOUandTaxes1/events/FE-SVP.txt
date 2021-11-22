@@ -67,12 +67,12 @@ country_event = {
 	}
 	option = {
 		name = "flavor_svp.1.a" # Convene the Estates-General
+		log = "FE-SVP:[GetYear]:[Root.GetName]:Estates-General convened:flavor_svp.1"
 		ai_chance = { factor = 100 }
 		hidden_effect = {
 			set_global_flag = dutch_rebellion_start
 			set_country_flag = svp_estates_general
 			REB = {
-			
 				# needs balancing
 				set_variable = { which = dutch_rebellion_desire value = 8 } #changed from 10
 				country_event = { id = flavor_svp.99 days = 3650 }
@@ -102,6 +102,7 @@ country_event = {
 	option = {
 		name = "flavor_svp.1.b" # Give local estates further privileges
 		ai_chance = { factor = 0 }
+		log = "FE-SVP:[GetYear]:[Root.GetName]:gave local estates further privileges:flavor_svp.1"
 		every_owned_province = {
 			limit = {
 				OR = {
@@ -315,6 +316,7 @@ country_event = {
 	option = {
 		name = flavor_svp.1.c # Abolish the local estates
 		ai_chance = { factor = 0 }
+		log = "FE-SVP:[GetYear]:[Root.GetName]:abolished the local estates:flavor_svp.1"
 		set_global_flag = dutch_rebellion_start
 		hidden_effect = {
 			REB = {
@@ -2203,7 +2205,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "flavor_svp.1002.c" # Do nothing
+		name = "OPT.DONOTHING"
 		ai_chance = { factor = 0 }
 		add_prestige = -10
 	}

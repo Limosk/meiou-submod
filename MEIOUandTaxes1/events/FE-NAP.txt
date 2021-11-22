@@ -35,7 +35,7 @@ country_event = {
 			factor = 90
 		}
 		name = flavor_nap.1.a
-		#_#_log = "FE-NAP:[GetYear]:[Root.GetName]:refused to abdicate during The Baronial Revolts:flavor_nap.1"
+		log = "FE-NAP:[GetYear]:[Root.GetName]:refused to abdicate during The Baronial Revolts:flavor_nap.1"
 
 		#harm relations with nobles
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=-20 }
@@ -54,31 +54,31 @@ country_event = {
 						size = 1.5
 						leader_dynasty = "d'Anjou"
 					}
-					#_#_log = "FE-NAP:[GetYear]:[Root.GetName]:The Baronial Revolts spawned d'Anjou pretender rebels:flavor_nap.1"
+					log = "FE-NAP:[GetYear]:[Root.GetName]:The Baronial Revolts spawned d'Anjou pretender rebels:flavor_nap.1"
 				}
 				25 = {
 					spawn_rebels = {
 						type = pretender_rebels
 						size = 1.5
 						leader_dynasty = "d'Armagnac"
-						#_#_log = "FE-NAP:[GetYear]:[Root.GetName]:The Baronial Revolts spawned d'Armagnac pretender rebels:flavor_nap.1"
 					}
+					log = "FE-NAP:[GetYear]:[Root.GetName]:The Baronial Revolts spawned d'Armagnac pretender rebels:flavor_nap.1"
 				}
 				25 = {
 					spawn_rebels = {
 						type = pretender_rebels
 						size = 1.5
 						leader_dynasty = "de Valois"
-						#_#_log = "FE-NAP:[GetYear]:[Root.GetName]:The Baronial Revolts spawned de Valois pretender rebels:flavor_nap.1"
 					}
+					log = "FE-NAP:[GetYear]:[Root.GetName]:The Baronial Revolts spawned de Valois pretender rebels:flavor_nap.1"
 				}
 				25 = {
 					spawn_rebels = {
 						type = pretender_rebels
 						size = 1.5
 						leader_dynasty = "de Bourbon"
-						#_#_log = "FE-NAP:[GetYear]:[Root.GetName]:The Baronial Revolts spawned de Bourbon pretender rebels:flavor_nap.1"
 					}
+					log = "FE-NAP:[GetYear]:[Root.GetName]:The Baronial Revolts spawned de Bourbon pretender rebels:flavor_nap.1"
 				}
 			}
 		}
@@ -170,8 +170,8 @@ country_event = {
 			}
 		}
 		FROM = { hidden_effect = { set_key = { lhs = Vassal_Type value = 10 } } }
-		#_#_log = "FE-NAP:[GetYear]:[From.GetName]:abdicated during The Baronial Revolts in favor of [From.Monarch.Dynasty.GetName:flavor_nap.1"
-		#_#_log = "FE-NAP:[GetYear]:[From.GetName]:became French feudatory:flavor_nap.1"
+		log = "FE-NAP:[GetYear]:[From.GetName]:abdicated during The Baronial Revolts in favor of [From.Monarch.Dynasty.GetName:flavor_nap.1"
+		log = "FE-NAP:[GetYear]:[From.GetName]:became French feudatory:flavor_nap.1"
 		create_subject = {
 			subject_type = daimyo_vassal
 			subject = FROM

@@ -101,7 +101,7 @@ country_event = {
 			}
 		}
 		add_country_modifier = { name = GhaziGain duration = 1825 }
-		#_#_log = "FE-Ghazi:[GetYear]:[Root.GetName]:accepted all Ghazi:ghazi.1"		
+		log = "FE-Ghazi:[GetYear]:[Root.GetName]:accepted all Ghazi:ghazi.1"		
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -173,7 +173,7 @@ country_event = {
 			}
 		}
 		add_country_modifier = { name = GhaziGain duration = 1825 }
-		#_#_log = "FE-Ghazi:[GetYear]:[Root.GetName]:restricted numbers of Ghazi to 20%:ghazi.1"
+		log = "FE-Ghazi:[GetYear]:[Root.GetName]:restricted numbers of Ghazi to 20%:ghazi.1"
 		ai_chance = {
 			factor = 0
 		}
@@ -206,7 +206,7 @@ country_event = {
 			}
 		}
 		add_country_modifier = { name = ghazis_from_abroad duration = 1825 }
-		#_#_log = "FE-Ghazi:[GetYear]:[Root.GetName]:replenished their forces (inc. manpower recovery):ghazi.1"
+		log = "FE-Ghazi:[GetYear]:[Root.GetName]:replenished their forces (inc. manpower recovery):ghazi.1"
 		ai_chance = {
 			factor = 0.5
 			modifier = {
@@ -244,7 +244,7 @@ country_event = {
 				add_province_modifier = { name = faster_integration duration = 3650 }
 			}
 		}
-		#_#_log = "FE-Ghazi:[GetYear]:[Root.GetName]:sent Ghazi home in Ghazi event:ghazi.1"
+		log = "FE-Ghazi:[GetYear]:[Root.GetName]:sent Ghazi home in Ghazi event:ghazi.1"
 	}
 }
 
@@ -295,7 +295,15 @@ country_event = {
 		name = ghazi.3.a # Anatolia will be united
 		hidden_effect = { set_ruler_flag = BeylikHostile }
 		custom_tooltip = BeylikHostile_t
-		#_#_log = "FE-Ghazi:[GetYear]:[Root.GetName]:decided to focus on Anatolia:ghazi.3"
+		if = {
+			limit = {
+				OR = {
+					tag = OTT
+					tag = TUR
+				}
+			}
+			log = "FE-Ghazi:[GetYear]:[Root.GetName]:decided to focus on Anatolia:ghazi.3"
+		}
 		ai_chance = {
 			factor = 0.5
 			modifier = {
@@ -306,7 +314,7 @@ country_event = {
 				factor = 2
 				NOT = { check_key = { lhs = Anatolian_PowerGreat value = 10 } }
 			}
-			modifier = { #Ottomans after 1385 will not try to unify Anatolia
+			modifier = { #Ottomans before 1385 will not try to unify Anatolia
 				factor = 0
 				tag = OTT
 				NOT = { is_year = 1385 }
@@ -318,7 +326,15 @@ country_event = {
 		name = ghazi.3.b # We will focus on matters elsewhere
 		hidden_effect = { set_ruler_flag = BeylikFriendly }
 		custom_tooltip = BeylikFriendly_t
-		#_#_log = "FE-Ghazi:[GetYear]:[Root.GetName]:decided to focus on the efforts abroad:ghazi.3"
+		if = {
+			limit = {
+				OR = {
+					tag = OTT
+					tag = TUR
+				}
+			}
+			log = "FE-Ghazi:[GetYear]:[Root.GetName]:decided to focus on the efforts abroad:ghazi.3"
+		}
 		ai_chance = {
 			factor = 0.5
 			modifier = {
@@ -652,7 +668,7 @@ country_event = {
 	}
 	option = {
 		name = ghazi.5.b
-		#_#_log = "FE-Ghazi:[GetYear]:[Root.GetName]:refused integration into [event_target:LeadingBeylik.GetName]:ghazi.5"
+		log = "FE-Ghazi:[GetYear]:[Root.GetName]:refused integration into [event_target:LeadingBeylik.GetName]:ghazi.5"
 		ai_chance = {
 			factor = 0.1
 		}
@@ -676,7 +692,7 @@ country_event = {
 			}
 			inherit = FROM
 		}
-		#_#_log = "FE-Ghazi:[GetYear]:[Root.GetName]:as a leading beylik, integrated [From.GetName]:ghazi.6"
+		log = "FE-Ghazi:[GetYear]:[Root.GetName]:as a leading beylik, integrated [From.GetName]:ghazi.6"
 		ai_chance = {
 			factor = 100
 		}
@@ -691,7 +707,7 @@ country_event = {
 				subject_type = decentralized_vassal
 				who = FROM
 			}
-		#_#_log = "FE-Ghazi:[GetYear]:[Root.GetName]:as a leading beylik, vassalized [From.GetName]:ghazi.6"
+		log = "FE-Ghazi:[GetYear]:[Root.GetName]:as a leading beylik, vassalized [From.GetName]:ghazi.6"
 		}
 		ai_chance = {
 			factor = 0
@@ -709,7 +725,7 @@ country_event = {
 	
 	immediate = {
 		AAA = { clr_country_flag = Anatolian_PowerActive }
-		#_#_log = "FE-Ghazi:[GetYear]:[Root.GetName]:struggle for Anatolia ended:ghazi.7"
+		log = "FE-Ghazi:[GetYear]:[Root.GetName]:struggle for Anatolia ended:ghazi.7"
 	}
 	
 	option = {

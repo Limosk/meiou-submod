@@ -2,25 +2,21 @@ namespace = flavor_hsa
 namespace = hee_HSA
 
 country_event = {
-	id = flavor_hsa.1
+	id = flavor_hsa.1 #Georg Giese
 	title = "flavor_hsa.EVTNAME1"
 	desc = "flavor_hsa.EVTDESC1"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
 	trigger = {
-		tag = HSA
 		is_year = 1520
-		NOT = {
-			is_year = 1562
-		}
-		owns = 2355
+		NOT = { is_year = 1562 }
+		owns = 2355 #Gdansk/Danzig
 	}
 	mean_time_to_happen = {
 		years = 16
 	}
 	option = {
 		name = "flavor_hsa.EVTOPTA1"
-		add_adm_power = 10
 		add_prestige = 10
 		define_advisor = {
 			type = trader_BG
@@ -28,54 +24,26 @@ country_event = {
 			culture = prussian
 			skill = 3
 			location = 2355
-			discount = yes
 		}
 	}
 }
 country_event = {
-	id = flavor_hsa.2
+	id = flavor_hsa.2 #Shipbuilding technology
+	#TODO: rework, possibly tying it with skill or Ship industry efficiency, impact on relations with Low Countries tags
 	title = "flavor_hsa.EVTNAME2"
 	desc = "flavor_hsa.EVTDESC2"
 	picture = SHIP_SAILING_eventPicture
 	trigger = {
-		tag = HSA
-		NOT = {
-			is_year = 1500
-		}
-		owns = 2355
-		owns = 45
-		NOT = {
-			has_ruler_modifier = hsa_stop_shipbuilding_technology
-		}
-		NOT = {
-			has_ruler_modifier = hsa_spread_shipbuilding_technology
-		}
-		NED = {
-			NOT = {
-				has_opinion = {
-					who = ROOT
-					value = 50
-				}
-			}
-			NOT = {
-				junior_union_with = ROOT
-			}
-			NOT = {
-				senior_union_with = ROOT
-			}
-			NOT = {
-				vassal_of = ROOT
-			}
-			NOT = {
-				overlord_of = ROOT
-			}
-			NOT = {
-				alliance_with = ROOT
-			}
+		NOT = { is_year = 1500 }
+		owns = 45 #Lubeck
+		NOT = { has_ruler_modifier = hsa_stop_shipbuilding_technology }
+		NOT = { has_ruler_modifier = hsa_spread_shipbuilding_technology }
+		90 = { #Brugge
+			check_key = { lhs = TN_ProvSply23 value = 40 } #Naval output
 		}
 	}
 	mean_time_to_happen = {
-		years = 166
+		years = 50
 	}
 	option = {
 		name = "flavor_hsa.EVTOPTA2"
@@ -91,25 +59,18 @@ country_event = {
 	}
 }
 country_event = {
-	id = flavor_hsa.3
+	id = flavor_hsa.3 #Tagfahrt
+	#TODO: rework
 	title = "flavor_hsa.EVTNAME3"
 	desc = "flavor_hsa.EVTDESC3"
 	picture = ELECTION_REPUBLICAN_eventPicture
 	is_triggered_only = yes
 	trigger = {
 		tag = HSA
-		NOT = {
-			stability = 1
-		}
-		NOT = {
-			has_ruler_modifier = hsa_trade_reform
-		}
-		NOT = {
-			has_ruler_modifier = hsa_economic_reform
-		}
-		NOT = {
-			has_ruler_modifier = hsa_military_reform
-		}
+		NOT = { stability = 1 }
+		NOT = { has_ruler_modifier = hsa_trade_reform }
+		NOT = { has_ruler_modifier = hsa_economic_reform }
+		NOT = { has_ruler_modifier = hsa_military_reform }
 	}
 	option = {
 		name = "flavor_hsa.EVTOPTA3"
@@ -131,28 +92,27 @@ country_event = {
 	}
 }
 country_event = {
-	id = flavor_hsa.4
+	id = flavor_hsa.4 #Heinrich Sudermann
 	title = "flavor_hsa.EVTNAME4"
 	desc = "flavor_hsa.EVTDESC4"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
 	trigger = {
-		tag = HSA
-		is_year = 1556
-		NOT = {
-			is_year = 1591
+		OR = {
+			tag = HSA
+			AND = {
+				tag = FRL
+				is_trade_league_leader = yes
+			}
 		}
+		is_year = 1556
+		NOT = { is_year = 1591 }
 	}
 	mean_time_to_happen = {
 		years = 16
-		modifier = {
-			factor = 0.8
-			owns = 85
-		}
 	}
 	option = {
 		name = "flavor_hsa.EVTOPTA4"
-		add_dip_power = 100
 		define_advisor = {
 			type = statesman_BG
 			name = "Heinrich Sudermann"
@@ -163,19 +123,30 @@ country_event = {
 	}
 }
 country_event = {
-	id = hee_HSA.1
+	id = hee_HSA.1 #Hamburg Invites the English
 	title = hee_HSA.1.t
 	desc = hee_HSA.1.d
 	picture = CORRUPTION_eventPicture
 	fire_only_once = yes
 	trigger = {
-		tag = HSA
-		is_year = 1550
-		NOT = {
-			is_year = 1600
-		}
 		owns_core_province = 44
-		num_of_loans = 1
+		OR = {
+			tag = HSA
+			is_in_trade_league_with = FRL #Lubeck
+			is_in_trade_league_with = HSA
+			is_trade_league_leader = yes
+		}
+		is_year = 1550
+		NOT = { is_year = 1600 }
+		OR = {
+			num_of_loans = 1
+			war_exhaustion = 6
+		}
+		OR = {
+			exists = ENG
+			exists = GBR
+			exists = UEF
+		}
 	}
 	mean_time_to_happen = {
 		years = 20
@@ -204,12 +175,13 @@ country_event = {
 		ai_chance = {
 			factor = 25
 		}
-		add_treasury = 30
+		#TODO: transfer of wealth between residents of London and Hamburg instead of treasury injection?
+		add_treasury = 75
 		44 = {
 			add_local_autonomy = 30
 			add_province_modifier = {
 				name = hee_english_hamburg
-				duration = 3650
+				duration = 10390 #30 years
 			}
 		}
 	}
@@ -219,9 +191,19 @@ country_event = {
 			factor = 75
 			modifier = {
 				factor = 5
-				has_opinion = {
-					who = ENG
-					value = 100
+				OR = {
+					has_opinion = {
+						who = ENG
+						value = 100
+					}
+					has_opinion = {
+						who = GBR
+						value = 100
+					}
+					has_opinion = {
+						who = UEF
+						value = 100
+					}
 				}
 			}
 		}
@@ -231,9 +213,29 @@ country_event = {
 				duration = 3650
 			}
 		}
-		reverse_add_opinion = {
-			who = ENG
-			modifier = hee_english_rejected
+		random_country = {
+			limit = {
+				OR = {
+					AND = {
+						tag = ENG
+						NOT = {
+							exists = GBR
+						}
+					}
+					tag = GBR
+					AND = {
+						tag = UEF
+						NOT = {
+							exists = GBR
+							exists = ENG
+						} 
+					}
+				}
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = hee_english_rejected
+			}
 		}
 	}
 }

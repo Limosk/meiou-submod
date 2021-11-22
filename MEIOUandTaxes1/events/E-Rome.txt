@@ -10,19 +10,27 @@ country_event = {
 	
 	trigger = {
 		owns = 1402
+		NOT = { primary_culture = greek }
 		OR = {
 			is_institution_enabled = Nationalism
 			exists = GRE
 		}
 		NOT = { exists = BYZ }
-		NOT = { exists = ROM }
-		NOT = { primary_culture = greek }
+		NOT = { 
+			AND = {
+				ROM = { #Roman Empire
+					exists = yes
+					num_of_provinces_in_states = 10 #not to be blocked by ROM tag from secularization of the Papal States
+				}
+			}
+		} 
 	}
 	mean_time_to_happen = {
 		years = 5
 	}
 	option = {
 		name = Rome.001.a
+		log = "FE-Rome:[GetYear]:[Root.GetName]:Culture switch of Greek provinces, BYZ cores removed, GRE cores set:Rome.001"
 		every_province = {
 			limit = {
 				is_core = BYZ

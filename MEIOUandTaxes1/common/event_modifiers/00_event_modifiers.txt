@@ -1601,6 +1601,10 @@ diplo_fuax_pas = {
 	diplomatic_reputation = -2
 }
 
+ignored_aggrements = {
+	diplomatic_reputation = -2
+}
+
 mercenaries_to_the_standard = {
 	# possible_mercenaries = 0.5
 }

@@ -797,8 +797,9 @@ Do_InvestAI = {
                 set_key = { lhs = Tmp_9 which = PREV }
             }
         }
-        if = { # if investment is higher than 75
+         if = { # if investment is higher than 75
             limit = {
+				NOT = { is_year = 1450 }
                 check_key = { lhs = $return$ value = 75 }
             }
                 # re calculate residual budget
@@ -814,6 +815,62 @@ Do_InvestAI = {
             }
             
             set_key = { lhs = $return$ value = 75 }
+        }
+		else_if = { # if investment is higher than 100
+            limit = {
+				NOT = { is_year = 1550 }
+                check_key = { lhs = $return$ value = 100 }
+            }
+                # re calculate residual budget
+            set_key = { lhs = Tmp_0 which = $return$ }
+            subtract_key = { lhs = Tmp_0 value = 100 }
+            
+                # add it to new residual
+            change_key = { lhs = Tmp_9 which = Tmp_0 }
+            
+                # set it to owner
+            PREV = {
+                set_key = { lhs = Tmp_9 which = PREV }
+            }
+            
+            set_key = { lhs = $return$ value = 100 }
+        }
+		else_if = { # if investment is higher than 150
+            limit = {
+				NOT = { is_year = 1650 }
+                check_key = { lhs = $return$ value = 150 }
+            }
+                # re calculate residual budget
+            set_key = { lhs = Tmp_0 which = $return$ }
+            subtract_key = { lhs = Tmp_0 value = 150 }
+            
+                # add it to new residual
+            change_key = { lhs = Tmp_9 which = Tmp_0 }
+            
+                # set it to owner
+            PREV = {
+                set_key = { lhs = Tmp_9 which = PREV }
+            }
+            
+            set_key = { lhs = $return$ value = 150 }
+        }
+		else_if = { # if investment is higher than 200
+            limit = {
+				check_key = { lhs = $return$ value = 200 }
+            }
+                # re calculate residual budget
+            set_key = { lhs = Tmp_0 which = $return$ }
+            subtract_key = { lhs = Tmp_0 value = 200 }
+            
+                # add it to new residual
+            change_key = { lhs = Tmp_9 which = Tmp_0 }
+            
+                # set it to owner
+            PREV = {
+                set_key = { lhs = Tmp_9 which = PREV }
+            }
+            
+            set_key = { lhs = $return$ value = 200 }
         }
         
         ##Investment happens
@@ -891,6 +948,7 @@ Do_Invest_Player = {
         }
         if = { # if investment is higher than 75
             limit = {
+				NOT = { is_year = 1450 }
                 check_key = { lhs = $return$ value = 75 }
             }
                 # re calculate residual budget
@@ -907,6 +965,63 @@ Do_Invest_Player = {
             
             set_key = { lhs = $return$ value = 75 }
         }
+		else_if = { # if investment is higher than 
+            limit = {
+				NOT = { is_year = 1550 }
+                check_key = { lhs = $return$ value = 100 }
+            }
+                # re calculate residual budget
+            set_key = { lhs = Tmp_0 which = $return$ }
+            subtract_key = { lhs = Tmp_0 value = 100 }
+            
+                # add it to new residual
+            change_key = { lhs = Tmp_9 which = Tmp_0 }
+            
+                # set it to owner
+            PREV = {
+                set_key = { lhs = Tmp_9 which = PREV }
+            }
+            
+            set_key = { lhs = $return$ value = 100 }
+        }
+		else_if = { # if investment is higher than 
+            limit = {
+				NOT = { is_year = 1650 }
+                check_key = { lhs = $return$ value = 150 }
+            }
+                # re calculate residual budget
+            set_key = { lhs = Tmp_0 which = $return$ }
+            subtract_key = { lhs = Tmp_0 value = 150 }
+            
+                # add it to new residual
+            change_key = { lhs = Tmp_9 which = Tmp_0 }
+            
+                # set it to owner
+            PREV = {
+                set_key = { lhs = Tmp_9 which = PREV }
+            }
+            
+            set_key = { lhs = $return$ value = 150 }
+        }
+		else_if = { # if investment is higher than 75
+            limit = {
+				check_key = { lhs = $return$ value = 200 }
+            }
+                # re calculate residual budget
+            set_key = { lhs = Tmp_0 which = $return$ }
+            subtract_key = { lhs = Tmp_0 value = 200 }
+            
+                # add it to new residual
+            change_key = { lhs = Tmp_9 which = Tmp_0 }
+            
+                # set it to owner
+            PREV = {
+                set_key = { lhs = Tmp_9 which = PREV }
+            }
+            
+            set_key = { lhs = $return$ value = 200 }
+        }
+		
         
         ##Investment happens
         change_key = { lhs = Building_$type$Wealth which = $return$ }

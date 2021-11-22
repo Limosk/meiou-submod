@@ -59,6 +59,7 @@ country_event = {
 	
 	option = {
 		name = "OPT.EXCELLENT"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:annexed [From.GetName] (AI event):red_turban.2"
 		FROM = {
 			if = {
 				limit = {
@@ -103,6 +104,7 @@ country_event = {
 	
 	option = {
 		name = "red_turban.3a"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:lost southwest_china_superregion:red_turban.3"
 		southwest_china_superregion = {
 			limit = {
 				is_city = yes
@@ -140,6 +142,8 @@ country_event = {
 	
 	option = {
 		name = "red_turban.3a"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:lost east_china_superregion:red_turban.4"
+
 		east_china_superregion = {
 			limit = {
 				is_city = yes
@@ -176,6 +180,8 @@ country_event = {
 	
 	option = {
 		name = "red_turban.3a"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:lost north_china_superregion:red_turban.5"
+
 		north_china_superregion = {
 			limit = {
 				is_city = yes
@@ -243,6 +249,8 @@ country_event = {
 	
 	option = {
 		name = "red_turban.3a"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:Administration dissolved:red_turban.6"
+
 		steppe_effect = yes
 		change_religion = tengri_pagan_reformed
 		if = {
@@ -278,6 +286,7 @@ country_event = {
 				isValidCountry = yes
 			}
 			grant_independence = yes
+			log = "FE-Red Turbans:[GetYear]:[Root.GetName]:granted independence to warlord [This.GetName]:red_turban.6"
 		}
 		if = {
 			limit = {
@@ -343,6 +352,7 @@ country_event = {
 				who = MXI
 				subject_type = warlord
 			}
+			log = "FE-Red Turbans:[GetYear]:[Root.GetName]:released Urianqad as warlord:red_turban.6"
 			MXI = {
 				hidden_effect = { steppe_effect = yes }
 				define_ruler = {
@@ -591,6 +601,7 @@ country_event = {
 	
 	option = {
 		name = "red_turban.7a"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:Empire dissolved, hide among the Khalkha:red_turban.7"
 		release = TMD
 		hidden_effect = { TMD = { steppe_effect = yes } }
 		release = CHH
@@ -712,6 +723,7 @@ country_event = {
 	}
 	option = {
 		name = "red_turban.7b"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:Empire dissolved, hide among the Chakhar:red_turban.7"
 		release = TMD
 		hidden_effect = { TMD = { steppe_effect = yes } }
 		release = KHA
@@ -833,6 +845,7 @@ country_event = {
 	}
 	option = {
 		name = "red_turban.7c"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:Empire dissolved, hide among the Tumed:red_turban.7"
 		release = KHA
 		hidden_effect = { KHA = { steppe_effect = yes } }
 		release = CHH
@@ -954,6 +967,7 @@ country_event = {
 	}
 	option = {
 		name = "red_turban.7d"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:Empire dissolved, hide among the Oirad:red_turban.7"
 		trigger = {
 			NOT = { exists = OIR }
 		}
@@ -1057,6 +1071,7 @@ country_event = {
 	}
 	option = {
 		name = "red_turban.7e"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:Empire dissolved, hide among the Buryaad:red_turban.7"
 		trigger = {
 			NOT = { exists = BRT }
 		}
@@ -1160,6 +1175,7 @@ country_event = {
 	}
 	option = {
 		name = "red_turban.7f"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:Empire dissolved, hide among the Uriankhad:red_turban.7"
 		trigger = {
 			NOT = { exists = MXI }
 		}
@@ -1217,6 +1233,7 @@ country_event = {
 	}
 	option = {
 		name = "red_turban.7g"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:Empire dissolved, hide in Kara Del:red_turban.7"
 		trigger = {
 			NOT = { exists = HMI }
 		}
@@ -1345,7 +1362,8 @@ country_event = {
 	}
 	
 	option = {
-		name = "red_turban.3a"
+		name = "red_turban.8a"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:Empire prevailed:red_turban.8"
 		remove_country_modifier = mongol_xingsheng
 		every_subject_country = {
 			limit = {
@@ -1606,6 +1624,7 @@ country_event = {
 	
 	option = {
 		name = "red_turban.13a"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:decided not to change government type:red_turban.13"
 		trigger = {
 			NOT = { has_country_flag = sinification }
 		}
@@ -1630,6 +1649,8 @@ country_event = {
 	}
 	option = {
 		name = "red_turban.13b"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:changed government type, relying on scholars:red_turban.13"
+
 		chinese_government_change = yes
 		hidden_effect = {
 			Rights_NOGov4Apply = yes
@@ -1650,6 +1671,7 @@ country_event = {
 	}
 	option = {
 		name = "red_turban.13c"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:changed government type, relying on aristocracy:red_turban.13"
 		chinese_government_change = yes
 		hidden_effect = {
 			Rights_NOGov3Apply = yes
@@ -1673,6 +1695,7 @@ country_event = {
 	}
 	option = {
 		name = "red_turban.13d"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:changed government type, relying on bureaucracts:red_turban.13"
 		chinese_government_change = yes
 		hidden_effect = {
 			Rights_NOGov4Apply = yes
@@ -1712,6 +1735,7 @@ country_event = {
 	# }
 	option = {
 		name = "red_turban.13f"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:changed government type, relying on people:red_turban.13"
 		chinese_government_change = yes
 		hidden_effect = {
 			Rights_NOGov4Apply = yes
@@ -1778,6 +1802,8 @@ country_event = {
 	
 	option = { #Surrender
 		name = "red_turban.14a"
+		#_log = "FE-Red Turbans:[GetYear]:[Root.GetName]:surrendered:red_turban.14"
+
 		if = {
 			limit = {
 				has_saved_event_target = white_lotus_tag
@@ -1833,6 +1859,7 @@ country_event = {
 				}
 				add_core = controller
 				cede_province = controller
+				controller = { log = "[This.GetName] won" }
 			}
 			if = {
 				limit = {
@@ -1954,6 +1981,7 @@ country_event = {
 						owned_by = ROOT
 					}
 					cede_province = PREV
+					controller = { log = "[Prev.GetName] won the war" }
 				}
 			}
 		}
@@ -1964,6 +1992,7 @@ country_event = {
 	
 	option = { #Fight on - player only
 		name = "red_turban.14b"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:refused surrendered to claimant:red_turban.14"
 		ai_chance = {
 			factor = 0
 		}
@@ -1981,6 +2010,7 @@ country_event = {
 	
 	option = {
 		name = "red_turban.15a"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:ceded their provinces to MXI:red_turban.15"
 		MXI = {
 			every_province = {
 				limit = {
@@ -1999,6 +2029,7 @@ country_event = {
 	}
 	option = {
 		name = "red_turban.15b"
+		log = "FE-Red Turbans:[GetYear]:[Root.GetName]:refused to cede their provinces to MXI:red_turban.15"
 		liaoning_area = {
 			add_claim = MXI
 		}

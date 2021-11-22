@@ -75,12 +75,13 @@ castilian_civil_war = {
 		events = {
 		}
 		random_events = {
-			124 = 0
+			93 = 0
 			5 = castilian_civil_war.13
 			5 = castilian_civil_war.18
 			5 = castilian_civil_war.21
 			5 = castilian_civil_war.30
 			1 = castilian_civil_war.2 #Civil War Spreads to Province
+			6 = castilian_civil_war.22 #War dynamism event, used to be MTTH 12 months
 		}
 	}
 }

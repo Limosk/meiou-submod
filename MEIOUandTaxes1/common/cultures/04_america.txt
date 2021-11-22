@@ -120,7 +120,7 @@ je = {
 		}
 	}
 }
-andean_american = {
+andean_group = {
 	graphical_culture = southamericagfx
 	
 	quechuan = {

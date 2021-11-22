@@ -72,7 +72,7 @@ country_event = {
 					days = 0
 				}
 			}
-			#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:asked Poland for protection against Russian neighbor:flavor_lvo.001"
+			log = "FE-LVO:[GetYear]:[Root.GetName]:asked Poland for protection against Russian neighbor:flavor_lvo.001"
 		}
 		if = {
 			limit = {
@@ -93,7 +93,7 @@ country_event = {
 					days = 0
 				}
 			}
-			#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:asked Lithuania for protection against Russian neighbor:flavor_lvo.001"
+			log = "FE-LVO:[GetYear]:[Root.GetName]:asked Lithuania for protection against Russian neighbor:flavor_lvo.001"
 		}
 		if = {
 			limit = {
@@ -107,7 +107,7 @@ country_event = {
 					days = 0
 				}
 			}
-			#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:asked Commowealth for protection against Russian neighbor:flavor_lvo.001"
+			log = "FE-LVO:[GetYear]:[Root.GetName]:asked Commowealth for protection against Russian neighbor:flavor_lvo.001"
 		}
 	}
 	option = {
@@ -118,7 +118,7 @@ country_event = {
 		set_global_flag = livonian_war
 		Stab_Subtract4 = yes
 		add_prestige = 10
-		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:decided not to ask for protection against Russian neighbor:flavor_lvo.001"
+		log = "FE-LVO:[GetYear]:[Root.GetName]:decided not to ask for protection against Russian neighbor:flavor_lvo.001"
 	}
 }
 country_event = {
@@ -141,7 +141,7 @@ country_event = {
 				days = 0
 			}
 		}
-		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:gave [From.GetName] protection against Russian neighbor:flavor_lvo.002"
+		log = "FE-LVO:[GetYear]:[Root.GetName]:gave [From.GetName] protection against Russian neighbor:flavor_lvo.002"
 	}
 	option = {
 		name = "flavor_lvo.002.b"
@@ -151,7 +151,7 @@ country_event = {
 				days = 0
 			}
 		}		
-		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:refused to give [From.GetName] protection against Russian neighbor:flavor_lvo.002"
+		log = "FE-LVO:[GetYear]:[Root.GetName]:refused to give [From.GetName] protection against Russian neighbor:flavor_lvo.002"
 		
 		ai_chance = {
 			factor = 10
@@ -216,7 +216,7 @@ country_event = {
 			casus_belli = cb_conquest
 		}
 		set_global_flag = livonian_war_decided
-		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:started Livonian war:flavor_lvo.004"
+		log = "FE-LVO:[GetYear]:[Root.GetName]:started Livonian war:flavor_lvo.004"
 	}
 	option = {
 		name = "flavor_lvo.004.b" #We will not act..
@@ -225,7 +225,7 @@ country_event = {
 		}
 		add_prestige = -25
 		set_global_flag = livonian_war_decided
-		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:declined to start Livonian war:flavor_lvo.004"
+		log = "FE-LVO:[GetYear]:[Root.GetName]:declined to start Livonian war:flavor_lvo.004"
 	}
 	option = {
 		name = "flavor_lvo.004.c" #We will not act, yet (claims)
@@ -250,7 +250,7 @@ country_event = {
 		}
 		add_prestige = -5
 		set_global_flag = livonian_war_decided
-		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:declined to start Livonian war, but claimed the land:flavor_lvo.004"
+		log = "FE-LVO:[GetYear]:[Root.GetName]:declined to start Livonian war, but claimed the land:flavor_lvo.004"
 	}
 }
 country_event = {
@@ -304,7 +304,7 @@ country_event = {
 	}
 	option = {
 		name = "flavor_lvo.005.a"
-		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:Estonian provinces defected to Sweden:flavor_lvo.005"
+		log = "FE-LVO:[GetYear]:[Root.GetName]:Estonian provinces defected to Sweden:flavor_lvo.005"
 		every_owned_province = {
 			limit = {
 				area = estonia_ingria_area
@@ -421,7 +421,7 @@ country_event = {
 				add_core = EST
 			}
 		}
-		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:Osel was sold to Danish King:flavor_lvo.006"
+		log = "FE-LVO:[GetYear]:[Root.GetName]:Osel was sold to Danish King:flavor_lvo.006"
 
 		if = {
 			limit = {
@@ -525,7 +525,7 @@ country_event = {
 				}
 			}
 		}
-		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:Pilten was sold to Danish King:flavor_lvo.007"
+		log = "FE-LVO:[GetYear]:[Root.GetName]:Pilten was sold to Danish King:flavor_lvo.007"
 
 		if = {
 			limit = {
@@ -621,7 +621,7 @@ country_event = {
 			}
 			change_primary_culture = latvian
 		}
-		#_#_log = "FE-LVO:[GetYear]:[Root.GetName]:Formation of Latvian culture:flavor_lvo.008"
+		log = "FE-LVO:[GetYear]:[Root.GetName]:Formation of Latvian culture:flavor_lvo.008"
 		
 		ai_chance = {
 			factor = 100

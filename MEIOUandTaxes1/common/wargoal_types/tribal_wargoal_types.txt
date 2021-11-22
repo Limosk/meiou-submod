@@ -9,7 +9,7 @@ tribal_raid = {
 		is_core = ROOT
 	}
 	
-	allowed_provinces_are_eligible = yes
+	#allowed_provinces_are_eligible = yes
 	
 	peace_options = {
 		po_demand_provinces

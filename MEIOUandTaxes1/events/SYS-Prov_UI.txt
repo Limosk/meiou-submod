@@ -2673,7 +2673,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -2756,7 +2756,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -2825,7 +2825,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -2886,7 +2886,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -2947,7 +2947,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -3012,7 +3012,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -3080,7 +3080,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -3154,7 +3154,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -3210,7 +3210,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -3266,7 +3266,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -3326,7 +3326,7 @@ country_event = {
 				}
 			}	
 			modifier = { 
-				factor = 0.25
+				factor = 0.75
 				OR = {
 					has_country_flag = AI_Interaction_IncLoyNO_LowInterest
 					has_country_flag = AI_Interaction_stability_LowInterest
@@ -5095,11 +5095,12 @@ country_event = {
 
 			modifier = {
 				factor = 0
-				# if there is no need to increase loyalty, do not use the interaction
+				# if there is no need to increase loyalty or relations, do not use the interaction
 				NOT = { has_country_flag = AI_Interaction_IncLoyNO_HighInterest }
 				NOT = { has_country_flag = AI_Interaction_IncLoyNO_MedInterest }
 				NOT = { has_country_flag = AI_Interaction_IncLoyNO_LowInterest }
 				NOT = { Rights_AIReadyToReform = yes }
+				NOT = {	check_key = { lhs = NO_RelationState value = -50 } }
 			}
 
 			modifier = {

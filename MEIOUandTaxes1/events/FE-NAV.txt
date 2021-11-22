@@ -61,7 +61,7 @@ country_event = {
 	}
 	option = {
 		name = hee_NAV.1.a
-		#_#_log = "FE-NAV:[GetYear]:[Root.GetName]:offered to become junior partner of [ARA.GetName]:hee_NAV.1"
+		log = "FE-NAV:[GetYear]:[Root.GetName]:offered to become junior partner of [ARA.GetName]:hee_NAV.1"
 		ai_chance = {
 			factor = 90
 		}
@@ -73,7 +73,7 @@ country_event = {
 	}
 	option = {
 		name = hee_NAV.1.b
-		#_#_log = "FE-NAV:[GetYear]:[Root.GetName]:have not offered to become junior partner of [ARA.GetName]:hee_NAV.1"
+		log = "FE-NAV:[GetYear]:[Root.GetName]:have not offered to become junior partner of [ARA.GetName]:hee_NAV.1"
 		ai_chance = {
 			factor = 10
 		}
@@ -92,7 +92,7 @@ country_event = {
 		ai_chance = {
 			factor = 100
 		}
-		#_#_log = "FE-NAV:[GetYear]:[Root.GetName]:created union with [NAV.GetName]:hee_NAV.2"
+		log = "FE-NAV:[GetYear]:[Root.GetName]:created union with [NAV.GetName]:hee_NAV.2"
 		create_union = NAV
 	}
 
@@ -102,7 +102,7 @@ country_event = {
 			factor = 0
 		}
 		add_legitimacy = -5
-		#_#_log = "FE-NAV:[GetYear]:[Root.GetName]:rejected union with [NAV.GetName]:hee_NAV.2"
+		log = "FE-NAV:[GetYear]:[Root.GetName]:rejected union with [NAV.GetName]:hee_NAV.2"
 		NAV = {
 			country_event = {
 				id = hee_NAV.3
@@ -206,7 +206,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = hee_NAV.5.a
-		#_#_log = "FE-NAV:[GetYear]:[NAV.GetName]:pretender organises against senior partner rule ([Root.GetName]):hee_NAV.5"
+		log = "FE-NAV:[GetYear]:[NAV.GetName]:pretender organises against senior partner rule ([Root.GetName]):hee_NAV.5"
 	}
 }
 country_event = {
@@ -268,8 +268,8 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = hee_NAV.7.a
-		#_#_log = "FE-NAV:[GetYear]:[NAV.GetName]:pretender organises against senior partner rule ([Root.GetName]):hee_NAV.7"
-		#_#_log = "FE-NAV:[GetYear]:[Root.GetName]:decided to treat [NAV.GetName] harshly:hee_NAV.7"
+		log = "FE-NAV:[GetYear]:[NAV.GetName]:pretender organises against senior partner rule ([Root.GetName]):hee_NAV.7"
+		log = "FE-NAV:[GetYear]:[Root.GetName]:decided to treat [NAV.GetName] harshly:hee_NAV.7"
 		ai_chance = {
 			factor = 85
 		}
@@ -306,8 +306,8 @@ country_event = {
 		ai_chance = {
 			factor = 15
 		}
-		#_#_log = "FE-NAV:[GetYear]:[NAV.GetName]:pretender organises against senior partner rule ([Root.GetName]):hee_NAV.7"
-		#_#_log = "FE-NAV:[GetYear]:[Root.GetName]:abdicated in favour of heir ([Root.Heir.GetName]) to secure both thrones:hee_NAV.7"
+		log = "FE-NAV:[GetYear]:[NAV.GetName]:pretender organises against senior partner rule ([Root.GetName]):hee_NAV.7"
+		log = "FE-NAV:[GetYear]:[Root.GetName]:abdicated in favour of heir ([Root.Heir.GetName]) to secure both thrones:hee_NAV.7"
 		kill_ruler = yes
 		NAV = {
 			country_event = {
@@ -321,9 +321,9 @@ country_event = {
 		ai_chance = {
 			factor = 15
 		}
-		#_#_log = "FE-NAV:[GetYear]:[NAV.GetName]:pretender organises against senior partner rule ([Root.GetName]):hee_NAV.7"
-		#_#_log = "FE-NAV:[GetYear]:[Root.GetName]:gave [NAV.GetName] to Carlos de Trastamara:hee_NAV.7"
-		#_#_log = "FE-NAV:[GetYear]:[Root.GetName]:union with [NAV.GetName] ended:hee_NAV.7"
+		log = "FE-NAV:[GetYear]:[NAV.GetName]:pretender organises against senior partner rule ([Root.GetName]):hee_NAV.7"
+		log = "FE-NAV:[GetYear]:[Root.GetName]:gave [NAV.GetName] to Carlos de Trastamara:hee_NAV.7"
+		log = "FE-NAV:[GetYear]:[Root.GetName]:union with [NAV.GetName] ended:hee_NAV.7"
 		break_union = NAV
 		NAV = {
 			define_ruler = {

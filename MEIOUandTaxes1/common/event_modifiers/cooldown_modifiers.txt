@@ -33,3 +33,5 @@ tributary_timer = { }
 religious_uprising_cooldown = { }
 
 bur_succession_cooldown = { }
+
+iron_crown_refused = { }

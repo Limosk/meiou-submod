@@ -9,7 +9,7 @@ add_core = PTN
 
 capital = "Sambas"
 trade_goods = rice #FB too much clove
-culture = malayan
+culture = bornean
 religion = vajrayana
 
 hre = no

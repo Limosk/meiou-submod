@@ -2,6 +2,7 @@ country_decisions = {
 	burgundy_artois_marriage = {
 		potential = {
 			tag = BUR
+			NOT = { is_lesser_in_union = yes }
 			is_female = no
 			NOT = { has_country_modifier = expansion_trough_marriage }
 			exists = ARS
@@ -45,6 +46,7 @@ country_decisions = {
 	burgundy_flanders_marriage = {
 		potential = {
 			tag = BUR
+			NOT = { is_lesser_in_union = yes }
 			is_female = no
 			NOT = { has_country_modifier = expansion_trough_marriage }
 			exists = FLA
@@ -81,6 +83,7 @@ country_decisions = {
 	burgundy_hainaut_marriage = {
 		potential = {
 			tag = BUR
+			NOT = { is_lesser_in_union = yes }
 			is_female = no
 			NOT = { has_country_modifier = expansion_trough_marriage }
 			exists = HAI
@@ -117,6 +120,7 @@ country_decisions = {
 	burgundy_brabant_marriage = {
 		potential = {
 			tag = BUR
+			NOT = { is_lesser_in_union = yes }
 			is_female = no
 			NOT = { has_country_modifier = expansion_trough_marriage }
 			exists = BRB
@@ -153,6 +157,7 @@ country_decisions = {
 	burgundy_holland_marriage = {
 		potential = {
 			tag = BUR
+			NOT = { is_lesser_in_union = yes }
 			is_female = no
 			NOT = { has_country_modifier = expansion_trough_marriage }
 			exists = HOL
@@ -189,6 +194,7 @@ country_decisions = {
 	burgundy_utrecht_marriage = {
 		potential = {
 			tag = BUR
+			NOT = { is_lesser_in_union = yes }
 			is_female = no
 			NOT = { has_country_modifier = expansion_trough_marriage }
 			exists = UTR
@@ -225,6 +231,7 @@ country_decisions = {
 	burgundy_gelre_marriage = {
 		potential = {
 			tag = BUR
+			NOT = { is_lesser_in_union = yes }
 			is_female = no
 			NOT = { has_country_modifier = expansion_trough_marriage }
 			exists = GEL
@@ -261,6 +268,7 @@ country_decisions = {
 	burgundy_friesland_marriage = {
 		potential = {
 			tag = BUR
+			NOT = { is_lesser_in_union = yes }
 			is_female = no
 			NOT = { has_country_modifier = expansion_trough_marriage }
 			exists = FRI
@@ -297,6 +305,7 @@ country_decisions = {
 	burgundy_luxembourg_marriage = {
 		potential = {
 			tag = BUR
+			NOT = { is_lesser_in_union = yes }
 			is_female = no
 			NOT = { has_country_modifier = expansion_trough_marriage }
 			exists = LUX

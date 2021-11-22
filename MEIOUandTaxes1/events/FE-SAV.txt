@@ -9,7 +9,7 @@ country_event = {
 
 	option = {
 		name = hee_SAV.2.a
-		#_#_log = "FE-SAV:[GetYear]:[Root.GetName]:created a standing army:hee_SAV.2"
+		log = "FE-SAV:[GetYear]:[Root.GetName]:created a standing army:hee_SAV.2"
 	}
 }
 # country_event = {
