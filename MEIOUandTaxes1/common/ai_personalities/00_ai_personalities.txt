@@ -592,11 +592,13 @@ ai_militarist = {
 		}
 		modifier = { 
 			factor = 0.5
-<<<<<<< HEAD
 			culture_group = andean_group
-			NOT = { is_year = 1400 }
-			NOT = { tag = CZC }
-=======
+			NOT = { 
+				is_year = 1400
+			}
+			NOT = { 
+				tag = CZC
+			}
 			culture_group = andean_american
 			NOT = { 
 				is_year = 1400
@@ -604,7 +606,6 @@ ai_militarist = {
 			NOT = { 
 				tag = CZC
 			}
->>>>>>> submod
 		}
 		modifier = { 
 			factor = 0.75

@@ -6274,51 +6274,6 @@ greek_group = {
 			Palaiologos
 		}
 	}
-	cappadocian = {
-		male_names = {
-			Aineias Alexandros Alexios Ambrosios Andronikos Aristoteles
-			Bartholomaios Basileios
-			Caesar Chrysanthos Constans Constantine Constantius Cosmas Cyril
-			David Diogenes Dionysos
-			Eirenaios Elpidios
-			Georgios Gregorios
-			Hektor Herakles Hermes Hippolytos Hypatios
-			Iakobos Iason Ignatios Ignatius Innokentios Ioannes Ioannikios Iordanes Ioseph Iosephos Ioulianos Ioustinianos Ioustinos Isaakios Isaias Isidoros
-			Jacob John Joseph Julian Justin Justinian
-			Kaisarios Kallinikos Kallistos Kastor Komitas Konstantinos Konstantios Konstas Kosmas Kreon Kyriakos Kyrillos Kyros
-			Laurence Laurentios Lazaros Leo Leon Leontios Leontius Loukas
-			Magnus Makarios Manuel Marcus Markos Matthaios Matthew Maurikios Maximos Maximus Megistos Meletios Methodios Michael
-			Narses Neophytos Nestor Nicholas Nikephoros Niketas Nikodemos Nikolaos Nikomedes Niphon
-			Orestes
-			Palaemon Pamphilios Pankratios Pantoleon Paschalis Paul Pavlos Pelagios Pelagius Peter Petros Philaretos Philemon Philip Philippos Philotheos Phokas Photios Polykarpos Porphyrios Procopius Prokopios Pyrros
-			Raphail Roman Romanos
-			Sabas Samuel Sebastian Sebastianos Serapion Sergios Sergius Simon Skantarios Staurakios Stefanos Stephanos Stephen Symeon Symmachos Symmachus
-			Theocharistos Theodat Theodore Theodoros Theodosios Theodotos Theodoulos Theoktistos Theophanes Theophilos Theophylaktos Thomas Tiberios Tiberius Timotheos Traianos Trajan Tryphon
-			Valerios Valerius
-			Zacharias Zenobios Zenon
-		}
-		female_names = {
-			Agape
-			Leontia
-			Marcia Margaret Margarita Maria Markia Martha Melisende Melissa
-			Nikarete Nikoletta Nonna
-			Parthena Paulina Pavlina Pelagia Petronia Philippa Photine Phyllis Pulcheria
-			Rhodanthe Romane Romylia
-			Sergia Sibylla Simonis Sophia Sotiria Stephania
-			Thekla Theochariste Theodora Theodosia Theognosia Theoktiste Theophano Thomais
-			Valeria Viviana
-			Xene
-			Zenobia
-		}
-		dynasty_names = {
-			Angelos
-			Doukas
-			Kantakouzenos
-			Komnenos
-			Laskaris
-			Palaiologos
-		}
-	}
 	aromanian = {
 		dynasty_names = {
 			Basarab
@@ -6401,52 +6356,60 @@ greek_group = {
 	}
 	greek_colonial = {
 	}
-	
-	grecanici = { 
-	
+	albanian_roman = {
 	}
-	
-	sikelianoi = {
-	
+	south_slavic_roman = {
 	}
-	
-	slavoi = {
-	
+	romanian_roman = {
 	}
-	
-	vlachoi = {
-	
+	hungarian_roman = {
 	}
-	
-	suroi = {
-	
+	georgian_roman = {
 	}
-	
-	armenioi = {
-	
+	armenian_roman = {
 	}
-	
-	georgianoi = {
-	
+	persian_roman = {
 	}
-	
-	perses = {
-	
+	aramaic_roman = {
 	}
-	
-	irakinoi = {
-	
+	arabic_roman = {
 	}
-	
-	aigyptioi = {
-	
+	egyptian_roman = {
 	}
-	
-	methoriakoi = {
-	
+	berber_roman = {
 	}
-
-	
+    italo_hispano_portuguese_roman = {
+	}
+	catalan_roman = {
+	}
+	occitan_roman = {
+	}
+	french_roman = {
+	}
+	english_roman = {
+	}
+	irish_roman = {
+	}
+	german_roman = {
+	}
+	dutch_roman = {
+	}
+	scandinavian_roman = {
+	}
+	finnish_roman = {
+	}
+	czech_roman = {
+	}
+	polish_roman = {
+	}
+	lithuanian_roman = {
+	}
+	latvian_roman = {
+	}
+	ruthenian_roman = {
+	}
+	russian_roman = {
+	}
 	male_names = {
 		Adrian Adrianos Aineias Akakios Alexander Alexandros Alexeios Alexios Alexis Ambrosios Anastasios Anastasius Anatolios Andreas Andrew Andronicus Andronikos Anthemios Anthimos Antiochos Antonios Antonius Apollonios Arsenios Artemios Athanasios Athanasius
 		Bardas Bartholomaios Bartolomeus Basil Basileios Belisarios Belisarius Boethios Bosporios
