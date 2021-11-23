@@ -1,6 +1,3 @@
-# No previous file for PROV4992
-# This province is a wasteland
-
 discovered_by = east_african
 discovered_by = eastern
 discovered_by = byzantine

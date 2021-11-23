@@ -1,8 +1,5 @@
-# For specific combinations of culture, religion and other such triggers
-# Will pick the first valid one it finds in list
-
-fulani_monarchy_title_1 = {
-	rank = {
+fulani_monarchy_title_1 = { 
+	rank = { 
 		1 = EMIRATE
 		2 = EMIRATE
 		3 = EMIRATE
@@ -10,8 +7,7 @@ fulani_monarchy_title_1 = {
 		5 = EMIRATE
 		6 = EMIRATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ALMANI
 		2 = ALMANI
 		3 = ALMANI
@@ -19,8 +15,7 @@ fulani_monarchy_title_1 = {
 		5 = ALMANI
 		6 = ALMANI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ALMANI
 		2 = ALMANI
 		3 = ALMANI
@@ -28,16 +23,37 @@ fulani_monarchy_title_1 = {
 		5 = ALMANI
 		6 = ALMANI
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = sunni
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-fulani_monarchy_title_2 = {
-	rank = {
+fulani_monarchy_title_2 = { 
+	rank = { 
 		1 = EMIRATE
 		2 = EMIRATE
 		3 = EMIRATE
@@ -45,8 +61,7 @@ fulani_monarchy_title_2 = {
 		5 = EMIRATE
 		6 = EMIRATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ALMANI
 		2 = ALMANI
 		3 = ALMANI
@@ -54,8 +69,7 @@ fulani_monarchy_title_2 = {
 		5 = ALMANI
 		6 = ALMANI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ALMANI
 		2 = ALMANI
 		3 = ALMANI
@@ -63,16 +77,37 @@ fulani_monarchy_title_2 = {
 		5 = ALMANI
 		6 = ALMANI
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = sunni
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-fulani_monarchy_title_3 = {
-	rank = {
+fulani_monarchy_title_3 = { 
+	rank = { 
 		1 = EMIRATE
 		2 = EMIRATE
 		3 = EMIRATE
@@ -80,8 +115,7 @@ fulani_monarchy_title_3 = {
 		5 = EMIRATE
 		6 = EMIRATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ALMANI
 		2 = ALMANI
 		3 = ALMANI
@@ -89,8 +123,7 @@ fulani_monarchy_title_3 = {
 		5 = ALMANI
 		6 = ALMANI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ALMANI
 		2 = ALMANI
 		3 = ALMANI
@@ -98,16 +131,37 @@ fulani_monarchy_title_3 = {
 		5 = ALMANI
 		6 = ALMANI
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = sunni
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-fulani_monarchy_title_4 = {
-	rank = {
+fulani_monarchy_title_4 = { 
+	rank = { 
 		1 = SULTANATE
 		2 = SULTANATE
 		3 = SULTANATE
@@ -115,8 +169,7 @@ fulani_monarchy_title_4 = {
 		5 = SULTANATE
 		6 = SULTANATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ALMANI
 		2 = ALMANI
 		3 = ALMANI
@@ -124,8 +177,7 @@ fulani_monarchy_title_4 = {
 		5 = ALMANI
 		6 = ALMANI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ALMANI
 		2 = ALMANI
 		3 = ALMANI
@@ -133,16 +185,37 @@ fulani_monarchy_title_4 = {
 		5 = ALMANI
 		6 = ALMANI
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = sunni
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-fulani_monarchy_title_5 = {
-	rank = {
+fulani_monarchy_title_5 = { 
+	rank = { 
 		1 = SULTANATE
 		2 = SULTANATE
 		3 = SULTANATE
@@ -150,8 +223,7 @@ fulani_monarchy_title_5 = {
 		5 = SULTANATE
 		6 = SULTANATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ALMANI
 		2 = ALMANI
 		3 = ALMANI
@@ -159,8 +231,7 @@ fulani_monarchy_title_5 = {
 		5 = ALMANI
 		6 = ALMANI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ALMANI
 		2 = ALMANI
 		3 = ALMANI
@@ -168,16 +239,37 @@ fulani_monarchy_title_5 = {
 		5 = ALMANI
 		6 = ALMANI
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = sunni
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-fulani_monarchy_title_6 = {
-	rank = {
+fulani_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -185,8 +277,7 @@ fulani_monarchy_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GREAT_ALMANI
 		2 = GREAT_ALMANI
 		3 = GREAT_ALMANI
@@ -194,8 +285,7 @@ fulani_monarchy_title_6 = {
 		5 = GREAT_ALMANI
 		6 = GREAT_ALMANI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GREAT_ALMANI
 		2 = GREAT_ALMANI
 		3 = GREAT_ALMANI
@@ -203,17 +293,37 @@ fulani_monarchy_title_6 = {
 		5 = GREAT_ALMANI
 		6 = GREAT_ALMANI
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = sunni
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-futa_monarchy_title_1 = {
-	rank = {
+futa_monarchy_title_1 = { 
+	rank = { 
 		1 = COUNTY
 		2 = COUNTY
 		3 = COUNTY
@@ -221,8 +331,7 @@ futa_monarchy_title_1 = {
 		5 = COUNTY
 		6 = COUNTY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = LAMIDO
 		2 = LAMIDO
 		3 = LAMIDO
@@ -230,8 +339,7 @@ futa_monarchy_title_1 = {
 		5 = LAMIDO
 		6 = LAMIDO
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = LAMIDO
 		2 = LAMIDO
 		3 = LAMIDO
@@ -239,16 +347,37 @@ futa_monarchy_title_1 = {
 		5 = LAMIDO
 		6 = LAMIDO
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = west_african_pagan_reformed
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-futa_monarchy_title_2 = {
-	rank = {
+futa_monarchy_title_2 = { 
+	rank = { 
 		1 = MARGRAVIATE
 		2 = MARGRAVIATE
 		3 = MARGRAVIATE
@@ -256,8 +385,7 @@ futa_monarchy_title_2 = {
 		5 = MARGRAVIATE
 		6 = MARGRAVIATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = LAMIDO
 		2 = LAMIDO
 		3 = LAMIDO
@@ -265,8 +393,7 @@ futa_monarchy_title_2 = {
 		5 = LAMIDO
 		6 = LAMIDO
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = LAMIDO
 		2 = LAMIDO
 		3 = LAMIDO
@@ -274,16 +401,37 @@ futa_monarchy_title_2 = {
 		5 = LAMIDO
 		6 = LAMIDO
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = west_african_pagan_reformed
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-futa_monarchy_title_3 = {
-	rank = {
+futa_monarchy_title_3 = { 
+	rank = { 
 		1 = DUCHY
 		2 = DUCHY
 		3 = DUCHY
@@ -291,8 +439,7 @@ futa_monarchy_title_3 = {
 		5 = DUCHY
 		6 = DUCHY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = LAMIDO
 		2 = LAMIDO
 		3 = LAMIDO
@@ -300,8 +447,7 @@ futa_monarchy_title_3 = {
 		5 = LAMIDO
 		6 = LAMIDO
 	}
-		
-	ruler_female = {
+	ruler_female = { 
 		1 = LAMIDO
 		2 = LAMIDO
 		3 = LAMIDO
@@ -309,16 +455,37 @@ futa_monarchy_title_3 = {
 		5 = LAMIDO
 		6 = LAMIDO
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = west_african_pagan_reformed
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-futa_monarchy_title_4 = {
-	rank = {
+futa_monarchy_title_4 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -326,8 +493,7 @@ futa_monarchy_title_4 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = LAMIDO
 		2 = LAMIDO
 		3 = LAMIDO
@@ -335,8 +501,7 @@ futa_monarchy_title_4 = {
 		5 = LAMIDO
 		6 = LAMIDO
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = LAMIDO
 		2 = LAMIDO
 		3 = LAMIDO
@@ -344,16 +509,37 @@ futa_monarchy_title_4 = {
 		5 = LAMIDO
 		6 = LAMIDO
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = west_african_pagan_reformed
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-futa_monarchy_title_5 = {
-	rank = {
+futa_monarchy_title_5 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -361,8 +547,7 @@ futa_monarchy_title_5 = {
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = LAMIDO
 		2 = LAMIDO
 		3 = LAMIDO
@@ -370,8 +555,7 @@ futa_monarchy_title_5 = {
 		5 = LAMIDO
 		6 = LAMIDO
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = LAMIDO
 		2 = LAMIDO
 		3 = LAMIDO
@@ -379,16 +563,37 @@ futa_monarchy_title_5 = {
 		5 = LAMIDO
 		6 = LAMIDO
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = west_african_pagan_reformed
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-futa_monarchy_title_6 = {
-	rank = {
+futa_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -396,8 +601,7 @@ futa_monarchy_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GREAT_LAMIDO
 		2 = GREAT_LAMIDO
 		3 = GREAT_LAMIDO
@@ -405,8 +609,7 @@ futa_monarchy_title_6 = {
 		5 = GREAT_LAMIDO
 		6 = GREAT_LAMIDO
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GREAT_LAMIDO
 		2 = GREAT_LAMIDO
 		3 = GREAT_LAMIDO
@@ -414,17 +617,37 @@ futa_monarchy_title_6 = {
 		5 = GREAT_LAMIDO
 		6 = GREAT_LAMIDO
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = fulani
 		religion = west_african_pagan_reformed
-		nominal_monarchy_trigger = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				AND = { 
+					is_tribal = yes
+					is_variable_equal = { 
+						which = grt
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-arabic_tribal_title_1 = {
-	rank = {
+arabic_tribal_title_1 = { 
+	rank = { 
 		1 = SHEIKHDOM
 		2 = SHEIKHDOM
 		3 = SHEIKHDOM
@@ -432,8 +655,7 @@ arabic_tribal_title_1 = {
 		5 = SHEIKHDOM
 		6 = SHEIKHDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -441,8 +663,7 @@ arabic_tribal_title_1 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -450,25 +671,79 @@ arabic_tribal_title_1 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = najdi
 			primary_culture = bedouin
 		}
-		OR = {
-			nomad_trigger = yes
-			trib_king_trigger = yes
-			trib_desp_trigger = yes
-			trib_fed_trigger = yes
-			amalgamation_trigger = yes
+		OR = { 
+			is_nomad = yes
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+				OR = { 
+					is_variable_equal = { 
+						which = hqx
+						value = 0
+					}
+					is_variable_equal = { 
+						which = hqx
+						value = 3
+					}
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 1
+				}
+				is_variable_equal = { 
+					which = hqx
+					value = 1
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 3
+				}
+			}
 		}
 		religion_group = muslim
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-arabic_tribal_title_2 = {
-	rank = {
+arabic_tribal_title_2 = { 
+	rank = { 
 		1 = SHEIKHDOM
 		2 = SHEIKHDOM
 		3 = SHEIKHDOM
@@ -476,8 +751,7 @@ arabic_tribal_title_2 = {
 		5 = SHEIKHDOM
 		6 = SHEIKHDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -485,8 +759,7 @@ arabic_tribal_title_2 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -494,8 +767,7 @@ arabic_tribal_title_2 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -503,8 +775,7 @@ arabic_tribal_title_2 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -512,25 +783,79 @@ arabic_tribal_title_2 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = najdi
 			primary_culture = bedouin
 		}
-		OR = {
-			nomad_trigger = yes
-			trib_king_trigger = yes
-			trib_desp_trigger = yes
-			trib_fed_trigger = yes
-			amalgamation_trigger = yes
+		OR = { 
+			is_nomad = yes
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+				OR = { 
+					is_variable_equal = { 
+						which = hqx
+						value = 0
+					}
+					is_variable_equal = { 
+						which = hqx
+						value = 3
+					}
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 1
+				}
+				is_variable_equal = { 
+					which = hqx
+					value = 1
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 3
+				}
+			}
 		}
 		religion_group = muslim
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-arabic_tribal_title_3 = {
-	rank = {
+arabic_tribal_title_3 = { 
+	rank = { 
 		1 = EMIRATE
 		2 = EMIRATE
 		3 = EMIRATE
@@ -538,8 +863,7 @@ arabic_tribal_title_3 = {
 		5 = EMIRATE
 		6 = EMIRATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = EMIR
 		2 = EMIR
 		3 = EMIR
@@ -547,8 +871,7 @@ arabic_tribal_title_3 = {
 		5 = EMIR
 		6 = EMIR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = EMIRA
 		2 = EMIRA
 		3 = EMIRA
@@ -556,8 +879,7 @@ arabic_tribal_title_3 = {
 		5 = EMIRA
 		6 = EMIRA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = EMIR
 		2 = EMIR
 		3 = EMIR
@@ -565,8 +887,7 @@ arabic_tribal_title_3 = {
 		5 = EMIR
 		6 = EMIR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = EMIRA
 		2 = EMIRA
 		3 = EMIRA
@@ -574,25 +895,79 @@ arabic_tribal_title_3 = {
 		5 = EMIRA
 		6 = EMIRA
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = najdi
 			primary_culture = bedouin
 		}
-		OR = {
-			nomad_trigger = yes
-			trib_king_trigger = yes
-			trib_desp_trigger = yes
-			trib_fed_trigger = yes
-			amalgamation_trigger = yes
+		OR = { 
+			is_nomad = yes
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+				OR = { 
+					is_variable_equal = { 
+						which = hqx
+						value = 0
+					}
+					is_variable_equal = { 
+						which = hqx
+						value = 3
+					}
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 1
+				}
+				is_variable_equal = { 
+					which = hqx
+					value = 1
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 3
+				}
+			}
 		}
 		religion_group = muslim
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-arabic_tribal_title_4 = {
-	rank = {
+arabic_tribal_title_4 = { 
+	rank = { 
 		1 = EMIRATE
 		2 = EMIRATE
 		3 = EMIRATE
@@ -600,8 +975,7 @@ arabic_tribal_title_4 = {
 		5 = EMIRATE
 		6 = EMIRATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = EMIR
 		2 = EMIR
 		3 = EMIR
@@ -609,8 +983,7 @@ arabic_tribal_title_4 = {
 		5 = EMIR
 		6 = EMIR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = EMIRA
 		2 = EMIRA
 		3 = EMIRA
@@ -618,8 +991,7 @@ arabic_tribal_title_4 = {
 		5 = EMIRA
 		6 = EMIRA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = EMIR
 		2 = EMIR
 		3 = EMIR
@@ -627,8 +999,7 @@ arabic_tribal_title_4 = {
 		5 = EMIR
 		6 = EMIR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = EMIRA
 		2 = EMIRA
 		3 = EMIRA
@@ -636,25 +1007,79 @@ arabic_tribal_title_4 = {
 		5 = EMIRA
 		6 = EMIRA
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = najdi
 			primary_culture = bedouin
 		}
-		OR = {
-			nomad_trigger = yes
-			trib_king_trigger = yes
-			trib_desp_trigger = yes
-			trib_fed_trigger = yes
-			amalgamation_trigger = yes
+		OR = { 
+			is_nomad = yes
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+				OR = { 
+					is_variable_equal = { 
+						which = hqx
+						value = 0
+					}
+					is_variable_equal = { 
+						which = hqx
+						value = 3
+					}
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 1
+				}
+				is_variable_equal = { 
+					which = hqx
+					value = 1
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 3
+				}
+			}
 		}
 		religion_group = muslim
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-arabic_tribal_title_5 = {
-	rank = {
+arabic_tribal_title_5 = { 
+	rank = { 
 		1 = EMIRATE
 		2 = EMIRATE
 		3 = EMIRATE
@@ -662,8 +1087,7 @@ arabic_tribal_title_5 = {
 		5 = EMIRATE
 		6 = EMIRATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = EMIR
 		2 = EMIR
 		3 = EMIR
@@ -671,8 +1095,7 @@ arabic_tribal_title_5 = {
 		5 = EMIR
 		6 = EMIR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = EMIRA
 		2 = EMIRA
 		3 = EMIRA
@@ -680,8 +1103,7 @@ arabic_tribal_title_5 = {
 		5 = EMIRA
 		6 = EMIRA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = EMIR
 		2 = EMIR
 		3 = EMIR
@@ -689,8 +1111,7 @@ arabic_tribal_title_5 = {
 		5 = EMIR
 		6 = EMIR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = EMIRA
 		2 = EMIRA
 		3 = EMIRA
@@ -698,25 +1119,79 @@ arabic_tribal_title_5 = {
 		5 = EMIRA
 		6 = EMIRA
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = najdi
 			primary_culture = bedouin
 		}
-		OR = {
-			nomad_trigger = yes
-			trib_king_trigger = yes
-			trib_desp_trigger = yes
-			trib_fed_trigger = yes
-			amalgamation_trigger = yes
+		OR = { 
+			is_nomad = yes
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+				OR = { 
+					is_variable_equal = { 
+						which = hqx
+						value = 0
+					}
+					is_variable_equal = { 
+						which = hqx
+						value = 3
+					}
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 1
+				}
+				is_variable_equal = { 
+					which = hqx
+					value = 1
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 3
+				}
+			}
 		}
 		religion_group = muslim
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-arabic_tribal_title_6 = {
-	rank = {
+arabic_tribal_title_6 = { 
+	rank = { 
 		1 = GREAT_EMIRATE
 		2 = GREAT_EMIRATE
 		3 = GREAT_EMIRATE
@@ -724,8 +1199,7 @@ arabic_tribal_title_6 = {
 		5 = GREAT_EMIRATE
 		6 = GREAT_EMIRATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GREAT_EMIR
 		2 = GREAT_EMIR
 		3 = GREAT_EMIR
@@ -733,8 +1207,7 @@ arabic_tribal_title_6 = {
 		5 = GREAT_EMIR
 		6 = GREAT_EMIR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GREAT_EMIRA
 		2 = GREAT_EMIRA
 		3 = GREAT_EMIRA
@@ -742,8 +1215,7 @@ arabic_tribal_title_6 = {
 		5 = GREAT_EMIRA
 		6 = GREAT_EMIRA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = GREAT_EMIR
 		2 = GREAT_EMIR
 		3 = GREAT_EMIR
@@ -751,8 +1223,7 @@ arabic_tribal_title_6 = {
 		5 = GREAT_EMIR
 		6 = GREAT_EMIR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = GREAT_EMIRA
 		2 = GREAT_EMIRA
 		3 = GREAT_EMIRA
@@ -760,26 +1231,79 @@ arabic_tribal_title_6 = {
 		5 = GREAT_EMIRA
 		6 = GREAT_EMIRA
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = najdi
 			primary_culture = bedouin
 		}
-		OR = {
-			nomad_trigger = yes
-			trib_king_trigger = yes
-			trib_desp_trigger = yes
-			trib_fed_trigger = yes
-			amalgamation_trigger = yes
+		OR = { 
+			is_nomad = yes
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 0
+				}
+				OR = { 
+					is_variable_equal = { 
+						which = hqx
+						value = 0
+					}
+					is_variable_equal = { 
+						which = hqx
+						value = 3
+					}
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = grt
+					value = 1
+				}
+				is_variable_equal = { 
+					which = hqx
+					value = 1
+				}
+			}
+			AND = { 
+				government = tribal
+				is_variable_equal = { 
+					which = grs
+					value = 3
+				}
+			}
 		}
 		religion_group = muslim
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-hindu_rajput_monarchy_title_1 = {
-	rank = {
+hindu_rajput_monarchy_title_1 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -787,8 +1311,7 @@ hindu_rajput_monarchy_title_1 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RANA
 		2 = RANA
 		3 = RANA
@@ -796,8 +1319,7 @@ hindu_rajput_monarchy_title_1 = {
 		5 = RANA
 		6 = RANA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -805,8 +1327,7 @@ hindu_rajput_monarchy_title_1 = {
 		5 = RANI
 		6 = RANI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = RANA
 		2 = RANA
 		3 = RANA
@@ -814,8 +1335,7 @@ hindu_rajput_monarchy_title_1 = {
 		5 = RANA
 		6 = RANA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -823,17 +1343,26 @@ hindu_rajput_monarchy_title_1 = {
 		5 = RANI
 		6 = RANI
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = rajput
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-
-hindu_rajput_monarchy_title_2 = {
-	rank = {
+hindu_rajput_monarchy_title_2 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -841,8 +1370,7 @@ hindu_rajput_monarchy_title_2 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RANA
 		2 = RANA
 		3 = RANA
@@ -850,8 +1378,7 @@ hindu_rajput_monarchy_title_2 = {
 		5 = RANA
 		6 = RANA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -859,8 +1386,7 @@ hindu_rajput_monarchy_title_2 = {
 		5 = RANI
 		6 = RANI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = RANA
 		2 = RANA
 		3 = RANA
@@ -868,8 +1394,7 @@ hindu_rajput_monarchy_title_2 = {
 		5 = RANA
 		6 = RANA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -877,17 +1402,26 @@ hindu_rajput_monarchy_title_2 = {
 		5 = RANI
 		6 = RANI
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = rajput
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-
-hindu_rajput_monarchy_title_3 = {
-	rank = {
+hindu_rajput_monarchy_title_3 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -895,8 +1429,7 @@ hindu_rajput_monarchy_title_3 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RANA
 		2 = RANA
 		3 = RANA
@@ -904,8 +1437,7 @@ hindu_rajput_monarchy_title_3 = {
 		5 = RANA
 		6 = RANA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -913,8 +1445,7 @@ hindu_rajput_monarchy_title_3 = {
 		5 = RANI
 		6 = RANI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = RANA
 		2 = RANA
 		3 = RANA
@@ -922,8 +1453,7 @@ hindu_rajput_monarchy_title_3 = {
 		5 = RANA
 		6 = RANA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -931,17 +1461,26 @@ hindu_rajput_monarchy_title_3 = {
 		5 = RANI
 		6 = RANI
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = rajput
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-
-hindu_rajput_monarchy_title_4 = {
-	rank = {
+hindu_rajput_monarchy_title_4 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -949,8 +1488,7 @@ hindu_rajput_monarchy_title_4 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RANA
 		2 = RANA
 		3 = RANA
@@ -958,8 +1496,7 @@ hindu_rajput_monarchy_title_4 = {
 		5 = RANA
 		6 = RANA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -967,8 +1504,7 @@ hindu_rajput_monarchy_title_4 = {
 		5 = RANI
 		6 = RANI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = RANA
 		2 = RANA
 		3 = RANA
@@ -976,8 +1512,7 @@ hindu_rajput_monarchy_title_4 = {
 		5 = RANA
 		6 = RANA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -985,17 +1520,26 @@ hindu_rajput_monarchy_title_4 = {
 		5 = RANI
 		6 = RANI
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = rajput
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-
-hindu_rajput_monarchy_title_5 = {
-	rank = {
+hindu_rajput_monarchy_title_5 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -1003,8 +1547,7 @@ hindu_rajput_monarchy_title_5 = {
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = MAHARANA
 		2 = MAHARANA
 		3 = MAHARANA
@@ -1012,8 +1555,7 @@ hindu_rajput_monarchy_title_5 = {
 		5 = MAHARANA
 		6 = MAHARANA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = MAHARANI
 		2 = MAHARANI
 		3 = MAHARANI
@@ -1021,8 +1563,7 @@ hindu_rajput_monarchy_title_5 = {
 		5 = MAHARANI
 		6 = MAHARANI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = MAHARANA
 		2 = MAHARANA
 		3 = MAHARANA
@@ -1030,8 +1571,7 @@ hindu_rajput_monarchy_title_5 = {
 		5 = MAHARANA
 		6 = MAHARANA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = MAHARANI
 		2 = MAHARANI
 		3 = MAHARANI
@@ -1039,16 +1579,26 @@ hindu_rajput_monarchy_title_5 = {
 		5 = MAHARANI
 		6 = MAHARANI
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = rajput
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-hindu_rajput_monarchy_title_6 = {
-	rank = {
+hindu_rajput_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -1056,8 +1606,7 @@ hindu_rajput_monarchy_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHHATRAPATI
 		2 = CHHATRAPATI
 		3 = CHHATRAPATI
@@ -1065,8 +1614,7 @@ hindu_rajput_monarchy_title_6 = {
 		5 = CHHATRAPATI
 		6 = CHHATRAPATI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHHATRAPATI
 		2 = CHHATRAPATI
 		3 = CHHATRAPATI
@@ -1074,17 +1622,26 @@ hindu_rajput_monarchy_title_6 = {
 		5 = CHHATRAPATI
 		6 = CHHATRAPATI
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = rajput
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-hindu_maratha_monarchy_title_1 = {
-	rank = {
+hindu_maratha_monarchy_title_1 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -1092,8 +1649,7 @@ hindu_maratha_monarchy_title_1 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = THAKUR
 		2 = THAKUR
 		3 = THAKUR
@@ -1101,8 +1657,7 @@ hindu_maratha_monarchy_title_1 = {
 		5 = THAKUR
 		6 = THAKUR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = THAKUR
 		2 = THAKUR
 		3 = THAKUR
@@ -1110,17 +1665,26 @@ hindu_maratha_monarchy_title_1 = {
 		5 = THAKUR
 		6 = THAKUR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = marathi
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-
-hindu_maratha_monarchy_title_2 = {
-	rank = {
+hindu_maratha_monarchy_title_2 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -1128,8 +1692,7 @@ hindu_maratha_monarchy_title_2 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = THAKUR
 		2 = THAKUR
 		3 = THAKUR
@@ -1137,8 +1700,7 @@ hindu_maratha_monarchy_title_2 = {
 		5 = THAKUR
 		6 = THAKUR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = THAKUR
 		2 = THAKUR
 		3 = THAKUR
@@ -1146,16 +1708,26 @@ hindu_maratha_monarchy_title_2 = {
 		5 = THAKUR
 		6 = THAKUR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = marathi
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-hindu_maratha_monarchy_title_3 = {
-	rank = {
+hindu_maratha_monarchy_title_3 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -1163,8 +1735,7 @@ hindu_maratha_monarchy_title_3 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = THAKUR
 		2 = THAKUR
 		3 = THAKUR
@@ -1172,8 +1743,7 @@ hindu_maratha_monarchy_title_3 = {
 		5 = THAKUR
 		6 = THAKUR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = THAKUR
 		2 = THAKUR
 		3 = THAKUR
@@ -1181,16 +1751,26 @@ hindu_maratha_monarchy_title_3 = {
 		5 = THAKUR
 		6 = THAKUR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = marathi
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-hindu_maratha_monarchy_title_4 = {
-	rank = {
+hindu_maratha_monarchy_title_4 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -1198,8 +1778,7 @@ hindu_maratha_monarchy_title_4 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = THAKUR
 		2 = THAKUR
 		3 = THAKUR
@@ -1207,8 +1786,7 @@ hindu_maratha_monarchy_title_4 = {
 		5 = THAKUR
 		6 = THAKUR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = THAKUR
 		2 = THAKUR
 		3 = THAKUR
@@ -1216,16 +1794,26 @@ hindu_maratha_monarchy_title_4 = {
 		5 = THAKUR
 		6 = THAKUR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = marathi
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-hindu_maratha_monarchy_title_5 = {
-	rank = {
+hindu_maratha_monarchy_title_5 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -1233,8 +1821,7 @@ hindu_maratha_monarchy_title_5 = {
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RANA
 		2 = RANA
 		3 = RANA
@@ -1242,8 +1829,7 @@ hindu_maratha_monarchy_title_5 = {
 		5 = RANA
 		6 = RANA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -1251,8 +1837,7 @@ hindu_maratha_monarchy_title_5 = {
 		5 = RANI
 		6 = RANI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = RANA
 		2 = RANA
 		3 = RANA
@@ -1260,8 +1845,7 @@ hindu_maratha_monarchy_title_5 = {
 		5 = RANA
 		6 = RANA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -1269,16 +1853,26 @@ hindu_maratha_monarchy_title_5 = {
 		5 = RANI
 		6 = RANI
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = marathi
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-hindu_maratha_monarchy_title_6 = {
-	rank = {
+hindu_maratha_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -1286,8 +1880,7 @@ hindu_maratha_monarchy_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHHATRAPATI
 		2 = CHHATRAPATI
 		3 = CHHATRAPATI
@@ -1295,8 +1888,7 @@ hindu_maratha_monarchy_title_6 = {
 		5 = CHHATRAPATI
 		6 = CHHATRAPATI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHHATRAPATI
 		2 = CHHATRAPATI
 		3 = CHHATRAPATI
@@ -1304,17 +1896,26 @@ hindu_maratha_monarchy_title_6 = {
 		5 = CHHATRAPATI
 		6 = CHHATRAPATI
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = marathi
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-hindu_dravidian_monarchy_title_1 = {
-	rank = {
+hindu_dravidian_monarchy_title_1 = { 
+	rank = { 
 		1 = NAYAKA
 		2 = NAYAKA
 		3 = NAYAKA
@@ -1322,8 +1923,7 @@ hindu_dravidian_monarchy_title_1 = {
 		5 = NAYAKA
 		6 = NAYAKA
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NAYAK
 		2 = NAYAK
 		3 = NAYAK
@@ -1331,8 +1931,7 @@ hindu_dravidian_monarchy_title_1 = {
 		5 = NAYAK
 		6 = NAYAK
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NAYAK
 		2 = NAYAK
 		3 = NAYAK
@@ -1340,19 +1939,29 @@ hindu_dravidian_monarchy_title_1 = {
 		5 = NAYAK
 		6 = NAYAK
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			culture_group = dravidian
 			culture_group = elu
 		}
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-hindu_dravidian_monarchy_title_2 = {
-	rank = {
+hindu_dravidian_monarchy_title_2 = { 
+	rank = { 
 		1 = NAYAKA
 		2 = NAYAKA
 		3 = NAYAKA
@@ -1360,8 +1969,7 @@ hindu_dravidian_monarchy_title_2 = {
 		5 = NAYAKA
 		6 = NAYAKA
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NAYAK
 		2 = NAYAK
 		3 = NAYAK
@@ -1369,8 +1977,7 @@ hindu_dravidian_monarchy_title_2 = {
 		5 = NAYAK
 		6 = NAYAK
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NAYAK
 		2 = NAYAK
 		3 = NAYAK
@@ -1378,19 +1985,29 @@ hindu_dravidian_monarchy_title_2 = {
 		5 = NAYAK
 		6 = NAYAK
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			culture_group = dravidian
 			culture_group = elu
 		}
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-hindu_dravidian_monarchy_title_3 = {
-	rank = {
+hindu_dravidian_monarchy_title_3 = { 
+	rank = { 
 		1 = NAYAKA
 		2 = NAYAKA
 		3 = NAYAKA
@@ -1398,8 +2015,7 @@ hindu_dravidian_monarchy_title_3 = {
 		5 = NAYAKA
 		6 = NAYAKA
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NAYAK
 		2 = NAYAK
 		3 = NAYAK
@@ -1407,8 +2023,7 @@ hindu_dravidian_monarchy_title_3 = {
 		5 = NAYAK
 		6 = NAYAK
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NAYAK
 		2 = NAYAK
 		3 = NAYAK
@@ -1416,19 +2031,29 @@ hindu_dravidian_monarchy_title_3 = {
 		5 = NAYAK
 		6 = NAYAK
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			culture_group = dravidian
 			culture_group = elu
 		}
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-hindu_dravidian_monarchy_title_4 = {
-	rank = {
+hindu_dravidian_monarchy_title_4 = { 
+	rank = { 
 		1 = NAYAKA
 		2 = NAYAKA
 		3 = NAYAKA
@@ -1436,8 +2061,7 @@ hindu_dravidian_monarchy_title_4 = {
 		5 = NAYAKA
 		6 = NAYAKA
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NAYAK
 		2 = NAYAK
 		3 = NAYAK
@@ -1445,8 +2069,7 @@ hindu_dravidian_monarchy_title_4 = {
 		5 = NAYAK
 		6 = NAYAK
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NAYAK
 		2 = NAYAK
 		3 = NAYAK
@@ -1454,19 +2077,29 @@ hindu_dravidian_monarchy_title_4 = {
 		5 = NAYAK
 		6 = NAYAK
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			culture_group = dravidian
 			culture_group = elu
 		}
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-hindu_dravidian_monarchy_title_5 = {
-	rank = {
+hindu_dravidian_monarchy_title_5 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -1474,8 +2107,7 @@ hindu_dravidian_monarchy_title_5 = {
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RAJA
 		2 = RAJA
 		3 = RAJA
@@ -1483,8 +2115,7 @@ hindu_dravidian_monarchy_title_5 = {
 		5 = RAJA
 		6 = RAJA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -1492,8 +2123,7 @@ hindu_dravidian_monarchy_title_5 = {
 		5 = RANI
 		6 = RANI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = RAJA
 		2 = RAJA
 		3 = RAJA
@@ -1501,8 +2131,7 @@ hindu_dravidian_monarchy_title_5 = {
 		5 = RAJA
 		6 = RAJA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = RANI
 		2 = RANI
 		3 = RANI
@@ -1510,19 +2139,29 @@ hindu_dravidian_monarchy_title_5 = {
 		5 = RANI
 		6 = RANI
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			culture_group = dravidian
 			culture_group = elu
 		}
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-hindu_dravidian_monarchy_title_6 = {
-	rank = {
+hindu_dravidian_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -1530,8 +2169,7 @@ hindu_dravidian_monarchy_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = MAHARAJA
 		2 = MAHARAJA
 		3 = MAHARAJA
@@ -1539,8 +2177,7 @@ hindu_dravidian_monarchy_title_6 = {
 		5 = MAHARAJA
 		6 = MAHARAJA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = MAHARANI
 		2 = MAHARANI
 		3 = MAHARANI
@@ -1548,8 +2185,7 @@ hindu_dravidian_monarchy_title_6 = {
 		5 = MAHARANI
 		6 = MAHARANI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = MAHARAJA
 		2 = MAHARAJA
 		3 = MAHARAJA
@@ -1557,8 +2193,7 @@ hindu_dravidian_monarchy_title_6 = {
 		5 = MAHARAJA
 		6 = MAHARAJA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = MAHARANI
 		2 = MAHARANI
 		3 = MAHARANI
@@ -1566,21 +2201,29 @@ hindu_dravidian_monarchy_title_6 = {
 		5 = MAHARANI
 		6 = MAHARANI
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			culture_group = dravidian
 			culture_group = elu
 		}
 		religion = hinduism
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-
-ethiopian_monarchies_title_1 = {
-	rank = {
+ethiopian_monarchies_title_1 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -1588,8 +2231,7 @@ ethiopian_monarchies_title_1 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RAS_title
 		2 = RAS_title
 		3 = RAS_title
@@ -1597,8 +2239,7 @@ ethiopian_monarchies_title_1 = {
 		5 = RAS_title
 		6 = RAS_title
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = LE_ELT
 		2 = LE_ELT
 		3 = LE_ELT
@@ -1606,8 +2247,7 @@ ethiopian_monarchies_title_1 = {
 		5 = LE_ELT
 		6 = LE_ELT
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = RAS_title
 		2 = RAS_title
 		3 = RAS_title
@@ -1615,8 +2255,7 @@ ethiopian_monarchies_title_1 = {
 		5 = RAS_title
 		6 = RAS_title
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = LE_ELT
 		2 = LE_ELT
 		3 = LE_ELT
@@ -1624,20 +2263,30 @@ ethiopian_monarchies_title_1 = {
 		5 = LE_ELT
 		6 = LE_ELT
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = amhara
 			primary_culture = sidamo
 			primary_culture = tigrean
 		}
 		religion_group = christian
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-ethiopian_monarchies_title_2 = {
-	rank = {
+ethiopian_monarchies_title_2 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -1645,8 +2294,7 @@ ethiopian_monarchies_title_2 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RAS_title
 		2 = RAS_title
 		3 = RAS_title
@@ -1654,8 +2302,7 @@ ethiopian_monarchies_title_2 = {
 		5 = RAS_title
 		6 = RAS_title
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = LE_ELT
 		2 = LE_ELT
 		3 = LE_ELT
@@ -1663,8 +2310,7 @@ ethiopian_monarchies_title_2 = {
 		5 = LE_ELT
 		6 = LE_ELT
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = RAS_title
 		2 = RAS_title
 		3 = RAS_title
@@ -1672,8 +2318,7 @@ ethiopian_monarchies_title_2 = {
 		5 = RAS_title
 		6 = RAS_title
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = LE_ELT
 		2 = LE_ELT
 		3 = LE_ELT
@@ -1681,20 +2326,30 @@ ethiopian_monarchies_title_2 = {
 		5 = LE_ELT
 		6 = LE_ELT
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = amhara
 			primary_culture = sidamo
 			primary_culture = tigrean
 		}
 		religion_group = christian
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-ethiopian_monarchies_title_3 = {
-	rank = {
+ethiopian_monarchies_title_3 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -1702,8 +2357,7 @@ ethiopian_monarchies_title_3 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = RAS_title
 		2 = RAS_title
 		3 = RAS_title
@@ -1711,8 +2365,7 @@ ethiopian_monarchies_title_3 = {
 		5 = RAS_title
 		6 = RAS_title
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = LE_ELT
 		2 = LE_ELT
 		3 = LE_ELT
@@ -1720,8 +2373,7 @@ ethiopian_monarchies_title_3 = {
 		5 = LE_ELT
 		6 = LE_ELT
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = RAS_title
 		2 = RAS_title
 		3 = RAS_title
@@ -1729,8 +2381,7 @@ ethiopian_monarchies_title_3 = {
 		5 = RAS_title
 		6 = RAS_title
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = LE_ELT
 		2 = LE_ELT
 		3 = LE_ELT
@@ -1738,20 +2389,30 @@ ethiopian_monarchies_title_3 = {
 		5 = LE_ELT
 		6 = LE_ELT
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = amhara
 			primary_culture = sidamo
 			primary_culture = tigrean
 		}
 		religion_group = christian
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-ethiopian_monarchies_title_4 = {
-	rank = {
+ethiopian_monarchies_title_4 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -1759,8 +2420,7 @@ ethiopian_monarchies_title_4 = {
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NEGUS
 		2 = NEGUS
 		3 = NEGUS
@@ -1768,8 +2428,7 @@ ethiopian_monarchies_title_4 = {
 		5 = NEGUS
 		6 = NEGUS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NIGIST
 		2 = NIGIST
 		3 = NIGIST
@@ -1777,8 +2436,7 @@ ethiopian_monarchies_title_4 = {
 		5 = NIGIST
 		6 = NIGIST
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = NEGUS
 		2 = NEGUS
 		3 = NEGUS
@@ -1786,8 +2444,7 @@ ethiopian_monarchies_title_4 = {
 		5 = NEGUS
 		6 = NEGUS
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = NIGIST
 		2 = NIGIST
 		3 = NIGIST
@@ -1795,20 +2452,30 @@ ethiopian_monarchies_title_4 = {
 		5 = NIGIST
 		6 = NIGIST
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = amhara
 			primary_culture = sidamo
 			primary_culture = tigrean
 		}
 		religion_group = christian
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-ethiopian_monarchies_title_5 = {
-	rank = {
+ethiopian_monarchies_title_5 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -1816,8 +2483,7 @@ ethiopian_monarchies_title_5 = {
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NEGUS
 		2 = NEGUS
 		3 = NEGUS
@@ -1825,8 +2491,7 @@ ethiopian_monarchies_title_5 = {
 		5 = NEGUS
 		6 = NEGUS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NIGIST
 		2 = NIGIST
 		3 = NIGIST
@@ -1834,8 +2499,7 @@ ethiopian_monarchies_title_5 = {
 		5 = NIGIST
 		6 = NIGIST
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = NEGUS
 		2 = NEGUS
 		3 = NEGUS
@@ -1843,8 +2507,7 @@ ethiopian_monarchies_title_5 = {
 		5 = NEGUS
 		6 = NEGUS
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = NIGIST
 		2 = NIGIST
 		3 = NIGIST
@@ -1852,20 +2515,30 @@ ethiopian_monarchies_title_5 = {
 		5 = NIGIST
 		6 = NIGIST
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = amhara
 			primary_culture = sidamo
 			primary_culture = tigrean
 		}
 		religion_group = christian
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-ethiopian_monarchies_title_6 = {
-	rank = {
+ethiopian_monarchies_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -1873,8 +2546,7 @@ ethiopian_monarchies_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NEGUSA_NEGAST
 		2 = NEGUSA_NEGAST
 		3 = NEGUSA_NEGAST
@@ -1882,8 +2554,7 @@ ethiopian_monarchies_title_6 = {
 		5 = NEGUSA_NEGAST
 		6 = NEGUSA_NEGAST
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NIGISTE_NIGIST
 		2 = NIGISTE_NIGIST
 		3 = NIGISTE_NIGIST
@@ -1891,8 +2562,7 @@ ethiopian_monarchies_title_6 = {
 		5 = NIGISTE_NIGIST
 		6 = NIGISTE_NIGIST
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = NEGUSA_NEGAST
 		2 = NEGUSA_NEGAST
 		3 = NEGUSA_NEGAST
@@ -1900,8 +2570,7 @@ ethiopian_monarchies_title_6 = {
 		5 = NEGUSA_NEGAST
 		6 = NEGUSA_NEGAST
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = NIGISTE_NIGIST
 		2 = NIGISTE_NIGIST
 		3 = NIGISTE_NIGIST
@@ -1909,21 +2578,30 @@ ethiopian_monarchies_title_6 = {
 		5 = NIGISTE_NIGIST
 		6 = NIGISTE_NIGIST
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = amhara
 			primary_culture = sidamo
 			primary_culture = tigrean
 		}
 		religion_group = christian
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-uyghur_theocracy_title_1 = {
-	rank = {
+uyghur_theocracy_title_1 = { 
+	rank = { 
 		1 = SHEIKHDOM
 		2 = SHEIKHDOM
 		3 = SHEIKHDOM
@@ -1931,8 +2609,7 @@ uyghur_theocracy_title_1 = {
 		5 = SHEIKHDOM
 		6 = SHEIKHDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -1940,8 +2617,7 @@ uyghur_theocracy_title_1 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -1949,8 +2625,7 @@ uyghur_theocracy_title_1 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -1958,8 +2633,7 @@ uyghur_theocracy_title_1 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -1967,16 +2641,20 @@ uyghur_theocracy_title_1 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = uyghur
 		government = theocracy
 		religion = sunni
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-uyghur_theocracy_title_2 = {
-	rank = {
+uyghur_theocracy_title_2 = { 
+	rank = { 
 		1 = SHEIKHDOM
 		2 = SHEIKHDOM
 		3 = SHEIKHDOM
@@ -1984,8 +2662,7 @@ uyghur_theocracy_title_2 = {
 		5 = SHEIKHDOM
 		6 = SHEIKHDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -1993,8 +2670,7 @@ uyghur_theocracy_title_2 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -2002,8 +2678,7 @@ uyghur_theocracy_title_2 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -2011,8 +2686,7 @@ uyghur_theocracy_title_2 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -2020,16 +2694,20 @@ uyghur_theocracy_title_2 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = uyghur
 		government = theocracy
 		religion = sunni
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-uyghur_theocracy_title_3 = {
-	rank = {
+uyghur_theocracy_title_3 = { 
+	rank = { 
 		1 = SHEIKHDOM
 		2 = SHEIKHDOM
 		3 = SHEIKHDOM
@@ -2037,8 +2715,7 @@ uyghur_theocracy_title_3 = {
 		5 = SHEIKHDOM
 		6 = SHEIKHDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -2046,8 +2723,7 @@ uyghur_theocracy_title_3 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -2055,8 +2731,7 @@ uyghur_theocracy_title_3 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -2064,8 +2739,7 @@ uyghur_theocracy_title_3 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -2073,16 +2747,20 @@ uyghur_theocracy_title_3 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = uyghur
 		government = theocracy
 		religion = sunni
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-uyghur_theocracy_title_4 = {
-	rank = {
+uyghur_theocracy_title_4 = { 
+	rank = { 
 		1 = SHEIKHDOM
 		2 = SHEIKHDOM
 		3 = SHEIKHDOM
@@ -2090,8 +2768,7 @@ uyghur_theocracy_title_4 = {
 		5 = SHEIKHDOM
 		6 = SHEIKHDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -2099,8 +2776,7 @@ uyghur_theocracy_title_4 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -2108,8 +2784,7 @@ uyghur_theocracy_title_4 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = SHEIKH
 		2 = SHEIKH
 		3 = SHEIKH
@@ -2117,8 +2792,7 @@ uyghur_theocracy_title_4 = {
 		5 = SHEIKH
 		6 = SHEIKH
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SHEIKHA
 		2 = SHEIKHA
 		3 = SHEIKHA
@@ -2126,16 +2800,20 @@ uyghur_theocracy_title_4 = {
 		5 = SHEIKHA
 		6 = SHEIKHA
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = uyghur
 		government = theocracy
 		religion = sunni
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-uyghur_theocracy_title_5 = {
-	rank = {
+uyghur_theocracy_title_5 = { 
+	rank = { 
 		1 = HOLY_STATE
 		2 = HOLY_STATE
 		3 = HOLY_STATE
@@ -2143,8 +2821,7 @@ uyghur_theocracy_title_5 = {
 		5 = HOLY_STATE
 		6 = HOLY_STATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = KHOJA
 		2 = KHOJA
 		3 = KHOJA
@@ -2152,8 +2829,7 @@ uyghur_theocracy_title_5 = {
 		5 = KHOJA
 		6 = KHOJA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = KHOJA
 		2 = KHOJA
 		3 = KHOJA
@@ -2161,16 +2837,20 @@ uyghur_theocracy_title_5 = {
 		5 = KHOJA
 		6 = KHOJA
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = uyghur
 		government = theocracy
 		religion = sunni
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-uyghur_theocracy_title_6 = {
-	rank = {
+uyghur_theocracy_title_6 = { 
+	rank = { 
 		1 = HOLY_EMPIRE
 		2 = HOLY_EMPIRE
 		3 = HOLY_EMPIRE
@@ -2178,8 +2858,7 @@ uyghur_theocracy_title_6 = {
 		5 = HOLY_EMPIRE
 		6 = HOLY_EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GREAT_KHOJA
 		2 = GREAT_KHOJA
 		3 = GREAT_KHOJA
@@ -2187,8 +2866,7 @@ uyghur_theocracy_title_6 = {
 		5 = GREAT_KHOJA
 		6 = GREAT_KHOJA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GREAT_KHOJA
 		2 = GREAT_KHOJA
 		3 = GREAT_KHOJA
@@ -2196,17 +2874,20 @@ uyghur_theocracy_title_6 = {
 		5 = GREAT_KHOJA
 		6 = GREAT_KHOJA
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = uyghur
 		government = theocracy
 		religion = sunni
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-pagan_egyptian_monarchy_title_1 = {
-	rank = {
+pagan_egyptian_monarchy_title_1 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2214,8 +2895,7 @@ pagan_egyptian_monarchy_title_1 = {
 		5 = PRINCIPALITY
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NOMARCH
 		2 = NOMARCH
 		3 = NOMARCH
@@ -2223,8 +2903,7 @@ pagan_egyptian_monarchy_title_1 = {
 		5 = NOMARCH
 		6 = NOMARCH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NOMARCH
 		2 = NOMARCH
 		3 = NOMARCH
@@ -2232,19 +2911,29 @@ pagan_egyptian_monarchy_title_1 = {
 		5 = NOMARCH
 		6 = NOMARCH
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = egyptian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-pagan_egyptian_monarchy_title_2 = {
-	rank = {
+pagan_egyptian_monarchy_title_2 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2252,8 +2941,7 @@ pagan_egyptian_monarchy_title_2 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NOMARCH
 		2 = NOMARCH
 		3 = NOMARCH
@@ -2261,8 +2949,7 @@ pagan_egyptian_monarchy_title_2 = {
 		5 = NOMARCH
 		6 = NOMARCH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NOMARCH
 		2 = NOMARCH
 		3 = NOMARCH
@@ -2270,19 +2957,29 @@ pagan_egyptian_monarchy_title_2 = {
 		5 = NOMARCH
 		6 = NOMARCH
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = egyptian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-pagan_egyptian_monarchy_title_3 = {
-	rank = {
+pagan_egyptian_monarchy_title_3 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2290,8 +2987,7 @@ pagan_egyptian_monarchy_title_3 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NOMARCH
 		2 = NOMARCH
 		3 = NOMARCH
@@ -2299,8 +2995,7 @@ pagan_egyptian_monarchy_title_3 = {
 		5 = NOMARCH
 		6 = NOMARCH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NOMARCH
 		2 = NOMARCH
 		3 = NOMARCH
@@ -2308,19 +3003,29 @@ pagan_egyptian_monarchy_title_3 = {
 		5 = NOMARCH
 		6 = NOMARCH
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = egyptian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-pagan_egyptian_monarchy_title_4 = {
-	rank = {
+pagan_egyptian_monarchy_title_4 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2328,8 +3033,7 @@ pagan_egyptian_monarchy_title_4 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = NOMARCH
 		2 = NOMARCH
 		3 = NOMARCH
@@ -2337,8 +3041,7 @@ pagan_egyptian_monarchy_title_4 = {
 		5 = NOMARCH
 		6 = NOMARCH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = NOMARCH
 		2 = NOMARCH
 		3 = NOMARCH
@@ -2346,19 +3049,29 @@ pagan_egyptian_monarchy_title_4 = {
 		5 = NOMARCH
 		6 = NOMARCH
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = egyptian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-pagan_egyptian_monarchy_title_5 = {
-	rank = {
+pagan_egyptian_monarchy_title_5 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -2366,8 +3079,7 @@ pagan_egyptian_monarchy_title_5 = {
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PHARAOH
 		2 = PHARAOH
 		3 = PHARAOH
@@ -2375,8 +3087,7 @@ pagan_egyptian_monarchy_title_5 = {
 		5 = PHARAOH
 		6 = PHARAOH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = PHARAOH
 		2 = PHARAOH
 		3 = PHARAOH
@@ -2384,19 +3095,29 @@ pagan_egyptian_monarchy_title_5 = {
 		5 = PHARAOH
 		6 = PHARAOH
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = egyptian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-pagan_egyptian_monarchy_title_6 = {
-	rank = {
+pagan_egyptian_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -2404,8 +3125,7 @@ pagan_egyptian_monarchy_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GREAT_PHARAOH
 		2 = GREAT_PHARAOH
 		3 = GREAT_PHARAOH
@@ -2413,8 +3133,7 @@ pagan_egyptian_monarchy_title_6 = {
 		5 = GREAT_PHARAOH
 		6 = GREAT_PHARAOH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GREAT_PHARAOH
 		2 = GREAT_PHARAOH
 		3 = GREAT_PHARAOH
@@ -2422,20 +3141,29 @@ pagan_egyptian_monarchy_title_6 = {
 		5 = GREAT_PHARAOH
 		6 = GREAT_PHARAOH
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = egyptian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-pagan_greek_monarchy_title_1 = {
-	rank = {
+pagan_greek_monarchy_title_1 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2443,8 +3171,7 @@ pagan_greek_monarchy_title_1 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = TYRANT
 		2 = TYRANT
 		3 = TYRANT
@@ -2452,8 +3179,7 @@ pagan_greek_monarchy_title_1 = {
 		5 = TYRANT
 		6 = TYRANT
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = TYRANT
 		2 = TYRANT
 		3 = TYRANT
@@ -2461,19 +3187,29 @@ pagan_greek_monarchy_title_1 = {
 		5 = TYRANT
 		6 = TYRANT
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = greek
-		OR = {
+		OR = { 
 			religion_group = european_pagan
 			religion_group = pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-pagan_greek_monarchy_title_2 = {
-	rank = {
+pagan_greek_monarchy_title_2 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2481,8 +3217,7 @@ pagan_greek_monarchy_title_2 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = TYRANT
 		2 = TYRANT
 		3 = TYRANT
@@ -2490,8 +3225,7 @@ pagan_greek_monarchy_title_2 = {
 		5 = TYRANT
 		6 = TYRANT
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = TYRANT
 		2 = TYRANT
 		3 = TYRANT
@@ -2499,19 +3233,29 @@ pagan_greek_monarchy_title_2 = {
 		5 = TYRANT
 		6 = TYRANT
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = greek
-		OR = {
+		OR = { 
 			religion_group = european_pagan
 			religion_group = pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-pagan_greek_monarchy_title_3 = {
-	rank = {
+pagan_greek_monarchy_title_3 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2519,8 +3263,7 @@ pagan_greek_monarchy_title_3 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = TYRANT
 		2 = TYRANT
 		3 = TYRANT
@@ -2528,8 +3271,7 @@ pagan_greek_monarchy_title_3 = {
 		5 = TYRANT
 		6 = TYRANT
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = TYRANT
 		2 = TYRANT
 		3 = TYRANT
@@ -2537,19 +3279,29 @@ pagan_greek_monarchy_title_3 = {
 		5 = TYRANT
 		6 = TYRANT
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = greek
-		OR = {
+		OR = { 
 			religion_group = european_pagan
 			religion_group = pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-pagan_greek_monarchy_title_4 = {
-	rank = {
+pagan_greek_monarchy_title_4 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2557,8 +3309,7 @@ pagan_greek_monarchy_title_4 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = TYRANT
 		2 = TYRANT
 		3 = TYRANT
@@ -2566,8 +3317,7 @@ pagan_greek_monarchy_title_4 = {
 		5 = TYRANT
 		6 = TYRANT
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = TYRANT
 		2 = TYRANT
 		3 = TYRANT
@@ -2575,19 +3325,29 @@ pagan_greek_monarchy_title_4 = {
 		5 = TYRANT
 		6 = TYRANT
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = greek
-		OR = {
+		OR = { 
 			religion_group = european_pagan
 			religion_group = pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-pagan_greek_monarchy_title_5 = {
-	rank = {
+pagan_greek_monarchy_title_5 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -2595,8 +3355,7 @@ pagan_greek_monarchy_title_5 = {
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = BASILEUS
 		2 = BASILEUS
 		3 = BASILEUS
@@ -2604,8 +3363,7 @@ pagan_greek_monarchy_title_5 = {
 		5 = BASILEUS
 		6 = BASILEUS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = BASILISSA
 		2 = BASILISSA
 		3 = BASILISSA
@@ -2613,8 +3371,7 @@ pagan_greek_monarchy_title_5 = {
 		5 = BASILISSA
 		6 = BASILISSA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = BASILEUS
 		2 = BASILEUS
 		3 = BASILEUS
@@ -2622,8 +3379,7 @@ pagan_greek_monarchy_title_5 = {
 		5 = BASILEUS
 		6 = BASILEUS
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = BASILISSA
 		2 = BASILISSA
 		3 = BASILISSA
@@ -2631,19 +3387,29 @@ pagan_greek_monarchy_title_5 = {
 		5 = BASILISSA
 		6 = BASILISSA
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = greek
-		OR = {
+		OR = { 
 			religion_group = european_pagan
 			religion_group = pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-pagan_greek_monarchy_title_6 = {
-	rank = {
+pagan_greek_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -2651,8 +3417,7 @@ pagan_greek_monarchy_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = HEGEMON
 		2 = HEGEMON
 		3 = HEGEMON
@@ -2660,8 +3425,7 @@ pagan_greek_monarchy_title_6 = {
 		5 = HEGEMON
 		6 = HEGEMON
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = HEGEMON
 		2 = HEGEMON
 		3 = HEGEMON
@@ -2669,20 +3433,29 @@ pagan_greek_monarchy_title_6 = {
 		5 = HEGEMON
 		6 = HEGEMON
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = greek
-		OR = {
+		OR = { 
 			religion_group = european_pagan
 			religion_group = pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-pagan_roman_monarchy_title_1 = {
-	rank = {
+pagan_roman_monarchy_title_1 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2690,8 +3463,7 @@ pagan_roman_monarchy_title_1 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -2699,8 +3471,7 @@ pagan_roman_monarchy_title_1 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -2708,8 +3479,7 @@ pagan_roman_monarchy_title_1 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -2717,8 +3487,7 @@ pagan_roman_monarchy_title_1 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -2726,19 +3495,29 @@ pagan_roman_monarchy_title_1 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = umbrian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-pagan_roman_monarchy_title_2 = {
-	rank = {
+pagan_roman_monarchy_title_2 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2746,8 +3525,7 @@ pagan_roman_monarchy_title_2 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -2755,8 +3533,7 @@ pagan_roman_monarchy_title_2 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -2764,8 +3541,7 @@ pagan_roman_monarchy_title_2 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -2773,8 +3549,7 @@ pagan_roman_monarchy_title_2 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -2782,19 +3557,29 @@ pagan_roman_monarchy_title_2 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = umbrian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-pagan_roman_monarchy_title_3 = {
-	rank = {
+pagan_roman_monarchy_title_3 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2802,8 +3587,7 @@ pagan_roman_monarchy_title_3 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -2811,8 +3595,7 @@ pagan_roman_monarchy_title_3 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -2820,8 +3603,7 @@ pagan_roman_monarchy_title_3 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -2829,8 +3611,7 @@ pagan_roman_monarchy_title_3 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -2838,19 +3619,29 @@ pagan_roman_monarchy_title_3 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = umbrian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-pagan_roman_monarchy_title_4 = {
-	rank = {
+pagan_roman_monarchy_title_4 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -2858,8 +3649,7 @@ pagan_roman_monarchy_title_4 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -2867,8 +3657,7 @@ pagan_roman_monarchy_title_4 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -2876,8 +3665,7 @@ pagan_roman_monarchy_title_4 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = CHIEF
 		2 = CHIEF
 		3 = CHIEF
@@ -2885,8 +3673,7 @@ pagan_roman_monarchy_title_4 = {
 		5 = CHIEF
 		6 = CHIEF
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = CHIEFTESS
 		2 = CHIEFTESS
 		3 = CHIEFTESS
@@ -2894,19 +3681,29 @@ pagan_roman_monarchy_title_4 = {
 		5 = CHIEFTESS
 		6 = CHIEFTESS
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = umbrian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-pagan_roman_monarchy_title_5 = {
-	rank = {
+pagan_roman_monarchy_title_5 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -2914,8 +3711,7 @@ pagan_roman_monarchy_title_5 = {
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = REX_title
 		2 = REX_title
 		3 = REX_title
@@ -2923,8 +3719,7 @@ pagan_roman_monarchy_title_5 = {
 		5 = REX_title
 		6 = REX_title
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = REGINA
 		2 = REGINA
 		3 = REGINA
@@ -2932,8 +3727,7 @@ pagan_roman_monarchy_title_5 = {
 		5 = REGINA
 		6 = REGINA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = REX_title
 		2 = REX_title
 		3 = REX_title
@@ -2941,8 +3735,7 @@ pagan_roman_monarchy_title_5 = {
 		5 = REX_title
 		6 = REX_title
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = REGINA
 		2 = REGINA
 		3 = REGINA
@@ -2950,19 +3743,29 @@ pagan_roman_monarchy_title_5 = {
 		5 = REGINA
 		6 = REGINA
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = umbrian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-pagan_roman_monarchy_title_6 = {
-	rank = {
+pagan_roman_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -2970,8 +3773,7 @@ pagan_roman_monarchy_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = IMPERATOR
 		2 = IMPERATOR
 		3 = IMPERATOR
@@ -2979,8 +3781,7 @@ pagan_roman_monarchy_title_6 = {
 		5 = IMPERATOR
 		6 = IMPERATOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = IMPERATRIX
 		2 = IMPERATRIX
 		3 = IMPERATRIX
@@ -2988,8 +3789,7 @@ pagan_roman_monarchy_title_6 = {
 		5 = IMPERATRIX
 		6 = IMPERATRIX
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = IMPERATOR
 		2 = IMPERATOR
 		3 = IMPERATOR
@@ -2997,8 +3797,7 @@ pagan_roman_monarchy_title_6 = {
 		5 = IMPERATOR
 		6 = IMPERATOR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = IMPERATRIX
 		2 = IMPERATRIX
 		3 = IMPERATRIX
@@ -3006,20 +3805,29 @@ pagan_roman_monarchy_title_6 = {
 		5 = IMPERATRIX
 		6 = IMPERATRIX
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = umbrian
-		OR = {
+		OR = { 
 			religion_group = pagan
 			religion_group = european_pagan
 		}
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-south_andean_monarchy_title_1 = { #Aymara and Quechua
-	rank = {
+south_andean_monarchy_title_1 = { 
+	rank = { 
 		1 = AYLLU
 		2 = AYLLU
 		3 = AYLLU
@@ -3027,41 +3835,38 @@ south_andean_monarchy_title_1 = { #Aymara and Quechua
 		5 = AYLLU
 		6 = AYLLU
 	}
-	
-	ruler_male = {
-		1 = MALLKU #Head of a traditional community in the Andes
+	ruler_male = { 
+		1 = MALLKU
 		2 = MALLKU
 		3 = MALLKU
-		4 = MALLKU #Head of State
+		4 = MALLKU
 		5 = MALLKU
-		6 = MALLKU #Emperor
+		6 = MALLKU
 	}
-	
-	ruler_female = {
-		1 = MALLKU #Head of a traditional community in the Andes
+	ruler_female = { 
+		1 = MALLKU
 		2 = MALLKU
 		3 = MALLKU
-		4 = MALLKU #Head of State
+		4 = MALLKU
 		5 = MALLKU
-		6 = MALLKU #Emperor
+		6 = MALLKU
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = quechuan
 			primary_culture = aimara
 		}
 		religion = inti
-		#OR = {
-		#	monarchy_or_harem_gov = yes
-		#	trib_king_trigger = yes
-		#	trib_fed_trigger = yes
-		#}
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-south_andean_monarchy_title_2 = { #Aymara and Quechua
-	rank = {
+south_andean_monarchy_title_2 = { 
+	rank = { 
 		1 = WAMANI
 		2 = WAMANI
 		3 = WAMANI
@@ -3069,41 +3874,38 @@ south_andean_monarchy_title_2 = { #Aymara and Quechua
 		5 = WAMANI
 		6 = WAMANI
 	}
-	
-	ruler_male = {
-		1 = WAMAN #Head of a traditional community in the Andes
+	ruler_male = { 
+		1 = WAMAN
 		2 = WAMAN
 		3 = WAMAN
-		4 = WAMAN #Head of State
+		4 = WAMAN
 		5 = WAMAN
-		6 = WAMAN #Emperor
+		6 = WAMAN
 	}
-	
-	ruler_female = {
-		1 = WAMAN #Head of a traditional community in the Andes
+	ruler_female = { 
+		1 = WAMAN
 		2 = WAMAN
 		3 = WAMAN
-		4 = WAMAN #Head of State
+		4 = WAMAN
 		5 = WAMAN
-		6 = WAMAN #Emperor
+		6 = WAMAN
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = quechuan
 			primary_culture = aimara
 		}
 		religion = inti
-		#OR = {
-		#	monarchy_or_harem_gov = yes
-		#	trib_king_trigger = yes
-		#	trib_fed_trigger = yes
-		#}
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-south_andean_monarchy_title_3 = { #Aymara and Quechua
-	rank = {
+south_andean_monarchy_title_3 = { 
+	rank = { 
 		1 = KURAQA
 		2 = KURAQA
 		3 = KURAQA
@@ -3111,41 +3913,38 @@ south_andean_monarchy_title_3 = { #Aymara and Quechua
 		5 = KURAQA
 		6 = KURAQA
 	}
-	
-	ruler_male = {
-		1 = KURAQ #Head of a traditional community in the Andes
+	ruler_male = { 
+		1 = KURAQ
 		2 = KURAQ
 		3 = KURAQ
-		4 = KURAQ #Head of State
+		4 = KURAQ
 		5 = KURAQ
-		6 = KURAQ #Emperor
+		6 = KURAQ
 	}
-	
-	ruler_female = {
-		1 = KURAQ #Head of a traditional community in the Andes
+	ruler_female = { 
+		1 = KURAQ
 		2 = KURAQ
 		3 = KURAQ
-		4 = KURAQ #Head of State
+		4 = KURAQ
 		5 = KURAQ
-		6 = KURAQ #Emperor
+		6 = KURAQ
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = quechuan
 			primary_culture = aimara
 		}
 		religion = inti
-		#OR = {
-		#	monarchy_or_harem_gov = yes
-		#	trib_king_trigger = yes
-		#	trib_fed_trigger = yes
-		#}
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-south_andean_monarchy_title_4 = { #Aymara and Quechua
-	rank = {
+south_andean_monarchy_title_4 = { 
+	rank = { 
 		1 = KURAQA
 		2 = KURAQA
 		3 = KURAQA
@@ -3153,41 +3952,38 @@ south_andean_monarchy_title_4 = { #Aymara and Quechua
 		5 = KURAQA
 		6 = KURAQA
 	}
-	
-	ruler_male = {
-		1 = QHAPAQ #Head of a traditional community in the Andes
+	ruler_male = { 
+		1 = QHAPAQ
 		2 = QHAPAQ
 		3 = QHAPAQ
-		4 = QHAPAQ #Head of State
+		4 = QHAPAQ
 		5 = QHAPAQ
-		6 = QHAPAQ #Emperor
+		6 = QHAPAQ
 	}
-	
-	ruler_female = {
-		1 = QHAPAQ #Head of a traditional community in the Andes
+	ruler_female = { 
+		1 = QHAPAQ
 		2 = QHAPAQ
 		3 = QHAPAQ
-		4 = QHAPAQ #Head of State
+		4 = QHAPAQ
 		5 = QHAPAQ
-		6 = QHAPAQ #Emperor
+		6 = QHAPAQ
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = quechuan
 			primary_culture = aimara
 		}
 		religion = inti
-		#OR = {
-		#	monarchy_or_harem_gov = yes
-		#	trib_king_trigger = yes
-		#	trib_fed_trigger = yes
-		#}
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-south_andean_monarchy_title_5 = { #Aymara and Quechua
-	rank = {
+south_andean_monarchy_title_5 = { 
+	rank = { 
 		1 = KINGDOM
 		2 = KINGDOM
 		3 = KINGDOM
@@ -3195,41 +3991,38 @@ south_andean_monarchy_title_5 = { #Aymara and Quechua
 		5 = KINGDOM
 		6 = KINGDOM
 	}
-	
-	ruler_male = {
-		1 = INKA #Head of a traditional community in the Andes
+	ruler_male = { 
+		1 = INKA
 		2 = INKA
 		3 = INKA
-		4 = INKA #Head of State
+		4 = INKA
 		5 = INKA
-		6 = INKA #Emperor
+		6 = INKA
 	}
-	
-	ruler_female = {
-		1 = INKA #Head of a traditional community in the Andes
+	ruler_female = { 
+		1 = INKA
 		2 = INKA
 		3 = INKA
-		4 = INKA #Head of State
+		4 = INKA
 		5 = INKA
-		6 = INKA #Emperor
+		6 = INKA
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = quechuan
 			primary_culture = aimara
 		}
 		religion = inti
-		#OR = {
-		#	monarchy_or_harem_gov = yes
-		#	trib_king_trigger = yes
-		#	trib_fed_trigger = yes
-		#}
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-south_andean_monarchy_title_6 = { #Aymara and Quechua
-	rank = {
+south_andean_monarchy_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -3237,39 +4030,33 @@ south_andean_monarchy_title_6 = { #Aymara and Quechua
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
-		1 = SAPA_INKA #Head of a traditional community in the Andes
+	ruler_male = { 
+		1 = SAPA_INKA
 		2 = SAPA_INKA
 		3 = SAPA_INKA
-		4 = SAPA_INKA #Head of State
+		4 = SAPA_INKA
 		5 = SAPA_INKA
-		6 = SAPA_INKA #Emperor
+		6 = SAPA_INKA
 	}
-	
-	ruler_female = {
-		1 = SAPA_INKA #Head of a traditional community in the Andes
+	ruler_female = { 
+		1 = SAPA_INKA
 		2 = SAPA_INKA
 		3 = SAPA_INKA
-		4 = SAPA_INKA #Head of State
+		4 = SAPA_INKA
 		5 = SAPA_INKA
-		6 = SAPA_INKA #Emperor
+		6 = SAPA_INKA
 	}
-	
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			primary_culture = quechuan
 			primary_culture = aimara
 		}
 		religion = inti
-		#OR = {
-		#	monarchy_or_harem_gov = yes
-		#	trib_king_trigger = yes
-		#	trib_fed_trigger = yes
-		#}
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-
-

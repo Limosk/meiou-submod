@@ -1,8 +1,5 @@
-# For specific combinations of culture, religion and other such triggers
-# Will pick the first valid one it finds in list
-
 dekapolis_free_city = { 
-	rank = {
+	rank = { 
 		1 = IMPERIAL_CITIES
 		2 = IMPERIAL_CITIES
 		3 = IMPERIAL_CITIES
@@ -10,8 +7,7 @@ dekapolis_free_city = {
 		5 = IMPERIAL_CITIES
 		6 = IMPERIAL_CITIES
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = VORSITZENDE
 		2 = VORSITZENDE
 		3 = VORSITZENDE
@@ -19,8 +15,7 @@ dekapolis_free_city = {
 		5 = VORSITZENDE
 		6 = VORSITZENDE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = VORSITZENDE
 		2 = VORSITZENDE
 		3 = VORSITZENDE
@@ -28,16 +23,34 @@ dekapolis_free_city = {
 		5 = VORSITZENDE
 		6 = VORSITZENDE
 	}
-	
-	trigger = {
-		free_city_trigger = yes
+	trigger = { 
+		AND = { 
+			government = republic
+			has_reform = Pol_Mandate1
+			has_reform = Pol_Stylings1
+			has_reform = Pol_ExtraPowers1
+			has_reform = Pol_Assembly2
+			has_reform = Pol_TermOfOffice5
+			has_reform = free_city
+		}
 		tag = DCP
-		federal_republic_trigger = yes
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
 	}
 }
-
-genoa_illiberal_republic_vassal = {
-	rank = {
+genoa_illiberal_republic_vassal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -45,8 +58,7 @@ genoa_illiberal_republic_vassal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DOGE
 		2 = DOGE
 		3 = DOGE
@@ -54,8 +66,7 @@ genoa_illiberal_republic_vassal = {
 		5 = DOGE
 		6 = DOGE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DOGARESSA
 		2 = DOGARESSA
 		3 = DOGARESSA
@@ -63,16 +74,84 @@ genoa_illiberal_republic_vassal = {
 		5 = DOGARESSA
 		6 = DOGARESSA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		tag = GEN
 	}
 }
-genoa_illiberal_republic_sovereign = {
-	rank = {
+genoa_illiberal_republic_sovereign = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -80,8 +159,7 @@ genoa_illiberal_republic_sovereign = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DOGE
 		2 = DOGE
 		3 = DOGE
@@ -89,8 +167,7 @@ genoa_illiberal_republic_sovereign = {
 		5 = DOGE
 		6 = DOGE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DOGARESSA
 		2 = DOGARESSA
 		3 = DOGARESSA
@@ -98,17 +175,101 @@ genoa_illiberal_republic_sovereign = {
 		5 = DOGARESSA
 		6 = DOGARESSA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = GEN
 	}
 }
-genoa_illiberal_republic_federal = {
-	rank = {
+genoa_illiberal_republic_federal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -116,8 +277,7 @@ genoa_illiberal_republic_federal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DOGE
 		2 = DOGE
 		3 = DOGE
@@ -125,8 +285,7 @@ genoa_illiberal_republic_federal = {
 		5 = DOGE
 		6 = DOGE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DOGARESSA
 		2 = DOGARESSA
 		3 = DOGARESSA
@@ -134,19 +293,99 @@ genoa_illiberal_republic_federal = {
 		5 = DOGARESSA
 		6 = DOGARESSA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = GEN
 	}
 }
-
-
-genoa_illiberal_dictatorship_sovereign = {
-	rank = {
+genoa_illiberal_dictatorship_sovereign = { 
+	rank = { 
 		1 = MOST_SERENE_REPUBLIC
 		2 = MOST_SERENE_REPUBLIC
 		3 = MOST_SERENE_REPUBLIC
@@ -154,8 +393,7 @@ genoa_illiberal_dictatorship_sovereign = {
 		5 = MOST_SERENE_REPUBLIC
 		6 = MOST_SERENE_REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SIGNORE
 		2 = SIGNORE
 		3 = SIGNORE
@@ -163,8 +401,7 @@ genoa_illiberal_dictatorship_sovereign = {
 		5 = SIGNORE
 		6 = SIGNORE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SIGNORA
 		2 = SIGNORA
 		3 = SIGNORA
@@ -172,17 +409,102 @@ genoa_illiberal_dictatorship_sovereign = {
 		5 = SIGNORA
 		6 = SIGNORA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		protector_trigger = yes #can't be done in trigger for some reason
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = GEN
 	}
 }
-genoa_illiberal_dictatorship_federal = {
-	rank = {
+genoa_illiberal_dictatorship_federal = { 
+	rank = { 
 		1 = MOST_SERENE_REPUBLICS
 		2 = MOST_SERENE_REPUBLICS
 		3 = MOST_SERENE_REPUBLICS
@@ -190,8 +512,7 @@ genoa_illiberal_dictatorship_federal = {
 		5 = MOST_SERENE_REPUBLICS
 		6 = MOST_SERENE_REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SIGNORE
 		2 = SIGNORE
 		3 = SIGNORE
@@ -199,8 +520,7 @@ genoa_illiberal_dictatorship_federal = {
 		5 = SIGNORE
 		6 = SIGNORE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SIGNORA
 		2 = SIGNORA
 		3 = SIGNORA
@@ -208,18 +528,100 @@ genoa_illiberal_dictatorship_federal = {
 		5 = SIGNORA
 		6 = SIGNORA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		protector_trigger = yes #can't be done in trigger for some reason
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = GEN
 	}
 }
-
-venice_illiberal_republic_vassal = {
-	rank = {
+venice_illiberal_republic_vassal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -227,8 +629,7 @@ venice_illiberal_republic_vassal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DOGE
 		2 = DOGE
 		3 = DOGE
@@ -236,8 +637,7 @@ venice_illiberal_republic_vassal = {
 		5 = DOGE
 		6 = DOGE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DOGARESSA
 		2 = DOGARESSA
 		3 = DOGARESSA
@@ -245,16 +645,84 @@ venice_illiberal_republic_vassal = {
 		5 = DOGARESSA
 		6 = DOGARESSA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		tag = VEN
 	}
 }
-venice_illiberal_republic_sovereign = {
-	rank = {
+venice_illiberal_republic_sovereign = { 
+	rank = { 
 		1 = MOST_SERENE_REPUBLIC
 		2 = MOST_SERENE_REPUBLIC
 		3 = MOST_SERENE_REPUBLIC
@@ -262,8 +730,7 @@ venice_illiberal_republic_sovereign = {
 		5 = MOST_SERENE_REPUBLIC
 		6 = MOST_SERENE_REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DOGE
 		2 = DOGE
 		3 = DOGE
@@ -271,8 +738,7 @@ venice_illiberal_republic_sovereign = {
 		5 = DOGE
 		6 = DOGE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DOGARESSA
 		2 = DOGARESSA
 		3 = DOGARESSA
@@ -280,17 +746,101 @@ venice_illiberal_republic_sovereign = {
 		5 = DOGARESSA
 		6 = DOGARESSA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = VEN
 	}
 }
-venice_illiberal_republic_federal = {
-	rank = {
+venice_illiberal_republic_federal = { 
+	rank = { 
 		1 = MOST_SERENE_REPUBLICS
 		2 = MOST_SERENE_REPUBLICS
 		3 = MOST_SERENE_REPUBLICS
@@ -298,8 +848,7 @@ venice_illiberal_republic_federal = {
 		5 = MOST_SERENE_REPUBLICS
 		6 = MOST_SERENE_REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DOGE
 		2 = DOGE
 		3 = DOGE
@@ -307,8 +856,7 @@ venice_illiberal_republic_federal = {
 		5 = DOGE
 		6 = DOGE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DOGARESSA
 		2 = DOGARESSA
 		3 = DOGARESSA
@@ -316,19 +864,99 @@ venice_illiberal_republic_federal = {
 		5 = DOGARESSA
 		6 = DOGARESSA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = VEN
 	}
 }
-
-
-venice_illiberal_dictatorship_sovereign = {
-	rank = {
+venice_illiberal_dictatorship_sovereign = { 
+	rank = { 
 		1 = MOST_SERENE_REPUBLIC
 		2 = MOST_SERENE_REPUBLIC
 		3 = MOST_SERENE_REPUBLIC
@@ -336,8 +964,7 @@ venice_illiberal_dictatorship_sovereign = {
 		5 = MOST_SERENE_REPUBLIC
 		6 = MOST_SERENE_REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SIGNORE
 		2 = SIGNORE
 		3 = SIGNORE
@@ -345,8 +972,7 @@ venice_illiberal_dictatorship_sovereign = {
 		5 = SIGNORE
 		6 = SIGNORE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SIGNORA
 		2 = SIGNORA
 		3 = SIGNORA
@@ -354,17 +980,102 @@ venice_illiberal_dictatorship_sovereign = {
 		5 = SIGNORA
 		6 = SIGNORA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		protector_trigger = yes #can't be done in trigger for some reason
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = VEN
 	}
 }
-venice_illiberal_dictatorship_federal = {
-	rank = {
+venice_illiberal_dictatorship_federal = { 
+	rank = { 
 		1 = MOST_SERENE_REPUBLICS
 		2 = MOST_SERENE_REPUBLICS
 		3 = MOST_SERENE_REPUBLICS
@@ -372,8 +1083,7 @@ venice_illiberal_dictatorship_federal = {
 		5 = MOST_SERENE_REPUBLICS
 		6 = MOST_SERENE_REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SIGNORE
 		2 = SIGNORE
 		3 = SIGNORE
@@ -381,8 +1091,7 @@ venice_illiberal_dictatorship_federal = {
 		5 = SIGNORE
 		6 = SIGNORE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SIGNORA
 		2 = SIGNORA
 		3 = SIGNORA
@@ -390,18 +1099,100 @@ venice_illiberal_dictatorship_federal = {
 		5 = SIGNORA
 		6 = SIGNORA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		protector_trigger = yes #can't be done in trigger for some reason
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = VEN
 	}
 }
-
-swiss_liberal_republic_title_vassal = {
-	rank = {
+swiss_liberal_republic_title_vassal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -409,8 +1200,7 @@ swiss_liberal_republic_title_vassal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = STADRAT
 		2 = STADRAT
 		3 = STADRAT
@@ -418,8 +1208,7 @@ swiss_liberal_republic_title_vassal = {
 		5 = STADRAT
 		6 = STADRAT
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = STADRAT
 		2 = STADRAT
 		3 = STADRAT
@@ -427,18 +1216,82 @@ swiss_liberal_republic_title_vassal = {
 		5 = STADRAT
 		6 = STADRAT
 	}
-
-	
-	trigger = {
-		liberal_republic_trigger = yes
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_liberal_republic_title_sovereign = {
-	rank = {
+swiss_liberal_republic_title_sovereign = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -446,8 +1299,7 @@ swiss_liberal_republic_title_sovereign = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PRASIDENT
 		2 = PRASIDENT
 		3 = PRASIDENT
@@ -455,8 +1307,7 @@ swiss_liberal_republic_title_sovereign = {
 		5 = PRASIDENT
 		6 = PRASIDENT
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = PRASIDENT
 		2 = PRASIDENT
 		3 = PRASIDENT
@@ -464,19 +1315,99 @@ swiss_liberal_republic_title_sovereign = {
 		5 = PRASIDENT
 		6 = PRASIDENT
 	}
-
-	
-	trigger = {
-		normal_republic_trigger = yes
-		liberal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_liberal_republic_title_federal = {
-	rank = {
+swiss_liberal_republic_title_federal = { 
+	rank = { 
 		1 = CONFEDERATION
 		2 = CONFEDERATION
 		3 = CONFEDERATION
@@ -484,8 +1415,7 @@ swiss_liberal_republic_title_federal = {
 		5 = CONFEDERATION
 		6 = CONFEDERATION
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = BUNDESPRASIDENT
 		2 = BUNDESPRASIDENT
 		3 = BUNDESPRASIDENT
@@ -493,8 +1423,7 @@ swiss_liberal_republic_title_federal = {
 		5 = BUNDESPRASIDENT
 		6 = BUNDESPRASIDENT
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = BUNDESPRASIDENT
 		2 = BUNDESPRASIDENT
 		3 = BUNDESPRASIDENT
@@ -502,19 +1431,97 @@ swiss_liberal_republic_title_federal = {
 		5 = BUNDESPRASIDENT
 		6 = BUNDESPRASIDENT
 	}
-
-	
-	trigger = {
-		normal_republic_trigger = yes
-		liberal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_illiberal_republic_title_vassal = {
-	rank = {
+swiss_illiberal_republic_title_vassal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -522,8 +1529,7 @@ swiss_illiberal_republic_title_vassal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = STADRAT
 		2 = STADRAT
 		3 = STADRAT
@@ -531,8 +1537,7 @@ swiss_illiberal_republic_title_vassal = {
 		5 = STADRAT
 		6 = STADRAT
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = STADRAT
 		2 = STADRAT
 		3 = STADRAT
@@ -540,18 +1545,84 @@ swiss_illiberal_republic_title_vassal = {
 		5 = STADRAT
 		6 = STADRAT
 	}
-
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_illiberal_republic_title_sovereign = {
-	rank = {
+swiss_illiberal_republic_title_sovereign = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -559,8 +1630,7 @@ swiss_illiberal_republic_title_sovereign = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = VORSITZENDE
 		2 = VORSITZENDE
 		3 = VORSITZENDE
@@ -568,8 +1638,7 @@ swiss_illiberal_republic_title_sovereign = {
 		5 = VORSITZENDE
 		6 = VORSITZENDE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = VORSITZENDE
 		2 = VORSITZENDE
 		3 = VORSITZENDE
@@ -577,19 +1646,101 @@ swiss_illiberal_republic_title_sovereign = {
 		5 = VORSITZENDE
 		6 = VORSITZENDE
 	}
-
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_illiberal_republic_title_federal = {
-	rank = {
+swiss_illiberal_republic_title_federal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -597,8 +1748,7 @@ swiss_illiberal_republic_title_federal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = VORSITZENDE
 		2 = VORSITZENDE
 		3 = VORSITZENDE
@@ -606,8 +1756,7 @@ swiss_illiberal_republic_title_federal = {
 		5 = VORSITZENDE
 		6 = VORSITZENDE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = VORSITZENDE
 		2 = VORSITZENDE
 		3 = VORSITZENDE
@@ -615,19 +1764,99 @@ swiss_illiberal_republic_title_federal = {
 		5 = VORSITZENDE
 		6 = VORSITZENDE
 	}
-
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_liberal_dictatorship_title_vassal = {
-	rank = {
+swiss_liberal_dictatorship_title_vassal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -635,8 +1864,7 @@ swiss_liberal_dictatorship_title_vassal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = KAPITAN
 		2 = KAPITAN
 		3 = KAPITAN
@@ -644,8 +1872,7 @@ swiss_liberal_dictatorship_title_vassal = {
 		5 = KAPITAN
 		6 = KAPITAN
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = KAPITANIN
 		2 = KAPITANIN
 		3 = KAPITANIN
@@ -653,18 +1880,83 @@ swiss_liberal_dictatorship_title_vassal = {
 		5 = KAPITANIN
 		6 = KAPITANIN
 	}
-
-	
-	trigger = {
-		liberal_republic_trigger = yes
-		protector_trigger = yes #can't be done in trigger for some reason
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_liberal_dictatorship_title_sovereign = {
-	rank = {
+swiss_liberal_dictatorship_title_sovereign = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -672,8 +1964,7 @@ swiss_liberal_dictatorship_title_sovereign = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GENERALKAPITAN
 		2 = GENERALKAPITAN
 		3 = GENERALKAPITAN
@@ -681,8 +1972,7 @@ swiss_liberal_dictatorship_title_sovereign = {
 		5 = GENERALKAPITAN
 		6 = GENERALKAPITAN
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GENERALKAPITANIN
 		2 = GENERALKAPITANIN
 		3 = GENERALKAPITANIN
@@ -690,19 +1980,100 @@ swiss_liberal_dictatorship_title_sovereign = {
 		5 = GENERALKAPITANIN
 		6 = GENERALKAPITANIN
 	}
-
-	
-	trigger = {
-		protector_trigger = yes #can't be done in trigger for some reason
-		liberal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_liberal_dictatorship_title_federal = {
-	rank = {
+swiss_liberal_dictatorship_title_federal = { 
+	rank = { 
 		1 = CONFEDERATION
 		2 = CONFEDERATION
 		3 = CONFEDERATION
@@ -710,8 +2081,7 @@ swiss_liberal_dictatorship_title_federal = {
 		5 = CONFEDERATION
 		6 = CONFEDERATION
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GENERALKAPITAN
 		2 = GENERALKAPITAN
 		3 = GENERALKAPITAN
@@ -719,8 +2089,7 @@ swiss_liberal_dictatorship_title_federal = {
 		5 = GENERALKAPITAN
 		6 = GENERALKAPITAN
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GENERALKAPITANIN
 		2 = GENERALKAPITANIN
 		3 = GENERALKAPITANIN
@@ -728,19 +2097,98 @@ swiss_liberal_dictatorship_title_federal = {
 		5 = GENERALKAPITANIN
 		6 = GENERALKAPITANIN
 	}
-
-	
-	trigger = {
-		protector_trigger = yes #can't be done in trigger for some reason
-		liberal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			is_variable_equal = { 
+				which = grn
+				value = 1
+			}
+			is_variable_equal = { 
+				which = grk
+				value = 2
+			}
+			is_variable_equal = { 
+				which = grl
+				value = 0
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_illiberal_dictatorship_title_vassal = {
-	rank = {
+swiss_illiberal_dictatorship_title_vassal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -748,8 +2196,7 @@ swiss_illiberal_dictatorship_title_vassal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = KAPITAN
 		2 = KAPITAN
 		3 = KAPITAN
@@ -757,8 +2204,7 @@ swiss_illiberal_dictatorship_title_vassal = {
 		5 = KAPITAN
 		6 = KAPITAN
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = KAPITANIN
 		2 = KAPITANIN
 		3 = KAPITANIN
@@ -766,18 +2212,85 @@ swiss_illiberal_dictatorship_title_vassal = {
 		5 = KAPITANIN
 		6 = KAPITANIN
 	}
-
-	
-	trigger = {
-		protector_trigger = yes #can't be done in trigger for some reason
-		liberal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_illiberal_dictatorship_title_sovereign = {
-	rank = {
+swiss_illiberal_dictatorship_title_sovereign = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -785,8 +2298,7 @@ swiss_illiberal_dictatorship_title_sovereign = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GENERALKAPITAN
 		2 = GENERALKAPITAN
 		3 = GENERALKAPITAN
@@ -794,8 +2306,7 @@ swiss_illiberal_dictatorship_title_sovereign = {
 		5 = GENERALKAPITAN
 		6 = GENERALKAPITAN
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GENERALKAPITANIN
 		2 = GENERALKAPITANIN
 		3 = GENERALKAPITANIN
@@ -803,19 +2314,102 @@ swiss_illiberal_dictatorship_title_sovereign = {
 		5 = GENERALKAPITANIN
 		6 = GENERALKAPITANIN
 	}
-
-	
-	trigger = {
-		protector_trigger = yes #can't be done in trigger for some reason
-		liberal_republic_trigger = no
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = SWI
 	}
 }
-
-swiss_illiberal_dictatorship_title_federal = {
-	rank = {
+swiss_illiberal_dictatorship_title_federal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -823,8 +2417,7 @@ swiss_illiberal_dictatorship_title_federal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GENERALKAPITAN
 		2 = GENERALKAPITAN
 		3 = GENERALKAPITAN
@@ -832,8 +2425,7 @@ swiss_illiberal_dictatorship_title_federal = {
 		5 = GENERALKAPITAN
 		6 = GENERALKAPITAN
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GENERALKAPITANIN
 		2 = GENERALKAPITANIN
 		3 = GENERALKAPITANIN
@@ -841,19 +2433,100 @@ swiss_illiberal_dictatorship_title_federal = {
 		5 = GENERALKAPITANIN
 		6 = GENERALKAPITANIN
 	}
-
-	
-	trigger = {
-		protector_trigger = yes #can't be done in trigger for some reason
-		liberal_republic_trigger = no
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = SWI
 	}
 }
-
-dithmarschen_illiberal_republic_vassal = {
-	rank = {
+dithmarschen_illiberal_republic_vassal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -861,8 +2534,7 @@ dithmarschen_illiberal_republic_vassal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = FREISCHOFFE
 		2 = FREISCHOFFE
 		3 = FREISCHOFFE
@@ -870,8 +2542,7 @@ dithmarschen_illiberal_republic_vassal = {
 		5 = FREISCHOFFE
 		6 = FREISCHOFFE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = FREISCHOFFE
 		2 = FREISCHOFFE
 		3 = FREISCHOFFE
@@ -879,17 +2550,88 @@ dithmarschen_illiberal_republic_vassal = {
 		5 = FREISCHOFFE
 		6 = FREISCHOFFE
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		is_key_equal = { lhs = Pol_Mandate value = 1 }
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		is_variable_equal = { 
+			which = grn
+			value = 1
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		tag = DIT
 	}
 }
-dithmarschen_illiberal_republic_sovereign = {
-	rank = {
+dithmarschen_illiberal_republic_sovereign = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -897,8 +2639,7 @@ dithmarschen_illiberal_republic_sovereign = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = FREISCHOFFE
 		2 = FREISCHOFFE
 		3 = FREISCHOFFE
@@ -906,8 +2647,7 @@ dithmarschen_illiberal_republic_sovereign = {
 		5 = FREISCHOFFE
 		6 = FREISCHOFFE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = FREISCHOFFE
 		2 = FREISCHOFFE
 		3 = FREISCHOFFE
@@ -915,18 +2655,105 @@ dithmarschen_illiberal_republic_sovereign = {
 		5 = FREISCHOFFE
 		6 = FREISCHOFFE
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		is_key_equal = { lhs = Pol_Mandate value = 1 }
-		normal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		is_variable_equal = { 
+			which = grn
+			value = 1
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = DIT
 	}
 }
-dithmarschen_illiberal_republic_federal = {
-	rank = {
+dithmarschen_illiberal_republic_federal = { 
+	rank = { 
 		1 = REPUBLICS
 		2 = REPUBLICS
 		3 = REPUBLICS
@@ -934,8 +2761,7 @@ dithmarschen_illiberal_republic_federal = {
 		5 = REPUBLICS
 		6 = REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = FREISCHOFFE
 		2 = FREISCHOFFE
 		3 = FREISCHOFFE
@@ -943,8 +2769,7 @@ dithmarschen_illiberal_republic_federal = {
 		5 = FREISCHOFFE
 		6 = FREISCHOFFE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = FREISCHOFFE
 		2 = FREISCHOFFE
 		3 = FREISCHOFFE
@@ -952,19 +2777,103 @@ dithmarschen_illiberal_republic_federal = {
 		5 = FREISCHOFFE
 		6 = FREISCHOFFE
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		is_key_equal = { lhs = Pol_Mandate value = 1 }
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		is_variable_equal = { 
+			which = grn
+			value = 1
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = DIT
 	}
 }
-
-roman_territories_illiberal_republic_vassal = {
-	rank = {
+roman_territories_illiberal_republic_vassal = { 
+	rank = { 
 		1 = TERRITORY
 		2 = TERRITORY
 		3 = TERRITORY
@@ -972,8 +2881,7 @@ roman_territories_illiberal_republic_vassal = {
 		5 = TERRITORY
 		6 = TERRITORY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SUMMUS_SENATOR
 		2 = SUMMUS_SENATOR
 		3 = SUMMUS_SENATOR
@@ -981,8 +2889,7 @@ roman_territories_illiberal_republic_vassal = {
 		5 = SUMMUS_SENATOR
 		6 = SUMMUS_SENATOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SUMMUS_SENATOR
 		2 = SUMMUS_SENATOR
 		3 = SUMMUS_SENATOR
@@ -990,16 +2897,84 @@ roman_territories_illiberal_republic_vassal = {
 		5 = SUMMUS_SENATOR
 		6 = SUMMUS_SENATOR
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		tag = PA2
 	}
 }
-roman_territories_illiberal_republic_sovereign = {
-	rank = {
+roman_territories_illiberal_republic_sovereign = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -1007,8 +2982,7 @@ roman_territories_illiberal_republic_sovereign = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = TRIBUNUS
 		2 = TRIBUNUS
 		3 = TRIBUNUS
@@ -1016,8 +2990,7 @@ roman_territories_illiberal_republic_sovereign = {
 		5 = TRIBUNUS
 		6 = TRIBUNUS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = TRIBUNUS
 		2 = TRIBUNUS
 		3 = TRIBUNUS
@@ -1025,17 +2998,101 @@ roman_territories_illiberal_republic_sovereign = {
 		5 = TRIBUNUS
 		6 = TRIBUNUS
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = PA2
 	}
 }
-roman_territories_illiberal_republic_federal = {
-	rank = {
+roman_territories_illiberal_republic_federal = { 
+	rank = { 
 		1 = REPUBLICS
 		2 = REPUBLICS
 		3 = REPUBLICS
@@ -1043,8 +3100,7 @@ roman_territories_illiberal_republic_federal = {
 		5 = REPUBLICS
 		6 = REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = TRIBUNUS
 		2 = TRIBUNUS
 		3 = TRIBUNUS
@@ -1052,8 +3108,7 @@ roman_territories_illiberal_republic_federal = {
 		5 = TRIBUNUS
 		6 = TRIBUNUS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = TRIBUNUS
 		2 = TRIBUNUS
 		3 = TRIBUNUS
@@ -1061,18 +3116,99 @@ roman_territories_illiberal_republic_federal = {
 		5 = TRIBUNUS
 		6 = TRIBUNUS
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = PA2
 	}
 }
-
-lucca_illiberal_republic_sovereign = {
-	rank = {
+lucca_illiberal_republic_sovereign = { 
+	rank = { 
 		1 = MOST_SERENE_REPUBLIC
 		2 = MOST_SERENE_REPUBLIC
 		3 = MOST_SERENE_REPUBLIC
@@ -1080,8 +3216,7 @@ lucca_illiberal_republic_sovereign = {
 		5 = MOST_SERENE_REPUBLIC
 		6 = MOST_SERENE_REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GONFALONIERE
 		2 = GONFALONIERE
 		3 = GONFALONIERE
@@ -1089,8 +3224,7 @@ lucca_illiberal_republic_sovereign = {
 		5 = GONFALONIERE
 		6 = GONFALONIERE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GONFALONIERE
 		2 = GONFALONIERE
 		3 = GONFALONIERE
@@ -1098,17 +3232,101 @@ lucca_illiberal_republic_sovereign = {
 		5 = GONFALONIERE
 		6 = GONFALONIERE
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = LUC
 	}
 }
-lucca_illiberal_republic_federal = {
-	rank = {
+lucca_illiberal_republic_federal = { 
+	rank = { 
 		1 = MOST_SERENE_REPUBLICS
 		2 = MOST_SERENE_REPUBLICS
 		3 = MOST_SERENE_REPUBLICS
@@ -1116,8 +3334,7 @@ lucca_illiberal_republic_federal = {
 		5 = MOST_SERENE_REPUBLICS
 		6 = MOST_SERENE_REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GONFALONIERE
 		2 = GONFALONIERE
 		3 = GONFALONIERE
@@ -1125,8 +3342,7 @@ lucca_illiberal_republic_federal = {
 		5 = GONFALONIERE
 		6 = GONFALONIERE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GONFALONIERE
 		2 = GONFALONIERE
 		3 = GONFALONIERE
@@ -1134,19 +3350,99 @@ lucca_illiberal_republic_federal = {
 		5 = GONFALONIERE
 		6 = GONFALONIERE
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = LUC
 	}
 }
-
-
-lucca_illiberal_dictatorship_sovereign = {
-	rank = {
+lucca_illiberal_dictatorship_sovereign = { 
+	rank = { 
 		1 = MOST_SERENE_REPUBLIC
 		2 = MOST_SERENE_REPUBLIC
 		3 = MOST_SERENE_REPUBLIC
@@ -1154,8 +3450,7 @@ lucca_illiberal_dictatorship_sovereign = {
 		5 = MOST_SERENE_REPUBLIC
 		6 = MOST_SERENE_REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PODESTA
 		2 = PODESTA
 		3 = PODESTA
@@ -1163,8 +3458,7 @@ lucca_illiberal_dictatorship_sovereign = {
 		5 = PODESTA
 		6 = PODESTA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = PODESTA
 		2 = PODESTA
 		3 = PODESTA
@@ -1172,17 +3466,102 @@ lucca_illiberal_dictatorship_sovereign = {
 		5 = PODESTA
 		6 = PODESTA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		protector_trigger = yes #can't be done in trigger for some reason
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = LUC
 	}
 }
-lucca_illiberal_dictatorship_federal = {
-	rank = {
+lucca_illiberal_dictatorship_federal = { 
+	rank = { 
 		1 = MOST_SERENE_REPUBLICS
 		2 = MOST_SERENE_REPUBLICS
 		3 = MOST_SERENE_REPUBLICS
@@ -1190,8 +3569,7 @@ lucca_illiberal_dictatorship_federal = {
 		5 = MOST_SERENE_REPUBLICS
 		6 = MOST_SERENE_REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = PODESTA
 		2 = PODESTA
 		3 = PODESTA
@@ -1199,8 +3577,7 @@ lucca_illiberal_dictatorship_federal = {
 		5 = PODESTA
 		6 = PODESTA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = PODESTA
 		2 = PODESTA
 		3 = PODESTA
@@ -1208,18 +3585,100 @@ lucca_illiberal_dictatorship_federal = {
 		5 = PODESTA
 		6 = PODESTA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		protector_trigger = yes #can't be done in trigger for some reason
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = LUC
 	}
 }
-
-pisa_illiberal_republic_vassal = {
-	rank = {
+pisa_illiberal_republic_vassal = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -1227,8 +3686,7 @@ pisa_illiberal_republic_vassal = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DOGE
 		2 = DOGE
 		3 = DOGE
@@ -1236,8 +3694,7 @@ pisa_illiberal_republic_vassal = {
 		5 = DOGE
 		6 = DOGE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DOGARESSA
 		2 = DOGARESSA
 		3 = DOGARESSA
@@ -1245,16 +3702,84 @@ pisa_illiberal_republic_vassal = {
 		5 = DOGARESSA
 		6 = DOGARESSA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = yes
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		tag = PIS
 	}
 }
-pisa_illiberal_republic_sovereign = {
-	rank = {
+pisa_illiberal_republic_sovereign = { 
+	rank = { 
 		1 = REPUBLIC
 		2 = REPUBLIC
 		3 = REPUBLIC
@@ -1262,8 +3787,7 @@ pisa_illiberal_republic_sovereign = {
 		5 = REPUBLIC
 		6 = REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DOGE
 		2 = DOGE
 		3 = DOGE
@@ -1271,8 +3795,7 @@ pisa_illiberal_republic_sovereign = {
 		5 = DOGE
 		6 = DOGE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DOGARESSA
 		2 = DOGARESSA
 		3 = DOGARESSA
@@ -1280,17 +3803,101 @@ pisa_illiberal_republic_sovereign = {
 		5 = DOGARESSA
 		6 = DOGARESSA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = PIS
 	}
 }
-pisa_illiberal_republic_federal = {
-	rank = {
+pisa_illiberal_republic_federal = { 
+	rank = { 
 		1 = REPUBLICS
 		2 = REPUBLICS
 		3 = REPUBLICS
@@ -1298,8 +3905,7 @@ pisa_illiberal_republic_federal = {
 		5 = REPUBLICS
 		6 = REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DOGE
 		2 = DOGE
 		3 = DOGE
@@ -1307,8 +3913,7 @@ pisa_illiberal_republic_federal = {
 		5 = DOGE
 		6 = DOGE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DOGARESSA
 		2 = DOGARESSA
 		3 = DOGARESSA
@@ -1316,19 +3921,99 @@ pisa_illiberal_republic_federal = {
 		5 = DOGARESSA
 		6 = DOGARESSA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = PIS
 	}
 }
-
-
-milan_illiberal_republic_sovereign = {
-	rank = {
+milan_illiberal_republic_sovereign = { 
+	rank = { 
 		1 = GOLDEN_REPUBLIC
 		2 = GOLDEN_REPUBLIC
 		3 = GOLDEN_REPUBLIC
@@ -1336,8 +4021,7 @@ milan_illiberal_republic_sovereign = {
 		5 = GOLDEN_REPUBLIC
 		6 = GOLDEN_REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CAPITONO_E_DEFENSORE
 		2 = CAPITONO_E_DEFENSORE
 		3 = CAPITONO_E_DEFENSORE
@@ -1345,8 +4029,7 @@ milan_illiberal_republic_sovereign = {
 		5 = CAPITONO_E_DEFENSORE
 		6 = CAPITONO_E_DEFENSORE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CAPITONO_E_DEFENSORE
 		2 = CAPITONO_E_DEFENSORE
 		3 = CAPITONO_E_DEFENSORE
@@ -1354,18 +4037,105 @@ milan_illiberal_republic_sovereign = {
 		5 = CAPITONO_E_DEFENSORE
 		6 = CAPITONO_E_DEFENSORE
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = MLO
-		is_key_equal = { lhs = Pol_Mandate value = 1 }
+		is_variable_equal = { 
+			which = grn
+			value = 1
+		}
 	}
 }
-milan_illiberal_republic_federal = {
-	rank = {
+milan_illiberal_republic_federal = { 
+	rank = { 
 		1 = GOLDEN_REPUBLICS
 		2 = GOLDEN_REPUBLICS
 		3 = GOLDEN_REPUBLICS
@@ -1373,8 +4143,7 @@ milan_illiberal_republic_federal = {
 		5 = GOLDEN_REPUBLICS
 		6 = GOLDEN_REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CAPITONO_E_DEFENSORE
 		2 = CAPITONO_E_DEFENSORE
 		3 = CAPITONO_E_DEFENSORE
@@ -1382,8 +4151,7 @@ milan_illiberal_republic_federal = {
 		5 = CAPITONO_E_DEFENSORE
 		6 = CAPITONO_E_DEFENSORE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CAPITONO_E_DEFENSORE
 		2 = CAPITONO_E_DEFENSORE
 		3 = CAPITONO_E_DEFENSORE
@@ -1391,20 +4159,103 @@ milan_illiberal_republic_federal = {
 		5 = CAPITONO_E_DEFENSORE
 		6 = CAPITONO_E_DEFENSORE
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		normal_republic_trigger = yes
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			NOT = { 
+				AND = { 
+					is_subject = yes
+					NOT = { 
+						is_subject_of_type = tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = close_tributary_state
+					}
+					NOT = { 
+						is_subject_of_type = muscovite_tributary_state
+					}
+					overlord = { 
+						is_revolutionary = yes
+					}
+				}
+				is_revolutionary = yes
+				is_variable_equal = { 
+					which = grm
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 1
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = MLO
-		is_key_equal = { lhs = Pol_Mandate value = 1 }
+		is_variable_equal = { 
+			which = grn
+			value = 1
+		}
 	}
 }
-
-
-milan_illiberal_dictatorship_sovereign = {
-	rank = {
+milan_illiberal_dictatorship_sovereign = { 
+	rank = { 
 		1 = GOLDEN_REPUBLIC
 		2 = GOLDEN_REPUBLIC
 		3 = GOLDEN_REPUBLIC
@@ -1412,8 +4263,7 @@ milan_illiberal_dictatorship_sovereign = {
 		5 = GOLDEN_REPUBLIC
 		6 = GOLDEN_REPUBLIC
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SIGNORE
 		2 = SIGNORE
 		3 = SIGNORE
@@ -1421,8 +4271,7 @@ milan_illiberal_dictatorship_sovereign = {
 		5 = SIGNORE
 		6 = SIGNORE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SIGNORA
 		2 = SIGNORA
 		3 = SIGNORA
@@ -1430,18 +4279,106 @@ milan_illiberal_dictatorship_sovereign = {
 		5 = SIGNORA
 		6 = SIGNORA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		protector_trigger = yes #can't be done in trigger for some reason
-		federal_republic_trigger = no
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				government = republic
+				OR = { 
+					is_variable_equal = { 
+						which = gqs
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqs
+						value = 2
+					}
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = MLO
-		is_key_equal = { lhs = Pol_Mandate value = 1 }
+		is_variable_equal = { 
+			which = grn
+			value = 1
+		}
 	}
 }
-milan_illiberal_dictatorship_federal = {
-	rank = {
+milan_illiberal_dictatorship_federal = { 
+	rank = { 
 		1 = GOLDEN_REPUBLICS
 		2 = GOLDEN_REPUBLICS
 		3 = GOLDEN_REPUBLICS
@@ -1449,8 +4386,7 @@ milan_illiberal_dictatorship_federal = {
 		5 = GOLDEN_REPUBLICS
 		6 = GOLDEN_REPUBLICS
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SIGNORE
 		2 = SIGNORE
 		3 = SIGNORE
@@ -1458,8 +4394,7 @@ milan_illiberal_dictatorship_federal = {
 		5 = SIGNORE
 		6 = SIGNORE
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SIGNORA
 		2 = SIGNORA
 		3 = SIGNORA
@@ -1467,20 +4402,104 @@ milan_illiberal_dictatorship_federal = {
 		5 = SIGNORA
 		6 = SIGNORA
 	}
-	
-	trigger = {
-		liberal_republic_trigger = no
-		protector_trigger = yes #can't be done in trigger for some reason
-		federal_republic_trigger = yes
-		is_subject_other_than_tributary_trigger = no
+	trigger = { 
+		NOT = { 
+			AND = { 
+				government = republic
+				is_variable_equal = { 
+					which = grn
+					value = 1
+				}
+				is_variable_equal = { 
+					which = grk
+					value = 2
+				}
+				is_variable_equal = { 
+					which = grl
+					value = 0
+				}
+				NOT = { 
+					is_variable_equal = { 
+						which = gqr
+						value = 0
+					}
+					is_variable_equal = { 
+						which = gqr
+						value = 1
+					}
+					is_variable_equal = { 
+						which = gri
+						value = 0
+					}
+				}
+			}
+		}
+		AND = { 
+			OR = { 
+				government = dictatorship
+				AND = { 
+					government = republic
+					NOT = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+							overlord = { 
+								is_revolutionary = yes
+							}
+						}
+						is_revolutionary = yes
+					}
+					is_variable_equal = { 
+						which = grl
+						value = 1
+					}
+				}
+			}
+		}
+		AND = { 
+			government = republic
+			OR = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+		}
+		NOT = { 
+			AND = { 
+				is_subject = yes
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = close_tributary_state
+				}
+				NOT = { 
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+		}
 		tag = MLO
-		is_key_equal = { lhs = Pol_Mandate value = 1 }
+		is_variable_equal = { 
+			which = grn
+			value = 1
+		}
 	}
 }
-
-
-austrian_monarchy_tier_4 = {
-	rank = {
+austrian_monarchy_tier_4 = { 
+	rank = { 
 		1 = ARCHDUCHY
 		2 = ARCHDUCHY
 		3 = ARCHDUCHY
@@ -1488,8 +4507,7 @@ austrian_monarchy_tier_4 = {
 		5 = ARCHDUCHY
 		6 = ARCHDUCHY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ERZHERZOG
 		2 = ERZHERZOG
 		3 = ERZHERZOG
@@ -1497,8 +4515,7 @@ austrian_monarchy_tier_4 = {
 		5 = ERZHERZOG
 		6 = ERZHERZOG
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ERZHERZOGIN
 		2 = ERZHERZOGIN
 		3 = ERZHERZOGIN
@@ -1506,17 +4523,26 @@ austrian_monarchy_tier_4 = {
 		5 = ERZHERZOGIN
 		6 = ERZHERZOGIN
 	}
-	
-	trigger = {
+	trigger = { 
 		tag = HAB
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 		has_country_flag = austrian_archduchy
 	}
 }
-
-teutonic_monastic_order = { # was this way before - Warial
-	rank = {
+teutonic_monastic_order = { 
+	rank = { 
 		1 = STATE
 		2 = STATE
 		3 = STATE
@@ -1524,8 +4550,7 @@ teutonic_monastic_order = { # was this way before - Warial
 		5 = STATE
 		6 = STATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = HOCHMEISTER
 		2 = HOCHMEISTER
 		3 = HOCHMEISTER
@@ -1533,8 +4558,7 @@ teutonic_monastic_order = { # was this way before - Warial
 		5 = HOCHMEISTER
 		6 = HOCHMEISTER
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = HOCHMEISTERIN
 		2 = HOCHMEISTERIN
 		3 = HOCHMEISTERIN
@@ -1542,15 +4566,19 @@ teutonic_monastic_order = { # was this way before - Warial
 		5 = HOCHMEISTERIN
 		6 = HOCHMEISTERIN
 	}
-	
-	trigger = {
+	trigger = { 
 		tag = TEU
-		monastic_trigger = yes
+		AND = { 
+			government = theocracy
+			is_variable_equal = { 
+				which = grq
+				value = 1
+			}
+		}
 	}
 }
-
-livonian_monastic_order = { # was this way before - Warial
-	rank = {
+livonian_monastic_order = { 
+	rank = { 
 		1 = ORDER
 		2 = ORDER
 		3 = ORDER
@@ -1558,8 +4586,7 @@ livonian_monastic_order = { # was this way before - Warial
 		5 = ORDER
 		6 = ORDER
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = LANDMEISTER
 		2 = LANDMEISTER
 		3 = LANDMEISTER
@@ -1567,8 +4594,7 @@ livonian_monastic_order = { # was this way before - Warial
 		5 = LANDMEISTER
 		6 = LANDMEISTER
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = LANDMEISTERIN
 		2 = LANDMEISTERIN
 		3 = LANDMEISTERIN
@@ -1576,15 +4602,19 @@ livonian_monastic_order = { # was this way before - Warial
 		5 = LANDMEISTERIN
 		6 = LANDMEISTERIN
 	}
-	
-	trigger = {
+	trigger = { 
 		tag = LVO
-		monastic_trigger = yes
+		AND = { 
+			government = theocracy
+			is_variable_equal = { 
+				which = grq
+				value = 1
+			}
+		}
 	}
 }
-
-knights_monastic_order_1 = { # was this way before - Warial
-	rank = {
+knights_monastic_order_1 = { 
+	rank = { 
 		1 = ORDER
 		2 = ORDER
 		3 = ORDER
@@ -1592,8 +4622,7 @@ knights_monastic_order_1 = { # was this way before - Warial
 		5 = ORDER
 		6 = ORDER
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = CUSTOS
 		2 = CUSTOS
 		3 = CUSTOS
@@ -1601,8 +4630,7 @@ knights_monastic_order_1 = { # was this way before - Warial
 		5 = CUSTOS
 		6 = CUSTOS
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = CUSTOS
 		2 = CUSTOS
 		3 = CUSTOS
@@ -1610,16 +4638,25 @@ knights_monastic_order_1 = { # was this way before - Warial
 		5 = CUSTOS
 		6 = CUSTOS
 	}
-	
-	trigger = {
+	trigger = { 
 		tag = KNI
-		monastic_trigger = yes
-		title_trigger = { rank = 1 }	
+		AND = { 
+			government = theocracy
+			is_variable_equal = { 
+				which = grq
+				value = 1
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-
-knights_monastic_order_2 = { # was this way before - Warial
-	rank = {
+knights_monastic_order_2 = { 
+	rank = { 
 		1 = ORDER
 		2 = ORDER
 		3 = ORDER
@@ -1627,8 +4664,7 @@ knights_monastic_order_2 = { # was this way before - Warial
 		5 = ORDER
 		6 = ORDER
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = MAGISTER
 		2 = MAGISTER
 		3 = MAGISTER
@@ -1636,8 +4672,7 @@ knights_monastic_order_2 = { # was this way before - Warial
 		5 = MAGISTER
 		6 = MAGISTER
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = MAGISTER
 		2 = MAGISTER
 		3 = MAGISTER
@@ -1645,17 +4680,25 @@ knights_monastic_order_2 = { # was this way before - Warial
 		5 = MAGISTER
 		6 = MAGISTER
 	}
-	
-	trigger = {
+	trigger = { 
 		tag = KNI
-		monastic_trigger = yes
-		title_trigger = { rank = 2 }	
+		AND = { 
+			government = theocracy
+			is_variable_equal = { 
+				which = grq
+				value = 1
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-
-
-knights_monastic_order_3 = { # was this way before - Warial
-	rank = {
+knights_monastic_order_3 = { 
+	rank = { 
 		1 = ORDER
 		2 = ORDER
 		3 = ORDER
@@ -1663,8 +4706,7 @@ knights_monastic_order_3 = { # was this way before - Warial
 		5 = ORDER
 		6 = ORDER
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GRANDIS_MAGISTER
 		2 = GRANDIS_MAGISTER
 		3 = GRANDIS_MAGISTER
@@ -1672,8 +4714,7 @@ knights_monastic_order_3 = { # was this way before - Warial
 		5 = GRANDIS_MAGISTER
 		6 = GRANDIS_MAGISTER
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GRANDIS_MAGISTER
 		2 = GRANDIS_MAGISTER
 		3 = GRANDIS_MAGISTER
@@ -1681,11 +4722,14 @@ knights_monastic_order_3 = { # was this way before - Warial
 		5 = GRANDIS_MAGISTER
 		6 = GRANDIS_MAGISTER
 	}
-	
-	trigger = {
+	trigger = { 
 		tag = KNI
-		monastic_trigger = yes	
+		AND = { 
+			government = theocracy
+			is_variable_equal = { 
+				which = grq
+				value = 1
+			}
+		}
 	}
 }
-
-

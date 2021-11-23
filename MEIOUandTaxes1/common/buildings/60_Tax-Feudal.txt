@@ -1,33 +1,23 @@
-################
-# Tax - Feudal #
-################
-
-obli_feudal_no = {
+obli_feudal_no = { 
 	cost = 0
-	time =  0
-	
-	potential = {
+	time = 0
+	potential = { 
 		ai = no
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		always = no
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		has_building = obli_feudal_no
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = obli_feudal_low
 					has_building = obli_feudal_med
 					has_building = obli_feudal_high
@@ -37,44 +27,62 @@ obli_feudal_no = {
 		}
 	}
 }
-obli_feudal_low = {
+obli_feudal_low = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxFeudalCan = yes 
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 3
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
-
-		NOT = {
+		NOT = { 
 			has_building = obli_feudal_med
 			has_building = obli_feudal_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxFeudalCan = yes 
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 3
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = obli_feudal_no
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = obli_feudal_med
 					has_building = obli_feudal_high
 				}
@@ -83,44 +91,62 @@ obli_feudal_low = {
 		}
 	}
 }
-obli_feudal_med = {
+obli_feudal_med = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxFeudalCan = yes 
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 3
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
-
-		NOT = {
+		NOT = { 
 			has_building = obli_feudal_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxFeudalCan = yes 
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 3
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = obli_feudal_no
-        remove_building = obli_feudal_low
+		remove_building = obli_feudal_low
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = obli_feudal_high
 				}
 			}
@@ -128,38 +154,57 @@ obli_feudal_med = {
 		}
 	}
 }
-obli_feudal_high = {
+obli_feudal_high = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxFeudalCan = yes 
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 3
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxFeudalCan = yes 
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 3
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = obli_feudal_no
-        remove_building = obli_feudal_low
-        remove_building = obli_feudal_med
+		remove_building = obli_feudal_low
+		remove_building = obli_feudal_med
 	}
-	
-	on_destroyed = {
+	on_destroyed = { 
 		add_building = obli_feudal_med
 	}
 }

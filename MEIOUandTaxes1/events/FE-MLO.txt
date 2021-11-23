@@ -1,47 +1,276 @@
 namespace = flavor_mlo
 namespace = sforza_ascending
-
-country_event = {
-	id = flavor_mlo.1 #The Ambrosian Republic
+country_event = { 
+	id = flavor_mlo.1
 	title = flavor_mlo.1.t
 	desc = flavor_mlo.1.d
 	picture = DEBATE_REPUBLICAN_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		tag = MLO
-		NOT = {	has_country_flag = ambrosian_republic }
-		monarchy_or_harem_gov = yes
-		OR = {
-			AND = {
+		NOT = { 
+			has_country_flag = ambrosian_republic
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		OR = { 
+			AND = { 
 				has_new_dynasty = yes
 				has_regency = no
 				has_consort_regency = no
 			}
-			any_known_country = {
+			any_known_country = { 
 				succession_claim = ROOT
 			}
 		}
-		#is_lesser_in_union = no #commented out, as if has_new_dynasty = yes, then usually it is PU. Added CB for the overlord to re-estabilish control.
-		NOT = {	is_year = 1550 }
+		NOT = { 
+			is_year = 1550
+		}
 	}
-	option = {
+	option = { 
 		name = flavor_mlo.1.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
-		Pol_ChangeGovRepublic = { Mandate=1 Stylings=1 ExtraPowers=1 Assembly=2 TermOfOffice=5 } 
+		change_government = republic
+		add_government_reform = Pol_Mandate1
+		add_government_reform = Pol_Stylings1
+		add_government_reform = Pol_ExtraPowers1
+		add_government_reform = Pol_Assembly2
+		add_government_reform = Pol_TermOfOffice5
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Nobility1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Nobility2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Nobility3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Nobility4
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Structure1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Structure2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Structure3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Structure4
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 4
+				}
+			}
+			add_government_reform = Pol_Structure5
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Centralisation1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Centralisation2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Centralisation3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Centralisation4
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 4
+				}
+			}
+			add_government_reform = Pol_Centralisation5
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqt
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Autonomy1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqt
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Autonomy2
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Provincial1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Provincial2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Provincial3
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Military1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Military2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Military3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Military4
+		}
+		add_government_reform = Pol_Privileges1
 		add_government_reform = Pol_Nobility2
 		add_republican_tradition = 5
-		every_country = {
-			limit = {
-				NOT = {	tag = MLO }
-				OR = {
-					monarchy_or_harem_gov = yes
+		every_country = { 
+			limit = { 
+				NOT = { 
+					tag = MLO
+				}
+				OR = { 
+					custom_trigger_tooltip = { 
+						tooltip = is_monarchy_tt
+						OR = { 
+							government = monarchy
+							government = has_harem
+						}
+					}
 					tag = VEN
 					tag = PAP
 				}
-				OR = {
+				OR = { 
 					culture_group = low_germanic
 					culture_group = high_germanic
 					culture_group = latin
@@ -52,15 +281,21 @@ country_event = {
 				religion = catholic
 				num_of_cities = 5
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_against_ambrosian
 			}
-			if = {
-				limit = {
-					monarchy_or_harem_gov = yes
+			if = { 
+				limit = { 
+					custom_trigger_tooltip = { 
+						tooltip = is_monarchy_tt
+						OR = { 
+							government = monarchy
+							government = has_harem
+						}
+					}
 				}
-				add_casus_belli = {
+				add_casus_belli = { 
 					target = MLO
 					type = cb_change_government
 					months = 120
@@ -68,199 +303,957 @@ country_event = {
 			}
 		}
 		if = { 
-			limit = {
+			limit = { 
 				is_lesser_in_union = yes
 			}
 			kill_ruler = yes
-			set_ruler_flag	= leader_has_been_pushed_out #prevents old ruler to be an option in the next elections and adjusts loc
+			set_ruler_flag = leader_has_been_pushed_out
 			grant_independence = yes
-			overlord = {
-				add_casus_belli = {
+			overlord = { 
+				add_casus_belli = { 
 					target = MLO
-					type = cb_restore_personal_union 
+					type = cb_restore_personal_union
 					months = 240
 				}
 			}
 		}
 		set_country_flag = ambrosian_republic
+<<<<<<< HEAD
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-10 }
 		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=10 }
 
 		log = "FE-MLO:[GetYear]:[Root.GetName]:formed The Ambrosian Republic:flavor_mlo.1"
+=======
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdq
+					value = -10
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdq
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = NO_RelationState_-10
+			}
+		}
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdr
+					value = 10
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdr
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdr
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdr
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdr
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdr
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdr
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = BG_RelationState_10
+			}
+		}
+>>>>>>> submod
 	}
-	option = {
+	option = { 
 		name = flavor_mlo.1.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 10
 		}
-		Stab_Subtract2 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -2
+			}
+		}
+		tooltip = { 
+			add_stability = -2
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -10
+		}
 		add_legitimacy = 25
+<<<<<<< HEAD
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=10 }
 		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=-10 }
 		log = "FE-MLO:[GetYear]:[Root.GetName]:have not formed The Ambrosian Republic:flavor_mlo.1"
+=======
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdq
+					value = 10
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdq
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = NO_RelationState_10
+			}
+		}
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdr
+					value = -10
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdr
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdr
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdr
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdr
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdr
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdr
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = BG_RelationState_-10
+			}
+		}
+>>>>>>> submod
 	}
 }
-country_event = {
-	id = flavor_mlo.2 #Guelph-Ghibelline Feud in Milano
+country_event = { 
+	id = flavor_mlo.2
 	title = flavor_mlo.2.t
 	desc = flavor_mlo.2.d
 	picture = DEBATE_REPUBLICAN_eventPicture
-	trigger = {
+	trigger = { 
 		tag = MLO
 		government = republic
-		NOT = {	republican_tradition = 50 }
+		NOT = { 
+			republican_tradition = 50
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 10
 	}
-	option = {
+	option = { 
 		name = flavor_mlo.2.a
 		add_republican_tradition = -20
+<<<<<<< HEAD
 		Stab_Add50Percent = yes
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=-5 }
 		log = "FE-MLO:[GetYear]:[Root.GetName]:sided with the Guelph:flavor_mlo.1"
-	}
-	option = {
-		name = flavor_mlo.2.b
-		add_republican_tradition = 20
-		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-5 }
-		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=5 }
-
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+=======
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
 			}
 		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdq
+					value = 5
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdq
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = NO_RelationState_5
+			}
+		}
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdr
+					value = -5
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdr
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdr
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdr
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdr
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdr
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdr
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = BG_RelationState_-5
+			}
+		}
+>>>>>>> submod
+	}
+	option = { 
+		name = flavor_mlo.2.b
+		add_republican_tradition = 20
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdq
+					value = -5
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdq
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = NO_RelationState_-5
+			}
+		}
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdr
+					value = 5
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdr
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdr
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdr
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdr
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdr
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdr
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = BG_RelationState_5
+			}
+		}
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
+			}
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
+			}
+		}
+<<<<<<< HEAD
 		log = "FE-MLO:[GetYear]:[Root.GetName]:sided with the Ghibelline:flavor_mlo.1"
+=======
+>>>>>>> submod
 	}
 }
-country_event = {
-	id = flavor_mlo.3 #The Ospedale Maggiore
+country_event = { 
+	id = flavor_mlo.3
 	title = flavor_mlo.3.t
 	desc = flavor_mlo.3.d
 	picture = UNIVERSITY_eventPicture
 	fire_only_once = yes
-	trigger = {
-		owns = 104 #Lumbardia/Milan
+	trigger = { 
+		owns = 104
 		is_at_war = no
 		is_year = 1456
-		NOT = {	is_year = 1470 }
+		NOT = { 
+			is_year = 1470
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 12
 	}
-	option = {
+	option = { 
 		name = flavor_mlo.3.a
 		add_legitimacy = 10
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				government = republic
 			}
 			add_republican_tradition = 10
 		}
-		Stab_Add50Percent = yes
-		104 = {
-			add_country_modifier = {
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
+		104 = { 
+			add_country_modifier = { 
 				name = "industrious_ruler_gravity"
 				duration = 3650
 			}
 		}
 	}
 }
-country_event = {
-	id = flavor_mlo.4 #The Treaty of Lodi
+country_event = { 
+	id = flavor_mlo.4
 	title = flavor_mlo.4.t
 	desc = flavor_mlo.4.d
 	picture = DIPLOMACY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = MLO
-		NOT = {war_with = VEN}
-		NOT = {war_with = NAP}
-		NOT = {war_with = TUS}
-		NOT = {war_with = FIR}
+		NOT = { 
+			war_with = VEN
+		}
+		NOT = { 
+			war_with = NAP
+		}
+		NOT = { 
+			war_with = TUS
+		}
+		NOT = { 
+			war_with = FIR
+		}
 		num_of_cities = 3
 		is_year = 1450
-		NOT = {	is_year = 1490 }
-		OR = {	
-			NAP = {
-				NOT = {war_with = ROOT}
+		NOT = { 
+			is_year = 1490
+		}
+		OR = { 
+			NAP = { 
+				NOT = { 
+					war_with = ROOT
+				}
 				num_of_cities = 3
 			}
-			KNP = {
-				NOT = {war_with = ROOT}
+			KNP = { 
+				NOT = { 
+					war_with = ROOT
+				}
 				num_of_cities = 3
 			}
 		}
-		VEN = {
-			NOT = {war_with = ROOT}
+		VEN = { 
+			NOT = { 
+				war_with = ROOT
+			}
 			num_of_cities = 3
 		}
-		OR = {
-			FIR = {
-				NOT = {war_with = ROOT}
+		OR = { 
+			FIR = { 
+				NOT = { 
+					war_with = ROOT
+				}
 				num_of_cities = 3
 			}
-			TUS = {
-				NOT = {war_with = ROOT}
+			TUS = { 
+				NOT = { 
+					war_with = ROOT
+				}
 				num_of_cities = 3
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 12
 	}
-	option = {
+	option = { 
 		name = flavor_mlo.4.a
+<<<<<<< HEAD
 		log = "FE-MLO:[GetYear]:[Root.GetName]:signed The Treaty of Lodi:flavor_mlo.4"
 
 		NAP = {
 			add_opinion = {
+=======
+		NAP = { 
+			add_opinion = { 
+>>>>>>> submod
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 			add_truce_with = ROOT
 		}
-		KNP = {
-			add_opinion = {
+		KNP = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 			add_truce_with = ROOT
 		}
-		VEN = {
-			add_opinion = {
+		VEN = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 			add_truce_with = ROOT
 		}
-		TUS = {
-			add_opinion = {
+		TUS = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 			add_truce_with = ROOT
 		}
-		FIR = {
-			add_opinion = {
+		FIR = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 			add_truce_with = ROOT
 		}
 		add_dip_power = -30
-		
-		every_province = {
-			limit = {
+		every_province = { 
+			limit = { 
 				superregion = italy_superregion
 				is_claim = ROOT
-				OR = {
+				OR = { 
 					country_or_non_sovereign_subject_holds = NAP
 					country_or_non_sovereign_subject_holds = KNP
 					country_or_non_sovereign_subject_holds = TUS
@@ -270,13 +1263,12 @@ country_event = {
 			}
 			remove_claim = ROOT
 		}
-		
-		if = {
-			limit = {		
+		if = { 
+			limit = { 
 				exists = NAP
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					superregion = italy_superregion
 					country_or_non_sovereign_subject_holds = ROOT
 					is_claim = NAP
@@ -284,12 +1276,12 @@ country_event = {
 				remove_claim = NAP
 			}
 		}
-		if = {
-			limit = {		
+		if = { 
+			limit = { 
 				exists = KNP
-			}		
-			every_province = {
-				limit = {
+			}
+			every_province = { 
+				limit = { 
 					superregion = italy_superregion
 					country_or_non_sovereign_subject_holds = ROOT
 					is_claim = KNP
@@ -297,12 +1289,12 @@ country_event = {
 				remove_claim = KNP
 			}
 		}
-		if = {
-			limit = {		
+		if = { 
+			limit = { 
 				exists = TUS
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					superregion = italy_superregion
 					country_or_non_sovereign_subject_holds = ROOT
 					is_claim = TUS
@@ -310,12 +1302,12 @@ country_event = {
 				remove_claim = TUS
 			}
 		}
-		if = {
-			limit = {		
+		if = { 
+			limit = { 
 				exists = VEN
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					superregion = italy_superregion
 					country_or_non_sovereign_subject_holds = ROOT
 					is_claim = VEN
@@ -323,12 +1315,12 @@ country_event = {
 				remove_claim = VEN
 			}
 		}
-		if = {
-			limit = {		
+		if = { 
+			limit = { 
 				exists = FIR
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					superregion = italy_superregion
 					country_or_non_sovereign_subject_holds = ROOT
 					is_claim = FIR
@@ -336,111 +1328,115 @@ country_event = {
 				remove_claim = FIR
 			}
 		}
-		hidden_effect = {
-			NAP = {
-				country_event = {
+		hidden_effect = { 
+			NAP = { 
+				country_event = { 
 					id = flavor_mlo.5
 				}
 			}
-			KNP = {
-				country_event = {
+			KNP = { 
+				country_event = { 
 					id = flavor_mlo.5
 				}
 			}
-			VEN = {
-				country_event = {
+			VEN = { 
+				country_event = { 
 					id = flavor_mlo.5
 				}
 			}
-			TUS = {
-				country_event = {
+			TUS = { 
+				country_event = { 
 					id = flavor_mlo.5
 				}
 			}
-			FIR = {
-				country_event = {
+			FIR = { 
+				country_event = { 
 					id = flavor_mlo.5
 				}
 			}
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_mlo.4.b
 		add_mil_power = 10
+<<<<<<< HEAD
 		log = "FE-MLO:[GetYear]:[Root.GetName]:refused The Treaty of Lodi:flavor_mlo.4"
+=======
+>>>>>>> submod
 	}
 }
-country_event = {
-	id = flavor_mlo.5 #The Treaty of Lodi, notification event
+country_event = { 
+	id = flavor_mlo.5
 	title = flavor_mlo.5.t
 	desc = flavor_mlo.5.d
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_mlo.5.a
-		NAP = {
-			add_opinion = {
+		NAP = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 		}
-		KNP = {
-			add_opinion = {
+		KNP = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 		}
-		TUS = {
-			add_opinion = {
+		TUS = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 		}
-		FIR = {
-			add_opinion = {
+		FIR = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 		}
-		VEN = {
-			add_opinion = {
+		VEN = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 		}
-		MLO = {
-			add_opinion = {
+		MLO = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = mlo_peace_of_lodi
 			}
 		}
 	}
 }
-country_event = {
-	id = flavor_mlo.6 #Niccolo Machiavelli
+country_event = { 
+	id = flavor_mlo.6
 	title = flavor_mlo.6.t
 	desc = flavor_mlo.6.d
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
-	trigger = {
-		#government = republic
-		owns = 116 #Fiorenza
+	trigger = { 
+		owns = 116
 		is_year = 1490
-		NOT = {	is_year = 1495 }
+		NOT = { 
+			is_year = 1495
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 1
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = we_have_macchiavelli
 	}
-	option = {
+	option = { 
 		name = flavor_mlo.6.b
 		add_adm_power = 25
-		define_advisor = {
+		define_advisor = { 
 			type = statesman_BG
 			name = "Niccolò Machiavelli"
 			culture = tuscan
@@ -448,39 +1444,135 @@ country_event = {
 			skill = 3
 			discount = yes
 		}
-		Stab_Add50Percent = yes
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
 	}
 }
-country_event = {
-	id = flavor_mlo.7 #Machiavelli publishes a masterpiece!
+country_event = { 
+	id = flavor_mlo.7
 	title = flavor_mlo.7.t
 	desc = flavor_mlo.7.d
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		is_year = 1513
-		NOT = {	is_year = 1520}
+		NOT = { 
+			is_year = 1520
+		}
 		has_country_flag = we_have_macchiavelli
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 1
 	}
-	option = {
+	option = { 
 		name = flavor_mlo.7.a
 		add_republican_tradition = 10
 		add_legitimacy = 10
 		add_prestige = 10
-		hidden_effect = {
-			if = {
-				limit = {
-					MLO = {
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					MLO = { 
 						legitimacy = 80
-						monarchy_or_harem_gov = yes
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
 					}
 				}
-				MLO = {
-					country_event = {
-						id = flavor_mlo.8 #Praise from Machiavelli
+				MLO = { 
+					country_event = { 
+						id = flavor_mlo.8
 						days = 5
 						random = 8
 					}
@@ -489,36 +1581,38 @@ country_event = {
 		}
 	}
 }
-country_event = {
-	id = flavor_mlo.8 #Praise from Machiavelli
+country_event = { 
+	id = flavor_mlo.8
 	title = flavor_mlo.8.t
 	desc = flavor_mlo.8.d
 	picture = ADVISOR_eventPicture
 	is_triggered_only = yes
 	fire_only_once = yes
-	option = {
+	option = { 
 		name = flavor_mlo.8.a
 		add_prestige = 25
 		add_dip_power = 50
 	}
 }
-country_event = {
-	id = flavor_mlo.9 #Leonardo da Vinci
+country_event = { 
+	id = flavor_mlo.9
 	title = flavor_mlo.9.t
 	desc = flavor_mlo.9.d
 	picture = PAINTER_ARTIST_eventPicture
 	fire_only_once = yes
-	trigger = {
-		owns = 104 #Lumbardia/Milan
+	trigger = { 
+		owns = 104
 		is_year = 1497
-		NOT = {	is_year = 1500 }
+		NOT = { 
+			is_year = 1500
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 1
 	}
-	option = {
+	option = { 
 		name = flavor_mlo.9.a
-		define_advisor = {
+		define_advisor = { 
 			type = natural_scientist_BG
 			name = "Leonardo da Vinci"
 			culture = tuscan
@@ -531,56 +1625,65 @@ country_event = {
 		add_adm_power = 50
 	}
 }
-country_event = {
-	id = flavor_mlo.10 #The center of fashion
+country_event = { 
+	id = flavor_mlo.10
 	title = flavor_mlo.10.t
 	desc = flavor_mlo.10.d
 	picture = COURT_eventPicture
 	fire_only_once = yes
-	trigger = {
-		owns = 104 #Lumbardia/Milan
+	trigger = { 
+		owns = 104
 		is_year = 1500
-		NOT = {	is_year = 1600 }
+		NOT = { 
+			is_year = 1600
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 10
 	}
-	option = {
+	option = { 
 		name = flavor_mlo.10.a
-		104 = {
-			add_province_modifier = {
+		104 = { 
+			add_province_modifier = { 
 				name = "industrious_ruler_gravity"
 				duration = 3650
 			}
 		}
 	}
 }
-
-country_event = {
-	id = sforza_ascending.001 #Francesco Sforza
+country_event = { 
+	id = sforza_ascending.001
 	title = "sforza_ascending.001.t"
 	desc = "sforza_ascending.001.d"
 	picture = CONQUEST_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		is_year = 1430
-		NOT = { is_year = 1465}
-		NOT = {	has_country_flag = francesco_sforza_in_milan }
+		NOT = { 
+			is_year = 1465
+		}
+		NOT = { 
+			has_country_flag = francesco_sforza_in_milan
+		}
 		tag = MLO
 		owns = 104
 		num_of_cities = 5
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 120
 	}
-	immediate = {
+	immediate = { 
 		set_country_flag = francesco_sforza_in_milan
 	}
-	option = {
+	option = { 
 		name = "sforza_ascending.001.a"
+<<<<<<< HEAD
 		log = "FE-MLO:[GetYear]:[Root.GetName]:Sforza signed as general:sforza_ascending.001"
 
 		define_general = {
+=======
+		define_general = { 
+>>>>>>> submod
 			name = "Francesco Sforza"
 			fire = 4
 			shock = 5
@@ -589,135 +1692,277 @@ country_event = {
 		}
 	}
 }
-country_event = {
-	id = sforza_ascending.002 #The Autocratic Rule
+country_event = { 
+	id = sforza_ascending.002
 	title = "sforza_ascending.002.t"
 	desc = "sforza_ascending.002.d"
 	picture = COURT_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		is_year = 1440
 		tag = MLO
 		government = republic
-		NOT = {	republican_tradition = 75 }
+		NOT = { 
+			republican_tradition = 75
+		}
 		owns = 104
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 60
 	}
-	option = {
+	option = { 
 		name = "sforza_ascending.002.a"
+<<<<<<< HEAD
 		log = "FE-MLO:[GetYear]:[Root.GetName]:kept autocratic ruler in power during crisis:sforza_ascending.002"
 
+=======
+>>>>>>> submod
 		add_republican_tradition = -10
 		add_prestige = 10
-		hidden_effect = {
-			country_event = {
+		hidden_effect = { 
+			country_event = { 
 				id = sforza_ascending.003
 				days = 60
 			}
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
 	}
-	option = {
+	option = { 
 		name = "sforza_ascending.002.b"
+<<<<<<< HEAD
 		log = "FE-MLO:[GetYear]:[Root.GetName]:expelled autocratic ruler and held elections during crisis:sforza_ascending.002"
 		log = "FE-MLO:[GetYear]:[Root.GetName]:Ghibellines in power:sforza_ascending.002"
 
+=======
+>>>>>>> submod
 		kill_ruler = yes
 		add_republican_tradition = 10
 		add_prestige = -10
 		set_country_flag = ghibellines_in_power
-		ai_chance = {
+		ai_chance = { 
 			factor = 10
 		}
 	}
 }
-country_event = {
-	id = sforza_ascending.003 #The Ghibelline Conspiracy
+country_event = { 
+	id = sforza_ascending.003
 	title = "sforza_ascending.003.t"
 	desc = "sforza_ascending.003.d"
 	picture = ASSASSINATION_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "sforza_ascending.003.a"
+<<<<<<< HEAD
 		log = "FE-MLO:[GetYear]:[Root.GetName]:autocratic ruler killed leaders of The Ghibelline Conspiracy:sforza_ascending.003"
 
 		104 = {
 			add_province_modifier = {
+=======
+		104 = { 
+			add_province_modifier = { 
+>>>>>>> submod
 				name = "peasants_organizing"
 				duration = 1825
 			}
 			custom_tooltip = peasants_organizing_tt
 			add_unrest = 5
 		}
-		Stab_Subtract1 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -1
+			}
+		}
+		tooltip = { 
+			add_stability = -1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -5
+		}
 		set_country_flag = autocratic_guelph_ruler
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
 		}
 	}
-	option = {
+	option = { 
 		name = "sforza_ascending.003.b"
+<<<<<<< HEAD
 		log = "FE-MLO:[GetYear]:[Root.GetName]:autocratic ruler fled from The Ghibelline Conspiracy:sforza_ascending.003"
 		log = "FE-MLO:[GetYear]:[Root.GetName]:Ghibellines in power:sforza_ascending.003"
 
+=======
+>>>>>>> submod
 		add_prestige = -10
 		kill_ruler = yes
 		set_country_flag = ghibellines_in_power
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
 		}
 	}
 }
-country_event = {
-	id = sforza_ascending.004 #Populace forces Election
+country_event = { 
+	id = sforza_ascending.004
 	title = "sforza_ascending.004.t"
 	desc = "sforza_ascending.004.d"
 	picture = ANGRY_MOB_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = MLO
 		government = republic
 		owns = 104
 		has_country_flag = autocratic_guelph_ruler
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 12
 	}
-	option = {
+	option = { 
 		name = "sforza_ascending.004.a"
+<<<<<<< HEAD
 		log = "FE-MLO:[GetYear]:[Root.GetName]:Populace forces Election:sforza_ascending.004"
 		log = "FE-MLO:[GetYear]:[Root.GetName]:Ghibellines in power:sforza_ascending.004"
 
+=======
+>>>>>>> submod
 		kill_ruler = yes
 		clr_country_flag = autocratic_guelph_ruler
 		set_country_flag = ghibellines_in_power
 	}
 }
+<<<<<<< HEAD
 country_event = {
 	id = sforza_ascending.005 #The Future of Milan
 
+=======
+country_event = { 
+	id = sforza_ascending.005
+>>>>>>> submod
 	title = "sforza_ascending.005.t"
 	desc = "sforza_ascending.005.d"
 	picture = STREET_SPEECH_eventPicture
 	fire_only_once = yes
 	major = yes
-	trigger = {
+	trigger = { 
 		tag = MLO
 		government = republic
 		owns = 104
 		has_country_flag = ghibellines_in_power
 		has_country_flag = francesco_sforza_in_milan
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 12
 	}
-	option = {
+	option = { 
 		name = "sforza_ascending.005.a"
+<<<<<<< HEAD
 		ai_chance = {
+=======
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
+		add_republican_tradition = 25
+		ai_chance = { 
+>>>>>>> submod
 			factor = 10
 		}
 		log = "FE-MLO:[GetYear]:[Root.GetName]:kept republic and rejected Sforza:sforza_ascending.005"
@@ -725,16 +1970,325 @@ country_event = {
 		Stab_Add50Percent = yes
 		add_republican_tradition = 25
 	}
-	option = {
+	option = { 
 		name = "sforza_ascending.005.b"
+<<<<<<< HEAD
 		ai_chance = {
 			factor = 90
 		}
 		Pol_ChangeGovMonarchy = { Succession=1 Assembly=2 } 
+=======
+		change_government = monarchy
+		add_government_reform = Pol_Succession1
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_variable_equal = { 
+					which = grj
+					value = 4
+				}
+				OR = { 
+					NOT = { 
+						religion_group = muslim
+					}
+					culture_group = tartar_group
+					culture_group = old_turkic
+					culture_group = altaic
+					primary_culture = turkish
+				}
+				NOT = { 
+					religion_group = christian
+				}
+				NOT = { 
+					culture_group = japanese_g
+				}
+			}
+			add_government_reform = Pol_Family4
+		}
+		else_if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_variable_equal = { 
+					which = grj
+					value = 4
+				}
+				religion_group = muslim
+				NOT = { 
+					culture_group = tartar_group
+				}
+				NOT = { 
+					culture_group = old_turkic
+				}
+				NOT = { 
+					culture_group = altaic
+				}
+				NOT = { 
+					primary_culture = turkish
+				}
+			}
+			add_government_reform = Pol_Family3
+		}
+		else_if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				OR = { 
+					is_variable_equal = { 
+						which = grj
+						value = 1
+					}
+					religion_group = muslim
+				}
+				NOT = { 
+					primary_culture = turkish
+				}
+			}
+			add_government_reform = Pol_Family2
+		}
+		else_if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_tribal = no
+			}
+			add_government_reform = Pol_Family1
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Nobility1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Nobility2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Nobility3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Nobility4
+		}
+		add_government_reform = Pol_Assembly2
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Structure1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Structure2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Structure3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Structure4
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 4
+				}
+			}
+			add_government_reform = Pol_Structure5
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Centralisation1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Centralisation2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Centralisation3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Centralisation4
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 4
+				}
+			}
+			add_government_reform = Pol_Centralisation5
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqt
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Autonomy1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqt
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Autonomy2
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Provincial1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Provincial2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Provincial3
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Military1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Military2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Military3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Military4
+		}
+		add_government_reform = Pol_Privileges1
+>>>>>>> submod
 		add_government_reform = Pol_Nobility2
-		if = {
-			limit = {
-				OR = {
+		if = { 
+			limit = { 
+				OR = { 
 					has_country_modifier = title_1
 					has_country_modifier = title_2
 				}
@@ -744,7 +2298,7 @@ country_event = {
 			remove_country_modifier = title_4
 			remove_country_modifier = title_5
 			remove_country_modifier = title_6
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = title_3
 				duration = -1
 			}
@@ -756,7 +2310,7 @@ country_event = {
 			clr_country_flag = title_6
 			set_country_flag = title_3
 		}
-		define_ruler = {
+		define_ruler = { 
 			name = "Francesco"
 			dynasty = "Sforza"
 			age = 40
@@ -766,6 +2320,7 @@ country_event = {
 			fixed = yes
 			claim = 70
 		}
+<<<<<<< HEAD
 		kill_leader	= { type = "Francesco Sforza" }
 		define_ruler_to_general = {
 			fire = 4
@@ -774,6 +2329,9 @@ country_event = {
 			siege = 2
 		}
 		define_consort = {
+=======
+		define_consort = { 
+>>>>>>> submod
 			name = "Bianca Maria"
 			dynasty = "Visconti"
 			age = 20
@@ -781,11 +2339,11 @@ country_event = {
 			dip = 3
 			mil = 4
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				is_year = 1444
 			}
-			define_heir = {
+			define_heir = { 
 				name = "Galeazzo Maria"
 				dynasty = "Sforza"
 				birth_date = 1444.1.24
@@ -795,6 +2353,12 @@ country_event = {
 				claim = 70
 			}
 		}
+<<<<<<< HEAD
 		log = "FE-MLO:[GetYear]:[Root.GetName]:selected Sforza as a leader, rejected republic:sforza_ascending.005"
+=======
+		ai_chance = { 
+			factor = 90
+		}
+>>>>>>> submod
 	}
 }

@@ -1,4 +1,4 @@
-native_basic_reform = {
+native_basic_reform = { 
 	basic_reform = yes
 	native_mechanic = yes
 	allow_migration = no
@@ -7,7 +7,7 @@ native_basic_reform = {
 	republican_name = yes
 	royal_marriage = no
 	fixed_rank = 1
-	modifiers = {
+	modifiers = { 
 		stability_cost_modifier = -0.33
 		land_maintenance_modifier = -0.25
 		diplomatic_upkeep = -1
@@ -15,13 +15,13 @@ native_basic_reform = {
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 0
-	nation_designer_trigger = {
-		OR = {
+	nation_designer_trigger = { 
+		OR = { 
 			technology_group = north_american
 			technology_group = south_american
 		}
-		capital_scope = {
-			OR = {
+		capital_scope = { 
+			OR = { 
 				continent = north_america
 				continent = south_america
 			}

@@ -1,4 +1,4 @@
-dependency = {
+dependency = { 
 	subject_type = decentralized_vassal
 	first = PAP
 	second = PA2

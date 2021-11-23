@@ -1,37 +1,36 @@
 namespace = flavor_tre
-
-country_event = {
+country_event = { 
 	id = flavor_tre.1
 	title = "flavor_tre.1.name"
 	desc = "flavor_tre.1.desc"
 	picture = orthodox_court
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		tag = TRE
-		NOT = {
-			has_opinion_modifier = {
+		NOT = { 
+			has_opinion_modifier = { 
 				who = BYZ
 				modifier = tre_ambitions
 			}
 		}
-		NOT = {
-			has_opinion_modifier = {
+		NOT = { 
+			has_opinion_modifier = { 
 				who = BYZ
 				modifier = tre_temperance
 			}
 		}
-		north_anatolia_region = {
+		north_anatolia_region = { 
 			type = all
 			owned_by = ROOT
 		}
-		south_anatolia_region = {
+		south_anatolia_region = { 
 			type = all
 			owned_by = ROOT
 		}
-		calc_true_if = {
-			all_owned_province = {
-				OR = {
-					province_id = 3795					#These 9 provinces are basically all the Genoan, Theodoran and Trebizondian provinces around the Black se (Not mainland Trebizond)
+		calc_true_if = { 
+			all_owned_province = { 
+				OR = { 
+					province_id = 3795
 					province_id = 2274
 					province_id = 3877
 					province_id = 1344
@@ -44,27 +43,27 @@ country_event = {
 			}
 			amount = 9
 		}
-		NOT = {
+		NOT = { 
 			owns = 1402
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	option = {
+	option = { 
 		name = "flavor_tre.1.opta"
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
 		}
 		add_permanent_claim = 1402
 		add_prestige = 10
-		1402 = {
-			owner = {
-				country_event = {
+		1402 = { 
+			owner = { 
+				country_event = { 
 					id = flavor_tre.2
 				}
-				ROOT = {
-					add_opinion = {
+				ROOT = { 
+					add_opinion = { 
 						modifier = tre_ambitions
 						who = PREV
 					}
@@ -72,27 +71,51 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_tre.1.optb"
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
 		}
 		add_prestige = 10
-		Stab_Subtract3 = yes
-		random_owned_province = {
-			add_province_modifier = {
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -3
+			}
+		}
+		tooltip = { 
+			add_stability = -3
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -15
+		}
+		random_owned_province = { 
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
 			custom_tooltip = pretender_organizing_tt
 		}
-		1402 = {
-			owner = {
-				country_event = {
+		1402 = { 
+			owner = { 
+				country_event = { 
 					id = flavor_tre.3
 				}
-				ROOT = {
-					add_opinion = {
+				ROOT = { 
+					add_opinion = { 
 						modifier = tre_temperance
 						who = PREV
 					}
@@ -101,147 +124,171 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_tre.2
 	title = "flavor_tre.2.name"
 	desc = "flavor_tre.2.desc"
 	picture = orthodox_court
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "flavor_tre.2.opta"
-		add_casus_belli = {
+		add_casus_belli = { 
 			target = FROM
 			type = cb_insult
 			months = 60
 		}
-		add_opinion = {
+		add_opinion = { 
 			modifier = tre_ambitions
 			who = FROM
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_tre.3
 	title = "flavor_tre.3.name"
 	desc = "flavor_tre.3.desc"
 	picture = orthodox_court
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "flavor_tre.3.opta"
-		add_opinion = {
+		add_opinion = { 
 			modifier = tre_temperance
 			who = FROM
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_tre.4
 	title = "flavor_tre.4.name"
 	desc = "flavor_tre.4.desc"
 	picture = orthodox_court
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = TRE
-		BYZ = {
-			AND = {
-				OR = {
+		BYZ = { 
+			AND = { 
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
 				}
 			}
 		}
-		OR = {
-			AND = {
-				BYZ = {
+		OR = { 
+			AND = { 
+				BYZ = { 
 					owns = 1402
 				}
 				controls = 1402
 				war_with = BYZ
 			}
-			AND = {
+			AND = { 
 				owns = 1402
 				is_at_war = no
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 1
 	}
-	option = {
+	option = { 
 		name = "flavor_tre.4.opta"
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				war_with = BYZ
 			}
 			white_peace = BYZ
 		}
 		inherit = BYZ
-		Stab_Add1 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
 		add_prestige = 25
 		add_core = 1402
-		every_province = {
-			limit = {
+		every_province = { 
+			limit = { 
 				is_city = yes
 				is_core = BYZ
-				NOT = {
+				NOT = { 
 					is_core = ROOT
 				}
 			}
-			random_list = {
-				25 = {
-					add_province_modifier = {
+			random_list = { 
+				25 = { 
+					add_province_modifier = { 
 						name = "nationalists_organizing"
 						duration = 1825
 					}
 					custom_tooltip = nationalists_organizing_tt
 				}
-				75 = {}
+				75 = { }
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_tre.5
 	title = "flavor_tre.5.name"
 	desc = "flavor_tre.5.desc"
 	fire_only_once = yes
 	picture = orthodox_court
 	major = yes
-	trigger = {
-		tag = TRE 
+	trigger = { 
+		tag = TRE
 		exists = BYZ
-		NOT = { war_with = BYZ }
-		check_key = { lhs = Anatolian_PowerGreat value = 40 }
+		NOT = { 
+			war_with = BYZ
+		}
+		check_variable = { 
+			which = lns
+			value = 40
+		}
 		total_development = BYZ
 	}
-
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 6
 	}
-
-	option = {		#Propose to merge with BYZ
+	option = { 
 		name = "flavor_tre.5.opta"
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
-		BYZ = {
-			country_event = {
+		BYZ = { 
+			country_event = { 
 				id = flavor_tre.6
 				days = 5
 			}
 		}
 	}
-
-	option = { 		#We don't need them!
+	option = { 
 		name = "flavor_tre.5.optb"
-		ai_chance = {
+		ai_chance = { 
 			factor = 10
 		}
 		add_prestige = 10
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_tre.6
 	title = "flavor_tre.6.name"
 	desc = "flavor_tre.6.desc"
@@ -249,95 +296,160 @@ country_event = {
 	picture = orthodox_uprising
 	major = yes
 	is_triggered_only = yes
-
-	option = {		#accept the merger
+	option = { 
 		name = "flavor_tre.6.opta"
-		ai_chance = {
+		ai_chance = { 
 			factor = 60
-			modifier = {
+			modifier = { 
 				factor = 2
 				alliance_with = TRE
 			}
-			modifier = {
+			modifier = { 
 				factor = 0.25
 				is_rival = TRE
 			}
 		}
-		TRE = {
-			country_event = {
+		TRE = { 
+			country_event = { 
 				id = flavor_tre.7
 				days = 5
 			}
 		}
 	}
-
-	option = {		#Who do they think they are!?
+	option = { 
 		name = "flavor_tre.6.optb"
-		ai_chance = {
+		ai_chance = { 
 			factor = 40
 		}
 		add_prestige = 10
-		Stab_Subtract2 = yes
-		TRE = {
-			country_event = {
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -2
+			}
+		}
+		tooltip = { 
+			add_stability = -2
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -10
+		}
+		TRE = { 
+			country_event = { 
 				id = flavor_tre.8
 				days = 5
 			}
 		}
-		every_core_province = {
-			if = {
-				limit = {
+		every_core_province = { 
+			if = { 
+				limit = { 
 					owned_by = ROOT
-					NOT = { is_core = TRE}
+					NOT = { 
+						is_core = TRE
+					}
 				}
 				add_core = TRE
 				add_unrest = 5
-				random_list = {
-					50 = {
-						add_province_modifier = {
+				random_list = { 
+					50 = { 
+						add_province_modifier = { 
 							name = "nationalists_organizing"
 							duration = 3650
 						}
-						custom_tooltip = nationalists_organizing_tt	
+						custom_tooltip = nationalists_organizing_tt
 					}
-					50 = {}
+					50 = { }
 				}
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_tre.7
 	title = "flavor_tre.7.name"
 	desc = "flavor_tre.7.desc"
 	fire_only_once = yes
 	picture = orthodox_autocephaly
 	is_triggered_only = yes
-	
-	option = {	#Excellent!
+	option = { 
 		name = "flavor_tre.7.opta"
 		inherit = BYZ
 		change_tag = BYZ
-		if = {
-			limit = {
-				owns_core_province = 1402 
+		if = { 
+			limit = { 
+				owns_core_province = 1402
 			}
-			Effect_set_capital = { target = 1402 }
-		}	
-		Stab_Add2 = yes
+			if = { 
+				limit = { 
+					is_part_of_hre = yes
+					ROOT = { 
+						is_part_of_hre = no
+					}
+				}
+				set_in_empire = no
+				swap_non_generic_missions = yes
+				emperor = { 
+					add_opinion = { 
+						who = ROOT
+						modifier = hre_province_left
+					}
+				}
+				add_imperial_influence = -1
+			}
+			set_capital = 1402
+			hidden_effect = { 
+				set_country_flag = tf_recalculate_communication_efficiency
+				set_country_flag = ai_tax_recalc
+			}
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 2
+			}
+		}
+		tooltip = { 
+			add_stability = 2
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 10
+		}
 		add_prestige = 50
 		add_legitimacy = 50
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_tre.8
 	title = "flavor_tre.8.name"
 	desc = "flavor_tre.8.desc"
 	fire_only_once = yes
 	picture = ACCUSATION_eventPicture
 	is_triggered_only = yes
-
-	option = {	#Damn them!
+	option = { 
 		name = "flavor_tre.8.opta"
 		add_prestige = -10
 	}

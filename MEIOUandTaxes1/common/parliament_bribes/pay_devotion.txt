@@ -1,13 +1,11 @@
-pay_devotion = {
-	trigger = {
+pay_devotion = { 
+	trigger = { 
 		government = theocracy
 	}
-	
-	effect = {
+	effect = { 
 		add_devotion = -5
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
 	}
 }

@@ -1,249 +1,168 @@
-#Note: still to be re-ordered
-
-#Sunni Muslims
-#* sunni				22
-
-#Shia Muslims
-#* shiite				23
-
-#* druze				24
-#* ibadi				25
-#* wahhabi				26
-#* zikri				27
-#* kharijite			28
-#* hurufi				29
-#* zaidi				30	shiites
-
-muslim = { #Greens
+muslim = { 
 	defender_of_faith = no
 	crusade_name = JIHAD
-	center_of_religion = 385 # Mecca
+	center_of_religion = 385
 	flags_with_emblem_percentage = 33
-	flag_emblem_index_range = { 97 106 } #Including Star of David / Seal of Suleyman
-	
+	flag_emblem_index_range = { 97 106}
 	ai_will_propagate_through_trade = yes
-	
-
-	
-	sunni = {
-		#Includes Sunni
-		color = { 0.0 0.6 0 } #Green
+	sunni = { 
+		color = { 0.0 0.6 0}
 		icon = 13
-		allowed_conversion = {
-			wahhabi
-		}
-		country = { #VALUE: 2.5 -1.0 = 1.5 IDEAS
-			global_missionary_strength = 0.01 #Believers pay a tithe to support missionaries
-			#BONUSES
-			heir_chance = 1.0 #HALF - Polygamy meant an endless supply of potential heirs, but also succession crises
-			tolerance_own = 1 #FULL - Rebalanced
-			tolerance_heretic = 0.5 #HALF - Relatively tolerant of dissent as long as it remained muslim and accepted state authority
-			global_foreign_trade_power = 0.10 #HALF
-			#PENALTIES
-			legitimacy = -0.15 #FULL - Decadent rulers faced religious uprisings to supplant them
+		allowed_conversion = { wahhabi}
+		country = { 
+			global_missionary_strength = 0.01
+			heir_chance = 1.0
+			tolerance_own = 1
+			tolerance_heretic = 0.5
+			global_foreign_trade_power = 0.10
+			legitimacy = -0.15
 			republican_tradition = -0.25
 			horde_unity = -0.1
 			devotion = -0.1
 		}
-		country_as_secondary = { #Same bonuses as above, but 1 lower tolerance_own and missionary_strength
-			heir_chance = 1.0 #Polygamy meant an endless supply of potential heirs, but also succession crises
-			tolerance_heretic = 1 #Relatively tolerant of dissent as long as it remained muslim and accepted state authority
+		country_as_secondary = { 
+			heir_chance = 1.0
+			tolerance_heretic = 1
 			global_foreign_trade_power = 0.10
-			legitimacy = -0.25 #Decadent rulers faced religious uprisings to supplant them
+			legitimacy = -0.25
 			republican_tradition = -0.5
 			devotion = -0.1
 			horde_unity = -0.1
 		}
-		
-#		holy_sites = {
-#			379 #Jerusalem
-#		}
-
-		on_convert = {
+		on_convert = { 
 			change_religion = sunni
 		}
-		uses_piety = yes				# Uses piety mechanics
-		has_patriarchs = yes		# Uses patriarch authority
-		#fervor = yes
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		uses_piety = yes
+		has_patriarchs = yes
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	shiite = {
-		#Includes Shi'ites, Twelvers, Ismailis, Alevi, Alawites
-		color = { 0.7 1.0 0.2 } #Green-Yellow
+	shiite = { 
+		color = { 0.7 1.0 0.2}
 		icon = 14
-		province = {
-		}
-		country = {
-#			global_missionary_strength = 0.00
+		province = { }
+		country = { 
 			global_heretic_missionary_strength = 0.01
-			#BONUSES
-			heir_chance = 1.0 #Polygamy meant an endless supply of potential heirs, but also succession crises
-			land_morale = 0.10 #Jihad is enshrined as the sixth pillar of Islam
-			#PENALTIES
+			heir_chance = 1.0
+			land_morale = 0.10
 		}
-		country_as_secondary = { #Same bonuses as above, but 1 lower tolerance_own and missionary_strength
-			heir_chance = 1.0 #Polygamy meant an endless supply of potential heirs, but also succession crises
-			land_morale = 0.10 #Jihad is enshrined as the sixth pillar of Islam
+		country_as_secondary = { 
+			heir_chance = 1.0
+			land_morale = 0.10
 			tolerance_own = -1
 		}
-		
-#		holy_sites = {
-#			379 #Jerusalem
-#		}
-
-		uses_piety = yes				# Uses piety mechanics
-		has_patriarchs = yes		# Uses patriarch authority
-		#fervor = yes
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		uses_piety = yes
+		has_patriarchs = yes
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	druze = { #Druze
-		color = { 0.0 0.6 0.6 } #Dark Cyan
+	druze = { 
+		color = { 0.0 0.6 0.6}
 		icon = 41
-		province = {
+		province = { }
+		country = { 
+			global_missionary_strength = -0.01
+			tolerance_heretic = 2
+			tolerance_heathen = 2
+			land_morale = 0.10
+			prestige = -0.50
 		}
-		country = {
-			global_missionary_strength = -0.01 #A closed religion after 1050 AD; did not seek converts
-			#BONUSES
-			tolerance_heretic = 2 #Considered the Abrahamic religions to be similar but misguided
-			tolerance_heathen = 2 #Believed in the holiness of many religious figures from diverse religions
-			land_morale = 0.10 #patriotic sacrifice
-			#PENALTIES
-			prestige = -0.50 #No rituals, no festivals, no holy days
-		}
-		country_as_secondary = { #Same bonuses as above, but 1 lower tolerance_own and missionary_strength
-			tolerance_heretic = 2 #Considered the Abrahamic religions to be similar but misguided
-			tolerance_heathen = 2 #Believed in the holiness of many religious figures from diverse religions
-			land_morale = 0.10 #patriotic sacrifice
-			prestige = -0.50 #No rituals, no festivals, no holy days
+		country_as_secondary = { 
+			tolerance_heretic = 2
+			tolerance_heathen = 2
+			land_morale = 0.10
+			prestige = -0.50
 			tolerance_own = -1
 		}
-		
-#		holy_sites = {
-#			379 #Jerusalem
-#		}
-
-		uses_piety = yes				# Uses piety mechanics
-		has_patriarchs = yes		# Uses patriarch authority
-		#fervor = yes
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		uses_piety = yes
+		has_patriarchs = yes
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	ibadi = { #An ancient Islamic division concentrated in Oman and Algeria
-		color = { 0.0 0.2 0.0 } #Army Green
+	ibadi = { 
+		color = { 0.0 0.2 0.0}
 		icon = 15
-		province = {
+		province = { }
+		country = { 
+			heir_chance = 1.0
+			tolerance_heathen = 1
+			tolerance_heretic = 1
+			fort_maintenance_modifier = -0.1
+			core_creation = -0.05
+			diplomatic_upkeep = -1
 		}
-		country = { #VALUE: 2.5 -1.0 = 1.5 IDEAS
-#			global_missionary_strength = 0.00
-			#BONUSES
-			heir_chance = 1.0 #HALF - Polygamy meant an endless supply of potential heirs, but also succession crises
-			tolerance_heathen = 1 #HALF - Allow for the 'ungrateful monotheists'
-			tolerance_heretic = 1 #HALF - Did not persecute other Muslims (much)
-			fort_maintenance_modifier = -0.1 #HALF - A closed community, conservative
-			core_creation = -0.05 #enemy_core_creation = 0.25 #HALF - A closed community
-			#PENALTIES
-			diplomatic_upkeep = -1 #FULL - Believers are expected to shun unbelievers and sinners
-		}
-		country_as_secondary = { #Same bonuses as above, but 1 lower tolerance_own and missionary_strength
-			heir_chance = 1.0 #Polygamy meant an endless supply of potential heirs, but also succession crises
-			tolerance_heathen = 1 #Allow for the 'ungrateful monotheists'
-			tolerance_heretic = 1 #Did not persecute other Muslims (much)
-			fort_maintenance_modifier = -0.1 #HALF - A closed community, conservative
-			diplomatic_upkeep = -1 #Believers are expected to shun unbelievers and sinners
+		country_as_secondary = { 
+			heir_chance = 1.0
+			tolerance_heathen = 1
+			tolerance_heretic = 1
+			fort_maintenance_modifier = -0.1
+			diplomatic_upkeep = -1
 			tolerance_own = -1
 			global_missionary_strength = -0.01
 		}
-		
-#		holy_sites = {
-#			379 #Jerusalem
-#		}
-
-		uses_piety = yes				# Uses piety mechanics
-		has_patriarchs = yes		# Uses patriarch authority
-		#fervor = yes
-		misguided_heretic = yes		#other christians hate them less
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		uses_piety = yes
+		has_patriarchs = yes
+		misguided_heretic = yes
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	wahhabi = {
-		color = { 0.0 1.0 0 } #Dark Green
+	wahhabi = { 
+		color = { 0.0 1.0 0}
 		icon = 16
-		allowed_conversion = {
-			sunni
-		}
-		country = { #VALUE: 
-			global_missionary_strength = 0.01 #A strong missionary tradition
-			#BONUS
+		allowed_conversion = { sunni}
+		country = { 
+			global_missionary_strength = 0.01
 			global_heretic_missionary_strength = 0.01
-			tolerance_own = 1 #Often fanatical support for the faith
-			land_morale = 0.15 #Encouraged rulers to retake Arab lands from corrupt rulers
+			tolerance_own = 1
+			land_morale = 0.15
 			legitimacy = 0.50
 			republican_tradition = 0.25
 			horde_unity = 0.25
 			devotion = 1
-			heir_chance = 1.0 #Polygamy meant an endless supply of potential heirs, but also succession crises
-			#PENALTIES
-			tolerance_heathen = -1 #A fundamentalist push towards pure Islam untainted by other groups
+			heir_chance = 1.0
+			tolerance_heathen = -1
 			tolerance_heretic = -1
-			adm_tech_cost_modifier = 0.10 #Socially conservative
+			adm_tech_cost_modifier = 0.10
 		}
-		country_as_secondary = { #Same bonuses as above, but 1 lower tolerance_own and missionary_strength
+		country_as_secondary = { 
 			global_heretic_missionary_strength = 0.01
-			land_morale = 0.20 #Encouraged rulers to retake Arab lands from corrupt rulers
+			land_morale = 0.20
 			legitimacy = 0.50
 			republican_tradition = 0.25
 			horde_unity = 0.25
 			devotion = 1
-			heir_chance = 1.0 #Polygamy meant an endless supply of potential heirs, but also succession crises
-			tolerance_heathen = -1 #A fundamentalist push towards pure Islam untainted by other groups
+			heir_chance = 1.0
+			tolerance_heathen = -1
 			tolerance_heretic = -1
-			adm_tech_cost_modifier = 0.10 #Socially conservative
+			adm_tech_cost_modifier = 0.10
 		}
-		
-#		holy_sites = {
-#			379 #Jerusalem
-#		}
-
-		on_convert = {
+		on_convert = { 
 			change_religion = wahhabi
 		}
 		date = 1744.1.1
-		uses_piety = yes				# Uses piety mechanics
-		has_patriarchs = yes		# Uses patriarch authority
-		#fervor = yes
-		misguided_heretic = yes		#Not as hated
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		uses_piety = yes
+		has_patriarchs = yes
+		misguided_heretic = yes
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	#Compatibility religions (will be replaced at game start, included only for compatibility with CK2 saves)
-	
-	zikri = { #Becomes Sunni
-		color = { 0.0 0.6 0 } #Green
+	zikri = { 
+		color = { 0.0 0.6 0}
 		icon = 13
-		date = 2000.1.1 #Sir Not Appearing In This Mod
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		date = 2000.1.1
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	kharijite = { #Becomes Ibadi
-		color = { 0.0 0.2 0.0 } #Army Green
+	kharijite = { 
+		color = { 0.0 0.2 0.0}
 		icon = 15
-		date = 2000.1.1 #Sir Not Appearing In This Mod
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		date = 2000.1.1
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	hurufi = { #Becomes Shiite
-		color = { 0.7 1.0 0.2 } #Green-Yellow
+	hurufi = { 
+		color = { 0.7 1.0 0.2}
 		icon = 14
-		date = 2000.1.1 #Sir Not Appearing In This Mod
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		date = 2000.1.1
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	zaidi = { #Becomes Sunni
-		color = { 0.0 0.6 0 } #Green
+	zaidi = { 
+		color = { 0.0 0.6 0}
 		icon = 13
-		date = 2000.1.1 #Sir Not Appearing In This Mod
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		date = 2000.1.1
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
 }

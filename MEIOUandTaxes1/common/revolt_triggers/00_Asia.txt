@@ -1,250 +1,251 @@
-# Russia
-RUS = {
-	OR = {
+RUS = { 
+	OR = { 
 		is_core = RUS
-		owner = {
-			capital_scope = {
+		owner = { 
+			capital_scope = { 
 				is_core = RUS
 			}
 		}
 	}
 }
-
-#China
-CYU = {
+CYU = { 
 	is_core = CYU
 }
-CLI = {
+CLI = { 
 	is_core = CLI
 }
-CYN = {
+CYN = { 
 	is_core = CYN
 }
-CEN = {
+CEN = { 
 	is_core = CEN
 }
-CSE = {
+CSE = { 
 	is_core = CSE
 }
-CNG = {
+CNG = { 
 	is_core = CNG
 }
-DAA = {
+DAA = { 
 	is_core = DAA
 }
-DSH = {
+DSH = { 
 	is_core = DSH
 }
-DXI = {
+DXI = { 
 	is_core = DXI
 }
-LNG = {
+LNG = { 
 	is_core = LNG
 }
-CMN = {
+CMN = { 
 	is_core = CMN
 }
-MNG = {
+MNG = { 
 	is_core = MNG
 }
-QII = {
+QII = { 
 	is_core = QII
 }
-QIN = {
+QIN = { 
 	is_core = QIN
 }
-SHU = {
+SHU = { 
 	is_core = SHU
 }
-SNG = {
+SNG = { 
 	is_core = SNG
 }
-TIA = {
+TIA = { 
 	is_core = TIA
 }
-TNG = {
+TNG = { 
 	is_core = TNG
 }
-WUU = {
+WUU = { 
 	is_core = WUU
 }
-XIA = {
+XIA = { 
 	is_core = XIA
 }
-XNG = {
+XNG = { 
 	is_core = XNG
 }
-YUE = {
+YUE = { 
 	is_core = YUE
 }
-ZHE = {
+ZHE = { 
 	is_core = ZHE
 }
-ZHN = {
+ZHN = { 
 	is_core = ZHN
 }
-ZOU = {
+ZOU = { 
 	is_core = ZOU
 }
-CTA = {
+CTA = { 
 	is_core = CTA
 }
-# Timurids
-TIM = {
+TIM = { 
 	culture_group = tartar_group
 	is_core = TIM
 }
-
-# Mongols
-YUA = {
+YUA = { 
 	always = no
 }
-
-CHU = {
-	OR = {
-		NOT = { culture = mongol }
+CHU = { 
+	OR = { 
+		NOT = { 
+			culture = mongol
+		}
 		is_core = CHU
 	}
 }
-JAI = {
-	OR = {
-		NOT = { culture = mongol }
+JAI = { 
+	OR = { 
+		NOT = { 
+			culture = mongol
+		}
 		is_core = JAI
 	}
 }
-ILK = {
-	OR = {
-		NOT = { culture = mongol }
+ILK = { 
+	OR = { 
+		NOT = { 
+			culture = mongol
+		}
 		is_core = ILK
 	}
 }
-
-# Vietnam
-VUU = {
+VUU = { 
 	always = no
 }
-
-# Japan
-
-JAP = {
+JAP = { 
 	is_core = JAP
 }
-
-# Byzantium
-BYZ = {
+BYZ = { 
 	always = no
 }
-
-# Ottomans
-TUR = {
+TUR = { 
 	always = no
 }
-
-OTT = {
+OTT = { 
 	religion = sunni
 }
-
-# Golden Horde
-GOL = {
+GOL = { 
 	religion_group = muslim
-	NOT = { exists = BLU }
-	NOT = { exists = WHI }
+	NOT = { 
+		exists = BLU
+	}
+	NOT = { 
+		exists = WHI
+	}
 	is_core = GOL
 }
-
-# Manchuria
-QNG = {
-	NOT = { exists = MCH }
-	NOT = { exists = JIN }
-	NOT = { exists = MJZ }
-	NOT = { exists = MHX }
+QNG = { 
+	NOT = { 
+		exists = MCH
+	}
+	NOT = { 
+		exists = JIN
+	}
+	NOT = { 
+		exists = MJZ
+	}
+	NOT = { 
+		exists = MHX
+	}
 }
-MCH = {
-	NOT = { exists = QNG }
-	NOT = { exists = JIN }
-	NOT = { exists = MJZ }
-	NOT = { exists = MHX }
+MCH = { 
+	NOT = { 
+		exists = QNG
+	}
+	NOT = { 
+		exists = JIN
+	}
+	NOT = { 
+		exists = MJZ
+	}
+	NOT = { 
+		exists = MHX
+	}
 }
-JIN = {
-	NOT = { exists = QNG }
-	NOT = { exists = JIN }
-	NOT = { exists = MJZ }
-	NOT = { exists = MHX }
-	NOT = { exists = MCH }
+JIN = { 
+	NOT = { 
+		exists = QNG
+	}
+	NOT = { 
+		exists = JIN
+	}
+	NOT = { 
+		exists = MJZ
+	}
+	NOT = { 
+		exists = MHX
+	}
+	NOT = { 
+		exists = MCH
+	}
 }
-
-# Mughals
-MUG = {
+MUG = { 
 	religion_group = muslim
 	is_core = MUG
 }
-# Bahmanids
-BAH = {
-	NOT = {
+BAH = { 
+	NOT = { 
 		has_global_flag = bahmanids_shattered
 	}
 }
-# Crusader States
-KOJ = {
+KOJ = { 
 	always = no
 }
-KEG = {
+KEG = { 
 	always = no
 }
-# KRB = {
-# always = no
-# }
-
-IND = {
+IND = { 
 	always = no
 }
-
-TIB = {
+TIB = { 
 	is_core = TIB
 }
-
-PER = {
+PER = { 
 	has_global_flag = safaviyya_founded
 }
-
-SAM = {
+SAM = { 
 	has_global_flag = safaviyya_dynasty
 }
-
-ISR = {
+ISR = { 
 	religion_group = jewish_group
 }
-
-SHY = {
-	NOT = { has_global_flag = 1530_start_date }
+SHY = { 
+	NOT = { 
+		has_global_flag = 1530_start_date
+	}
 }
-
-AVA = {
-	NOT = { has_global_flag = 1530_start_date }
+AVA = { 
+	NOT = { 
+		has_global_flag = 1530_start_date
+	}
 }
-
-KAB = {
-	NOT = { has_global_flag = 1530_start_date }
+KAB = { 
+	NOT = { 
+		has_global_flag = 1530_start_date
+	}
 }
-
-VIJ = {
+VIJ = { 
 	religion_group = dharmic
 	is_core = VIJ
 	exists = VIJ
 }
-
-EGY = {
+EGY = { 
 	is_core = EGY
 }
-
-SUL = {
+SUL = { 
 	is_core = SUL
 }
-
-ARU = {
+ARU = { 
 	is_core = ARU
 }
-
-MNH = {
+MNH = { 
 	is_core = MNH
 }

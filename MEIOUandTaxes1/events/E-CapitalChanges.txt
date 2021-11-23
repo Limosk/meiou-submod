@@ -1,58 +1,140 @@
 namespace = flavor_uef
-country_event = {
+country_event = { 
 	id = flavor_uef.001
-	
 	title = "flavor_uef.001_title"
 	desc = "flavor_uef.001_desc"
 	picture = GREAT_BUILDING_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "flavor_uef.001.opta"
-		trigger = {
-				owns_core_province = 183
+		trigger = { 
+			owns_core_province = 183
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 30
 		}
-        Effect_set_capital = { target=183 }
-    }
-    option = {
-		name = "flavor_uef.001.optb"
-		trigger = {
-				owns_core_province = 3375
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
 		}
-		ai_chance = {
+		set_capital = 183
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+	}
+	option = { 
+		name = "flavor_uef.001.optb"
+		trigger = { 
+			owns_core_province = 3375
+		}
+		ai_chance = { 
 			factor = 40
 		}
-        Effect_set_capital = { target=3375 }
-    }
-    option = {
-		name = "flavor_uef.001.optc"
-		trigger = {
-				owns_core_province = 176
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
 		}
-		ai_chance = {
+		set_capital = 3375
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+	}
+	option = { 
+		name = "flavor_uef.001.optc"
+		trigger = { 
+			owns_core_province = 176
+		}
+		ai_chance = { 
 			factor = 5
 		}
-        Effect_set_capital = { target=176 }
-    }
-    option = {
-		name = "flavor_uef.001.optd"
-		trigger = {
-				owns_core_province = 178
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
 		}
-		ai_chance = {
+		set_capital = 176
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+	}
+	option = { 
+		name = "flavor_uef.001.optd"
+		trigger = { 
+			owns_core_province = 178
+		}
+		ai_chance = { 
 			factor = 10
 		}
-        name = "flavor_uef.001.optd"
-        Effect_set_capital = { target=178 }
-    }
-    option = {
-        name = "flavor_uef.001.opte"
-		ai_chance = {
+		name = "flavor_uef.001.optd"
+		if = { 
+			limit = { 
+				is_part_of_hre = yes
+				ROOT = { 
+					is_part_of_hre = no
+				}
+			}
+			set_in_empire = no
+			swap_non_generic_missions = yes
+			emperor = { 
+				add_opinion = { 
+					who = ROOT
+					modifier = hre_province_left
+				}
+			}
+			add_imperial_influence = -1
+		}
+		set_capital = 178
+		hidden_effect = { 
+			set_country_flag = tf_recalculate_communication_efficiency
+			set_country_flag = ai_tax_recalc
+		}
+	}
+	option = { 
+		name = "flavor_uef.001.opte"
+		ai_chance = { 
 			factor = 15
 		}
-    }
+	}
 }

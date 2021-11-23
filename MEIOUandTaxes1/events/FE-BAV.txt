@@ -1,200 +1,155 @@
 namespace = flavor_bav
-
-# country_event = {
-# 	id = flavor_bav.2
-# 	title = flavor_bav.2.t
-# 	desc = flavor_bav.2.d
-# 	picture = POPE_PREACHING_eventPicture
-# 	is_triggered_only = yes
-# 	option = {
-# 		name = flavor_bav.2.a
-# 		KOL = {
-# 			add_opinion = {
-# 				who = root
-# 				modifier = kol_bavarian_archbishop
-# 			}
-# 		}
-# 		add_papal_influence = 5
-# 	}
-# }
-country_event = {
-	id = flavor_bav.3 #Rivalry with the Habsburgs
+country_event = { 
+	id = flavor_bav.3
 	title = flavor_bav.3.t
 	desc = flavor_bav.3.d
 	picture = COURT_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			tag = BAV
 			num_of_cities = 8
 		}
 		primary_culture = bavarian
 		is_year = 1450
-		NOT = { is_year = 1500 }
+		NOT = { 
+			is_year = 1500
+		}
 		dynasty = "von Wittelsbach"
-		HAB = {
+		HAB = { 
 			exists = yes
 			is_emperor = yes
 			dynasty = "von Habsburg"
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 10
 	}
-	option = {
+	option = { 
 		name = flavor_bav.3.a
-		HAB = {
-			add_opinion = {
+		HAB = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = bav_against_habsburg
 			}
 		}
 		add_legitimacy = 5
 		add_prestige = 5
+<<<<<<< HEAD
 		log = "FE-BAV:[GetYear]:[Root.GetName]:chose to oppose Habsburgs:flavor_bav.3"
+=======
+>>>>>>> submod
 	}
-	option = {
+	option = { 
 		name = flavor_bav.3.b
-		HAB = {
-			add_opinion = {
+		HAB = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = bav_reconcile_habsburg
 			}
 		}
 		add_prestige = -25
+<<<<<<< HEAD
 		log = "FE-BAV:[GetYear]:[Root.GetName]:chose to reconcile with Habsburgs:flavor_bav.3"
+=======
+>>>>>>> submod
 	}
 }
-country_event = {
-	id = flavor_bav.4 #The Historian of Bavaria
+country_event = { 
+	id = flavor_bav.4
 	title = flavor_bav.4.t
 	desc = flavor_bav.4.d
 	picture = INVENTION_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			tag = BAV
 			num_of_cities = 8
 		}
 		primary_culture = bavarian
 		is_year = 1510
-		NOT = { is_year = 1520 }
+		NOT = { 
+			is_year = 1520
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 36
 	}
-	option = {
+	option = { 
 		name = flavor_bav.4.a
 		add_years_of_income = -0.25
 		add_prestige = 5
 		add_legitimacy = 10
 	}
-	option = {
+	option = { 
 		name = flavor_bav.4.b
 		add_prestige = -1
 	}
 }
-# country_event = {
-# 	id = flavor_bav.5 #The Duke invites the Jesuits into Bavaria
-# 	title = flavor_bav.5.t
-# 	desc = flavor_bav.5.d
-# 	picture = RELIGION_eventPicture
-# 	fire_only_once = yes
-# 	trigger = {
-# 		tag = BAV
-# 		is_year = 1520
-# 		NOT = {is_year = 1560 }
-# 		is_religion_enabled = protestant
-# 		religion = catholic
-# 		dominant_religion = catholic
-# 		has_country_modifier = counter_reformation
-# 	}
-# 	mean_time_to_happen = {
-# 		years = 10
-# 	}
-# 	option = {
-# 		name = flavor_bav.5.a
-# 		add_papal_influence = 10
-# 		add_country_modifier = {
-# 			name = "bavarian_jesuits"
-# 			duration = -1
-# 		}
-# 	}
-# 	option = {
-# 		name = flavor_bav.5.b
-# 		trigger = {
-# 			exists = PAP
-# 		}
-# 		PAP = {
-# 			add_opinion = {
-# 				who = ROOT
-# 				modifier = bav_jesuits_rejected
-# 			}
-# 		}
-# 		add_papal_influence = -10
-# 	}
-# }
-country_event = {
-	id = flavor_bav.6 #The Splendor of Antiquarium
+country_event = { 
+	id = flavor_bav.6
 	title = flavor_bav.6.t
 	desc = flavor_bav.6.d
 	picture = IMPORTANT_STATUE_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			tag = BAV
 			num_of_cities = 8
 		}
 		primary_culture = bavarian
 		is_year = 1550
-		NOT = { is_year = 1600 } #changed from 1580, as it is not about specific ruler (used to be about Albert V)
-		owns = 65 #Munchen/Munich
+		NOT = { 
+			is_year = 1600
+		}
+		owns = 65
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 20
 	}
-	option = {
+	option = { 
 		name = flavor_bav.6.a
-		if = { #minimum cost of 200 ducats
-			limit = {
+		if = { 
+			limit = { 
 				monthly_income = 16.7
 			}
 			add_years_of_income = -2
 		}
-		else = {
+		else = { 
 			add_treasury = -200
 		}
 		add_prestige = 20
 		add_legitimacy = 10
-		65 = {
-			add_province_modifier = {
+		65 = { 
+			add_province_modifier = { 
 				name = "industrious_ruler_gravity"
 				duration = 3650
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_bav.6.b
 		add_prestige = -5
 	}
 }
-country_event = {
-	id = flavor_bav.202 #One Bavaria
-	#TODO: check why is it an event, isn't there a mission for that?
+country_event = { 
+	id = flavor_bav.202
 	title = "flavor_bav.202.n"
 	desc = "flavor_bav.202.t"
 	picture = BAVARIA_eventPicture
 	major = yes
-	fire_only_once = yes #to prevent inheritances when minor duchies are created by release of the tag in war
-	trigger = {
+	fire_only_once = yes
+	trigger = { 
 		has_country_flag = rule_of_primogeniture
-		NOT = { mission_completed = bav_unite_bavaria }#to prevent inheritances when minor duchies are created by release of the tag in war
+		NOT = { 
+			mission_completed = bav_unite_bavaria
+		}
 		adm_tech = 20
 		tag = BAV
-		OR = {
-			BAW = {
+		OR = { 
+			BAW = { 
 				exists = yes
-				OR = {
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
@@ -202,9 +157,9 @@ country_event = {
 				}
 				is_at_war = no
 			}
-			BAX = {
+			BAX = { 
 				exists = yes
-				OR = {
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
@@ -212,9 +167,9 @@ country_event = {
 				}
 				is_at_war = no
 			}
-			BAY = {
+			BAY = { 
 				exists = yes
-				OR = {
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
@@ -222,9 +177,9 @@ country_event = {
 				}
 				is_at_war = no
 			}
-			BAZ = {
+			BAZ = { 
 				exists = yes
-				OR = {
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
@@ -235,32 +190,32 @@ country_event = {
 		}
 		is_at_war = no
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 10
-		modifier = {
+		modifier = { 
 			factor = 0.95
-			owns = 64 #Straubing
+			owns = 64
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.95
-			owns = 65 #Munchen/Munich
+			owns = 65
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.95
-			owns = 1351 #Landshut
+			owns = 1351
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.95
-			owns = 1509 #Ingolstadt
+			owns = 1509
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_bav.202.a"
-		if = {
-			limit = {
-				BAW = {
+		if = { 
+			limit = { 
+				BAW = { 
 					exists = yes
-					OR = {
+					OR = { 
 						is_subject = no
 						is_subject_of_type = tributary_state
 						is_subject_of_type = close_tributary_state
@@ -270,13 +225,16 @@ country_event = {
 				}
 			}
 			inherit = BAW
+<<<<<<< HEAD
 			log = "FE-BAV:[GetYear]:[Root.GetName]:inherited [BAW.GetName] by being Bavaria and rule of primogeniture:flavor_bav.202"
+=======
+>>>>>>> submod
 		}
-		if = {
-			limit = {
-				BAX = {
+		if = { 
+			limit = { 
+				BAX = { 
 					exists = yes
-					OR = {
+					OR = { 
 						is_subject = no
 						is_subject_of_type = tributary_state
 						is_subject_of_type = close_tributary_state
@@ -286,13 +244,16 @@ country_event = {
 				}
 			}
 			inherit = BAX
+<<<<<<< HEAD
 			log = "FE-BAV:[GetYear]:[Root.GetName]:inherited [BAX.GetName] by being Bavaria and rule of primogeniture:flavor_bav.202"
+=======
+>>>>>>> submod
 		}
-		if = {
-			limit = {
-				BAY = {
+		if = { 
+			limit = { 
+				BAY = { 
 					exists = yes
-					OR = {
+					OR = { 
 						is_subject = no
 						is_subject_of_type = tributary_state
 						is_subject_of_type = close_tributary_state
@@ -302,13 +263,16 @@ country_event = {
 				}
 			}
 			inherit = BAY
+<<<<<<< HEAD
 			log = "FE-BAV:[GetYear]:[Root.GetName]:inherited [BAY.GetName] by being Bavaria and rule of primogeniture:flavor_bav.202"
+=======
+>>>>>>> submod
 		}
-		if = {
-			limit = {
-				BAZ = {
+		if = { 
+			limit = { 
+				BAZ = { 
 					exists = yes
-					OR = {
+					OR = { 
 						is_subject = no
 						is_subject_of_type = tributary_state
 						is_subject_of_type = close_tributary_state
@@ -318,280 +282,1110 @@ country_event = {
 				}
 			}
 			inherit = BAZ
+<<<<<<< HEAD
 			log = "FE-BAV:[GetYear]:[Root.GetName]:inherited [BAZ.GetName] by being Bavaria and rule of primogeniture:flavor_bav.202"
+=======
+>>>>>>> submod
 		}
-		lower_bavaria_area = {
-			limit = {
+		lower_bavaria_area = { 
+			limit = { 
 				owned_by = ROOT
-				NOT = { is_core = ROOT }
+				NOT = { 
+					is_core = ROOT
+				}
 			}
 			add_core = ROOT
 		}
-		upper_bavaria_area = {
-			limit = {
+		upper_bavaria_area = { 
+			limit = { 
 				owned_by = ROOT
-				NOT = { is_core = ROOT }
+				NOT = { 
+					is_core = ROOT
+				}
 			}
 			add_core = ROOT
 		}
 		add_prestige = 5
 	}
 }
-country_event = {
-	id = flavor_bav.203 #Bavarian Salic Gavelkind
+country_event = { 
+	id = flavor_bav.203
 	title = "flavor_bav.203.name"
 	desc = "flavor_bav.203.desc"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
 	major = yes
-	trigger = {
+	trigger = { 
 		dynasty = "von Wittelsbach"
-		NOT = {	has_country_flag = rule_of_primogeniture }
-		OR = {
-			AND = {
+		NOT = { 
+			has_country_flag = rule_of_primogeniture
+		}
+		OR = { 
+			AND = { 
 				tag = BAW
-				OR = {
-					AND = {
-						owns = 64 #Straubing
-						NOT = {	exists = BAZ }
+				OR = { 
+					AND = { 
+						owns = 64
+						NOT = { 
+							exists = BAZ
+						}
 					}
-					AND = {
-						owns = 65 #Munchen/Munich
-						NOT = { exists = BAY }
+					AND = { 
+						owns = 65
+						NOT = { 
+							exists = BAY
+						}
 					}
-					AND = {
-						owns = 1351 #Landshut
-						NOT = { exists = BAX }
+					AND = { 
+						owns = 1351
+						NOT = { 
+							exists = BAX
+						}
 					}
 				}
 			}
-			AND = {
+			AND = { 
 				tag = BAX
-				OR = {
-					AND = {
-						owns = 64 #Straubing
-						NOT = {	exists = BAZ }
+				OR = { 
+					AND = { 
+						owns = 64
+						NOT = { 
+							exists = BAZ
+						}
 					}
-					AND = {
-						owns = 65 #Munchen/Munich
-						NOT = { exists = BAY }
+					AND = { 
+						owns = 65
+						NOT = { 
+							exists = BAY
+						}
 					}
-					AND = {
-						owns = 1509 #Ingolstadt
-						NOT = {	exists = BAW }
+					AND = { 
+						owns = 1509
+						NOT = { 
+							exists = BAW
+						}
 					}
 				}
 			}
-			AND = {
+			AND = { 
 				tag = BAY
-				OR = {
-					AND = {
-						owns = 64 #Straubing
-						NOT = {	exists = BAZ }
+				OR = { 
+					AND = { 
+						owns = 64
+						NOT = { 
+							exists = BAZ
+						}
 					}
-					AND = {
-						owns = 1351 #Landshut
-						NOT = {	exists = BAX }
+					AND = { 
+						owns = 1351
+						NOT = { 
+							exists = BAX
+						}
 					}
-					AND = {
-						owns = 1509 #Ingolstadt
-						NOT = {	exists = BAW }
+					AND = { 
+						owns = 1509
+						NOT = { 
+							exists = BAW
+						}
 					}
 				}
 			}
-			AND = {
+			AND = { 
 				tag = BAZ
-				OR = {
-					AND = {
-						owns = 65 #Munchen/Munich
-						NOT = { exists = BAY }
+				OR = { 
+					AND = { 
+						owns = 65
+						NOT = { 
+							exists = BAY
+						}
 					}
-					AND = {
-						owns = 1351 #Landshut
-						NOT = {	exists = BAX }
+					AND = { 
+						owns = 1351
+						NOT = { 
+							exists = BAX
+						}
 					}
-					AND = {
-						owns = 1509 #Ingolstadt
-						NOT = { exists = BAW }
+					AND = { 
+						owns = 1509
+						NOT = { 
+							exists = BAW
+						}
 					}
 				}
 			}
 		}
 	}
-	immediate = {
-		BAW = { set_country_flag = stop_event_bav_204 }
-		BAX = { set_country_flag = stop_event_bav_204 }
-		BAY = { set_country_flag = stop_event_bav_204 }
-		BAZ = { set_country_flag = stop_event_bav_204 }
-	}
-	option = {
-		name = "flavor_bav.203.opta"
-		trigger = {
-			NOT = {	exists = BAW }
-			owns = 1509 #Ingolstadt
+	immediate = { 
+		BAW = { 
+			set_country_flag = stop_event_bav_204
 		}
-		1509 = {
-			cede_and_release = { scope = BAW }
+		BAX = { 
+			set_country_flag = stop_event_bav_204
+		}
+		BAY = { 
+			set_country_flag = stop_event_bav_204
+		}
+		BAZ = { 
+			set_country_flag = stop_event_bav_204
+		}
+	}
+	option = { 
+		name = "flavor_bav.203.opta"
+		trigger = { 
+			NOT = { 
+				exists = BAW
+			}
+			owns = 1509
+		}
+		1509 = { 
+			cede_province = BAW
+			hidden_effect = { 
+				BAW = { 
+					export_to_variable = { 
+						which = export
+						value = religion
+					}
+					set_variable = { 
+						which = kdt
+						which = export
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = kdt
+								value = -1
+							}
+						}
+						capital_scope = { 
+							owner = { 
+								change_religion = PREV
+							}
+						}
+					}
+					set_variable = { 
+						which = kdt
+						value = 0
+					}
+					force_converted = yes
+				}
+			}
 			add_core = BAW
 		}
+<<<<<<< HEAD
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=5 }
 		log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Ingolstadt to [BAW.GetName] on ruler death:flavor_bav.203"		
 		BAW = {
 			define_ruler = {
+=======
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdq
+					value = 5
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdq
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = NO_RelationState_5
+			}
+		}
+		hidden_effect = { 
+			every_owned_province = { 
+				limit = { 
+					AND = { 
+						OR = { 
+							is_city = yes
+							is_colony = yes
+						}
+						has_province_flag = Data
+					}
+					check_variable = { 
+						which = asn
+						value = 0.001
+					}
+				}
+				change_variable = { 
+					which = asq
+					value = 5
+				}
+				change_variable = { 
+					which = asr
+					value = 5
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = asq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = asq
+						value = 100
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = asq
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = asq
+						value = 0
+					}
+				}
+				set_province_flag = Unrest_Update
+			}
+		}
+		custom_tooltip = POP_NOLoyProv_5
+		BAW = { 
+			define_ruler = { 
+>>>>>>> submod
 				dynasty = "von Wittelsbach"
-				min_age = 35 #as it is a brother of dead ruler
+				min_age = 35
 				male = yes
 				claim = 95
 				religion = catholic
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_bav.203.optb"
-		trigger = {
-			NOT = {	exists = BAX }			
-			owns = 1351 #Landshut
+		trigger = { 
+			NOT = { 
+				exists = BAX
+			}
+			owns = 1351
 		}
-		1351 = {
-			cede_and_release = { scope = BAX }
+		1351 = { 
+			cede_province = BAX
+			hidden_effect = { 
+				BAX = { 
+					export_to_variable = { 
+						which = export
+						value = religion
+					}
+					set_variable = { 
+						which = kdt
+						which = export
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = kdt
+								value = -1
+							}
+						}
+						capital_scope = { 
+							owner = { 
+								change_religion = PREV
+							}
+						}
+					}
+					set_variable = { 
+						which = kdt
+						value = 0
+					}
+					force_converted = yes
+				}
+			}
 			add_core = BAX
 		}
+<<<<<<< HEAD
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=5 }
 		log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Landshut to [BAX.GetName] on ruler death:flavor_bav.203"		
 		BAX = {
 			define_ruler = {
+=======
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdq
+					value = 5
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdq
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = NO_RelationState_5
+			}
+		}
+		hidden_effect = { 
+			every_owned_province = { 
+				limit = { 
+					AND = { 
+						OR = { 
+							is_city = yes
+							is_colony = yes
+						}
+						has_province_flag = Data
+					}
+					check_variable = { 
+						which = asn
+						value = 0.001
+					}
+				}
+				change_variable = { 
+					which = asq
+					value = 5
+				}
+				change_variable = { 
+					which = asr
+					value = 5
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = asq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = asq
+						value = 100
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = asq
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = asq
+						value = 0
+					}
+				}
+				set_province_flag = Unrest_Update
+			}
+		}
+		custom_tooltip = POP_NOLoyProv_5
+		BAX = { 
+			define_ruler = { 
+>>>>>>> submod
 				dynasty = "von Wittelsbach"
-				min_age = 35 #as it is a brother of dead ruler
+				min_age = 35
 				male = yes
 				claim = 95
 				religion = catholic
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_bav.203.optc"
-		trigger = {
-			NOT = { exists = BAY }
-			owns = 65 #Munchen/Munich
+		trigger = { 
+			NOT = { 
+				exists = BAY
+			}
+			owns = 65
 		}
-		65 = {
-			cede_and_release = { scope = BAY }
+		65 = { 
+			cede_province = BAY
+			hidden_effect = { 
+				BAY = { 
+					export_to_variable = { 
+						which = export
+						value = religion
+					}
+					set_variable = { 
+						which = kdt
+						which = export
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = kdt
+								value = -1
+							}
+						}
+						capital_scope = { 
+							owner = { 
+								change_religion = PREV
+							}
+						}
+					}
+					set_variable = { 
+						which = kdt
+						value = 0
+					}
+					force_converted = yes
+				}
+			}
 			add_core = BAY
 		}
+<<<<<<< HEAD
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=5 }
 		log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Munich to [BAY.GetName] on ruler death:flavor_bav.203"		
 		BAY = {
 			define_ruler = {
+=======
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdq
+					value = 5
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdq
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = NO_RelationState_5
+			}
+		}
+		hidden_effect = { 
+			every_owned_province = { 
+				limit = { 
+					AND = { 
+						OR = { 
+							is_city = yes
+							is_colony = yes
+						}
+						has_province_flag = Data
+					}
+					check_variable = { 
+						which = asn
+						value = 0.001
+					}
+				}
+				change_variable = { 
+					which = asq
+					value = 5
+				}
+				change_variable = { 
+					which = asr
+					value = 5
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = asq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = asq
+						value = 100
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = asq
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = asq
+						value = 0
+					}
+				}
+				set_province_flag = Unrest_Update
+			}
+		}
+		custom_tooltip = POP_NOLoyProv_5
+		BAY = { 
+			define_ruler = { 
+>>>>>>> submod
 				dynasty = "von Wittelsbach"
-				min_age = 35 #as it is a brother of dead ruler
+				min_age = 35
 				male = yes
 				claim = 95
 				religion = catholic
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_bav.203.optd"
-		trigger = {
-			NOT = {	exists = BAZ }
-			owns = 64 #Straubing
+		trigger = { 
+			NOT = { 
+				exists = BAZ
+			}
+			owns = 64
 		}
-		64 = {
-			cede_and_release = { scope = BAZ }
+		64 = { 
+			cede_province = BAZ
+			hidden_effect = { 
+				BAZ = { 
+					export_to_variable = { 
+						which = export
+						value = religion
+					}
+					set_variable = { 
+						which = kdt
+						which = export
+					}
+					if = { 
+						limit = { 
+							is_variable_equal = { 
+								which = kdt
+								value = -1
+							}
+						}
+						capital_scope = { 
+							owner = { 
+								change_religion = PREV
+							}
+						}
+					}
+					set_variable = { 
+						which = kdt
+						value = 0
+					}
+					force_converted = yes
+				}
+			}
 			add_core = BAZ
 		}
+<<<<<<< HEAD
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=5 }
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=5 }
 		log = "FE-BAV:[GetYear]:[Root.GetName]:ceded Straubing to [BAZ.GetName] on ruler death:flavor_bav.203"
 		BAZ = {
 			define_ruler = {
+=======
+		if = { 
+			limit = { 
+				always = yes
+			}
+			hidden_effect = { 
+				change_variable = { 
+					which = bdq
+					value = 5
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdq
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = NO_RelationState_5
+			}
+		}
+		hidden_effect = { 
+			every_owned_province = { 
+				limit = { 
+					AND = { 
+						OR = { 
+							is_city = yes
+							is_colony = yes
+						}
+						has_province_flag = Data
+					}
+					check_variable = { 
+						which = asn
+						value = 0.001
+					}
+				}
+				change_variable = { 
+					which = asq
+					value = 5
+				}
+				change_variable = { 
+					which = asr
+					value = 5
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = asq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = asq
+						value = 100
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = asq
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = asq
+						value = 0
+					}
+				}
+				set_province_flag = Unrest_Update
+			}
+		}
+		custom_tooltip = POP_NOLoyProv_5
+		BAZ = { 
+			define_ruler = { 
+>>>>>>> submod
 				dynasty = "von Wittelsbach"
-				min_age = 35 #as it is a brother of dead ruler
+				min_age = 35
 				male = yes
 				claim = 95
 				religion = catholic
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_bav.203.opte"
-		trigger = {
+		trigger = { 
 			ai = no
 		}
-		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-20 }
-		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=-5 }
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		if = { 
+			limit = { 
+				always = yes
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			hidden_effect = { 
+				change_variable = { 
+					which = bdq
+					value = -20
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = bdq
+								value = -100
+							}
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = -100
+					}
+				}
+				else_if = { 
+					limit = { 
+						check_variable = { 
+							which = bdq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = bdq
+						value = 100
+					}
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 0.001
+				}
+				multiply_variable = { 
+					which = bdq
+					value = 1000
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				custom_tooltip = NO_RelationState_-20
 			}
 		}
+		hidden_effect = { 
+			every_owned_province = { 
+				limit = { 
+					AND = { 
+						OR = { 
+							is_city = yes
+							is_colony = yes
+						}
+						has_province_flag = Data
+					}
+					check_variable = { 
+						which = asn
+						value = 0.001
+					}
+				}
+				change_variable = { 
+					which = asq
+					value = -5
+				}
+				change_variable = { 
+					which = asr
+					value = -5
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = asq
+							value = 100.001
+						}
+					}
+					set_variable = { 
+						which = asq
+						value = 100
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = asq
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = asq
+						value = 0
+					}
+				}
+				set_province_flag = Unrest_Update
+			}
+		}
+		custom_tooltip = POP_NOLoyProv_-5
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
+			}
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
+			}
+		}
+<<<<<<< HEAD
 		log = "FE-BAV:[GetYear]:[Root.GetName]:ignored rule of primogeniture on ruler death:flavor_bav.203"
+=======
+>>>>>>> submod
 	}
-	after = {
-		BAW = { clr_country_flag = stop_event_bav_204 }
-		BAX = { clr_country_flag = stop_event_bav_204 }
-		BAY = { clr_country_flag = stop_event_bav_204 }
-		BAZ = { clr_country_flag = stop_event_bav_204 }
+	after = { 
+		BAW = { 
+			clr_country_flag = stop_event_bav_204
+		}
+		BAX = { 
+			clr_country_flag = stop_event_bav_204
+		}
+		BAY = { 
+			clr_country_flag = stop_event_bav_204
+		}
+		BAZ = { 
+			clr_country_flag = stop_event_bav_204
+		}
 	}
 }
-country_event = {
-	id = flavor_bav.204 #End of the Wittelsbach in the country, AI-only event about loosing the land
+country_event = { 
+	id = flavor_bav.204
 	title = "flavor_bav.204.name"
 	desc = "flavor_bav.204.desc"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
 	major = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = BAW
-				any_country = {
+				any_country = { 
 					dynasty = "von Wittelsbach"
 					exists = yes
-					OR = {
+					OR = { 
 						tag = BAX
 						tag = BAY
 						tag = BAZ
 					}
 				}
 			}
-			AND = {
+			AND = { 
 				tag = BAX
-				any_country = {
+				any_country = { 
 					dynasty = "von Wittelsbach"
 					exists = yes
-					OR = {
+					OR = { 
 						tag = BAW
 						tag = BAY
 						tag = BAZ
 					}
 				}
 			}
-			AND = {
+			AND = { 
 				tag = BAY
-				any_country = {
+				any_country = { 
 					dynasty = "von Wittelsbach"
 					exists = yes
-					OR = {
+					OR = { 
 						tag = BAW
 						tag = BAX
 						tag = BAZ
 					}
 				}
 			}
-			AND = {
+			AND = { 
 				tag = BAZ
-				any_country = {
+				any_country = { 
 					dynasty = "von Wittelsbach"
 					exists = yes
-					OR = {
+					OR = { 
 						tag = BAW
 						tag = BAX
 						tag = BAY
@@ -599,24 +1393,37 @@ country_event = {
 				}
 			}
 		}
-		NOT = {	dynasty = "von Wittelsbach"	}
-		NOT = { has_country_flag = stop_event_bav_204 }
+		NOT = { 
+			dynasty = "von Wittelsbach"
+		}
+		NOT = { 
+			has_country_flag = stop_event_bav_204
+		}
 		ai = yes
 	}
-	option = {
+	option = { 
 		name = "flavor_bav.204.opta"
+<<<<<<< HEAD
 		trigger = {	exists = BAV }
 		log = "FE-BAV:[GetYear]:[Root.GetName]:end of Wittlesbach dynasty, BAV will inherit:flavor_bav.204"
 
 		BAV = {
 			country_event = {
+=======
+		trigger = { 
+			exists = BAV
+		}
+		BAV = { 
+			country_event = { 
+>>>>>>> submod
 				id = flavor_bav.205
 				days = 5
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_bav.204.optb"
+<<<<<<< HEAD
 		trigger = {
 			NOT = { exists = BAV }
 		}
@@ -625,6 +1432,16 @@ country_event = {
 		random_country = {
 			limit = {
 				OR = {
+=======
+		trigger = { 
+			NOT = { 
+				exists = BAV
+			}
+		}
+		random_country = { 
+			limit = { 
+				OR = { 
+>>>>>>> submod
 					tag = BAW
 					tag = BAX
 					tag = BAY
@@ -633,152 +1450,269 @@ country_event = {
 				exists = yes
 				dynasty = "von Wittelsbach"
 			}
-			country_event = {
+			country_event = { 
 				id = flavor_bav.205
 				days = 5
 			}
 		}
 	}
 }
-country_event = {
-	id = flavor_bav.205 #End of the Wittelsbach in the country, event about receiving the land
+country_event = { 
+	id = flavor_bav.205
 	title = "flavor_bav.205.name"
 	desc = "flavor_bav.205.desc"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
 	major = yes
-	option = {
+	option = { 
 		name = "flavor_bav.205.opta"
 		inherit = FROM
+<<<<<<< HEAD
 		log = "FE-BAV:[GetYear]:[Root.GetName]:inherited lands of [From.GetName]:flavor_bav.205"
 
 		lower_bavaria_area = {
 			limit = {
+=======
+		lower_bavaria_area = { 
+			limit = { 
+>>>>>>> submod
 				owned_by = ROOT
 			}
 			add_core = ROOT
 		}
-		upper_bavaria_area = {
-			limit = {
+		upper_bavaria_area = { 
+			limit = { 
 				owned_by = ROOT
 			}
 			add_core = ROOT
 		}
 	}
 }
-country_event = {
-	id = flavor_bav.301 #Duke Albert's Campaigns Against Robber Barons
+country_event = { 
+	id = flavor_bav.301
 	title = flavor_bav.301.t
 	desc = flavor_bav.301.d
 	picture = BORDER_TENSION_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = BAV
-		NOT = {	is_year = 1555 }
-		owns_core_province = 65 #Munchen/Munich
+		NOT = { 
+			is_year = 1555
+		}
+		owns_core_province = 65
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 10
 	}
-	option = {
+	option = { 
 		name = flavor_bav.301.a
 		add_years_of_income = -0.25
 		add_manpower = -2
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = hee_fought_robber_barons
 			duration = 3650
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_bav.301.b
 		add_treasury = 25
 	}
 }
-country_event = {
-	id = flavor_bav.302 #One Duchy, United
+country_event = { 
+	id = flavor_bav.302
 	title = flavor_bav.302.t
 	desc = flavor_bav.302.d
 	picture = CONQUEST_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = BAV
-		NOT = { exists = BAW }
-		NOT = { exists = BAX }
-		NOT = { exists = BAY }
-		NOT = { exists = BAZ }
-		all_owned_province = {
-			OR = {
-				AND = {
+		NOT = { 
+			exists = BAW
+		}
+		NOT = { 
+			exists = BAX
+		}
+		NOT = { 
+			exists = BAY
+		}
+		NOT = { 
+			exists = BAZ
+		}
+		all_owned_province = { 
+			OR = { 
+				AND = { 
 					culture = bavarian
-					NOT = {	local_autonomy = 20	}
+					NOT = { 
+						local_autonomy = 20
+					}
 				}
-				NOT = {	culture = bavarian }
+				NOT = { 
+					culture = bavarian
+				}
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 5
 	}
-	option = {
+	option = { 
 		name = flavor_bav.302.a
-		Stab_Add50Percent = yes
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
 		add_legitimacy = 25
 	}
 }
-country_event = {
-	id = flavor_bav.303 #Reconciliation With the Habsburgs
+country_event = { 
+	id = flavor_bav.303
 	title = flavor_bav.303.t
 	desc = flavor_bav.303.d
 	picture = DIPLOMACY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = BAV
 		is_year = 1520
-		NOT = {	is_year = 1600 }
+		NOT = { 
+			is_year = 1600
+		}
 		is_at_war = no
-		NOT = {	is_rival = HAB }
+		NOT = { 
+			is_rival = HAB
+		}
 		is_lesser_in_union = no
 		dynasty = "von Wittelsbach"
-		HAB = {
+		HAB = { 
 			exists = yes
 			is_emperor = yes
 			dynasty = "von Habsburg"
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 1
 	}
-	option = {
+	option = { 
 		name = flavor_bav.303.a
-		HAB = {
-			add_opinion = {
+		HAB = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = flavor_bav_reconcile_habsburgs
 			}
 		}
-		ROOT = {
-			add_opinion = {
+		ROOT = { 
+			add_opinion = { 
 				who = HAB
 				modifier = flavor_bav_reconcile_habsburgs
 			}
 		}
+<<<<<<< HEAD
 		log = "FE-BAV:[GetYear]:[Root.GetName]:chose to reconcile with Habsburgs:flavor_bav.303"
+=======
+>>>>>>> submod
 	}
-	option = {
+	option = { 
 		name = flavor_bav.303.b
-		HAB = {
-			add_opinion = {
+		HAB = { 
+			add_opinion = { 
 				who = ROOT
 				modifier = flavor_bav_against_habsburgs
 			}
 		}
-		ROOT = {
-			add_opinion = {
+		ROOT = { 
+			add_opinion = { 
 				who = HAB
 				modifier = flavor_bav_against_habsburgs
 			}
 		}
+<<<<<<< HEAD
 		log = "FE-BAV:[GetYear]:[Root.GetName]:chose to continue opposing the Habsburgs:flavor_bav.303"
+=======
+>>>>>>> submod
 		add_legitimacy = 5
 		add_prestige = 5
 	}

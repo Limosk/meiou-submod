@@ -1,97 +1,119 @@
-country_decisions = {
-	window_to_the_west = {
-		potential = {
+country_decisions = { 
+	window_to_the_west = { 
+		potential = { 
 			tag = RUS
-			OR = {
+			OR = { 
 				technology_group = western
-				AND = {
+				AND = { 
 					ADM = 6
 					adm_tech = 30
 				}
 				has_institution = Academia
 				adm_tech = 38
 			}
-			NOT = {
+			NOT = { 
 				has_country_flag = relocated_capital_st_petersburg
 			}
 		}
-		allow = {
+		allow = { 
 			is_at_war = no
 			adm_power = 250
-			any_core_province = {
-				OR = {
+			any_core_province = { 
+				OR = { 
 					region = baltic_region
 					province_id = 3401
 				}
 			}
 		}
-		effect = {
-			hidden_effect = {
+		effect = { 
+			hidden_effect = { 
 				set_country_flag = relocated_capital_st_petersburg
 			}
 			add_adm_power = -250
-			Stab_Add1 = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					add_stability = 1
+				}
+			}
+			tooltip = { 
+				add_stability = 1
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = 5
+			}
 			add_prestige = 100
 			add_treasury = -200
 			add_absolutism = 10
-			if = {
-				limit = {
-					NOT = {
+			if = { 
+				limit = { 
+					NOT = { 
 						owns = 3401
 					}
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						region = baltic_region
 					}
 				}
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					owns = 3401
 				}
-				3401 = {
+				3401 = { 
 					add_core = RUS
 				}
-				country_event = {
+				country_event = { 
 					id = flavor_rus.1113
 					days = 1
 				}
 			}
 		}
-		ai_will_do = {
-			factor = 0 #AI makes a lot of problems for themselves with that move
+		ai_will_do = { 
+			factor = 0
 		}
 	}
-	establish_russian_patriarchate = {
-		potential = {
+	establish_russian_patriarchate = { 
+		potential = { 
 			tag = RUS
 			religion = orthodox
-			NOT = {
+			NOT = { 
 				has_country_modifier = russian_patriarchate
 			}
 		}
-		allow = {
+		allow = { 
 			is_at_war = no
-			NOT = {
-				1402 = {
+			NOT = { 
+				1402 = { 
 					owned_by = BYZ
 				}
 			}
 			prestige = 20
-			NOT = {
+			NOT = { 
 				innovativeness_ideas = 3
 			}
 			adm_power = 50
 		}
-		effect = {
+		effect = { 
 			add_adm_power = -50
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = "russian_patriarchate"
 				duration = -1
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}

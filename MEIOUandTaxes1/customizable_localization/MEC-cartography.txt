@@ -1,52 +1,43 @@
-
-defined_text = {
+defined_text = { 
 	name = steppes_terrain
-	
-	text = {
+	text = { 
 		localisation_key = steppes_terrain
-
-		trigger = {
-			OR = {
+		trigger = { 
+			OR = { 
 				has_terrain = grass_flats
 				has_terrain = grass_hills
 			}
-			OR = {
+			OR = { 
 				region = steppes_region
 				superregion = central_asia_superregion
 			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = savanna_terrain
-	
-	text = {
+	text = { 
 		localisation_key = savanna_terrain
-
-		trigger = {
-			OR = {
+		trigger = { 
+			OR = { 
 				has_terrain = grass_flats
 				has_terrain = grass_hills
 				has_terrain = grass_mountains
 				has_terrain = grass_highlands
 			}
-			OR = {
+			OR = { 
 				superregion = west_africa_superregion
 				superregion = east_africa_superregion
 			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = taiga_terrain
-	
-	text = {
+	text = { 
 		localisation_key = taiga_terrain
-
-		trigger = {
-			OR = {
+		trigger = { 
+			OR = { 
 				has_terrain = forest_flats
 				has_terrain = forest_hills
 				has_terrain = forest_mountains
@@ -60,15 +51,12 @@ defined_text = {
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = tundra_terrain
-	
-	text = {
+	text = { 
 		localisation_key = tundra_terrain
-
-		trigger = {
-			OR = {
+		trigger = { 
+			OR = { 
 				has_terrain = shrub_flats
 				has_terrain = shrub_hills
 				has_terrain = shrub_mountains

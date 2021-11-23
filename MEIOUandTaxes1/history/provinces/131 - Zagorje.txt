@@ -1,131 +1,147 @@
-# 131 - Prigorje
-
 owner = CRO
 controller = CRO
 add_core = CRO
-
 capital = "Gradec"
 trade_goods = wheat
 culture = croatian
 religion = catholic
-
 hre = no
-
 base_tax = 10
 base_production = 1
 base_manpower = 1
-
 is_city = yes
-set_key = { lhs = Infra_Amenities value = 1 }
-set_key = { lhs = Infra_Garrison value = 1 }
-#marketplace = yes
-#workshop = yes
-
+set_variable = { 
+	which = gcj
+	value = 1
+}
+set_variable = { 
+	which = gcn
+	value = 1
+}
 discovered_by = western
 discovered_by = eastern
 discovered_by = byzantine
 discovered_by = muslim
 discovered_by = ottoman
-
-450.1.1 = {
-	# Commercial
+450.1.1 = { 
 	set_province_flag = TN_Important
-	# Features
-	set_key = { lhs = TN_River value = 110 }
-	set_key = { lhs = pop_level value = 4.5 }
-	add_permanent_province_modifier = {
+	set_variable = { 
+		which = baf
+		value = 110
+	}
+	set_variable = { 
+		which = acp
+		value = 4.5
+	}
+	add_permanent_province_modifier = { 
 		name = hungarian_estates
 		duration = -1
 	}
 	set_province_flag = iron
-	add_permanent_province_modifier = {
+	add_permanent_province_modifier = { 
 		name = Knights_Commandery_Low
 		duration = -1
-	}	
+	}
 	set_province_flag = wine
 }
-1356.1.1 = {
+1356.1.1 = { 
 	add_core = HUN
-#	owner = HUN
-#	controller = HUN
-#	add_core = HUN
 }
-#1444.1.1 = {
-#	owner = HUN
-#	controller = HUN
-#	add_core = HUN
-#	add_permanent_province_modifier = {
-#		name = croatian_kingdom
-#		duration = -1
-#	}
-#}
-#1520.5.5 = {
-#	base_tax = 13
-#	base_production = 1
-#	base_manpower = 1
-#}
-#1526.8.30 = {
-#	owner = HAB
-#	controller = HAB
-#	add_core = HAB
-#}
-#1530.1.3 = {
-#	set_key = { lhs = Infra_Pathing value = 0 }
-#	set_key = { lhs = Infra_Pathing value = 3 }
-#}
-#1573.1.20 = {
-#	revolt = {
-#		type = anti_tax_rebels
-#		size = 0
-#	}
-#	controller = REB
-#} # Peasant uprising against Habsburg rule & the feudal system
-#1573.2.9 = {
-#	revolt = { }
-#	controller = HAB
-#} # Decisively defeated
-#1671.1.1 = {
-#	unrest = 5
-#} # Conspiracy against Habsburg rule uncovered
-#1671.5.1 = {
-#	unrest = 0
-#} # Estimated, the conspirators are executed
-#1685.1.1 = {
-#	owner = HAB
-#	controller = HAB
-#	add_core = HAB
-#	remove_core = TUR
-#} # Conquered/liberated by Charles of Lorraine, the Ottoman Turks are driven out of Hungary
-#1784.1.1 = {
-#	unrest = 7
-#} # Reforms to introduce German as the official language
-#1789.1.1 = {
-#	unrest = 0
-#} # Most of the unpopular reforms were cancelled
-
-100.1.1 = {
-	set_key = { lhs = starting_rural_pop_1300 value = 89.687 }
-	set_key = { lhs = starting_urban_pop_1300 value = 0.000 }
-	set_key = { lhs = starting_rural_pop_1350 value = 89.687 }
-	set_key = { lhs = starting_urban_pop_1350 value = 0.000 }
-	set_key = { lhs = starting_rural_pop_1400 value = 69.756 }
-	set_key = { lhs = starting_urban_pop_1400 value = 0.000 }
-	set_key = { lhs = starting_rural_pop_1450 value = 79.722 }
-	set_key = { lhs = starting_urban_pop_1450 value = 0.000 }
-	set_key = { lhs = starting_rural_pop_1500 value = 89.687 }
-	set_key = { lhs = starting_urban_pop_1500 value = 0.000 }
-	set_key = { lhs = starting_rural_pop_1550 value = 99.652 }
-	set_key = { lhs = starting_urban_pop_1550 value = 0.000 }
-	set_key = { lhs = starting_rural_pop_1600 value = 109.617 }
-	set_key = { lhs = starting_urban_pop_1600 value = 0.000 }
-	set_key = { lhs = starting_rural_pop_1650 value = 109.617 }
-	set_key = { lhs = starting_urban_pop_1650 value = 0.000 }
-	set_key = { lhs = starting_rural_pop_1700 value = 109.617 }
-	set_key = { lhs = starting_urban_pop_1700 value = 0.000 }
-	set_key = { lhs = starting_rural_pop_1750 value = 149.478 }
-	set_key = { lhs = starting_urban_pop_1750 value = 0.000 }
-	set_key = { lhs = starting_rural_pop_1800 value = 176.339 }
-	set_key = { lhs = starting_urban_pop_1800 value = 13.000 }
-	set_key = { lhs = starting_rural_pop_1850 value = 225.165 }
-	set_key = { lhs = starting_urban_pop_1850 value = 14.000 }
+100.1.1 = { 
+	set_variable = { 
+		which = amj
+		value = 89.687
+	}
+	set_variable = { 
+		which = amk
+		value = 0.000
+	}
+	set_variable = { 
+		which = amh
+		value = 89.687
+	}
+	set_variable = { 
+		which = ami
+		value = 0.000
+	}
+	set_variable = { 
+		which = amf
+		value = 69.756
+	}
+	set_variable = { 
+		which = amg
+		value = 0.000
+	}
+	set_variable = { 
+		which = amd
+		value = 79.722
+	}
+	set_variable = { 
+		which = ame
+		value = 0.000
+	}
+	set_variable = { 
+		which = amb
+		value = 89.687
+	}
+	set_variable = { 
+		which = amc
+		value = 0.000
+	}
+	set_variable = { 
+		which = alz
+		value = 99.652
+	}
+	set_variable = { 
+		which = ama
+		value = 0.000
+	}
+	set_variable = { 
+		which = alx
+		value = 109.617
+	}
+	set_variable = { 
+		which = aly
+		value = 0.000
+	}
+	set_variable = { 
+		which = alv
+		value = 109.617
+	}
+	set_variable = { 
+		which = alw
+		value = 0.000
+	}
+	set_variable = { 
+		which = alt
+		value = 109.617
+	}
+	set_variable = { 
+		which = alu
+		value = 0.000
+	}
+	set_variable = { 
+		which = alr
+		value = 149.478
+	}
+	set_variable = { 
+		which = als
+		value = 0.000
+	}
+	set_variable = { 
+		which = alp
+		value = 176.339
+	}
+	set_variable = { 
+		which = alq
+		value = 13.000
+	}
+	set_variable = { 
+		which = aho
+		value = 225.165
+	}
+	set_variable = { 
+		which = ahp
+		value = 14.000
+	}
 }

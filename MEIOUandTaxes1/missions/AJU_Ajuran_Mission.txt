@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 somalian_unification_missons = {
 	slot = 2 
 	generic = no
@@ -20,10 +21,33 @@ somalian_unification_missons = {
 
 		trigger = {
 			mogadishu_area = {
+=======
+somalian_unification_missons = { 
+	slot = 2
+	generic = no
+	ai = yes
+	potential = { 
+		has_country_flag = s_of_aju
+	}
+	has_country_shield = yes
+	aju_control_coast = { 
+		icon = mission_galleys_in_port
+		required_missions = { }
+		position = 1
+		provinces_to_highlight = { 
+			area = mogadishu_area
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = { 
+			mogadishu_area = { 
+>>>>>>> submod
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
+<<<<<<< HEAD
 
 		effect = {
 			capital_scope = {
@@ -36,11 +60,38 @@ somalian_unification_missons = {
 		icon = mission_unite_home_region
 		required_missions = { aju_control_coast }
 		provinces_to_highlight = {
+=======
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+			}
+		}
+	}
+	aju_control_hinterlands = { 
+		icon = mission_unite_home_region
+		required_missions = { aju_control_coast}
+		provinces_to_highlight = { 
+>>>>>>> submod
 			area = ajuuran_area
 			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
+<<<<<<< HEAD
 
 		trigger = {
 			ajuuran_area = {
@@ -73,19 +124,55 @@ somalian_unification_missons = {
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
 			marehan_area = {
+=======
+		trigger = { 
+			ajuuran_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
+		effect = { 
+			add_prestige = 15
+		}
+	}
+	aju_expand_northwards = { 
+		icon = mission_non-western_soldiers
+		required_missions = { aju_control_hinterlands}
+		provinces_to_highlight = { 
+			OR = { 
+				area = majarteen_area
+				area = marehan_area
+			}
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = { 
+			majarteen_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			marehan_area = { 
+>>>>>>> submod
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+<<<<<<< HEAD
 
 		effect = {
 			add_casus_belli = {
+=======
+		effect = { 
+			add_casus_belli = { 
+>>>>>>> submod
 				type = cb_restore_personal_union
 				months = 600
 				target = IFA
 			}
 		}
 	}
+<<<<<<< HEAD
 
 	aju_leader_somalia = {
 		icon = mission_have_two_subjects 
@@ -103,10 +190,31 @@ somalian_unification_missons = {
 				add_permanent_claim = ROOT
 			}
 			388 = {
+=======
+	aju_leader_somalia = { 
+		icon = mission_have_two_subjects
+		required_missions = { aju_expand_northwards}
+		trigger = { 
+			OR = { 
+				IFA = { 
+					junior_union_with = ROOT
+				}
+				NOT = { 
+					exists = IFA
+				}
+			}
+		}
+		effect = { 
+			afar_area = { 
+				add_permanent_claim = ROOT
+			}
+			388 = { 
+>>>>>>> submod
 				add_permanent_claim = ROOT
 			}
 		}
 	}
+<<<<<<< HEAD
 
 	aju_control_strait = {
 		icon = mission_sea_battles 
@@ -145,20 +253,76 @@ somalian_unification_missons = {
 				tooltip = control_gulf_aden_trade_tooltip 
 				388 = { #Aden
 					trade_share = {
+=======
+	aju_control_strait = { 
+		icon = mission_sea_battles
+		required_missions = { aju_leader_somalia}
+		provinces_to_highlight = { 
+			OR = { 
+				area = afar_area
+				province_id = 388
+			}
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = { 
+			afar_area = { 
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			388 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			add_dip_power = 50
+		}
+	}
+	aju_control_gulf_aden_trade = { 
+		icon = mission_dominate_home_trade_node
+		required_missions = { aju_control_strait}
+		trigger = { 
+			custom_trigger_tooltip = { 
+				tooltip = control_gulf_aden_trade_tooltip
+				388 = { 
+					trade_share = { 
+>>>>>>> submod
 						country = ROOT
 						share = 50
 					}
 				}
 			}
 		}
+<<<<<<< HEAD
 
 		effect = {
 			capital_scope = {
 				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+=======
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+>>>>>>> submod
 			}
 		}
 	}
 }
+<<<<<<< HEAD
 
 east_african_trade_missions = {
 	slot = 1 
@@ -191,10 +355,41 @@ east_african_trade_missions = {
 				add_building = harbour_infrastructure_2 
 			}
 			1180 = {
+=======
+east_african_trade_missions = { 
+	slot = 1
+	generic = no
+	ai = yes
+	potential = { 
+		has_country_flag = s_of_aju
+	}
+	has_country_shield = yes
+	aju_seize_zanzibar = { 
+		icon = mission_invade_island
+		required_missions = { aju_control_hinterlands}
+		position = 3
+		provinces_to_highlight = { 
+			province_id = 1187
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = { 
+			1187 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			1187 = { 
+				add_building = harbour_infrastructure_2
+			}
+			1180 = { 
+>>>>>>> submod
 				add_permanent_claim = ROOT
 			}
 		}
 	}
+<<<<<<< HEAD
 
 	aju_seize_mozambique = {
 		icon = mission_galleys_in_port 
@@ -217,10 +412,32 @@ east_african_trade_missions = {
 				add_building = harbour_infrastructure_2
 			}
 			1176 = {
+=======
+	aju_seize_mozambique = { 
+		icon = mission_galleys_in_port
+		required_missions = { aju_seize_zanzibar}
+		provinces_to_highlight = { 
+			province_id = 1180
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = { 
+			1180 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			1180 = { 
+				add_building = harbour_infrastructure_2
+			}
+			1176 = { 
+>>>>>>> submod
 				add_permanent_claim = ROOT
 			}
 		}
 	}
+<<<<<<< HEAD
 
 	aju_reclaim_sofala = {
 		icon = mission_colonial 
@@ -240,12 +457,31 @@ east_african_trade_missions = {
 
 		effect = {
 			1176 = {
+=======
+	aju_reclaim_sofala = { 
+		icon = mission_colonial
+		required_missions = { aju_seize_mozambique}
+		provinces_to_highlight = { 
+			province_id = 1176
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = { 
+			1176 = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			1176 = { 
+>>>>>>> submod
 				add_building = harbour_infrastructure_2
 			}
 			add_legitimacy = 10
 			add_prestige = 10
 		}
 	}
+<<<<<<< HEAD
 
 	aju_control_east_africa_trade = {
 		icon = mission_high_income
@@ -257,21 +493,39 @@ east_african_trade_missions = {
 				tooltip = control_east_africa_trade_tooltip 
 				1187 = {  
 					trade_share = {
+=======
+	aju_control_east_africa_trade = { 
+		icon = mission_high_income
+		required_missions = { aju_reclaim_sofala}
+		trigger = { 
+			custom_trigger_tooltip = { 
+				tooltip = control_east_africa_trade_tooltip
+				1187 = { 
+					trade_share = { 
+>>>>>>> submod
 						country = ROOT
 						share = 50
 					}
 				}
 			}
 		}
+<<<<<<< HEAD
 
 		effect = {
 			add_country_modifier = {
 				name = "merchant_society"
 				duration = 9125 #25 years
+=======
+		effect = { 
+			add_country_modifier = { 
+				name = "merchant_society"
+				duration = 9125
+>>>>>>> submod
 			}
 		}
 	}
 }
+<<<<<<< HEAD
 
 somalian_misc_missions = {
 	slot = 3 
@@ -352,6 +606,100 @@ somalian_misc_missions = {
 		effect = {
 			capital_scope = {
 				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+=======
+somalian_misc_missions = { 
+	slot = 3
+	generic = no
+	ai = yes
+	potential = { 
+		has_country_flag = s_of_aju
+	}
+	has_country_shield = yes
+	aju_depart_from_tribal_past = { 
+		icon = mission_market_place_with_asian_traders
+		required_missions = { aju_control_hinterlands}
+		position = 3
+		trigger = { 
+			has_institution = Legalism
+		}
+		effect = { 
+			add_country_modifier = { 
+				name = "aju_departed_tribal_past"
+				duration = 9125
+			}
+		}
+	}
+	aju_centre_islamic_learning = { 
+		icon = mission_early_modern_university
+		required_missions = { aju_depart_from_tribal_past}
+		trigger = { 
+			capital_scope = { 
+				OR = { 
+					has_province_modifier = minor_center_of_art
+					has_province_modifier = median_center_of_art
+					has_province_modifier = important_center_of_art
+				}
+			}
+			capital_scope = { 
+				religion = sunni
+			}
+		}
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+			}
+		}
+	}
+	aju_build_mighty_fleet = { 
+		icon = mission_establish_high_seas_navy
+		required_missions = { aju_centre_islamic_learning}
+		trigger = { 
+			navy_size_percentage = 0.90
+		}
+		effect = { 
+			add_prestige = 10
+		}
+	}
+	aju_establish_trade_indian_ocean = { 
+		icon = mission_indian_stateman
+		required_missions = { aju_build_mighty_fleet}
+		trigger = { 
+			has_discovered = 1248
+			has_discovered = 531
+			has_discovered = 596
+		}
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+>>>>>>> submod
 			}
 		}
 	}

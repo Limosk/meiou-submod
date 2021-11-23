@@ -1,6 +1,3 @@
-# 5208 - Irrawaddy
-# This province is a river
-
 discovered_by = chinese
 discovered_by = japanese
 discovered_by = tibetan

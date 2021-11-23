@@ -1,7 +1,5 @@
-# For specific combinations of culture, religion and other such triggers
-# Will pick the first valid one it finds in list
-roman_colonial_government_title_1 = {
-	rank = {
+roman_colonial_government_title_1 = { 
+	rank = { 
 		1 = PREFECTURE
 		2 = PREFECTURE
 		3 = PREFECTURE
@@ -9,8 +7,7 @@ roman_colonial_government_title_1 = {
 		5 = PREFECTURE
 		6 = PREFECTURE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = EPARCH
 		2 = EPARCH
 		3 = EPARCH
@@ -18,8 +15,7 @@ roman_colonial_government_title_1 = {
 		5 = EPARCH
 		6 = EPARCH
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = EPARCH
 		2 = EPARCH
 		3 = EPARCH
@@ -27,21 +23,31 @@ roman_colonial_government_title_1 = {
 		5 = EPARCH
 		6 = EPARCH
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
 		overlord = { 
-			OR = {
-				tag = BYZ 
+			OR = { 
+				tag = BYZ
 				tag = TRE
 			}
 		}
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 1 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-lowland_scottish_colonial_government_title_1 = {
-	rank = {
+lowland_scottish_colonial_government_title_1 = { 
+	rank = { 
 		1 = COMPANY
 		2 = COMPANY
 		3 = COMPANY
@@ -49,8 +55,7 @@ lowland_scottish_colonial_government_title_1 = {
 		5 = COMPANY
 		6 = COMPANY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DIRECTOR
 		2 = DIRECTOR
 		3 = DIRECTOR
@@ -58,8 +63,7 @@ lowland_scottish_colonial_government_title_1 = {
 		5 = DIRECTOR
 		6 = DIRECTOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DIRECTOR
 		2 = DIRECTOR
 		3 = DIRECTOR
@@ -67,16 +71,26 @@ lowland_scottish_colonial_government_title_1 = {
 		5 = DIRECTOR
 		6 = DIRECTOR
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
 		primary_culture = lowland_scottish
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 1 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-lowland_scottish_colonial_government_title_2 = {
-	rank = {
+lowland_scottish_colonial_government_title_2 = { 
+	rank = { 
 		1 = COMPANY
 		2 = COMPANY
 		3 = COMPANY
@@ -84,8 +98,7 @@ lowland_scottish_colonial_government_title_2 = {
 		5 = COMPANY
 		6 = COMPANY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = DIRECTOR
 		2 = DIRECTOR
 		3 = DIRECTOR
@@ -93,8 +106,7 @@ lowland_scottish_colonial_government_title_2 = {
 		5 = DIRECTOR
 		6 = DIRECTOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = DIRECTOR
 		2 = DIRECTOR
 		3 = DIRECTOR
@@ -102,16 +114,26 @@ lowland_scottish_colonial_government_title_2 = {
 		5 = DIRECTOR
 		6 = DIRECTOR
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
 		primary_culture = lowland_scottish
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 2 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-american_colonial_government_title_1 = {
-	rank = {
+american_colonial_government_title_1 = { 
+	rank = { 
 		1 = TERRITORY
 		2 = TERRITORY
 		3 = TERRITORY
@@ -119,8 +141,7 @@ american_colonial_government_title_1 = {
 		5 = TERRITORY
 		6 = TERRITORY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = LIEUTENANT_GOVERNOR
 		2 = LIEUTENANT_GOVERNOR
 		3 = LIEUTENANT_GOVERNOR
@@ -128,8 +149,7 @@ american_colonial_government_title_1 = {
 		5 = LIEUTENANT_GOVERNOR
 		6 = LIEUTENANT_GOVERNOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = LIEUTENANT_GOVERNOR
 		2 = LIEUTENANT_GOVERNOR
 		3 = LIEUTENANT_GOVERNOR
@@ -137,16 +157,26 @@ american_colonial_government_title_1 = {
 		5 = LIEUTENANT_GOVERNOR
 		6 = LIEUTENANT_GOVERNOR
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
 		primary_culture = american
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 1 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-american_colonial_government_title_2 = {
-	rank = {
+american_colonial_government_title_2 = { 
+	rank = { 
 		1 = TERRITORY
 		2 = TERRITORY
 		3 = TERRITORY
@@ -154,8 +184,7 @@ american_colonial_government_title_2 = {
 		5 = TERRITORY
 		6 = TERRITORY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GOVERNOR
 		2 = GOVERNOR
 		3 = GOVERNOR
@@ -163,8 +192,7 @@ american_colonial_government_title_2 = {
 		5 = GOVERNOR
 		6 = GOVERNOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GOVERNOR
 		2 = GOVERNOR
 		3 = GOVERNOR
@@ -172,16 +200,26 @@ american_colonial_government_title_2 = {
 		5 = GOVERNOR
 		6 = GOVERNOR
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
 		primary_culture = american
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 2 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-american_colonial_government_title_3 = {
-	rank = {
+american_colonial_government_title_3 = { 
+	rank = { 
 		1 = TERRITORY
 		2 = TERRITORY
 		3 = TERRITORY
@@ -189,8 +227,7 @@ american_colonial_government_title_3 = {
 		5 = TERRITORY
 		6 = TERRITORY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GOVERNOR
 		2 = GOVERNOR
 		3 = GOVERNOR
@@ -198,8 +235,7 @@ american_colonial_government_title_3 = {
 		5 = GOVERNOR
 		6 = GOVERNOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GOVERNOR
 		2 = GOVERNOR
 		3 = GOVERNOR
@@ -207,16 +243,26 @@ american_colonial_government_title_3 = {
 		5 = GOVERNOR
 		6 = GOVERNOR
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
 		primary_culture = american
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 3 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-american_colonial_government_title_4 = {
-	rank = {
+american_colonial_government_title_4 = { 
+	rank = { 
 		1 = TERRITORY
 		2 = TERRITORY
 		3 = TERRITORY
@@ -224,8 +270,7 @@ american_colonial_government_title_4 = {
 		5 = TERRITORY
 		6 = TERRITORY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GOVERNOR
 		2 = GOVERNOR
 		3 = GOVERNOR
@@ -233,8 +278,7 @@ american_colonial_government_title_4 = {
 		5 = GOVERNOR
 		6 = GOVERNOR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GOVERNOR
 		2 = GOVERNOR
 		3 = GOVERNOR
@@ -242,16 +286,26 @@ american_colonial_government_title_4 = {
 		5 = GOVERNOR
 		6 = GOVERNOR
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
 		primary_culture = american
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 4 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-american_colonial_government_title_5 = {
-	rank = {
+american_colonial_government_title_5 = { 
+	rank = { 
 		1 = TERRITORY
 		2 = TERRITORY
 		3 = TERRITORY
@@ -259,8 +313,7 @@ american_colonial_government_title_5 = {
 		5 = TERRITORY
 		6 = TERRITORY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GOVERNOR_GENERAL
 		2 = GOVERNOR_GENERAL
 		3 = GOVERNOR_GENERAL
@@ -268,8 +321,7 @@ american_colonial_government_title_5 = {
 		5 = GOVERNOR_GENERAL
 		6 = GOVERNOR_GENERAL
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GOVERNOR_GENERAL
 		2 = GOVERNOR_GENERAL
 		3 = GOVERNOR_GENERAL
@@ -277,16 +329,26 @@ american_colonial_government_title_5 = {
 		5 = GOVERNOR_GENERAL
 		6 = GOVERNOR_GENERAL
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
 		primary_culture = american
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 5 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-american_colonial_government_title_6 = {
-	rank = {
+american_colonial_government_title_6 = { 
+	rank = { 
 		1 = TERRITORY
 		2 = TERRITORY
 		3 = TERRITORY
@@ -294,8 +356,7 @@ american_colonial_government_title_6 = {
 		5 = TERRITORY
 		6 = TERRITORY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = GOVERNOR_GENERAL
 		2 = GOVERNOR_GENERAL
 		3 = GOVERNOR_GENERAL
@@ -303,8 +364,7 @@ american_colonial_government_title_6 = {
 		5 = GOVERNOR_GENERAL
 		6 = GOVERNOR_GENERAL
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = GOVERNOR_GENERAL
 		2 = GOVERNOR_GENERAL
 		3 = GOVERNOR_GENERAL
@@ -312,11 +372,21 @@ american_colonial_government_title_6 = {
 		5 = GOVERNOR_GENERAL
 		6 = GOVERNOR_GENERAL
 	}
-	
-	trigger = {
+	trigger = { 
 		government = republic
 		primary_culture = american
-		colonial_gov_trigger = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			is_subject = yes
+			is_variable_equal = { 
+				which = gro
+				value = 5
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }

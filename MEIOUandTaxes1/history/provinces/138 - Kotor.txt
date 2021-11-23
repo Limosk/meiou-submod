@@ -1,29 +1,29 @@
-
 owner = SER
 controller = SER
 add_core = SER
-
 capital = "Cattaro"
 trade_goods = fish
 culture = serbian
 religion = catholic
-
 hre = no
-
 base_tax = 1
 base_production = 0
 base_manpower = 0
-
 is_city = yes
-set_key = { lhs = Infra_Harbourage value = 1 }
-set_key = { lhs = Infra_Amenities value = 1 }
-#marketplace = yes
-
+set_variable = { 
+	which = gci
+	value = 1
+}
+set_variable = { 
+	which = gcj
+	value = 1
+}
 discovered_by = western
 discovered_by = eastern
 discovered_by = byzantine
 discovered_by = muslim
 discovered_by = ottoman
+<<<<<<< HEAD
 
 450.1.1 = {
 # Religion
@@ -32,23 +32,27 @@ discovered_by = ottoman
 	set_province_flag = TN_Minor
 	set_province_flag = TN_Port
 # Features
+=======
+450.1.1 = { 
+	set_province_flag = MN_Archbishopric
+>>>>>>> submod
 	set_province_flag = TN_Harbour_Minor
 	set_province_flag = TN_Natural_Minor
-	set_key = { lhs = pop_level value = 4 }
+	set_variable = { 
+		which = acp
+		value = 4
+	}
 	set_province_flag = has_natural_harbour
 	set_province_flag = has_small_natural_harbour
 	set_province_flag = good_natural_place
-	# add_permanent_province_modifier = {
-    #     name = "kotor_natural_harbour"
-    #     duration = -1
-    # }
 	set_province_flag = TN_Bay
 }
-1355.1.1 = {
+1355.1.1 = { 
 	owner = MON
 	controller = MON
 	add_core = MON
 	add_core = SER
+<<<<<<< HEAD
 } # Collapse of the Serbian empire at the death of Dusan
 #1420.1.1 = {
 #	owner = VEN
@@ -129,3 +133,116 @@ discovered_by = ottoman
 	set_key = { lhs = starting_urban_pop_1850 value = 0.000 }
 	set_key = { lhs = starting_urban_pop_1350 value = 3.000 }
 }
+=======
+}
+100.1.1 = { 
+	set_variable = { 
+		which = amj
+		value = 2.488
+	}
+	set_variable = { 
+		which = amk
+		value = 2.000
+	}
+	set_variable = { 
+		which = amh
+		value = 2.488
+	}
+	set_variable = { 
+		which = ami
+		value = 2.000
+	}
+	set_variable = { 
+		which = amf
+		value = 1.935
+	}
+	set_variable = { 
+		which = amg
+		value = 0.000
+	}
+	set_variable = { 
+		which = amd
+		value = 2.211
+	}
+	set_variable = { 
+		which = ame
+		value = 0.000
+	}
+	set_variable = { 
+		which = amb
+		value = 2.488
+	}
+	set_variable = { 
+		which = amc
+		value = 0.000
+	}
+	set_variable = { 
+		which = alz
+		value = 2.764
+	}
+	set_variable = { 
+		which = ama
+		value = 0.000
+	}
+	set_variable = { 
+		which = alx
+		value = 3.041
+	}
+	set_variable = { 
+		which = aly
+		value = 0.000
+	}
+	set_variable = { 
+		which = alv
+		value = 3.041
+	}
+	set_variable = { 
+		which = alw
+		value = 0.000
+	}
+	set_variable = { 
+		which = alt
+		value = 3.041
+	}
+	set_variable = { 
+		which = alu
+		value = 0.000
+	}
+	set_variable = { 
+		which = alr
+		value = 4.146
+	}
+	set_variable = { 
+		which = als
+		value = 0.000
+	}
+	set_variable = { 
+		which = alp
+		value = 5.252
+	}
+	set_variable = { 
+		which = alq
+		value = 0.000
+	}
+	set_variable = { 
+		which = aho
+		value = 6.634
+	}
+	set_variable = { 
+		which = ahp
+		value = 0.000
+	}
+	set_variable = { 
+		which = ami
+		value = 3.000
+	}
+}
+set_province_flag = TN_Minor
+set_province_flag = TN_Port
+set_province_flag = TN_Harbour_Minor
+set_province_flag = TN_Natural_Minor
+set_variable = { 
+	which = acp
+	value = 4
+}
+>>>>>>> submod

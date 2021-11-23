@@ -1,62 +1,62 @@
 namespace = flavor_fez
-country_event = {
+country_event = { 
 	id = flavor_fez.01
 	title = "flavor_fez.01.t"
 	desc = "flavor_fez.01.d"
 	picture = BATTLE_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = FEZ
-		MOR = {
+		MOR = { 
 			exists = yes
 		}
-		any_owned_province = {
+		any_owned_province = { 
 			culture = fassi
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 1
 	}
-	immediate = {
-		every_owned_province = {
-			limit = {
+	immediate = { 
+		every_owned_province = { 
+			limit = { 
 				culture = fassi
 			}
 			add_core = MOR
 		}
 	}
-	option = {
+	option = { 
 		name = "OPT.BASTARD"
-		ai_chance = {
+		ai_chance = { 
 			factor = 10
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				culture = fassi
 			}
 			cede_province = MOR
 		}
-		MOR = {
-			if = {
-				limit = {
-					NOT = {
+		MOR = { 
+			if = { 
+				limit = { 
+					NOT = { 
 						war_with = ROOT
 					}
 				}
-				declare_war_with_cb = {
+				declare_war_with_cb = { 
 					who = ROOT
 					casus_belli = cb_independence_war
 				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "OPT.VERYWELL"
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				culture = fassi
 			}
 			cede_province = MOR
@@ -65,10 +65,10 @@ country_event = {
 		add_prestige = -10
 		add_legitimacy = -10
 	}
-	after = {
-		MOR = {
-			hidden_effect = {
-				add_country_modifier = {
+	after = { 
+		MOR = { 
+			hidden_effect = { 
+				add_country_modifier = { 
 					name = blessing_of_god
 					duration = 1825
 				}
@@ -76,98 +76,98 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_fez.02
 	title = "flavor_fez.02.t"
 	desc = "flavor_fez.02.d"
 	picture = SPY_eventPicture
 	fire_only_once = yes
-	is_triggered_only = yes ##on startup
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		tag = FEZ
 	}
-	option = {
+	option = { 
 		name = "flavor_fez.02.a"
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = fez_political_anarchy
 			duration = 5475
 		}
-		add_country_modifier = {
-			name =  disloyal_realm
+		add_country_modifier = { 
+			name = disloyal_realm
 			duration = 5475
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_fez.03
 	title = "flavor_fez.03.t"
 	desc = "flavor_fez.03.d"
 	picture = BATTLE_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		owns = 1340
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 6
 	}
-	option = {
+	option = { 
 		name = "OPT.BASTARD"
-		ai_chance = {
+		ai_chance = { 
 			factor = 20
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				area = sus_area
 			}
 			cede_province = SOS
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				area = tafilalt_area
 			}
 			cede_province = TFL
 		}
-		SOS = {
-			if = {
-				limit = {
-					NOT = {
+		SOS = { 
+			if = { 
+				limit = { 
+					NOT = { 
 						war_with = ROOT
 					}
 				}
-				declare_war_with_cb = {
+				declare_war_with_cb = { 
 					who = ROOT
 					casus_belli = cb_independence_war
 				}
 			}
 		}
-		TFL = {
-			if = {
-				limit = {
-					NOT = {
+		TFL = { 
+			if = { 
+				limit = { 
+					NOT = { 
 						war_with = ROOT
 					}
 				}
-				declare_war_with_cb = {
+				declare_war_with_cb = { 
 					who = ROOT
 					casus_belli = cb_independence_war
 				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "OPT.VERYWELL"
-		ai_chance = {
+		ai_chance = { 
 			factor = 80
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				area = sus_area
 			}
 			cede_province = SOS
 			remove_core = FEZ
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				area = tafilalt_area
 			}
 			cede_province = TFL

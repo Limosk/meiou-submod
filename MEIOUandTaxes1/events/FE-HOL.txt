@@ -1,39 +1,38 @@
 namespace = flavor_hol
-
-country_event = {
+country_event = { 
 	id = flavor_hol.5120
 	title = "flavor_hol.EVTNAME5120"
 	desc = "flavor_hol.EVTDESC5120"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1495
-		NOT = {
+		NOT = { 
 			is_year = 1536
 		}
-		NOT = {
+		NOT = { 
 			advisor_exists = 225
 		}
-		NOT = {
+		NOT = { 
 			is_advisor_employed = 225
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTOK"
 		add_dip_power = 100
-		define_advisor = {
+		define_advisor = { 
 			type = philosopher_CL
 			name = "Desiderius Erasmus"
 			culture = dutch
@@ -43,41 +42,41 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.5121
 	title = "flavor_hol.EVTNAME5121"
 	desc = "flavor_hol.EVTDESC5121"
 	picture = ECONOMY_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1603
-		NOT = {
+		NOT = { 
 			is_year = 1645
 		}
-		NOT = {
+		NOT = { 
 			advisor_exists = 895
 		}
-		NOT = {
+		NOT = { 
 			is_advisor_employed = 895
 		}
 		owns = 97
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTOK"
 		add_adm_power = 100
-		define_advisor = {
+		define_advisor = { 
 			type = philosopher_BG
 			name = "Hugo de Groot"
 			culture = dutch
@@ -87,41 +86,41 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.5122
 	title = "flavor_hol.EVTNAME5122"
 	desc = "flavor_hol.EVTDESC5122"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1623
-		NOT = {
+		NOT = { 
 			is_year = 1687
 		}
-		NOT = {
+		NOT = { 
 			advisor_exists = 905
 		}
-		NOT = {
+		NOT = { 
 			is_advisor_employed = 905
 		}
 		owns = 97
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTOK"
 		add_adm_power = 100
-		define_advisor = {
+		define_advisor = { 
 			type = natural_scientist_BG
 			name = "Christiaan Huygens"
 			culture = dutch
@@ -131,41 +130,41 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.1506
 	title = "flavor_hol.EVTNAME1506"
 	desc = "flavor_hol.EVTDESC1506"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1540
-		NOT = {
+		NOT = { 
 			is_year = 1594
 		}
-		NOT = {
+		NOT = { 
 			advisor_exists = 887
 		}
-		NOT = {
+		NOT = { 
 			is_advisor_employed = 887
 		}
 		owns = 92
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTOK"
 		add_mil_power = 100
-		define_advisor = {
+		define_advisor = { 
 			type = navigator_BG
 			name = "Gerardus Mercator"
 			culture = flemish
@@ -175,66 +174,889 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.3502
 	title = "flavor_hol.EVTNAME3502"
 	desc = "flavor_hol.EVTDESC3502"
 	picture = ELECTION_REPUBLICAN_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
-		NOT = {
+		NOT = { 
 			has_reform = Pol_Succession4
 		}
 		has_reform = Pol_Assembly1
 		is_year = 1450
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 8
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA3502"
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
-		Pol_ChangeGovMonarchy = { Succession=4 Assembly=2 } 
+		change_government = monarchy
+		add_government_reform = Pol_Succession4
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_variable_equal = { 
+					which = grj
+					value = 4
+				}
+				OR = { 
+					NOT = { 
+						religion_group = muslim
+					}
+					culture_group = tartar_group
+					culture_group = old_turkic
+					culture_group = altaic
+					primary_culture = turkish
+				}
+				NOT = { 
+					religion_group = christian
+				}
+				NOT = { 
+					culture_group = japanese_g
+				}
+			}
+			add_government_reform = Pol_Family4
+		}
+		else_if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_variable_equal = { 
+					which = grj
+					value = 4
+				}
+				religion_group = muslim
+				NOT = { 
+					culture_group = tartar_group
+				}
+				NOT = { 
+					culture_group = old_turkic
+				}
+				NOT = { 
+					culture_group = altaic
+				}
+				NOT = { 
+					primary_culture = turkish
+				}
+			}
+			add_government_reform = Pol_Family3
+		}
+		else_if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				OR = { 
+					is_variable_equal = { 
+						which = grj
+						value = 1
+					}
+					religion_group = muslim
+				}
+				NOT = { 
+					primary_culture = turkish
+				}
+			}
+			add_government_reform = Pol_Family2
+		}
+		else_if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_tribal = no
+			}
+			add_government_reform = Pol_Family1
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Nobility1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Nobility2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Nobility3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Nobility4
+		}
+		add_government_reform = Pol_Assembly2
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Structure1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Structure2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Structure3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Structure4
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 4
+				}
+			}
+			add_government_reform = Pol_Structure5
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Centralisation1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Centralisation2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Centralisation3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Centralisation4
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 4
+				}
+			}
+			add_government_reform = Pol_Centralisation5
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqt
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Autonomy1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqt
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Autonomy2
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Provincial1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Provincial2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Provincial3
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Military1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Military2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Military3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Military4
+		}
+		add_government_reform = Pol_Privileges1
 		add_government_reform = Pol_Nobility1
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTB3502"
-		trigger = {
+		trigger = { 
 			adm_tech = 30
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
-		Pol_ChangeGovRepublic = { Mandate=3 Stylings=1 ExtraPowers=1 Assembly=3 TermOfOffice=5 } 
+		change_government = republic
+		add_government_reform = Pol_Mandate3
+		add_government_reform = Pol_Stylings1
+		add_government_reform = Pol_ExtraPowers1
+		add_government_reform = Pol_Assembly3
+		add_government_reform = Pol_TermOfOffice5
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Nobility1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Nobility2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Nobility3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Nobility4
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Structure1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Structure2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Structure3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Structure4
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 4
+				}
+			}
+			add_government_reform = Pol_Structure5
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Centralisation1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Centralisation2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Centralisation3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Centralisation4
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 4
+				}
+			}
+			add_government_reform = Pol_Centralisation5
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqt
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Autonomy1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqt
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Autonomy2
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Provincial1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Provincial2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Provincial3
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Military1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Military2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Military3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Military4
+		}
+		add_government_reform = Pol_Privileges1
 		add_government_reform = Pol_Nobility1
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTC3502"
-		trigger = {
+		trigger = { 
 			adm_tech = 30
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
-		Pol_ChangeGovMonarchy = { Succession=1 Assembly=2 } 
+		change_government = monarchy
+		add_government_reform = Pol_Succession1
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_variable_equal = { 
+					which = grj
+					value = 4
+				}
+				OR = { 
+					NOT = { 
+						religion_group = muslim
+					}
+					culture_group = tartar_group
+					culture_group = old_turkic
+					culture_group = altaic
+					primary_culture = turkish
+				}
+				NOT = { 
+					religion_group = christian
+				}
+				NOT = { 
+					culture_group = japanese_g
+				}
+			}
+			add_government_reform = Pol_Family4
+		}
+		else_if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_variable_equal = { 
+					which = grj
+					value = 4
+				}
+				religion_group = muslim
+				NOT = { 
+					culture_group = tartar_group
+				}
+				NOT = { 
+					culture_group = old_turkic
+				}
+				NOT = { 
+					culture_group = altaic
+				}
+				NOT = { 
+					primary_culture = turkish
+				}
+			}
+			add_government_reform = Pol_Family3
+		}
+		else_if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				OR = { 
+					is_variable_equal = { 
+						which = grj
+						value = 1
+					}
+					religion_group = muslim
+				}
+				NOT = { 
+					primary_culture = turkish
+				}
+			}
+			add_government_reform = Pol_Family2
+		}
+		else_if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+				is_tribal = no
+			}
+			add_government_reform = Pol_Family1
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Nobility1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Nobility2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Nobility3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gri
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Nobility4
+		}
+		add_government_reform = Pol_Assembly2
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Structure1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Structure2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Structure3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Structure4
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqr
+					value = 4
+				}
+			}
+			add_government_reform = Pol_Structure5
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Centralisation1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Centralisation2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Centralisation3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Centralisation4
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqs
+					value = 4
+				}
+			}
+			add_government_reform = Pol_Centralisation5
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqt
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Autonomy1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqt
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Autonomy2
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Provincial1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Provincial2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqu
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Provincial3
+		}
+		if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 0
+				}
+			}
+			add_government_reform = Pol_Military1
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 1
+				}
+			}
+			add_government_reform = Pol_Military2
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 2
+				}
+			}
+			add_government_reform = Pol_Military3
+		}
+		else_if = { 
+			limit = { 
+				is_variable_equal = { 
+					which = gqv
+					value = 3
+				}
+			}
+			add_government_reform = Pol_Military4
+		}
+		add_government_reform = Pol_Privileges1
 		add_government_reform = Pol_Nobility3
-		if = {
-			limit = {
-				NOT = {
+		if = { 
+			limit = { 
+				NOT = { 
 					has_country_modifier = title_5
 				}
-				NOT = {
+				NOT = { 
 					has_country_modifier = title_6
 				}
 			}
@@ -243,7 +1065,7 @@ country_event = {
 			remove_country_modifier = title_3
 			remove_country_modifier = title_4
 			remove_country_modifier = title_6
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = title_5
 				duration = -1
 			}
@@ -256,424 +1078,765 @@ country_event = {
 		}
 	}
 }
-# country_event = {
-# 	id = flavor_hol.3504
-# 	title = "flavor_hol.EVTNAME3504"
-# 	desc = "flavor_hol.EVTDESC3504"
-# 	picture = ECONOMY_eventPicture
-# 	fire_only_once = yes
-# 	trigger = {
-# 		OR = {
-# 			AND = {
-# 				tag = HOL
-# 				NOT = {
-# 					exists = NED
-# 				}
-# 			}
-# 			tag = NED
-# 		}
-# 		is_year = 1580
-# 		NOT = {
-# 			is_year = 1621
-# 		}
-# 		any_owned_province = {
-# 			has_building = stock_exchange
-# 		}
-# 		OR = {
-# 			has_regency = no
-# 			has_consort_regency = yes
-# 		}
-# 	}
-# 	mean_time_to_happen = {
-# 		years = 16
-# 	}
-# 	option = {
-# 		name = "flavor_hol.EVTOPTA3504"
-# 		add_ruler_modifier = {
-# 			name = hol_expand_loan_market
-# 		}
-# 	}
-# 	option = {
-# 		name = "flavor_hol.EVTOPTB3504"
-# 		add_country_modifier = {
-# 			name = hol_strict_control
-# 			duration = 7300
-# 		}
-# 	}
-# }
-country_event = {
+country_event = { 
 	id = flavor_hol.3506
 	title = "flavor_hol.EVTNAME3506"
 	desc = "flavor_hol.EVTDESC3506"
 	picture = SHIP_SAILING_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1616
-		NOT = {
+		NOT = { 
 			is_year = 1626
 		}
-		any_active_trade_node = {
+		any_active_trade_node = { 
 			province_id = 487
 		}
 		owns = 487
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA3506"
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = hol_jamaican_trade_node
 			duration = 7300
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.3507
 	title = "flavor_hol.EVTNAME3507"
 	desc = "flavor_hol.EVTDESC3507"
 	picture = REFORM_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1601
-		NOT = {
+		NOT = { 
 			is_year = 1626
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA3507"
 		add_dip_power = 50
 		add_mil_power = 50
 		add_navy_tradition = 5
 		add_army_tradition = 5
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTB3507"
 		add_dip_power = 50
 		add_mil_power = 100
 		add_army_tradition = 10
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTC3507"
 		add_dip_power = 100
 		add_mil_power = 50
 		add_navy_tradition = 10
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.3508
 	title = "flavor_hol.EVTNAME3508"
 	desc = "flavor_hol.EVTDESC3508"
 	picture = RELIGION_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1618
-		NOT = {
+		NOT = { 
 			is_year = 1619
 		}
-		any_owned_province = {
+		any_owned_province = { 
 			religion = reformed
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA3508"
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
 			}
 		}
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = hol_gomarism
 			duration = 7300
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTB3508"
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = hol_arminianism
 			duration = 7300
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.3513
 	title = "flavor_hol.EVTNAME3513"
 	desc = "flavor_hol.EVTDESC3513"
 	picture = COURT_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1600
-		NOT = {
+		NOT = { 
 			is_year = 1700
 		}
 		has_reform = Pol_Succession4
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA3513"
 		add_legitimacy = 20
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTB3513"
 		add_legitimacy = -20
-		Stab_Add50Percent = yes
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.3515
 	title = "flavor_hol.EVTNAME3515"
 	desc = "flavor_hol.EVTDESC3515"
 	picture = DEBATE_REPUBLICAN_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1785
-		NOT = {
+		NOT = { 
 			is_year = 1791
 		}
 		exists = FRA
-		FRA = {
+		FRA = { 
 			is_revolutionary = yes
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA3515"
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.3713
 	title = "flavor_hol.EVTNAME3713"
 	desc = "flavor_hol.EVTDESC3713"
 	picture = INVENTION_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1650
-		NOT = {
+		NOT = { 
 			is_year = 1672
 		}
-		OR = {
+		OR = { 
 			has_regency = no
 			has_consort_regency = yes
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA3713"
-		add_ruler_modifier = {
+		add_ruler_modifier = { 
 			name = hol_de_witt
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.3714
 	title = "flavor_hol.EVTNAME3714"
 	desc = "flavor_hol.EVTDESC3714"
 	picture = INVENTION_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1688
-		NOT = {
+		NOT = { 
 			is_year = 1720
 		}
-		OR = {
+		OR = { 
 			has_regency = no
 			has_consort_regency = yes
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA3713"
-		add_ruler_modifier = {
+		add_ruler_modifier = { 
 			name = hol_anthony_heinsius
 		}
 	}
 }
-# country_event = {
-# 	id = flavor_hol.1
-# 	title = "flavor_hol.EVTNAME1"
-# 	desc = "flavor_hol.EVTDESC1"
-# 	picture = UNIVERSITY_eventPicture
-# 	fire_only_once = yes
-# 	trigger = {
-# 		OR = {
-# 			AND = {
-# 				tag = HOL
-# 				NOT = {
-# 					exists = NED
-# 				}
-# 			}
-# 			tag = NED
-# 		}
-# 		is_year = 1575
-# 		NOT = {
-# 			is_year = 1600
-# 		}
-# 		any_owned_province = {
-# 			has_building = small_university
-# 		}
-# 	}
-# 	mean_time_to_happen = {
-# 		years = 16
-# 	}
-# 	option = {
-# 		name = "flavor_hol.EVTOPTA1"
-# 		add_years_of_income = -0.25
-# 		add_prestige = 5
-# 		add_adm_power = 100
-# 	}
-# 	option = {
-# 		name = "flavor_hol.EVTOPTB1"
-# 		add_prestige = -1
-# 	}
-# }
-country_event = {
+country_event = { 
 	id = flavor_hol.2
 	title = "flavor_hol.EVTNAME2"
 	desc = "flavor_hol.EVTDESC2"
 	picture = RELIGION_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
-		OR = {
+		OR = { 
 			has_country_modifier = hol_gomarism
 			has_country_modifier = hol_arminianism
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA2"
-		trigger = {
+		trigger = { 
 			has_country_modifier = hol_gomarism
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTB2"
-		trigger = {
+		trigger = { 
 			has_country_modifier = hol_gomarism
 		}
 		remove_country_modifier = hol_arminianism
 		add_prestige = 5
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTC2"
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				religion = catholic
 			}
 			add_papal_influence = -5
 		}
-		if = {
-			limit = {
-				NOT = {
+		if = { 
+			limit = { 
+				NOT = { 
 					religion = catholic
 				}
 			}
@@ -681,78 +1844,78 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.3
 	title = "flavor_hol.EVTNAME3"
 	desc = "flavor_hol.EVTDESC3"
 	picture = RELIGION_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1630
-		NOT = {
+		NOT = { 
 			is_year = 1655
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA3"
 		add_years_of_income = -0.5
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = hol_statenbijbel
 			duration = 3650
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTB3"
 		add_prestige = -1
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.4
 	title = "flavor_hol.EVTNAME4"
 	desc = "flavor_hol.EVTDESC4"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1570
-		NOT = {
+		NOT = { 
 			is_year = 1620
 		}
-		NOT = {
+		NOT = { 
 			advisor_exists = 893
 		}
-		NOT = {
+		NOT = { 
 			is_advisor_employed = 893
 		}
 		owns = 97
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTA4"
 		add_dip_power = 100
-		define_advisor = {
+		define_advisor = { 
 			type = natural_scientist_BG
 			name = "Simon Stevin"
 			culture = flemish
@@ -761,70 +1924,94 @@ country_event = {
 			discount = yes
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTB4"
 		add_prestige = -1
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.5
 	title = "flavor_hol.EVTNAME5"
 	desc = "flavor_hol.EVTDESC5"
 	picture = COURT_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
-			AND = {
+	trigger = { 
+		OR = { 
+			AND = { 
 				tag = HOL
-				NOT = {
+				NOT = { 
 					exists = NED
 				}
 			}
 			tag = NED
 		}
 		is_year = 1574
-		NOT = {
+		NOT = { 
 			is_year = 1600
 		}
-		OR = {
+		OR = { 
 			has_regency = no
 			has_consort_regency = yes
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.EVTOPTOK"
-		add_ruler_modifier = {
+		add_ruler_modifier = { 
 			name = hol_wilhelmus
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.1001
 	title = "flavor_hol.1001.n"
 	desc = "flavor_hol.1001.t"
 	picture = CODS_HOOKS_eventPicture
 	is_triggered_only = yes
-	immediate = {
+	immediate = { 
 		set_country_flag = holland_civil_war
-		add_ruler_modifier = {
+		add_ruler_modifier = { 
 			name = cod_and_hooks
 		}
-		Stab_Subtract2 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -2
+			}
+		}
+		tooltip = { 
+			add_stability = -2
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -10
+		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hol.1001.a"
-		every_owned_province = {
-			limit = {
-				OR = {
+		every_owned_province = { 
+			limit = { 
+				OR = { 
 					province_id = 96
 					province_id = 97
 					province_id = 2370
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = -1
 			}
@@ -833,68 +2020,68 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.1002
 	title = "flavor_hol.1002.n"
 	desc = "flavor_hol.1002.t"
 	picture = CODS_HOOKS_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "flavor_hol.1002.b"
-		random_owned_province = {
-			limit = {
-				NOT = {
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
 					has_province_modifier = pretender_organizing
 				}
 			}
-			random_list = {
-				25 = {
+			random_list = { 
+				25 = { 
 					add_unrest = 7
 				}
-				75 = {
+				75 = { 
 					add_unrest = 3
 				}
 			}
 		}
-		random_owned_province = {
-			limit = {
-				NOT = {
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
 					has_province_modifier = pretender_organizing
 				}
 			}
-			random_list = {
-				25 = {
+			random_list = { 
+				25 = { 
 					add_unrest = 7
 				}
-				75 = {
+				75 = { 
 					add_unrest = 3
 				}
 			}
 		}
-		add_casus_belli = {
+		add_casus_belli = { 
 			target = BUR
 			type = cb_foreign_interference
 			months = 60
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.1003
 	title = civil_war.6.t
 	desc = civil_war.6.d
 	picture = CODS_HOOKS_eventPicture
 	is_triggered_only = yes
-	immediate = {
+	immediate = { 
 		set_country_flag = civilwar_on_capital
 	}
-	option = {
+	option = { 
 		name = civil_war.6.a
-		capital_scope = {
-			random_list = {
-				25 = {
+		capital_scope = { 
+			random_list = { 
+				25 = { 
 					add_unrest = 7
 				}
-				75 = {
+				75 = { 
 					add_unrest = 3
 				}
 			}
@@ -902,116 +2089,116 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.1100
 	title = "EVTNAME3096"
 	desc = "EVTDESC3096"
 	picture = CODS_HOOKS_eventPicture
 	is_triggered_only = yes
-	immediate = {
+	immediate = { 
 		clr_country_flag = holland_civil_war
 		clr_country_flag = civilwar_on_capital
 		remove_country_modifier = cod_and_hooks
 		set_country_flag = had_cods_and_hooks
-		BUR = {
+		BUR = { 
 			clr_country_flag = burgundian_support
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				has_province_modifier = pretender_organizing
 			}
 			remove_province_modifier = pretender_organizing
 		}
 	}
-	option = {
+	option = { 
 		name = "EVTOPTA3096"
-		trigger = {
+		trigger = { 
 			ai = no
 		}
 		add_legitimacy = 10
 	}
-	option = {
+	option = { 
 		name = "EVTOPTA3096"
-		trigger = {
+		trigger = { 
 			ai = yes
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = burgandian_interference_a
-				AND = {
-					OR = {
+				AND = { 
+					OR = { 
 						is_subject = no
 						is_subject_of_type = tributary_state
 						is_subject_of_type = close_tributary_state
 					}
 				}
 			}
-			BUR = {
-				country_event = {
+			BUR = { 
+				country_event = { 
 					id = flavor_bur.1011
 					days = 10
 				}
 			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = burgandian_interference_a
-				AND = {
+				AND = { 
 					is_subject = yes
-					NOT = {
+					NOT = { 
 						is_subject_of_type = tributary_state
 					}
-					NOT = {
+					NOT = { 
 						is_subject_of_type = close_tributary_state
 					}
 				}
 			}
-			BUR = {
-				country_event = {
+			BUR = { 
+				country_event = { 
 					id = flavor_bur.1011
 					days = 10
 				}
 			}
-			overlord = {
-				country_event = {
+			overlord = { 
+				country_event = { 
 					id = flavor_bur.1014
 					days = 15
 				}
 			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = burgandian_interference_v
-				AND = {
-					OR = {
+				AND = { 
+					OR = { 
 						is_subject = no
 						is_subject_of_type = tributary_state
 						is_subject_of_type = close_tributary_state
 					}
 				}
 			}
-			BUR = {
-				country_event = {
+			BUR = { 
+				country_event = { 
 					id = flavor_bur.1012
 					days = 10
 				}
 			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = burgandian_interference_v
-				AND = {
+				AND = { 
 					is_subject = yes
-					NOT = {
+					NOT = { 
 						is_subject_of_type = tributary_state
 					}
-					NOT = {
+					NOT = { 
 						is_subject_of_type = close_tributary_state
 					}
 				}
 			}
-			BUR = {
-				country_event = {
+			BUR = { 
+				country_event = { 
 					id = flavor_bur.1015
 					days = 10
 				}
@@ -1020,70 +2207,182 @@ country_event = {
 		add_legitimacy = 10
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.6
 	title = flavor_hol.6.t
 	desc = flavor_hol.6.d
 	picture = COURT_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NED
 		is_year = 1550
 		monthly_income = 150
-		2360 = {
-			trade_share = {
+		2360 = { 
+			trade_share = { 
 				country = ROOT
 				share = 25
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 5
 	}
-	option = {
+	option = { 
 		name = flavor_hol.6.a
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
 			}
 		}
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = hol_tulip_crisis
 			duration = 3650
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_hol.6.b
 		add_inflation = 10
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.7
 	title = flavor_hol.7.t
 	desc = flavor_hol.7.d
 	picture = BIG_BOOK_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NED
 		is_year = 1580
-		NOT = {
+		NOT = { 
 			is_year = 1595
 		}
 		owns = 97
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 15
 	}
-	option = {
+	option = { 
 		name = flavor_hol.7.a
 		add_dip_power = 100
 		add_prestige = 5
-		97 = {
-			add_province_modifier = {
+		97 = { 
+			add_province_modifier = { 
 				name = "ned_house_of_elzevir"
 				duration = -1
 			}
@@ -1091,36 +2390,36 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.8
 	title = flavor_hol.8.t
 	desc = flavor_hol.8.d
 	picture = EXPLORERS_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		always = no
 		tag = NED
 		is_year = 1590
-		NOT = {
+		NOT = { 
 			is_year = 1640
 		}
-		AND = {
-			OR = {
+		AND = { 
+			OR = { 
 				is_subject = no
 				is_subject_of_type = tributary_state
 				is_subject_of_type = close_tributary_state
 			}
 		}
-		POR = {
-			NOT = {
+		POR = { 
+			NOT = { 
 				alliance_with = NED
 			}
-			any_owned_province = {
-				OR = {
+			any_owned_province = { 
+				OR = { 
 					continent = north_america
 					continent = south_america
-					AND = {
-						OR = {
+					AND = { 
+						OR = { 
 							superregion = east_africa_superregion
 							superregion = west_africa_superregion
 							superregion = north_africa_superregion
@@ -1131,24 +2430,24 @@ country_event = {
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 12
 	}
-	option = {
+	option = { 
 		name = flavor_hol.8.a
-		every_province = {
-			limit = {
+		every_province = { 
+			limit = { 
 				is_city = yes
-				OR = {
+				OR = { 
 					owned_by = POR
-					owner = {
+					owner = { 
 						is_colonial_nation_of = POR
 					}
 				}
-				OR = {
+				OR = { 
 					continent = south_america
-					AND = {
-						OR = {
+					AND = { 
+						OR = { 
 							superregion = east_africa_superregion
 							superregion = west_africa_superregion
 							superregion = north_africa_superregion
@@ -1159,207 +2458,367 @@ country_event = {
 			}
 			add_claim = NED
 		}
-		POR = {
-			add_opinion = {
+		POR = { 
+			add_opinion = { 
 				who = NED
 				modifier = ned_grand_design
 			}
-			every_ally = {
-				add_opinion = {
+			every_ally = { 
+				add_opinion = { 
 					who = NED
 					modifier = ned_grand_design
 				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_hol.8.b
 		add_prestige = 5
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.9
 	title = flavor_hol.9.t
 	desc = flavor_hol.9.d
 	picture = SHIP_SAILING_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NED
 		dip_tech = 20
-		NOT = {
+		NOT = { 
 			is_year = 1610
 		}
 		owns = 97
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 45
 	}
-	option = {
+	option = { 
 		name = flavor_hol.9.a
 		add_prestige = 5
-		97 = {
-			add_province_modifier = {
+		97 = { 
+			add_province_modifier = { 
 				name = "ned_shipbuilding_industry"
 				duration = -1
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.10
 	title = flavor_hol.10.t
 	desc = flavor_hol.10.d
 	picture = NAVAL_MILITARY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NED
 		has_global_flag = spice_trade_declined
 		is_year = 1650
 		has_country_modifier = india_trade_co
-		any_owned_province = {
-			OR = {
-				AND = {
+		any_owned_province = { 
+			OR = { 
+				AND = { 
 					continent = southeast_asia
-					OR = {
+					OR = { 
 						superregion = east_indies_superregion
 						region = malaya_region
 					}
 				}
 				province_group = indian_coast_group
-				AND = {
+				AND = { 
 					continent = southeast_asia
 				}
 			}
 			is_owned_by_trade_company = yes
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 25
 	}
-	option = {
+	option = { 
 		name = flavor_hol.10.a
 		add_dip_power = -50
 		set_country_flag = ned_voc_hardships
 	}
-	option = {
+	option = { 
 		name = flavor_hol.10.b
 		add_years_of_income = -0.25
 		set_country_flag = ned_voc_big_debt
 	}
-	option = {
+	option = { 
 		name = flavor_hol.10.c
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
-		Stab_Subtract3 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -3
+			}
+		}
+		tooltip = { 
+			add_stability = -3
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -15
+		}
 		add_inflation = 5
 		remove_country_modifier = india_trade_co
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.11
 	title = flavor_hol.11.t
 	desc = flavor_hol.11.d
 	picture = NAVAL_MILITARY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NED
-		OR = {
+		OR = { 
 			has_country_flag = ned_voc_hardships
 			has_country_flag = ned_voc_big_debt
 		}
 		is_year = 1700
 		has_country_modifier = india_trade_co
-		any_owned_province = {
-			OR = {
-				AND = {
+		any_owned_province = { 
+			OR = { 
+				AND = { 
 					continent = southeast_asia
-					OR = {
+					OR = { 
 						superregion = east_indies_superregion
 						region = malaya_region
 					}
 				}
 				province_group = indian_coast_group
-				AND = {
+				AND = { 
 					continent = southeast_asia
 				}
 			}
 			is_owned_by_trade_company = yes
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 25
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			has_country_flag = ned_voc_big_debt
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_hol.11.a
 		add_years_of_income = -0.5
 		set_country_flag = ned_voc_in_peril
 	}
-	option = {
+	option = { 
 		name = flavor_hol.11.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 		set_country_flag = VoC_nationalized
-		Stab_Subtract2 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -2
+			}
+		}
+		tooltip = { 
+			add_stability = -2
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -10
+		}
 		add_inflation = 8
 		remove_country_modifier = india_trade_co
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.12
 	title = flavor_hol.12.t
 	desc = flavor_hol.12.d
 	picture = NAVAL_MILITARY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NED
 		has_country_flag = ned_voc_in_peril
 		is_year = 1750
 		has_country_modifier = india_trade_co
-		any_owned_province = {
-			OR = {
-				AND = {
+		any_owned_province = { 
+			OR = { 
+				AND = { 
 					continent = southeast_asia
-					OR = {
+					OR = { 
 						superregion = east_indies_superregion
 						region = malaya_region
 					}
 				}
 				province_group = indian_coast_group
-				AND = {
+				AND = { 
 					continent = southeast_asia
 				}
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 17
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			has_country_flag = ned_voc_big_debt
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_hol.12.a
 		custom_tooltip = flavor_hol.12.a.tt
 		set_country_flag = VoC_huge_debts
 		add_years_of_income = -1
 	}
-	option = {
+	option = { 
 		name = flavor_hol.12.b
 		set_country_flag = VoC_nationalized
-		random_list = {
-			30 = {}
-			40 = {
-				Stab_Subtract50Percent = yes
+		random_list = { 
+			30 = { }
+			40 = { 
+				hidden_effect = { 
+					change_variable = { 
+						which = ahf
+						value = -600
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						if = { 
+							limit = { 
+								stability = 3
+							}
+							set_variable = { 
+								which = ahf
+								value = 1200
+							}
+						}
+						else = { 
+							subtract_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = 1
+						}
+					}
+					else_if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = ahf
+									value = 0
+								}
+							}
+						}
+						if = { 
+							limit = { 
+								NOT = { 
+									stability = -2
+								}
+							}
+							set_variable = { 
+								which = ahf
+								value = 0
+							}
+						}
+						else = { 
+							change_variable = { 
+								which = ahf
+								value = 1200
+							}
+							add_stability = -1
+						}
+					}
+					set_variable = { 
+						which = ahd
+						which = ahf
+					}
+					divide_variable = { 
+						which = ahd
+						value = 12
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 0.1
+					}
+					multiply_variable = { 
+						which = ahd
+						value = 10
+					}
+					set_variable = { 
+						which = lsc
+						value = 100
+					}
+					subtract_variable = { 
+						which = lsc
+						which = ahd
+					}
+				}
+				custom_tooltip = POP_StabSubtract50
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -2.5
+				}
 			}
-			30 = {
-				Stab_Subtract1 = yes
+			30 = { 
+				hidden_effect = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								stability = -2
+							}
+						}
+						set_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+					else = { 
+						add_stability = -1
+					}
+				}
+				tooltip = { 
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						is_emperor_of_china = yes
+					}
+					add_mandate = -5
+				}
 			}
 		}
 		add_dip_power = -50
@@ -1367,177 +2826,177 @@ country_event = {
 		remove_country_modifier = india_trade_co
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.13
 	title = flavor_hol.13.t
 	desc = flavor_hol.13.d
 	picture = BANKRUPTCY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NED
 		is_year = 1700
-		OR = {
+		OR = { 
 			has_country_modifier = hol_expand_loan_market
-			AND = {
+			AND = { 
 				has_country_modifier = india_trade_co
 				has_country_flag = VoC_huge_debts
 			}
 			has_country_flag = VoC_nationalized
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 17
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			has_country_modifier = india_trade_co
 			has_country_flag = VoC_huge_debts
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.7
 			has_country_flag = VoC_nationalized
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_hol.13.a
 		add_inflation = 10
 		add_adm_power = -100
 	}
-	option = {
+	option = { 
 		name = flavor_hol.13.b
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = "ned_bank_crisis"
 			duration = 3650
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.14
 	title = flavor_hol.14.t
 	desc = flavor_hol.14.d
 	picture = SPY_eventPicture
 	fire_only_once = yes
-	trigger = {
-		OR = {
+	trigger = { 
+		OR = { 
 			tag = GBR
 			tag = ENG
 		}
 		is_year = 1600
-		NOT = {
+		NOT = { 
 			is_year = 1700
 		}
-		monarchy_or_harem_gov = yes
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
 		exists = NED
-		AND = {
-			OR = {
+		AND = { 
+			OR = { 
 				is_subject = no
 				is_subject_of_type = tributary_state
 				is_subject_of_type = close_tributary_state
 			}
 		}
-		NOT = {
+		NOT = { 
 			legitimacy = 50
 		}
-		OR = {
+		OR = { 
 			religion = protestant
 			religion = reformed
 		}
-		OR = {
-			any_ally = {
+		OR = { 
+			any_ally = { 
 				religion = catholic
 			}
 			marriage_with = NED
 		}
-		NED = {
-			OR = {
+		NED = { 
+			OR = { 
 				has_reform = Pol_Assembly2
 				has_reform = Pol_Assembly3
 				has_reform = Pol_Succession4
 			}
 			num_of_cities = 8
-			OR = {
+			OR = { 
 				religion = protestant
 				religion = reformed
 			}
-			# OR = {
-			# 	AND = {
-			# 		has_dlc = "Res Publica"
-			# 		is_orangists_in_power = yes
-			# 	}
-			# 	has_country_flag = ned_hereditary_stadtholder
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 8
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			NOT = {
+			NOT = { 
 				legitimacy = 50
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			NOT = {
+			NOT = { 
 				legitimacy = 25
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
 			alliance_with = FRA
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_hol.14.a
-		NED = {
-			country_event = {
+		NED = { 
+			country_event = { 
 				id = flavor_hol.15
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.15
 	title = flavor_hol.15.t
 	desc = flavor_hol.15.d
 	picture = SPY_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_hol.15.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 1
 		}
-		add_casus_belli = {
+		add_casus_belli = { 
 			target = FROM
 			type = cb_restore_personal_union
 			months = 60
 		}
-		FROM = {
-			country_event = {
+		FROM = { 
+			country_event = { 
 				id = flavor_hol.16
 			}
 		}
-		tooltip = {
-			FROM = {
-				add_opinion = {
+		tooltip = { 
+			FROM = { 
+				add_opinion = { 
 					who = NED
 					modifier = ned_accepted_glorious_revolution
 				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_hol.15.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
-		FROM = {
-			country_event = {
+		FROM = { 
+			country_event = { 
 				id = flavor_hol.17
 			}
 		}
-		tooltip = {
-			FROM = {
-				add_opinion = {
+		tooltip = { 
+			FROM = { 
+				add_opinion = { 
 					who = NED
 					modifier = ned_refused_glorious_revolution
 				}
@@ -1545,166 +3004,166 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.16
 	title = flavor_hol.16.t
 	desc = flavor_hol.16.d
 	picture = SPY_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_hol.16.a
 		custom_tooltip = flavor_hol.16.a.tt
-		add_opinion = {
+		add_opinion = { 
 			who = NED
 			modifier = ned_accepted_glorious_revolution
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.17
 	title = flavor_hol.17.t
 	desc = flavor_hol.17.d
 	picture = SPY_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_hol.17.a
-		add_opinion = {
+		add_opinion = { 
 			who = NED
 			modifier = ned_refused_glorious_revolution
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.18
 	title = flavor_hol.18.t
 	desc = flavor_hol.18.d
 	picture = LAND_MILITARY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NED
 		exists = FRA
 		is_year = 1650
-		OR = {
+		OR = { 
 			religion = protestant
 			religion = reformed
 		}
-		FRA = {
+		FRA = { 
 			religion = catholic
-			OR = {
-				NOT = {
+			OR = { 
+				NOT = { 
 					has_country_flag = edict_de_nantes
 				}
 				is_neighbor_of = NED
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 37
 	}
-	option = {
+	option = { 
 		name = flavor_hol.18.a
-		FRA = {
-			country_event = {
+		FRA = { 
+			country_event = { 
 				id = flavor_hol.19
 			}
-			every_rival_country = {
-				limit = {
-					NOT = {
+			every_rival_country = { 
+				limit = { 
+					NOT = { 
 						tag = NED
 					}
 					knows_country = NED
 				}
-				add_opinion = {
+				add_opinion = { 
 					who = NED
 					modifier = ned_anti_french_policy
 				}
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = NED
 				modifier = fra_dutch_friction
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_hol.18.b
-		FRA = {
-			add_opinion = {
+		FRA = { 
+			add_opinion = { 
 				who = NED
 				modifier = ned_friendly_towards_france
 			}
 		}
-		hidden_effect = {
-			add_opinion = {
+		hidden_effect = { 
+			add_opinion = { 
 				who = FRA
 				modifier = ned_friendly_towards_france
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.19
 	title = flavor_hol.19.t
 	desc = flavor_hol.19.d
 	picture = LAND_MILITARY_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_hol.19.a
 		custom_tooltip = flavor_hol.19.a.tt
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.20
 	title = flavor_hol.20.t
 	desc = flavor_hol.20.d
 	picture = MERCHANTS_TALKING_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = JAP
 		exists = NED
-		any_owned_province = {
+		any_owned_province = { 
 			superregion = japan_superregion
 			has_discovered = NED
 		}
-		NED = {
+		NED = { 
 			has_country_modifier = india_trade_co
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 10
 	}
-	option = {
+	option = { 
 		name = flavor_hol.20.a
 		set_country_flag = ned_dejima_allowed
-		NED = {
-			country_event = {
+		NED = { 
+			country_event = { 
 				id = flavor_hol.21
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = JAP
 				modifier = ned_dejima
 			}
 		}
 		custom_tooltip = flavor_hol.20.a.tt
 	}
-	option = {
+	option = { 
 		name = flavor_hol.20.b
 		add_prestige = 5
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.21
 	title = flavor_hol.21.t
 	desc = flavor_hol.21.d
 	picture = MERCHANTS_TALKING_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = flavor_hol.21.a
-		1020 = {
-			add_trade_modifier = {
+		1020 = { 
+			add_trade_modifier = { 
 				who = NED
 				duration = -1
 				power = 20
@@ -1713,46 +3172,46 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.22
 	title = flavor_hol.22.t
 	desc = flavor_hol.22.d
 	picture = ANGRY_MOB_eventPicture
 	fire_only_once = yes
-	trigger = {
-		NOT = {
+	trigger = { 
+		NOT = { 
 			primary_culture = dutch
 		}
 		owns_core_province = 99
 		owns_core_province = 100
-		NOT = {
+		NOT = { 
 			is_year = 1523
 		}
-		NOT = {
+		NOT = { 
 			exists = BUR
 		}
-		NOT = {
+		NOT = { 
 			exists = FRI
 		}
-		NOT = {
+		NOT = { 
 			exists = GEL
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 6
 	}
-	option = {
+	option = { 
 		name = flavor_hol.22.a
-		99 = {
-			add_province_modifier = {
+		99 = { 
+			add_province_modifier = { 
 				name = "nationalists_organizing"
 				duration = 1825
 			}
 			custom_tooltip = nationalists_organizing_tt
 			add_unrest = 5
 		}
-		100 = {
-			add_province_modifier = {
+		100 = { 
+			add_province_modifier = { 
 				name = "nationalists_organizing"
 				duration = 1825
 			}
@@ -1761,56 +3220,56 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.23
 	title = flavor_hol.23.t
 	desc = flavor_hol.23.d
 	picture = ARTWORK_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NED
 		is_year = 1700
 		trade_income_percentage = 0.4
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 30
 	}
-	option = {
+	option = { 
 		name = flavor_hol.23.a
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = "ned_pruikentijd"
 			duration = 5475
 		}
 		add_prestige = -10
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.24
 	title = flavor_hol.24.t
 	desc = flavor_hol.24.d
 	picture = ARTWORK_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NED
 		is_year = 1655
-		NOT = {
+		NOT = { 
 			is_year = 1677
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 5
 	}
-	option = {
+	option = { 
 		name = flavor_hol.24.a
 		add_adm_power = 100
 		add_prestige = 5
-		if = {
-			limit = {
-				NOT = {
+		if = { 
+			limit = { 
+				NOT = { 
 					advisor_exists = 922
 				}
 			}
-			define_advisor = {
+			define_advisor = { 
 				type = philosopher_BG
 				name = "Baruch Spinoza"
 				skill = 3
@@ -1821,37 +3280,37 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_hol.25
 	title = flavor_hol.25.t
 	desc = flavor_hol.25.d
 	picture = ARTWORK_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		tag = NED
-		NOT = {
+		NOT = { 
 			has_country_flag = netherlands_in_the_HRE
 		}
-		any_owned_province = {
+		any_owned_province = { 
 			is_part_of_hre = yes
-			OR = {
+			OR = { 
 				region = belgii_region
 				region = low_countries_region
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = flavor_hol.25.a
-		belgii_region = {
-			limit = {
+		belgii_region = { 
+			limit = { 
 				is_city = yes
 			}
 			set_in_empire = no
 			swap_non_generic_missions = yes
 		}
-		low_countries_region = {
-			limit = {
+		low_countries_region = { 
+			limit = { 
 				is_city = yes
 			}
 			set_in_empire = no

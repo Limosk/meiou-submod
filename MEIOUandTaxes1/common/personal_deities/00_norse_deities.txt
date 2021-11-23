@@ -1,143 +1,130 @@
-# Do not change tags in here without changing every other reference to them.
-# If adding new dieties, make sure they are uniquely named.
-
-odin =
-{
+odin = { 
 	legitimacy = 0.1
 	core_creation = -0.10
-	
-	allow = { religion = norse_pagan_reformed }
+	allow = { 
+		religion = norse_pagan_reformed
+	}
 	sprite = 7
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 2
 			personality = ai_militarist
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			personality = ai_diplomat
 		}
 	}
 }
-
-freya =
-{
+freya = { 
 	global_manpower_modifier = 0.1
 	yearly_corruption = -0.1
-	
-	allow = { religion = norse_pagan_reformed }
+	allow = { 
+		religion = norse_pagan_reformed
+	}
 	sprite = 8
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 2
 			personality = ai_balanced
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			personality = ai_colonialist
 		}
 	}
 }
-
-tor =
-{
+tor = { 
 	leader_land_shock = 1
 	defensiveness = 0.1
-	
-	allow = { religion = norse_pagan_reformed }
+	allow = { 
+		religion = norse_pagan_reformed
+	}
 	sprite = 9
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 2
-			NOT = { num_of_cities = 5 }
+			NOT = { 
+				num_of_cities = 5
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2
-			NOT = { num_of_cities = 10 }
+			NOT = { 
+				num_of_cities = 10
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			num_of_cities = 30
 		}
-		modifier = {
+		modifier = { 
 			factor = 2
 			personality = ai_militarist
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			personality = ai_balanced
 		}
 	}
 }
-
-tyr =
-{
-	#global_sailors_modifier = 0.10
+tyr = { 
 	discipline = 0.05
-	
-	allow = { religion = norse_pagan_reformed }
+	allow = { 
+		religion = norse_pagan_reformed
+	}
 	sprite = 10
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 2
 			personality = ai_balanced
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			personality = ai_colonialist
 		}
 	}
 }
-
-njord =
-{
+njord = { 
 	trade_efficiency = 0.1
-	#global_trade_goods_size_modifier = 0.1
-	
-	allow = { religion = norse_pagan_reformed }
+	allow = { 
+		religion = norse_pagan_reformed
+	}
 	sprite = 11
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 2
 			personality = ai_balanced
 		}
-		modifier = {
+		modifier = { 
 			factor = 2
 			personality = ai_colonialist
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			personality = ai_militarist
 		}
 	}
 }
-
-
-snotra =
-{
+snotra = { 
 	technology_cost = -0.05
 	build_cost = -0.1
-	
-	allow = { religion = norse_pagan_reformed }
+	allow = { 
+		religion = norse_pagan_reformed
+	}
 	sprite = 12
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
-		modifier = {
+		modifier = { 
 			factor = 2
 			personality = ai_diplomat
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			personality = ai_militarist
 		}

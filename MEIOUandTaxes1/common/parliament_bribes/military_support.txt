@@ -1,13 +1,11 @@
-military_support = {
-	trigger = {
+military_support = { 
+	trigger = { 
 		always = yes
 	}
-	
-	effect = {
+	effect = { 
 		mil_power_cost = 20
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
 	}
 }

@@ -1,111 +1,174 @@
-
-one_currency_act = {
+one_currency_act = { 
 	monarch_power = ADM
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	allow = {
-		policy_trigger = yes
+	allow = { 
+		if = { 
+			limit = { 
+				always = no
+			}
+			full_idea_group = default_policy_1_ideas
+			full_idea_group = default_policy_2_ideas
+		}
 		adm_tech = 10
-		has_integratable_subjects = { min=1 }
+		OR = { 
+			personal_union = 1
+			vassal = 1
+			custom_vassal = 1
+			client_vassal = 1
+			appanage_subject = 1
+			personal_union = 1
+		}
 	}
-	
 	vassal_income = 0.10
-	#additional effect: assimilation progress will progress 10% faster
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0.4
-		modifier = {
+		modifier = { 
 			factor = 3
-			has_integratable_subjects = { min=2 }
+			OR = { 
+				personal_union = 2
+				vassal = 2
+				custom_vassal = 2
+				client_vassal = 2
+				appanage_subject = 2
+				personal_union = 2
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3
-			has_integratable_subjects = { min=3 }
-		}		
-        modifier = {
-            factor = 2 
-            government_rank = 5
-        }
-        modifier = {
-            factor = 4
-            government_rank = 6
-        }
+			OR = { 
+				personal_union = 3
+				vassal = 3
+				custom_vassal = 3
+				client_vassal = 3
+				appanage_subject = 3
+				personal_union = 3
+			}
+		}
+		modifier = { 
+			factor = 2
+			government_rank = 5
+		}
+		modifier = { 
+			factor = 4
+			government_rank = 6
+		}
 	}
 }
-
-vassal_integration_act = {
+vassal_integration_act = { 
 	monarch_power = DIP
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	allow = {
-		policy_trigger = yes
-		adm_tech = 20
-		has_integratable_subjects = { min=1 }
-	}
-	
-	diplomatic_upkeep = 1
-	#additional effect: assimilation progress will progress 10% faster
-	
-	ai_will_do = {
-		factor = 0.4
-		modifier = {
-			factor = 3
-			has_integratable_subjects = { min=2 }
+	allow = { 
+		if = { 
+			limit = { 
+				always = no
+			}
+			full_idea_group = default_policy_1_ideas
+			full_idea_group = default_policy_2_ideas
 		}
-		modifier = {
+		adm_tech = 20
+		OR = { 
+			personal_union = 1
+			vassal = 1
+			custom_vassal = 1
+			client_vassal = 1
+			appanage_subject = 1
+			personal_union = 1
+		}
+	}
+	diplomatic_upkeep = 1
+	ai_will_do = { 
+		factor = 0.4
+		modifier = { 
 			factor = 3
-			has_integratable_subjects = { min=3 }
-		}		
-        modifier = {
-            factor = 2 
-            government_rank = 5
-        }
-        modifier = {
-            factor = 4
-            government_rank = 6
-        }
+			OR = { 
+				personal_union = 2
+				vassal = 2
+				custom_vassal = 2
+				client_vassal = 2
+				appanage_subject = 2
+				personal_union = 2
+			}
+		}
+		modifier = { 
+			factor = 3
+			OR = { 
+				personal_union = 3
+				vassal = 3
+				custom_vassal = 3
+				client_vassal = 3
+				appanage_subject = 3
+				personal_union = 3
+			}
+		}
+		modifier = { 
+			factor = 2
+			government_rank = 5
+		}
+		modifier = { 
+			factor = 4
+			government_rank = 6
+		}
 	}
 }
-
-full_sovereignty_act = {
+full_sovereignty_act = { 
 	monarch_power = MIL
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	allow = {
-		policy_trigger = yes
-		adm_tech = 30
-		has_integratable_subjects = { min=1 }
-	}
-	
-	vassal_forcelimit_bonus = 0.10
-	#additional effect: assimilation progress will progress 10% faster
-	
-	ai_will_do = {
-		factor = 0.4
-		modifier = {
-			factor = 3
-			has_integratable_subjects = { min=2 }
+	allow = { 
+		if = { 
+			limit = { 
+				always = no
+			}
+			full_idea_group = default_policy_1_ideas
+			full_idea_group = default_policy_2_ideas
 		}
-		modifier = {
+		adm_tech = 30
+		OR = { 
+			personal_union = 1
+			vassal = 1
+			custom_vassal = 1
+			client_vassal = 1
+			appanage_subject = 1
+			personal_union = 1
+		}
+	}
+	vassal_forcelimit_bonus = 0.10
+	ai_will_do = { 
+		factor = 0.4
+		modifier = { 
 			factor = 3
-			has_integratable_subjects = { min=3 }
-		}		
-        modifier = {
-            factor = 2 
-            government_rank = 5
-        }
-        modifier = {
-            factor = 4
-            government_rank = 6
-        }
+			OR = { 
+				personal_union = 2
+				vassal = 2
+				custom_vassal = 2
+				client_vassal = 2
+				appanage_subject = 2
+				personal_union = 2
+			}
+		}
+		modifier = { 
+			factor = 3
+			OR = { 
+				personal_union = 3
+				vassal = 3
+				custom_vassal = 3
+				client_vassal = 3
+				appanage_subject = 3
+				personal_union = 3
+			}
+		}
+		modifier = { 
+			factor = 2
+			government_rank = 5
+		}
+		modifier = { 
+			factor = 4
+			government_rank = 6
+		}
 	}
 }

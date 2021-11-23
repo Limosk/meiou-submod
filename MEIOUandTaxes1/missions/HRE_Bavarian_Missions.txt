@@ -1,9 +1,9 @@
-bavarian_missions_slot_6 = {
+bavarian_missions_slot_6 = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = d_of_baw
 			has_country_flag = d_of_bax
 			has_country_flag = d_of_baz
@@ -11,352 +11,433 @@ bavarian_missions_slot_6 = {
 		}
 	}
 	has_country_shield = yes
-	
-	bav_unite_bavaria = {
+	bav_unite_bavaria = { 
 		icon = mission_monarch_in_throne_room
 		required_missions = { }
 		position = 1
-		
-		trigger = {
-			OR = {
-				NOT = { exists = BAV }
+		trigger = { 
+			OR = { 
+				NOT = { 
+					exists = BAV
+				}
 				tag = BAV
 			}
-			OR = {
-				AND = {
+			OR = { 
+				AND = { 
 					tag = BAW
-					NOT = { exists = BAX }
-					NOT = { exists = BAZ }
-					NOT = { exists = BAY }
+					NOT = { 
+						exists = BAX
+					}
+					NOT = { 
+						exists = BAZ
+					}
+					NOT = { 
+						exists = BAY
+					}
 				}
-				AND = {
+				AND = { 
 					tag = BAX
-					NOT = { exists = BAW }
-					NOT = { exists = BAZ }
-					NOT = { exists = BAY }
+					NOT = { 
+						exists = BAW
+					}
+					NOT = { 
+						exists = BAZ
+					}
+					NOT = { 
+						exists = BAY
+					}
 				}
-				AND = {
+				AND = { 
 					tag = BAZ
-					NOT = { exists = BAX }
-					NOT = { exists = BAW }
-					NOT = { exists = BAY }
+					NOT = { 
+						exists = BAX
+					}
+					NOT = { 
+						exists = BAW
+					}
+					NOT = { 
+						exists = BAY
+					}
 				}
 				AND = { 
 					tag = BAY
-					NOT = { exists = BAX }
-					NOT = { exists = BAZ }
-					NOT = { exists = BAW }
+					NOT = { 
+						exists = BAX
+					}
+					NOT = { 
+						exists = BAZ
+					}
+					NOT = { 
+						exists = BAW
+					}
 				}
 			}
 			primary_culture = bavarian
-			is_free_or_tributary_trigger = yes
+			AND = { 
+				OR = { 
+					is_subject = no
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
 			is_core = 64
 			is_core = 65
 			is_core = 1351
 			is_core = 1509
 			is_at_war = no
 		}
-		
-		effect = {
-			country_event = { id = mission_event.016 }
-		}
-	}
-	
-	bav_secure_border = {
-		icon = mission_assemble_an_army
-		required_missions = { bav_unite_bavaria }
-		position = 2
-		
-		provinces_to_highlight = {
-			OR = {
-				province_id = 1361 #Oberpfalz
-				province_id = 2614 #Dillingen
+		effect = { 
+			country_event = { 
+				id = mission_event.016
 			}
 		}
-		
-		trigger = {
+	}
+	bav_secure_border = { 
+		icon = mission_assemble_an_army
+		required_missions = { bav_unite_bavaria}
+		position = 2
+		provinces_to_highlight = { 
+			OR = { 
+				province_id = 1361
+				province_id = 2614
+			}
+		}
+		trigger = { 
 			owns_or_non_sovereign_subject_of = 1361
 			owns_or_non_sovereign_subject_of = 2614
 		}
-	
-		effect = {
-			upper_franconia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
-					NOT = { province_id = 81 } #Nurnberg
+		effect = { 
+			upper_franconia_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						province_id = 81
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	
-	bav_expansion_franconia = {
+	bav_expansion_franconia = { 
 		icon = mission_conquer_5_states
-		required_missions = { bav_secure_border }
+		required_missions = { bav_secure_border}
 		position = 3
-		
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = upper_franconia_area
-			NOT = { province_id = 81 } #Nurnberg
+			NOT = { 
+				province_id = 81
+			}
 		}
-		
-		trigger = {
-			upper_franconia_area = {
-				NOT = { province_id = 81 } #Nurnberg
+		trigger = { 
+			upper_franconia_area = { 
+				NOT = { 
+					province_id = 81
+				}
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
-		effect = {
-			1358 = { #Oettingen
-				if = {
-					limit = {
-						NOT = { owned_by = ROOT	}
-						NOT = { is_core = ROOT }
+		effect = { 
+			1358 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
-			3734 = { #Hohenlohe
-				if = {
-					limit = {
-						NOT = { owned_by = ROOT	}
-						NOT = { is_core = ROOT }
+			3734 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
-			1366 = { #Wurzburg
-				if = {
-					limit = {
-						NOT = { owned_by = ROOT	}
-						NOT = { is_core = ROOT }
+			1366 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
-			3735 = { #Henneberg
-				if = {
-					limit = {
-						NOT = { owned_by = ROOT	}
-						NOT = { is_core = ROOT }
+			3735 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
 		}
 	}
-	
-	bav_towards_rhine = {
+	bav_towards_rhine = { 
 		icon = mission_cannons_firing
-		required_missions = { bav_expansion_franconia }
+		required_missions = { bav_expansion_franconia}
 		position = 4
-		
-		provinces_to_highlight = {
-			OR = {
-				province_id = 1358 #Oettingen
-				province_id = 3734 #Hohenlohe
-				province_id = 1366 #Wurzburg
-				province_id = 3735 #Henneberg
+		provinces_to_highlight = { 
+			OR = { 
+				province_id = 1358
+				province_id = 3734
+				province_id = 1366
+				province_id = 3735
 			}
 		}
-		
-		trigger = {
+		trigger = { 
 			owns_or_non_sovereign_subject_of = 1358
 			owns_or_non_sovereign_subject_of = 3734
 			owns_or_non_sovereign_subject_of = 1366
 			owns_or_non_sovereign_subject_of = 3735
 		}
-		
-		effect = {
-			1006 = { #Regensburg
-				if = {
-					limit = {
-						NOT = { owned_by = ROOT	}
-						NOT = { is_core = ROOT }
+		effect = { 
+			1006 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
-			82 = { #Hohenlohe
-				if = {
-					limit = {
-						NOT = { owned_by = ROOT	}
-						NOT = { is_core = ROOT }
+			82 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
-			80 = { #Ulm
-				if = {
-					limit = {
-						NOT = { owned_by = ROOT	}
-						NOT = { is_core = ROOT }
+			80 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
-			81 = { #Nurnberg
-				if = {
-					limit = {
-						NOT = { owned_by = ROOT	}
-						NOT = { is_core = ROOT }
+			81 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
-			4010 = { #Rothenberg
-				if = {
-					limit = {
-						NOT = { owned_by = ROOT	}
-						NOT = { is_core = ROOT }
+			4010 = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
+						NOT = { 
+							is_core = ROOT
+						}
 					}
 					add_permanent_claim = ROOT
 				}
 			}
 		}
 	}
-	
-	bav_annex_free_cities = {
+	bav_annex_free_cities = { 
 		icon = mission_conquer_50_development
-		required_missions = { bav_towards_rhine }
+		required_missions = { bav_towards_rhine}
 		position = 4
-		
-		provinces_to_highlight = {
-			OR = {
-				province_id = 1006 #Regensburg
-				province_id = 82 #Augsburg
-				province_id = 80 #Ulm
-				province_id = 81 #Nurnberg
-				province_id = 4010 #Rothenberg
+		provinces_to_highlight = { 
+			OR = { 
+				province_id = 1006
+				province_id = 82
+				province_id = 80
+				province_id = 81
+				province_id = 4010
 			}
 		}
-		
-		trigger = {
+		trigger = { 
 			owns_or_non_sovereign_subject_of = 1006
 			owns_or_non_sovereign_subject_of = 82
 			owns_or_non_sovereign_subject_of = 80
 			owns_or_non_sovereign_subject_of = 81
 			owns_or_non_sovereign_subject_of = 4010
 		}
-		
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "bav_free_cities_annexed"
-				duration = 9125 # 25 years
+				duration = 9125
 			}
 		}
 	}
 }
-
-bavarian_missions_slot_5 = {
+bavarian_missions_slot_5 = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = d_of_baw
 			has_country_flag = d_of_bax
 			has_country_flag = d_of_baz
 		}
 	}
 	has_country_shield = yes
-	
-	bav_centralize = {
+	bav_centralize = { 
 		icon = mission_build_up_to_force_limit
-		required_missions = { bav_unite_bavaria }
+		required_missions = { bav_unite_bavaria}
 		position = 2
-		
-		trigger = {
+		trigger = { 
 			absolutism = 30
 		}
-		
-		effect = {
-			Stab_Add1 = yes
-			add_country_modifier = {
+		effect = { 
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					add_stability = 1
+				}
+			}
+			tooltip = { 
+				add_stability = 1
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = 5
+			}
+			add_country_modifier = { 
 				name = "bav_unified"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	bav_ally_hre = {
+	bav_ally_hre = { 
 		icon = mission_alliances
-		required_missions = { bav_centralize }
+		required_missions = { bav_centralize}
 		position = 3
-		
-		trigger = {
-			emperor = {
+		trigger = { 
+			emperor = { 
 				alliance_with = ROOT
 				marriage_with = ROOT
 			}
 		}
-		
-		effect = {
+		effect = { 
 			add_dip_power = 50
 			add_historical_friend = emperor
-			emperor = {
+			emperor = { 
 				add_historical_friend = ROOT
 			}
 		}
 	}
-	
-	bav_become_elector = {
+	bav_become_elector = { 
 		icon = mission_have_two_subjects
-		required_missions = { bav_ally_hre }
+		required_missions = { bav_ally_hre}
 		position = 4
-		
-		trigger = {
+		trigger = { 
 			is_elector = yes
 		}
-		
-		effect = {
+		effect = { 
 			add_prestige = 25
 			add_legitimacy = 10
 			add_horde_unity = 10
 			add_republican_tradition = 10
 		}
 	}
-	
-	bav_industry = {
+	bav_industry = { 
 		icon = mission_have_manufactories
-		required_missions = { bav_become_elector }
+		required_missions = { bav_become_elector}
 		position = 5
-		
-		trigger = {
-			calc_true_if = {
-				all_owned_province = {
-					OR = {
+		trigger = { 
+			calc_true_if = { 
+				all_owned_province = { 
+					OR = { 
 						area = upper_bavaria_area
 						area = lower_bavaria_area
 					}
-					#HasBuildingOrBetter = { b1=factory b2=steam_powered_factory }
-					HasBuildingOrBetter = { b1=urban_infrastructure_2 b2=urban_infrastructure_3 b3=urban_infrastructure_4 b4=urban_infrastructure_5 b5=urban_infrastructure_6 }
-					check_key = { lhs = Modi_UrbanOutput value = 0.8 }
+					OR = { 
+						has_building = urban_infrastructure_2
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = urban_infrastructure_3
+								has_building = urban_infrastructure_4
+								has_building = urban_infrastructure_5
+								has_building = urban_infrastructure_6
+							}
+						}
+					}
+					check_variable = { 
+						which = dkd
+						value = 0.8
+					}
 				}
 				amount = 4
 			}
 		}
-		
-		effect = {
+		effect = { 
 			add_years_of_income = 3
 		}
 	}
-	
-	bav_kingdom_of_bavaria = {
+	bav_kingdom_of_bavaria = { 
 		icon = mission_empire
-		required_missions = { bav_industry }
+		required_missions = { bav_industry}
 		position = 6
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = title_5
 		}
-		
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "bav_kingdom"
-				duration = 9125 # 25 years
+				duration = 9125
 			}
 		}
 	}

@@ -1,35 +1,62 @@
 namespace = flavor_fiu
-
-# Scripted by Ellesthyan
-
-#Sale of Istrian possessions
-country_event = {
+country_event = { 
 	id = flavor_fiu.1
 	title = flavor_fiu.1.name
 	desc = flavor_fiu.1.desc
 	picture = COURT_eventPicture
-	
-	trigger = {
+	trigger = { 
 		tag = GOR
+<<<<<<< HEAD
 		GOR = { overlord_of = FIU }
+=======
+		FIU = { 
+			AND = { 
+				OR = { 
+					is_subject_of_type = vassal
+					is_subject_of_type = custom_vassal
+				}
+				if = { 
+					limit = { 
+						always = yes
+					}
+					is_subject_of = ROOT
+				}
+			}
+		}
+>>>>>>> submod
 		exists = HAB
-		HAB = { dynasty = "von Habsburg" }
+		HAB = { 
+			dynasty = "von Habsburg"
+		}
 	}
-	
 	fire_only_once = yes
+<<<<<<< HEAD
 	mean_time_to_happen = { years = 50 } #real date was 1466, increased from 9 years
 	
 	option = {		#Sell
 		name = "flavor_fiu.1.opta"
 		log = "FE-FIU:[GetYear]:[Root.Owner.GetName]:decided to sell Fiume to [HAB.GetName]:flavor_fiu.1"
 		ai_chance = { factor = 90 }
+=======
+	mean_time_to_happen = { 
+		years = 9
+	}
+	option = { 
+		name = "flavor_fiu.1.opta"
+		ai_chance = { 
+			factor = 100
+		}
+>>>>>>> submod
 		add_prestige = -5
-		HAB = {
-			country_event = { id = flavor_fiu.2 }
+		HAB = { 
+			country_event = { 
+				id = flavor_fiu.2
+			}
 		}
 	}
-	option = {		#Pay
+	option = { 
 		name = "flavor_fiu.1.optb"
+<<<<<<< HEAD
 		ai_chance = {
 			factor = 10
 			modifier = {
@@ -42,22 +69,30 @@ country_event = {
 		add_treasury = -200
 		HAB = {
 			country_event = { id = flavor_fiu.4 }
+=======
+		ai_chance = { 
+			factor = 0
+		}
+		add_prestige = 5
+		add_years_of_income = -9
+		HAB = { 
+			country_event = { 
+				id = flavor_fiu.4
+			}
+>>>>>>> submod
 		}
 	}
 }
-
-#Habsburg receives the sale
-country_event = {
+country_event = { 
 	id = flavor_fiu.2
 	title = flavor_fiu.2.name
 	desc = flavor_fiu.2.desc
 	picture = COURT_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "flavor_fiu.2.opta"
 		add_prestige = 5
+<<<<<<< HEAD
 		hidden_effect = {
 			GOR = { free_vassal = FIU }
 		}
@@ -67,20 +102,26 @@ country_event = {
 		}
 		FIU = {
 			country_event = { id = flavor_fiu.3 }
+=======
+		GOR = { 
+			free_vassal = FIU
+		}
+		vassalize = FIU
+		FIU = { 
+			country_event = { 
+				id = flavor_fiu.3
+			}
+>>>>>>> submod
 		}
 	}
 }
-
-#Fiume receives the news
-country_event = {
+country_event = { 
 	id = flavor_fiu.3
 	title = flavor_fiu.3.name
 	desc = flavor_fiu.3.desc
 	picture = COURT_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "flavor_fiu.3.opta"
 		if = {
 			limit = {
@@ -94,17 +135,13 @@ country_event = {
 		}
 	}
 }
-
-#Habsburg receives the money
-country_event = {
+country_event = { 
 	id = flavor_fiu.4
 	title = flavor_fiu.4.name
 	desc = flavor_fiu.4.desc
 	picture = COURT_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "flavor_fiu.4.opta"
 		add_treasury = 200
 	}

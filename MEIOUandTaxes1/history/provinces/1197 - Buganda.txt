@@ -1,5 +1,2 @@
-# 1197 - Buganda
-# This province is a wasteland
-
 discovered_by = soudantech
 religion = animism

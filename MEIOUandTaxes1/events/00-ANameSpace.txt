@@ -1,12 +1,10 @@
 namespace = POP_Census
-
 namespace = setup_event
 namespace = on_new_monarch
 namespace = personality
 namespace = calcul_byoa
 namespace = prices
 namespace = Test_Events
-
 namespace = advisors
 namespace = catholic_flavor
 namespace = generic_byoa
@@ -18,8 +16,6 @@ namespace = random_event
 namespace = republics
 namespace = introductions
 namespace = institutions
-
-#Mechanics
 namespace = ostsiedlung
 namespace = hre_fragmentation
 namespace = HRE_war_mechanics
@@ -66,12 +62,8 @@ namespace = ui_setter
 namespace = mission_formable
 namespace = Prov_React
 namespace = Prov_Rights
-
-#Colonial
 namespace = colonial_uprising
 namespace = MEC_Expeditions
-
-#DLC
 namespace = muslim_dlc
 namespace = purple_phoenix
 namespace = usa_dlc
@@ -80,8 +72,6 @@ namespace = seven_cities_events
 namespace = privateerevents
 namespace = subjectinteraction
 namespace = tradecompany
-
-#Disaster
 namespace = archipelagic_succession
 namespace = peasants_war
 namespace = war_of_the_roses
@@ -95,9 +85,7 @@ namespace = janissary_decadence
 namespace = french_revolution
 namespace = french_wars_of_religion
 namespace = time_of_troubles
-namespace = english_civil_war # used in events but seems close to the war_of_the_roses ...
-
-#Regular
+namespace = english_civil_war
 namespace = aow_events
 namespace = bahmani_events
 namespace = bod_chenpo
@@ -197,20 +185,13 @@ namespace = westphalia
 namespace = military_decay
 namespace = grand_canal
 namespace = canal_events
-
-#Estates
 namespace = burghers_estate_events
 namespace = church_estate_events
 namespace = cossack_estate_events
 namespace = dhimmi_estate_events
 namespace = nobles_estate_events
 namespace = tribal_estate_events
-#namespace = indian_noble_estates #removed for now
-
 namespace = indian_estate_disaster
-
-
-#Country flavor
 namespace = flavor_alb
 namespace = flavor_anj
 namespace = flavor_ara
@@ -294,12 +275,10 @@ namespace = flavor_ven
 namespace = flavor_vie
 namespace = flavor_vij
 namespace = flavor_wal
-namespace = tianxia_sys # korea
+namespace = tianxia_sys
 namespace = haiti
 namespace = kalmar
 namespace = flavor_uef
-
-#Historical Events Extended
 namespace = hee_AJU
 namespace = hee_ALB
 namespace = hee_ARA
@@ -347,8 +326,6 @@ namespace = hee_VEN
 namespace = hee_WAL
 namespace = hee_WBG
 namespace = hee_WUR
-
-#Serenissima Italia
 namespace = festa_calcio
 namespace = opera_musica
 namespace = palio_siena
@@ -360,22 +337,12 @@ namespace = italian_powers
 namespace = medicisystem
 namespace = architecture
 namespace = cosimobegins
-
-#Trading posts
-# Currently in the different event files.
-
-#Dei Gratia
 namespace = inti_events
 namespace = religious_reforms
 namespace = dg_animist
 namespace = DG_info_piety
 namespace = DG_info_church_influence
 namespace = DG_knights
-
-#1530
 namespace = italy_fifteenthirty
-
-#Calculation events
 namespace = calcul_culture_group
-
 namespace = higher_education_events

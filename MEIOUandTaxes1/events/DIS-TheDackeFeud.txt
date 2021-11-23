@@ -1,41 +1,40 @@
 namespace = the_dacke_feud
-
-country_event = {
+country_event = { 
 	id = the_dacke_feud.1
 	title = the_dacke_feud.1.t
 	desc = the_dacke_feud.1.d
 	picture = ANGRY_MOB_eventPicture
 	major = yes
 	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
+	immediate = { 
+		hidden_effect = { 
 			set_country_flag = had_the_dacke_feud
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					owns = 3
 				}
-				3 = {
+				3 = { 
 					set_province_flag = dacke_feud
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						is_capital = no
 						is_core = SWE
-						NOT = {
+						NOT = { 
 							province_id = 3
 						}
 					}
 					set_province_flag = dacke_feud
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
+			if = { 
+				limit = { 
+					NOT = { 
 						owns = 3
 					}
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						region = scandinavia_region
 						is_capital = no
 						is_core = SWE
@@ -45,17 +44,41 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = the_dacke_feud.1.a
-		Stab_Subtract3 = yes
-		every_owned_province = {
-			limit = {
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -3
+			}
+		}
+		tooltip = { 
+			add_stability = -3
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -15
+		}
+		every_owned_province = { 
+			limit = { 
 				has_province_flag = dacke_feud
-				NOT = {
+				NOT = { 
 					has_province_modifier = nobles_organizing
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "particularists_organizing"
 				duration = 1825
 			}
@@ -64,34 +87,34 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = the_dacke_feud.2
 	title = the_dacke_feud.2.t
 	desc = the_dacke_feud.2.d
 	picture = ANGRY_MOB_eventPicture
 	is_triggered_only = yes
-	trigger = {
-		scandinavia_region = {
+	trigger = { 
+		scandinavia_region = { 
 			controlled_by = owner
 			has_siege = false
-			NOT = {
+			NOT = { 
 				local_autonomy = 50
 			}
-			NOT = {
+			NOT = { 
 				has_province_flag = dacke_prov
 			}
 		}
 	}
-	immediate = {
-		hidden_effect = {
-			random_core_province = {
-				limit = {
+	immediate = { 
+		hidden_effect = { 
+			random_core_province = { 
+				limit = { 
 					controlled_by = owner
 					has_siege = false
-					NOT = {
+					NOT = { 
 						local_autonomy = 50
 					}
-					NOT = {
+					NOT = { 
 						has_province_flag = dacke_prov
 					}
 					region = scandinavia_region
@@ -100,19 +123,19 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = the_dacke_feud.2.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 70
 		}
-		every_core_province = {
-			limit = {
+		every_core_province = { 
+			limit = { 
 				has_province_flag = dacke_prov
-				NOT = {
+				NOT = { 
 					has_province_modifier = particularists_organizing
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "particularists_organizing"
 				duration = 1825
 			}
@@ -120,111 +143,111 @@ country_event = {
 			add_unrest = 5
 		}
 	}
-	option = {
+	option = { 
 		name = the_dacke_feud.2.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 20
 		}
-		every_core_province = {
-			limit = {
+		every_core_province = { 
+			limit = { 
 				has_province_flag = dacke_prov
 			}
 			add_local_autonomy = 10
 		}
 		add_dip_power = -25
 	}
-	option = {
+	option = { 
 		name = the_dacke_feud.2.c
-		ai_chance = {
+		ai_chance = { 
 			factor = 10
 		}
-		every_core_province = {
-			limit = {
+		every_core_province = { 
+			limit = { 
 				has_province_flag = dacke_prov
 			}
 			add_local_autonomy = 50
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = the_dacke_feud.3
 	title = the_dacke_feud.3.t
 	desc = the_dacke_feud.3.d
 	picture = ANGRY_MOB_eventPicture
 	is_triggered_only = yes
-	trigger = {
-		scandinavia_region = {
+	trigger = { 
+		scandinavia_region = { 
 			controlled_by = owner
 			has_siege = false
-			NOT = {
+			NOT = { 
 				local_autonomy = 50
 			}
-			NOT = {
+			NOT = { 
 				has_province_modifier = dacke_feud_trade_embargo
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = the_dacke_feud.3.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
 		}
-		random_core_province = {
-			limit = {
+		random_core_province = { 
+			limit = { 
 				controlled_by = owner
 				has_siege = false
-				NOT = {
+				NOT = { 
 					local_autonomy = 50
 				}
-				NOT = {
+				NOT = { 
 					has_province_modifier = dacke_feud_trade_embargo
 				}
 				region = scandinavia_region
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = dacke_feud_trade_embargo
 				duration = -1
 				desc = "END_OF_DACKE_FEUD_DIS"
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = the_dacke_feud.3.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
 		}
-		random_core_province = {
-			limit = {
+		random_core_province = { 
+			limit = { 
 				controlled_by = owner
 				has_siege = false
-				NOT = {
+				NOT = { 
 					local_autonomy = 50
 				}
-				NOT = {
+				NOT = { 
 					has_province_modifier = dacke_feud_trade_embargo
 				}
 				region = scandinavia_region
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "particularists_organizing"
 				duration = 1825
 			}
 			custom_tooltip = particularists_organizing_tt
 			add_unrest = 5
 		}
-		random_core_province = {
-			limit = {
+		random_core_province = { 
+			limit = { 
 				controlled_by = owner
 				has_siege = false
-				NOT = {
+				NOT = { 
 					local_autonomy = 50
 				}
-				NOT = {
+				NOT = { 
 					has_province_modifier = dacke_feud_trade_embargo
 				}
 				region = scandinavia_region
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "particularists_organizing"
 				duration = 1825
 			}
@@ -233,22 +256,110 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = the_dacke_feud.100
 	title = the_dacke_feud.100.t
 	desc = the_dacke_feud.100.d
 	picture = ANGRY_MOB_eventPicture
 	major = yes
 	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
-			every_owned_province = {
+	immediate = { 
+		hidden_effect = { 
+			every_owned_province = { 
 				clr_province_flag = dacke_prov
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_swe.EVTOPTA3278"
-		Stab_Add50Percent = yes
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
 	}
 }

@@ -1,36 +1,41 @@
-# 2786 - Owo
-
 owner = IFE
 controller = IFE
 add_core = IFE
-
 capital = "Owo"
 trade_goods = lumber
 culture = yorumba
 religion = west_african_pagan_reformed
-
 hre = no
-
 base_tax = 14
 base_production = 0
 base_manpower = 0
-
 is_city = yes
-set_key = { lhs = Infra_Amenities value = 1 }
-set_key = { lhs = Infra_Irrigation value = 1 }
-#marketplace = yes
-
+set_variable = { 
+	which = gcj
+	value = 1
+}
+set_variable = { 
+	which = gck
+	value = 1
+}
 discovered_by = soudantech
 discovered_by = sub_saharan
-
-200.1.1 = {
-	set_key = { lhs = Prov_TRPow value = 20.000 }
+200.1.1 = { 
+	set_variable = { 
+		which = atc
+		value = 20.000
+	}
 }
-450.1.1 = {
-	set_key = { lhs = pop_level value = 5 }
+450.1.1 = { 
+	set_variable = { 
+		which = acp
+		value = 5
+	}
 	set_province_flag = coal
-	# Commercial
 	set_province_flag = TN_Minor
-	set_key = { lhs = starting_urban_pop_1350 value = 3.000 }
+	set_variable = { 
+		which = ami
+		value = 3.000
+	}
 	set_province_flag = kola
 }

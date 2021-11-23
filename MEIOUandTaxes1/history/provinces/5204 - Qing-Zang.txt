@@ -1,6 +1,3 @@
-# 5204 - Qing-Zang
-# This province is a wasteland
-
 discovered_by = steppestech
 discovered_by = YUA
 discovered_by = chinese

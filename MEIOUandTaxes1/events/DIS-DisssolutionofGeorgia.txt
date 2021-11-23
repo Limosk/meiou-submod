@@ -1,256 +1,597 @@
 namespace = flavor_geo
-
-country_event = {
+country_event = { 
 	id = flavor_geo.001
 	title = "flavor_geo.EVTNAME001"
 	desc = "flavor_geo.EVTDESC001"
 	picture = DIPLOMACY_eventPicture
-	is_triggered_only = yes 
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		tag = GEO
 	}
 	fire_only_once = yes
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	immediate = {
-		hidden_effect = {
+	immediate = { 
+		hidden_effect = { 
 			set_global_flag = end_of_georgia
-			1300 = {				#Abkhazia
+			1300 = { 
 				add_core = ABK
 				remove_core = GEO
 			}
-			2549 = {
+			2549 = { 
 				add_core = ABK
 				remove_core = GEO
 			}
-			if = {
-				limit = {
-					NOT = { exists = ABK }
+			if = { 
+				limit = { 
+					NOT = { 
+						exists = ABK
+					}
 				}
 				release = ABK
 				free_vassal = ABK
-				ABK = { clr_country_flag = POP_Init }
-				ABK = {
-					define_ruler = {
+				ABK = { 
+					clr_country_flag = POP_Init
+				}
+				ABK = { 
+					define_ruler = { 
 						dynasty = "Shervashidze"
 					}
-					define_heir = {
+					define_heir = { 
 						dynasty = "Shervashidze"
 					}
 				}
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					is_core = ABK
 				}
-				cede_and_release = { scope = ABK }
+				cede_province = ABK
+				hidden_effect = { 
+					ABK = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
 			}
-			422 = {					#Kakheti
+			422 = { 
 				add_core = KAK
 				remove_core = GEO
 			}
-			2576 = {
+			2576 = { 
 				add_core = KAK
 				remove_core = GEO
 			}
-			if = {
-				limit = {
-					NOT = { exists = KAK }
+			if = { 
+				limit = { 
+					NOT = { 
+						exists = KAK
+					}
 				}
 				release = KAK
 				free_vassal = KAK
-				KAK = { clr_country_flag = POP_Init }
-				KAK = {
-					define_ruler = {
+				KAK = { 
+					clr_country_flag = POP_Init
+				}
+				KAK = { 
+					define_ruler = { 
 						dynasty = "Bagrationi"
 					}
-					define_heir = {
+					define_heir = { 
 						dynasty = "Bagrationi"
 					}
 				}
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					is_core = KAK
 				}
-				cede_and_release = { scope = KAK }
-			}	
-			1301 = { 				#Imereti
+				cede_province = KAK
+				hidden_effect = { 
+					KAK = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
+			}
+			1301 = { 
 				add_core = IME
 				remove_core = GEO
 			}
-			3798 = {
+			3798 = { 
 				add_core = IME
 				remove_core = GEO
 			}
-			3799 = {
+			3799 = { 
 				add_core = IME
 				remove_core = GEO
 			}
-			3800 = {
+			3800 = { 
 				add_core = IME
 				remove_core = GEO
 			}
-			if = {
-				limit = {
-					NOT = { exists = IME }
+			if = { 
+				limit = { 
+					NOT = { 
+						exists = IME
+					}
 				}
 				release = IME
 				free_vassal = IME
-				IME = { clr_country_flag = POP_Init }
-				IME = {
-					define_ruler = {
+				IME = { 
+					clr_country_flag = POP_Init
+				}
+				IME = { 
+					define_ruler = { 
 						dynasty = "Bagrationi"
 					}
-					define_heir = {
+					define_heir = { 
 						dynasty = "Bagrationi"
 					}
 				}
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					is_core = IME
 				}
-				cede_and_release = { scope = IME }
+				cede_province = IME
+				hidden_effect = { 
+					IME = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
 			}
-			1449 = {			#Samtskhe 
+			1449 = { 
 				add_core = SMT
 				remove_core = GEO
 			}
-			2581 = {			 
+			2581 = { 
 				add_core = SMT
 				remove_core = GEO
 			}
-			3801 = {			 
+			3801 = { 
 				add_core = SMT
 				remove_core = GEO
 			}
-			3802 = {			 
+			3802 = { 
 				add_core = SMT
 				remove_core = GEO
 			}
-			4027 = {			 
+			4027 = { 
 				add_core = SMT
 				remove_core = GEO
 			}
-			5073 = {			 
+			5073 = { 
 				add_core = SMT
 				remove_core = GEO
 			}
-			if = {
-				limit = {
-					NOT = { exists = SMT }
+			if = { 
+				limit = { 
+					NOT = { 
+						exists = SMT
+					}
 				}
 				release = SMT
 				free_vassal = SMT
-				SMT = { clr_country_flag = POP_Init }
-				SMT = {
-					define_ruler = {
+				SMT = { 
+					clr_country_flag = POP_Init
+				}
+				SMT = { 
+					define_ruler = { 
 						dynasty = "Jaqeli"
 					}
-					define_heir = {
+					define_heir = { 
 						dynasty = "Jaqeli"
 					}
 				}
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					is_core = SMT
 				}
-				cede_and_release = { scope = SMT }
+				cede_province = SMT
+				hidden_effect = { 
+					SMT = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
 			}
-			every_owned_province = {				#Kurdistan
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					culture = kurdish
 				}
 				add_core = KRD
 				remove_core = GEO
 			}
 			if = { 
-				limit = {
-					NOT = {
+				limit = { 
+					NOT = { 
 						exists = KRD
 					}
 				}
 				release = KRD
 				free_vassal = KRD
-				KRD = { clr_country_flag = POP_Init } 
+				KRD = { 
+					clr_country_flag = POP_Init
+				}
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					is_core = KRD
 				}
-				cede_and_release = { scope = KRD }
+				cede_province = KRD
+				hidden_effect = { 
+					KRD = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
 			}
-			if = {				#Only release Armenia if AI to prevent too much of a noobtrap for the player
-				limit = {
+			if = { 
+				limit = { 
 					ai = yes
-				} 
-				every_owned_province = {
-					limit = {
+				}
+				every_owned_province = { 
+					limit = { 
 						culture = eastern_armenian
 					}
 					add_core = ARM
 					remove_core = GEO
 				}
 				if = { 
-					limit = {
-						NOT = {
+					limit = { 
+						NOT = { 
 							exists = ARM
 						}
 					}
 					release = ARM
 					free_vassal = ARM
-					ARM = { clr_country_flag = POP_Init }
+					ARM = { 
+						clr_country_flag = POP_Init
+					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						is_core = ARM
 					}
-					cede_and_release = { scope = ARM }
+					cede_province = ARM
+					hidden_effect = { 
+						ARM = { 
+							export_to_variable = { 
+								which = export
+								value = religion
+							}
+							set_variable = { 
+								which = kdt
+								which = export
+							}
+							if = { 
+								limit = { 
+									is_variable_equal = { 
+										which = kdt
+										value = -1
+									}
+								}
+								capital_scope = { 
+									owner = { 
+										change_religion = PREV
+									}
+								}
+							}
+							set_variable = { 
+								which = kdt
+								value = 0
+							}
+							force_converted = yes
+						}
+					}
 				}
 			}
-			every_owned_province = {			#Give back cores of neighbours
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					is_core = TRE
 				}
 				remove_core = GEO
-				cede_and_release = { scope = TRE }
+				cede_province = TRE
+				hidden_effect = { 
+					TRE = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					is_core = CIR
 				}
 				remove_core = GEO
-				cede_and_release = { scope = CIR }
+				cede_province = CIR
+				hidden_effect = { 
+					CIR = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					is_core = SHI
 				}
 				remove_core = GEO
-				cede_and_release = { scope = SHI }
+				cede_province = SHI
+				hidden_effect = { 
+					SHI = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
 			}
-			every_owned_province = {
-				limit = {
+			every_owned_province = { 
+				limit = { 
 					is_core = GAZ
 				}
 				remove_core = GEO
-				cede_and_release = { scope = GAZ }
+				cede_province = GAZ
+				hidden_effect = { 
+					GAZ = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_geo.EVTOPTA001"
-		Stab_Add1 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
 		add_legitimacy = 10
-		if = {
-			limit = {
-				AND = {
-					NOT = {
-						calc_true_if = {
-							all_country = {
+		if = { 
+			limit = { 
+				AND = { 
+					NOT = { 
+						calc_true_if = { 
+							all_country = { 
 								ai = no
 							}
 							amount = 2
@@ -261,113 +602,6369 @@ country_event = {
 			change_tag = KRT
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_geo.EVTOPTB001"
-		Stab_Subtract6 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -6
+			}
+		}
+		tooltip = { 
+			add_stability = -6
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -30
+		}
 		declare_war = ABK
 		declare_war = IME
 		declare_war = KAK
 		declare_war = SMT
 	}
-	after = {
-		if = {
-			limit = {
+	after = { 
+		if = { 
+			limit = { 
 				exists = GEO
 			}
-			GEO = { save_event_target_as = Adapt }
+			GEO = { 
+				save_event_target_as = Adapt
+			}
 		}
-		else = {
-			KRT = { save_event_target_as = Adapt }
+		else = { 
+			KRT = { 
+				save_event_target_as = Adapt
+			}
 		}
 		ABK = { 
-			hidden_effect = {
-				Pol_AdaptFromScope = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+						}
+					}
+					change_government = monarchy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Succession1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Succession2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Succession3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Succession4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_Succession5
+					}
+					if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							OR = { 
+								NOT = { 
+									religion_group = muslim
+								}
+								culture_group = tartar_group
+								culture_group = old_turkic
+								culture_group = altaic
+								primary_culture = turkish
+							}
+							NOT = { 
+								religion_group = christian
+							}
+							NOT = { 
+								culture_group = japanese_g
+							}
+						}
+						add_government_reform = Pol_Family4
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							religion_group = muslim
+							NOT = { 
+								culture_group = tartar_group
+							}
+							NOT = { 
+								culture_group = old_turkic
+							}
+							NOT = { 
+								culture_group = altaic
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family3
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+								religion_group = muslim
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family2
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_tribal = no
+						}
+						add_government_reform = Pol_Family1
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = republic
+						}
+					}
+					change_government = republic
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice5
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 7
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice8
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = theocracy
+						}
+					}
+					change_government = theocracy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = tribal
+						}
+					}
+					change_government = tribal
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Identity1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Identity2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Identity3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Identity4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Structure1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Structure2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Structure3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Structure4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Structure5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy2
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial3
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Military1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Military2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Military3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Military4
+				}
 				add_government_reform = Pol_Privileges1
-                if = {
-                    limit = {
-                        NOT = { has_country_flag = POP_Init }
-                    }
-                    country_event = { id = Init.1 }
-                }
-            }
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_flag = POP_Init
+						}
+					}
+					country_event = { 
+						id = Init.1
+					}
+				}
+			}
 		}
 		IME = { 
-			hidden_effect = {
-				Pol_AdaptFromScope = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+						}
+					}
+					change_government = monarchy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Succession1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Succession2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Succession3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Succession4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_Succession5
+					}
+					if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							OR = { 
+								NOT = { 
+									religion_group = muslim
+								}
+								culture_group = tartar_group
+								culture_group = old_turkic
+								culture_group = altaic
+								primary_culture = turkish
+							}
+							NOT = { 
+								religion_group = christian
+							}
+							NOT = { 
+								culture_group = japanese_g
+							}
+						}
+						add_government_reform = Pol_Family4
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							religion_group = muslim
+							NOT = { 
+								culture_group = tartar_group
+							}
+							NOT = { 
+								culture_group = old_turkic
+							}
+							NOT = { 
+								culture_group = altaic
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family3
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+								religion_group = muslim
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family2
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_tribal = no
+						}
+						add_government_reform = Pol_Family1
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = republic
+						}
+					}
+					change_government = republic
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice5
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 7
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice8
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = theocracy
+						}
+					}
+					change_government = theocracy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = tribal
+						}
+					}
+					change_government = tribal
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Identity1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Identity2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Identity3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Identity4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Structure1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Structure2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Structure3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Structure4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Structure5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy2
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial3
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Military1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Military2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Military3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Military4
+				}
 				add_government_reform = Pol_Privileges1
-                if = {
-                    limit = {
-                        NOT = { has_country_flag = POP_Init }
-                    }
-                    country_event = { id = Init.1 }
-                }
-            }
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_flag = POP_Init
+						}
+					}
+					country_event = { 
+						id = Init.1
+					}
+				}
+			}
 		}
 		KAK = { 
-			hidden_effect = {
-				Pol_AdaptFromScope = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+						}
+					}
+					change_government = monarchy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Succession1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Succession2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Succession3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Succession4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_Succession5
+					}
+					if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							OR = { 
+								NOT = { 
+									religion_group = muslim
+								}
+								culture_group = tartar_group
+								culture_group = old_turkic
+								culture_group = altaic
+								primary_culture = turkish
+							}
+							NOT = { 
+								religion_group = christian
+							}
+							NOT = { 
+								culture_group = japanese_g
+							}
+						}
+						add_government_reform = Pol_Family4
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							religion_group = muslim
+							NOT = { 
+								culture_group = tartar_group
+							}
+							NOT = { 
+								culture_group = old_turkic
+							}
+							NOT = { 
+								culture_group = altaic
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family3
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+								religion_group = muslim
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family2
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_tribal = no
+						}
+						add_government_reform = Pol_Family1
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = republic
+						}
+					}
+					change_government = republic
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice5
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 7
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice8
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = theocracy
+						}
+					}
+					change_government = theocracy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = tribal
+						}
+					}
+					change_government = tribal
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Identity1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Identity2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Identity3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Identity4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Structure1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Structure2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Structure3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Structure4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Structure5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy2
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial3
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Military1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Military2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Military3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Military4
+				}
 				add_government_reform = Pol_Privileges1
-                if = {
-                    limit = {
-                        NOT = { has_country_flag = POP_Init }
-                    }
-                    country_event = { id = Init.1 }
-                }
-            }
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_flag = POP_Init
+						}
+					}
+					country_event = { 
+						id = Init.1
+					}
+				}
+			}
 		}
 		SMT = { 
-			hidden_effect = {
-				Pol_AdaptFromScope = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+						}
+					}
+					change_government = monarchy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Succession1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Succession2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Succession3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Succession4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_Succession5
+					}
+					if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							OR = { 
+								NOT = { 
+									religion_group = muslim
+								}
+								culture_group = tartar_group
+								culture_group = old_turkic
+								culture_group = altaic
+								primary_culture = turkish
+							}
+							NOT = { 
+								religion_group = christian
+							}
+							NOT = { 
+								culture_group = japanese_g
+							}
+						}
+						add_government_reform = Pol_Family4
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							religion_group = muslim
+							NOT = { 
+								culture_group = tartar_group
+							}
+							NOT = { 
+								culture_group = old_turkic
+							}
+							NOT = { 
+								culture_group = altaic
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family3
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+								religion_group = muslim
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family2
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_tribal = no
+						}
+						add_government_reform = Pol_Family1
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = republic
+						}
+					}
+					change_government = republic
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice5
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 7
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice8
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = theocracy
+						}
+					}
+					change_government = theocracy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = tribal
+						}
+					}
+					change_government = tribal
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Identity1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Identity2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Identity3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Identity4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Structure1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Structure2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Structure3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Structure4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Structure5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy2
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial3
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Military1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Military2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Military3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Military4
+				}
 				add_government_reform = Pol_Privileges1
-                if = {
-                    limit = {
-                        NOT = { has_country_flag = POP_Init }
-                    }
-                    country_event = { id = Init.1 }
-                }
-            }
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_flag = POP_Init
+						}
+					}
+					country_event = { 
+						id = Init.1
+					}
+				}
+			}
 		}
 		KRD = { 
-			hidden_effect = {
-				Pol_AdaptFromScope = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+						}
+					}
+					change_government = monarchy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Succession1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Succession2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Succession3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Succession4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_Succession5
+					}
+					if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							OR = { 
+								NOT = { 
+									religion_group = muslim
+								}
+								culture_group = tartar_group
+								culture_group = old_turkic
+								culture_group = altaic
+								primary_culture = turkish
+							}
+							NOT = { 
+								religion_group = christian
+							}
+							NOT = { 
+								culture_group = japanese_g
+							}
+						}
+						add_government_reform = Pol_Family4
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							religion_group = muslim
+							NOT = { 
+								culture_group = tartar_group
+							}
+							NOT = { 
+								culture_group = old_turkic
+							}
+							NOT = { 
+								culture_group = altaic
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family3
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+								religion_group = muslim
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family2
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_tribal = no
+						}
+						add_government_reform = Pol_Family1
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = republic
+						}
+					}
+					change_government = republic
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice5
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 7
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice8
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = theocracy
+						}
+					}
+					change_government = theocracy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = tribal
+						}
+					}
+					change_government = tribal
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Identity1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Identity2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Identity3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Identity4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Structure1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Structure2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Structure3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Structure4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Structure5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy2
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial3
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Military1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Military2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Military3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Military4
+				}
 				add_government_reform = Pol_Privileges1
-                if = {
-                    limit = {
-                        NOT = { has_country_flag = POP_Init }
-                    }
-                    country_event = { id = Init.1 }
-                }
-            }
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_flag = POP_Init
+						}
+					}
+					country_event = { 
+						id = Init.1
+					}
+				}
+			}
 		}
 		ARM = { 
-			hidden_effect = {
-				Pol_AdaptFromScope = yes
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+						}
+					}
+					change_government = monarchy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Succession1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Succession2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Succession3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Succession4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grj
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_Succession5
+					}
+					if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							OR = { 
+								NOT = { 
+									religion_group = muslim
+								}
+								culture_group = tartar_group
+								culture_group = old_turkic
+								culture_group = altaic
+								primary_culture = turkish
+							}
+							NOT = { 
+								religion_group = christian
+							}
+							NOT = { 
+								culture_group = japanese_g
+							}
+						}
+						add_government_reform = Pol_Family4
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_variable_equal = { 
+								which = grj
+								value = 4
+							}
+							religion_group = muslim
+							NOT = { 
+								culture_group = tartar_group
+							}
+							NOT = { 
+								culture_group = old_turkic
+							}
+							NOT = { 
+								culture_group = altaic
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family3
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
+								is_variable_equal = { 
+									which = grj
+									value = 1
+								}
+								religion_group = muslim
+							}
+							NOT = { 
+								primary_culture = turkish
+							}
+						}
+						add_government_reform = Pol_Family2
+					}
+					else_if = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							is_tribal = no
+						}
+						add_government_reform = Pol_Family1
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = republic
+						}
+					}
+					change_government = republic
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grn
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mandate4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grl
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Stylings2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grm
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_ExtraPowers2
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice4
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 4
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice5
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grr
+									value = 7
+								}
+							}
+						}
+						add_government_reform = Pol_TermOfOffice8
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = theocracy
+						}
+					}
+					change_government = theocracy
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grq
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Organisation4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grp
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Mediumship4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grk
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Assembly3
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							government = tribal
+						}
+					}
+					change_government = tribal
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Identity1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Identity2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Identity3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grs
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Identity4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = grt
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Leadership3
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = hqx
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Tradition4
+					}
+					if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 0
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility1
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 1
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility2
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 2
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility3
+					}
+					else_if = { 
+						limit = { 
+							event_target:Adapt = { 
+								is_variable_equal = { 
+									which = gri
+									value = 3
+								}
+							}
+						}
+						add_government_reform = Pol_Nobility4
+					}
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Structure1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Structure2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Structure3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Structure4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqr
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Structure5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation4
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqs
+								value = 4
+							}
+						}
+					}
+					add_government_reform = Pol_Centralisation5
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqt
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Autonomy2
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqu
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Provincial3
+				}
+				if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 0
+							}
+						}
+					}
+					add_government_reform = Pol_Military1
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 1
+							}
+						}
+					}
+					add_government_reform = Pol_Military2
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 2
+							}
+						}
+					}
+					add_government_reform = Pol_Military3
+				}
+				else_if = { 
+					limit = { 
+						event_target:Adapt = { 
+							is_variable_equal = { 
+								which = gqv
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Military4
+				}
 				add_government_reform = Pol_Privileges1
-                if = {
-                    limit = {
-                        NOT = { has_country_flag = POP_Init }
-                    }
-                    country_event = { id = Init.1 }
-                }
-            }
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_flag = POP_Init
+						}
+					}
+					country_event = { 
+						id = Init.1
+					}
+				}
+			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_geo.002
 	title = "missing_localization"
 	desc = "missing_localization"
 	picture = DIPLOMACY_eventPicture
 	hidden = yes
-	is_triggered_only = yes 
-	trigger = {
+	is_triggered_only = yes
+	trigger = { 
 		tag = GEO
 	}
 	fire_only_once = yes
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	option = {
+	option = { 
 		name = "missing_locaization"
 	}
-}	
+}

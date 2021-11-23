@@ -1,5 +1,5 @@
-default_error = {
-	rank = {
+default_error = { 
+	rank = { 
 		1 = ERROR
 		2 = ERROR
 		3 = ERROR
@@ -7,8 +7,7 @@ default_error = {
 		5 = ERROR
 		6 = ERROR
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ERROR
 		2 = ERROR
 		3 = ERROR
@@ -16,8 +15,7 @@ default_error = {
 		5 = ERROR
 		6 = ERROR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ERROR
 		2 = ERROR
 		3 = ERROR
@@ -25,8 +23,7 @@ default_error = {
 		5 = ERROR
 		6 = ERROR
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = ERROR
 		2 = ERROR
 		3 = ERROR
@@ -34,8 +31,7 @@ default_error = {
 		5 = ERROR
 		6 = ERROR
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = ERROR
 		2 = ERROR
 		3 = ERROR
@@ -43,8 +39,7 @@ default_error = {
 		5 = ERROR
 		6 = ERROR
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = ERROR
 		2 = ERROR
 		3 = ERROR
@@ -52,8 +47,7 @@ default_error = {
 		5 = ERROR
 		6 = ERROR
 	}
-
-	heir_female = {
+	heir_female = { 
 		1 = ERROR
 		2 = ERROR
 		3 = ERROR
@@ -61,8 +55,7 @@ default_error = {
 		5 = ERROR
 		6 = ERROR
 	}
-
-	trigger = {
+	trigger = { 
 		always = yes
 	}
 }

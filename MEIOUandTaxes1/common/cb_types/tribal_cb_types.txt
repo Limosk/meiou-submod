@@ -1,39 +1,133 @@
-# Tribal CB's 
-cb_tribal_raid = {
+cb_tribal_raid = { 
 	war_goal = tribal_raid
-	is_triggered_only = yes # See cb_types.1
+	is_triggered_only = yes
 	months = 12000
-	
-	prerequisites = {
-		NOT = { has_country_flag = Horde_Ruler_Murdered }
-		NOT = { has_country_flag = Horde_Collapse_Ongoing }
-		OR = {
+	prerequisites = { 
+		NOT = { 
+			has_country_flag = Horde_Ruler_Murdered
+		}
+		NOT = { 
+			has_country_flag = Horde_Collapse_Ongoing
+		}
+		OR = { 
 			is_nomad = yes
 			is_tribal = yes
-			is_key_equal = { lhs = Pol_Privileges value = 8 }
+			is_variable_equal = { 
+				which = gro
+				value = 8
+			}
 		}
-		OR = {
-			is_free_or_tributary_trigger = yes
-			overlord = { is_tribal = yes }
-			overlord = { is_key_equal = { lhs = Pol_Privileges value = 8 } }
+		OR = { 
+			AND = { 
+				OR = { 
+					is_subject = no
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
+			overlord = { 
+				is_tribal = yes
+			}
+			overlord = { 
+				is_variable_equal = { 
+					which = gro
+					value = 8
+				}
+			}
 			is_subject_of_type = daimyo_vassal
 		}
-		NOT = { overlord_of = FROM }
-		OR = {
+		NOT = { 
+			overlord_of = FROM
+		}
+		OR = { 
 			is_nomad = no
-			NOT = {
-				OR = {
-					AND = {
-						steppe_trigger = yes
+			NOT = { 
+				OR = { 
+					AND = { 
+						AND = { 
+							OR = { 
+								AND = { 
+									government = tribal
+									check_variable = { 
+										which = grs
+										value = 1
+									}
+									is_variable_equal = { 
+										which = grt
+										value = 0
+									}
+									is_variable_equal = { 
+										which = hqx
+										value = 3
+									}
+								}
+								AND = { 
+									custom_trigger_tooltip = { 
+										tooltip = is_monarchy_tt
+										OR = { 
+											government = monarchy
+											government = has_harem
+										}
+									}
+									is_variable_equal = { 
+										which = gro
+										value = 8
+									}
+								}
+							}
+						}
 						legitimacy_equivalent = 25
-						check_key = { lhs = Ruler_SkillMIL value = 2 }
+						check_variable = { 
+							which = huk
+							value = 2
+						}
 					}
-					AND = {
-						NOT = { steppe_trigger = yes }
+					AND = { 
+						NOT = { 
+							AND = { 
+								OR = { 
+									AND = { 
+										government = tribal
+										check_variable = { 
+											which = grs
+											value = 1
+										}
+										is_variable_equal = { 
+											which = grt
+											value = 0
+										}
+										is_variable_equal = { 
+											which = hqx
+											value = 3
+										}
+									}
+									AND = { 
+										custom_trigger_tooltip = { 
+											tooltip = is_monarchy_tt
+											OR = { 
+												government = monarchy
+												government = has_harem
+											}
+										}
+										is_variable_equal = { 
+											which = gro
+											value = 8
+										}
+									}
+								}
+							}
+						}
 						legitimacy_equivalent = 50
-						check_key = { lhs = Ruler_SkillMIL value = 2 }
-						OR = {
-							check_key = { lhs = Ruler_SkillMIL value = 4 }
+						check_variable = { 
+							which = huk
+							value = 2
+						}
+						OR = { 
+							check_variable = { 
+								which = huk
+								value = 4
+							}
 							legitimacy_equivalent = 75
 						}
 					}

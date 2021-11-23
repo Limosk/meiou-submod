@@ -1,94 +1,130 @@
-defined_text = {
+defined_text = { 
 	name = Get_UI_TaxBurdenTitle
-	text = {
+	text = { 
 		localisation_key = Hide_TaxBurdenTitle
-		trigger = { has_country_flag = POP_Display_No_Tax_Burden }
+		trigger = { 
+			has_country_flag = POP_Display_No_Tax_Burden
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Display_TaxBurdenTitle
-		trigger = { NOT = { has_country_flag = POP_Display_No_Tax_Burden } }
+		trigger = { 
+			NOT = { 
+				has_country_flag = POP_Display_No_Tax_Burden
+			}
+		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Get_UI_TaxBurdenDesc
-	text = {
+	text = { 
 		localisation_key = Hide_TaxBurdenDesc
-		trigger = { has_country_flag = POP_Display_No_Tax_Burden }
+		trigger = { 
+			has_country_flag = POP_Display_No_Tax_Burden
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Display_TaxBurdenDesc
-		trigger = { NOT = { has_country_flag = POP_Display_No_Tax_Burden } }
+		trigger = { 
+			NOT = { 
+				has_country_flag = POP_Display_No_Tax_Burden
+			}
+		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Get_UI_Construct_Toggle_Title
-	text = {
+	text = { 
 		localisation_key = Construct_Toggle_Hide_Title
-		trigger = { has_country_flag = UI_Toggle_Construct }
+		trigger = { 
+			has_country_flag = UI_Toggle_Construct
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Construct_Toggle_Display_Title
-		trigger = { NOT = { has_country_flag = UI_Toggle_Construct } }
+		trigger = { 
+			NOT = { 
+				has_country_flag = UI_Toggle_Construct
+			}
+		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Get_UI_Construct_Toggle_Desc
-	text = {
+	text = { 
 		localisation_key = Construct_Toggle_Hide_Desc
-		trigger = { has_country_flag = UI_Toggle_Construct }
+		trigger = { 
+			has_country_flag = UI_Toggle_Construct
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Construct_Toggle_Display_Desc
-		trigger = { NOT = { has_country_flag = UI_Toggle_Construct } }
+		trigger = { 
+			NOT = { 
+				has_country_flag = UI_Toggle_Construct
+			}
+		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Get_UI_Taxes_Toggle_Title
-	text = {
+	text = { 
 		localisation_key = Taxes_Toggle_Hide_Title
-		trigger = { has_country_flag = UI_Toggle_Taxes }
+		trigger = { 
+			has_country_flag = UI_Toggle_Taxes
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Taxes_Toggle_Display_Title
-		trigger = { NOT = { has_country_flag = UI_Toggle_Taxes } }
+		trigger = { 
+			NOT = { 
+				has_country_flag = UI_Toggle_Taxes
+			}
+		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Get_UI_Taxes_Toggle_Desc
-	text = {
+	text = { 
 		localisation_key = Taxes_Toggle_Hide_Desc
-		trigger = { has_country_flag = UI_Toggle_Taxes }
+		trigger = { 
+			has_country_flag = UI_Toggle_Taxes
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Taxes_Toggle_Display_Desc
-		trigger = { NOT = { has_country_flag = UI_Toggle_Taxes } }
+		trigger = { 
+			NOT = { 
+				has_country_flag = UI_Toggle_Taxes
+			}
+		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Get_UI_Rights_Toggle_Title
-	text = {
+	text = { 
 		localisation_key = Get_UI_Rights_Toggle_Title_1
-		trigger = { has_country_flag = UI_Rights_Toggle_1 }
+		trigger = { 
+			has_country_flag = UI_Rights_Toggle_1
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Get_UI_Rights_Toggle_Title_2
-		trigger = { has_country_flag = UI_Rights_Toggle_2 } 
+		trigger = { 
+			has_country_flag = UI_Rights_Toggle_2
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Get_UI_Rights_Toggle_Title_3
-		trigger = { has_country_flag = UI_Rights_Toggle_3 }
+		trigger = { 
+			has_country_flag = UI_Rights_Toggle_3
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Get_UI_Rights_Toggle_Title_4
 		trigger = { 
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					has_country_flag = UI_Rights_Toggle_1
 					has_country_flag = UI_Rights_Toggle_2
 					has_country_flag = UI_Rights_Toggle_3
@@ -97,26 +133,31 @@ defined_text = {
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Get_UI_Rights_Toggle_Desc
-	text = {
+	text = { 
 		localisation_key = Get_UI_Rights_Toggle_Desc_1
-		trigger = { has_country_flag = UI_Rights_Toggle_1 }
+		trigger = { 
+			has_country_flag = UI_Rights_Toggle_1
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Get_UI_Rights_Toggle_Desc_2
-		trigger = { has_country_flag = UI_Rights_Toggle_2 } 
+		trigger = { 
+			has_country_flag = UI_Rights_Toggle_2
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Get_UI_Rights_Toggle_Desc_3
-		trigger = { has_country_flag = UI_Rights_Toggle_3 }
+		trigger = { 
+			has_country_flag = UI_Rights_Toggle_3
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Get_UI_Rights_Toggle_Desc_4
 		trigger = { 
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					has_country_flag = UI_Rights_Toggle_1
 					has_country_flag = UI_Rights_Toggle_2
 					has_country_flag = UI_Rights_Toggle_3
@@ -125,26 +166,31 @@ defined_text = {
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Get_UI_RightsToggleNext
-	text = {
+	text = { 
 		localisation_key = Get_UI_RightsToggleNext1
-		trigger = { has_country_flag = UI_Rights_Toggle_1 }
+		trigger = { 
+			has_country_flag = UI_Rights_Toggle_1
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Get_UI_RightsToggleNext2
-		trigger = { has_country_flag = UI_Rights_Toggle_2 } 
+		trigger = { 
+			has_country_flag = UI_Rights_Toggle_2
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Get_UI_RightsToggleNext3
-		trigger = { has_country_flag = UI_Rights_Toggle_3 }
+		trigger = { 
+			has_country_flag = UI_Rights_Toggle_3
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Get_UI_RightsToggleNext4
 		trigger = { 
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					has_country_flag = UI_Rights_Toggle_1
 					has_country_flag = UI_Rights_Toggle_2
 					has_country_flag = UI_Rights_Toggle_3
@@ -153,129 +199,173 @@ defined_text = {
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = UI_Tooltip_Mode
-	
-	text = {
+	text = { 
 		localisation_key = UI_Tooltip_On
-		trigger = { has_country_flag = UI_Tooltip_On }
+		trigger = { 
+			has_country_flag = UI_Tooltip_On
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_Tooltip_Off
-		trigger = { NOT = { has_country_flag = UI_Tooltip_On } }
+		trigger = { 
+			NOT = { 
+				has_country_flag = UI_Tooltip_On
+			}
+		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Player_Investment
-	
-	text = {
+	text = { 
 		localisation_key = Player_Investment_1
-		trigger = { has_country_flag = invest_every_5 }
+		trigger = { 
+			has_country_flag = invest_every_5
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = Player_Investment_2
-		trigger = { has_country_flag = invest_every_4 }
+		trigger = { 
+			has_country_flag = invest_every_4
+		}
 	}
-    text = {
+	text = { 
 		localisation_key = Player_Investment_3
-		trigger = { has_country_flag = invest_every_3 }
+		trigger = { 
+			has_country_flag = invest_every_3
+		}
 	}
-    text = {
+	text = { 
 		localisation_key = Player_Investment_4
 		trigger = { 
-            NOT = { 
-                has_country_flag = invest_every_5
-                has_country_flag = invest_every_4
-                has_country_flag = invest_every_3
-            }
-        }
+			NOT = { 
+				has_country_flag = invest_every_5
+				has_country_flag = invest_every_4
+				has_country_flag = invest_every_3
+			}
+		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = GetUI_SelectScopeTitle
 	random = no
-	text = {
+	text = { 
 		localisation_key = UI_SelectScope1
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 1 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScope2
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 2 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScope3
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 3 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 3
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScope4
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 4 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 4
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScope5
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 5 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 5
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScope6
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 6 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 6
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScope0
 	}
 }
-defined_text = {
+defined_text = { 
 	name = GetUI_SelectScopeChange
 	random = no
-	text = {
+	text = { 
 		localisation_key = UI_SelectScopeChange1
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 1 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScopeChange2
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 2 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScopeChange3
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 3 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 3
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScopeChange4
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 4 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 4
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScopeChange5
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 5 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 5
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScopeChange6
-		trigger = {
-			is_key_equal = { lhs = UI_SelectScope value = 6 }
+		trigger = { 
+			is_variable_equal = { 
+				which = fqq
+				value = 6
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = UI_SelectScopeChange0
 	}
 }
-

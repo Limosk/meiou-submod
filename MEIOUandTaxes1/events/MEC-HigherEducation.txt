@@ -1,109 +1,3075 @@
 namespace = MEC_HigherEducation
-
-#Selecting the candidate for opening higher learning slot. Fires for AAA tag to identify the province whose AI owner will decide wheather to pursue the higher learning. 
-country_event = {
+country_event = { 
 	id = higher_education_events.0
 	title = higher_education_events.0.t
 	desc = higher_education_events.0.d
 	picture = UNIVERSITY_eventPicture
-
 	is_triggered_only = yes
-    hidden = yes
-
-    option = {
-        name = "higher_education_events.0.a"
-		random_province = {
-            limit = {
-				Prod_Can_30 = yes
-				Prod_NotHasProd = { Prod = 30 }	
+	hidden = yes
+	option = { 
+		name = "higher_education_events.0.a"
+		random_province = { 
+			limit = { 
+				check_variable = { 
+					which = aax
+					value = 10
+				}
+				NOT = { 
+					has_province_flag = Industry_30Present
+				}
 				Legalism = 90
-				owner = { ai = yes }
-            }
-			province_event = { id = higher_education_events.1 }
-        }
-    }
+				owner = { 
+					ai = yes
+				}
+			}
+			province_event = { 
+				id = higher_education_events.1
+			}
+		}
+	}
 }
-
-#Deciding wheather to pursue the higher learning slot
-province_event = {
+province_event = { 
 	id = higher_education_events.1
 	title = higher_education_events.1.t
 	desc = higher_education_events.1.d
 	picture = UNIVERSITY_eventPicture
-
 	is_triggered_only = yes
-    
-	immediate = {
-		hidden_effect = {
-		  owner = { save_event_target_as = root_owner }
+	immediate = { 
+		hidden_effect = { 
+			owner = { 
+				save_event_target_as = root_owner
+			}
 		}
 	}
-	
-    option = {
-        name = "higher_education_events.1.a"
-		ai_chance = {
-			factor = 100 
-			modifier = {
+	option = { 
+		name = "higher_education_events.1.a"
+		ai_chance = { 
+			factor = 100
+			modifier = { 
 				factor = 3
 				Banking = 50
 			}
-			modifier = {
+			modifier = { 
 				factor = 3
 				is_capital = yes
 			}
-			modifier = {
+			modifier = { 
 				factor = 0.15
 				has_owner_accepted_culture = no
 			}
-			modifier = {
+			modifier = { 
 				factor = 0.2
-				has_owner_religion	= no
+				has_owner_religion = no
 			}
-			modifier = {
+			modifier = { 
 				factor = 0.7
 				has_owner_culture = no
 			}
-            modifier = {
-                factor = 0.7 #there is a university in an area
-                area_for_scope_province = {
+			modifier = { 
+				factor = 0.7
+				area_for_scope_province = { 
 					type = any
-                    Prod_HasProd = { Prod = 30 }  
-                }
-            }
-            modifier = {
-                factor = 0.2 #there is a university in an area owned by this country
-                area_for_scope_province = {
+					has_province_flag = Industry_30Present
+				}
+			}
+			modifier = { 
+				factor = 0.2
+				area_for_scope_province = { 
 					type = any
-					owned_by = event_target:root_owner #owner of this province from which we started
-                    Prod_HasProd = { Prod = 30 }  
-                }
-            }
-			
-            modifier = {
-                factor = 0.5 #there is a university in an region owned by this country
-                region_for_scope_province = {
+					owned_by = event_target:root_owner
+					has_province_flag = Industry_30Present
+				}
+			}
+			modifier = { 
+				factor = 0.5
+				region_for_scope_province = { 
 					type = any
-					owned_by = event_target:root_owner #owner of this province from which we started
-                    Prod_HasProd = { Prod = 30 }  
-                }
-            }
+					owned_by = event_target:root_owner
+					has_province_flag = Industry_30Present
+				}
+			}
 		}
-
-		hidden_effect ={
-			Public_AddProduce = { prod = 30 size = 5 soph = 0 wealth = 0 }
-			Infra_AddPrp = { Type=Academic Amount=1 }
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = Industry_30Present
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S0
+						}
+					}
+					set_province_flag = Prod_S0
+					set_variable = { 
+						which = bta
+						value = 30
+					}
+					set_variable = { 
+						which = bsq
+						value = 0
+					}
+					set_variable = { 
+						which = btb
+						value = 5
+					}
+					set_variable = { 
+						which = djt
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S0DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = chf
+						value = 1.25
+					}
+					set_variable = { 
+						which = buk
+						value = 1
+					}
+					set_variable = { 
+						which = cax
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = cfn
+						value = 10
+					}
+					divide_variable = { 
+						which = cfr
+						value = 10
+					}
+					divide_variable = { 
+						which = cfv
+						value = 10
+					}
+					divide_variable = { 
+						which = cfz
+						value = 10
+					}
+					divide_variable = { 
+						which = cgd
+						value = 10
+					}
+					divide_variable = { 
+						which = cgh
+						value = 10
+					}
+					divide_variable = { 
+						which = mtb
+						value = 10
+					}
+					divide_variable = { 
+						which = cgl
+						value = 10
+					}
+					divide_variable = { 
+						which = cgp
+						value = 10
+					}
+					divide_variable = { 
+						which = cgt
+						value = 10
+					}
+					divide_variable = { 
+						which = cgx
+						value = 10
+					}
+					divide_variable = { 
+						which = chb
+						value = 10
+					}
+					divide_variable = { 
+						which = chf
+						value = 10
+					}
+					divide_variable = { 
+						which = chj
+						value = 10
+					}
+					divide_variable = { 
+						which = cfp
+						value = 10
+					}
+					divide_variable = { 
+						which = cft
+						value = 10
+					}
+					divide_variable = { 
+						which = cfx
+						value = 10
+					}
+					divide_variable = { 
+						which = cgb
+						value = 10
+					}
+					divide_variable = { 
+						which = cgf
+						value = 10
+					}
+					divide_variable = { 
+						which = cgj
+						value = 10
+					}
+					divide_variable = { 
+						which = mtd
+						value = 10
+					}
+					divide_variable = { 
+						which = cgn
+						value = 10
+					}
+					divide_variable = { 
+						which = cgr
+						value = 10
+					}
+					divide_variable = { 
+						which = cgv
+						value = 10
+					}
+					divide_variable = { 
+						which = cgz
+						value = 10
+					}
+					divide_variable = { 
+						which = chd
+						value = 10
+					}
+					divide_variable = { 
+						which = chh
+						value = 10
+					}
+					divide_variable = { 
+						which = chl
+						value = 10
+					}
+					divide_variable = { 
+						which = bue
+						value = 10
+					}
+					divide_variable = { 
+						which = bug
+						value = 10
+					}
+					divide_variable = { 
+						which = buf
+						value = 10
+					}
+					divide_variable = { 
+						which = buh
+						value = 10
+					}
+					divide_variable = { 
+						which = bui
+						value = 10
+					}
+					divide_variable = { 
+						which = buj
+						value = 10
+					}
+					divide_variable = { 
+						which = buk
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S1
+						}
+					}
+					set_province_flag = Prod_S1
+					set_variable = { 
+						which = btd
+						value = 30
+					}
+					set_variable = { 
+						which = bsr
+						value = 0
+					}
+					set_variable = { 
+						which = bte
+						value = 5
+					}
+					set_variable = { 
+						which = dju
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S1DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = cjj
+						value = 1.25
+					}
+					set_variable = { 
+						which = bur
+						value = 1
+					}
+					set_variable = { 
+						which = cbd
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = chr
+						value = 10
+					}
+					divide_variable = { 
+						which = chv
+						value = 10
+					}
+					divide_variable = { 
+						which = chz
+						value = 10
+					}
+					divide_variable = { 
+						which = cid
+						value = 10
+					}
+					divide_variable = { 
+						which = cih
+						value = 10
+					}
+					divide_variable = { 
+						which = cil
+						value = 10
+					}
+					divide_variable = { 
+						which = mtf
+						value = 10
+					}
+					divide_variable = { 
+						which = cip
+						value = 10
+					}
+					divide_variable = { 
+						which = cit
+						value = 10
+					}
+					divide_variable = { 
+						which = cix
+						value = 10
+					}
+					divide_variable = { 
+						which = cjb
+						value = 10
+					}
+					divide_variable = { 
+						which = cjf
+						value = 10
+					}
+					divide_variable = { 
+						which = cjj
+						value = 10
+					}
+					divide_variable = { 
+						which = cjn
+						value = 10
+					}
+					divide_variable = { 
+						which = cht
+						value = 10
+					}
+					divide_variable = { 
+						which = chx
+						value = 10
+					}
+					divide_variable = { 
+						which = cib
+						value = 10
+					}
+					divide_variable = { 
+						which = cif
+						value = 10
+					}
+					divide_variable = { 
+						which = cij
+						value = 10
+					}
+					divide_variable = { 
+						which = cin
+						value = 10
+					}
+					divide_variable = { 
+						which = mth
+						value = 10
+					}
+					divide_variable = { 
+						which = cir
+						value = 10
+					}
+					divide_variable = { 
+						which = civ
+						value = 10
+					}
+					divide_variable = { 
+						which = ciz
+						value = 10
+					}
+					divide_variable = { 
+						which = cjd
+						value = 10
+					}
+					divide_variable = { 
+						which = cjh
+						value = 10
+					}
+					divide_variable = { 
+						which = cjl
+						value = 10
+					}
+					divide_variable = { 
+						which = cjp
+						value = 10
+					}
+					divide_variable = { 
+						which = bul
+						value = 10
+					}
+					divide_variable = { 
+						which = bun
+						value = 10
+					}
+					divide_variable = { 
+						which = bum
+						value = 10
+					}
+					divide_variable = { 
+						which = buo
+						value = 10
+					}
+					divide_variable = { 
+						which = bup
+						value = 10
+					}
+					divide_variable = { 
+						which = buq
+						value = 10
+					}
+					divide_variable = { 
+						which = bur
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S2
+						}
+					}
+					set_province_flag = Prod_S2
+					set_variable = { 
+						which = btg
+						value = 30
+					}
+					set_variable = { 
+						which = bss
+						value = 0
+					}
+					set_variable = { 
+						which = bth
+						value = 5
+					}
+					set_variable = { 
+						which = djv
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S2DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = cln
+						value = 1.25
+					}
+					set_variable = { 
+						which = buy
+						value = 1
+					}
+					set_variable = { 
+						which = cbj
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = cjv
+						value = 10
+					}
+					divide_variable = { 
+						which = cjz
+						value = 10
+					}
+					divide_variable = { 
+						which = ckd
+						value = 10
+					}
+					divide_variable = { 
+						which = ckh
+						value = 10
+					}
+					divide_variable = { 
+						which = ckl
+						value = 10
+					}
+					divide_variable = { 
+						which = ckp
+						value = 10
+					}
+					divide_variable = { 
+						which = mtj
+						value = 10
+					}
+					divide_variable = { 
+						which = ckt
+						value = 10
+					}
+					divide_variable = { 
+						which = ckx
+						value = 10
+					}
+					divide_variable = { 
+						which = clb
+						value = 10
+					}
+					divide_variable = { 
+						which = clf
+						value = 10
+					}
+					divide_variable = { 
+						which = clj
+						value = 10
+					}
+					divide_variable = { 
+						which = cln
+						value = 10
+					}
+					divide_variable = { 
+						which = clr
+						value = 10
+					}
+					divide_variable = { 
+						which = cjx
+						value = 10
+					}
+					divide_variable = { 
+						which = ckb
+						value = 10
+					}
+					divide_variable = { 
+						which = ckf
+						value = 10
+					}
+					divide_variable = { 
+						which = ckj
+						value = 10
+					}
+					divide_variable = { 
+						which = ckn
+						value = 10
+					}
+					divide_variable = { 
+						which = ckr
+						value = 10
+					}
+					divide_variable = { 
+						which = mtl
+						value = 10
+					}
+					divide_variable = { 
+						which = ckv
+						value = 10
+					}
+					divide_variable = { 
+						which = ckz
+						value = 10
+					}
+					divide_variable = { 
+						which = cld
+						value = 10
+					}
+					divide_variable = { 
+						which = clh
+						value = 10
+					}
+					divide_variable = { 
+						which = cll
+						value = 10
+					}
+					divide_variable = { 
+						which = clp
+						value = 10
+					}
+					divide_variable = { 
+						which = clt
+						value = 10
+					}
+					divide_variable = { 
+						which = bus
+						value = 10
+					}
+					divide_variable = { 
+						which = buu
+						value = 10
+					}
+					divide_variable = { 
+						which = but
+						value = 10
+					}
+					divide_variable = { 
+						which = buv
+						value = 10
+					}
+					divide_variable = { 
+						which = buw
+						value = 10
+					}
+					divide_variable = { 
+						which = bux
+						value = 10
+					}
+					divide_variable = { 
+						which = buy
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S3
+						}
+					}
+					set_province_flag = Prod_S3
+					set_variable = { 
+						which = btj
+						value = 30
+					}
+					set_variable = { 
+						which = bst
+						value = 0
+					}
+					set_variable = { 
+						which = btk
+						value = 5
+					}
+					set_variable = { 
+						which = djw
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S3DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = cnr
+						value = 1.25
+					}
+					set_variable = { 
+						which = bvf
+						value = 1
+					}
+					set_variable = { 
+						which = cbp
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = clz
+						value = 10
+					}
+					divide_variable = { 
+						which = cmd
+						value = 10
+					}
+					divide_variable = { 
+						which = cmh
+						value = 10
+					}
+					divide_variable = { 
+						which = cml
+						value = 10
+					}
+					divide_variable = { 
+						which = cmp
+						value = 10
+					}
+					divide_variable = { 
+						which = cmt
+						value = 10
+					}
+					divide_variable = { 
+						which = mtn
+						value = 10
+					}
+					divide_variable = { 
+						which = cmx
+						value = 10
+					}
+					divide_variable = { 
+						which = cnb
+						value = 10
+					}
+					divide_variable = { 
+						which = cnf
+						value = 10
+					}
+					divide_variable = { 
+						which = cnj
+						value = 10
+					}
+					divide_variable = { 
+						which = cnn
+						value = 10
+					}
+					divide_variable = { 
+						which = cnr
+						value = 10
+					}
+					divide_variable = { 
+						which = cnv
+						value = 10
+					}
+					divide_variable = { 
+						which = cmb
+						value = 10
+					}
+					divide_variable = { 
+						which = cmf
+						value = 10
+					}
+					divide_variable = { 
+						which = cmj
+						value = 10
+					}
+					divide_variable = { 
+						which = cmn
+						value = 10
+					}
+					divide_variable = { 
+						which = cmr
+						value = 10
+					}
+					divide_variable = { 
+						which = cmv
+						value = 10
+					}
+					divide_variable = { 
+						which = mtp
+						value = 10
+					}
+					divide_variable = { 
+						which = cmz
+						value = 10
+					}
+					divide_variable = { 
+						which = cnd
+						value = 10
+					}
+					divide_variable = { 
+						which = cnh
+						value = 10
+					}
+					divide_variable = { 
+						which = cnl
+						value = 10
+					}
+					divide_variable = { 
+						which = cnp
+						value = 10
+					}
+					divide_variable = { 
+						which = cnt
+						value = 10
+					}
+					divide_variable = { 
+						which = cnx
+						value = 10
+					}
+					divide_variable = { 
+						which = buz
+						value = 10
+					}
+					divide_variable = { 
+						which = bvb
+						value = 10
+					}
+					divide_variable = { 
+						which = bva
+						value = 10
+					}
+					divide_variable = { 
+						which = bvc
+						value = 10
+					}
+					divide_variable = { 
+						which = bvd
+						value = 10
+					}
+					divide_variable = { 
+						which = bve
+						value = 10
+					}
+					divide_variable = { 
+						which = bvf
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S4
+						}
+					}
+					set_province_flag = Prod_S4
+					set_variable = { 
+						which = btm
+						value = 30
+					}
+					set_variable = { 
+						which = bsu
+						value = 0
+					}
+					set_variable = { 
+						which = btn
+						value = 5
+					}
+					set_variable = { 
+						which = djx
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S4DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = cpv
+						value = 1.25
+					}
+					set_variable = { 
+						which = bvm
+						value = 1
+					}
+					set_variable = { 
+						which = cbv
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = cod
+						value = 10
+					}
+					divide_variable = { 
+						which = coh
+						value = 10
+					}
+					divide_variable = { 
+						which = col
+						value = 10
+					}
+					divide_variable = { 
+						which = cop
+						value = 10
+					}
+					divide_variable = { 
+						which = cot
+						value = 10
+					}
+					divide_variable = { 
+						which = cox
+						value = 10
+					}
+					divide_variable = { 
+						which = mtr
+						value = 10
+					}
+					divide_variable = { 
+						which = cpb
+						value = 10
+					}
+					divide_variable = { 
+						which = cpf
+						value = 10
+					}
+					divide_variable = { 
+						which = cpj
+						value = 10
+					}
+					divide_variable = { 
+						which = cpn
+						value = 10
+					}
+					divide_variable = { 
+						which = cpr
+						value = 10
+					}
+					divide_variable = { 
+						which = cpv
+						value = 10
+					}
+					divide_variable = { 
+						which = cpz
+						value = 10
+					}
+					divide_variable = { 
+						which = cof
+						value = 10
+					}
+					divide_variable = { 
+						which = coj
+						value = 10
+					}
+					divide_variable = { 
+						which = con
+						value = 10
+					}
+					divide_variable = { 
+						which = cor
+						value = 10
+					}
+					divide_variable = { 
+						which = cov
+						value = 10
+					}
+					divide_variable = { 
+						which = coz
+						value = 10
+					}
+					divide_variable = { 
+						which = mtt
+						value = 10
+					}
+					divide_variable = { 
+						which = cpd
+						value = 10
+					}
+					divide_variable = { 
+						which = cph
+						value = 10
+					}
+					divide_variable = { 
+						which = cpl
+						value = 10
+					}
+					divide_variable = { 
+						which = cpp
+						value = 10
+					}
+					divide_variable = { 
+						which = cpt
+						value = 10
+					}
+					divide_variable = { 
+						which = cpx
+						value = 10
+					}
+					divide_variable = { 
+						which = cqb
+						value = 10
+					}
+					divide_variable = { 
+						which = bvg
+						value = 10
+					}
+					divide_variable = { 
+						which = bvi
+						value = 10
+					}
+					divide_variable = { 
+						which = bvh
+						value = 10
+					}
+					divide_variable = { 
+						which = bvj
+						value = 10
+					}
+					divide_variable = { 
+						which = bvk
+						value = 10
+					}
+					divide_variable = { 
+						which = bvl
+						value = 10
+					}
+					divide_variable = { 
+						which = bvm
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S5
+						}
+					}
+					set_province_flag = Prod_S5
+					set_variable = { 
+						which = btp
+						value = 30
+					}
+					set_variable = { 
+						which = bsv
+						value = 0
+					}
+					set_variable = { 
+						which = btq
+						value = 5
+					}
+					set_variable = { 
+						which = djy
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S5DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = crz
+						value = 1.25
+					}
+					set_variable = { 
+						which = bvt
+						value = 1
+					}
+					set_variable = { 
+						which = ccb
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = cqh
+						value = 10
+					}
+					divide_variable = { 
+						which = cql
+						value = 10
+					}
+					divide_variable = { 
+						which = cqp
+						value = 10
+					}
+					divide_variable = { 
+						which = cqt
+						value = 10
+					}
+					divide_variable = { 
+						which = cqx
+						value = 10
+					}
+					divide_variable = { 
+						which = crb
+						value = 10
+					}
+					divide_variable = { 
+						which = mtv
+						value = 10
+					}
+					divide_variable = { 
+						which = crf
+						value = 10
+					}
+					divide_variable = { 
+						which = crj
+						value = 10
+					}
+					divide_variable = { 
+						which = crn
+						value = 10
+					}
+					divide_variable = { 
+						which = crr
+						value = 10
+					}
+					divide_variable = { 
+						which = crv
+						value = 10
+					}
+					divide_variable = { 
+						which = crz
+						value = 10
+					}
+					divide_variable = { 
+						which = csd
+						value = 10
+					}
+					divide_variable = { 
+						which = cqj
+						value = 10
+					}
+					divide_variable = { 
+						which = cqn
+						value = 10
+					}
+					divide_variable = { 
+						which = cqr
+						value = 10
+					}
+					divide_variable = { 
+						which = cqv
+						value = 10
+					}
+					divide_variable = { 
+						which = cqz
+						value = 10
+					}
+					divide_variable = { 
+						which = crd
+						value = 10
+					}
+					divide_variable = { 
+						which = mtx
+						value = 10
+					}
+					divide_variable = { 
+						which = crh
+						value = 10
+					}
+					divide_variable = { 
+						which = crl
+						value = 10
+					}
+					divide_variable = { 
+						which = crp
+						value = 10
+					}
+					divide_variable = { 
+						which = crt
+						value = 10
+					}
+					divide_variable = { 
+						which = crx
+						value = 10
+					}
+					divide_variable = { 
+						which = csb
+						value = 10
+					}
+					divide_variable = { 
+						which = csf
+						value = 10
+					}
+					divide_variable = { 
+						which = bvn
+						value = 10
+					}
+					divide_variable = { 
+						which = bvp
+						value = 10
+					}
+					divide_variable = { 
+						which = bvo
+						value = 10
+					}
+					divide_variable = { 
+						which = bvq
+						value = 10
+					}
+					divide_variable = { 
+						which = bvr
+						value = 10
+					}
+					divide_variable = { 
+						which = bvs
+						value = 10
+					}
+					divide_variable = { 
+						which = bvt
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S6
+						}
+					}
+					set_province_flag = Prod_S6
+					set_variable = { 
+						which = bts
+						value = 30
+					}
+					set_variable = { 
+						which = bsw
+						value = 0
+					}
+					set_variable = { 
+						which = btt
+						value = 5
+					}
+					set_variable = { 
+						which = djz
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S6DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = cud
+						value = 1.25
+					}
+					set_variable = { 
+						which = bwa
+						value = 1
+					}
+					set_variable = { 
+						which = cch
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = csl
+						value = 10
+					}
+					divide_variable = { 
+						which = csp
+						value = 10
+					}
+					divide_variable = { 
+						which = cst
+						value = 10
+					}
+					divide_variable = { 
+						which = csx
+						value = 10
+					}
+					divide_variable = { 
+						which = ctb
+						value = 10
+					}
+					divide_variable = { 
+						which = ctf
+						value = 10
+					}
+					divide_variable = { 
+						which = mtz
+						value = 10
+					}
+					divide_variable = { 
+						which = ctj
+						value = 10
+					}
+					divide_variable = { 
+						which = ctn
+						value = 10
+					}
+					divide_variable = { 
+						which = ctr
+						value = 10
+					}
+					divide_variable = { 
+						which = ctv
+						value = 10
+					}
+					divide_variable = { 
+						which = ctz
+						value = 10
+					}
+					divide_variable = { 
+						which = cud
+						value = 10
+					}
+					divide_variable = { 
+						which = cuh
+						value = 10
+					}
+					divide_variable = { 
+						which = csn
+						value = 10
+					}
+					divide_variable = { 
+						which = csr
+						value = 10
+					}
+					divide_variable = { 
+						which = csv
+						value = 10
+					}
+					divide_variable = { 
+						which = csz
+						value = 10
+					}
+					divide_variable = { 
+						which = ctd
+						value = 10
+					}
+					divide_variable = { 
+						which = cth
+						value = 10
+					}
+					divide_variable = { 
+						which = mub
+						value = 10
+					}
+					divide_variable = { 
+						which = ctl
+						value = 10
+					}
+					divide_variable = { 
+						which = ctp
+						value = 10
+					}
+					divide_variable = { 
+						which = ctt
+						value = 10
+					}
+					divide_variable = { 
+						which = ctx
+						value = 10
+					}
+					divide_variable = { 
+						which = cub
+						value = 10
+					}
+					divide_variable = { 
+						which = cuf
+						value = 10
+					}
+					divide_variable = { 
+						which = cuj
+						value = 10
+					}
+					divide_variable = { 
+						which = bvu
+						value = 10
+					}
+					divide_variable = { 
+						which = bvw
+						value = 10
+					}
+					divide_variable = { 
+						which = bvv
+						value = 10
+					}
+					divide_variable = { 
+						which = bvx
+						value = 10
+					}
+					divide_variable = { 
+						which = bvy
+						value = 10
+					}
+					divide_variable = { 
+						which = bvz
+						value = 10
+					}
+					divide_variable = { 
+						which = bwa
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S7
+						}
+					}
+					set_province_flag = Prod_S7
+					set_variable = { 
+						which = btv
+						value = 30
+					}
+					set_variable = { 
+						which = bsx
+						value = 0
+					}
+					set_variable = { 
+						which = btw
+						value = 5
+					}
+					set_variable = { 
+						which = dka
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S7DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = cwh
+						value = 1.25
+					}
+					set_variable = { 
+						which = bwh
+						value = 1
+					}
+					set_variable = { 
+						which = ccn
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = cup
+						value = 10
+					}
+					divide_variable = { 
+						which = cut
+						value = 10
+					}
+					divide_variable = { 
+						which = cux
+						value = 10
+					}
+					divide_variable = { 
+						which = cvb
+						value = 10
+					}
+					divide_variable = { 
+						which = cvf
+						value = 10
+					}
+					divide_variable = { 
+						which = cvj
+						value = 10
+					}
+					divide_variable = { 
+						which = mud
+						value = 10
+					}
+					divide_variable = { 
+						which = cvn
+						value = 10
+					}
+					divide_variable = { 
+						which = cvr
+						value = 10
+					}
+					divide_variable = { 
+						which = cvv
+						value = 10
+					}
+					divide_variable = { 
+						which = cvz
+						value = 10
+					}
+					divide_variable = { 
+						which = cwd
+						value = 10
+					}
+					divide_variable = { 
+						which = cwh
+						value = 10
+					}
+					divide_variable = { 
+						which = cwl
+						value = 10
+					}
+					divide_variable = { 
+						which = cur
+						value = 10
+					}
+					divide_variable = { 
+						which = cuv
+						value = 10
+					}
+					divide_variable = { 
+						which = cuz
+						value = 10
+					}
+					divide_variable = { 
+						which = cvd
+						value = 10
+					}
+					divide_variable = { 
+						which = cvh
+						value = 10
+					}
+					divide_variable = { 
+						which = cvl
+						value = 10
+					}
+					divide_variable = { 
+						which = muf
+						value = 10
+					}
+					divide_variable = { 
+						which = cvp
+						value = 10
+					}
+					divide_variable = { 
+						which = cvt
+						value = 10
+					}
+					divide_variable = { 
+						which = cvx
+						value = 10
+					}
+					divide_variable = { 
+						which = cwb
+						value = 10
+					}
+					divide_variable = { 
+						which = cwf
+						value = 10
+					}
+					divide_variable = { 
+						which = cwj
+						value = 10
+					}
+					divide_variable = { 
+						which = cwn
+						value = 10
+					}
+					divide_variable = { 
+						which = bwb
+						value = 10
+					}
+					divide_variable = { 
+						which = bwd
+						value = 10
+					}
+					divide_variable = { 
+						which = bwc
+						value = 10
+					}
+					divide_variable = { 
+						which = bwe
+						value = 10
+					}
+					divide_variable = { 
+						which = bwf
+						value = 10
+					}
+					divide_variable = { 
+						which = bwg
+						value = 10
+					}
+					divide_variable = { 
+						which = bwh
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S8
+						}
+					}
+					set_province_flag = Prod_S8
+					set_variable = { 
+						which = bty
+						value = 30
+					}
+					set_variable = { 
+						which = bsy
+						value = 0
+					}
+					set_variable = { 
+						which = btz
+						value = 5
+					}
+					set_variable = { 
+						which = dkb
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S8DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = cyl
+						value = 1.25
+					}
+					set_variable = { 
+						which = bwo
+						value = 1
+					}
+					set_variable = { 
+						which = cct
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = cwt
+						value = 10
+					}
+					divide_variable = { 
+						which = cwx
+						value = 10
+					}
+					divide_variable = { 
+						which = cxb
+						value = 10
+					}
+					divide_variable = { 
+						which = cxf
+						value = 10
+					}
+					divide_variable = { 
+						which = cxj
+						value = 10
+					}
+					divide_variable = { 
+						which = cxn
+						value = 10
+					}
+					divide_variable = { 
+						which = muh
+						value = 10
+					}
+					divide_variable = { 
+						which = cxr
+						value = 10
+					}
+					divide_variable = { 
+						which = cxv
+						value = 10
+					}
+					divide_variable = { 
+						which = cxz
+						value = 10
+					}
+					divide_variable = { 
+						which = cyd
+						value = 10
+					}
+					divide_variable = { 
+						which = cyh
+						value = 10
+					}
+					divide_variable = { 
+						which = cyl
+						value = 10
+					}
+					divide_variable = { 
+						which = cyp
+						value = 10
+					}
+					divide_variable = { 
+						which = cwv
+						value = 10
+					}
+					divide_variable = { 
+						which = cwz
+						value = 10
+					}
+					divide_variable = { 
+						which = cxd
+						value = 10
+					}
+					divide_variable = { 
+						which = cxh
+						value = 10
+					}
+					divide_variable = { 
+						which = cxl
+						value = 10
+					}
+					divide_variable = { 
+						which = cxp
+						value = 10
+					}
+					divide_variable = { 
+						which = muj
+						value = 10
+					}
+					divide_variable = { 
+						which = cxt
+						value = 10
+					}
+					divide_variable = { 
+						which = cxx
+						value = 10
+					}
+					divide_variable = { 
+						which = cyb
+						value = 10
+					}
+					divide_variable = { 
+						which = cyf
+						value = 10
+					}
+					divide_variable = { 
+						which = cyj
+						value = 10
+					}
+					divide_variable = { 
+						which = cyn
+						value = 10
+					}
+					divide_variable = { 
+						which = cyr
+						value = 10
+					}
+					divide_variable = { 
+						which = bwi
+						value = 10
+					}
+					divide_variable = { 
+						which = bwk
+						value = 10
+					}
+					divide_variable = { 
+						which = bwj
+						value = 10
+					}
+					divide_variable = { 
+						which = bwl
+						value = 10
+					}
+					divide_variable = { 
+						which = bwm
+						value = 10
+					}
+					divide_variable = { 
+						which = bwn
+						value = 10
+					}
+					divide_variable = { 
+						which = bwo
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S9
+						}
+					}
+					set_province_flag = Prod_S9
+					set_variable = { 
+						which = bub
+						value = 30
+					}
+					set_variable = { 
+						which = bsz
+						value = 0
+					}
+					set_variable = { 
+						which = buc
+						value = 5
+					}
+					set_variable = { 
+						which = dkc
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S9DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = dap
+						value = 1.25
+					}
+					set_variable = { 
+						which = bwv
+						value = 1
+					}
+					set_variable = { 
+						which = ccz
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = cyx
+						value = 10
+					}
+					divide_variable = { 
+						which = czb
+						value = 10
+					}
+					divide_variable = { 
+						which = czf
+						value = 10
+					}
+					divide_variable = { 
+						which = czj
+						value = 10
+					}
+					divide_variable = { 
+						which = czn
+						value = 10
+					}
+					divide_variable = { 
+						which = czr
+						value = 10
+					}
+					divide_variable = { 
+						which = mul
+						value = 10
+					}
+					divide_variable = { 
+						which = czv
+						value = 10
+					}
+					divide_variable = { 
+						which = czz
+						value = 10
+					}
+					divide_variable = { 
+						which = dad
+						value = 10
+					}
+					divide_variable = { 
+						which = dah
+						value = 10
+					}
+					divide_variable = { 
+						which = dal
+						value = 10
+					}
+					divide_variable = { 
+						which = dap
+						value = 10
+					}
+					divide_variable = { 
+						which = dat
+						value = 10
+					}
+					divide_variable = { 
+						which = cyz
+						value = 10
+					}
+					divide_variable = { 
+						which = czd
+						value = 10
+					}
+					divide_variable = { 
+						which = czh
+						value = 10
+					}
+					divide_variable = { 
+						which = czl
+						value = 10
+					}
+					divide_variable = { 
+						which = czp
+						value = 10
+					}
+					divide_variable = { 
+						which = czt
+						value = 10
+					}
+					divide_variable = { 
+						which = mun
+						value = 10
+					}
+					divide_variable = { 
+						which = czx
+						value = 10
+					}
+					divide_variable = { 
+						which = dab
+						value = 10
+					}
+					divide_variable = { 
+						which = daf
+						value = 10
+					}
+					divide_variable = { 
+						which = daj
+						value = 10
+					}
+					divide_variable = { 
+						which = dan
+						value = 10
+					}
+					divide_variable = { 
+						which = dar
+						value = 10
+					}
+					divide_variable = { 
+						which = dav
+						value = 10
+					}
+					divide_variable = { 
+						which = bwp
+						value = 10
+					}
+					divide_variable = { 
+						which = bwr
+						value = 10
+					}
+					divide_variable = { 
+						which = bwq
+						value = 10
+					}
+					divide_variable = { 
+						which = bws
+						value = 10
+					}
+					divide_variable = { 
+						which = bwt
+						value = 10
+					}
+					divide_variable = { 
+						which = bwu
+						value = 10
+					}
+					divide_variable = { 
+						which = bwv
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S10
+						}
+					}
+					set_province_flag = Prod_S10
+					set_variable = { 
+						which = gzn
+						value = 30
+					}
+					set_variable = { 
+						which = gzl
+						value = 0
+					}
+					set_variable = { 
+						which = gzo
+						value = 5
+					}
+					set_variable = { 
+						which = hgn
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S10DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = hdw
+						value = 1.25
+					}
+					set_variable = { 
+						which = gzz
+						value = 1
+					}
+					set_variable = { 
+						which = hbg
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = hce
+						value = 10
+					}
+					divide_variable = { 
+						which = hci
+						value = 10
+					}
+					divide_variable = { 
+						which = hcm
+						value = 10
+					}
+					divide_variable = { 
+						which = hcq
+						value = 10
+					}
+					divide_variable = { 
+						which = hcu
+						value = 10
+					}
+					divide_variable = { 
+						which = hcy
+						value = 10
+					}
+					divide_variable = { 
+						which = mxd
+						value = 10
+					}
+					divide_variable = { 
+						which = hdc
+						value = 10
+					}
+					divide_variable = { 
+						which = hdg
+						value = 10
+					}
+					divide_variable = { 
+						which = hdk
+						value = 10
+					}
+					divide_variable = { 
+						which = hdo
+						value = 10
+					}
+					divide_variable = { 
+						which = hds
+						value = 10
+					}
+					divide_variable = { 
+						which = hdw
+						value = 10
+					}
+					divide_variable = { 
+						which = hea
+						value = 10
+					}
+					divide_variable = { 
+						which = hcg
+						value = 10
+					}
+					divide_variable = { 
+						which = hck
+						value = 10
+					}
+					divide_variable = { 
+						which = hco
+						value = 10
+					}
+					divide_variable = { 
+						which = hcs
+						value = 10
+					}
+					divide_variable = { 
+						which = hcw
+						value = 10
+					}
+					divide_variable = { 
+						which = hda
+						value = 10
+					}
+					divide_variable = { 
+						which = mxf
+						value = 10
+					}
+					divide_variable = { 
+						which = hde
+						value = 10
+					}
+					divide_variable = { 
+						which = hdi
+						value = 10
+					}
+					divide_variable = { 
+						which = hdm
+						value = 10
+					}
+					divide_variable = { 
+						which = hdq
+						value = 10
+					}
+					divide_variable = { 
+						which = hdu
+						value = 10
+					}
+					divide_variable = { 
+						which = hdy
+						value = 10
+					}
+					divide_variable = { 
+						which = hec
+						value = 10
+					}
+					divide_variable = { 
+						which = gzt
+						value = 10
+					}
+					divide_variable = { 
+						which = gzv
+						value = 10
+					}
+					divide_variable = { 
+						which = gzu
+						value = 10
+					}
+					divide_variable = { 
+						which = gzw
+						value = 10
+					}
+					divide_variable = { 
+						which = gzx
+						value = 10
+					}
+					divide_variable = { 
+						which = gzy
+						value = 10
+					}
+					divide_variable = { 
+						which = gzz
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S11
+						}
+					}
+					set_province_flag = Prod_S11
+					set_variable = { 
+						which = gzq
+						value = 30
+					}
+					set_variable = { 
+						which = gzm
+						value = 0
+					}
+					set_variable = { 
+						which = gzr
+						value = 5
+					}
+					set_variable = { 
+						which = hgo
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S11DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = hga
+						value = 1.25
+					}
+					set_variable = { 
+						which = hag
+						value = 1
+					}
+					set_variable = { 
+						which = hbm
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = hei
+						value = 10
+					}
+					divide_variable = { 
+						which = hem
+						value = 10
+					}
+					divide_variable = { 
+						which = heq
+						value = 10
+					}
+					divide_variable = { 
+						which = heu
+						value = 10
+					}
+					divide_variable = { 
+						which = hey
+						value = 10
+					}
+					divide_variable = { 
+						which = hfc
+						value = 10
+					}
+					divide_variable = { 
+						which = mxh
+						value = 10
+					}
+					divide_variable = { 
+						which = hfg
+						value = 10
+					}
+					divide_variable = { 
+						which = hfk
+						value = 10
+					}
+					divide_variable = { 
+						which = hfo
+						value = 10
+					}
+					divide_variable = { 
+						which = hfs
+						value = 10
+					}
+					divide_variable = { 
+						which = hfw
+						value = 10
+					}
+					divide_variable = { 
+						which = hga
+						value = 10
+					}
+					divide_variable = { 
+						which = hge
+						value = 10
+					}
+					divide_variable = { 
+						which = hek
+						value = 10
+					}
+					divide_variable = { 
+						which = heo
+						value = 10
+					}
+					divide_variable = { 
+						which = hes
+						value = 10
+					}
+					divide_variable = { 
+						which = hew
+						value = 10
+					}
+					divide_variable = { 
+						which = hfa
+						value = 10
+					}
+					divide_variable = { 
+						which = hfe
+						value = 10
+					}
+					divide_variable = { 
+						which = mxj
+						value = 10
+					}
+					divide_variable = { 
+						which = hfi
+						value = 10
+					}
+					divide_variable = { 
+						which = hfm
+						value = 10
+					}
+					divide_variable = { 
+						which = hfq
+						value = 10
+					}
+					divide_variable = { 
+						which = hfu
+						value = 10
+					}
+					divide_variable = { 
+						which = hfy
+						value = 10
+					}
+					divide_variable = { 
+						which = hgc
+						value = 10
+					}
+					divide_variable = { 
+						which = hgg
+						value = 10
+					}
+					divide_variable = { 
+						which = haa
+						value = 10
+					}
+					divide_variable = { 
+						which = hac
+						value = 10
+					}
+					divide_variable = { 
+						which = hab
+						value = 10
+					}
+					divide_variable = { 
+						which = had
+						value = 10
+					}
+					divide_variable = { 
+						which = hae
+						value = 10
+					}
+					divide_variable = { 
+						which = haf
+						value = 10
+					}
+					divide_variable = { 
+						which = hag
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S12
+						}
+					}
+					set_province_flag = Prod_S12
+					set_variable = { 
+						which = jex
+						value = 30
+					}
+					set_variable = { 
+						which = jev
+						value = 0
+					}
+					set_variable = { 
+						which = jey
+						value = 5
+					}
+					set_variable = { 
+						which = jlx
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S12DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = jjg
+						value = 1.25
+					}
+					set_variable = { 
+						which = jfj
+						value = 1
+					}
+					set_variable = { 
+						which = jgq
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = jho
+						value = 10
+					}
+					divide_variable = { 
+						which = jhs
+						value = 10
+					}
+					divide_variable = { 
+						which = jhw
+						value = 10
+					}
+					divide_variable = { 
+						which = jia
+						value = 10
+					}
+					divide_variable = { 
+						which = jie
+						value = 10
+					}
+					divide_variable = { 
+						which = jii
+						value = 10
+					}
+					divide_variable = { 
+						which = lzs
+						value = 10
+					}
+					divide_variable = { 
+						which = jim
+						value = 10
+					}
+					divide_variable = { 
+						which = jiq
+						value = 10
+					}
+					divide_variable = { 
+						which = jiu
+						value = 10
+					}
+					divide_variable = { 
+						which = jiy
+						value = 10
+					}
+					divide_variable = { 
+						which = jjc
+						value = 10
+					}
+					divide_variable = { 
+						which = jjg
+						value = 10
+					}
+					divide_variable = { 
+						which = jjk
+						value = 10
+					}
+					divide_variable = { 
+						which = jhq
+						value = 10
+					}
+					divide_variable = { 
+						which = jhu
+						value = 10
+					}
+					divide_variable = { 
+						which = jhy
+						value = 10
+					}
+					divide_variable = { 
+						which = jic
+						value = 10
+					}
+					divide_variable = { 
+						which = jig
+						value = 10
+					}
+					divide_variable = { 
+						which = jik
+						value = 10
+					}
+					divide_variable = { 
+						which = lzu
+						value = 10
+					}
+					divide_variable = { 
+						which = jio
+						value = 10
+					}
+					divide_variable = { 
+						which = jis
+						value = 10
+					}
+					divide_variable = { 
+						which = jiw
+						value = 10
+					}
+					divide_variable = { 
+						which = jja
+						value = 10
+					}
+					divide_variable = { 
+						which = jje
+						value = 10
+					}
+					divide_variable = { 
+						which = jji
+						value = 10
+					}
+					divide_variable = { 
+						which = jjm
+						value = 10
+					}
+					divide_variable = { 
+						which = jfd
+						value = 10
+					}
+					divide_variable = { 
+						which = jff
+						value = 10
+					}
+					divide_variable = { 
+						which = jfe
+						value = 10
+					}
+					divide_variable = { 
+						which = jfg
+						value = 10
+					}
+					divide_variable = { 
+						which = jfh
+						value = 10
+					}
+					divide_variable = { 
+						which = jfi
+						value = 10
+					}
+					divide_variable = { 
+						which = jfj
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S13
+						}
+					}
+					set_province_flag = Prod_S13
+					set_variable = { 
+						which = jfa
+						value = 30
+					}
+					set_variable = { 
+						which = jew
+						value = 0
+					}
+					set_variable = { 
+						which = jfb
+						value = 5
+					}
+					set_variable = { 
+						which = jly
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S13DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = jlk
+						value = 1.25
+					}
+					set_variable = { 
+						which = jfq
+						value = 1
+					}
+					set_variable = { 
+						which = jgw
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = jjs
+						value = 10
+					}
+					divide_variable = { 
+						which = jjw
+						value = 10
+					}
+					divide_variable = { 
+						which = jka
+						value = 10
+					}
+					divide_variable = { 
+						which = jke
+						value = 10
+					}
+					divide_variable = { 
+						which = jki
+						value = 10
+					}
+					divide_variable = { 
+						which = jkm
+						value = 10
+					}
+					divide_variable = { 
+						which = lzw
+						value = 10
+					}
+					divide_variable = { 
+						which = jkq
+						value = 10
+					}
+					divide_variable = { 
+						which = jku
+						value = 10
+					}
+					divide_variable = { 
+						which = jky
+						value = 10
+					}
+					divide_variable = { 
+						which = jlc
+						value = 10
+					}
+					divide_variable = { 
+						which = jlg
+						value = 10
+					}
+					divide_variable = { 
+						which = jlk
+						value = 10
+					}
+					divide_variable = { 
+						which = jlo
+						value = 10
+					}
+					divide_variable = { 
+						which = jju
+						value = 10
+					}
+					divide_variable = { 
+						which = jjy
+						value = 10
+					}
+					divide_variable = { 
+						which = jkc
+						value = 10
+					}
+					divide_variable = { 
+						which = jkg
+						value = 10
+					}
+					divide_variable = { 
+						which = jkk
+						value = 10
+					}
+					divide_variable = { 
+						which = jko
+						value = 10
+					}
+					divide_variable = { 
+						which = lzy
+						value = 10
+					}
+					divide_variable = { 
+						which = jks
+						value = 10
+					}
+					divide_variable = { 
+						which = jkw
+						value = 10
+					}
+					divide_variable = { 
+						which = jla
+						value = 10
+					}
+					divide_variable = { 
+						which = jle
+						value = 10
+					}
+					divide_variable = { 
+						which = jli
+						value = 10
+					}
+					divide_variable = { 
+						which = jlm
+						value = 10
+					}
+					divide_variable = { 
+						which = jlq
+						value = 10
+					}
+					divide_variable = { 
+						which = jfk
+						value = 10
+					}
+					divide_variable = { 
+						which = jfm
+						value = 10
+					}
+					divide_variable = { 
+						which = jfl
+						value = 10
+					}
+					divide_variable = { 
+						which = jfn
+						value = 10
+					}
+					divide_variable = { 
+						which = jfo
+						value = 10
+					}
+					divide_variable = { 
+						which = jfp
+						value = 10
+					}
+					divide_variable = { 
+						which = jfq
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S14
+						}
+					}
+					set_province_flag = Prod_S14
+					set_variable = { 
+						which = mal
+						value = 30
+					}
+					set_variable = { 
+						which = maj
+						value = 0
+					}
+					set_variable = { 
+						which = mam
+						value = 5
+					}
+					set_variable = { 
+						which = mhl
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S14DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = meu
+						value = 1.25
+					}
+					set_variable = { 
+						which = max
+						value = 1
+					}
+					set_variable = { 
+						which = mce
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = mdc
+						value = 10
+					}
+					divide_variable = { 
+						which = mdg
+						value = 10
+					}
+					divide_variable = { 
+						which = mdk
+						value = 10
+					}
+					divide_variable = { 
+						which = mdo
+						value = 10
+					}
+					divide_variable = { 
+						which = mds
+						value = 10
+					}
+					divide_variable = { 
+						which = mdw
+						value = 10
+					}
+					divide_variable = { 
+						which = myl
+						value = 10
+					}
+					divide_variable = { 
+						which = mea
+						value = 10
+					}
+					divide_variable = { 
+						which = mee
+						value = 10
+					}
+					divide_variable = { 
+						which = mei
+						value = 10
+					}
+					divide_variable = { 
+						which = mem
+						value = 10
+					}
+					divide_variable = { 
+						which = meq
+						value = 10
+					}
+					divide_variable = { 
+						which = meu
+						value = 10
+					}
+					divide_variable = { 
+						which = mey
+						value = 10
+					}
+					divide_variable = { 
+						which = mde
+						value = 10
+					}
+					divide_variable = { 
+						which = mdi
+						value = 10
+					}
+					divide_variable = { 
+						which = mdm
+						value = 10
+					}
+					divide_variable = { 
+						which = mdq
+						value = 10
+					}
+					divide_variable = { 
+						which = mdu
+						value = 10
+					}
+					divide_variable = { 
+						which = mdy
+						value = 10
+					}
+					divide_variable = { 
+						which = myn
+						value = 10
+					}
+					divide_variable = { 
+						which = mec
+						value = 10
+					}
+					divide_variable = { 
+						which = meg
+						value = 10
+					}
+					divide_variable = { 
+						which = mek
+						value = 10
+					}
+					divide_variable = { 
+						which = meo
+						value = 10
+					}
+					divide_variable = { 
+						which = mes
+						value = 10
+					}
+					divide_variable = { 
+						which = mew
+						value = 10
+					}
+					divide_variable = { 
+						which = mfa
+						value = 10
+					}
+					divide_variable = { 
+						which = mar
+						value = 10
+					}
+					divide_variable = { 
+						which = mat
+						value = 10
+					}
+					divide_variable = { 
+						which = mas
+						value = 10
+					}
+					divide_variable = { 
+						which = mau
+						value = 10
+					}
+					divide_variable = { 
+						which = mav
+						value = 10
+					}
+					divide_variable = { 
+						which = maw
+						value = 10
+					}
+					divide_variable = { 
+						which = max
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+				else_if = { 
+					limit = { 
+						NOT = { 
+							has_province_flag = Prod_S15
+						}
+					}
+					set_province_flag = Prod_S15
+					set_variable = { 
+						which = mao
+						value = 30
+					}
+					set_variable = { 
+						which = mak
+						value = 0
+					}
+					set_variable = { 
+						which = map
+						value = 5
+					}
+					set_variable = { 
+						which = mhm
+						value = 0
+					}
+					set_province_flag = Building_AcademicHas
+					set_province_flag = Prod_S15DmndBAcademic
+					set_province_flag = Has_Uni
+					set_variable = { 
+						which = mgy
+						value = 1.25
+					}
+					set_variable = { 
+						which = mbe
+						value = 1
+					}
+					set_variable = { 
+						which = mck
+						value = 1
+					}
+					set_province_flag = Industry_30Present
+					set_province_flag = City_Present
+					divide_variable = { 
+						which = mfg
+						value = 10
+					}
+					divide_variable = { 
+						which = mfk
+						value = 10
+					}
+					divide_variable = { 
+						which = mfo
+						value = 10
+					}
+					divide_variable = { 
+						which = mfs
+						value = 10
+					}
+					divide_variable = { 
+						which = mfw
+						value = 10
+					}
+					divide_variable = { 
+						which = mga
+						value = 10
+					}
+					divide_variable = { 
+						which = myp
+						value = 10
+					}
+					divide_variable = { 
+						which = mge
+						value = 10
+					}
+					divide_variable = { 
+						which = mgi
+						value = 10
+					}
+					divide_variable = { 
+						which = mgm
+						value = 10
+					}
+					divide_variable = { 
+						which = mgq
+						value = 10
+					}
+					divide_variable = { 
+						which = mgu
+						value = 10
+					}
+					divide_variable = { 
+						which = mgy
+						value = 10
+					}
+					divide_variable = { 
+						which = mhc
+						value = 10
+					}
+					divide_variable = { 
+						which = mfi
+						value = 10
+					}
+					divide_variable = { 
+						which = mfm
+						value = 10
+					}
+					divide_variable = { 
+						which = mfq
+						value = 10
+					}
+					divide_variable = { 
+						which = mfu
+						value = 10
+					}
+					divide_variable = { 
+						which = mfy
+						value = 10
+					}
+					divide_variable = { 
+						which = mgc
+						value = 10
+					}
+					divide_variable = { 
+						which = myr
+						value = 10
+					}
+					divide_variable = { 
+						which = mgg
+						value = 10
+					}
+					divide_variable = { 
+						which = mgk
+						value = 10
+					}
+					divide_variable = { 
+						which = mgo
+						value = 10
+					}
+					divide_variable = { 
+						which = mgs
+						value = 10
+					}
+					divide_variable = { 
+						which = mgw
+						value = 10
+					}
+					divide_variable = { 
+						which = mha
+						value = 10
+					}
+					divide_variable = { 
+						which = mhe
+						value = 10
+					}
+					divide_variable = { 
+						which = may
+						value = 10
+					}
+					divide_variable = { 
+						which = mba
+						value = 10
+					}
+					divide_variable = { 
+						which = maz
+						value = 10
+					}
+					divide_variable = { 
+						which = mbb
+						value = 10
+					}
+					divide_variable = { 
+						which = mbc
+						value = 10
+					}
+					divide_variable = { 
+						which = mbd
+						value = 10
+					}
+					divide_variable = { 
+						which = mbe
+						value = 10
+					}
+					owner = { 
+						add_treasury = -5
+					}
+				}
+			}
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = dcf
+								value = 1
+							}
+						}
+					}
+					set_variable = { 
+						which = dcf
+						value = 1
+					}
+				}
+			}
 		}
-		#log = "MEC_HigherEd:[GetYear];[This.aab.GetValue];[This.GetName];[This.Owner.GetName];[This.GetAreaName];opened Higher Learning"
-		owner = { add_treasury = -5 }
-    }
-	option = {
-		name = "higher_education_events.1.b"	
-		AAA={
-			country_event = { id = higher_education_events.0 }
+		owner = { 
+			add_treasury = -5
 		}
-		#log = "MEC_HigherEd:[GetYear];[This.aab.GetValue];[This.GetName];[This.Owner.GetName];[This.GetAreaName];backed out from opening Higher Learning"
-
-		ai_chance = {
+	}
+	option = { 
+		name = "higher_education_events.1.b"
+		AAA = { 
+			country_event = { 
+				id = higher_education_events.0
+			}
+		}
+		ai_chance = { 
 			factor = 100
 		}
 	}

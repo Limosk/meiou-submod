@@ -1,14 +1,12 @@
-pay_reformprogress = {
-	trigger = {
+pay_reformprogress = { 
+	trigger = { 
 		has_dlc = "Dharma"
 		government_reform_progress = 5
 	}
-	
-	effect = {
+	effect = { 
 		change_government_reform_progress = -10
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
 	}
 }

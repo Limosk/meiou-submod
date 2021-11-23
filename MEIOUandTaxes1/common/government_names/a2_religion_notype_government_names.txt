@@ -1,8 +1,5 @@
-# For specific combinations of culture, religion and other such triggers
-# Will pick the first valid one it finds in list
-
-sikh_state_title_1 = {
-	rank = {
+sikh_state_title_1 = { 
+	rank = { 
 		1 = MISL
 		2 = MISL
 		3 = MISL
@@ -10,8 +7,7 @@ sikh_state_title_1 = {
 		5 = MISL
 		6 = MISL
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = JATHEDAR
 		2 = JATHEDAR
 		3 = JATHEDAR
@@ -19,8 +15,7 @@ sikh_state_title_1 = {
 		5 = JATHEDAR
 		6 = JATHEDAR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = JATHEDAR
 		2 = JATHEDAR
 		3 = JATHEDAR
@@ -28,14 +23,18 @@ sikh_state_title_1 = {
 		5 = JATHEDAR
 		6 = JATHEDAR
 	}
-	
-	trigger = {
+	trigger = { 
 		religion = sikhism
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-sikh_state_title_2 = {
-	rank = {
+sikh_state_title_2 = { 
+	rank = { 
 		1 = MISL
 		2 = MISL
 		3 = MISL
@@ -43,8 +42,7 @@ sikh_state_title_2 = {
 		5 = MISL
 		6 = MISL
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = JATHEDAR
 		2 = JATHEDAR
 		3 = JATHEDAR
@@ -52,8 +50,7 @@ sikh_state_title_2 = {
 		5 = JATHEDAR
 		6 = JATHEDAR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = JATHEDAR
 		2 = JATHEDAR
 		3 = JATHEDAR
@@ -61,14 +58,18 @@ sikh_state_title_2 = {
 		5 = JATHEDAR
 		6 = JATHEDAR
 	}
-	
-	trigger = {
+	trigger = { 
 		religion = sikhism
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-sikh_state_title_3 = {
-	rank = {
+sikh_state_title_3 = { 
+	rank = { 
 		1 = MISL
 		2 = MISL
 		3 = MISL
@@ -76,8 +77,7 @@ sikh_state_title_3 = {
 		5 = MISL
 		6 = MISL
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = JATHEDAR
 		2 = JATHEDAR
 		3 = JATHEDAR
@@ -85,8 +85,7 @@ sikh_state_title_3 = {
 		5 = JATHEDAR
 		6 = JATHEDAR
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = JATHEDAR
 		2 = JATHEDAR
 		3 = JATHEDAR
@@ -94,11 +93,13 @@ sikh_state_title_3 = {
 		5 = JATHEDAR
 		6 = JATHEDAR
 	}
-	
-	trigger = {
+	trigger = { 
 		religion = sikhism
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-
-

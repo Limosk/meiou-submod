@@ -1,248 +1,2015 @@
-
-
-country_event = {
-	id = prisonner_of_war.100 #Ruler Dies in Prison
+country_event = { 
+	id = prisonner_of_war.100
 	title = "prisonner_of_war.100.name"
 	desc = "prisonner_of_war.100.desc"
 	picture = CONQUEST_eventPicture
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = ruler_prisonner_of_war
 		has_regency = yes
-		OR = {
-			had_country_flag = { flag = ruler_prisonner_of_war days = 1825 }
+		OR = { 
+			had_country_flag = { 
+				flag = ruler_prisonner_of_war
+				days = 1825
+			}
 			ruler_age = 45
 		}
 		is_at_war = yes
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 10
-		
-		modifier = {
+		modifier = { 
 			ruler_age = 50
 			factor = 1.1
 		}
-		modifier = {
+		modifier = { 
 			ruler_age = 55
 			factor = 1.2
 		}
-		modifier = {
+		modifier = { 
 			ruler_age = 60
 			factor = 1.3
 		}
-		modifier = {
+		modifier = { 
 			ruler_age = 65
 			factor = 1.5
 		}
-		modifier = {
+		modifier = { 
 			ruler_age = 75
 			factor = 2.0
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "prisonner_of_war.100.opta"
 		set_heir = heir_pow
 		clr_country_flag = ruler_prisonner_of_war
 		add_war_exhaustion = 10
+<<<<<<< HEAD
 		set_variable = { which = the_heir_age value = 0 }
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Ruler ([Root.Monarch.GetName]) died in prison:prisonner_of_war.100"
+=======
+		set_variable = { 
+			which = the_heir_age
+			value = 0
+		}
+>>>>>>> submod
 	}
 }
-
-country_event = {
-	id = prisonner_of_war.101 #The Return of the King (Hidden event)
+country_event = { 
+	id = prisonner_of_war.101
 	title = "prisonner_of_war.101.name"
 	desc = "prisonner_of_war.101.desc"
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = ruler_prisonner_of_war
-		OR = {
+		OR = { 
 			is_at_war = no
-			AND = {
+			AND = { 
 				has_country_flag = jean_prisonner_of_war
-				NOT = { war_with = ENG }
+				NOT = { 
+					war_with = ENG
+				}
 			}
 		}
 	}
-	
-	#mean_time_to_happen = { months = 12 }
-	
-	option = {
+	option = { 
 		name = "prisonner_of_war.101.opta"
-		if = {
-			limit = {
-				has_regency = yes has_consort_regency = no
+		if = { 
+			limit = { 
+				has_regency = yes
+				has_consort_regency = no
 			}
-			country_event = { id = prisonner_of_war.102 days = 0 }
+			country_event = { 
+				id = prisonner_of_war.102
+				days = 0
+			}
 		}
-		else = {
-			country_event = { id = prisonner_of_war.103 days = 0 }
+		else = { 
+			country_event = { 
+				id = prisonner_of_war.103
+				days = 0
+			}
 		}
-		set_variable = { which = the_heir_age value = 0 }
+		set_variable = { 
+			which = the_heir_age
+			value = 0
+		}
 	}
 }
-
-country_event = {
-	id = prisonner_of_war.102 #Return of the ruler (option with regency)
+country_event = { 
+	id = prisonner_of_war.102
 	title = "prisonner_of_war.102.name"
 	desc = "prisonner_of_war.102.desc"
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "prisonner_of_war.102.opta"
 		set_country_flag = Ruler_ExileRestore
 		set_ruler = ruler_pow
 		set_heir = heir_pow
 		clr_country_flag = ruler_prisonner_of_war
-		hidden_effect = {
-			Ruler_Calc = yes
+		hidden_effect = { 
+			set_variable = { 
+				which = hut
+				value = 0
+			}
+			set_variable = { 
+				which = hut
+				value = 0
+			}
+			change_variable = { 
+				which = hut
+				which = iao
+			}
+			set_variable = { 
+				which = arf
+				value = 150
+			}
+			subtract_variable = { 
+				which = arf
+				which = hum
+			}
+			divide_variable = { 
+				which = arf
+				value = 1.5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = hut
+						which = arf
+					}
+				}
+				set_variable = { 
+					which = hut
+					which = arf
+				}
+			}
+			if = { 
+				limit = { 
+					has_global_flag = POP_Sim
+				}
+				set_variable = { 
+					which = hul
+					which = hut
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = huv
+					which = hut
+				}
+				subtract_variable = { 
+					which = huv
+					which = hul
+				}
+				multiply_variable = { 
+					which = huv
+					value = 0.1
+				}
+				change_variable = { 
+					which = hul
+					which = huv
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = hul
+							value = 100
+						}
+					}
+					set_variable = { 
+						which = hul
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = hul
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = hul
+						value = 0
+					}
+				}
+			}
+			set_variable = { 
+				which = huu
+				value = 0
+			}
+			set_variable = { 
+				which = huu
+				value = 0
+			}
+			change_variable = { 
+				which = huu
+				which = iap
+			}
+			set_variable = { 
+				which = arf
+				value = 150
+			}
+			subtract_variable = { 
+				which = arf
+				which = hul
+			}
+			divide_variable = { 
+				which = arf
+				value = 1.5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = huu
+						which = arf
+					}
+				}
+				set_variable = { 
+					which = huu
+					which = arf
+				}
+			}
+			if = { 
+				limit = { 
+					has_global_flag = POP_Sim
+				}
+				set_variable = { 
+					which = hum
+					which = huu
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = huw
+					which = huu
+				}
+				subtract_variable = { 
+					which = huw
+					which = hum
+				}
+				multiply_variable = { 
+					which = huw
+					value = 0.1
+				}
+				change_variable = { 
+					which = hum
+					which = huw
+				}
+				if = { 
+					limit = { 
+						check_variable = { 
+							which = hum
+							value = 100
+						}
+					}
+					set_variable = { 
+						which = hum
+						value = 100
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = hum
+								value = 0
+							}
+						}
+					}
+					set_variable = { 
+						which = hum
+						value = 0
+					}
+				}
+			}
+			set_variable = { 
+				which = hui
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = adm
+				6 = { 
+					set_variable = { 
+						which = hui
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = hui
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = hui
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = hui
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = hui
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = hui
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huj
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = dip
+				6 = { 
+					set_variable = { 
+						which = huj
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = huj
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = huj
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = huj
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = huj
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = huj
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huk
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = mil
+				6 = { 
+					set_variable = { 
+						which = huk
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = huk
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = huk
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = huk
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = huk
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = huk
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = huo
+				value = 0
+			}
+			change_variable = { 
+				which = huo
+				which = hui
+			}
+			change_variable = { 
+				which = huo
+				which = huj
+			}
+			change_variable = { 
+				which = huo
+				which = huk
+			}
+			set_variable = { 
+				which = bcn
+				value = 0
+			}
+			set_variable = { 
+				which = hux
+				which = hul
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = hux
+						value = 100
+					}
+				}
+				set_variable = { 
+					which = hux
+					value = 100
+				}
+			}
+			set_variable = { 
+				which = hup
+				which = hui
+			}
+			set_variable = { 
+				which = huq
+				which = huj
+			}
+			set_variable = { 
+				which = hur
+				which = huk
+			}
+			multiply_variable = { 
+				which = hup
+				which = hux
+			}
+			multiply_variable = { 
+				which = huq
+				which = hux
+			}
+			multiply_variable = { 
+				which = hur
+				which = hux
+			}
+			multiply_variable = { 
+				which = hup
+				value = 0.01
+			}
+			multiply_variable = { 
+				which = huq
+				value = 0.01
+			}
+			multiply_variable = { 
+				which = hur
+				value = 0.01
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = hup
+				which = arf
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = huq
+				which = arf
+			}
+			set_variable = { 
+				which = arf
+				value = 4
+			}
+			multiply_variable = { 
+				which = arf
+				which = hum
+			}
+			multiply_variable = { 
+				which = arf
+				value = 0.01
+			}
+			change_variable = { 
+				which = hur
+				which = arf
+			}
+			set_variable = { 
+				which = amn
+				which = hup
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = hup
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = hup
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = hup
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = amn
+				which = huq
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = huq
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = huq
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = huq
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = amn
+				which = hur
+			}
+			multiply_variable = { 
+				which = amn
+				value = 0.001
+			}
+			multiply_variable = { 
+				which = amn
+				value = 1000
+			}
+			set_variable = { 
+				which = amo
+				which = hur
+			}
+			subtract_variable = { 
+				which = amo
+				which = amn
+			}
+			set_variable = { 
+				which = hur
+				which = amn
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = amo
+						value = 0.5
+					}
+				}
+				change_variable = { 
+					which = hur
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = bcn
+				which = hup
+			}
+			change_variable = { 
+				which = bcn
+				which = huq
+			}
+			change_variable = { 
+				which = bcn
+				which = hur
+			}
+			set_variable = { 
+				which = hus
+				which = bcn
+			}
+			divide_variable = { 
+				which = bcn
+				value = 18
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = bcn
+						value = 1
+					}
+				}
+				set_variable = { 
+					which = bcn
+					value = 1
+				}
+			}
+			set_variable = { 
+				which = arf
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = adm
+				6 = { 
+					set_variable = { 
+						which = arf
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arf
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arf
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arf
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arf
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arf
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = dip
+				6 = { 
+					set_variable = { 
+						which = arg
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arg
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arg
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arg
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arg
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arg
+						value = 1
+					}
+				}
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
+			trigger_switch = { 
+				on_trigger = mil
+				6 = { 
+					set_variable = { 
+						which = arh
+						value = 6
+					}
+				}
+				5 = { 
+					set_variable = { 
+						which = arh
+						value = 5
+					}
+				}
+				4 = { 
+					set_variable = { 
+						which = arh
+						value = 4
+					}
+				}
+				3 = { 
+					set_variable = { 
+						which = arh
+						value = 3
+					}
+				}
+				2 = { 
+					set_variable = { 
+						which = arh
+						value = 2
+					}
+				}
+				1 = { 
+					set_variable = { 
+						which = arh
+						value = 1
+					}
+				}
+			}
+			subtract_variable = { 
+				which = arf
+				which = hup
+			}
+			subtract_variable = { 
+				which = arg
+				which = huq
+			}
+			subtract_variable = { 
+				which = arh
+				which = hur
+			}
+			multiply_variable = { 
+				which = arf
+				value = -1
+			}
+			multiply_variable = { 
+				which = arg
+				value = -1
+			}
+			multiply_variable = { 
+				which = arh
+				value = -1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_6
+				}
+				remove_country_modifier = Ruler_ADM_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_5
+				}
+				remove_country_modifier = Ruler_ADM_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_4
+				}
+				remove_country_modifier = Ruler_ADM_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_3
+				}
+				remove_country_modifier = Ruler_ADM_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_2
+				}
+				remove_country_modifier = Ruler_ADM_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_1
+				}
+				remove_country_modifier = Ruler_ADM_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_6_neg
+				}
+				remove_country_modifier = Ruler_ADM_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_5_neg
+				}
+				remove_country_modifier = Ruler_ADM_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_4_neg
+				}
+				remove_country_modifier = Ruler_ADM_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_3_neg
+				}
+				remove_country_modifier = Ruler_ADM_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_2_neg
+				}
+				remove_country_modifier = Ruler_ADM_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arf
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_ADM_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_ADM_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_ADM_1_neg
+				}
+				remove_country_modifier = Ruler_ADM_1_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_6
+				}
+				remove_country_modifier = Ruler_DIP_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_5
+				}
+				remove_country_modifier = Ruler_DIP_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_4
+				}
+				remove_country_modifier = Ruler_DIP_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_3
+				}
+				remove_country_modifier = Ruler_DIP_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_2
+				}
+				remove_country_modifier = Ruler_DIP_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_1
+				}
+				remove_country_modifier = Ruler_DIP_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_6_neg
+				}
+				remove_country_modifier = Ruler_DIP_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_5_neg
+				}
+				remove_country_modifier = Ruler_DIP_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_4_neg
+				}
+				remove_country_modifier = Ruler_DIP_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_3_neg
+				}
+				remove_country_modifier = Ruler_DIP_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_2_neg
+				}
+				remove_country_modifier = Ruler_DIP_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arg
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_DIP_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_DIP_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_DIP_1_neg
+				}
+				remove_country_modifier = Ruler_DIP_1_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_6
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_6
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_6
+				}
+				remove_country_modifier = Ruler_MIL_6
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_5
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_5
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_5
+				}
+				remove_country_modifier = Ruler_MIL_5
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_4
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_4
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_4
+				}
+				remove_country_modifier = Ruler_MIL_4
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_3
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_3
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_3
+				}
+				remove_country_modifier = Ruler_MIL_3
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_2
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_2
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_2
+				}
+				remove_country_modifier = Ruler_MIL_2
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = 1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_1
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_1
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_1
+				}
+				remove_country_modifier = Ruler_MIL_1
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -6
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_6_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_6_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_6_neg
+				}
+				remove_country_modifier = Ruler_MIL_6_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -5
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_5_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_5_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_5_neg
+				}
+				remove_country_modifier = Ruler_MIL_5_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -4
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_4_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_4_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_4_neg
+				}
+				remove_country_modifier = Ruler_MIL_4_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -3
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_3_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_3_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_3_neg
+				}
+				remove_country_modifier = Ruler_MIL_3_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -2
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_2_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_2_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_2_neg
+				}
+				remove_country_modifier = Ruler_MIL_2_neg
+			}
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = arh
+						value = -1
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_modifier = Ruler_MIL_1_neg
+						}
+					}
+					add_country_modifier = { 
+						name = Ruler_MIL_1_neg
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					has_country_modifier = Ruler_MIL_1_neg
+				}
+				remove_country_modifier = Ruler_MIL_1_neg
+			}
+			set_variable = { 
+				which = hun
+				value = 1
+			}
+			subtract_variable = { 
+				which = hun
+				which = bcn
+			}
+			multiply_variable = { 
+				which = hun
+				which = hun
+			}
+			multiply_variable = { 
+				which = hun
+				value = 100
+			}
+			multiply_variable = { 
+				which = bcn
+				value = 100
+			}
+			set_variable = { 
+				which = arf
+				value = 0
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
 		}
 		clr_country_flag = Ruler_ExileRestore
+<<<<<<< HEAD
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Ruler ([Root.Monarch.GetName]) returned from prison:prisonner_of_war.102"
 
 		if = {
 			limit = {
+=======
+		if = { 
+			limit = { 
+>>>>>>> submod
 				tag = FRA
 				has_country_flag = king_jean_released
 			}
-			country_event = { id = on_new_monarch.2 days = 1 }
+			country_event = { 
+				id = on_new_monarch.2
+				days = 1
+			}
 			clr_country_flag = king_jean_released
 		}
 	}
 }
-
-country_event = {
-	id = prisonner_of_war.103 #Return of the ruler (option with no regency), heir asked to step aside
+country_event = { 
+	id = prisonner_of_war.103
 	title = "prisonner_of_war.103.name"
 	desc = "prisonner_of_war.103.desc"
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "prisonner_of_war.103.opta"
 		set_ruler = ruler_pow
 		clr_country_flag = ruler_prisonner_of_war
+<<<<<<< HEAD
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Ruler ([Root.Monarch.GetName]) returned from prison:prisonner_of_war.103"
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) asked to step aside:prisonner_of_war.103"
 
 		if = {
 			limit = { monarchy_or_harem_gov = yes }
+=======
+		if = { 
+			limit = { 
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
+					}
+				}
+			}
+>>>>>>> submod
 			set_heir = heir_pow
-			random_list = { #50/50 chance of heir's decision
-				50 = { country_event = { id = prisonner_of_war.104 days = 0 } }
-				50 = { country_event = { id = prisonner_of_war.105 days = 0 } }
+			random_list = { 
+				50 = { 
+					country_event = { 
+						id = prisonner_of_war.104
+						days = 0
+					}
+				}
+				50 = { 
+					country_event = { 
+						id = prisonner_of_war.105
+						days = 0
+					}
+				}
 			}
 		}
 	}
 }
-
-country_event = {
-	id = prisonner_of_war.104 #Heir has accepted to step aside
+country_event = { 
+	id = prisonner_of_war.104
 	title = "prisonner_of_war.104.name"
 	desc = "prisonner_of_war.104.desc"
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "prisonner_of_war.104.opta"
+<<<<<<< HEAD
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) accepted to step aside:prisonner_of_war.104"
+=======
+>>>>>>> submod
 	}
 }
-
-country_event = {
-	id = prisonner_of_war.105 #Heir has declined to step aside
+country_event = { 
+	id = prisonner_of_war.105
 	title = "prisonner_of_war.105.name"
 	desc = "prisonner_of_war.105.desc"
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "prisonner_of_war.105.opta"
+<<<<<<< HEAD
 		capital_scope = { spawn_rebels = { type = pretender_rebels size = 2 } }
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) refused to step aside:prisonner_of_war.105"
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:Heir ([Root.Heir.GetName]) started rebellion:prisonner_of_war.105"
+=======
+		capital_scope = { 
+			spawn_rebels = { 
+				type = pretender_rebels
+				size = 2
+			}
+		}
+>>>>>>> submod
 	}
 }
-
-country_event = {
-	id = prisonner_of_war.501 #Envoy from the Court of France
+country_event = { 
+	id = prisonner_of_war.501
 	title = "prisonner_of_war.501.name"
 	desc = "prisonner_of_war.501.desc"
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
-		name = "prisonner_of_war.501.opta" # Aquitaine
-		ai_chance = {
+	option = { 
+		name = "prisonner_of_war.501.opta"
+		ai_chance = { 
 			factor = 90
 		}
+<<<<<<< HEAD
 		FRA = { country_event = { id = prisonner_of_war.511 days = 0 } }
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:asked for Aquitaine for releasing Jean II:prisonner_of_war.501"
+=======
+		FRA = { 
+			country_event = { 
+				id = prisonner_of_war.511
+				days = 0
+			}
+		}
+>>>>>>> submod
 	}
-	option = {
-		name = "prisonner_of_war.501.optb" # Aquitaine and Normandie
-		ai_chance = {
+	option = { 
+		name = "prisonner_of_war.501.optb"
+		ai_chance = { 
 			factor = 10
 		}
+<<<<<<< HEAD
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:asked for Aquitaine and Normandy for releasing Jean II:prisonner_of_war.501"
 		FRA = { country_event = { id = prisonner_of_war.521 days = 0 } }
+=======
+		FRA = { 
+			country_event = { 
+				id = prisonner_of_war.521
+				days = 0
+			}
+		}
+>>>>>>> submod
 	}
-	option = {
-		name = "prisonner_of_war.501.optc" # No negociation
-		ai_chance = {
+	option = { 
+		name = "prisonner_of_war.501.optc"
+		ai_chance = { 
 			factor = 0
 		}
+<<<<<<< HEAD
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:refused to negotiate releasing Jean II:prisonner_of_war.501"
 		FRA = { country_event = { id = prisonner_of_war.531 days = 0 } }
+=======
+		FRA = { 
+			country_event = { 
+				id = prisonner_of_war.531
+				days = 0
+			}
+		}
+>>>>>>> submod
 	}
 }
-
-country_event = {
+country_event = { 
 	id = prisonner_of_war.511
 	title = "prisonner_of_war.511.name"
 	desc = "prisonner_of_war.511.desc"
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
-	
-	immediate = {
+	immediate = { 
 		clr_country_flag = negociating_release_jean
 	}
-	
-	option = {
+	option = { 
 		name = "prisonner_of_war.511.opta"
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
+<<<<<<< HEAD
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:ceded Aquitaine for releasing Jean II:prisonner_of_war.511"
 		aquitaine_group = {
 			limit = {
+=======
+		aquitaine_group = { 
+			limit = { 
+>>>>>>> submod
 				is_city = yes
-				OR = {
+				OR = { 
 					owned_by = ROOT
-					owner = { is_vassal_of_trigger = { scp_root = yes } }
-					owner = { junior_union_with = ROOT }
+					owner = { 
+						AND = { 
+							OR = { 
+								is_subject_of_type = vassal
+								is_subject_of_type = custom_vassal
+							}
+							if = { 
+								limit = { 
+									always = yes
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+					owner = { 
+						junior_union_with = ROOT
+					}
 				}
 			}
 			cede_province = GUY
 		}
-		
 		set_country_flag = king_jean_released
 		set_ruler = ruler_pow
 		set_heir = heir_pow
-		define_consort = {
+		define_consort = { 
 			country_of_origin = AUV
 			name = "Jeanne"
 			dynasty = "d'Auvergne"
@@ -253,65 +2020,84 @@ country_event = {
 			MIL = 2
 		}
 		clr_country_flag = ruler_prisonner_of_war
-		##country_event = { id = on_new_monarch.2 days = 1 }
-		# Recovery of Morale and the State due to the Return of the King.
-		# add_absolutism = 5
 		add_war_exhaustion = -4
-		ENG = { white_peace = BLO }
-		NAV = { white_peace = BLO }
+		ENG = { 
+			white_peace = BLO
+		}
+		NAV = { 
+			white_peace = BLO
+		}
 		white_peace = MNF
 	}
-	option = {
-		name = "prisonner_of_war.501.optc" # No negociation
-		ai_chance = {
+	option = { 
+		name = "prisonner_of_war.501.optc"
+		ai_chance = { 
 			factor = 10
 		}
+<<<<<<< HEAD
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:refused to cede Aquitaine for releasing Jean II:prisonner_of_war.511"
+=======
+>>>>>>> submod
 	}
 }
-
-country_event = {
+country_event = { 
 	id = prisonner_of_war.521
 	title = "prisonner_of_war.521.name"
 	desc = "prisonner_of_war.521.desc"
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
-	
-	immediate = {
+	immediate = { 
 		clr_country_flag = negociating_release_jean
 		log = "FE-RulerPOW:[GetYear]:[FRA.GetName]:before the event it was ruled by [FRA.Monarch.GetName] [FRA.Monarch.Dynasty.GetName]:prisonner_of_war.521"
 	}
-	
-	option = {
+	option = { 
 		name = "prisonner_of_war.521.opta"
-		ai_chance = {
+		ai_chance = { 
 			factor = 90
 		}
+<<<<<<< HEAD
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:ceded Aquitaine and Normandy for releasing Jean II:prisonner_of_war.521"
 		aquitaine_group = {
 			limit = {
+=======
+		aquitaine_group = { 
+			limit = { 
+>>>>>>> submod
 				is_city = yes
-				OR = {
+				OR = { 
 					owned_by = ROOT
-					owner = { is_vassal_of_trigger = { scp_root = yes } }
-					owner = { junior_union_with = ROOT }
+					owner = { 
+						AND = { 
+							OR = { 
+								is_subject_of_type = vassal
+								is_subject_of_type = custom_vassal
+							}
+							if = { 
+								limit = { 
+									always = yes
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+					owner = { 
+						junior_union_with = ROOT
+					}
 				}
 			}
 			cede_province = GUY
 			add_core = ROOT
 		}
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				area = normandy_area
 			}
 			cede_province = ENG
 		}
-
 		set_country_flag = king_jean_released
 		set_ruler = ruler_pow
 		set_heir = heir_pow
-		define_consort = {
+		define_consort = { 
 			country_of_origin = AUV
 			name = "Jeanne"
 			dynasty = "d'Auvergne"
@@ -322,38 +2108,38 @@ country_event = {
 			MIL = 2
 		}
 		clr_country_flag = ruler_prisonner_of_war
-		##country_event = { id = on_new_monarch.2 days = 1 }
-		# Recovery of Morale and the State due to the Return of the King.
-		# add_absolutism = 2.5
 		add_war_exhaustion = -2
-		ENG = { white_peace = BLO }
-		NAV = { white_peace = BLO }
+		ENG = { 
+			white_peace = BLO
+		}
+		NAV = { 
+			white_peace = BLO
+		}
 		white_peace = MNF
 		log = "FE-RulerPOW:[GetYear]:[FRA.GetName]:after the event it was ruled by [FRA.Monarch.GetName] [FRA.Monarch.Dynasty.GetName]:prisonner_of_war.521"
 	}
-	option = {
-		name = "prisonner_of_war.501.optc" # No negociation
-		ai_chance = {
+	option = { 
+		name = "prisonner_of_war.501.optc"
+		ai_chance = { 
 			factor = 10
 		}
+<<<<<<< HEAD
 		log = "FE-RulerPOW:[GetYear]:[Root.GetName]:refused to cede Aquitaine and Normandy for releasing Jean II:prisonner_of_war.521"
 		log = "FE-RulerPOW:[GetYear]:[FRA.GetName]:after the event it was ruled by [FRA.Monarch.GetName] [FRA.Monarch.Dynasty.GetName]:prisonner_of_war.521"
+=======
+>>>>>>> submod
 	}
 }
-
-country_event = {
+country_event = { 
 	id = prisonner_of_war.531
 	title = "prisonner_of_war.531.name"
 	desc = "prisonner_of_war.531.desc"
 	picture = CONQUEST_eventPicture
-	
 	is_triggered_only = yes
-	
-	immediate = {
+	immediate = { 
 		clr_country_flag = negociating_release_jean
 	}
-	
-	option = {
-		name = "prisonner_of_war.531.opta" # No negociation
+	option = { 
+		name = "prisonner_of_war.531.opta"
 	}
 }

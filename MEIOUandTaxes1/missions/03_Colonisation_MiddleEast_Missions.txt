@@ -1,12 +1,13 @@
-
-men_colonial_ambitions = {
+men_colonial_ambitions = { 
 	slot = 10
 	generic = no
 	ai = yes
-	potential = {
-		NOT = { religion_group = christian }
-		capital_scope = {
-			OR = {
+	potential = { 
+		NOT = { 
+			religion_group = christian
+		}
+		capital_scope = { 
+			OR = { 
 				superregion = anatolia_superregion
 				superregion = near_east_superregion
 				superregion = balkan_superregion
@@ -14,207 +15,255 @@ men_colonial_ambitions = {
 			}
 		}
 	}
-	
-	men_colonial_ideas = {
+	men_colonial_ideas = { 
 		icon = mission_establish_high_seas_navy
-		required_missions = {  }
+		required_missions = { }
 		position = 1
-		trigger = {
-			colonial_ideas_trigger = yes
+		trigger = { 
+			AND = { 
+				has_idea = exploration_ideas_2
+				OR = { 
+					custom_trigger_tooltip = { 
+						tooltip = naval_ideas_3_tooltip
+						AND = { 
+							has_idea_group = naval_ideas
+							OR = { 
+								has_idea = naval_ideas_3
+								ai = yes
+							}
+						}
+					}
+					AND = { 
+						dip_tech = 23
+						naval_forcelimit = 50
+					}
+				}
+				has_institution = Banking
+				OR = { 
+					dip_tech = 11
+					AND = { 
+						is_year = 1420
+						dip_tech = 10
+					}
+				}
+				NOT = { 
+					has_idea_group = expansion_ideas
+				}
+				num_of_ports = 3
+				custom_trigger_tooltip = { 
+					tooltip = max_sailors_tooltip
+					max_sailors = 1500
+				}
+			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 15
 		}
 	}
 }
-
-men_around_africa = {
+men_around_africa = { 
 	slot = 9
 	generic = no
 	ai = yes
-	potential = {
-		capital_scope = {
-			OR = {
+	potential = { 
+		capital_scope = { 
+			OR = { 
 				superregion = anatolia_superregion
 				superregion = near_east_superregion
 				superregion = balkan_superregion
 				superregion = persia_superregion
 			}
 		}
-		NOT = { religion_group = christian }
+		NOT = { 
+			religion_group = christian
+		}
 	}
-	
-	men_discovers_horn_africa = {
+	men_discovers_horn_africa = { 
 		icon = mission_establish_high_seas_navy
-		required_missions = { men_colonial_ideas }
+		required_missions = { men_colonial_ideas}
 		position = 2
-		trigger = {
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = miss_discover_horn_africa
-				OR = {
-					mogadishu_area = { has_discovered = ROOT }
-					majarteen_area = { has_discovered = ROOT }
-					marehan_area = { has_discovered = ROOT }
-					somaliland_area = { has_discovered = ROOT }
+				OR = { 
+					mogadishu_area = { 
+						has_discovered = ROOT
+					}
+					majarteen_area = { 
+						has_discovered = ROOT
+					}
+					marehan_area = { 
+						has_discovered = ROOT
+					}
+					somaliland_area = { 
+						has_discovered = ROOT
+					}
 				}
 			}
 		}
-		effect = {
-			1187 = {
-				add_trade_modifier = {
+		effect = { 
+			1187 = { 
+				add_trade_modifier = { 
 					who = root
-					duration = 9125 #25 years
+					duration = 9125
 					power = 20
 					key = horn_africa_ambition
 				}
 			}
 		}
 	}
-
-	men_conquers_zanzibar = {
+	men_conquers_zanzibar = { 
 		icon = mission_cannons_firing
-		required_missions = { men_discovers_horn_africa }
+		required_missions = { men_discovers_horn_africa}
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 1187
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 			has_discovered = ROOT
 		}
-		trigger = {
-			1187 = {
+		trigger = { 
+			1187 = { 
 				owned_by = ROOT
 			}
 		}
-		effect = {
-			1187 = {
-				add_province_modifier = {
+		effect = { 
+			1187 = { 
+				add_province_modifier = { 
 					name = "colonial_makeshift_defenses"
 					duration = -1
 				}
 			}
 		}
 	}
-
-	men_discovers_east_africa = {
+	men_discovers_east_africa = { 
 		icon = mission_have_two_subjects
-		required_missions = { men_conquers_zanzibar }
+		required_missions = { men_conquers_zanzibar}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = mozambique_area
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 			has_discovered = ROOT
 		}
-		trigger = {
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = miss_discover_east_africa
-				east_africa_region = {
+				east_africa_region = { 
 					has_discovered = ROOT
 				}
 			}
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = { 
 				value = 2
 				area = mozambique_area
 				is_city = yes
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
-			1187 = {
+			1187 = { 
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	
-	men_establish_south_africa = {
+	men_establish_south_africa = { 
 		icon = mission_galleys_in_port
-		required_missions = { men_discovers_east_africa }
+		required_missions = { men_discovers_east_africa}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			trade_company_region = trade_company_south_africa
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 			has_discovered = ROOT
 		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+		trigger = { 
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = { 
 				value = 1
 				trade_company_region = trade_company_south_africa
 				is_city = yes
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "colonial_ivory_gains"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	men_colonise_central_africa = {
+	men_colonise_central_africa = { 
 		icon = mission_colonial
-		required_missions = { men_establish_south_african_trade_company }
+		required_missions = { men_establish_south_african_trade_company}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = coastal_kongo_region
-			NOT = { province_id = 1095 }
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				province_id = 1095
+			}
+			NOT = { 
+				owned_by = ROOT
+			}
 			has_discovered = ROOT
 		}
-		trigger = {
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = miss_discover_kongo
-				coastal_kongo_region = {
+				coastal_kongo_region = { 
 					has_discovered = ROOT
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = miss_colonize_kongo
-				coastal_kongo_region = {
-					NOT = { province_id = 1095 }
+				coastal_kongo_region = { 
+					NOT = { 
+						province_id = 1095
+					}
 					owned_by = ROOT
 					is_city = yes
 				}
 			}
 		}
-		effect = {
-			hidden_effect = {
-				2974 = {
+		effect = { 
+			hidden_effect = { 
+				2974 = { 
 					discover_country = ROOT
 				}
 			}
-			2974 = {
-				add_trade_modifier = {
+			2974 = { 
+				add_trade_modifier = { 
 					who = root
-					duration = 9125 #25 years
+					duration = 9125
 					power = 20
 					key = ivory_coast_ambition
 				}
 			}
 		}
 	}
-	
-	men_colonise_west_africa = {
+	men_colonise_west_africa = { 
 		icon = mission_trade_company_region_abroad
-		required_missions = { men_colonise_central_africa }
+		required_missions = { men_colonise_central_africa}
 		position = 7
-		
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				region = senegambia_region
 				region = guinea_region
 				region = lower_volta_region
 				region = upper_niger_region
 				region = lower_niger_region
 			}
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 			has_discovered = ROOT
 		}
-		
-		trigger = {
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = miss_colonize_west_africa
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = { 
 					value = 2
-					OR = {
+					OR = { 
 						region = senegambia_region
 						region = guinea_region
 						region = lower_volta_region
@@ -225,153 +274,132 @@ men_around_africa = {
 				}
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "the_unknown_frontier"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-#	men_discover_african_coast = {
-#		icon = mission_establish_high_seas_navy
-#		required_missions = { men_colonise_west_africa }
-#		position = 8
-#		
-#		trigger = {
-#			custom_trigger_tooltip = {
-#				tooltip = miss_discover_west_africa
-#				OR = {
-#					guinea_area = {
-#						has_discovered = ROOT
-#					}
-#					ivory_coast_area = {
-#						has_discovered = ROOT
-#					}
-#				}
-#			}
-#			num_of_colonists = 1
-#		}
-#		
-#		effect = {
-#			add_prestige = 10
-#			add_dip_power = 75
-#		}
-#	}
 }
-
-men_towards_asia = {
+men_towards_asia = { 
 	slot = 10
 	generic = no
 	ai = yes
-	potential = {
-		capital_scope = {
-			OR = {
+	potential = { 
+		capital_scope = { 
+			OR = { 
 				superregion = anatolia_superregion
 				superregion = near_east_superregion
 				superregion = balkan_superregion
 				superregion = persia_superregion
 			}
 		}
-		NOT = { religion_group = christian }
+		NOT = { 
+			religion_group = christian
+		}
 	}
-	
-	men_discovers_india = {
+	men_discovers_india = { 
 		icon = mission_indian_soldier_elephant
-		required_missions = { men_colonial_ideas }
+		required_missions = { men_colonial_ideas}
 		position = 2
-		trigger = {
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = portugal_discovers_india.tooltip
-				south_india_superregion = {
+				south_india_superregion = { 
 					has_discovered = ROOT
 				}
 			}
 		}
-		effect = {
-			534 = {
-				add_trade_modifier = {
+		effect = { 
+			534 = { 
+				add_trade_modifier = { 
 					who = root
-					duration = 9125 #25 years
+					duration = 9125
 					power = 20
 					key = india_ambition
 				}
 			}
 		}
 	}
-	
-	men_discovers_indonesia = {
+	men_discovers_indonesia = { 
 		icon = mission_invade_island
-		required_missions = { men_discovers_india }
+		required_missions = { men_discovers_india}
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = malaya_region
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 			has_discovered = ROOT
 		}
-		trigger = {
-			custom_trigger_tooltip = {
-			tooltip = miss_discover_malaya
-				malaya_region = {
+		trigger = { 
+			custom_trigger_tooltip = { 
+				tooltip = miss_discover_malaya
+				malaya_region = { 
 					has_discovered = ROOT
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = miss_colonize_malaya
-				malaya_region = {
+				malaya_region = { 
 					owned_by = ROOT
 					is_city = yes
 				}
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "colonial_spice_trade"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	men_discovers_the_far_east = {
+	men_discovers_the_far_east = { 
 		icon = mission_japanese_fort
-		required_missions = { men_discovers_indonesia }
+		required_missions = { men_discovers_indonesia}
 		position = 4
-		trigger = {
-			custom_trigger_tooltip = {
+		trigger = { 
+			custom_trigger_tooltip = { 
 				tooltip = miss_discover_south_china_sea_japan
-				japan_superregion = { has_discovered = ROOT }
-				east_china_superregion = { has_discovered = ROOT }
-				southwest_china_superregion = { has_discovered = ROOT }
+				japan_superregion = { 
+					has_discovered = ROOT
+				}
+				east_china_superregion = { 
+					has_discovered = ROOT
+				}
+				southwest_china_superregion = { 
+					has_discovered = ROOT
+				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 30
-			capital_scope = {
-				add_province_modifier = {
+			capital_scope = { 
+				add_province_modifier = { 
 					name = "colonial_erudite_explorers"
 					duration = -1
 				}
 			}
 		}
 	}
-
-	men_indonesia_dominance = {
+	men_indonesia_dominance = { 
 		icon = mission_war_chest
-		required_missions = { men_discovers_the_far_east }
+		required_missions = { men_discovers_the_far_east}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 596
 			has_discovered = ROOT
 		}
-		trigger = {
-			596 = {		# Straits of Johor
+		trigger = { 
+			596 = { 
 				is_strongest_trade_power = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "colonial_johor_dominance"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}

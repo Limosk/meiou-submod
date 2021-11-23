@@ -1,446 +1,526 @@
-
-tli_consolidation_missions = {
+tli_consolidation_missions = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_tli
 	}
 	has_country_shield = yes
-	
-	tli_win_independence = {
+	tli_win_independence = { 
 		icon = mission_monarch_in_throne_room
-		required_missions = {  }
-		trigger = {
+		required_missions = { }
+		trigger = { 
 			is_subject = no
 			is_at_war = no
 		}
-		effect = {
-			highlands_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { owned_by = ROOT }
+		effect = { 
+			highlands_area = { 
+				limit = { 
+					NOT = { 
+						is_core = ROOT
+					}
+					NOT = { 
+						owned_by = ROOT
+					}
 				}
 				add_core = ROOT
 			}
 		}
 	}
-	
-	tli_conquer_scotland = {
+	tli_conquer_scotland = { 
 		icon = mission_unite_home_region
-		required_missions = { tli_win_independence }
-		provinces_to_highlight = {
+		required_missions = { tli_win_independence}
+		provinces_to_highlight = { 
 			region = scotland_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			scotland_region = {
+		trigger = { 
+			scotland_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			country_event = { id = mission_event.010 }
-			hidden_effect = { complete_mission = tli_conquer_scotland }
+		effect = { 
+			country_event = { 
+				id = mission_event.010
+			}
+			hidden_effect = { 
+				complete_mission = tli_conquer_scotland
+			}
 		}
 	}
-	
-	tli_auld_alliance = {
+	tli_auld_alliance = { 
 		icon = mission_alliances
-		required_missions = { tli_conquer_scotland }
-		trigger = {
-			if = {
-				limit = { exists = FRA }
+		required_missions = { tli_conquer_scotland}
+		trigger = { 
+			if = { 
+				limit = { 
+					exists = FRA
+				}
 				alliance_with = FRA
 			}
-			else_if = {
-				limit = { exists = SPA }
+			else_if = { 
+				limit = { 
+					exists = SPA
+				}
 				alliance_with = SPA
 			}
-			else = {
+			else = { 
 				alliance_with = CAS
 			}
 		}
-		effect = {
-			isles_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			isles_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_core = ROOT
 			}
-			ulaid_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+			ulaid_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_claim = ROOT
 			}
 		}
 	}
-	
-	tli_fortify_scotland = {
+	tli_fortify_scotland = { 
 		icon = mission_european_fort
-		required_missions = { tli_auld_alliance }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { tli_auld_alliance}
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 1416
 				province_id = 3337
 			}
 		}
-		trigger = {
-			OR = {
+		trigger = { 
+			OR = { 
 				1416 = { 
-				HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th } 
-				owned_by = ROOT
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
+					owned_by = ROOT
 				}
 				3337 = { 
-				HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th } 
-				owned_by = ROOT
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
+					owned_by = ROOT
 				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 50
 		}
 	}
-	
-	tli_conquer_northumbria = {
+	tli_conquer_northumbria = { 
 		icon = mission_unite_home_region
-		required_missions = { tli_fortify_scotland }
-		provinces_to_highlight = {
+		required_missions = { tli_fortify_scotland}
+		provinces_to_highlight = { 
 			area = northumbria_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			northumbria_area = {
+		trigger = { 
+			northumbria_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 15
 		}
 	}
-	
-	tli_conquer_yorkshire = {
+	tli_conquer_yorkshire = { 
 		icon = mission_unite_home_region
-		required_missions = { tli_conquer_northumbria }
-		provinces_to_highlight = {
+		required_missions = { tli_conquer_northumbria}
+		provinces_to_highlight = { 
 			area = east_midlands_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			east_midlands_area = {
+		trigger = { 
+			east_midlands_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 15
 		}
 	}
-	
-	tli_conquer_east_anglia = {
+	tli_conquer_east_anglia = { 
 		icon = mission_unite_home_region
-		required_missions = { tli_conquer_yorkshire }
-		provinces_to_highlight = {
+		required_missions = { tli_conquer_yorkshire}
+		provinces_to_highlight = { 
 			area = east_anglia_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			east_anglia_area = {
+		trigger = { 
+			east_anglia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 25
 		}
 	}
 }
-
-tli_iceland_missions = {
+tli_iceland_missions = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_tli
 	}
 	has_country_shield = yes
-	
-	tli_conquer_iceland = {
+	tli_conquer_iceland = { 
 		icon = mission_alliances
-		required_missions = { tli_fortify_scotland }
+		required_missions = { tli_fortify_scotland}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = subarctic_islands_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			subarctic_islands_area = {
+		trigger = { 
+			subarctic_islands_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_navy_tradition = 15
 		}
 	}
 }
-
-tli_england_missions = {
+tli_england_missions = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_tli
 	}
 	has_country_shield = yes
-	
-	tli_conquer_lancaster = {
+	tli_conquer_lancaster = { 
 		icon = mission_alliances
-		required_missions = { tli_conquer_northumbria }
+		required_missions = { tli_conquer_northumbria}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = west_midlands_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			west_midlands_area = {
+		trigger = { 
+			west_midlands_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			wales_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			wales_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_core = ROOT
 			}
 		}
 	}
-	
-	tli_conquer_wales = {
+	tli_conquer_wales = { 
 		icon = mission_unite_home_region
-		required_missions = { tli_conquer_lancaster }
-		provinces_to_highlight = {
+		required_missions = { tli_conquer_lancaster}
+		provinces_to_highlight = { 
 			area = wales_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			wales_area = {
+		trigger = { 
+			wales_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
 }
-
-tli_britain_missions = {
+tli_britain_missions = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_tli
 	}
 	has_country_shield = yes
-
-	tli_conquer_england = {
+	tli_conquer_england = { 
 		icon = mission_unite_home_region
-		required_missions = { tli_conquer_east_anglia tli_conquer_wales }
+		required_missions = { tli_conquer_east_anglia tli_conquer_wales}
 		position = 8
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = south_england_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			south_england_region = {
+		trigger = { 
+			south_england_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			country_event = { id = mission_event.011 }
-			hidden_effect = { complete_mission = tli_conquer_england }
+		effect = { 
+			country_event = { 
+				id = mission_event.011
+			}
+			hidden_effect = { 
+				complete_mission = tli_conquer_england
+			}
 		}
 	}
 }
-
-tli_ireland_missions = {
+tli_ireland_missions = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_tli
 	}
 	has_country_shield = yes
-	
-	tli_conquer_ulster = {
+	tli_conquer_ulster = { 
 		icon = mission_unite_home_region
-		required_missions = { tli_auld_alliance }
+		required_missions = { tli_auld_alliance}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = ulaid_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			ulaid_area = {
+		trigger = { 
+			ulaid_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			connacht_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			connacht_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	
-	tli_conquer_connacht = {
+	tli_conquer_connacht = { 
 		icon = mission_unite_home_region
-		required_missions = { tli_conquer_ulster }
-		provinces_to_highlight = {
+		required_missions = { tli_conquer_ulster}
+		provinces_to_highlight = { 
 			area = connacht_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			connacht_area = {
+		trigger = { 
+			connacht_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			munster_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			munster_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
-	
-	tli_conquer_munster = {
+	tli_conquer_munster = { 
 		icon = mission_unite_home_region
-		required_missions = { tli_conquer_connacht }
-		provinces_to_highlight = {
+		required_missions = { tli_conquer_connacht}
+		provinces_to_highlight = { 
 			area = munster_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			munster_area = {
+		trigger = { 
+			munster_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			leinster_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			leinster_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_core = ROOT
 			}
 		}
 	}
-		
-	tli_conquer_leinster = {
+	tli_conquer_leinster = { 
 		icon = mission_unite_home_region
-		required_missions = { tli_conquer_munster }
-		provinces_to_highlight = {
+		required_missions = { tli_conquer_munster}
+		provinces_to_highlight = { 
 			area = leinster_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			leinster_area = {
+		trigger = { 
+			leinster_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			brittany_area = {
-				limit = {
-					NOT = { owned_by = ROOT	}
-					NOT = { is_core = ROOT	}
+		effect = { 
+			brittany_area = { 
+				limit = { 
+					NOT = { 
+						owned_by = ROOT
+					}
+					NOT = { 
+						is_core = ROOT
+					}
 				}
 				add_core = ROOT
 			}
 		}
 	}
-	
-	tli_conquer_bretagne = {
+	tli_conquer_bretagne = { 
 		icon = mission_unite_home_region
 		position = 5
-		required_missions = { tli_conquer_leinster }
-		provinces_to_highlight = {
+		required_missions = { tli_conquer_leinster}
+		provinces_to_highlight = { 
 			area = brittany_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			brittany_area = {
+		trigger = { 
+			brittany_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_navy_tradition = 10
 		}
 	}
-	
-	tli_fortify_bretagne = {
+	tli_fortify_bretagne = { 
 		icon = mission_european_fort
-		required_missions = { tli_conquer_bretagne }
-		provinces_to_highlight = {
-			OR = {
+		required_missions = { tli_conquer_bretagne}
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 169
 				province_id = 1388
 			}
 		}
-		trigger = {
-			OR = {
-				169 = { HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th } }
-				1388 = { HasBuildingOrBetter = { b1=fort_15th b2=fort_16th b3=fort_17th b4=fort_18th } }
+		trigger = { 
+			OR = { 
+				169 = { 
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
+				}
+				1388 = { 
+					OR = { 
+						has_building = fort_15th
+						custom_trigger_tooltip = { 
+							tooltip = hasbuildingorbetter_tooltip
+							OR = { 
+								has_building = fort_16th
+								has_building = fort_17th
+								has_building = fort_18th
+							}
+						}
+					}
+				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 50
 		}
 	}

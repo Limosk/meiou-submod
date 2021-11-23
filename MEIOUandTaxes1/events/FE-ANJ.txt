@@ -1,33 +1,58 @@
 namespace = flavor_anj
+<<<<<<< HEAD
 
 country_event = {
 	id = flavor_anj.1 #Anjou Claims on Naples
+=======
+country_event = { 
+	id = flavor_anj.1
+>>>>>>> submod
 	title = "flavor_anj.1.name"
 	desc = "flavor_anj.1.desc"
 	picture = COURT_eventPicture
 	fire_only_once = yes
+<<<<<<< HEAD
 	is_triggered_only = yes #on_monarch_death
 	trigger = {
 		OR = {
+=======
+	is_triggered_only = yes
+	trigger = { 
+		OR = { 
+>>>>>>> submod
 			tag = ANJ
-			AND = {
+			AND = { 
 				tag = FRA
+<<<<<<< HEAD
 				NOT = { exists = ANJ }
+=======
+				NOT = { 
+					exists = ANJ
+				}
+>>>>>>> submod
 			}
-			AND = {
+			AND = { 
 				tag = FRA
-				ANJ = {
+				ANJ = { 
 					junior_union_with = FRA
 				}
 			}
 		}
 		NOT = { 
+<<<<<<< HEAD
 			dynasty = "de Valois" 
 			dynasty = "d'Anjou"
+=======
+			has_country_flag = nap_claim
+		}
+		NOT = { 
+			dynasty = "de Valois"
+>>>>>>> submod
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_anj.1.opta"
+<<<<<<< HEAD
 		log = "FE-ANJ:[GetYear]:[Root.GetName]:Anjou claims on Naples expired:flavor_anj.1."
 		ai_chance = {
 			factor = 100
@@ -38,21 +63,34 @@ country_event = {
 					region = naples_region
 					area = provence_area
 				}
+=======
+		ai_chance = { 
+			factor = 100
+		}
+		every_province = { 
+			limit = { 
+				region = naples_region
+>>>>>>> submod
 				is_permanent_claim = ROOT
 			}
 			remove_claim = ROOT
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_anj.1.optb"
+<<<<<<< HEAD
 		log = "FE-ANJ:[GetYear]:[Root.GetName]:Anjou claims on Naples kept:flavor_anj.1"
 		ai_chance = {
+=======
+		ai_chance = { 
+>>>>>>> submod
 			factor = 0
 		}
 		add_dip_power = -200
 		add_prestige = -15
 	}
 }
+<<<<<<< HEAD
 country_event = {
 	id = flavor_anj.3 #Anjou Claims
 	title = "flavor_anj.3.name"
@@ -62,35 +100,47 @@ country_event = {
 	is_triggered_only = yes #on_diplomatic_annex and on appanage getting into PU from MEC_Vassals
 
 	trigger = {
+=======
+country_event = { 
+	id = flavor_anj.3
+	title = "flavor_anj.3.name"
+	desc = "flavor_anj.3.desc"
+	picture = COURT_eventPicture
+	is_triggered_only = yes
+	trigger = { 
+>>>>>>> submod
 		tag = ANJ
-		FROM = { tag = FRA dynasty = "de Valois" }
+		FROM = { 
+			tag = FRA
+			dynasty = "de Valois"
+		}
 	}
-	
-	immediate = {
-		hidden_effect = {
-			naples_region = {
-				limit = {
+	immediate = { 
+		hidden_effect = { 
+			naples_region = { 
+				limit = { 
 					is_permanent_claim = ANJ
 				}
 				remove_claim = ANJ
 				add_permanent_claim = FRA
 			}
-			provence_area = {
-				limit = {
+			provence_area = { 
+				limit = { 
 					is_permanent_claim = ANJ
 				}
 				remove_claim = ANJ
 				add_permanent_claim = FRA
 			}
-			ANJ = {
-				country_event = {
+			ANJ = { 
+				country_event = { 
 					id = flavor_anj.4
 				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_anj.3.opta"
+<<<<<<< HEAD
 		log = "FE-ANJ:[GetYear]:[FRA.GetName]:Anjou claims on Naples passed to France:flavor_anj.3"
 		FRA = {
 			set_country_flag = claimed_naples
@@ -98,13 +148,18 @@ country_event = {
 		tooltip = {
 			naples_region = {
 				limit = {
+=======
+		tooltip = { 
+			naples_region = { 
+				limit = { 
+>>>>>>> submod
 					is_permanent_claim = ANJ
 				}
 				remove_claim = ANJ
 				add_permanent_claim = FRA
 			}
-			provence_area = {
-				limit = {
+			provence_area = { 
+				limit = { 
 					is_permanent_claim = ANJ
 				}
 				remove_claim = ANJ
@@ -113,14 +168,14 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = flavor_anj.4
 	title = "flavor_anj.4.name"
 	desc = "flavor_anj.4.desc"
 	picture = COURT_eventPicture
 	is_triggered_only = yes
 	fire_only_once = yes
-	option = {
+	option = { 
 		name = "flavor_anj.4.opta"
 	}
 }

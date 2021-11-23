@@ -1,33 +1,23 @@
-##############
-# Tax - Toll #
-##############
-
-tax_toll_no = {
+tax_toll_no = { 
 	cost = 0
-	time =  0
-	
-	potential = {
+	time = 0
+	potential = { 
 		ai = no
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		always = no
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		has_building = tax_toll_no
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = tax_toll_low
 					has_building = tax_toll_med
 					has_building = tax_toll_high
@@ -37,44 +27,48 @@ tax_toll_no = {
 		}
 	}
 }
-tax_toll_low = {
+tax_toll_low = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxTollCan = yes
+		owner = { 
+			PREV = { 
+				check_variable = { 
+					which = aax
+					value = 1
+				}
+			}
 		}
-		
-		NOT = {
+		NOT = { 
 			has_building = tax_toll_med
 			has_building = tax_toll_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxTollCan = yes
+		owner = { 
+			PREV = { 
+				check_variable = { 
+					which = aax
+					value = 1
+				}
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = tax_toll_no
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = tax_toll_med
 					has_building = tax_toll_high
 				}
@@ -83,44 +77,48 @@ tax_toll_low = {
 		}
 	}
 }
-tax_toll_med = {
+tax_toll_med = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxTollCan = yes
+		owner = { 
+			PREV = { 
+				check_variable = { 
+					which = aax
+					value = 1
+				}
+			}
 		}
-		
-		NOT = {
+		NOT = { 
 			has_building = tax_toll_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxTollCan = yes
+		owner = { 
+			PREV = { 
+				check_variable = { 
+					which = aax
+					value = 1
+				}
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = tax_toll_no
-        remove_building = tax_toll_low
+		remove_building = tax_toll_low
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = tax_toll_high
 				}
 			}
@@ -128,38 +126,43 @@ tax_toll_med = {
 		}
 	}
 }
-tax_toll_high = {
+tax_toll_high = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxTollCan = yes
+		owner = { 
+			PREV = { 
+				check_variable = { 
+					which = aax
+					value = 1
+				}
+			}
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxTollCan = yes
+		owner = { 
+			PREV = { 
+				check_variable = { 
+					which = aax
+					value = 1
+				}
+			}
 		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = tax_toll_no
-        remove_building = tax_toll_low
-        remove_building = tax_toll_med
+		remove_building = tax_toll_low
+		remove_building = tax_toll_med
 	}
-	
-	on_destroyed = {
+	on_destroyed = { 
 		add_building = tax_toll_med
 	}
 }

@@ -1,640 +1,686 @@
-
-por_missions_1_1 = {
+por_missions_1_1 = { 
 	slot = 1
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_por
 	}
 	has_country_shield = yes
-
-	por_england_relations = {
+	por_england_relations = { 
 		icon = mission_monarch_in_throne_room
-		required_missions = {  }
+		required_missions = { }
 		position = 3
-		trigger = {
-			if = {
-				limit = { exists = GBR }
-				GBR = { has_opinion = { who = ROOT value = 100 } }
+		trigger = { 
+			if = { 
+				limit = { 
+					exists = GBR
+				}
+				GBR = { 
+					has_opinion = { 
+						who = ROOT
+						value = 100
+					}
+				}
 				marriage_with = GBR
 			}
-			else = {
-				ENG = { has_opinion = { who = ROOT value = 100 } }
+			else = { 
+				ENG = { 
+					has_opinion = { 
+						who = ROOT
+						value = 100
+					}
+				}
 				marriage_with = ENG
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 			add_dip_power = 10
 		}
 	}
-	
-	por_english_alliance = {
+	por_english_alliance = { 
 		icon = mission_alliances
-		required_missions = { por_england_relations }
+		required_missions = { por_england_relations}
 		position = 4
-		trigger = {
-			if = {
-				limit = { exists = GBR }
+		trigger = { 
+			if = { 
+				limit = { 
+					exists = GBR
+				}
 				alliance_with = GBR
 			}
-			else = {
+			else = { 
 				alliance_with = ENG
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 5
 			add_dip_power = 150
 		}
 	}
-	
-#	por_merchant_guild = {
-#		icon = mission_early_game_buildings
-#		required_missions = { por_english_alliance }
-#		position = 5
-#		provinces_to_highlight = {
-#			province_id = 3349
-#		}
-#		trigger = {
-#			3349 = {
-#				owned_by = ROOT
-#				HasBuildingOrBetter = { b1=merchant_guild b2=trade_depot b3=customs_house }
-#			}
-#		}
-#		effect = {
-#			3349 = {
-#				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
-##			}
-#		}
-#	}
 }
-
-por_missions_5_1 = {
+por_missions_5_1 = { 
 	slot = 5
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_por
 	}
 	has_country_shield = yes
-	
-	por_build_the_navy = {
+	por_build_the_navy = { 
 		icon = mission_sea_battles
-		required_missions = {  }
+		required_missions = { }
 		position = 1
 		completed_by = 1470.1.1
-		
-		trigger = {
+		trigger = { 
 			navy_size_percentage = 1
 		}
-		
-		effect = {
+		effect = { 
 			add_navy_tradition = 15
-			334 = { add_permanent_claim = ROOT }
-			1533 = { add_permanent_claim = ROOT }
-			2971 = { add_permanent_claim = ROOT }
+			334 = { 
+				add_permanent_claim = ROOT
+			}
+			1533 = { 
+				add_permanent_claim = ROOT
+			}
+			2971 = { 
+				add_permanent_claim = ROOT
+			}
 		}
 	}
-	
-	por_conquer_tangiers = {
+	por_conquer_tangiers = { 
 		icon = mission_unite_home_region
-		required_missions = { por_build_the_navy }
+		required_missions = { por_build_the_navy}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 334
 				province_id = 1533
 				province_id = 2971
 			}
-			NOT = { owned_by = ROOT }
-		}
-		trigger = {
-			334 = {
-				owned_by = ROOT
-			}
-			1533 = {
-				owned_by = ROOT
-			}
-			2971 = {
+			NOT = { 
 				owned_by = ROOT
 			}
 		}
-		effect = {
+		trigger = { 
+			334 = { 
+				owned_by = ROOT
+			}
+			1533 = { 
+				owned_by = ROOT
+			}
+			2971 = { 
+				owned_by = ROOT
+			}
+		}
+		effect = { 
 			add_army_tradition = 15
 		}
 	}
-	
-	por_conquer_anfa = {
+	por_conquer_anfa = { 
 		icon = mission_cannons_firing
-		required_missions = { por_conquer_tangiers }
+		required_missions = { por_conquer_tangiers}
 		position = 3
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 2869
 				province_id = 2962
 				province_id = 4073
 			}
-			NOT = { owned_by = ROOT }
-		}
-		trigger = {
-			2869 = {
-				owned_by = ROOT
-			}
-			2962 = {
-				owned_by = ROOT
-			}
-			4073 = {
+			NOT = { 
 				owned_by = ROOT
 			}
 		}
-		effect = {
+		trigger = { 
+			2869 = { 
+				owned_by = ROOT
+			}
+			2962 = { 
+				owned_by = ROOT
+			}
+			4073 = { 
+				owned_by = ROOT
+			}
+		}
+		effect = { 
 			add_prestige = 10
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = "the_unknown_frontier"
-				duration = 9125 #25years
+				duration = 9125
 			}
 		}
 	}
-	
-	por_conquer_south_morocco = {
+	por_conquer_south_morocco = { 
 		icon = mission_cannons_firing
-		required_missions = { por_conquer_anfa }
+		required_missions = { por_conquer_anfa}
 		position = 4
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				province_id = 1585
 				province_id = 2896
 			}
-			NOT = { owned_by = ROOT }
-		}
-		trigger = {
-			1585 = {
-				owned_by = ROOT
-			}
-			2896 = {
+			NOT = { 
 				owned_by = ROOT
 			}
 		}
-		effect = {
+		trigger = { 
+			1585 = { 
+				owned_by = ROOT
+			}
+			2896 = { 
+				owned_by = ROOT
+			}
+		}
+		effect = { 
 			add_prestige = 10
 			add_dip_power = 75
 		}
 	}
-	
-	por_control_macaronesia = {
+	por_control_macaronesia = { 
 		icon = mission_cannons_firing
-		required_missions = { por_conquer_south_morocco }
+		required_missions = { por_conquer_south_morocco}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = macaronesia_area
-			NOT = { owned_by = ROOT }
+			NOT = { 
+				owned_by = ROOT
+			}
 		}
-		trigger = {
-			macaronesia_area = {
+		trigger = { 
+			macaronesia_area = { 
 				type = all
 				owned_by = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 			add_yearly_sailors = 3
 		}
 	}
-	
-	por_azores_arsenal = {
+	por_azores_arsenal = { 
 		icon = mission_early_game_buildings
-		required_missions = { por_control_macaronesia }
+		required_missions = { por_control_macaronesia}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 367
 		}
-		trigger = {
-			367 = {
+		trigger = { 
+			367 = { 
 				owned_by = ROOT
-				HasBuildingOrBetter = { b1=harbour_infrastructure_3 b2=harbour_infrastructure_4 b3=harbour_infrastructure_5 b4=harbour_infrastructure_6 } #HasBuildingOrBetter = { b1=military_harbour_2 b2=military_harbour_3 b3=military_harbour_4 }
+				OR = { 
+					has_building = harbour_infrastructure_3
+					custom_trigger_tooltip = { 
+						tooltip = hasbuildingorbetter_tooltip
+						OR = { 
+							has_building = harbour_infrastructure_4
+							has_building = harbour_infrastructure_5
+							has_building = harbour_infrastructure_6
+						}
+					}
+				}
 			}
 		}
-		effect = {
+		effect = { 
 			add_navy_tradition = 20
 		}
 	}
 }
-
-por_missions_3_1 = {
+por_missions_3_1 = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_por
 	}
 	has_country_shield = yes
-	
-	por_mighty_army = {
+	por_mighty_army = { 
 		icon = mission_assemble_an_army
 		position = 1
-		trigger = {
+		trigger = { 
 			army_size_percentage = 1
 			manpower_percentage = 0.4
 			num_of_generals = 1
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 150
-			hidden_effect = {
-				country_event = { id = mission_event.905 days = 1 }
+			hidden_effect = { 
+				country_event = { 
+					id = mission_event.905
+					days = 1
+				}
 			}
 		}
 	}
 }
-
-por_wedding_2_1 = {
+por_wedding_2_1 = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_por
 		has_country_flag = por_iberian_wedding
 	}
 	has_country_shield = yes
-	
-	porto_wine_trade = {
+	porto_wine_trade = { 
 		icon = mission_wine_monopolies
 		required_missions = { }
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			province_id = 230
 			has_discovered = ROOT
 		}
-		trigger = {
-			#production_leader = {
-			#	trade_goods = wine
-			#}
-			230 = {
+		trigger = { 
+			230 = { 
 				is_strongest_trade_power = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "por_wine_monopolies"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
 }
-
-por_wedding_3_2 = {
+por_wedding_3_2 = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_por
 		has_country_flag = por_iberian_wedding
 	}
 	has_country_shield = yes
-
-	por_castille_relations = {
+	por_castille_relations = { 
 		icon = mission_monarch_in_throne_room
-		required_missions = { por_mighty_army }
+		required_missions = { por_mighty_army}
 		position = 2
-		trigger = {
-			if = {
-				limit = { exists = SPA }
-				SPA = { has_opinion = { who = ROOT value = 100 } }
+		trigger = { 
+			if = { 
+				limit = { 
+					exists = SPA
+				}
+				SPA = { 
+					has_opinion = { 
+						who = ROOT
+						value = 100
+					}
+				}
 				marriage_with = SPA
 			}
-			else = {
-				CAS = { has_opinion = { who = ROOT value = 100 } }
+			else = { 
+				CAS = { 
+					has_opinion = { 
+						who = ROOT
+						value = 100
+					}
+				}
 				marriage_with = CAS
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 			add_dip_power = 10
 		}
 	}
-	
-	por_castille_alliance = {
+	por_castille_alliance = { 
 		icon = mission_alliances
-		required_missions = { por_castille_relations }
+		required_missions = { por_castille_relations}
 		position = 3
-		trigger = {
-			if = {
-				limit = { exists = SPA }
+		trigger = { 
+			if = { 
+				limit = { 
+					exists = SPA
+				}
 				alliance_with = SPA
 			}
-			else = {
+			else = { 
 				alliance_with = CAS
 			}
 		}
-		effect = {
-			Stab_Add1 = yes
+		effect = { 
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					add_stability = 1
+				}
+			}
+			tooltip = { 
+				add_stability = 1
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = 5
+			}
 		}
 	}
-
-	por_papal_relations = {
+	por_papal_relations = { 
 		icon = mission_hands_praying
 		position = 4
-		required_missions = { por_castille_alliance }
-		
-		trigger = {
-			if = {
-				limit = {
+		required_missions = { por_castille_alliance}
+		trigger = { 
+			if = { 
+				limit = { 
 					exists = PAP
 				}
-				PAP = {
-					has_opinion = {
+				PAP = { 
+					has_opinion = { 
 						who = ROOT
 						value = 150
 					}
 				}
 			}
-			OR = {
+			OR = { 
 				is_papal_controller = yes
 				papal_influence = 100
 			}
 		}
-		
-		effect = {
+		effect = { 
 			add_prestige = 15
 		}
 	}
 }
-
-por_conquest_2_1 = {
+por_conquest_2_1 = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_por
 		has_country_flag = por_iberian_conquest
 	}
 	has_country_shield = yes
-	
-	por_subjugate_galicia = {
+	por_subjugate_galicia = { 
 		icon = mission_unite_home_region
-		required_missions = { por_mighty_army }
+		required_missions = { por_mighty_army}
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = galicia_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			galicia_area = {
+		trigger = { 
+			galicia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_legitimacy = 10
 			add_horde_unity = 10
 			add_republican_tradition = 10
 			add_heir_claim = 10
 		}
 	}
-	
-	por_conquer_leon = {
+	por_conquer_leon = { 
 		icon = mission_unite_home_region
-		required_missions = { por_subjugate_galicia }
+		required_missions = { por_subjugate_galicia}
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = leon_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			leon_area = {
+		trigger = { 
+			leon_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 10
 		}
 	}
 }
-
-por_conquest_3_1 = {
+por_conquest_3_1 = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_por
 		has_country_flag = por_iberian_conquest
 	}
 	has_country_shield = yes
-	
-	por_conquer_extremadura = {
+	por_conquer_extremadura = { 
 		icon = mission_unite_home_region
-		required_missions = { por_mighty_army }
+		required_missions = { por_mighty_army}
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = extremadura_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			extremadura_area = {
+		trigger = { 
+			extremadura_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-	por_conquer_toledo = {
+	por_conquer_toledo = { 
 		icon = mission_unite_home_region
-		required_missions = { por_conquer_extremadura }
+		required_missions = { por_conquer_extremadura}
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = toledo_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			toledo_area = {
+		trigger = { 
+			toledo_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 20
 		}
 	}
 }
-
-por_conquest_4_1 = {
+por_conquest_4_1 = { 
 	slot = 4
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_por
 		has_country_flag = por_iberian_conquest
 	}
 	has_country_shield = yes
-	
-	por_conquer_guadalquivir = {
+	por_conquer_guadalquivir = { 
 		icon = mission_unite_home_region
-		required_missions = { por_mighty_army }
+		required_missions = { por_mighty_army}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = lower_guadalquivir_area
 				area = upper_guadalquivir_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			lower_guadalquivir_area = {
+		trigger = { 
+			lower_guadalquivir_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			upper_guadalquivir_area = {
+			upper_guadalquivir_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	
-	por_conquer_granada = {
+	por_conquer_granada = { 
 		icon = mission_unite_home_region
-		required_missions = { por_conquer_guadalquivir }
+		required_missions = { por_conquer_guadalquivir}
 		position = 3
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = upper_andalucia_area
 				area = murcia_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			upper_andalucia_area = {
+		trigger = { 
+			upper_andalucia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			murcia_area = {
+			murcia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mediterranean_ambition"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	por_conquer_valencia = {
+	por_conquer_valencia = { 
 		icon = mission_unite_home_region
-		required_missions = { por_conquer_granada }
+		required_missions = { por_conquer_granada}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = valencia_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			valencia_area = {
+		trigger = { 
+			valencia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_navy_tradition = 15
 		}
 	}
 }
-
-por_conquest_3_2 = {
+por_conquest_3_2 = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = k_of_por
 		has_country_flag = por_iberian_conquest
 	}
 	has_country_shield = yes
-
-	por_conquer_castilla = {
+	por_conquer_castilla = { 
 		icon = mission_unite_home_region
-		required_missions = { por_conquer_leon por_conquer_toledo }
+		required_missions = { por_conquer_leon por_conquer_toledo}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = castille_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			castille_region = {
+		trigger = { 
+			castille_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 15
 		}
 	}
-
-	por_conquer_zaragoza = {
+	por_conquer_zaragoza = { 
 		icon = mission_unite_home_region
-		required_missions = { por_conquer_castilla }
+		required_missions = { por_conquer_castilla}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = aragon_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			aragon_area = {
+		trigger = { 
+			aragon_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
+		effect = { 
 			add_prestige = 10
 		}
 	}
-	
-	por_conquer_catalonia = {
+	por_conquer_catalonia = { 
 		icon = mission_unite_home_region
-		required_missions = { por_conquer_zaragoza por_conquer_valencia }
+		required_missions = { por_conquer_zaragoza por_conquer_valencia}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = catalonia_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			catalonia_area = {
+		trigger = { 
+			catalonia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "hegemonic_ambition"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}

@@ -1,20 +1,28 @@
-defined_text = {
+defined_text = { 
 	name = PieChart_CurView
 	random = no
-	text = {
+	text = { 
 		localisation_key = PieChart_View_ResourceShare_t
-		trigger = { has_country_flag = PieChart_View_ResourceShare }
+		trigger = { 
+			has_country_flag = PieChart_View_ResourceShare
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = PieChart_View_UrbanShare_t
-		trigger = { has_country_flag = PieChart_View_UrbanShare }
+		trigger = { 
+			has_country_flag = PieChart_View_UrbanShare
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = PieChart_View_WealthShare_t
-		trigger = { has_country_flag = PieChart_View_WealthShare }
+		trigger = { 
+			has_country_flag = PieChart_View_WealthShare
+		}
 	}
-	text = {
+	text = { 
 		localisation_key = PieChart_View_FactionInfluence_t
-		trigger = { has_country_flag = PieChart_View_FactionInfluence }
+		trigger = { 
+			has_country_flag = PieChart_View_FactionInfluence
+		}
 	}
 }

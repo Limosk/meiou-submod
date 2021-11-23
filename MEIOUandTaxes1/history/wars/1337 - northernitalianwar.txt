@@ -1,12 +1,10 @@
 name = "Veronese War"
-#casus_belli = cb_core
-war_goal = {
+war_goal = { 
 	type = take_core
 	casus_belli = cb_core
-	province = 108			# Verona
+	province = 108
 }
-
-1337.1.1 = {
+1337.1.1 = { 
 	add_attacker = TUS
 	add_attacker = MLO
 	add_attacker = VEN
@@ -14,8 +12,7 @@ war_goal = {
 	add_attacker = MOD
 	add_defender = VER
 }
-
-1340.1.1 = {
+1340.1.1 = { 
 	rem_attacker = MLO
 	rem_attacker = TUS
 	rem_attacker = VEN

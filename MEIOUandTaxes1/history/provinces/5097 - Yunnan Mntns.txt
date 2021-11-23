@@ -1,5 +1,3 @@
-# 5097 - Yunnan Mntns
-
 discovered_by = chinese
 discovered_by = japanese
 discovered_by = tibetan

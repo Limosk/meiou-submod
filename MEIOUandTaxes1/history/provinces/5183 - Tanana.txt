@@ -1,5 +1,2 @@
-# 5183 - Tanana
-# This province is a wasteland
-
 religion = animism
 culture = inuit

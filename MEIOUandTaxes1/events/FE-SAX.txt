@@ -1,23 +1,37 @@
 namespace = flavor_sax
 namespace = hee_SAX
+<<<<<<< HEAD
 
 country_event = {
 	id = flavor_sax.1 #Johann Sebastian Bach
+=======
+country_event = { 
+	id = flavor_sax.1
+>>>>>>> submod
 	title = "flavor_sax.EVTNAME1"
 	desc = "flavor_sax.EVTDESC1"
 	picture = IMPORTANT_STATUE_eventPicture
 	fire_only_once = yes
+<<<<<<< HEAD
 	trigger = {
 		OR = { 
 			owns = 71 #Thuringen
 			owns = 2813 #Weimar
+=======
+	trigger = { 
+		tag = SAX
+		is_year = 1700
+		NOT = { 
+			is_year = 1750
+>>>>>>> submod
 		}
 		is_year = 1700
 		NOT = { is_year = 1750 }
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
+<<<<<<< HEAD
 	option = {
 		name = "OPT.EXCELLENT"
 		add_prestige = 10
@@ -26,13 +40,32 @@ country_event = {
 
 country_event = {
 	id = hee_SAX.1 #The Treaty of Leipzig
+=======
+	option = { 
+		name = "flavor_sax.EVTOPTA1"
+		add_adm_power = 100
+		add_prestige = 10
+	}
+}
+country_event = { 
+	id = hee_SAX.1
+>>>>>>> submod
 	title = hee_SAX.1.t
 	desc = hee_SAX.1.d
 	picture = DIPLOMACY_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = SAX
 		num_of_cities = 6
+<<<<<<< HEAD
+=======
+		NOT = { 
+			is_year = 1500
+		}
+		NOT = { 
+			exists = THU
+		}
+>>>>>>> submod
 		is_year = 1480
 		NOT = { is_year = 1500 }
 		NOT = { exists = THU }
@@ -40,13 +73,20 @@ country_event = {
 		owns = 71 #Thuringen
 		owns = 59 #Wittemberg
 		dynasty = "von Wettin"
-		monarchy_or_harem_gov = yes
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 5
 	}
-	option = {
+	option = { 
 		name = hee_SAX.1.a
+<<<<<<< HEAD
 		ai_chance = {
 			factor = 65
 		}
@@ -144,11 +184,24 @@ country_event = {
 		custom_tooltip = hee_SAX_treaty_of_leipzig_only_cores_tt
 
 		add_country_modifier = {
+=======
+		ai_chance = { 
+			factor = 75
+		}
+		THU = { 
+			add_core = 71
+			add_core = 2619
+			add_core = 59
+		}
+		release = THU
+		create_union = THU
+		add_country_modifier = { 
+>>>>>>> submod
 			name = hee_treaty_of_leipzig
 			duration = -1
 		}
-		THU = {
-			add_country_modifier = {
+		THU = { 
+			add_country_modifier = { 
 				name = hee_treaty_of_leipzig
 				duration = -1
 			}
@@ -178,11 +231,12 @@ country_event = {
 		}
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-5 }
 	}
-	option = {
+	option = { 
 		name = hee_SAX.1.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
 		}
+<<<<<<< HEAD
 		log = "FE-SAX:[GetYear]:[Root.GetName]:decided not to divide the country by releasing [THU.GetName] through Treaty of Leipzig:hee_SAX.1"
 		Stab_Subtract1 = yes
 		Pol_ChangeRelationsStateTooltip = { NO=yes type=value val=-30 }
@@ -191,55 +245,94 @@ country_event = {
 }
 country_event = {
 	id = hee_SAX.2 #Rivalry With the Hohenzollerns
+=======
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -1
+			}
+		}
+		tooltip = { 
+			add_stability = -1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -5
+		}
+		add_prestige = 10
+	}
+}
+country_event = { 
+	id = hee_SAX.2
+>>>>>>> submod
 	title = hee_SAX.2.t
 	desc = hee_SAX.2.d
 	picture = COURT_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = SAX
+<<<<<<< HEAD
 		BRA = { num_of_cities = 4 }
+=======
+		BRA = { 
+			num_of_cities = 4
+		}
+>>>>>>> submod
 		num_of_cities = BRA
-		AND = {
-			OR = {
+		AND = { 
+			OR = { 
 				is_subject = no
 				is_subject_of_type = tributary_state
 				is_subject_of_type = close_tributary_state
 			}
 		}
-		BRA = {
-			AND = {
-				OR = {
+		BRA = { 
+			AND = { 
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
 				}
 			}
 		}
-		NOT = {
-			has_opinion = {
+		NOT = { 
+			has_opinion = { 
 				who = BRA
 				value = 50
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 20
 	}
-	option = {
+	option = { 
 		name = hee_SAX.2.a
-		reverse_add_opinion = {
+		reverse_add_opinion = { 
 			who = BRA
 			modifier = hee_against_hohenzollern
 		}
 	}
-	option = {
+	option = { 
 		name = hee_SAX.2.b
-		reverse_add_opinion = {
+		reverse_add_opinion = { 
 			who = BRA
 			modifier = hee_reconcile_hohenzollern
 		}
 	}
 }
+<<<<<<< HEAD
 # country_event = {
 # 	id = hee_SAX.3
 # 	title = hee_SAX.3.t
@@ -537,10 +630,15 @@ country_event = {
 # }
 country_event = {
 	id = hee_SAX.8 #The Frauenkirche and the Hofkirche of Dresden
+=======
+country_event = { 
+	id = hee_SAX.8
+>>>>>>> submod
 	title = hee_SAX.8.t
 	desc = hee_SAX.8.d
 	picture = CITY_VIEW_eventPicture
 	fire_only_once = yes
+<<<<<<< HEAD
 	trigger = {
 		is_year = 1730
 		owns = 3851 #Dresden
@@ -548,18 +646,32 @@ country_event = {
 		ruler_religion = catholic
 		3851 = { #at least 20% of urban population is Lutheran
 			MN_CheckProp = { religion = 2 type = UrbP prop = 20 }
+=======
+	trigger = { 
+		tag = SAX
+		is_year = 1730
+		owns = 3851
+		NOT = { 
+			is_year = 1760
+>>>>>>> submod
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 10
 	}
-	option = {
+	option = { 
 		name = hee_SAX.8.a
+<<<<<<< HEAD
 		add_treasury = -75
+=======
+		3851 = { }
+		add_treasury = -15
+>>>>>>> submod
 		add_prestige = 10
 	}
-	option = {
+	option = { 
 		name = hee_SAX.8.b
+<<<<<<< HEAD
 	}
 }
 # country_event = {
@@ -693,3 +805,210 @@ country_event = {
 # 		add_dip_power = 25
 # 	}
 # }
+=======
+		add_adm_power = 10
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
+	}
+}
+country_event = { 
+	id = hee_SAX.9
+	title = hee_SAX.9.t
+	desc = hee_SAX.9.d
+	picture = wihgfx_FEMALE_RULER_eventPicture
+	fire_only_once = yes
+	trigger = { 
+		tag = SAX
+		is_year = 1730
+		NOT = { 
+			is_year = 1760
+		}
+		is_at_war = yes
+	}
+	mean_time_to_happen = { 
+		months = 12
+	}
+	option = { 
+		name = hee_SAX.9.a
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
+		add_adm_power = 25
+		add_dip_power = 25
+		add_war_exhaustion = -2
+	}
+}
+>>>>>>> submod

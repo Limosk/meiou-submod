@@ -1,26 +1,20 @@
-fixedslot = {
+fixedslot = { 
 	cost = 1
 	time = 0
-	
-	potential = {
+	potential = { 
 		ai = no
 	}
-	
-	modifier = {
+	modifier = { }
+	build_trigger = { 
+		always = no
 	}
-	
-	build_trigger = {
-        always = no
+	keep_trigger = { 
+		has_building = fixedslot
 	}
-	keep_trigger = {
-        has_building = fixedslot
-	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-
-    on_destruction = {
-        add_building = fixedslot
-    }
+	on_destruction = { 
+		add_building = fixedslot
+	}
 }

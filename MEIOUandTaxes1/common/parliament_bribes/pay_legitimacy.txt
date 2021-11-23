@@ -1,13 +1,17 @@
-pay_legitimacy = {
-	trigger = {
-		monarchy_or_harem_gov = yes
+pay_legitimacy = { 
+	trigger = { 
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
 	}
-	
-	effect = {
+	effect = { 
 		add_legitimacy = -5
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
 	}
 }

@@ -1,78 +1,80 @@
 namespace = ostsiedlung
-country_event = {
+country_event = { 
 	id = ostsiedlung.1001
 	title = "ostsiedlung.1001.name"
 	desc = "ostsiedlung.1001.desc"
 	picture = HRE_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		is_year = 1450
-		any_owned_province = {
+		any_owned_province = { 
 			has_province_flag = CV_SC_german_ostsiedlung
 		}
-		OR = {
+		OR = { 
 			culture_group = low_germanic
 			culture_group = high_germanic
 			culture_group = west_slavic
 		}
-		NOT = { has_global_flag = MEC_Ostsiedlung_ended }
-	}
-	
-	immediate = {
-		hidden_effect = { 
-			every_owned_province = {
-				CV_change_culture_special_case_cleanup = yes
-			}
-			set_global_flag = MEC_Ostsiedlung_ended
-		
+		NOT = { 
+			has_global_flag = MEC_Ostsiedlung_ended
 		}
 	}
-	
-	option = {
+	immediate = { 
+		hidden_effect = { 
+			every_owned_province = { 
+				set_variable = { 
+					which = azn
+					value = 0
+				}
+				trigger_switch = { 
+					on_trigger = has_province_flag
+					CV_SC_german_ostsiedlung = { 
+						clr_province_flag = CV_SC_german_ostsiedlung
+					}
+					CV_SC_frankish_settlers = { 
+						clr_province_flag = CV_SC_frankish_settlers
+					}
+				}
+			}
+			set_global_flag = MEC_Ostsiedlung_ended
+		}
+	}
+	option = { 
 		name = "ostsiedlung.1001.a"
-		
-		trigger = {
-			OR = {
+		trigger = { 
+			OR = { 
 				culture_group = low_germanic
 				culture_group = high_germanic
 			}
 		}
-		
 		remove_country_modifier = ostsiedlung_promoted_western
 		remove_country_modifier = ostsiedlung_promoted_eastern
 	}
-
-	option = {
+	option = { 
 		name = "ostsiedlung.1001.b"
-		
-		trigger = {
+		trigger = { 
 			culture_group = west_slavic
 		}
-		remove_country_modifier = ostsiedlung_promoted_western		
+		remove_country_modifier = ostsiedlung_promoted_western
 		remove_country_modifier = ostsiedlung_promoted_eastern
 	}
 }
-
-# Giving provinces German names.
-country_event = {
+country_event = { 
 	id = ostsiedlung.1002
 	title = "ostsiedlung.1002.name"
 	desc = "ostsiedlung.1002.desc"
 	picture = HRE_eventPicture
-	
 	hidden = yes
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "ostsiedlung.1002.opta"
-		
-		40 = { # Mazoji Lietuva
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		40 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -82,11 +84,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		41 = { # Ostpreussen
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		41 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -96,11 +100,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2845 = { # Lauenburg
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2845 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -110,11 +116,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		42 = { # Pomezania
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		42 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -124,11 +132,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		4024 = { # Galindia
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		4024 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -138,11 +148,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		43 = { # Pomorsko
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		43 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -152,11 +164,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		1844 = { # Marienburg
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		1844 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -166,11 +180,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2355 = { # Danzig
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2355 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -180,11 +196,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		1391 = { # Ermland
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		1391 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -194,11 +212,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2398 = { # Chelminskie
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2398 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -208,11 +228,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		4025 = { # Techolo
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		4025 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -222,11 +244,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		4003 = { # Glogow
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		4003 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -236,11 +260,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		4002 = { # Jawor
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		4002 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -250,11 +276,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2561 = { # Lignica
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2561 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -264,11 +292,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		4001 = { # Olesnica
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		4001 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -278,11 +308,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		1359 = { # Wroclaw
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		1359 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -292,11 +324,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2633 = { # Swidnica
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2633 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -306,11 +340,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2831 = { # Klodzko
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2831 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -320,11 +356,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		1278 = { # Opole
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		1278 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -334,11 +372,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		4000 = { # Opava
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		4000 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -348,11 +388,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		3999 = { # Ratibor
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		3999 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -362,11 +404,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		269 = { # Teschen
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		269 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -376,11 +420,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		60 = { # Oberlausitz
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		60 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -390,11 +436,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		3742 = { # Cottbus
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		3742 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -404,11 +452,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2620 = { # Niederlausitz
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2620 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -418,11 +468,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2620 = { # Niederlausitz
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2620 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -432,11 +484,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		3748 = { # Chebsko
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		3748 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -446,11 +500,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		1277 = { # Plzensko
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		1277 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -460,11 +516,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		84 = { # Olomocko
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		84 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -474,11 +532,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		39 = { # Kurzeme
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		39 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -488,11 +548,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		1264 = { # Zemgale
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		1264 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -502,11 +564,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		1342 = { # Yankunytjatjara
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		1342 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -516,11 +580,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		36 = { # Rovala
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		36 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -530,11 +596,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		1263 = { # Ugandi
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		1263 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -544,11 +612,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		1265 = { # Zemaitija
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		1265 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -558,11 +628,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		1280 = { # Suvalkija
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		1280 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -572,11 +644,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		3397 = { # Aukstaitija
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		3397 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -586,11 +660,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		272 = { # Aukstaitija
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		272 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -600,11 +676,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		3764 = { # Krynki
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		3764 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -614,11 +692,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		296 = { # Grodno
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		296 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -628,11 +708,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		3398 = { # Didzioji Lietuva
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		3398 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -642,11 +724,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		254 = { # Nakelskie
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		254 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -656,11 +740,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2401 = { # Poznanskie
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2401 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -670,11 +756,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2814 = { # Inowroclawskie
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2814 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -684,11 +772,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2834 = { # Walcz
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2834 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -698,11 +788,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		3756 = { # Gniezno
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		3756 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -712,11 +804,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2815 = { # Dobrzyn
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2815 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -726,11 +820,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		257 = { # Plockie
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		257 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -740,11 +836,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		4026 = { # Ciechanow
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		4026 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -754,11 +852,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2506 = { # Wizna
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2506 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -768,11 +868,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		3763 = { # Bialystok
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		3763 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -782,11 +884,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		128 = { # Koroska
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		128 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -796,11 +900,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2384 = { # Stajerska
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2384 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -810,11 +916,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		267 = { # Budejovicko
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		267 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -824,11 +932,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		3751 = { # Jihlavsko
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		3751 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -838,11 +948,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		38 = { # Riga
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		38 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -852,11 +964,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2835 = { # Lubusz
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2835 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -866,11 +980,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		264 = { # Neumark
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		264 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}
@@ -880,11 +996,13 @@ country_event = {
 				set_province_flag = german_name
 			}
 		}
-		2831 = { # Klodzko
-			if = {
-				limit = {
-					NOT = { has_province_flag = german_name }
-					OR = {
+		2831 = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						has_province_flag = german_name
+					}
+					OR = { 
 						culture_group = high_germanic
 						culture_group = low_germanic
 					}

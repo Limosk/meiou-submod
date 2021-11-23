@@ -1,44 +1,32 @@
-#FACTIONS ARE SUPPOSED TO BE A NET NEUTRAL EFFECT. Each should have downsides that fully compensate for the upsides.
-# Cleared and replaced by Empire of China of MoH is active
-
-temples = {
-	#Changed to the Imperial Dictatorship by Mod
+temples = { 
 	monarch_power = MIL
 	always = yes
-	
-	modifier = {
+	modifier = { 
 		land_morale = 0.10
 		discipline = 0.05
 		global_unrest = 3
 		stability_cost_modifier = 0.15
-		yearly_corruption = 0.20 #yearly_corruption = 0.15 # Mod:Emperor needs more gold for his prestige
+		yearly_corruption = 0.20
 	}
 }
-
-enuchs = { #vanilla spelling error, do NOT fix
+enuchs = { 
 	monarch_power = DIP
 	always = yes
-	
-	#Merchants, Traders, Expansions.
-	
-	modifier = {
+	modifier = { 
 		trade_efficiency = 0.15
 		merchants = 1
 		legitimacy = -0.25
 		stability_cost_modifier = 0.10
 	}
 }
-
-bureaucrats = {
+bureaucrats = { 
 	monarch_power = ADM
 	always = yes
-	
-	#buildings, Internal Stability.
-	modifier = {
+	modifier = { 
 		stability_cost_modifier = -0.1
 		yearly_corruption = -0.10
 		build_cost = -0.10
 		land_morale = -0.10
-		discipline = -0.05 # Mod
+		discipline = -0.05
 	}
 }

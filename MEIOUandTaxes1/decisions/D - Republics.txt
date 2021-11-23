@@ -1,9 +1,9 @@
-country_decisions = {
-	plot_to_become_monarchy = {
-		potential = {
+country_decisions = { 
+	plot_to_become_monarchy = { 
+		potential = { 
 			government = republic
-			AND = {
-				OR = {
+			AND = { 
+				OR = { 
 					is_subject = no
 					is_subject_of_type = tributary_state
 					is_subject_of_type = close_tributary_state
@@ -11,27 +11,27 @@ country_decisions = {
 			}
 			has_any_disaster = no
 			republican_tradition = 60
-			NOT = {
+			NOT = { 
 				has_country_modifier = plot_to_become_monarchy
 			}
 		}
-		allow = {
+		allow = { 
 			is_at_war = no
 			stability = 2
 			prestige = 50
-			OR = {
+			OR = { 
 				ADM = 5
 				DIP = 5
 				MIL = 5
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = plot_to_become_monarchy
 				duration = 1100
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 0
 		}
 	}

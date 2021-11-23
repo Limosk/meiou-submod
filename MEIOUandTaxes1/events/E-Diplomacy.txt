@@ -1,45 +1,39 @@
 namespace = e_diplomacy
-
-# A Perpetual Peace by VineFynn #
-# name insp. England and Scotland, reqs insp. Bulguria and ERE
-
-country_event = { # The Enemy of my Enemy
+country_event = { 
 	id = e_diplomacy.1
 	title = "e_diplomacy_1_title"
 	desc = "e_diplomacy_1_desc"
 	picture = DIPLOMACY_eventPicture
-	
 	is_triggered_only = yes
-	
 	trigger = { 
-		any_neighbor_country = {
+		any_neighbor_country = { 
 			historical_rival_with = ROOT
-			has_opinion = {
+			has_opinion = { 
 				who = ROOT
 				value = -50
 			}
-			reverse_has_opinion = {
+			reverse_has_opinion = { 
 				who = ROOT
 				value = -100
 			}
-			has_opinion_modifier = {
+			has_opinion_modifier = { 
 				who = ROOT
 				modifier = enemy_of_my_enemy
 			}
-			reverse_has_opinion_modifier = {
+			reverse_has_opinion_modifier = { 
 				who = ROOT
 				modifier = enemy_of_my_enemy
 			}
 			religion_group = ROOT
-			NOT = {
+			NOT = { 
 				truce_with = ROOT
 				war_with = ROOT
-				OR = {
-					has_opinion_modifier = {
+				OR = { 
+					has_opinion_modifier = { 
 						who = ROOT
 						modifier = allied_to_rival
 					}
-					reverse_has_opinion_modifier = {
+					reverse_has_opinion_modifier = { 
 						who = ROOT
 						modifier = allied_to_rival
 					}
@@ -49,38 +43,37 @@ country_event = { # The Enemy of my Enemy
 		}
 		is_at_war = no
 	}
-				
-	option = {
+	option = { 
 		name = e_diplomacy.1.a
-		random_neighbor_country = {
-			limit = {
+		random_neighbor_country = { 
+			limit = { 
 				historical_rival_with = ROOT
-				has_opinion = {
+				has_opinion = { 
 					who = ROOT
 					value = -50
 				}
-				reverse_has_opinion = {
+				reverse_has_opinion = { 
 					who = ROOT
 					value = -100
 				}
-				has_opinion_modifier = {
+				has_opinion_modifier = { 
 					who = ROOT
 					modifier = enemy_of_my_enemy
 				}
-				reverse_has_opinion_modifier = {
+				reverse_has_opinion_modifier = { 
 					who = ROOT
 					modifier = enemy_of_my_enemy
 				}
 				religion_group = ROOT
-				NOT = {
+				NOT = { 
 					truce_with = ROOT
 					war_with = ROOT
-					OR = {
-						has_opinion_modifier = {
+					OR = { 
+						has_opinion_modifier = { 
 							who = ROOT
 							modifier = allied_to_rival
 						}
-						reverse_has_opinion_modifier = {
+						reverse_has_opinion_modifier = { 
 							who = ROOT
 							modifier = allied_to_rival
 						}
@@ -89,17 +82,9 @@ country_event = { # The Enemy of my Enemy
 				is_at_war = no
 			}
 			save_event_target_as = perpetual_peace_target
-			#country_event = {
-			#	id = e_diplomacy.2 # Strange Bedfellows
-			#	days = 10
-			#}
 		}
-		#ai_chance = {
-		#}
 	}
-	option = { # nah mate
+	option = { 
 		name = e_diplomacy.1.b
-		#ai_chance = {
-		#}
 	}
 }

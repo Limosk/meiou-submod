@@ -1,33 +1,23 @@
-################
-# Levy - Horde #
-################
-
-levy_horde_no = {
+levy_horde_no = { 
 	cost = 0
-	time =  0
-	
-	potential = {
+	time = 0
+	potential = { 
 		ai = no
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		always = no
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		has_building = levy_horde_no
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = levy_horde_low
 					has_building = levy_horde_med
 					has_building = levy_horde_high
@@ -37,40 +27,86 @@ levy_horde_no = {
 		}
 	}
 }
-levy_horde_low = {
+levy_horde_low = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = { Tax_LevyHordeCan = yes }
-		
-		NOT = {
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bbg
+						value = 2
+					}
+				}
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 2
+					}
+				}
+				PREV = { 
+					check_variable = { 
+						which = atc
+						value = 10
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
+		}
+		NOT = { 
 			has_building = levy_horde_med
 			has_building = levy_horde_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = { Tax_LevyHordeCan = yes }
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bbg
+						value = 2
+					}
+				}
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 2
+					}
+				}
+				PREV = { 
+					check_variable = { 
+						which = atc
+						value = 10
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
+		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = levy_horde_no
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = levy_horde_med
 					has_building = levy_horde_high
 				}
@@ -79,40 +115,86 @@ levy_horde_low = {
 		}
 	}
 }
-levy_horde_med = {
+levy_horde_med = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = { Tax_LevyHordeCan = yes }
-		
-		NOT = {
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bbg
+						value = 2
+					}
+				}
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 2
+					}
+				}
+				PREV = { 
+					check_variable = { 
+						which = atc
+						value = 10
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
+		}
+		NOT = { 
 			has_building = levy_horde_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = { Tax_LevyHordeCan = yes }
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bbg
+						value = 2
+					}
+				}
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 2
+					}
+				}
+				PREV = { 
+					check_variable = { 
+						which = atc
+						value = 10
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
+		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = levy_horde_no
-        remove_building = levy_horde_low
+		remove_building = levy_horde_low
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = levy_horde_high
 				}
 			}
@@ -120,34 +202,81 @@ levy_horde_med = {
 		}
 	}
 }
-levy_horde_high = {
+levy_horde_high = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = { Tax_LevyHordeCan = yes }
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bbg
+						value = 2
+					}
+				}
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 2
+					}
+				}
+				PREV = { 
+					check_variable = { 
+						which = atc
+						value = 10
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
+		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = { Tax_LevyHordeCan = yes }
+		owner = { 
+			AND = { 
+				NOT = { 
+					check_variable = { 
+						which = bbg
+						value = 2
+					}
+				}
+				NOT = { 
+					check_variable = { 
+						which = bba
+						value = 2
+					}
+				}
+				PREV = { 
+					check_variable = { 
+						which = atc
+						value = 10
+					}
+				}
+				PREV = { 
+					NOT = { 
+						is_owned_by_trade_company = yes
+					}
+				}
+			}
+		}
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = levy_horde_no
-        remove_building = levy_horde_low
-        remove_building = levy_horde_med
+		remove_building = levy_horde_low
+		remove_building = levy_horde_med
 	}
-	
-	on_destroyed = {
+	on_destroyed = { 
 		add_building = levy_horde_med
 	}
 }

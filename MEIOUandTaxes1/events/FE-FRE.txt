@@ -1,27 +1,26 @@
 namespace = flavor_fre
-
-# Scripted by Ellesthyan
-
-#The people of Freiburg want to buy their freedom
-country_event = {
+country_event = { 
 	id = flavor_fre.1
 	title = flavor_fre.1.name
 	desc = flavor_fre.1.desc
 	picture = COURT_eventPicture
-	
-	trigger = {
+	trigger = { 
 		tag = FRE
-		NOT = { num_of_cities = 2 }
+		NOT = { 
+			num_of_cities = 2
+		}
 		exists = HAB
-		HAB = { dynasty = "von Habsburg" }
+		HAB = { 
+			dynasty = "von Habsburg"
+		}
 	}
-	
 	fire_only_once = yes
-	
-	mean_time_to_happen = { years = 12 }
-	
-	option = {		#Accept
+	mean_time_to_happen = { 
+		years = 12
+	}
+	option = { 
 		name = "flavor_fre.1.opta"
+<<<<<<< HEAD
 		ai_chance = { factor = 90 }
 		#TODO: Transfer of wealth from BG to NO on province level?
 		log = "FE-FRE:[GetYear]:[Root.GetName]:accepted petition from people of Freiburg to buy their freedom:flavor_fre.1"
@@ -31,12 +30,24 @@ country_event = {
 		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=20 }
 		HAB = {
 			country_event = { id = flavor_fre.2 }
+=======
+		ai_chance = { 
+			factor = 90
+		}
+		HAB = { 
+			country_event = { 
+				id = flavor_fre.2
+			}
+>>>>>>> submod
 		}
 	}
-	option = {		#Deny
+	option = { 
 		name = "flavor_fre.1.optb"
-		ai_chance = { factor = 10 }
+		ai_chance = { 
+			factor = 10
+		}
 		add_prestige = 10
+<<<<<<< HEAD
 		Stab_Subtract2 = yes
 		log = "FE-FRE:[GetYear]:[Root.GetName]:refused petition from people of Freiburg to buy their freedom:flavor_fre.1"
 		Public_ChangePowerbrokerLoyaltyTooltipProv = { Powerbroker=NO Amount=20 }
@@ -45,6 +56,35 @@ country_event = {
 		Pol_ChangeRelationsStateTooltip = { BG=yes type=value val=-20 }
 		69 = {
 			add_province_modifier = {
+=======
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -2
+			}
+		}
+		tooltip = { 
+			add_stability = -2
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -10
+		}
+		69 = { 
+			add_province_modifier = { 
+>>>>>>> submod
 				name = "burghers_organizing"
 				duration = 3650
 			}
@@ -53,20 +93,16 @@ country_event = {
 		}
 	}
 }
-
-#Habsburg is asked for protection
-country_event = {
+country_event = { 
 	id = flavor_fre.2
 	title = flavor_fre.2.name
 	desc = flavor_fre.2.desc
 	picture = COURT_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "flavor_fre.2.opta"
 		add_prestige = 5
-		69 = {
+		69 = { 
 			cede_province = HAB
 			add_core = HAB
 		}

@@ -1,9 +1,5 @@
-# No previous file for Nehiyaw
-# This province is a wasteland
-
 culture = uralic
 religion = tengri_pagan_reformed
-
 discovered_by = eastern
 discovered_by = byzantine
 discovered_by = muslim

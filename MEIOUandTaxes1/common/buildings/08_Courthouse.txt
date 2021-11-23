@@ -1,241 +1,223 @@
-##############
-# Courthouse #
-##############
-
-courthouse_0 = {
+courthouse_0 = { 
 	cost = 1
 	time = 1
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 0 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 0
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 0 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 0
+		}
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.106
 		}
 	}
 }
-
-courthouse_1 = {
+courthouse_1 = { 
 	cost = 100
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 1 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 1
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 1 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 1
+		}
 	}
-	
-	modifier = {
-
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.106
 		}
 	}
 }
-
-courthouse_2 = {
+courthouse_2 = { 
 	cost = 250
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 2 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 2
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 2 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 2
+		}
 	}
-	
-	modifier = {
-		
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.106
 		}
 	}
 }
-
-courthouse_3 = {
+courthouse_3 = { 
 	cost = 400
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 3 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 3
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 3 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 3
+		}
 	}
-	
-	modifier = {
-		
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.106
 		}
 	}
 }
-
-courthouse_4 = {
+courthouse_4 = { 
 	cost = 600
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 4 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 4
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 4 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 4
+		}
 	}
-	
-	modifier = {
-		
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.106
 		}
 	}
 }
-
-courthouse_5 = {
+courthouse_5 = { 
 	cost = 800
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 5 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 5
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 5 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 5
+		}
 	}
-	
-	modifier = {
-		
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.106
 		}
 	}
 }
-
-courthouse_6 = {
+courthouse_6 = { 
 	cost = 1200
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 6 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 6
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 6 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 6
+		}
 	}
-	
-	modifier = {
-		
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.106
 		}
 	}
 }
-
-courthouse_7 = {
+courthouse_7 = { 
 	cost = 1200
 	time = 60
-
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 7 }
+	build_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 7
+		}
 	}
-	keep_trigger = {
-		is_key_equal = { lhs = Infra_Courthouse value = 7 }
+	keep_trigger = { 
+		is_variable_equal = { 
+			which = gcm
+			value = 7
+		}
 	}
-	
-	modifier = {
-		
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		province_event = {
+	on_destroyed = { 
+		province_event = { 
 			id = POP_Building.106
 		}
 	}

@@ -1,7 +1,7 @@
-janissary_decadence = {
-	potential = {
+janissary_decadence = { 
+	potential = { 
 		normal_or_historical_nations = yes
-		OR = {
+		OR = { 
 			tag = TUR
 			has_country_modifier = tur_janissary_1
 			has_country_modifier = tur_janissary_2
@@ -9,27 +9,27 @@ janissary_decadence = {
 			has_country_modifier = tur_janissary_4
 		}
 	}
-	can_start = {
-		OR = {
+	can_start = { 
+		OR = { 
 			has_country_modifier = tur_janissary_1
 			has_country_modifier = tur_janissary_2
 			has_country_modifier = tur_janissary_3
 			has_country_modifier = tur_janissary_4
 		}
-		NOT = {
+		NOT = { 
 			adm = 5
 		}
-		NOT = {
+		NOT = { 
 			dip = 5
 		}
-		NOT = {
+		NOT = { 
 			mil = 5
 		}
 	}
-	can_stop = {
-		OR = {
-			NOT = {
-				OR = {
+	can_stop = { 
+		OR = { 
+			NOT = { 
+				OR = { 
 					has_country_modifier = tur_janissary_1
 					has_country_modifier = tur_janissary_2
 					has_country_modifier = tur_janissary_3
@@ -41,41 +41,41 @@ janissary_decadence = {
 			mil = 5
 		}
 	}
-	progress = {
-		modifier = {
+	progress = { 
+		modifier = { 
 			factor = 1
 			num_of_loans = 50
 		}
-		modifier = {
+		modifier = { 
 			factor = 1
 			is_great_power = no
 		}
-		modifier = {
+		modifier = { 
 			factor = 1
 			has_ruler_modifier = janissaries_denied_reward
 		}
-		modifier = {
+		modifier = { 
 			factor = 2
 			is_bankrupt = yes
 		}
-		modifier = {
+		modifier = { 
 			factor = 1
-			NOT = {
+			NOT = { 
 				army_tradition = 70
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1
 			has_country_modifier = janissary_landholders
 		}
-		modifier = {
+		modifier = { 
 			factor = 1
 			has_country_modifier = janissaries_upset
 		}
 	}
-	can_end = {
-		NOT = {
-			OR = {
+	can_end = { 
+		NOT = { 
+			OR = { 
 				has_country_modifier = tur_janissary_1
 				has_country_modifier = tur_janissary_2
 				has_country_modifier = tur_janissary_3
@@ -83,16 +83,16 @@ janissary_decadence = {
 			}
 		}
 	}
-	modifier = {
+	modifier = { 
 		technology_cost = 0.25
 		idea_cost = 0.25
 		global_manpower_modifier = -0.25
 	}
 	on_start = janissary_decadence.1
 	on_end = janissary_decadence.100
-	on_monthly = {
-		events = {}
-		random_events = {
+	on_monthly = { 
+		events = { }
+		random_events = { 
 			120 = 0
 			5 = janissary_decadence.2
 			5 = janissary_decadence.3

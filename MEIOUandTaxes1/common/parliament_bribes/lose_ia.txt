@@ -1,13 +1,11 @@
-lose_ia = {
-	trigger = {
+lose_ia = { 
+	trigger = { 
 		is_emperor = yes
 	}
-	
-	effect = {
+	effect = { 
 		add_imperial_influence = -2
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 1
 	}
 }

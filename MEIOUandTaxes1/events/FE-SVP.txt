@@ -1,70 +1,83 @@
-############################################################
-#      Seventeen Provinces and Estates-General Events      #
-############################################################
-
-# Author: Ekinda
-
 namespace = flavor_svp
-
-# Rebellion desire decay event
-country_event = {
+country_event = { 
 	id = flavor_svp.99
 	title = "flavor_svp.99.title"
 	desc = "flavor_svp.99.desc"
 	picture = CIVIL_WAR_eventPicture
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "flavor_svp.99.a"
-		
-		subtract_variable = {
+		subtract_variable = { 
 			which = dutch_rebellion_desire
 			value = 1
 		}
-		
-		country_event = { id = flavor_svp.99 days = 3650 }
+		country_event = { 
+			id = flavor_svp.99
+			days = 3650
+		}
 	}
 }
-
-# Check rebellion desire event (for testing and debugging)
-country_event = {
+country_event = { 
 	id = flavor_svp.0
 	title = "flavor_svp.0.title"
-	desc = {
-		trigger = { check_variable = { which = dutch_rebellion_desire value = 0.001 } }
+	desc = { 
+		trigger = { 
+			check_variable = { 
+				which = dutch_rebellion_desire
+				value = 0.001
+			}
+		}
 		desc = "flavor_svp.0.desca"
 	}
-	desc = {
-		trigger = { NOT = { check_variable = { which = dutch_rebellion_desire value = 0.001 } } }
+	desc = { 
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = dutch_rebellion_desire
+					value = 0.001
+				}
+			}
+		}
 		desc = "flavor_svp.0.descb"
 	}
 	picture = CIVIL_WAR_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "flavor_svp.0.a"
 	}
 }
-
-# Estates-General of [GetYear] (1464)
-country_event = {
+country_event = { 
 	id = flavor_svp.1
 	title = "flavor_svp.1.title"
 	desc = "flavor_svp.1.desc"
 	picture = LIBERUM_VETO_eventPicture
 	fire_only_once = yes
-	
-	trigger = {
-		NOT = { has_global_flag = dutch_rebellion_end }
-		NOT = { tag = NED }
-		NOT = { tag = SVP }
-		NOT = { has_country_flag = svp_estates_general }
-		NOT = { culture_group = low_frankish }
+	trigger = { 
+		NOT = { 
+			has_global_flag = dutch_rebellion_end
+		}
+		NOT = { 
+			tag = NED
+		}
+		NOT = { 
+			tag = SVP
+		}
+		NOT = { 
+			has_country_flag = svp_estates_general
+		}
+		NOT = { 
+			culture_group = low_frankish
+		}
 		is_subject = no
-		check_variable = { which = "Cores_on_the_Netherlands" value = 13 }
+		check_variable = { 
+			which = "Cores_on_the_Netherlands"
+			value = 13
+		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 5
 	}
+<<<<<<< HEAD
 	option = {
 		name = "flavor_svp.1.a" # Convene the Estates-General
 		log = "FE-SVP:[GetYear]:[Root.GetName]:Estates-General convened:flavor_svp.1"
@@ -76,29 +89,49 @@ country_event = {
 				# needs balancing
 				set_variable = { which = dutch_rebellion_desire value = 8 } #changed from 10
 				country_event = { id = flavor_svp.99 days = 3650 }
+=======
+	option = { 
+		name = "flavor_svp.1.a"
+		ai_chance = { 
+			factor = 100
+		}
+		hidden_effect = { 
+			set_global_flag = dutch_rebellion_start
+			set_country_flag = svp_estates_general
+			REB = { 
+				set_variable = { 
+					which = dutch_rebellion_desire
+					value = 8
+				}
+				country_event = { 
+					id = flavor_svp.99
+					days = 3650
+				}
+>>>>>>> submod
 			}
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = svp_centralized_recently
-				duration = 10950 #30 Years
+				duration = 10950
 			}
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = svp_demanded_tax_recently
 				duration = 3650
 			}
 		}
-		every_owned_province = {
-			limit = {
-				OR = {
+		every_owned_province = { 
+			limit = { 
+				OR = { 
 					region = low_countries_region
 					region = belgii_region
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = estates_general_1
 				duration = -1
 			}
 		}
 	}
+<<<<<<< HEAD
 	option = {
 		name = "flavor_svp.1.b" # Give local estates further privileges
 		ai_chance = { factor = 0 }
@@ -113,223 +146,235 @@ country_event = {
 				NOT = { has_province_modifier = county_of_artois }
 			}
 			add_permanent_province_modifier = {
+=======
+	option = { 
+		name = "flavor_svp.1.b"
+		ai_chance = { 
+			factor = 0
+		}
+		every_owned_province = { 
+			limit = { 
+				OR = { 
+					province_id = 88
+					province_id = 2307
+					province_id = 2353
+				}
+				NOT = { 
+					has_province_modifier = county_of_artois
+				}
+			}
+			add_permanent_province_modifier = { 
+>>>>>>> submod
 				name = county_of_artois
 				duration = -1
 			}
 		}
-		every_owned_province = {
-			limit = {
-				OR = {
-					province_id = 87 # Flandres
-					province_id = 90 # Brugge
-					province_id = 2363 # Gent
+		every_owned_province = { 
+			limit = { 
+				OR = { 
+					province_id = 87
+					province_id = 90
+					province_id = 2363
 				}
-				NOT = { has_province_modifier = county_of_flanders }
+				NOT = { 
+					has_province_modifier = county_of_flanders
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = county_of_flanders
 				duration = -1
 			}
 		}
-#		every_owned_province = {
-#			limit = {
-#				province_id = 2367 # Leuwen
-#				NOT = { has_province_modifier = lordship_of_mechelen }
-#			}
-#			add_permanent_province_modifier = {
-#				name = lordship_of_mechelen
-#				duration = -1
-#			}
-#			remove_province_modifier = at_cultural_uprising
-#		}
-		every_owned_province = {
-			limit = {
-				province_id = 2364 # Nameur
-				NOT = { has_province_modifier = county_of_namur }
+		every_owned_province = { 
+			limit = { 
+				province_id = 2364
+				NOT = { 
+					has_province_modifier = county_of_namur
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = county_of_namur
 				duration = -1
 			}
 		}
-		every_owned_province = {
-			limit = {
-				province_id = 91 # Hennault
-				NOT = { has_province_modifier = county_of_hainaut }
+		every_owned_province = { 
+			limit = { 
+				province_id = 91
+				NOT = { 
+					has_province_modifier = county_of_hainaut
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = county_of_hainaut
 				duration = -1
 			}
 		}
-		every_owned_province = {
-			limit = {
-				province_id = 96 # Zeeland
-				NOT = { has_province_modifier = county_of_zeeland }
+		every_owned_province = { 
+			limit = { 
+				province_id = 96
+				NOT = { 
+					has_province_modifier = county_of_zeeland
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = county_of_zeeland
 				duration = -1
 			}
 		}
-		every_owned_province = {
-			limit = {
-				OR = {
-					province_id = 97 # Amsterdam
-					province_id = 2370 # 's-Gravenhage
+		every_owned_province = { 
+			limit = { 
+				OR = { 
+					province_id = 97
+					province_id = 2370
 				}
-				NOT = { has_province_modifier = county_of_holland }
+				NOT = { 
+					has_province_modifier = county_of_holland
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = county_of_holland
 				duration = -1
 			}
 		}
-		every_owned_province = {
-			limit = {
-				OR = {
-					province_id = 92 # Brussel
-					province_id = 2367 # Leuwen
-					province_id = 95 # Breda
-					province_id = 2360 # Antwerpen
+		every_owned_province = { 
+			limit = { 
+				OR = { 
+					province_id = 92
+					province_id = 2367
+					province_id = 95
+					province_id = 2360
 				}
-				NOT = { has_province_modifier = duchy_of_brabant }
+				NOT = { 
+					has_province_modifier = duchy_of_brabant
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = duchy_of_brabant
 				duration = -1
 			}
 		}
-		every_owned_province = {
-			limit = {
-				province_id = 2795 # Limburg
-				NOT = { has_province_modifier = duchy_of_limburg }
+		every_owned_province = { 
+			limit = { 
+				province_id = 2795
+				NOT = { 
+					has_province_modifier = duchy_of_limburg
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = duchy_of_limburg
 				duration = -1
 			}
 		}
-		every_owned_province = {
-			limit = {
-				OR = {
-					province_id = 94 # Letzebuerg
-					province_id = 1511 # Ardenne
+		every_owned_province = { 
+			limit = { 
+				OR = { 
+					province_id = 94
+					province_id = 1511
 				}
-				NOT = { has_province_modifier = duchy_of_luxembourg }
+				NOT = { 
+					has_province_modifier = duchy_of_luxembourg
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = duchy_of_luxembourg
 				duration = -1
 			}
 		}
-		every_owned_province = {
-			limit = {
-				province_id = 98 # Utrecht
-				NOT = { has_province_modifier = lordship_of_utrecht }
+		every_owned_province = { 
+			limit = { 
+				province_id = 98
+				NOT = { 
+					has_province_modifier = lordship_of_utrecht
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = lordship_of_utrecht
 				duration = -1
 			}
 		}
-		every_owned_province = {
-			limit = {
-				province_id = 1371 # Fryslan
-				NOT = { has_province_modifier = lordship_of_frisia }
+		every_owned_province = { 
+			limit = { 
+				province_id = 1371
+				NOT = { 
+					has_province_modifier = lordship_of_frisia
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = lordship_of_frisia
 				duration = -1
 			}
 		}
-		every_owned_province = {
-			limit = {
-				OR = {
-					province_id = 99 # Gelre
-					province_id = 2449 # Gelder
+		every_owned_province = { 
+			limit = { 
+				OR = { 
+					province_id = 99
+					province_id = 2449
 				}
-				NOT = { has_province_modifier = duchy_of_guelders }
+				NOT = { 
+					has_province_modifier = duchy_of_guelders
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = duchy_of_guelders
 				duration = -1
 			}
 		}
-#		every_owned_province = {
-#			limit = {
-#				province_id = 1371 # Fryslan
-#				NOT = { has_province_modifier = lordship_of_groningen }
-#			}
-#			add_permanent_province_modifier = {
-#				name = lordship_of_groningen
-#				duration = -1
-#			}
-#		}
-		every_owned_province = {
-			limit = {
-				OR = {
-					province_id = 1372 # het Sticht
-					province_id = 2450 # Groningen
+		every_owned_province = { 
+			limit = { 
+				OR = { 
+					province_id = 1372
+					province_id = 2450
 				}
-				NOT = { has_province_modifier = lordship_of_overijssel }
+				NOT = { 
+					has_province_modifier = lordship_of_overijssel
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = lordship_of_overijssel
 				duration = -1
 			}
 		}
-#		every_owned_province = {
-#			limit = {
-#				province_id = 99 # Gelre
-#				NOT = { has_province_modifier = county_of_zutphen }
-#			}
-#			add_permanent_province_modifier = {
-#				name = county_of_zutphen
-#				duration = -1
-#			}
-#		}
-#		every_owned_province = {
-#			limit = {
-#				province_id = 87 # Flandres
-#				NOT = { has_province_modifier = bishopric_of_tournai }
-#			}
-#			add_permanent_province_modifier = {
-#				name = bishopric_of_tournai
-#				duration = -1
-#			}
-#		}
-		every_owned_province = {
-			limit = {
-				OR = {
-					province_id = 93 # Lidje
-					province_id = 2451 # Loon
+		every_owned_province = { 
+			limit = { 
+				OR = { 
+					province_id = 93
+					province_id = 2451
 				}
-				NOT = { has_province_modifier = bishopric_of_liege }
+				NOT = { 
+					has_province_modifier = bishopric_of_liege
+				}
 			}
-			add_permanent_province_modifier = {
+			add_permanent_province_modifier = { 
 				name = bishopric_of_liege
 				duration = -1
 			}
 		}
 	}
+<<<<<<< HEAD
 	option = {
 		name = flavor_svp.1.c # Abolish the local estates
 		ai_chance = { factor = 0 }
 		log = "FE-SVP:[GetYear]:[Root.GetName]:abolished the local estates:flavor_svp.1"
+=======
+	option = { 
+		name = flavor_svp.1.c
+		ai_chance = { 
+			factor = 0
+		}
+>>>>>>> submod
 		set_global_flag = dutch_rebellion_start
-		hidden_effect = {
-			REB = {
-				set_variable = {
+		hidden_effect = { 
+			REB = { 
+				set_variable = { 
 					which = dutch_rebellion_desire
 					value = 25
 				}
 			}
 			set_country_flag = svp_abolished_estates
 		}
-		every_owned_province = {
-			limit = {
-				OR = {
+		every_owned_province = { 
+			limit = { 
+				OR = { 
 					region = belgii_region
 					region = low_countries_region
 				}
@@ -339,105 +384,102 @@ country_event = {
 		custom_tooltip = flavor_svp_danger_tooltip
 	}
 }
-
-# Demand taxes calculation event
-country_event = {
+country_event = { 
 	id = flavor_svp.2
 	title = "flavor_svp.2.title"
 	desc = "flavor_svp.2.desc"
 	picture = LIBERUM_VETO_eventPicture
-	
 	is_triggered_only = yes
-
-	option = {
-		name = flavor_svp.2.a # Accept
-		ai_chance = {
+	option = { 
+		name = flavor_svp.2.a
+		ai_chance = { 
 			factor = 80
-			modifier = {
+			modifier = { 
 				factor = 0.5
-				REB = {
-					check_variable = {
+				REB = { 
+					check_variable = { 
 						which = dutch_rebellion_desire
 						value = 10
 					}
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0.5
-				REB = {
-					check_variable = {
+				REB = { 
+					check_variable = { 
 						which = dutch_rebellion_desire
 						value = 12
 					}
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0.5
-				REB = {
-					check_variable = {
+				REB = { 
+					check_variable = { 
 						which = dutch_rebellion_desire
 						value = 14
 					}
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0.5
-				REB = {
-					check_variable = {
+				REB = { 
+					check_variable = { 
 						which = dutch_rebellion_desire
 						value = 16
 					}
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0
-				REB = {
-					check_variable = {
+				REB = { 
+					check_variable = { 
 						which = dutch_rebellion_desire
 						value = 18
 					}
 				}
 			}
 		}
-		FROM = {
-			country_event = { id = flavor_svp.3 }
+		FROM = { 
+			country_event = { 
+				id = flavor_svp.3
+			}
 		}
 	}
-	option = {
-		name = flavor_svp.2.b # Reject
-		ai_chance = {
+	option = { 
+		name = flavor_svp.2.b
+		ai_chance = { 
 			factor = 20
 		}
-		FROM = {
-			country_event = { id = flavor_svp.4 }
+		FROM = { 
+			country_event = { 
+				id = flavor_svp.4
+			}
 		}
 	}
 }
-# Estates-General accepts tax demand
-country_event = {
+country_event = { 
 	id = flavor_svp.3
 	title = "flavor_svp.3.title"
 	desc = "flavor_svp.3.desc"
 	picture = LIBERUM_VETO_eventPicture
-	
 	is_triggered_only = yes
-
-	option = {
-		name = flavor_svp.3.a # Good.
-		if = {
-			limit = {
-				OR = {
-					AND = {
+	option = { 
+		name = flavor_svp.3.a
+		if = { 
+			limit = { 
+				OR = { 
+					AND = { 
 						has_country_flag = svp_estates_general
-						any_owned_province = {
+						any_owned_province = { 
 							has_province_modifier = estates_general_1
 						}
 					}
-					AND = {
+					AND = { 
 						has_country_flag = svp_creator
-						SVP = {
+						SVP = { 
 							is_subject_of = ROOT
-							any_owned_province = {
+							any_owned_province = { 
 								has_province_modifier = estates_general_1
 							}
 						}
@@ -446,20 +488,20 @@ country_event = {
 			}
 			add_treasury = 100
 		}
-		else_if = {
-			limit = {
-				OR = {
-					AND = {
+		else_if = { 
+			limit = { 
+				OR = { 
+					AND = { 
 						has_country_flag = svp_estates_general
-						any_owned_province = {
+						any_owned_province = { 
 							has_province_modifier = estates_general_2
 						}
 					}
-					AND = {
+					AND = { 
 						has_country_flag = svp_creator
-						SVP = {
+						SVP = { 
 							is_subject_of = ROOT
-							any_owned_province = {
+							any_owned_province = { 
 								has_province_modifier = estates_general_2
 							}
 						}
@@ -468,20 +510,20 @@ country_event = {
 			}
 			add_treasury = 150
 		}
-		else_if = {
-			limit = {
-				OR = {
-					AND = {
+		else_if = { 
+			limit = { 
+				OR = { 
+					AND = { 
 						has_country_flag = svp_estates_general
-						any_owned_province = {
+						any_owned_province = { 
 							has_province_modifier = estates_general_3
 						}
 					}
-					AND = {
+					AND = { 
 						has_country_flag = svp_creator
-						SVP = {
+						SVP = { 
 							is_subject_of = ROOT
-							any_owned_province = {
+							any_owned_province = { 
 								has_province_modifier = estates_general_3
 							}
 						}
@@ -490,27 +532,23 @@ country_event = {
 			}
 			add_treasury = 200
 		}
-		else = {
+		else = { 
 			add_treasury = 100
 		}
 	}
 }
-# Estates-General rejects tax demand
-country_event = {
+country_event = { 
 	id = flavor_svp.4
 	title = "flavor_svp.4.title"
 	desc = "flavor_svp.4.desc"
 	picture = LIBERUM_VETO_eventPicture
-	
 	is_triggered_only = yes
-
-	option = {
-		name = flavor_svp.4.a # Those pesky peasants...
+	option = { 
+		name = flavor_svp.4.a
 		add_prestige = -5
-		
-		hidden_effect = {
-			REB = {
-				change_variable = {
+		hidden_effect = { 
+			REB = { 
+				change_variable = { 
 					which = dutch_rebellion_desire
 					value = 1
 				}
@@ -518,39 +556,36 @@ country_event = {
 		}
 	}
 }
-# New Bishoprics 1559
-country_event = {
+country_event = { 
 	id = flavor_svp.5
 	title = "flavor_svp.5.title"
 	desc = "flavor_svp.5.desc"
 	picture = RELIGION_eventPicture
-	
 	fire_only_once = yes
-	
-	trigger = {
+	trigger = { 
 		has_global_flag = dutch_rebellion_start
-		OR = {
-			AND = {
+		OR = { 
+			AND = { 
 				has_country_flag = svp_creator
-				SVP = {
+				SVP = { 
 					is_subject_of = ROOT
-					any_owned_province = {
-						OR = {
+					any_owned_province = { 
+						OR = { 
 							religion = protestant
 							religion = reformed
 						}
 					}
 				}
 			}
-			AND = {
+			AND = { 
 				has_country_flag = svp_estates_general
-				any_owned_province = {
-					OR = {
+				any_owned_province = { 
+					OR = { 
 						has_province_modifier = estates_general_1
 						has_province_modifier = estates_general_2
 						has_province_modifier = estates_general_3
 					}
-					OR = {
+					OR = { 
 						religion = protestant
 						religion = reformed
 					}
@@ -558,33 +593,33 @@ country_event = {
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 5
 	}
-	option = {
-		name = flavor_svp.5.a # Introduce the new bishoprics to fight more effectively against heresy
-		ai_chance = {
+	option = { 
+		name = flavor_svp.5.a
+		ai_chance = { 
 			factor = 75
 		}
-		hidden_effect = {
-			REB = {
-				change_variable = {
+		hidden_effect = { 
+			REB = { 
+				change_variable = { 
 					which = dutch_rebellion_desire
 					value = 2
 				}
 			}
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = svp_estates_general
 			}
-			add_country_modifier = {
+			add_country_modifier = { 
 				name = svp_new_bishoprics
 				duration = -1
 			}
-			every_owned_province = {
-				limit = {
-					OR = {
+			every_owned_province = { 
+				limit = { 
+					OR = { 
 						region = low_countries_region
 						region = belgii_region
 					}
@@ -592,95 +627,91 @@ country_event = {
 				add_unrest = 2
 			}
 		}
-		else = {
-			SVP = {
-				add_country_modifier = {
+		else = { 
+			SVP = { 
+				add_country_modifier = { 
 					name = svp_new_bishoprics
 					duration = -1
 				}
-				every_owned_province = {
+				every_owned_province = { 
 					add_unrest = 2
 				}
 			}
 		}
 		custom_tooltip = flavor_svp_danger_tooltip
 	}
-	option = {
-		name = flavor_svp.5.b # We don't need a new system
-		ai_chance = {
+	option = { 
+		name = flavor_svp.5.b
+		ai_chance = { 
 			factor = 25
 		}
 	}
 }
-
-# Compromise of Nobles 1566
-country_event = {
+country_event = { 
 	id = flavor_svp.6
 	title = "flavor_svp.6.title"
 	desc = "flavor_svp.6.desc"
 	picture = COURT_eventPicture
-	
 	fire_only_once = yes
-	
-	trigger = {
+	trigger = { 
 		has_global_flag = dutch_rebellion_start
-		OR = {
+		OR = { 
 			has_country_flag = svp_inquisition
 			has_country_modifier = svp_new_bishoprics
 		}
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 5
 	}
-	
-	option = {
-		name = flavor_svp.6.a # Agree to compromise
-		ai_chance = { factor = 60 }
-		
+	option = { 
+		name = flavor_svp.6.a
+		ai_chance = { 
+			factor = 60
+		}
 		remove_country_modifier = svp_new_bishoprics
 		clr_country_flag = svp_inquisition
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = svp_estates_general
 			}
-			set_variable = {
+			set_variable = { 
 				which = inquisition
 				value = 0
 			}
 		}
-		else = {
-			set_variable = {
+		else = { 
+			set_variable = { 
 				which = inquisition
 				value = 0
 			}
-			SVP = {
-				set_variable = {
+			SVP = { 
+				set_variable = { 
 					which = inquisition
 					value = 0
 				}
 			}
 		}
-		
-		hidden_effect = {
-			REB = {
-				subtract_variable = {
+		hidden_effect = { 
+			REB = { 
+				subtract_variable = { 
 					which = dutch_rebellion_desire
 					value = 3
 				}
 			}
 		}
 	}
-	option = {
-		name = flavor_svp.6.b # Reject the petition
-		ai_chance = { factor = 40 }
-		if = {
-			limit = {
+	option = { 
+		name = flavor_svp.6.b
+		ai_chance = { 
+			factor = 40
+		}
+		if = { 
+			limit = { 
 				has_country_flag = svp_estates_general
 			}
-			every_owned_province = {
-				limit = {
-					OR = {
+			every_owned_province = { 
+				limit = { 
+					OR = { 
 						region = low_countries_region
 						region = belgii_region
 					}
@@ -689,9 +720,9 @@ country_event = {
 			}
 		}
 		custom_tooltip = flavor_svp_danger_tooltip
-		hidden_effect = {
-			REB = {
-				change_variable = {
+		hidden_effect = { 
+			REB = { 
+				change_variable = { 
 					which = dutch_rebellion_desire
 					value = 3
 				}
@@ -699,31 +730,27 @@ country_event = {
 		}
 	}
 }
-
-# Province incorporated in the Estates-General
-country_event = {
+country_event = { 
 	id = flavor_svp.7
 	title = "flavor_svp.7.title"
 	desc = "flavor_svp.7.desc"
 	picture = CONQUEST_eventPicture
-	
-	# Event fires if SVP or BUR obtains new provinces in the Low Countries and adds estates general to those provinces
-	trigger = {
-		any_owned_province = {
-			OR = {
+	trigger = { 
+		any_owned_province = { 
+			OR = { 
 				has_province_modifier = estates_general_1
 				has_province_modifier = estates_general_2
 				has_province_modifier = estates_general_3
 			}
 		}
-		any_owned_province = {
-			OR = {
+		any_owned_province = { 
+			OR = { 
 				region = low_countries_region
 				region = belgii_region
 			}
 			is_core = ROOT
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					has_province_modifier = estates_general_1
 					has_province_modifier = estates_general_2
 					has_province_modifier = estates_general_3
@@ -731,56 +758,54 @@ country_event = {
 			}
 		}
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 5
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.7.a"
-		every_owned_province = {
-			limit = {
-				OR = {
+		every_owned_province = { 
+			limit = { 
+				OR = { 
 					region = low_countries_region
 					region = belgii_region
 				}
 				is_core = ROOT
-				NOT = {
-					OR = {
+				NOT = { 
+					OR = { 
 						has_province_modifier = estates_general_1
 						has_province_modifier = estates_general_2
 						has_province_modifier = estates_general_3
 					}
 				}
 			}
-			if = {
-				limit = {
-					ROOT = {
-						any_owned_province = {
+			if = { 
+				limit = { 
+					ROOT = { 
+						any_owned_province = { 
 							has_province_modifier = estates_general_1
 						}
 					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = estates_general_1
 					duration = -1
 				}
 			}
-			else_if = {
-				limit = {
-					ROOT = {
-						any_owned_province = {
+			else_if = { 
+				limit = { 
+					ROOT = { 
+						any_owned_province = { 
 							has_province_modifier = estates_general_2
 						}
 					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = estates_general_2
 					duration = -1
 				}
 			}
-			else = {
-				add_province_modifier = {
+			else = { 
+				add_province_modifier = { 
 					name = estates_general_3
 					duration = -1
 				}
@@ -788,105 +813,102 @@ country_event = {
 		}
 	}
 }
-
-# Demand manpower calculation event
-country_event = {
+country_event = { 
 	id = flavor_svp.9
 	title = "flavor_svp.9.title"
 	desc = "flavor_svp.9.desc"
 	picture = LIBERUM_VETO_eventPicture
-	
 	is_triggered_only = yes
-
-	option = {
-		name = flavor_svp.9.a # Accept
-		ai_chance = {
+	option = { 
+		name = flavor_svp.9.a
+		ai_chance = { 
 			factor = 80
-			modifier = {
+			modifier = { 
 				factor = 0.5
-				REB = {
-					check_variable = {
+				REB = { 
+					check_variable = { 
 						which = dutch_rebellion_desire
 						value = 10
 					}
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0.5
-				REB = {
-					check_variable = {
+				REB = { 
+					check_variable = { 
 						which = dutch_rebellion_desire
 						value = 12
 					}
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0.5
-				REB = {
-					check_variable = {
+				REB = { 
+					check_variable = { 
 						which = dutch_rebellion_desire
 						value = 14
 					}
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0.5
-				REB = {
-					check_variable = {
+				REB = { 
+					check_variable = { 
 						which = dutch_rebellion_desire
 						value = 16
 					}
 				}
 			}
-			modifier = {
+			modifier = { 
 				factor = 0
-				REB = {
-					check_variable = {
+				REB = { 
+					check_variable = { 
 						which = dutch_rebellion_desire
 						value = 18
 					}
 				}
 			}
 		}
-		FROM = {
-			country_event = { id = flavor_svp.10 }
+		FROM = { 
+			country_event = { 
+				id = flavor_svp.10
+			}
 		}
 	}
-	option = {
-		name = flavor_svp.9.b # Reject
-		ai_chance = {
+	option = { 
+		name = flavor_svp.9.b
+		ai_chance = { 
 			factor = 20
 		}
-		FROM = {
-			country_event = { id = flavor_svp.11 }
+		FROM = { 
+			country_event = { 
+				id = flavor_svp.11
+			}
 		}
 	}
 }
-# Estates-General accepts manpower demand
-country_event = {
+country_event = { 
 	id = flavor_svp.10
 	title = "flavor_svp.10.title"
 	desc = "flavor_svp.10.desc"
 	picture = LIBERUM_VETO_eventPicture
-	
 	is_triggered_only = yes
-
-	option = {
-		name = flavor_svp.3.a # Good.
-		if = {
-			limit = {
-				OR = {
-					AND = {
+	option = { 
+		name = flavor_svp.3.a
+		if = { 
+			limit = { 
+				OR = { 
+					AND = { 
 						has_country_flag = svp_estates_general
-						any_owned_province = {
+						any_owned_province = { 
 							has_province_modifier = estates_general_1
 						}
 					}
-					AND = {
+					AND = { 
 						has_country_flag = svp_creator
-						SVP = {
+						SVP = { 
 							is_subject_of = ROOT
-							any_owned_province = {
+							any_owned_province = { 
 								has_province_modifier = estates_general_1
 							}
 						}
@@ -895,20 +917,20 @@ country_event = {
 			}
 			add_manpower = 3
 		}
-		else_if = {
-			limit = {
-				OR = {
-					AND = {
+		else_if = { 
+			limit = { 
+				OR = { 
+					AND = { 
 						has_country_flag = svp_estates_general
-						any_owned_province = {
+						any_owned_province = { 
 							has_province_modifier = estates_general_2
 						}
 					}
-					AND = {
+					AND = { 
 						has_country_flag = svp_creator
-						SVP = {
+						SVP = { 
 							is_subject_of = ROOT
-							any_owned_province = {
+							any_owned_province = { 
 								has_province_modifier = estates_general_2
 							}
 						}
@@ -917,20 +939,20 @@ country_event = {
 			}
 			add_manpower = 5
 		}
-		else_if = {
-			limit = {
-				OR = {
-					AND = {
+		else_if = { 
+			limit = { 
+				OR = { 
+					AND = { 
 						has_country_flag = svp_estates_general
-						any_owned_province = {
+						any_owned_province = { 
 							has_province_modifier = estates_general_3
 						}
 					}
-					AND = {
+					AND = { 
 						has_country_flag = svp_creator
-						SVP = {
+						SVP = { 
 							is_subject_of = ROOT
-							any_owned_province = {
+							any_owned_province = { 
 								has_province_modifier = estates_general_3
 							}
 						}
@@ -939,27 +961,23 @@ country_event = {
 			}
 			add_manpower = 7
 		}
-		else = {
+		else = { 
 			add_manpower = 3
 		}
 	}
 }
-# Estates-General rejects manpower demand
-country_event = {
+country_event = { 
 	id = flavor_svp.11
 	title = "flavor_svp.11.title"
 	desc = "flavor_svp.11.desc"
 	picture = LIBERUM_VETO_eventPicture
-	
 	is_triggered_only = yes
-
-	option = {
-		name = flavor_svp.11.a # Those pesky peasants...
+	option = { 
+		name = flavor_svp.11.a
 		add_prestige = -5
-		
-		hidden_effect = {
-			REB = {
-				change_variable = {
+		hidden_effect = { 
+			REB = { 
+				change_variable = { 
 					which = dutch_rebellion_desire
 					value = 1
 				}
@@ -967,82 +985,345 @@ country_event = {
 		}
 	}
 }
-# Beeldenstorm disaster events
-# On start
-country_event = {
+country_event = { 
 	id = flavor_svp.100
 	title = "flavor_svp.100.title"
 	desc = "flavor_svp.100.desc"
 	picture = RELIGIOUS_TURMOIL_eventPicture
-
 	is_triggered_only = yes
-	
-	immediate = {
+	immediate = { 
 		set_global_flag = beeldenstorm_happened
-		# Spawn the rebels, hit 1 stab.
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = svp_estates_general
 			}
-			Stab_Subtract1 = yes
-			random_owned_province = {
-				limit = {
-					OR = {
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					add_stability = -1
+				}
+			}
+			tooltip = { 
+				add_stability = -1
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = -5
+			}
+			random_owned_province = { 
+				limit = { 
+					OR = { 
 						region = low_countries_region
 						region = belgii_region
 					}
-					MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+					OR = { 
+						AND = { 
+							is_variable_equal = { 
+								which = adv
+								value = 2
+							}
+							check_variable = { 
+								which = ayr
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adx
+								value = 2
+							}
+							check_variable = { 
+								which = ays
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adz
+								value = 2
+							}
+							check_variable = { 
+								which = ayt
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aeb
+								value = 2
+							}
+							check_variable = { 
+								which = ayu
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aed
+								value = 2
+							}
+							check_variable = { 
+								which = ayv
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aef
+								value = 2
+							}
+							check_variable = { 
+								which = ayw
+								value = 20
+							}
+						}
+					}
 					controlled_by = ROOT
 				}
-				spawn_rebels = {
+				spawn_rebels = { 
 					type = protestant_rebels
 					size = 4
 					unrest = 10
 					win = yes
 				}
 			}
-			random_owned_province = {
-				limit = {
-					OR = {
+			random_owned_province = { 
+				limit = { 
+					OR = { 
 						region = low_countries_region
 						region = belgii_region
 					}
-					MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+					OR = { 
+						AND = { 
+							is_variable_equal = { 
+								which = adv
+								value = 2
+							}
+							check_variable = { 
+								which = ayr
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adx
+								value = 2
+							}
+							check_variable = { 
+								which = ays
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adz
+								value = 2
+							}
+							check_variable = { 
+								which = ayt
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aeb
+								value = 2
+							}
+							check_variable = { 
+								which = ayu
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aed
+								value = 2
+							}
+							check_variable = { 
+								which = ayv
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aef
+								value = 2
+							}
+							check_variable = { 
+								which = ayw
+								value = 20
+							}
+						}
+					}
 					controlled_by = ROOT
 				}
-				spawn_rebels = {
+				spawn_rebels = { 
 					type = protestant_rebels
 					size = 4
 					unrest = 10
 					win = yes
 				}
 			}
-			random_owned_province = {
-				limit = {
-					OR = {
+			random_owned_province = { 
+				limit = { 
+					OR = { 
 						region = low_countries_region
 						region = belgii_region
 					}
-					MN_CheckProp = { religion = 3 type = TotP prop = 20 }
+					OR = { 
+						AND = { 
+							is_variable_equal = { 
+								which = adv
+								value = 3
+							}
+							check_variable = { 
+								which = ayr
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adx
+								value = 3
+							}
+							check_variable = { 
+								which = ays
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adz
+								value = 3
+							}
+							check_variable = { 
+								which = ayt
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aeb
+								value = 3
+							}
+							check_variable = { 
+								which = ayu
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aed
+								value = 3
+							}
+							check_variable = { 
+								which = ayv
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aef
+								value = 3
+							}
+							check_variable = { 
+								which = ayw
+								value = 20
+							}
+						}
+					}
 					controlled_by = ROOT
 				}
-				spawn_rebels = {
+				spawn_rebels = { 
 					type = reformed_rebels
 					size = 4
 					unrest = 10
 					win = yes
 				}
 			}
-			random_owned_province = {
-				limit = {
-					OR = {
+			random_owned_province = { 
+				limit = { 
+					OR = { 
 						region = low_countries_region
 						region = belgii_region
 					}
-					MN_CheckProp = { religion = 3 type = TotP prop = 20 }
+					OR = { 
+						AND = { 
+							is_variable_equal = { 
+								which = adv
+								value = 3
+							}
+							check_variable = { 
+								which = ayr
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adx
+								value = 3
+							}
+							check_variable = { 
+								which = ays
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = adz
+								value = 3
+							}
+							check_variable = { 
+								which = ayt
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aeb
+								value = 3
+							}
+							check_variable = { 
+								which = ayu
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aed
+								value = 3
+							}
+							check_variable = { 
+								which = ayv
+								value = 20
+							}
+						}
+						AND = { 
+							is_variable_equal = { 
+								which = aef
+								value = 3
+							}
+							check_variable = { 
+								which = ayw
+								value = 20
+							}
+						}
+					}
 					controlled_by = ROOT
 				}
-				spawn_rebels = {
+				spawn_rebels = { 
 					type = reformed_rebels
 					size = 4
 					unrest = 10
@@ -1050,67 +1331,335 @@ country_event = {
 				}
 			}
 		}
-		else = {
-			Stab_Subtract1 = yes
-			SVP = {
-				random_owned_province = {
-					limit = {
-						OR = {
+		else = { 
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					add_stability = -1
+				}
+			}
+			tooltip = { 
+				add_stability = -1
+			}
+			if = { 
+				limit = { 
+					is_emperor_of_china = yes
+				}
+				add_mandate = -5
+			}
+			SVP = { 
+				random_owned_province = { 
+					limit = { 
+						OR = { 
 							region = low_countries_region
 							region = belgii_region
 						}
-						MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+						OR = { 
+							AND = { 
+								is_variable_equal = { 
+									which = adv
+									value = 2
+								}
+								check_variable = { 
+									which = ayr
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = adx
+									value = 2
+								}
+								check_variable = { 
+									which = ays
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = adz
+									value = 2
+								}
+								check_variable = { 
+									which = ayt
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aeb
+									value = 2
+								}
+								check_variable = { 
+									which = ayu
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aed
+									value = 2
+								}
+								check_variable = { 
+									which = ayv
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aef
+									value = 2
+								}
+								check_variable = { 
+									which = ayw
+									value = 20
+								}
+							}
+						}
 						controlled_by = SVP
 					}
-					spawn_rebels = {
+					spawn_rebels = { 
 						type = protestant_rebels
 						size = 4
 						unrest = 10
 						win = yes
 					}
 				}
-				random_owned_province = {
-					limit = {
-						OR = {
+				random_owned_province = { 
+					limit = { 
+						OR = { 
 							region = low_countries_region
 							region = belgii_region
 						}
-						MN_CheckProp = { religion = 2 type = TotP prop = 20 }
+						OR = { 
+							AND = { 
+								is_variable_equal = { 
+									which = adv
+									value = 2
+								}
+								check_variable = { 
+									which = ayr
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = adx
+									value = 2
+								}
+								check_variable = { 
+									which = ays
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = adz
+									value = 2
+								}
+								check_variable = { 
+									which = ayt
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aeb
+									value = 2
+								}
+								check_variable = { 
+									which = ayu
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aed
+									value = 2
+								}
+								check_variable = { 
+									which = ayv
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aef
+									value = 2
+								}
+								check_variable = { 
+									which = ayw
+									value = 20
+								}
+							}
+						}
 						controlled_by = SVP
 					}
-					spawn_rebels = {
+					spawn_rebels = { 
 						type = protestant_rebels
 						size = 3
 						unrest = 10
 						win = yes
 					}
 				}
-				random_owned_province = {
-					limit = {
-						OR = {
+				random_owned_province = { 
+					limit = { 
+						OR = { 
 							region = low_countries_region
 							region = belgii_region
 						}
-						MN_CheckProp = { religion = 3 type = TotP prop = 20 }
+						OR = { 
+							AND = { 
+								is_variable_equal = { 
+									which = adv
+									value = 3
+								}
+								check_variable = { 
+									which = ayr
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = adx
+									value = 3
+								}
+								check_variable = { 
+									which = ays
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = adz
+									value = 3
+								}
+								check_variable = { 
+									which = ayt
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aeb
+									value = 3
+								}
+								check_variable = { 
+									which = ayu
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aed
+									value = 3
+								}
+								check_variable = { 
+									which = ayv
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aef
+									value = 3
+								}
+								check_variable = { 
+									which = ayw
+									value = 20
+								}
+							}
+						}
 						controlled_by = SVP
 					}
-					spawn_rebels = {
+					spawn_rebels = { 
 						type = reformed_rebels
 						size = 4
 						unrest = 10
 						win = yes
 					}
 				}
-				random_owned_province = {
-					limit = {
-						OR = {
+				random_owned_province = { 
+					limit = { 
+						OR = { 
 							region = low_countries_region
 							region = belgii_region
 						}
-						MN_CheckProp = { religion = 3 type = TotP prop = 20 }
+						OR = { 
+							AND = { 
+								is_variable_equal = { 
+									which = adv
+									value = 3
+								}
+								check_variable = { 
+									which = ayr
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = adx
+									value = 3
+								}
+								check_variable = { 
+									which = ays
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = adz
+									value = 3
+								}
+								check_variable = { 
+									which = ayt
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aeb
+									value = 3
+								}
+								check_variable = { 
+									which = ayu
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aed
+									value = 3
+								}
+								check_variable = { 
+									which = ayv
+									value = 20
+								}
+							}
+							AND = { 
+								is_variable_equal = { 
+									which = aef
+									value = 3
+								}
+								check_variable = { 
+									which = ayw
+									value = 20
+								}
+							}
+						}
 						controlled_by = SVP
 					}
-					spawn_rebels = {
+					spawn_rebels = { 
 						type = reformed_rebels
 						size = 3
 						unrest = 10
@@ -1120,68 +1669,71 @@ country_event = {
 			}
 		}
 	}
-	option = {
-		name = "flavor_svp.100.a" # Compromise with the rebels
-		ai_chance = {
+	option = { 
+		name = "flavor_svp.100.a"
+		ai_chance = { 
 			factor = 25
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = svp_estates_general
 			}
 			disband_rebels = protestant_rebels
 			disband_rebels = reformed_rebels
 			end_disaster = beeldenstorm
 		}
-		else = {
-			SVP = {
+		else = { 
+			SVP = { 
 				disband_rebels = protestant_rebels
 				disband_rebels = reformed_rebels
 			}
 			end_disaster = beeldenstorm
 		}
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_country_flag = svp_estates_general
 			}
-			every_owned_province = {
-				limit = {
-					OR = {
+			every_owned_province = { 
+				limit = { 
+					OR = { 
 						region = low_countries_region
 						region = belgii_region
 					}
 				}
-				add_province_modifier = {
+				add_province_modifier = { 
 					name = beeldenstorm_compromise
-					duration = 18250 # 50 years
+					duration = 18250
 				}
 			}
 		}
-		else = {
-			SVP = {
-				every_owned_province = {
-					add_province_modifier = {
+		else = { 
+			SVP = { 
+				every_owned_province = { 
+					add_province_modifier = { 
 						name = beeldenstorm_compromise
-						duration = 18250 # 50 years
+						duration = 18250
 					}
 				}
 			}
 		}
-		country_event = { id = flavor_svp.199 days = 5 }
+		country_event = { 
+			id = flavor_svp.199
+			days = 5
+		}
 	}
-	option = {
-		name = "flavor_svp.100.b" # Suppress the rebels
-		ai_chance = {
+	option = { 
+		name = "flavor_svp.100.b"
+		ai_chance = { 
 			factor = 75
 		}
-		if = {
-			limit = {
-				OR = {
+		if = { 
+			limit = { 
+				OR = { 
 					tag = SPA
 					tag = CAS
 				}
 			}
-			define_general = {
+			define_general = { 
 				fire = 5
 				shock = 5
 				manuever = 6
@@ -1190,13 +1742,15 @@ country_event = {
 				trait = ruthless_personality
 			}
 		}
-		else = {
-			create_general = { tradition = 100 }
+		else = { 
+			create_general = { 
+				tradition = 100
+			}
 		}
 		custom_tooltip = flavor_svp_danger_tooltip
-		hidden_effect = {
-			REB = {
-				change_variable = {
+		hidden_effect = { 
+			REB = { 
+				change_variable = { 
 					which = dutch_rebellion_desire
 					value = 3
 				}
@@ -1204,66 +1758,106 @@ country_event = {
 		}
 	}
 }
-
-# Tenth Penny
-country_event = {
+country_event = { 
 	id = flavor_svp.101
 	title = "flavor_svp.101.title"
 	desc = "flavor_svp.101.desc"
 	picture = ECONOMY_eventPicture
-	
 	is_triggered_only = yes
 	fire_only_once = yes
-	
-	option = {
-		name = flavor_svp.101.a # Demand the Tenth Penny
-		ai_chance = {
+	option = { 
+		name = flavor_svp.101.a
+		ai_chance = { 
 			factor = 25
 		}
 		add_treasury = 500
-		Stab_Subtract1 = yes		
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -1
+			}
+		}
+		tooltip = { 
+			add_stability = -1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -5
+		}
 		custom_tooltip = flavor_svp_danger_tooltip
-		hidden_effect = {
-			REB = {
-				change_variable = {
+		hidden_effect = { 
+			REB = { 
+				change_variable = { 
 					which = dutch_rebellion_desire
 					value = 4
 				}
 			}
 		}
 	}
-	option = {
-		name = flavor_svp.101.b # Let�s not burden the people with additional taxes
-		ai_chance = {
+	option = { 
+		name = flavor_svp.101.b
+		ai_chance = { 
 			factor = 75
 		}
 		add_legitimacy = 10
 	}
 }
-
-# Council of Troubles
-country_event = {
+country_event = { 
 	id = flavor_svp.102
 	title = "flavor_svp.102.title"
 	desc = "flavor_svp.102.desc"
 	picture = COURT_eventPicture
-	
 	is_triggered_only = yes
 	fire_only_once = yes
-	
-	option = {
-		name = flavor_svp.102.a # Set it up and execute the leaders of the revolt
-		ai_chance = {
+	option = { 
+		name = flavor_svp.102.a
+		ai_chance = { 
 			factor = 25
 		}
-		Stab_Subtract1 = yes
-		if = {
-			limit = {
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -1
+			}
+		}
+		tooltip = { 
+			add_stability = -1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -5
+		}
+		if = { 
+			limit = { 
 				has_country_flag = svp_estates_general
 			}
-			every_owned_province = {
-				limit = {
-					OR = {
+			every_owned_province = { 
+				limit = { 
+					OR = { 
 						region = low_countries_region
 						region = belgii_region
 					}
@@ -1271,397 +1865,350 @@ country_event = {
 				add_unrest = -10
 			}
 		}
-		else = {
-			SVP = {
-				every_owned_province = {
+		else = { 
+			SVP = { 
+				every_owned_province = { 
 					add_unrest = -10
 				}
 			}
 		}
 		custom_tooltip = flavor_svp_danger_tooltip
-		hidden_effect = {
-			REB = {
-				change_variable = {
+		hidden_effect = { 
+			REB = { 
+				change_variable = { 
 					which = dutch_rebellion_desire
 					value = 5
 				}
 			}
 		}
 	}
-	option = {
-		name = flavor_svp.102.b # Don't set it up
-		ai_chance = {
+	option = { 
+		name = flavor_svp.102.b
+		ai_chance = { 
 			factor = 75
 		}
 		add_legitimacy = 10
 	}
 }
-# Disaster end
-country_event = {
+country_event = { 
 	id = flavor_svp.199
 	title = "flavor_svp.199.title"
 	desc = "flavor_svp.199.desc"
 	picture = COURT_eventPicture
-
 	is_triggered_only = yes
-	
-	option = {
-		name = flavor_svp.199.a # Finally
-		Stab_Add2 = yes
+	option = { 
+		name = flavor_svp.199.a
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 2
+			}
+		}
+		tooltip = { 
+			add_stability = 2
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 10
+		}
 	}
 }
-# Information on the new mechanics
-country_event = {
+country_event = { 
 	id = flavor_svp.200
 	title = "flavor_svp.200.title"
 	desc = "flavor_svp.200.desc"
 	picture = BURGUNDY_COURT_eventPicture
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "flavor_svp.200.a"
 	}
 }
-# Centralisation information
-country_event = {
+country_event = { 
 	id = flavor_svp.201
 	title = "flavor_svp.201.title"
 	desc = "flavor_svp.201.desc"
 	picture = BURGUNDY_COURT_eventPicture
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "flavor_svp.201.a"
 	}
 }
-
-
-# Events 301 and 302 removed as a temporary fix until 3.0. -ekinda
-
-# Provinces want more freedom event
-# country_event = {
-	# id = flavor_svp.301
-	# title = "flavor_svp.301.title"
-	# desc = "flavor_svp.301.desc"
-	# picture = ANGRY_MOB_eventPicture
-
-	# is_triggered_only = yes
-	
-	# option = {
-		# name = "flavor_svp.301.a" # Ok, revert the changes
-		# ai_chance = { factor = 40 }
-		
-		# if = {
-			# limit = {
-				# SVP = {
-					# is_subject_of_type = subjugated_vassal
-				# }
-			# }
-			# create_subject = {
-				# subject_type = rebellious_subjugated_vassal
-				# subject = SVP
-			# }
-		# }
-		# else_if = {
-			# limit = {
-				# SVP = {
-					# is_subject_of_type = vassal
-				# }
-			# }
-			# create_subject = {
-				# subject_type = subjugated_vassal
-				# subject = SVP
-			# }
-		# }
-		# else = {
-			# create_subject = {
-				# subject_type = rebellious_subjugated_vassal
-				# subject = SVP
-			# }
-		# }
-	# }
-	# option = {
-		# name = "flavor_svp.301.b" # No
-		# ai_chance = { factor = 60 }
-		# add_prestige = 10
-		# SVP = {
-			# add_liberty_desire = 25
-		# }
-		# custom_tooltip = flavor_svp_danger_tooltip
-		# hidden_effect = {
-			# REB = {
-				# change_variable = {
-					# which = dutch_rebellion_desire
-					# value = 10
-				# }
-			# }
-		# }
-	# }
-# }
-#Provinces generally accept subjugation
-# country_event = {
-	# id = flavor_svp.302
-	# title = "flavor_svp.302.title"
-	# desc = "flavor_svp.302.desc"
-	# picture = BURGUNDY_COURT_eventPicture
-
-	# is_triggered_only = yes
-	
-	# option = {
-		# name = "flavor_svp.302.a"
-		# add_prestige = 10
-		# hidden_effect = {
-			# REB = {
-				# change_variable = {
-					# which = dutch_rebellion_desire
-					# value = 1
-				# }
-			# }
-		# }
-	# }
-# }
-
-#############################################
-###### NETHERLANDS INDEPENDENCE EVENTS ######
-#############################################
-
-# Netherlands declare independence!
-country_event = {
+country_event = { 
 	id = flavor_svp.1001
 	title = "flavor_svp.1001.title"
 	desc = "flavor_svp.1001.desc"
 	picture = ANGRY_MOB_eventPicture
-	
 	major = yes
 	fire_only_once = yes
-	
-	trigger = {
+	trigger = { 
 		has_global_flag = dutch_rebellion_start
-		OR = {
-			AND = {
+		OR = { 
+			AND = { 
 				has_country_flag = svp_creator
-				SVP = {
+				SVP = { 
 					is_subject_of = ROOT
-					check_variable = { which = "Cores_on_the_Netherlands" value = 10 }
+					check_variable = { 
+						which = "Cores_on_the_Netherlands"
+						value = 10
+					}
 				}
 			}
-			AND = {
-				OR = {
+			AND = { 
+				OR = { 
 					has_country_flag = svp_estates_general
 					has_country_flag = svp_abolished_estates
 				}
-				NOT = { exists = SVP }
-				check_variable = { which = "Demesne_in_the_Netherlands" value = 10 }
+				NOT = { 
+					exists = SVP
+				}
+				check_variable = { 
+					which = "Demesne_in_the_Netherlands"
+					value = 10
+				}
 			}
 		}
-		NOT = { exists = NED }
-		REB = {
-			check_variable = {
+		NOT = { 
+			exists = NED
+		}
+		REB = { 
+			check_variable = { 
 				which = dutch_rebellion_desire
-				
-				# needs balancing
-				value = 22 # changed from 20
+				value = 22
 			}
 		}
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 20
-		
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			REB = {
-				check_variable = {
+			REB = { 
+				check_variable = { 
 					which = dutch_rebellion_desire
 					value = 23
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			REB = {
-				check_variable = {
+			REB = { 
+				check_variable = { 
 					which = dutch_rebellion_desire
 					value = 25
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.50
-			REB = {
-				check_variable = {
+			REB = { 
+				check_variable = { 
 					which = dutch_rebellion_desire
 					value = 30
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			REB = {
-				check_variable = {
+			REB = { 
+				check_variable = { 
 					which = dutch_rebellion_desire
 					value = 40
 				}
 			}
 		}
 	}
-
-	immediate = {
-		if = {
-			limit = {
-				NOT = { exists = NED }
+	immediate = { 
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = NED
+				}
 			}
-			NED = { clr_country_flag = POP_Init }
+			NED = { 
+				clr_country_flag = POP_Init
+			}
 		}
-		hidden_effect = {
-			# Flag NED provinces and count the number. Also reset the rebellion desire.
-			REB = {
-				set_variable = {
+		hidden_effect = { 
+			REB = { 
+				set_variable = { 
 					which = ned_core_count
 					value = 0
 				}
-				set_variable = {
+				set_variable = { 
 					which = dutch_rebellion_desire
 					value = -1000
 				}
 			}
-			
-			holland_area = {
-				if = {
-					limit = {
-						OR = {
+			holland_area = { 
+				if = { 
+					limit = { 
+						OR = { 
 							owned_by = SVP
 							owned_by = ROOT
 						}
-						NOT = {
-							REB = {
-								check_variable = { which = ned_core_count value = 11 } #TUNING
+						NOT = { 
+							REB = { 
+								check_variable = { 
+									which = ned_core_count
+									value = 11
+								}
 							}
 						}
 					}
 					set_province_flag = ned_core
-					REB = {
-						change_variable = {
+					REB = { 
+						change_variable = { 
 							which = ned_core_count
 							value = 1
 						}
 					}
 				}
 			}
-			gelderland_area = {
-				if = {
-					limit = {
-						NOT = { province_id = 2449 } #Opper-Gelre?
-						OR = {
+			gelderland_area = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							province_id = 2449
+						}
+						OR = { 
 							owned_by = SVP
 							owned_by = ROOT
 						}
-						NOT = {
-							REB = {
-								check_variable = { which = ned_core_count value = 11 }
+						NOT = { 
+							REB = { 
+								check_variable = { 
+									which = ned_core_count
+									value = 11
+								}
 							}
 						}
 					}
 					set_province_flag = ned_core
-					REB = {
-						change_variable = {
+					REB = { 
+						change_variable = { 
 							which = ned_core_count
 							value = 1
 						}
 					}
 				}
 			}
-			frisia_area = {
-				if = {
-					limit = {
-						OR = {
+			frisia_area = { 
+				if = { 
+					limit = { 
+						OR = { 
 							owned_by = SVP
 							owned_by = ROOT
 						}
-						NOT = {
-							REB = {
-								check_variable = { which = ned_core_count value = 11 }
+						NOT = { 
+							REB = { 
+								check_variable = { 
+									which = ned_core_count
+									value = 11
+								}
 							}
 						}
 					}
 					set_province_flag = ned_core
-					REB = {
-						change_variable = {
+					REB = { 
+						change_variable = { 
 							which = ned_core_count
 							value = 1
 						}
 					}
 				}
 			}
-			flanders_area = {
-				if = {
-					limit = {
-						NOT = { province_id = 87 } #Flinde Lilos
-						NOT = { province_id = 90 } #Brugge
-						OR = {
+			flanders_area = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							province_id = 87
+						}
+						NOT = { 
+							province_id = 90
+						}
+						OR = { 
 							owned_by = SVP
 							owned_by = ROOT
 						}
-						NOT = {
-							REB = {
-								check_variable = { which = ned_core_count value = 11 }
+						NOT = { 
+							REB = { 
+								check_variable = { 
+									which = ned_core_count
+									value = 11
+								}
 							}
 						}
 					}
 					set_province_flag = ned_core
-					REB = {
-						change_variable = {
+					REB = { 
+						change_variable = { 
 							which = ned_core_count
 							value = 1
 						}
 					}
 				}
 			}
-			95 = { #Noord Brabant
-				if = {
-					limit = {
-						OR = {
+			95 = { 
+				if = { 
+					limit = { 
+						OR = { 
 							owned_by = SVP
 							owned_by = ROOT
 						}
-						NOT = {
-							REB = {
-								check_variable = { which = ned_core_count value = 11 }
+						NOT = { 
+							REB = { 
+								check_variable = { 
+									which = ned_core_count
+									value = 11
+								}
 							}
 						}
 					}
 					set_province_flag = ned_core
-					REB = {
-						change_variable = {
+					REB = { 
+						change_variable = { 
 							which = ned_core_count
 							value = 1
 						}
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						REB = {
-							check_variable = {
+			if = { 
+				limit = { 
+					NOT = { 
+						REB = { 
+							check_variable = { 
 								which = ned_core_count
 								value = 11
 							}
 						}
 					}
 				}
-				south_brabant_area = {
-					if = {
-						limit = {
-							NOT = { has_province_flag = ned_core }
-							NOT = { province_id = 92 } #Brussels
-							OR = {
+				south_brabant_area = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								has_province_flag = ned_core
+							}
+							NOT = { 
+								province_id = 92
+							}
+							OR = { 
 								owned_by = SVP
 								owned_by = ROOT
 							}
-							NOT = {
-								REB = {
-									check_variable = {
+							NOT = { 
+								REB = { 
+									check_variable = { 
 										which = ned_core_count
 										value = 11
 									}
@@ -1669,8 +2216,8 @@ country_event = {
 							}
 						}
 						set_province_flag = ned_core
-						REB = {
-							change_variable = {
+						REB = { 
+							change_variable = { 
 								which = ned_core_count
 								value = 1
 							}
@@ -1678,28 +2225,30 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						REB = {
-							check_variable = {
+			if = { 
+				limit = { 
+					NOT = { 
+						REB = { 
+							check_variable = { 
 								which = ned_core_count
 								value = 11
 							}
 						}
 					}
 				}
-				north_brabant_area = {
-					if = {
-						limit = {
-							NOT = { has_province_flag = ned_core }
-							OR = {
+				north_brabant_area = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								has_province_flag = ned_core
+							}
+							OR = { 
 								owned_by = SVP
 								owned_by = ROOT
 							}
-							NOT = {
-								REB = {
-									check_variable = {
+							NOT = { 
+								REB = { 
+									check_variable = { 
 										which = ned_core_count
 										value = 11
 									}
@@ -1707,8 +2256,8 @@ country_event = {
 							}
 						}
 						set_province_flag = ned_core
-						REB = {
-							change_variable = {
+						REB = { 
+							change_variable = { 
 								which = ned_core_count
 								value = 1
 							}
@@ -1716,26 +2265,27 @@ country_event = {
 					}
 				}
 			}
-			# Escape clauses in the rare case NED core count has not reached 10 by now.
-			if = {
-				limit = {
-					NOT = {
-						REB = {
-							check_variable = {
+			if = { 
+				limit = { 
+					NOT = { 
+						REB = { 
+							check_variable = { 
 								which = ned_core_count
 								value = 10
 							}
 						}
 					}
 				}
-				SVP = {
-					random_owned_province = {
-						limit = {
-							NOT = { has_province_flag = ned_core }
+				SVP = { 
+					random_owned_province = { 
+						limit = { 
+							NOT = { 
+								has_province_flag = ned_core
+							}
 						}
 						set_province_flag = ned_core
-						REB = {
-							change_variable = {
+						REB = { 
+							change_variable = { 
 								which = ned_core_count
 								value = 1
 							}
@@ -1743,25 +2293,27 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						REB = {
-							check_variable = {
+			if = { 
+				limit = { 
+					NOT = { 
+						REB = { 
+							check_variable = { 
 								which = ned_core_count
 								value = 10
 							}
 						}
 					}
 				}
-				SVP = {
-					random_owned_province = {
-						limit = {
-							NOT = { has_province_flag = ned_core }
+				SVP = { 
+					random_owned_province = { 
+						limit = { 
+							NOT = { 
+								has_province_flag = ned_core
+							}
 						}
 						set_province_flag = ned_core
-						REB = {
-							change_variable = {
+						REB = { 
+							change_variable = { 
 								which = ned_core_count
 								value = 1
 							}
@@ -1769,25 +2321,27 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						REB = {
-							check_variable = {
+			if = { 
+				limit = { 
+					NOT = { 
+						REB = { 
+							check_variable = { 
 								which = ned_core_count
 								value = 10
 							}
 						}
 					}
 				}
-				SVP = {
-					random_owned_province = {
-						limit = {
-							NOT = { has_province_flag = ned_core }
+				SVP = { 
+					random_owned_province = { 
+						limit = { 
+							NOT = { 
+								has_province_flag = ned_core
+							}
 						}
 						set_province_flag = ned_core
-						REB = {
-							change_variable = {
+						REB = { 
+							change_variable = { 
 								which = ned_core_count
 								value = 1
 							}
@@ -1795,29 +2349,31 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						REB = {
-							check_variable = {
+			if = { 
+				limit = { 
+					NOT = { 
+						REB = { 
+							check_variable = { 
 								which = ned_core_count
 								value = 10
 							}
 						}
 					}
 				}
-				ROOT = {
-					random_owned_province = {
-						limit = {
-							OR = {
+				ROOT = { 
+					random_owned_province = { 
+						limit = { 
+							OR = { 
 								region = low_countries_region
 								region = belgii_region
 							}
-							NOT = { has_province_flag = ned_core }
+							NOT = { 
+								has_province_flag = ned_core
+							}
 						}
 						set_province_flag = ned_core
-						REB = {
-							change_variable = {
+						REB = { 
+							change_variable = { 
 								which = ned_core_count
 								value = 1
 							}
@@ -1825,29 +2381,31 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						REB = {
-							check_variable = {
+			if = { 
+				limit = { 
+					NOT = { 
+						REB = { 
+							check_variable = { 
 								which = ned_core_count
 								value = 10
 							}
 						}
 					}
 				}
-				ROOT = {
-					random_owned_province = {
-						limit = {
-							OR = {
+				ROOT = { 
+					random_owned_province = { 
+						limit = { 
+							OR = { 
 								region = low_countries_region
 								region = belgii_region
 							}
-							NOT = { has_province_flag = ned_core }
+							NOT = { 
+								has_province_flag = ned_core
+							}
 						}
 						set_province_flag = ned_core
-						REB = {
-							change_variable = {
+						REB = { 
+							change_variable = { 
 								which = ned_core_count
 								value = 1
 							}
@@ -1855,29 +2413,31 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						REB = {
-							check_variable = {
+			if = { 
+				limit = { 
+					NOT = { 
+						REB = { 
+							check_variable = { 
 								which = ned_core_count
 								value = 10
 							}
 						}
 					}
 				}
-				ROOT = {
-					random_owned_province = {
-						limit = {
-							OR = {
+				ROOT = { 
+					random_owned_province = { 
+						limit = { 
+							OR = { 
 								region = low_countries_region
 								region = belgii_region
 							}
-							NOT = { has_province_flag = ned_core }
+							NOT = { 
+								has_province_flag = ned_core
+							}
 						}
 						set_province_flag = ned_core
-						REB = {
-							change_variable = {
+						REB = { 
+							change_variable = { 
 								which = ned_core_count
 								value = 1
 							}
@@ -1885,134 +2445,106 @@ country_event = {
 					}
 				}
 			}
-			
-			# Add NED cores, remove SVP/overlord cores, cede to NED
-			low_countries_region = {
-				if = {
-					limit = {
+			low_countries_region = { 
+				if = { 
+					limit = { 
 						has_province_flag = ned_core
 					}
 					add_core = NED
-				   #remove_core = SVP
-				   #remove_core = ROOT
 					cede_province = NED
 				}
 			}
-			belgii_region = {
-				if = {
-					limit = {
+			belgii_region = { 
+				if = { 
+					limit = { 
 						has_province_flag = ned_core
 					}
 					add_core = NED
-				   #remove_core = SVP
-				   #remove_core = ROOT
 					cede_province = NED
 				}
 			}
-			# Change NED capital to Zuyd Holland
-			NED = {
-				if = {
-					limit = {
-						owns = 2370 # Zuyd Holland
+			NED = { 
+				if = { 
+					limit = { 
+						owns = 2370
 					}
 					set_capital = 2370
 				}
 			}
-			# Give permanent claims to all over Low Countries to both NED and SVP
-			low_countries_region = {
-				if = {
-					limit = {
-						NOT = { is_core = NED }
+			low_countries_region = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							is_core = NED
+						}
 					}
 					add_permanent_claim = NED
 				}
 			}
-			belgii_region = {
-				if = {
-					limit = {
-						NOT = { is_core = NED }
+			belgii_region = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							is_core = NED
+						}
 					}
 					add_permanent_claim = NED
 				}
 			}
-			if = {
-				limit = {
-					SVP = { exists = yes }
+			if = { 
+				limit = { 
+					SVP = { 
+						exists = yes
+					}
 				}
-				low_countries_region = {
-					if = {
-						limit = {
-							NOT = { is_core = SVP }
+				low_countries_region = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								is_core = SVP
+							}
 						}
 						add_permanent_claim = SVP
 					}
 				}
-				belgii_region = {
-					if = {
-						limit = {
-							NOT = { is_core = SVP }
+				belgii_region = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								is_core = SVP
+							}
 						}
 						add_permanent_claim = SVP
 					}
 				}
 			}
-			# If SVP doesn't exist, give the claims to ROOT
-			else = {
-				low_countries_region = {
-					if = {
-						limit = {
-							NOT = { is_core = ROOT }
+			else = { 
+				low_countries_region = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								is_core = ROOT
+							}
 						}
 						add_permanent_claim = ROOT
 					}
 				}
-				belgii_region = {
-					if = {
-						limit = {
-							NOT = { is_core = ROOT }
+				belgii_region = { 
+					if = { 
+						limit = { 
+							NOT = { 
+								is_core = ROOT
+							}
 						}
 						add_permanent_claim = ROOT
 					}
 				}
 			}
-			
-			# Give money
-			NED = {
+			NED = { 
 				add_treasury = 200
 			}
-			
-			# Build army and navy, add forts
-			NED = {
-				capital_scope = {
-					#if = {
-					#	limit = {
-					#		can_build_fort_18th = yes
-					#	}
-					#	add_building = fort_18th
-					#}
-					#else_if = {
-					#	limit = {
-					#		can_build_fort_17th = yes
-					#	}
-					#	add_building = fort_17th
-					#}
-					#else_if = {
-					#	limit = {
-					#		can_build_fort_16th = yes
-					#	}
-					#	add_building = fort_16th
-					#}
-					#else_if = {
-					#	limit = {
-					#		can_build_fort_15th = yes
-					#	}
-					#	add_building = fort_15th
-					#}
-					#else = {
-					#	add_building = fort_14th
-					#}
-					
-					# Should we/can we easily make the unit numbers dynamic?
+			NED = { 
+				capital_scope = { 
 					infantry = NED
 					infantry = NED
 					infantry = NED
@@ -2026,48 +2558,30 @@ country_event = {
 					artillery = NED
 					artillery = NED
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						is_capital = no
-						NOT = { has_building = fort_14th }
-						NOT = { has_building = fort_15th }
-						NOT = { has_building = fort_16th }
-						NOT = { has_building = fort_17th }
-						NOT = { has_building = fort_18th }
+						NOT = { 
+							has_building = fort_14th
+						}
+						NOT = { 
+							has_building = fort_15th
+						}
+						NOT = { 
+							has_building = fort_16th
+						}
+						NOT = { 
+							has_building = fort_17th
+						}
+						NOT = { 
+							has_building = fort_18th
+						}
 					}
-					#if = {
-					#	limit = {
-					#		can_build_fort_18th = yes
-					#	}
-					#	add_building = fort_18th
-					#}
-					#else_if = {
-					#	limit = {
-					#		can_build_fort_17th = yes
-					#	}
-					#	add_building = fort_17th
-					#}
-					#else_if = {
-					#	limit = {
-					#		can_build_fort_16th = yes
-					#	}
-					#	add_building = fort_16th
-					#}
-					#else_if = {
-					#	limit = {
-					#		can_build_fort_15th = yes
-					#	}
-					#	add_building = fort_15th
-					#}
-					#else = {
-					#	add_building = fort_14th
-					#}
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						has_port = yes
 					}
-					# 5 heavies, 15 lights
 					heavy_ship = NED
 					heavy_ship = NED
 					heavy_ship = NED
@@ -2090,352 +2604,344 @@ country_event = {
 					light_ship = NED
 				}
 			}
-			# Change national ideas
-			NED = {
-				swap_national_ideas_effect = yes
+			NED = { 
+				hidden_effect = { 
+					country_event = { 
+						id = ideagroups.9000
+						days = 1
+					}
+				}
+				custom_tooltip = swap_national_ideas
 				swap_non_generic_missions = yes
 			}
-			# Send event to rivals and possible enemies
-			every_known_country = {
-				limit = {
-					#OR = {
-					#	AND = {
-					#		NOT = { has_opinion = { who = ROOT value = 0 } }
-					#		is_great_power = yes
-					#		capital_scope = {
-					#			continent = europe
-					#		}
-					#	}
-						is_rival = ROOT
-					#}
+			every_known_country = { 
+				limit = { 
+					is_rival = ROOT
 				}
-				country_event = { id = flavor_svp.1002 days = 10 }
+				country_event = { 
+					id = flavor_svp.1002
+					days = 10
+				}
 			}
-			# Leave the Empire if fighting emperor or HRE member
-			if = {
-				limit = {
-					OR = {
+			if = { 
+				limit = { 
+					OR = { 
 						is_emperor = yes
 						is_part_of_hre = yes
 					}
 				}
-				NED = { leave_the_hre = yes }
+				NED = { 
+					set_in_empire = no
+					swap_non_generic_missions = yes
+				}
 			}
-
-			# SVP should now be a personal union. The rebelling parts have seceded.
-			if = {
-				limit = {
-					SVP = {
+			if = { 
+				limit = { 
+					SVP = { 
 						exists = yes
 					}
 				}
 				create_union = SVP
 			}
-			
-			# Remove the estates general modifiers
-			NED = {
-				every_owned_province = {
+			NED = { 
+				every_owned_province = { 
 					remove_province_modifier = estates_general_1
 					remove_province_modifier = estates_general_2
 					remove_province_modifier = estates_general_3
 				}
 			}
-			NED = {
-				if = {
-					limit = {
-						NOT = { has_country_flag = POP_Init }
+			NED = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_flag = POP_Init
+						}
 					}
-					country_event = { id = Init.1 }
+					country_event = { 
+						id = Init.1
+					}
 				}
 			}
-			
-			# Flags
 			clr_global_flag = dutch_rebellion_start
 			set_global_flag = dutch_rebellion_end
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_svp.1001.a"
-		ROOT = {
-			declare_war_with_cb = {
+		ROOT = { 
+			declare_war_with_cb = { 
 				who = NED
 				casus_belli = cb_overlord_attacking_independence_war
 			}
 		}
 	}
 }
-
-# Netherlands calls allies
-country_event = {
+country_event = { 
 	id = flavor_svp.1002
 	title = "flavor_svp.1002.title"
 	desc = "flavor_svp.1002.desc"
 	picture = ANGRY_MOB_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
-		name = "flavor_svp.1002.a" # Intervene in the war
-		ai_chance = { factor = 60 }
-		trigger = {
-			NOT = { war_exhaustion = 10 }
+	option = { 
+		name = "flavor_svp.1002.a"
+		ai_chance = { 
+			factor = 60
+		}
+		trigger = { 
+			NOT = { 
+				war_exhaustion = 10
+			}
 		}
 		create_alliance = NED
-		hidden_effect = {
-			NED = {
-				country_event = { id = flavor_svp.1004 }
+		hidden_effect = { 
+			NED = { 
+				country_event = { 
+					id = flavor_svp.1004
+				}
 			}
 		}
 	}
-	option = {
-		name = "flavor_svp.1002.b" # Send money and troops
-		trigger = {
+	option = { 
+		name = "flavor_svp.1002.b"
+		trigger = { 
 			treasury = 200
 			manpower = 5000
 		}
-		ai_chance = { factor = 40 }
-		
+		ai_chance = { 
+			factor = 40
+		}
 		add_treasury = -200
 		add_manpower = -5000
-		
-		hidden_effect = {
-			NED = {
-				country_event = { id = flavor_svp.1005 }
+		hidden_effect = { 
+			NED = { 
+				country_event = { 
+					id = flavor_svp.1005
+				}
 			}
 		}
 	}
+<<<<<<< HEAD
 	option = {
 		name = "OPT.DONOTHING"
 		ai_chance = { factor = 0 }
+=======
+	option = { 
+		name = "flavor_svp.1002.c"
+		ai_chance = { 
+			factor = 0
+		}
+>>>>>>> submod
 		add_prestige = -10
 	}
 }
-
-# If independent, SVP changes to NED - in BYOA Calculations event
-#country_event = {
-#	id = flavor_svp.1003
-#	title = "flavor_svp.1003.title"
-#	desc = "flavor_svp.1003.desc"
-#	picture = ANGRY_MOB_eventPicture
-#	
-#	trigger = {
-#		ai = yes
-#		tag = SVP
-#		is_free_or_tributary_trigger = yes
-#		NOT = { exists = NED }
-#	}
-#	
-#	mean_time_to_happen = {
-#		months = 1
-#	}
-#	
-#	option = {
-#		name = "flavor_svp.1003.a"
-#		change_tag = NED
-#		swap_national_ideas_effect = yes
-#		swap_non_generic_missions = yes
-#		clr_global_flag = dutch_rebellion_start
-#		set_global_flag = dutch_rebellion_end
-#	}
-#}
-
-# Country intervenes in our side
-country_event = {
+country_event = { 
 	id = flavor_svp.1004
 	title = "flavor_svp.1004.title"
 	desc = "flavor_svp.1004.desc"
 	picture = BATTLE_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
-		name = "flavor_svp.1004.a" #Good
-		
-		# A custom tooltip would be nice to have.
+	option = { 
+		name = "flavor_svp.1004.a"
 	}
 }
-
-# Country sends money and troops
-country_event = {
+country_event = { 
 	id = flavor_svp.1005
 	title = "flavor_svp.1005.title"
 	desc = "flavor_svp.1005.desc"
 	picture = BATTLE_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
-		name = "flavor_svp.1005.a" #Good
-		
+	option = { 
+		name = "flavor_svp.1005.a"
 		add_treasury = 200
 		add_manpower = 5000
-		
-		# Maybe an opinion modifier?
 	}
 }
-
-# Dutch state joins the Netherlands
-country_event = {
+country_event = { 
 	id = flavor_svp.16
 	title = "flavor_svp.EVTNAME16"
 	desc = "flavor_svp.EVTDESC16"
 	picture = DIPLOMACY_eventPicture
-	
 	major = yes
-	
-	trigger = {
-		#is_year = 1550
-		#NOT = { is_year = 1650 }
+	trigger = { 
 		culture_group = low_frankish
-		NOT = { num_of_cities = 3 }
-		NOT = { tag = NED }
-		NED = {
+		NOT = { 
+			num_of_cities = 3
+		}
+		NOT = { 
+			tag = NED
+		}
+		NED = { 
 			exists = yes
 			ai = yes
-			is_free_or_tributary_trigger = yes
+			AND = { 
+				OR = { 
+					is_subject = no
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+					is_subject_of_type = muscovite_tributary_state
+				}
+			}
 		}
-		is_free_or_tributary_trigger = yes
+		AND = { 
+			OR = { 
+				is_subject = no
+				is_subject_of_type = tributary_state
+				is_subject_of_type = close_tributary_state
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
 		is_at_war = no
-		all_owned_province = {
-			OR = {
+		all_owned_province = { 
+			OR = { 
 				region = belgii_region
 				region = low_countries_region
 			}
 		}
 		ai = yes
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 50
-		modifier = {
+		modifier = { 
 			factor = 0.75
 			primary_culture = dutch
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			primary_culture = flemish
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.25
 			primary_culture = brabantian
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.9
-			has_opinion = {
+			has_opinion = { 
 				who = NED
 				value = 50
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.9
-			has_opinion = {
+			has_opinion = { 
 				who = NED
 				value = 100
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.9
-			has_opinion = {
+			has_opinion = { 
 				who = NED
 				value = 150
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.1
-			NOT = {
-				has_opinion = {
+			NOT = { 
+				has_opinion = { 
 					who = NED
 					value = -50
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.1
-			NOT = {
-				has_opinion = {
+			NOT = { 
+				has_opinion = { 
 					who = NED
 					value = -100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.1
-			NOT = {
-				has_opinion = {
+			NOT = { 
+				has_opinion = { 
 					who = NED
 					value = -150
 				}
 			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.EVTOPTA16"
-		every_owned_province = {
+		every_owned_province = { 
 			add_core = NED
 		}
-		NED = {
+		NED = { 
 			inherit = PREV
 		}
 	}
 }
-
-# Abrogate the Local Estates
-province_event = {
+province_event = { 
 	id = flavor_svp.501
 	title = flavor_svp.501.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -2444,31 +2950,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = county_of_artois
 					}
 					remove_province_modifier = county_of_artois
@@ -2477,72 +2990,86 @@ province_event = {
 			custom_tooltip = abrogate_cart_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.502
 	title = flavor_svp.502.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -2551,31 +3078,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = county_of_flanders
 					}
 					remove_province_modifier = county_of_flanders
@@ -2584,72 +3118,86 @@ province_event = {
 			custom_tooltip = abrogate_cfla_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.503
 	title = flavor_svp.503.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -2658,31 +3206,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = lordship_of_mechelen
 					}
 					remove_province_modifier = lordship_of_mechelen
@@ -2691,72 +3246,86 @@ province_event = {
 			custom_tooltip = abrogate_lmec_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.504
 	title = flavor_svp.504.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -2765,31 +3334,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = county_of_namur
 					}
 					remove_province_modifier = county_of_namur
@@ -2798,72 +3374,86 @@ province_event = {
 			custom_tooltip = abrogate_cnam_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.505
 	title = flavor_svp.505.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -2872,31 +3462,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = county_of_hainaut
 					}
 					remove_province_modifier = county_of_hainaut
@@ -2905,72 +3502,86 @@ province_event = {
 			custom_tooltip = abrogate_chai_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.506
 	title = flavor_svp.506.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -2979,31 +3590,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = county_of_zeeland
 					}
 					remove_province_modifier = county_of_zeeland
@@ -3012,72 +3630,86 @@ province_event = {
 			custom_tooltip = abrogate_czee_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.507
 	title = flavor_svp.507.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -3086,31 +3718,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = county_of_holland
 					}
 					remove_province_modifier = county_of_holland
@@ -3119,72 +3758,86 @@ province_event = {
 			custom_tooltip = abrogate_chol_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.508
 	title = flavor_svp.508.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -3193,31 +3846,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = duchy_of_brabant
 					}
 					remove_province_modifier = duchy_of_brabant
@@ -3226,72 +3886,86 @@ province_event = {
 			custom_tooltip = abrogate_dbrb_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.509
 	title = flavor_svp.509.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -3300,31 +3974,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = duchy_of_limburg
 					}
 					remove_province_modifier = duchy_of_limburg
@@ -3333,72 +4014,86 @@ province_event = {
 			custom_tooltip = abrogate_dlim_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.510
 	title = flavor_svp.510.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -3407,31 +4102,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = duchy_of_luxembourg
 					}
 					remove_province_modifier = duchy_of_luxembourg
@@ -3440,72 +4142,86 @@ province_event = {
 			custom_tooltip = abrogate_dlux_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.511
 	title = flavor_svp.511.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -3514,31 +4230,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = lordship_of_utrecht
 					}
 					remove_province_modifier = lordship_of_utrecht
@@ -3547,72 +4270,86 @@ province_event = {
 			custom_tooltip = abrogate_lutr_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.512
 	title = flavor_svp.512.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -3621,31 +4358,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = lordship_of_frisia
 					}
 					remove_province_modifier = lordship_of_frisia
@@ -3654,72 +4398,86 @@ province_event = {
 			custom_tooltip = abrogate_lfri_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.513
 	title = flavor_svp.513.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -3728,31 +4486,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = duchy_of_guelders
 					}
 					remove_province_modifier = duchy_of_guelders
@@ -3761,72 +4526,86 @@ province_event = {
 			custom_tooltip = abrogate_dgel_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.514
 	title = flavor_svp.514.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -3835,31 +4614,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = lordship_of_groningen
 					}
 					remove_province_modifier = lordship_of_groningen
@@ -3868,72 +4654,86 @@ province_event = {
 			custom_tooltip = abrogate_lgro_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.515
 	title = flavor_svp.515.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -3942,31 +4742,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = lordship_of_overijssel
 					}
 					remove_province_modifier = lordship_of_overijssel
@@ -3975,72 +4782,86 @@ province_event = {
 			custom_tooltip = abrogate_love_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.516
 	title = flavor_svp.516.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -4049,31 +4870,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = county_of_zutphen
 					}
 					remove_province_modifier = county_of_zutphen
@@ -4082,72 +4910,86 @@ province_event = {
 			custom_tooltip = abrogate_czut_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.517
 	title = flavor_svp.517.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -4156,31 +4998,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = bishopric_of_tournai
 					}
 					remove_province_modifier = bishopric_of_tournai
@@ -4189,72 +5038,86 @@ province_event = {
 			custom_tooltip = abrogate_btou_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }
-
-province_event = {
+province_event = { 
 	id = flavor_svp.518
 	title = flavor_svp.518.name
 	desc = flavor_svp.abr.desc
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
 	hidden = no
-	
-	immediate = {
-		if = {
-			limit = {
-				owner = { mil_power = 25 }
+	immediate = { 
+		if = { 
+			limit = { 
+				owner = { 
+					mil_power = 25
+				}
 			}
 			custom_tooltip = abr_mil_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_mil_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { adm_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					adm_power = 25
+				}
 			}
 			custom_tooltip = abr_adm_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_adm_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { dip_power = 25 }
+		if = { 
+			limit = { 
+				owner = { 
+					dip_power = 25
+				}
 			}
 			custom_tooltip = abr_dip_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_dip_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { absolutism = 45 }
+		if = { 
+			limit = { 
+				owner = { 
+					absolutism = 45
+				}
 			}
 			custom_tooltip = abr_abs_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_abs_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = {
-					num_of_owned_provinces_with = {
+		if = { 
+			limit = { 
+				owner = { 
+					num_of_owned_provinces_with = { 
 						value = 10
-						OR = {
+						OR = { 
 							region = belgii_region
 							region = low_countries_region
 						}
@@ -4263,31 +5126,38 @@ province_event = {
 			}
 			custom_tooltip = abr_pwr_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_pwr_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
-		if = {
-			limit = {
-				owner = { is_at_war = no }
+		if = { 
+			limit = { 
+				owner = { 
+					is_at_war = no
+				}
 			}
 			custom_tooltip = abr_war_ok_tooltip
 		}
-		else = {
+		else = { 
 			custom_tooltip = abr_war_nok_tooltip
-			hidden_effect = { set_province_flag = abrogation_impossible }
+			hidden_effect = { 
+				set_province_flag = abrogation_impossible
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "flavor_svp.abr.opta"
-		trigger = {
-			NOT = { has_province_flag = abrogation_impossible }
+		trigger = { 
+			NOT = { 
+				has_province_flag = abrogation_impossible
+			}
 		}
-		owner = {
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
+		owner = { 
+			hidden_effect = { 
+				every_owned_province = { 
+					limit = { 
 						has_province_modifier = bishopric_of_liege
 					}
 					remove_province_modifier = bishopric_of_liege
@@ -4296,13 +5166,13 @@ province_event = {
 			custom_tooltip = abrogate_blie_tt
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 		highlight = yes
 	}
-	
-	after = {
-		hidden_effect = { clr_province_flag = abrogation_impossible }
+	after = { 
+		hidden_effect = { 
+			clr_province_flag = abrogation_impossible
+		}
 	}
 }

@@ -1,8 +1,5 @@
-# For specific combinations of culture, religion and other such triggers
-# Will pick the first valid one it finds in list
-
-japanese_vassal_title_1 = {
-	rank = {
+japanese_vassal_title_1 = { 
+	rank = { 
 		1 = SHUGODAI
 		2 = SHUGODAI
 		3 = SHUGODAI
@@ -10,8 +7,7 @@ japanese_vassal_title_1 = {
 		5 = SHUGODAI
 		6 = SHUGODAI
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SHUGODAI
 		2 = SHUGODAI
 		3 = SHUGODAI
@@ -19,8 +15,7 @@ japanese_vassal_title_1 = {
 		5 = SHUGODAI
 		6 = SHUGODAI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SHUGODAI
 		2 = SHUGODAI
 		3 = SHUGODAI
@@ -28,8 +23,7 @@ japanese_vassal_title_1 = {
 		5 = SHUGODAI
 		6 = SHUGODAI
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = SHUGODAI
 		2 = SHUGODAI
 		3 = SHUGODAI
@@ -37,8 +31,7 @@ japanese_vassal_title_1 = {
 		5 = SHUGODAI
 		6 = SHUGODAI
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SEISHITSU
 		2 = SEISHITSU
 		3 = SEISHITSU
@@ -46,15 +39,19 @@ japanese_vassal_title_1 = {
 		5 = SEISHITSU
 		6 = SEISHITSU
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = japanese_g
 		is_subject_of_type = daimyo_vassal
-		title_trigger = { rank = 1 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-japanese_vassal_title_2_kami = {
-	rank = {
+japanese_vassal_title_2_kami = { 
+	rank = { 
 		1 = KUNINOTSUKASA
 		2 = KUNINOTSUKASA
 		3 = KUNINOTSUKASA
@@ -62,8 +59,7 @@ japanese_vassal_title_2_kami = {
 		5 = KUNINOTSUKASA
 		6 = KUNINOTSUKASA
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = KAMI
 		2 = KAMI
 		3 = KAMI
@@ -71,8 +67,7 @@ japanese_vassal_title_2_kami = {
 		5 = KAMI
 		6 = KAMI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = KAMI
 		2 = KAMI
 		3 = KAMI
@@ -80,8 +75,7 @@ japanese_vassal_title_2_kami = {
 		5 = KAMI
 		6 = KAMI
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = KAMI
 		2 = KAMI
 		3 = KAMI
@@ -89,8 +83,7 @@ japanese_vassal_title_2_kami = {
 		5 = KAMI
 		6 = KAMI
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SEISHITSU
 		2 = SEISHITSU
 		3 = SEISHITSU
@@ -98,16 +91,20 @@ japanese_vassal_title_2_kami = {
 		5 = SEISHITSU
 		6 = SEISHITSU
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = japanese_g
 		has_country_flag = kami
 		is_subject_of_type = daimyo_vassal
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-japanese_vassal_title_2 = {
-	rank = {
+japanese_vassal_title_2 = { 
+	rank = { 
 		1 = SHUGO
 		2 = SHUGO
 		3 = SHUGO
@@ -115,8 +112,7 @@ japanese_vassal_title_2 = {
 		5 = SHUGO
 		6 = SHUGO
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SHUGO_DAIMYO
 		2 = SHUGO_DAIMYO
 		3 = SHUGO_DAIMYO
@@ -124,8 +120,7 @@ japanese_vassal_title_2 = {
 		5 = SHUGO_DAIMYO
 		6 = SHUGO_DAIMYO
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SHUGO_DAIMYO
 		2 = SHUGO_DAIMYO
 		3 = SHUGO_DAIMYO
@@ -133,8 +128,7 @@ japanese_vassal_title_2 = {
 		5 = SHUGO_DAIMYO
 		6 = SHUGO_DAIMYO
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = SHUGO_DAIMYO
 		2 = SHUGO_DAIMYO
 		3 = SHUGO_DAIMYO
@@ -142,8 +136,7 @@ japanese_vassal_title_2 = {
 		5 = SHUGO_DAIMYO
 		6 = SHUGO_DAIMYO
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SEISHITSU
 		2 = SEISHITSU
 		3 = SEISHITSU
@@ -151,15 +144,19 @@ japanese_vassal_title_2 = {
 		5 = SEISHITSU
 		6 = SEISHITSU
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = japanese_g
 		is_subject_of_type = daimyo_vassal
-		title_trigger = { rank = 2 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-japanese_vassal_title_3_kanrei = {
-	rank = {
+japanese_vassal_title_3_kanrei = { 
+	rank = { 
 		1 = KANREI
 		2 = KANREI
 		3 = KANREI
@@ -167,8 +164,7 @@ japanese_vassal_title_3_kanrei = {
 		5 = KANREI
 		6 = KANREI
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = KANREI
 		2 = KANREI
 		3 = KANREI
@@ -176,8 +172,7 @@ japanese_vassal_title_3_kanrei = {
 		5 = KANREI
 		6 = KANREI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = KANREI
 		2 = KANREI
 		3 = KANREI
@@ -185,8 +180,7 @@ japanese_vassal_title_3_kanrei = {
 		5 = KANREI
 		6 = KANREI
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = KANREI
 		2 = KANREI
 		3 = KANREI
@@ -194,8 +188,7 @@ japanese_vassal_title_3_kanrei = {
 		5 = KANREI
 		6 = KANREI
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SEISHITSU
 		2 = SEISHITSU
 		3 = SEISHITSU
@@ -203,16 +196,20 @@ japanese_vassal_title_3_kanrei = {
 		5 = SEISHITSU
 		6 = SEISHITSU
 	}
-
-	trigger = {
+	trigger = { 
 		culture_group = japanese_g
 		has_country_flag = kyoto_kanrei
 		is_subject_of_type = daimyo_vassal
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-japanese_vassal_title_3_tandai = {
-	rank = {
+japanese_vassal_title_3_tandai = { 
+	rank = { 
 		1 = TANDAI
 		2 = TANDAI
 		3 = TANDAI
@@ -220,8 +217,7 @@ japanese_vassal_title_3_tandai = {
 		5 = TANDAI
 		6 = TANDAI
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = TANDAI
 		2 = TANDAI
 		3 = TANDAI
@@ -229,8 +225,7 @@ japanese_vassal_title_3_tandai = {
 		5 = TANDAI
 		6 = TANDAI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = TANDAI
 		2 = TANDAI
 		3 = TANDAI
@@ -238,8 +233,7 @@ japanese_vassal_title_3_tandai = {
 		5 = TANDAI
 		6 = TANDAI
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = TANDAI
 		2 = TANDAI
 		3 = TANDAI
@@ -247,8 +241,7 @@ japanese_vassal_title_3_tandai = {
 		5 = TANDAI
 		6 = TANDAI
 	}
-
-	consort_female = {
+	consort_female = { 
 		1 = SEISHITSU
 		2 = SEISHITSU
 		3 = SEISHITSU
@@ -256,21 +249,25 @@ japanese_vassal_title_3_tandai = {
 		5 = SEISHITSU
 		6 = SEISHITSU
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = japanese_g
-		OR = {
+		OR = { 
 			has_country_flag = ou_tandai
 			has_country_flag = shikoku_tandai
 			has_country_flag = chugoku_tandai
 			has_country_flag = kyushu_tandai
 		}
 		is_subject_of_type = daimyo_vassal
-		title_trigger = { rank = 3 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-japanese_vassal_title_4 = {
-	rank = {
+japanese_vassal_title_4 = { 
+	rank = { 
 		1 = IMPERIAL_REGENT
 		2 = IMPERIAL_REGENT
 		3 = IMPERIAL_REGENT
@@ -278,8 +275,7 @@ japanese_vassal_title_4 = {
 		5 = IMPERIAL_REGENT
 		6 = IMPERIAL_REGENT
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = KANPAKU
 		2 = KANPAKU
 		3 = KANPAKU
@@ -287,8 +283,7 @@ japanese_vassal_title_4 = {
 		5 = KANPAKU
 		6 = KANPAKU
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = KANPAKU
 		2 = KANPAKU
 		3 = KANPAKU
@@ -296,8 +291,7 @@ japanese_vassal_title_4 = {
 		5 = KANPAKU
 		6 = KANPAKU
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = KANPAKU
 		2 = KANPAKU
 		3 = KANPAKU
@@ -305,8 +299,7 @@ japanese_vassal_title_4 = {
 		5 = KANPAKU
 		6 = KANPAKU
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SEISHITSU
 		2 = SEISHITSU
 		3 = SEISHITSU
@@ -314,15 +307,18 @@ japanese_vassal_title_4 = {
 		5 = SEISHITSU
 		6 = SEISHITSU
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = japanese_g
-		title_trigger = { rank = 4 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-
-japanese_vassal_title_5 = {
-	rank = {
+japanese_vassal_title_5 = { 
+	rank = { 
 		1 = SHOGUNATE
 		2 = SHOGUNATE
 		3 = SHOGUNATE
@@ -330,8 +326,7 @@ japanese_vassal_title_5 = {
 		5 = SHOGUNATE
 		6 = SHOGUNATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = SEI_I_TAISHOGUN
 		2 = SEI_I_TAISHOGUN
 		3 = SEI_I_TAISHOGUN
@@ -339,8 +334,7 @@ japanese_vassal_title_5 = {
 		5 = SEI_I_TAISHOGUN
 		6 = SEI_I_TAISHOGUN
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = SEI_I_TAISHOGUN
 		2 = SEI_I_TAISHOGUN
 		3 = SEI_I_TAISHOGUN
@@ -348,8 +342,7 @@ japanese_vassal_title_5 = {
 		5 = SEI_I_TAISHOGUN
 		6 = SEI_I_TAISHOGUN
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = SEI_I_TAISHOGUN
 		2 = SEI_I_TAISHOGUN
 		3 = SEI_I_TAISHOGUN
@@ -357,8 +350,7 @@ japanese_vassal_title_5 = {
 		5 = SEI_I_TAISHOGUN
 		6 = SEI_I_TAISHOGUN
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = SEISHITSU
 		2 = SEISHITSU
 		3 = SEISHITSU
@@ -366,15 +358,19 @@ japanese_vassal_title_5 = {
 		5 = SEISHITSU
 		6 = SEISHITSU
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = japanese_g
 		is_subject_of_type = daimyo_vassal
-		title_trigger = { rank = 5 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-japanese_vassal_title_6 = {
-	rank = {
+japanese_vassal_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -382,7 +378,7 @@ japanese_vassal_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	ruler_male = {
+	ruler_male = { 
 		1 = TENNO
 		2 = TENNO
 		3 = TENNO
@@ -390,7 +386,7 @@ japanese_vassal_title_6 = {
 		5 = TENNO
 		6 = TENNO
 	}
-	ruler_female = {
+	ruler_female = { 
 		1 = TENNO
 		2 = TENNO
 		3 = TENNO
@@ -398,7 +394,7 @@ japanese_vassal_title_6 = {
 		5 = TENNO
 		6 = TENNO
 	}
-	consort_male = {
+	consort_male = { 
 		1 = TENNO
 		2 = TENNO
 		3 = TENNO
@@ -406,7 +402,7 @@ japanese_vassal_title_6 = {
 		5 = TENNO
 		6 = TENNO
 	}
-	consort_female = {
+	consort_female = { 
 		1 = CHUGU
 		2 = CHUGU
 		3 = CHUGU
@@ -414,7 +410,7 @@ japanese_vassal_title_6 = {
 		5 = CHUGU
 		6 = CHUGU
 	}
-	heir_male = {
+	heir_male = { 
 		1 = KOUTAISHI
 		2 = KOUTAISHI
 		3 = KOUTAISHI
@@ -422,7 +418,7 @@ japanese_vassal_title_6 = {
 		5 = KOUTAISHI
 		6 = KOUTAISHI
 	}
-	heir_female = {
+	heir_female = { 
 		1 = KOUTAISHIHI
 		2 = KOUTAISHIHI
 		3 = KOUTAISHIHI
@@ -430,15 +426,18 @@ japanese_vassal_title_6 = {
 		5 = KOUTAISHIHI
 		6 = KOUTAISHIHI
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = japanese_g
-		title_trigger = { rank = 6 }
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-chinese_vassal_title_1 = {
-	rank = {
+chinese_vassal_title_1 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -446,7 +445,7 @@ chinese_vassal_title_1 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	ruler_male = {
+	ruler_male = { 
 		1 = TUSI
 		2 = TUSI
 		3 = TUSI
@@ -454,7 +453,7 @@ chinese_vassal_title_1 = {
 		5 = TUSI
 		6 = TUSI
 	}
-	ruler_female = {
+	ruler_female = { 
 		1 = TUSI
 		2 = TUSI
 		3 = TUSI
@@ -462,7 +461,7 @@ chinese_vassal_title_1 = {
 		5 = TUSI
 		6 = TUSI
 	}
-	consort_male = {
+	consort_male = { 
 		1 = TUSI
 		2 = TUSI
 		3 = TUSI
@@ -470,8 +469,7 @@ chinese_vassal_title_1 = {
 		5 = TUSI
 		6 = TUSI
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = FUREN
 		2 = FUREN
 		3 = FUREN
@@ -479,8 +477,7 @@ chinese_vassal_title_1 = {
 		5 = FUREN
 		6 = FUREN
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -488,8 +485,7 @@ chinese_vassal_title_1 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -497,15 +493,37 @@ chinese_vassal_title_1 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	trigger = {
+	trigger = { 
 		culture_group = chinese_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-chinese_vassal_title_2 = {
-	rank = {
+chinese_vassal_title_2 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -513,7 +531,7 @@ chinese_vassal_title_2 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	ruler_male = {
+	ruler_male = { 
 		1 = TUSI
 		2 = TUSI
 		3 = TUSI
@@ -521,7 +539,7 @@ chinese_vassal_title_2 = {
 		5 = TUSI
 		6 = TUSI
 	}
-	ruler_female = {
+	ruler_female = { 
 		1 = TUSI
 		2 = TUSI
 		3 = TUSI
@@ -529,7 +547,7 @@ chinese_vassal_title_2 = {
 		5 = TUSI
 		6 = TUSI
 	}
-	consort_male = {
+	consort_male = { 
 		1 = TUSI
 		2 = TUSI
 		3 = TUSI
@@ -537,8 +555,7 @@ chinese_vassal_title_2 = {
 		5 = TUSI
 		6 = TUSI
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = FUREN
 		2 = FUREN
 		3 = FUREN
@@ -546,8 +563,7 @@ chinese_vassal_title_2 = {
 		5 = FUREN
 		6 = FUREN
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -555,8 +571,7 @@ chinese_vassal_title_2 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -564,15 +579,37 @@ chinese_vassal_title_2 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	trigger = {
+	trigger = { 
 		culture_group = chinese_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-chinese_vassal_title_3 = {
-	rank = {
+chinese_vassal_title_3 = { 
+	rank = { 
 		1 = CHIEFDOM
 		2 = CHIEFDOM
 		3 = CHIEFDOM
@@ -580,7 +617,7 @@ chinese_vassal_title_3 = {
 		5 = CHIEFDOM
 		6 = CHIEFDOM
 	}
-	ruler_male = {
+	ruler_male = { 
 		1 = TUSI
 		2 = TUSI
 		3 = TUSI
@@ -588,7 +625,7 @@ chinese_vassal_title_3 = {
 		5 = TUSI
 		6 = TUSI
 	}
-	ruler_female = {
+	ruler_female = { 
 		1 = TUSI
 		2 = TUSI
 		3 = TUSI
@@ -596,7 +633,7 @@ chinese_vassal_title_3 = {
 		5 = TUSI
 		6 = TUSI
 	}
-	consort_male = {
+	consort_male = { 
 		1 = TUSI
 		2 = TUSI
 		3 = TUSI
@@ -604,8 +641,7 @@ chinese_vassal_title_3 = {
 		5 = TUSI
 		6 = TUSI
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = FUREN
 		2 = FUREN
 		3 = FUREN
@@ -613,8 +649,7 @@ chinese_vassal_title_3 = {
 		5 = FUREN
 		6 = FUREN
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -622,8 +657,7 @@ chinese_vassal_title_3 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -631,15 +665,37 @@ chinese_vassal_title_3 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	trigger = {
+	trigger = { 
 		culture_group = chinese_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-chinese_vassal_title_4 = {
-	rank = {
+chinese_vassal_title_4 = { 
+	rank = { 
 		1 = DUCHY
 		2 = DUCHY
 		3 = DUCHY
@@ -647,7 +703,7 @@ chinese_vassal_title_4 = {
 		5 = DUCHY
 		6 = DUCHY
 	}
-	ruler_male = {
+	ruler_male = { 
 		1 = GONG
 		2 = GONG
 		3 = GONG
@@ -655,7 +711,7 @@ chinese_vassal_title_4 = {
 		5 = GONG
 		6 = GONG
 	}
-	ruler_female = {
+	ruler_female = { 
 		1 = GONG
 		2 = GONG
 		3 = GONG
@@ -663,7 +719,7 @@ chinese_vassal_title_4 = {
 		5 = GONG
 		6 = GONG
 	}
-	consort_male = {
+	consort_male = { 
 		1 = GONG
 		2 = GONG
 		3 = GONG
@@ -671,8 +727,7 @@ chinese_vassal_title_4 = {
 		5 = GONG
 		6 = GONG
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = FUREN
 		2 = FUREN
 		3 = FUREN
@@ -680,8 +735,7 @@ chinese_vassal_title_4 = {
 		5 = FUREN
 		6 = FUREN
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -689,8 +743,7 @@ chinese_vassal_title_4 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -698,15 +751,37 @@ chinese_vassal_title_4 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	trigger = {
+	trigger = { 
 		culture_group = chinese_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-chinese_vassal_title_5 = {
-	rank = {
+chinese_vassal_title_5 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -714,7 +789,7 @@ chinese_vassal_title_5 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	ruler_male = {
+	ruler_male = { 
 		1 = QINWANG
 		2 = QINWANG
 		3 = QINWANG
@@ -722,7 +797,7 @@ chinese_vassal_title_5 = {
 		5 = QINWANG
 		6 = QINWANG
 	}
-	ruler_female = {
+	ruler_female = { 
 		1 = QINWANG
 		2 = QINWANG
 		3 = QINWANG
@@ -730,7 +805,7 @@ chinese_vassal_title_5 = {
 		5 = QINWANG
 		6 = QINWANG
 	}
-	consort_male = {
+	consort_male = { 
 		1 = QINWANG
 		2 = QINWANG
 		3 = QINWANG
@@ -738,8 +813,7 @@ chinese_vassal_title_5 = {
 		5 = QINWANG
 		6 = QINWANG
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = FUREN
 		2 = FUREN
 		3 = FUREN
@@ -747,8 +821,7 @@ chinese_vassal_title_5 = {
 		5 = FUREN
 		6 = FUREN
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -756,8 +829,7 @@ chinese_vassal_title_5 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -765,15 +837,37 @@ chinese_vassal_title_5 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	trigger = {
+	trigger = { 
 		culture_group = chinese_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-chinese_vassal_title_6 = {
-	rank = {
+chinese_vassal_title_6 = { 
+	rank = { 
 		1 = PRINCEDOM
 		2 = PRINCEDOM
 		3 = PRINCEDOM
@@ -781,7 +875,7 @@ chinese_vassal_title_6 = {
 		5 = PRINCEDOM
 		6 = PRINCEDOM
 	}
-	ruler_male = {
+	ruler_male = { 
 		1 = QINWANG
 		2 = QINWANG
 		3 = QINWANG
@@ -789,7 +883,7 @@ chinese_vassal_title_6 = {
 		5 = QINWANG
 		6 = QINWANG
 	}
-	ruler_female = {
+	ruler_female = { 
 		1 = QINWANG
 		2 = QINWANG
 		3 = QINWANG
@@ -797,7 +891,7 @@ chinese_vassal_title_6 = {
 		5 = QINWANG
 		6 = QINWANG
 	}
-	consort_male = {
+	consort_male = { 
 		1 = QINWANG
 		2 = QINWANG
 		3 = QINWANG
@@ -805,8 +899,7 @@ chinese_vassal_title_6 = {
 		5 = QINWANG
 		6 = QINWANG
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = FUREN
 		2 = FUREN
 		3 = FUREN
@@ -814,8 +907,7 @@ chinese_vassal_title_6 = {
 		5 = FUREN
 		6 = FUREN
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -823,8 +915,7 @@ chinese_vassal_title_6 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = SHIZI
 		2 = SHIZI
 		3 = SHIZI
@@ -832,16 +923,37 @@ chinese_vassal_title_6 = {
 		5 = SHIZI
 		6 = SHIZI
 	}
-	trigger = {
+	trigger = { 
 		culture_group = chinese_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }
-
-persian_vassal_title_1 = {
-	rank = {
+persian_vassal_title_1 = { 
+	rank = { 
 		1 = SHAIKHDOM
 		2 = SHAIKHDOM
 		3 = SHAIKHDOM
@@ -849,52 +961,69 @@ persian_vassal_title_1 = {
 		5 = SHAIKHDOM
 		6 = SHAIKHDOM
 	}
-	
-	ruler_male = {
-		1 = DARUGA #Prefect, Governor
+	ruler_male = { 
+		1 = DARUGA
 		2 = DARUGA
 		3 = DARUGA
 		4 = DARUGA
 		5 = DARUGA
 		6 = DARUGA
 	}
-	
-	ruler_female = {
-		1 = DARUGA #Prefect, Governor
+	ruler_female = { 
+		1 = DARUGA
 		2 = DARUGA
 		3 = DARUGA
 		4 = DARUGA
 		5 = DARUGA
 		6 = DARUGA
 	}
-
-	consort_male = {
-		1 = DARUGA #Prefect, Governor
+	consort_male = { 
+		1 = DARUGA
 		2 = DARUGA
 		3 = DARUGA
 		4 = DARUGA
 		5 = DARUGA
 		6 = DARUGA
 	}
-	
-	consort_female = {
-		1 = DARUGA #Prefect, Governor
+	consort_female = { 
+		1 = DARUGA
 		2 = DARUGA
 		3 = DARUGA
 		4 = DARUGA
 		5 = DARUGA
 		6 = DARUGA
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = persian_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-persian_vassal_title_2 = {
-	rank = {
+persian_vassal_title_2 = { 
+	rank = { 
 		1 = AMIRATE
 		2 = AMIRATE
 		3 = AMIRATE
@@ -902,8 +1031,7 @@ persian_vassal_title_2 = {
 		5 = AMIRATE
 		6 = AMIRATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = ATABEG
 		2 = ATABEG
 		3 = ATABEG
@@ -911,8 +1039,7 @@ persian_vassal_title_2 = {
 		5 = ATABEG
 		6 = ATABEG
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = ATABEG
 		2 = ATABEG
 		3 = ATABEG
@@ -920,16 +1047,37 @@ persian_vassal_title_2 = {
 		5 = ATABEG
 		6 = ATABEG
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = persian_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-persian_vassal_title_3 = {
-	rank = {
+persian_vassal_title_3 = { 
+	rank = { 
 		1 = MELIKDOM
 		2 = MELIKDOM
 		3 = MELIKDOM
@@ -937,52 +1085,69 @@ persian_vassal_title_3 = {
 		5 = MELIKDOM
 		6 = MELIKDOM
 	}
-	
-	ruler_male = {
-		1 = ATABEG_E_AZAM #Great Atabeg
-		2 = ATABEG_E_AZAM #Great Atabeg
-		3 = ATABEG_E_AZAM #Great Atabeg
-		4 = ATABEG_E_AZAM #Great Atabeg
-		5 = ATABEG_E_AZAM #Great Atabeg
-		6 = ATABEG_E_AZAM #Great Atabeg
+	ruler_male = { 
+		1 = ATABEG_E_AZAM
+		2 = ATABEG_E_AZAM
+		3 = ATABEG_E_AZAM
+		4 = ATABEG_E_AZAM
+		5 = ATABEG_E_AZAM
+		6 = ATABEG_E_AZAM
 	}
-	
-	ruler_female = {
-		1 = ATABEG_E_AZAM #Great Atabeg
-		2 = ATABEG_E_AZAM #Great Atabeg
-		3 = ATABEG_E_AZAM #Great Atabeg
-		4 = ATABEG_E_AZAM #Great Atabeg
-		5 = ATABEG_E_AZAM #Great Atabeg
-		6 = ATABEG_E_AZAM #Great Atabeg
+	ruler_female = { 
+		1 = ATABEG_E_AZAM
+		2 = ATABEG_E_AZAM
+		3 = ATABEG_E_AZAM
+		4 = ATABEG_E_AZAM
+		5 = ATABEG_E_AZAM
+		6 = ATABEG_E_AZAM
 	}
-
-	consort_male = {
-		1 = ATABEG_E_AZAM #Great Atabeg
-		2 = ATABEG_E_AZAM #Great Atabeg
-		3 = ATABEG_E_AZAM #Great Atabeg
-		4 = ATABEG_E_AZAM #Great Atabeg
-		5 = ATABEG_E_AZAM #Great Atabeg
-		6 = ATABEG_E_AZAM #Great Atabeg
+	consort_male = { 
+		1 = ATABEG_E_AZAM
+		2 = ATABEG_E_AZAM
+		3 = ATABEG_E_AZAM
+		4 = ATABEG_E_AZAM
+		5 = ATABEG_E_AZAM
+		6 = ATABEG_E_AZAM
 	}
-	
-	consort_female = {
-		1 = ATABEG_E_AZAM #Great Atabeg
-		2 = ATABEG_E_AZAM #Great Atabeg
-		3 = ATABEG_E_AZAM #Great Atabeg
-		4 = ATABEG_E_AZAM #Great Atabeg
-		5 = ATABEG_E_AZAM #Great Atabeg
-		6 = ATABEG_E_AZAM #Great Atabeg
+	consort_female = { 
+		1 = ATABEG_E_AZAM
+		2 = ATABEG_E_AZAM
+		3 = ATABEG_E_AZAM
+		4 = ATABEG_E_AZAM
+		5 = ATABEG_E_AZAM
+		6 = ATABEG_E_AZAM
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = persian_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-persian_vassal_title_4 = {
-	rank = {
+persian_vassal_title_4 = { 
+	rank = { 
 		1 = SULTANATE
 		2 = SULTANATE
 		3 = SULTANATE
@@ -990,8 +1155,7 @@ persian_vassal_title_4 = {
 		5 = SULTANATE
 		6 = SULTANATE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -999,8 +1163,7 @@ persian_vassal_title_4 = {
 		5 = WALI
 		6 = WALI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1008,8 +1171,7 @@ persian_vassal_title_4 = {
 		5 = WALI
 		6 = WALI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1017,8 +1179,7 @@ persian_vassal_title_4 = {
 		5 = WALI
 		6 = WALI
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1026,16 +1187,37 @@ persian_vassal_title_4 = {
 		5 = WALI
 		6 = WALI
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = persian_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-persian_vassal_title_5 = {
-	rank = {
+persian_vassal_title_5 = { 
+	rank = { 
 		1 = SHAHDOM
 		2 = SHAHDOM
 		3 = SHAHDOM
@@ -1043,8 +1225,7 @@ persian_vassal_title_5 = {
 		5 = SHAHDOM
 		6 = SHAHDOM
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1052,8 +1233,7 @@ persian_vassal_title_5 = {
 		5 = WALI
 		6 = WALI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1061,8 +1241,7 @@ persian_vassal_title_5 = {
 		5 = WALI
 		6 = WALI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1070,8 +1249,7 @@ persian_vassal_title_5 = {
 		5 = WALI
 		6 = WALI
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1079,16 +1257,37 @@ persian_vassal_title_5 = {
 		5 = WALI
 		6 = WALI
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = persian_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 5 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_5
+				has_country_flag = title_5
+			}
+		}
 	}
 }
-persian_vassal_title_6 = {
-	rank = {
+persian_vassal_title_6 = { 
+	rank = { 
 		1 = EMPIRE
 		2 = EMPIRE
 		3 = EMPIRE
@@ -1096,8 +1295,7 @@ persian_vassal_title_6 = {
 		5 = EMPIRE
 		6 = EMPIRE
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1105,8 +1303,7 @@ persian_vassal_title_6 = {
 		5 = WALI
 		6 = WALI
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1114,8 +1311,7 @@ persian_vassal_title_6 = {
 		5 = WALI
 		6 = WALI
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1123,8 +1319,7 @@ persian_vassal_title_6 = {
 		5 = WALI
 		6 = WALI
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = WALI
 		2 = WALI
 		3 = WALI
@@ -1132,11 +1327,32 @@ persian_vassal_title_6 = {
 		5 = WALI
 		6 = WALI
 	}
-	
-	trigger = {
+	trigger = { 
 		culture_group = persian_group
-		is_subject_other_than_tributary_trigger = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 6 }
+		AND = { 
+			is_subject = yes
+			NOT = { 
+				is_subject_of_type = tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = close_tributary_state
+			}
+			NOT = { 
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_6
+				has_country_flag = title_6
+			}
+		}
 	}
 }

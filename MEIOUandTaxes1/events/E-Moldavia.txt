@@ -1,5 +1,5 @@
-#Moldavian Events
 namespace = hee_MOL
+<<<<<<< HEAD
 country_event = {
 	id = fe_MOL.1 #A New Principality!
 	title = fe_MOL.1.title
@@ -13,24 +13,57 @@ country_event = {
                     id = fe_MOL.2
                     days = 0
                 }
+=======
+country_event = { 
+	id = fe_MOL.1
+	title = fe_MOL.1.title
+	desc = fe_MOL.1.desc
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+	immediate = { 
+		HUN = { 
+			free_vassal = MOL
+			country_event = { 
+				id = fe_MOL.2
+				days = 7
+			}
+>>>>>>> submod
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "OPT.MOLHURRAH"
+<<<<<<< HEAD
+=======
+		ai_chance = { 
+			factor = 100
+		}
+>>>>>>> submod
 		add_prestige = 25
 		log = "FE-Moldavia:[GetYear]:[Root.GetName]:declared independence and founded a new principality:dg_knights.001"
 	}
 }
+<<<<<<< HEAD
 
 country_event = {
 	id = fe_MOL.2 #Moldavia breaks off.
+=======
+country_event = { 
+	id = fe_MOL.2
+>>>>>>> submod
 	title = fe_MOL.2.title
 	desc = fe_MOL.2.desc
-	picture = CONQUEST_eventPicture	
+	picture = CONQUEST_eventPicture
 	is_triggered_only = yes
+<<<<<<< HEAD
 	option = {
 		name = "OPT.DAMN"
+=======
+	option = { 
+		name = "OPT.HUNDAMN"
+		ai_chance = { 
+			factor = 100
+		}
+>>>>>>> submod
 		add_prestige = -5
 	}
 }

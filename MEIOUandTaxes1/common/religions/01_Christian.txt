@@ -1,30 +1,3 @@
-
-#christian
-#	western
-#		catholic					# 01
-#		protestant					# 02
-#		reformed					# 03
-#		hussite					# 04
-#		waldensian					# 05
-#		lollard					# 06
-#		avignonist					# 07
-#		holyleague					# 08
-#		messalian					# 21
-#	eastern
-#		orthodox					# 09
-#		chalcedonism				# 10
-#		coptic						# 11
-#		chaldean					# 12
-#		arianism					# 13
-#		monothelite				# 14
-#		iconoclast					# 15
-#		monophysite				# 16
-#	dualist
-#		gnostic					# 17
-#		cathar						# 18
-#		bogomilist					# 19
-#		paulician					# 20
-
 christian = { 
 	defender_of_faith = no
 	can_form_personal_unions = yes
@@ -114,13 +87,24 @@ christian = {
 			levy_church_tax = { 
 				cost = 50
 				potential = { 
-					NOT = { tag = PAP }
+					NOT = { 
+						tag = PAP
+					}
 				}
 				allow = { 
-					PAP = { has_regency = no }
-					NOT = { war_with = PAP }
-					reverse_has_opinion = { who = PAP value = 10 }
-					NOT = { has_country_modifier = papal_sanction_for_church_taxes }
+					PAP = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = PAP
+					}
+					reverse_has_opinion = { 
+						who = PAP
+						value = 10
+					}
+					NOT = { 
+						has_country_modifier = papal_sanction_for_church_taxes
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got Papal sanction for church taxes"
@@ -136,14 +120,27 @@ christian = {
 			bless_monarch = { 
 				cost = 50
 				potential = { 
-					NOT = { tag = PAP }
+					NOT = { 
+						tag = PAP
+					}
 				}
 				allow = { 
-					PAP = { has_regency = no }
-					NOT = { war_with = PAP }
-					reverse_has_opinion = { who = PAP value = 10 }
-					NOT = { prestige = 10 }
-					NOT = { has_country_modifier = papal_blessing }
+					PAP = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = PAP
+					}
+					reverse_has_opinion = { 
+						who = PAP
+						value = 10
+					}
+					NOT = { 
+						prestige = 10
+					}
+					NOT = { 
+						has_country_modifier = papal_blessing
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got rules blessing from the Pope"
@@ -160,15 +157,33 @@ christian = {
 				cost = 50
 				potential = { 
 					government = monarchy
-					NOT = { tag = PAP }
+					NOT = { 
+						tag = PAP
+					}
 				}
 				allow = { 
-					PAP = { has_regency = no }
-					NOT = { war_with = PAP }
-					reverse_has_opinion = { who = PAP value = 10 }
-					NOT = { legitimacy = 50 }
-					NOT = { has_country_modifier = papal_indulgence }
-					NOT = { is_key_equal = { lhs = aspect_07 value = 3 } } #Indulgences shouldn't be condemned
+					PAP = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = PAP
+					}
+					reverse_has_opinion = { 
+						who = PAP
+						value = 10
+					}
+					NOT = { 
+						legitimacy = 50
+					}
+					NOT = { 
+						has_country_modifier = papal_indulgence
+					}
+					NOT = { 
+						is_variable_equal = { 
+							which = knl
+							value = 3
+						}
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got papal indulgence for sins"
@@ -195,14 +210,30 @@ christian = {
 			local_saint = { 
 				cost = 100
 				potential = { 
-					NOT = { tag = PAP }
+					NOT = { 
+						tag = PAP
+					}
 				}
 				allow = { 
-					PAP = { has_regency = no }
-					NOT = { war_with = PAP }
-					reverse_has_opinion = { who = PAP value = 10 }
-					NOT = { stability = 1 }
-					NOT = { is_key_equal = { lhs = aspect_08 value = 3 } } #Saint prayers shouldn't be condemned
+					PAP = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = PAP
+					}
+					reverse_has_opinion = { 
+						who = PAP
+						value = 10
+					}
+					NOT = { 
+						stability = 1
+					}
+					NOT = { 
+						is_variable_equal = { 
+							which = knm
+							value = 3
+						}
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got beatification of a local saint"
@@ -225,14 +256,30 @@ christian = {
 			forgiveness_for_usury = { 
 				cost = 50
 				potential = { 
-					NOT = { tag = PAP }
+					NOT = { 
+						tag = PAP
+					}
 				}
 				allow = { 
-					PAP = { has_regency = no }
-					NOT = { war_with = PAP }
-					reverse_has_opinion = { who = PAP value = 10 }
-					NOT = { has_country_modifier = usury_forgiven }
-					NOT = { is_key_equal = { lhs = aspect_09 value = 1 } } #Usury shouldn't be condemned
+					PAP = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = PAP
+					}
+					reverse_has_opinion = { 
+						who = PAP
+						value = 10
+					}
+					NOT = { 
+						has_country_modifier = usury_forgiven
+					}
+					NOT = { 
+						is_variable_equal = { 
+							which = knn
+							value = 1
+						}
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got forgivness for usury"
@@ -255,14 +302,25 @@ christian = {
 			proclaim_holy_war = { 
 				cost = 50
 				potential = { 
-					NOT = { tag = PAP }
+					NOT = { 
+						tag = PAP
+					}
 				}
 				allow = { 
-					PAP = { has_regency = no }
+					PAP = { 
+						has_regency = no
+					}
 					is_at_war = yes
-					NOT = { war_with = PAP }
-					reverse_has_opinion = { who = PAP value = 10 }
-					NOT = { has_country_modifier = papal_sanction_for_holy_war }
+					NOT = { 
+						war_with = PAP
+					}
+					reverse_has_opinion = { 
+						who = PAP
+						value = 10
+					}
+					NOT = { 
+						has_country_modifier = papal_sanction_for_holy_war
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got Papal sanction for a Holy War"
@@ -282,13 +340,24 @@ christian = {
 			send_papal_legate = { 
 				cost = 50
 				potential = { 
-					NOT = { tag = PAP }
+					NOT = { 
+						tag = PAP
+					}
 				}
 				allow = { 
-					PAP = { has_regency = no }
-					NOT = { war_with = PAP }
-					reverse_has_opinion = { who = PAP value = 10 }
-					NOT = { has_country_modifier = papal_legate }
+					PAP = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = PAP
+					}
+					reverse_has_opinion = { 
+						who = PAP
+						value = 10
+					}
+					NOT = { 
+						has_country_modifier = papal_legate
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got Papal legate"
@@ -762,13 +831,24 @@ christian = {
 			levy_church_tax = { 
 				cost = 50
 				potential = { 
-					NOT = { tag = AVI }
+					NOT = { 
+						tag = AVI
+					}
 				}
 				allow = { 
-					AVI = { has_regency = no }
-					NOT = { war_with = AVI }
-					reverse_has_opinion = { who = AVI value = 10 }
-					NOT = { has_country_modifier = papal_sanction_for_church_taxes }
+					AVI = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = AVI
+					}
+					reverse_has_opinion = { 
+						who = AVI
+						value = 10
+					}
+					NOT = { 
+						has_country_modifier = papal_sanction_for_church_taxes
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got Papal sanction for church taxes"
@@ -784,14 +864,27 @@ christian = {
 			bless_monarch = { 
 				cost = 50
 				potential = { 
-					NOT = { tag = AVI }
+					NOT = { 
+						tag = AVI
+					}
 				}
 				allow = { 
-					AVI = { has_regency = no }
-					NOT = { war_with = AVI }
-					reverse_has_opinion = { who = AVI value = 10 }
-					NOT = { prestige = 10 }
-					NOT = { has_country_modifier = papal_blessing }
+					AVI = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = AVI
+					}
+					reverse_has_opinion = { 
+						who = AVI
+						value = 10
+					}
+					NOT = { 
+						prestige = 10
+					}
+					NOT = { 
+						has_country_modifier = papal_blessing
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got rules blessing from the Pope"
@@ -808,15 +901,33 @@ christian = {
 				cost = 50
 				potential = { 
 					government = monarchy
-					NOT = { tag = AVI }
+					NOT = { 
+						tag = AVI
+					}
 				}
 				allow = { 
-					AVI = { has_regency = no }
-					NOT = { war_with = AVI }
-					reverse_has_opinion = { who = AVI value = 10 }
-					NOT = { legitimacy = 50 }
-					NOT = { has_country_modifier = papal_indulgence }
-					NOT = { is_key_equal = { lhs = aspect_07 value = 3 } } #Indulgences shouldn't be condemned
+					AVI = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = AVI
+					}
+					reverse_has_opinion = { 
+						who = AVI
+						value = 10
+					}
+					NOT = { 
+						legitimacy = 50
+					}
+					NOT = { 
+						has_country_modifier = papal_indulgence
+					}
+					NOT = { 
+						is_variable_equal = { 
+							which = knl
+							value = 3
+						}
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got papal indulgence for sins"
@@ -843,14 +954,30 @@ christian = {
 			local_saint = { 
 				cost = 100
 				potential = { 
-					NOT = { tag = AVI }
+					NOT = { 
+						tag = AVI
+					}
 				}
 				allow = { 
-					AVI = { has_regency = no }
-					NOT = { war_with = AVI }
-					reverse_has_opinion = { who = AVI value = 10 }
-					NOT = { stability = 1 }
-					NOT = { is_key_equal = { lhs = aspect_08 value = 3 } } #Saint prayers shouldn't be condemned
+					AVI = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = AVI
+					}
+					reverse_has_opinion = { 
+						who = AVI
+						value = 10
+					}
+					NOT = { 
+						stability = 1
+					}
+					NOT = { 
+						is_variable_equal = { 
+							which = knm
+							value = 3
+						}
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got beatification of a local saint"
@@ -873,14 +1000,30 @@ christian = {
 			forgiveness_for_usury = { 
 				cost = 50
 				potential = { 
-					NOT = { tag = AVI }
+					NOT = { 
+						tag = AVI
+					}
 				}
 				allow = { 
-					AVI = { has_regency = no }
-					NOT = { war_with = AVI }
-					reverse_has_opinion = { who = AVI value = 10 }
-					NOT = { has_country_modifier = usury_forgiven }
-					NOT = { is_key_equal = { lhs = aspect_09 value = 1 } } #Usury shouldn't be condemned
+					AVI = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = AVI
+					}
+					reverse_has_opinion = { 
+						who = AVI
+						value = 10
+					}
+					NOT = { 
+						has_country_modifier = usury_forgiven
+					}
+					NOT = { 
+						is_variable_equal = { 
+							which = knn
+							value = 1
+						}
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got forgivness for usury"
@@ -903,14 +1046,25 @@ christian = {
 			proclaim_holy_war = { 
 				cost = 50
 				potential = { 
-					NOT = { tag = AVI }
+					NOT = { 
+						tag = AVI
+					}
 				}
 				allow = { 
-					AVI = { has_regency = no }
+					AVI = { 
+						has_regency = no
+					}
 					is_at_war = yes
-					NOT = { war_with = AVI }
-					reverse_has_opinion = { who = AVI value = 10 }
-					NOT = { has_country_modifier = papal_sanction_for_holy_war }
+					NOT = { 
+						war_with = AVI
+					}
+					reverse_has_opinion = { 
+						who = AVI
+						value = 10
+					}
+					NOT = { 
+						has_country_modifier = papal_sanction_for_holy_war
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got Papal sanction for a Holy War"
@@ -930,13 +1084,24 @@ christian = {
 			send_papal_legate = { 
 				cost = 50
 				potential = { 
-					NOT = { tag = AVI }
+					NOT = { 
+						tag = AVI
+					}
 				}
 				allow = { 
-					AVI = { has_regency = no }
-					NOT = { war_with = AVI }
-					reverse_has_opinion = { who = AVI value = 10 }
-					NOT = { has_country_modifier = papal_legate }
+					AVI = { 
+						has_regency = no
+					}
+					NOT = { 
+						war_with = AVI
+					}
+					reverse_has_opinion = { 
+						who = AVI
+						value = 10
+					}
+					NOT = { 
+						has_country_modifier = papal_legate
+					}
 				}
 				effect = { 
 					log = "DG - Curia_interactions:[GetYear]:[This.GetName]:got Papal legate"

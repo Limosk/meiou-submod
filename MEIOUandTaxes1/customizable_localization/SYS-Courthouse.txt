@@ -1,128 +1,155 @@
-defined_text = {
+defined_text = { 
 	name = Courthouse_Build
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = SYS_Courthouse.001.aNOPE
-		
-		trigger = {
-			all_owned_province = {
-				NOT = { check_key = { lhs = Courthouse_Amount value = 0.001 } }
+		trigger = { 
+			all_owned_province = { 
+				NOT = { 
+					check_variable = { 
+						which = nts
+						value = 0.001
+					}
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = SYS_Courthouse.001.aYEP
-		
-		trigger = {
-			any_owned_province = {
-				check_key = { lhs = Courthouse_Amount value = 0.001 }
+		trigger = { 
+			any_owned_province = { 
+				check_variable = { 
+					which = nts
+					value = 0.001
+				}
 			}
-			check_key = { lhs = Courthouse_Tmp1 which = Courthouse_Tmp0 }
+			check_variable = { 
+				which = nuc
+				which = nub
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = SYS_Courthouse.001.aNOPE
-		
-		trigger = {
-			any_owned_province = {
-				check_key = { lhs = Courthouse_Amount value = 0.001 }
+		trigger = { 
+			any_owned_province = { 
+				check_variable = { 
+					which = nts
+					value = 0.001
+				}
 			}
-			NOT = { check_key = { lhs = Courthouse_Tmp1 which = Courthouse_Tmp0 } }
+			NOT = { 
+				check_variable = { 
+					which = nuc
+					which = nub
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Courthouse_Amount
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Construct_None
-		
-		trigger = {
-			NOT = { check_key = { lhs = Courthouse_Amount value = 0.001 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = nts
+					value = 0.001
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Courthouse_Amount_Infra1
-		
-		trigger = {
-			check_key = { lhs = Courthouse_Amount value = 0.001 }
-			is_key_equal = { lhs = Courthouse_TypeToggle value = 0 }
+		trigger = { 
+			check_variable = { 
+				which = nts
+				value = 0.001
+			}
+			is_variable_equal = { 
+				which = ntt
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Courthouse_Amount_Infra2
-		
-		trigger = {
-			check_key = { lhs = Courthouse_Amount value = 0.001 }
-			is_key_equal = { lhs = Courthouse_TypeToggle value = 1 }
+		trigger = { 
+			check_variable = { 
+				which = nts
+				value = 0.001
+			}
+			is_variable_equal = { 
+				which = ntt
+				value = 1
+			}
 		}
 	}
 }
-
-
-defined_text = {
+defined_text = { 
 	name = Courthouse_RawCost
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Courthouse_RawCost
-		
-		trigger = {
-			check_key = { lhs = Infra_Building6 value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = gin
+				value = 0.001
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Courthouse_MilitaryCost
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Courthouse_MilitaryCost
-		
-		trigger = {
-			check_key = { lhs = Infra_Building22 value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = gdj
+				value = 0.001
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Courthouse_NavalCost
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Courthouse_NavalCost
-		
-		trigger = {
-			check_key = { lhs = Infra_Building23 value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = gdk
+				value = 0.001
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Courthouse_IndustrialCost
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Courthouse_IndustrialCost
-		
-		trigger = {
-			check_key = { lhs = Infra_Building24 value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = gdl
+				value = 0.001
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Courthouse_KnowledgeCost
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Courthouse_KnowledgeCost
-		
-		trigger = {
-			check_key = { lhs = Infra_Building41 value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = gdm
+				value = 0.001
+			}
 		}
 	}
 }

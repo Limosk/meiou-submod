@@ -1,62 +1,95 @@
-#Calculation invent that calculates how much of your primary culture group you control
-
 namespace = calcul_culture_group
-
 country_event = { 
 	id = calcul_culture_group.1
 	title = "calcul_culture_group.1.t"
 	desc = no_localization
 	picture = MEIOU_AND_TAXES_eventPicture
-	
 	hidden = yes
 	is_triggered_only = yes
-	
-	immediate = {
-        every_country = {
-			limit = {
-				isValidCountry = yes
-			}
-			set_key = { lhs = Tmp_1 value = 0 }
-			set_key = { lhs = Tmp_2 value = 0 }
-			
-			every_province = {
-				limit = {
-					culture_group = PREV
-				}
-				set_key = { lhs = Tmp_3 which = Class_Total }
-				
-				PREV = {
-					set_key = { lhs = Tmp_3 which = PREV }
-					change_key = { lhs = Tmp_1 which = Tmp_3 }
-					
-					if = {
-						limit = {
-							PREV = { owns_or_non_sovereign_subject_of = PREV }
-						}
-						change_key = { lhs = Tmp_2 which = Tmp_3 }
+	immediate = { 
+		every_country = { 
+			limit = { 
+				AND = { 
+					num_of_cities = 1
+					NOT = { 
+						tag = AAA
 					}
 				}
-				
 			}
-			
-			if = {
-				limit = {
-					check_key = { lhs = Tmp_1 value = 0.001 }
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
+			every_province = { 
+				limit = { 
+					culture_group = PREV
 				}
-				divide_key = { lhs = Tmp_2 which = Tmp_1 }        # This is the share of culture group population you control
-				
-				set_key = { lhs = percentage_own_culture_group which = Tmp_2 }
+				set_variable = { 
+					which = ari
+					which = aaz
+				}
+				PREV = { 
+					set_variable = { 
+						which = ari
+						which = PREV
+					}
+					change_variable = { 
+						which = arg
+						which = ari
+					}
+					if = { 
+						limit = { 
+							PREV = { 
+								owns_or_non_sovereign_subject_of = PREV
+							}
+						}
+						change_variable = { 
+							which = arh
+							which = ari
+						}
+					}
+				}
 			}
-			else = {
-				set_key = { lhs = percentage_own_culture_group value = 0 }
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = arg
+						value = 0.001
+					}
+				}
+				divide_variable = { 
+					which = arh
+					which = arg
+				}
+				set_variable = { 
+					which = iik
+					which = arh
+				}
 			}
-			
-			set_key = { lhs = Tmp_1 value = 0 }
-			set_key = { lhs = Tmp_2 value = 0 }
-			set_key = { lhs = Tmp_3 value = 0 }
+			else = { 
+				set_variable = { 
+					which = iik
+					value = 0
+				}
+			}
+			set_variable = { 
+				which = arg
+				value = 0
+			}
+			set_variable = { 
+				which = arh
+				value = 0
+			}
+			set_variable = { 
+				which = ari
+				value = 0
+			}
 		}
 	}
-	
 	option = { 
 		name = no_localization
 	}

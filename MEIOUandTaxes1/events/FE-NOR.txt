@@ -1,22 +1,34 @@
 namespace = flavor_nor
+<<<<<<< HEAD
 
 country_event = {
 	id = flavor_nor.1 #Sigurd Jonsson
+=======
+country_event = { 
+	id = flavor_nor.1
+>>>>>>> submod
 	title = "flavor_nor.EVTNAME1"
 	desc = "flavor_nor.EVTDESC1"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NOR
+<<<<<<< HEAD
 		NOT = { is_year = 1452 }
+=======
+		NOT = { 
+			is_year = 1452
+		}
+		adm = 4
+>>>>>>> submod
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 166
 	}
-	option = {
+	option = { 
 		name = "flavor_nor.EVTOPTA1"
 		add_prestige = 10
-		define_advisor = {
+		define_advisor = { 
 			type = statesman_NO
 			name = "Sigurd Jonsson"
 			skill = 2
@@ -24,24 +36,36 @@ country_event = {
 		}
 	}
 }
+<<<<<<< HEAD
 country_event = {
 	id = flavor_nor.2 #Nils Henriksson
+=======
+country_event = { 
+	id = flavor_nor.2
+>>>>>>> submod
 	title = "flavor_nor.EVTNAME2"
 	desc = "flavor_nor.EVTDESC2"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = NOR
 		is_year = 1475
+<<<<<<< HEAD
 		NOT = { is_year = 1523 }
+=======
+		NOT = { 
+			is_year = 1523
+		}
+		dip = 4
+>>>>>>> submod
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 166
 	}
-	option = {
+	option = { 
 		name = "flavor_nor.EVTOPTA2"
 		add_prestige = 10
-		define_advisor = {
+		define_advisor = { 
 			type = statesman_NO
 			name = "Nils Henriksson"
 			skill = 1
@@ -49,12 +73,18 @@ country_event = {
 		}
 	}
 }
+<<<<<<< HEAD
 country_event = {
 	id = flavor_nor.3 #Vardohus Fortress
+=======
+country_event = { 
+	id = flavor_nor.3
+>>>>>>> submod
 	title = "flavor_nor.EVTNAME3"
 	desc = "flavor_nor.EVTDESC3"
 	picture = FORT_eventPicture
 	fire_only_once = yes
+<<<<<<< HEAD
 	trigger = {
 		owns = 1255
 		controls = 1255
@@ -62,19 +92,33 @@ country_event = {
 		NOT = { is_year = 1500 }
 		1255 = {
 			NOT = { has_building = fort_15th }
+=======
+	trigger = { 
+		tag = NOR
+		NOT = { 
+			is_year = 1500
+		}
+		1255 = { 
+			owned_by = NOR
+			controlled_by = NOR
+			NOT = { 
+				has_building = fort_15th
+			}
+>>>>>>> submod
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_nor.EVTOPTA3"
-		if = {
-			limit = {
-				1255 = {
+		if = { 
+			limit = { 
+				1255 = { 
 					has_building = fort_14th
 				}
 			}
+<<<<<<< HEAD
 			add_treasury = -300
 			1255 = {
 				add_building = fort_15th
@@ -83,10 +127,28 @@ country_event = {
 		else = {
 			add_treasury = -150
 			1255 = {
+=======
+			add_treasury = -50
+			1255 = { 
+				add_building = fort_15th
+			}
+		}
+		if = { 
+			limit = { 
+				1255 = { 
+					NOT = { 
+						has_building = fort_14th
+					}
+				}
+			}
+			add_treasury = -25
+			1255 = { 
+>>>>>>> submod
 				add_building = fort_14th
 			}
 		}
 	}
+<<<<<<< HEAD
 	option = {
 		name = "FORTIFYAREA"
 		every_province = {
@@ -107,10 +169,26 @@ country_event = {
 }
 country_event = {
 	id = flavor_nor.4 #Bohus Fortress
+=======
+	option = { 
+		name = "flavor_nor.EVTOPTB3"
+		add_treasury = -50
+		add_mil_power = 50
+		add_manpower = 5
+	}
+	option = { 
+		name = "flavor_nor.EVTOPTC3"
+		add_prestige = -1
+	}
+}
+country_event = { 
+	id = flavor_nor.4
+>>>>>>> submod
 	title = "flavor_nor.EVTNAME4"
 	desc = "flavor_nor.EVTDESC4"
 	picture = FORT_eventPicture
 	fire_only_once = yes
+<<<<<<< HEAD
 	trigger = {
 		owns = 1256
 		controls = 1256
@@ -119,15 +197,29 @@ country_event = {
 		1256 = {
 			has_building = fort_15th
 			NOT = { has_building = fort_16th }
+=======
+	trigger = { 
+		tag = NOR
+		NOT = { 
+			is_year = 1470
+		}
+		1256 = { 
+			owned_by = NOR
+			controlled_by = NOR
+			has_building = fort_15th
+			NOT = { 
+				has_building = fort_16th
+			}
+>>>>>>> submod
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_nor.EVTOPTA4"
-		1256 = {
-			add_province_modifier = {
+		1256 = { 
+			add_province_modifier = { 
 				name = nor_bohus_fortress
 				duration = -1
 			}

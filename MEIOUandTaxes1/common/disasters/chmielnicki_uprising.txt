@@ -1,106 +1,115 @@
-chmielnicki_uprising = {
-
-	potential = {
+chmielnicki_uprising = { 
+	potential = { 
 		OR = { 
-		    tag = POL 
-		    tag = PLC 
+			tag = POL
+			tag = PLC
 		}
-		is_free_or_tributary_trigger = yes
-		ZAZ = {
-		    is_subject_of = ROOT
-			any_owned_province = {
-			    culture = ukrainian	
-			}	
-		}	
+		AND = { 
+			OR = { 
+				is_subject = no
+				is_subject_of_type = tributary_state
+				is_subject_of_type = close_tributary_state
+				is_subject_of_type = muscovite_tributary_state
+			}
+		}
+		ZAZ = { 
+			is_subject_of = ROOT
+			any_owned_province = { 
+				culture = ukrainian
+			}
+		}
 	}
-	
-	can_start = {
+	can_start = { 
 		has_any_disaster = no
-		NOT = { adm_tech = 43 }
-		NOT = { stability = 1 }
-		OR = {
-		    has_regency = yes
-			NOT = { legitimacy = 60 }
-			NOT = { stability = 0 }
-			NOT = { accepted_culture = ruthenian }
-			NOT = { orthodox = 1 }
-		}	
-	}
-	
-	can_stop = {
-		ZAZ = {
-		    NOT = { is_subject_of = ROOT }	
+		NOT = { 
+			adm_tech = 43
+		}
+		NOT = { 
+			stability = 1
+		}
+		OR = { 
+			has_regency = yes
+			NOT = { 
+				legitimacy = 60
+			}
+			NOT = { 
+				stability = 0
+			}
+			NOT = { 
+				accepted_culture = ruthenian
+			}
+			NOT = { 
+				orthodox = 1
+			}
 		}
 	}
-	
-	progress = {
-		modifier = {
+	can_stop = { 
+		ZAZ = { 
+			NOT = { 
+				is_subject_of = ROOT
+			}
+		}
+	}
+	progress = { 
+		modifier = { 
 			factor = 1.5
-			NOT = { accepted_culture = ruthenian }
+			NOT = { 
+				accepted_culture = ruthenian
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			NOT = { orthodox = 0 }
+			NOT = { 
+				orthodox = 0
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
-			NOT = { stability = 0 }
+			NOT = { 
+				stability = 0
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.75
-			NOT = { stability = -1 }
+			NOT = { 
+				stability = -1
+			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			has_country_flag = angered_cossacks
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.25
-			NOT = { ZAZ = { has_opinion = { who = ROOT value = 100 } } }
+			NOT = { 
+				ZAZ = { 
+					has_opinion = { 
+						who = ROOT
+						value = 100
+					}
+				}
+			}
 		}
-		# modifier = {
-		# 	factor = 0.05
-		# 	if = {
-	    #         limit = { has_dlc = "Dharma" }
-		# 	    has_reform = free_election
-	    #     }
-	    #     if = {
-	    #         limit = { NOT = { has_dlc = "Dharma" } }
-		# 	    has_reform = free_election_legacy
-	    #     }
-		# }
-		# modifier = {
-		# 	factor = 0.05
-		# 	if = {
-	    #         limit = { has_dlc = "Dharma" }
-		# 	    has_reform = noble_monarchy
-	    #     }
-	    #     if = {
-	    #         limit = { NOT = { has_dlc = "Dharma" } }
-		# 	    has_reform = noble_monarchy_legacy
-	    #     }
-		# }
-		modifier = {
+		modifier = { 
 			factor = -0.1
-			ZAZ = { has_opinion = { who = ROOT value = 180 } } 
+			ZAZ = { 
+				has_opinion = { 
+					who = ROOT
+					value = 180
+				}
+			}
 		}
 	}
-	
-	can_end = {
-	    OR = {
-		    NOT = { exists = ZAZ }
+	can_end = { 
+		OR = { 
+			NOT = { 
+				exists = ZAZ
+			}
 			has_country_flag = gave_up_ukraine
-		}	
+		}
 	}
-	
-	modifier = {
-		#global_unrest = 5
-	}
-	
+	modifier = { }
 	on_start = flavor_pol.742
 	on_end = flavor_pol.750
-	
-	on_monthly = {
-	}
+	on_monthly = { }
 }
-

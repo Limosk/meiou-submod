@@ -1,189 +1,132 @@
-#Note: still to be re-ordered?
-
-#* buddhism				31
-#* confucianism			32
-#* mahayana				33
-#* vajrayana			34
-
-taoic = { #Reds
+taoic = { 
 	flags_with_emblem_percentage = 33
-	flag_emblem_index_range = { 58 80 }
-	
-	buddhism = { #Theravada Buddhism
-		color = { 0.9 0.6 0.5 } #Dark Salmon
+	flag_emblem_index_range = { 58 80}
+	buddhism = { 
+		color = { 0.9 0.6 0.5}
 		icon = 17
-		allowed_conversion = { #Very unlikely but not impossible
-			vajrayana
-			mahayana
+		allowed_conversion = { vajrayana mahayana}
+		country = { 
+			global_missionary_strength = 0.01
+			prestige = 1
+			tolerance_heretic = 1
+			tolerance_heathen = 2
+			mercenary_cost = -0.20
+			years_of_nationalism = 5
 		}
-		country = {
-			global_missionary_strength = 0.01 #A strong missionary tradition
-			#BONUSES
-			prestige = 1 #Built many monuments and statues
-			tolerance_heretic = 1 #Buddhism was generally tolerant of other Buddhists
-			tolerance_heathen = 2 #A generally tolerant faith; allowed Catholics and Hindus to live without attempting to convert them
-			mercenary_cost = -0.20 #Accepted heathen mercenaries
-			#PENALTIES
-			years_of_nationalism = 5 #Poor treatment of conquered people, including destroying local Theravada temples and killing monks
-		}
-		country_as_secondary = { #Same bonuses as above, but 1 lower tolerance_own and missionary_strength
-			prestige = 1 #Built many monuments and statues
-			tolerance_heretic = 1 #Buddhism was generally tolerant of other Buddhists
-			tolerance_heathen = 2 #A generally tolerant faith; allowed Catholics and Hindus to live without attempting to convert them
-			mercenary_cost = -0.20 #Accepted heathen mercenaries
-			years_of_nationalism = 5 #Poor treatment of conquered people, including destroying local Theravada temples and killing monks
+		country_as_secondary = { 
+			prestige = 1
+			tolerance_heretic = 1
+			tolerance_heathen = 2
+			mercenary_cost = -0.20
+			years_of_nationalism = 5
 			tolerance_own = -1
 		}
-		
-#		holy_sites = {
-#			379 #Jerusalem
-#		}
-
-		on_convert = {
+		on_convert = { 
 			change_religion = buddhism
 		}
 		uses_piety = yes
-		has_patriarchs = yes		# Uses patriarch authority
-		#fervor = yes
-		misguided_heretic = yes		#Not as hated
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		has_patriarchs = yes
+		misguided_heretic = yes
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	confucianism = { #use shendao instead
-		color = { 0.9 0.4 0.8 } #Orchid
+	confucianism = { 
+		color = { 0.9 0.4 0.8}
 		icon = 18
-		province = {
-		}
-		country = { #VALUE: 3.0 -1.5 = 1.5 IDEAS
-			global_missionary_strength = -0.01 #Spread slowly, not via missionaries
-			#BONUSES
-			tolerance_heretic = 1 #HALF - Neo-Confucianism fused together Confucian, Taoist and Buddhist elements; All Taoic religions generally tolerant of each other (increased by triggered modifiers)
-			tolerance_heathen = 1 #HALF - Tolerant of other religions, to a point (but covered in Confucian tolerance system)
-			global_unrest = -2 #FULL - Meritocratic government and bureaucracy
-			ae_impact = -0.1 #HALF - emphasized harmony and community
-			improve_relation_modifier = 0.25 #HALF - emphasized harmony and community
-			prestige = 0.5 #HALF - ceremonial, emphasized perfection
-			#ALSO gets access to Confucian tolerance system
-			#PENALTIES
-			legitimacy = -0.25 #FULL - The Mandate of Heaven meant that when famine or floods happened, people blamed their rulers
+		province = { }
+		country = { 
+			global_missionary_strength = -0.01
+			tolerance_heretic = 1
+			tolerance_heathen = 1
+			global_unrest = -2
+			ae_impact = -0.1
+			improve_relation_modifier = 0.25
+			prestige = 0.5
+			legitimacy = -0.25
 			republican_tradition = -0.5
 			horde_unity = -0.5
 			devotion = -0.1
-			tolerance_own = -0.5 #HALF - Not exactly a religion; does not inspire holy figures or crusaders
+			tolerance_own = -0.5
 		}
-		country_as_secondary = { #Same bonuses as above, but 1 lower tolerance_own and missionary_strength
-			global_missionary_strength = -0.02 #Spread slowly, not via missionaries
-			#BONUSES
-			tolerance_heretic = 1 #HALF - Neo-Confucianism fused together Confucian, Taoist and Buddhist elements; All Taoic religions generally tolerant of each other (increased by triggered modifiers)
-			tolerance_heathen = 1 #HALF - Tolerant of other religions, to a point (but covered in Confucian tolerance system)
-			global_unrest = -2 #FULL - Meritocratic government and bureaucracy
-			ae_impact = -0.1 #HALF - emphasized harmony and community
-			improve_relation_modifier = 0.25 #HALF - emphasized harmony and community
-			prestige = 0.5 #HALF - ceremonial, emphasized perfection
-			#ALSO gets access to Confucian tolerance system
-			#PENALTIES
-			legitimacy = -0.25 #FULL - The Mandate of Heaven meant that when famine or floods happened, people blamed their rulers
+		country_as_secondary = { 
+			global_missionary_strength = -0.02
+			tolerance_heretic = 1
+			tolerance_heathen = 1
+			global_unrest = -2
+			ae_impact = -0.1
+			improve_relation_modifier = 0.25
+			prestige = 0.5
+			legitimacy = -0.25
 			republican_tradition = -0.5
 			horde_unity = -0.5
 			devotion = -0.1
-			tolerance_own = -1.5 #HALF - Not exactly a religion; does not inspire holy figures or crusaders
+			tolerance_own = -1.5
 		}
-#		personal_deity = yes
 		uses_piety = yes
-		has_patriarchs = yes		# Uses patriarch authority
-		#fervor = yes
-		misguided_heretic = yes		#Not as hated
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		has_patriarchs = yes
+		misguided_heretic = yes
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	mahayana = { #Mahayana Buddhism
-		color = { 0.6 0.0 0.0 } #Dark red
+	mahayana = { 
+		color = { 0.6 0.0 0.0}
 		icon = 19
-		allowed_conversion = { #Very unlikely but not impossible
-			buddhism
-			vajrayana
+		allowed_conversion = { buddhism vajrayana}
+		country = { 
+			tolerance_heretic = 1
+			tolerance_heathen = 1
+			prestige = 0.5
+			idea_cost = -0.10
+			free_leader_pool = 1
+			global_autonomy = 0.05
 		}
-		country = {
-#			global_missionary_strength = 0.00
-			#BONUSES
-			tolerance_heretic = 1 #All Taoic religions generally tolerant of each other
-			tolerance_heathen = 1 #Able to incorporate Shinto gods into their faith; somewhat tolerant of Christians
-			prestige = 0.5 #Ceremonial
-			idea_cost = -0.10 #Willing to adopt new ideas
-			free_leader_pool = 1 #Religious endorsement of warrior caste
-			#PENALTIES
-			global_autonomy = 0.05 #The temples resisted attempts to centralize the state until they were crushed
-		}
-		country_as_secondary = { #Same bonuses as above, but 1 lower tolerance_own and missionary_strength
-			tolerance_heretic = 1 #All Taoic religions generally tolerant of each other
-			tolerance_heathen = 1 #Able to incorporate Shinto gods into their faith; somewhat tolerant of Christians
-			prestige = 0.5 #Ceremonial
-			idea_cost = -0.10 #Willing to adopt new ideas
-			free_leader_pool = 1 #Religious endorsement of warrior caste
-			global_autonomy = 0.05 #The temples resisted attempts to centralize the state until they were crushed
+		country_as_secondary = { 
+			tolerance_heretic = 1
+			tolerance_heathen = 1
+			prestige = 0.5
+			idea_cost = -0.10
+			free_leader_pool = 1
+			global_autonomy = 0.05
 			tolerance_own = -1
 			global_missionary_strength = -0.01
 		}
-		
-#		holy_sites = {
-#			379 #Jerusalem
-#		}
-
-		on_convert = {
+		on_convert = { 
 			change_religion = mahayana
 		}
-#		personal_deity = yes
 		uses_piety = yes
-		has_patriarchs = yes		# Uses patriarch authority
-		#fervor = yes
-		misguided_heretic = yes		#Not as hated
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		has_patriarchs = yes
+		misguided_heretic = yes
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
-	
-	vajrayana = { #Tibetan Buddhism
-		color = { 1.0 0.3 0.0 } #Orange-red
+	vajrayana = { 
+		color = { 1.0 0.3 0.0}
 		icon = 20
-		allowed_conversion = { #Incredibly unlikely but possible
-			mahayana
-			buddhism
-		}
-		country = {
-#			global_missionary_strength = 0.00 #Skepticism, oral learning
-			#BONUSES
-			legitimacy = 0.50 #Doctrine of reincarnation reinforces traditonal power structures
+		allowed_conversion = { mahayana buddhism}
+		country = { 
+			legitimacy = 0.50
 			republican_tradition = 0.25
 			horde_unity = 0.25
 			devotion = 1
-			tolerance_heretic = 1 #All Taoic religions generally tolerant of each other
-			global_unrest = -1 #Contemplative; high value on social order
-			#PENALTIES
-			global_manpower_modifier = -0.05 #Monasteries were a huge drain
+			tolerance_heretic = 1
+			global_unrest = -1
+			global_manpower_modifier = -0.05
 		}
-		country_as_secondary = { #Same bonuses as above, but 1 lower tolerance_own and missionary_strength
-			legitimacy = 0.50 #Doctrine of reincarnation reinforces traditonal power structures
+		country_as_secondary = { 
+			legitimacy = 0.50
 			republican_tradition = 0.25
 			horde_unity = 0.25
 			devotion = 1
-			tolerance_heretic = 1 #All Taoic religions generally tolerant of each other
-			global_unrest = -1 #Contemplative; high value on social order
-			global_manpower_modifier = -0.05 #Monasteries were a huge drain
+			tolerance_heretic = 1
+			global_unrest = -1
+			global_manpower_modifier = -0.05
 			tolerance_own = -1
 			global_missionary_strength = -0.01
 		}
-		
-#		holy_sites = {
-#			379 #Jerusalem
-#		}
-
-		on_convert = {
+		on_convert = { 
 			change_religion = vajrayana
 		}
-#		personal_deity = yes
 		uses_piety = yes
-		has_patriarchs = yes		# Uses patriarch authority
-		#fervor = yes
-		misguided_heretic = yes		#Not as hated
-		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic }
+		has_patriarchs = yes
+		misguided_heretic = yes
+		heretic = { Fundamentalist Sectarian Populist Reactionary Millenarian Apocalyptic Ultraorthodox Humanistic Syncretic Messianic}
 	}
 	crusade_name = HOLY_WAR
 	defender_of_faith = no

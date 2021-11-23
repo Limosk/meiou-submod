@@ -1,16 +1,23 @@
 namespace = treaty_pavia
-
-country_event = {
-	id = treaty_pavia.1000 #The treaty of Pavia - Root event 0
+country_event = { 
+	id = treaty_pavia.1000
 	title = "treaty_pavia.1000.t"
 	desc = "EVT_AI"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
 	hidden = yes
-	trigger = {
-		NOT = {	has_country_flag = treaty_of_pavia_ignored }
-		monarchy_or_harem_gov = yes
-		OR = {
+	trigger = { 
+		NOT = { 
+			has_country_flag = treaty_of_pavia_ignored
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		OR = { 
 			tag = BAV
 			tag = BAW
 			tag = BAX
@@ -18,65 +25,89 @@ country_event = {
 			tag = BAZ
 			tag = PAL
 		}
-		NOT = { is_at_war = yes }
-		OR = {
-			AND = {
+		NOT = { 
+			is_at_war = yes
+		}
+		OR = { 
+			AND = { 
 				is_female = yes
 				has_consort_regency = no
 			}
-			AND = {
-				NOT = {	dynasty = "von Wittelsbach"	}
+			AND = { 
+				NOT = { 
+					dynasty = "von Wittelsbach"
+				}
 				has_new_dynasty = yes
 			}
 			has_country_flag = bav_no_heir
-			AND = {
+			AND = { 
 				has_regency = yes
-				OR = {
+				OR = { 
 					has_heir = no
 					has_foreign_heir = yes
 				}
 			}
 		}
-		any_country = {
+		any_country = { 
 			exists = yes
-			monarchy_or_harem_gov = yes
-			NOT = {	tag = ROOT }
+			custom_trigger_tooltip = { 
+				tooltip = is_monarchy_tt
+				OR = { 
+					government = monarchy
+					government = has_harem
+				}
+			}
+			NOT = { 
+				tag = ROOT
+			}
 			dynasty = "von Wittelsbach"
 		}
 	}
+<<<<<<< HEAD
 	immediate = {
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:The treaty of Pavia - Root event 0 happened:treaty_pavia.1000"
 		hidden_effect = {
 			if = {
 				limit = {
 					AND = {
+=======
+	immediate = { 
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					AND = { 
+>>>>>>> submod
 						is_subject = yes
-						NOT = { is_subject_of_type = tributary_state }
-						NOT = { is_subject_of_type = close_tributary_state }
+						NOT = { 
+							is_subject_of_type = tributary_state
+						}
+						NOT = { 
+							is_subject_of_type = close_tributary_state
+						}
 					}
-					any_country = {
+					any_country = { 
 						exists = yes
 						dynasty = "von Wittelsbach"
 						overlord_of = ROOT
 					}
 				}
-				every_core_province = {
-					random_country = {
-						limit = {
+				every_core_province = { 
+					random_country = { 
+						limit = { 
 							dynasty = "von Wittelsbach"
 							overlord_of = ROOT
 						}
-						PREV = {
+						PREV = { 
 							add_core = PREV
 						}
 					}
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						ai = yes
 					}
-					random_country = {
-						limit = {
+					random_country = { 
+						limit = { 
 							dynasty = "von Wittelsbach"
 							overlord_of = ROOT
 						}
@@ -84,51 +115,61 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
+			if = { 
+				limit = { 
+					NOT = { 
 						dynasty = "von Wittelsbach"
 					}
-					NOT = {
-						AND = {
+					NOT = { 
+						AND = { 
 							is_subject = yes
-							NOT = { is_subject_of_type = tributary_state }
-							NOT = {	is_subject_of_type = close_tributary_state }
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
 						}
-						any_country = {
+						any_country = { 
 							exists = yes
 							dynasty = "von Wittelsbach"
 							overlord_of = ROOT
 						}
 					}
 				}
-				ROOT = {
-					country_event = {
+				ROOT = { 
+					country_event = { 
 						id = treaty_pavia.1010
 						days = 0
 					}
 				}
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					dynasty = "von Wittelsbach"
-					NOT = {
-						AND = {
+					NOT = { 
+						AND = { 
 							is_subject = yes
-							NOT = { is_subject_of_type = tributary_state }
-							NOT = { is_subject_of_type = close_tributary_state }
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
 						}
-						any_country = {
+						any_country = { 
 							exists = yes
 							dynasty = "von Wittelsbach"
 							overlord_of = ROOT
 						}
 					}
-					any_country = {
+					any_country = { 
 						exists = yes
 						dynasty = "von Wittelsbach"
-						NOT = { tag = ROOT }
-						OR = {
+						NOT = { 
+							tag = ROOT
+						}
+						OR = { 
 							tag = BAV
 							tag = BAW
 							tag = BAX
@@ -138,8 +179,8 @@ country_event = {
 						}
 					}
 				}
-				ROOT = {
-					country_event = {
+				ROOT = { 
+					country_event = { 
 						id = treaty_pavia.1020
 						days = 0
 					}
@@ -147,39 +188,48 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "EVT_AI"
 	}
 }
-country_event = {
-	id = treaty_pavia.1010 #With the death of the last monarch, the male line of the branch of the house of Wittelsbach governing these lands has died out. According to the treaty of Pavia, these lands belong to the Wittelsbachs.
+country_event = { 
+	id = treaty_pavia.1010
 	title = "treaty_pavia.1010.t"
 	desc = "treaty_pavia.1010.d"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "treaty_pavia.1010.a"
-		ai_chance = {
+		ai_chance = { 
 			factor = 85
 		}
+<<<<<<< HEAD
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:lands will stay with the house of Wittelsbach:treaty_pavia.1010"
 		hidden_effect = {
 			country_event = {
+=======
+		hidden_effect = { 
+			country_event = { 
+>>>>>>> submod
 				id = treaty_pavia.1011
 				days = 0
 			}
 		}
 		custom_tooltip = treaty_pavia.1010.a.ct
 	}
-	option = {
+	option = { 
 		name = "treaty_pavia.1010.b"
-		ai_chance = {
+		ai_chance = { 
 			factor = 15
 		}
-		hidden_effect = {
+		hidden_effect = { 
 			set_country_flag = treaty_of_pavia_ignored
+<<<<<<< HEAD
 			log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:lands will not be transferred to the house of Wittelsbach:treaty_pavia.1010"
 			country_event = {
+=======
+			country_event = { 
+>>>>>>> submod
 				id = treaty_pavia.1012
 				days = 0
 			}
@@ -187,34 +237,43 @@ country_event = {
 		custom_tooltip = treaty_pavia.1010.b.ct
 	}
 }
-country_event = {
-	id = treaty_pavia.1020 #With the death of the last monarch, the male line of the branch of the house of Wittelsbach governing these lands has died out. Even though you belong the house of Wittelsbach, according to the treaty of Pavia you are not next in line of succession.
+country_event = { 
+	id = treaty_pavia.1020
 	title = "treaty_pavia.1020.t"
 	desc = "treaty_pavia.1020.d"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "treaty_pavia.1020.a"
+<<<<<<< HEAD
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:respected the treaty and abdicated:treaty_pavia.1020"
 		ai_chance = {
+=======
+		ai_chance = { 
+>>>>>>> submod
 			factor = 50
 		}
-		hidden_effect = {
-			country_event = {
+		hidden_effect = { 
+			country_event = { 
 				id = treaty_pavia.1011
 				days = 0
 			}
 		}
 		custom_tooltip = treaty_pavia.1020.a.ct
 	}
-	option = {
+	option = { 
 		name = "treaty_pavia.1020.b"
-		ai_chance = {
+		ai_chance = { 
 			factor = 50
 		}
+<<<<<<< HEAD
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:have not respected the treaty and not abdicated:treaty_pavia.1020"
 		hidden_effect = {
 			country_event = {
+=======
+		hidden_effect = { 
+			country_event = { 
+>>>>>>> submod
 				id = treaty_pavia.1022
 				days = 0
 			}
@@ -222,20 +281,26 @@ country_event = {
 		custom_tooltip = treaty_pavia.1020.b.ct
 	}
 }
-country_event = {
-	id = treaty_pavia.1011 #The treaty of Pavia acceptance event
+country_event = { 
+	id = treaty_pavia.1011
 	title = "treaty_pavia.1011.t"
 	desc = "treaty_pavia.1011.d"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
 	hidden = yes
-	immediate = {
-		hidden_effect = {
-			if = {
-				limit = {
-					any_country = {
-						monarchy_or_harem_gov = yes
-						OR = {
+	immediate = { 
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					any_country = { 
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
+						OR = { 
 							tag = BAV
 							tag = BAW
 							tag = BAX
@@ -243,32 +308,42 @@ country_event = {
 							tag = BAZ
 							tag = PAL
 						}
-						NOT = { tag = ROOT }
+						NOT = { 
+							tag = ROOT
+						}
 						dynasty = "von Wittelsbach"
 					}
 				}
-				every_owned_province = {
-					province_event = {
+				every_owned_province = { 
+					province_event = { 
 						id = treaty_pavia.3001
 						days = 0
 					}
 				}
-				every_core_province = {
-					limit = {
-						NOT = { owned_by = ROOT }
+				every_core_province = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
 					}
-					province_event = {
+					province_event = { 
 						id = treaty_pavia.3001
 						days = 0
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						any_country = {
-							monarchy_or_harem_gov = yes
-							OR = {
+			if = { 
+				limit = { 
+					NOT = { 
+						any_country = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
 								tag = BAV
 								tag = BAW
 								tag = BAX
@@ -276,14 +351,22 @@ country_event = {
 								tag = BAZ
 								tag = PAL
 							}
-							NOT = { tag = ROOT }
+							NOT = { 
+								tag = ROOT
+							}
 							dynasty = "von Wittelsbach"
 						}
 					}
 				}
-				random_country = {
-					limit = {
-						monarchy_or_harem_gov = yes
+				random_country = { 
+					limit = { 
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
 						dynasty = "von Wittelsbach"
 						is_lesser_in_union = no
 					}
@@ -292,24 +375,30 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "EVT_AI"
 	}
 }
-country_event = {
-	id = treaty_pavia.1012 #The treaty of Pavia 1010 refusal event
+country_event = { 
+	id = treaty_pavia.1012
 	title = "treaty_pavia.1012.t"
 	desc = "treaty_pavia.1012.d"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
 	hidden = yes
-	immediate = {
-		hidden_effect = {
-			if = {
-				limit = {
-					any_country = {
-						monarchy_or_harem_gov = yes
-						OR = {
+	immediate = { 
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					any_country = { 
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
+						OR = { 
 							tag = BAV
 							tag = BAW
 							tag = BAX
@@ -317,18 +406,26 @@ country_event = {
 							tag = BAZ
 							tag = PAL
 						}
-						NOT = { tag = ROOT }
+						NOT = { 
+							tag = ROOT
+						}
 						dynasty = "von Wittelsbach"
 					}
 				}
-				every_owned_province = {
-					limit = {
+				every_owned_province = { 
+					limit = { 
 						is_core = ROOT
 					}
-					every_country = {
-						limit = {
-							monarchy_or_harem_gov = yes
-							OR = {
+					every_country = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
 								tag = BAV
 								tag = BAW
 								tag = BAX
@@ -336,22 +433,32 @@ country_event = {
 								tag = BAZ
 								tag = PAL
 							}
-							NOT = { tag = ROOT }
+							NOT = { 
+								tag = ROOT
+							}
 							dynasty = "von Wittelsbach"
 						}
-						PREV = {
+						PREV = { 
 							add_core = PREV
 						}
 					}
 				}
-				every_owned_province = {
-					limit = {
-						NOT = { is_core = ROOT }
+				every_owned_province = { 
+					limit = { 
+						NOT = { 
+							is_core = ROOT
+						}
 					}
-					every_country = {
-						limit = {
-							monarchy_or_harem_gov = yes
-							OR = {
+					every_country = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
 								tag = BAV
 								tag = BAW
 								tag = BAX
@@ -359,22 +466,32 @@ country_event = {
 								tag = BAZ
 								tag = PAL
 							}
-							NOT = { tag = ROOT }
+							NOT = { 
+								tag = ROOT
+							}
 							dynasty = "von Wittelsbach"
 						}
-						PREV = {
+						PREV = { 
 							add_claim = PREV
 						}
 					}
 				}
-				every_core_province = {
-					limit = {
-						NOT = { owned_by = ROOT }
+				every_core_province = { 
+					limit = { 
+						NOT = { 
+							owned_by = ROOT
+						}
 					}
-					every_country = {
-						limit = {
-							monarchy_or_harem_gov = yes
-							OR = {
+					every_country = { 
+						limit = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
 								tag = BAV
 								tag = BAW
 								tag = BAX
@@ -382,21 +499,29 @@ country_event = {
 								tag = BAZ
 								tag = PAL
 							}
-							NOT = { tag = ROOT }
+							NOT = { 
+								tag = ROOT
+							}
 							dynasty = "von Wittelsbach"
 						}
-						PREV = {
+						PREV = { 
 							add_claim = PREV
 						}
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						any_country = {
-							monarchy_or_harem_gov = yes
-							OR = {
+			if = { 
+				limit = { 
+					NOT = { 
+						any_country = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
 								tag = BAV
 								tag = BAW
 								tag = BAX
@@ -404,17 +529,25 @@ country_event = {
 								tag = BAZ
 								tag = PAL
 							}
-							NOT = { tag = ROOT }
+							NOT = { 
+								tag = ROOT
+							}
 							dynasty = "von Wittelsbach"
 						}
 					}
 				}
-				every_country = {
-					limit = {
-						monarchy_or_harem_gov = yes
+				every_country = { 
+					limit = { 
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
 						dynasty = "von Wittelsbach"
 					}
-					add_casus_belli = {
+					add_casus_belli = { 
 						type = cb_restore_personal_union
 						months = 24
 						target = ROOT
@@ -423,24 +556,30 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "EVT_AI"
 	}
 }
-country_event = {
-	id = treaty_pavia.1022 #The treaty of Pavia 1020 refusal event
+country_event = { 
+	id = treaty_pavia.1022
 	title = "treaty_pavia.1022.t"
 	desc = "treaty_pavia.1022.d"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
 	hidden = yes
-	immediate = {
-		hidden_effect = {
-			if = {
-				limit = {
-					any_country = {
-						monarchy_or_harem_gov = yes
-						OR = {
+	immediate = { 
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					any_country = { 
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
+						OR = { 
 							tag = BAV
 							tag = BAW
 							tag = BAX
@@ -448,20 +587,28 @@ country_event = {
 							tag = BAZ
 							tag = PAL
 						}
-						NOT = { tag = ROOT }
+						NOT = { 
+							tag = ROOT
+						}
 						dynasty = "von Wittelsbach"
 					}
 				}
-				every_core_province = {
-					every_country = {
-						limit = {
-							NOT = {
-								PREV = {
+				every_core_province = { 
+					every_country = { 
+						limit = { 
+							NOT = { 
+								PREV = { 
 									owned_by = PREV
 								}
 							}
-							monarchy_or_harem_gov = yes
-							OR = {
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
+							OR = { 
 								tag = BAV
 								tag = BAW
 								tag = BAX
@@ -469,10 +616,12 @@ country_event = {
 								tag = BAZ
 								tag = PAL
 							}
-							NOT = { tag = ROOT }
+							NOT = { 
+								tag = ROOT
+							}
 							dynasty = "von Wittelsbach"
 						}
-						PREV = {
+						PREV = { 
 							add_claim = PREV
 						}
 					}
@@ -480,19 +629,27 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "EVT_AI"
 	}
 }
-country_event = {
-	id = treaty_pavia.1101 #treaty_pavia.1101 - no heir
+country_event = { 
+	id = treaty_pavia.1101
 	title = "treaty_pavia.1101.t"
 	desc = "EVT_AI"
 	picture = BAVARIA_eventPicture
-	trigger = {
-		NOT = { has_country_flag = bav_no_heir }
-		monarchy_or_harem_gov = yes
-		OR = {
+	trigger = { 
+		NOT = { 
+			has_country_flag = bav_no_heir
+		}
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		OR = { 
 			tag = BAV
 			tag = BAW
 			tag = BAX
@@ -503,27 +660,33 @@ country_event = {
 		has_heir = no
 	}
 	hidden = yes
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 1
 	}
-	immediate = {
-		hidden_effect = {
+	immediate = { 
+		hidden_effect = { 
 			set_country_flag = bav_no_heir
 		}
 	}
-	option = {
+	option = { 
 		name = "EVT_AI"
 	}
 }
-country_event = {
+country_event = { 
 	id = treaty_pavia.1102
 	title = "treaty_pavia.1102.t"
 	desc = "EVT_AI"
 	picture = BAVARIA_eventPicture
-	trigger = {
+	trigger = { 
 		has_country_flag = bav_no_heir
-		monarchy_or_harem_gov = yes
-		OR = {
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		OR = { 
 			tag = BAV
 			tag = BAW
 			tag = BAX
@@ -534,249 +697,303 @@ country_event = {
 		has_heir = yes
 	}
 	hidden = yes
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 1
 	}
-	immediate = {
-		hidden_effect = {
+	immediate = { 
+		hidden_effect = { 
 			clr_country_flag = bav_no_heir
 		}
 	}
-	option = {
+	option = { 
 		name = "EVT_AI"
 	}
 }
-province_event = {
-	id = treaty_pavia.3001 #treaty_pavia.3001 - divvying up provinces
+province_event = { 
+	id = treaty_pavia.3001
 	title = "treaty_pavia.3001.t"
 	desc = "EVT_AI"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
 	hidden = yes
+<<<<<<< HEAD
 	immediate = {
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.Owner.GetName]:division of provinces, [Root.GetName] ceded:treaty_pavia.3001"
 		hidden_effect = {
 			if = {
 				limit = {
 					FROM = {
+=======
+	immediate = { 
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					FROM = { 
+>>>>>>> submod
 						tag = PAL
 					}
-					any_country = {
+					any_country = { 
 						tag = BAV
 						exists = yes
-						monarchy_or_harem_gov = yes
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
 						dynasty = "von Wittelsbach"
 					}
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						owned_by = FROM
 					}
 					cede_province = BAV
 					add_claim = BAV
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						is_core = FROM
 					}
 					add_core = BAV
 					remove_core = FROM
 				}
 			}
-			if = {
-				limit = {
-					FROM = {
+			if = { 
+				limit = { 
+					FROM = { 
 						tag = PAL
 					}
-					NOT = {
-						any_country = {
+					NOT = { 
+						any_country = { 
 							tag = BAV
 							exists = yes
-							monarchy_or_harem_gov = yes
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
 							dynasty = "von Wittelsbach"
 						}
 					}
 				}
-				if = {
-					limit = {
-						OR = {
+				if = { 
+					limit = { 
+						OR = { 
 							is_core = FROM
 							owned_by = FROM
 						}
 					}
-					random_country = {
-						limit = {
+					random_country = { 
+						limit = { 
 							exists = yes
-							OR = {
+							OR = { 
 								tag = BAW
 								tag = BAX
 								tag = BAY
 								tag = BAZ
 							}
-							monarchy_or_harem_gov = yes
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
 							dynasty = "von Wittelsbach"
 						}
-						if = {
-							limit = {
-								ROOT = {
+						if = { 
+							limit = { 
+								ROOT = { 
 									owned_by = FROM
 								}
 							}
-							ROOT = {
+							ROOT = { 
 								cede_province = PREV
 							}
-							ROOT = {
+							ROOT = { 
 								add_claim = PREV
 							}
 						}
-						if = {
-							limit = {
-								ROOT = {
+						if = { 
+							limit = { 
+								ROOT = { 
 									is_core = FROM
 								}
 							}
-							ROOT = {
+							ROOT = { 
 								add_core = PREV
 							}
-							ROOT = {
+							ROOT = { 
 								remove_core = FROM
 							}
 						}
 					}
 				}
 			}
-			if = {
-				limit = {
-					FROM = {
+			if = { 
+				limit = { 
+					FROM = { 
 						tag = BAV
 					}
-					any_country = {
+					any_country = { 
 						exists = yes
 						tag = PAL
-						monarchy_or_harem_gov = yes
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
 						dynasty = "von Wittelsbach"
 					}
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						is_core = FROM
 					}
 					add_core = PAL
 					remove_core = FROM
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						owned_by = FROM
 					}
 					cede_province = PAL
 					add_claim = PAL
 				}
 			}
-			if = {
-				limit = {
-					FROM = {
-						OR = {
+			if = { 
+				limit = { 
+					FROM = { 
+						OR = { 
 							tag = BAW
 							tag = BAX
 							tag = BAY
 							tag = BAZ
 						}
 					}
-					any_country = {
+					any_country = { 
 						exists = yes
-						NOT = { tag = FROM }
-						OR = {
+						NOT = { 
+							tag = FROM
+						}
+						OR = { 
 							tag = BAW
 							tag = BAX
 							tag = BAY
 							tag = BAZ
 						}
-						monarchy_or_harem_gov = yes
+						custom_trigger_tooltip = { 
+							tooltip = is_monarchy_tt
+							OR = { 
+								government = monarchy
+								government = has_harem
+							}
+						}
 						dynasty = "von Wittelsbach"
 					}
 				}
-				if = {
-					limit = {
-						OR = {
+				if = { 
+					limit = { 
+						OR = { 
 							is_core = FROM
 							owned_by = FROM
 						}
 					}
-					random_country = {
-						limit = {
+					random_country = { 
+						limit = { 
 							exists = yes
-							OR = {
+							OR = { 
 								tag = BAW
 								tag = BAX
 								tag = BAY
 								tag = BAZ
 							}
-							monarchy_or_harem_gov = yes
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
 							dynasty = "von Wittelsbach"
 						}
-						if = {
-							limit = {
-								ROOT = {
+						if = { 
+							limit = { 
+								ROOT = { 
 									owned_by = FROM
 								}
 							}
-							ROOT = {
+							ROOT = { 
 								cede_province = PREV
 							}
-							ROOT = {
+							ROOT = { 
 								add_claim = PREV
 							}
 						}
-						if = {
-							limit = {
-								ROOT = {
+						if = { 
+							limit = { 
+								ROOT = { 
 									is_core = FROM
 								}
 							}
-							ROOT = {
+							ROOT = { 
 								add_core = PREV
 							}
-							ROOT = {
+							ROOT = { 
 								remove_core = FROM
 							}
 						}
 					}
 				}
 			}
-			if = {
-				limit = {
-					FROM = {
-						OR = {
+			if = { 
+				limit = { 
+					FROM = { 
+						OR = { 
 							tag = BAW
 							tag = BAX
 							tag = BAY
 							tag = BAZ
 						}
 					}
-					NOT = {
-						any_country = {
+					NOT = { 
+						any_country = { 
 							exists = yes
-							NOT = { tag = FROM }
-							OR = {
+							NOT = { 
+								tag = FROM
+							}
+							OR = { 
 								tag = BAW
 								tag = BAX
 								tag = BAY
 								tag = BAZ
 							}
-							monarchy_or_harem_gov = yes
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
 							dynasty = "von Wittelsbach"
 						}
 					}
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						owned_by = FROM
 					}
 					add_claim = PAL
 					cede_province = PAL
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						is_core = FROM
 					}
 					add_core = PAL
@@ -785,21 +1002,28 @@ province_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "EVT_AI"
+<<<<<<< HEAD
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.Owner.GetName]:division of provinces, [Root.GetName] received:treaty_pavia.3001"
+=======
+>>>>>>> submod
 	}
 }
-country_event = {
-	id = treaty_pavia.1001 #The treaty of Pavia - Root event 1
+country_event = { 
+	id = treaty_pavia.1001
 	title = "treaty_pavia.1001.t"
 	desc = "treaty_pavia.1001.d"
 	picture = BAVARIA_eventPicture
-	trigger = {
-		NOT = { has_country_flag = overlord_treaty_of_pavia_ignored }
-		NOT = { has_country_flag = treaty_of_pavia_ignored }
+	trigger = { 
+		NOT = { 
+			has_country_flag = overlord_treaty_of_pavia_ignored
+		}
+		NOT = { 
+			has_country_flag = treaty_of_pavia_ignored
+		}
 		is_lesser_in_union = yes
-		OR = {
+		OR = { 
 			tag = BAV
 			tag = BAW
 			tag = BAX
@@ -807,36 +1031,52 @@ country_event = {
 			tag = BAZ
 			tag = PAL
 		}
-		NOT = { is_at_war = no }
-		any_country = {
+		NOT = { 
+			is_at_war = no
+		}
+		any_country = { 
 			exists = yes
-			monarchy_or_harem_gov = yes
-			NOT = {
+			custom_trigger_tooltip = { 
+				tooltip = is_monarchy_tt
+				OR = { 
+					government = monarchy
+					government = has_harem
+				}
+			}
+			NOT = { 
 				tag = ROOT
 			}
 			dynasty = "von Wittelsbach"
 		}
 	}
 	hidden = yes
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 1
 	}
+<<<<<<< HEAD
 	immediate = {
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:The treaty of Pavia - Root event 1 happened:treaty_pavia.1001"
 		hidden_effect = {
 			if = {
 				limit = {
 					overlord = {
+=======
+	immediate = { 
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					overlord = { 
+>>>>>>> submod
 						dynasty = "von Wittelsbach"
 					}
 				}
-				if = {
-					limit = {
-						any_country = {
-							NOT = {
+				if = { 
+					limit = { 
+						any_country = { 
+							NOT = { 
 								tag = ROOT
 							}
-							OR = {
+							OR = { 
 								tag = BAV
 								tag = BAW
 								tag = BAX
@@ -844,26 +1084,34 @@ country_event = {
 								tag = BAZ
 								tag = PAL
 							}
-							monarchy_or_harem_gov = yes
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
 							dynasty = "von Wittelsbach"
 						}
 					}
-					random_country = {
-						limit = {
+					random_country = { 
+						limit = { 
 							senior_union_with = ROOT
 						}
-						country_event = {
+						country_event = { 
 							id = treaty_pavia.1030
 							days = 0
 						}
 					}
 				}
-				if = {
-					limit = {
-						NOT = {
-							any_country = {
-								NOT = { tag = ROOT }
-								OR = {
+				if = { 
+					limit = { 
+						NOT = { 
+							any_country = { 
+								NOT = { 
+									tag = ROOT
+								}
+								OR = { 
 									tag = BAV
 									tag = BAW
 									tag = BAX
@@ -871,32 +1119,38 @@ country_event = {
 									tag = BAZ
 									tag = PAL
 								}
-								monarchy_or_harem_gov = yes
+								custom_trigger_tooltip = { 
+									tooltip = is_monarchy_tt
+									OR = { 
+										government = monarchy
+										government = has_harem
+									}
+								}
 								dynasty = "von Wittelsbach"
 							}
 						}
 					}
-					random_country = {
-						limit = {
+					random_country = { 
+						limit = { 
 							senior_union_with = ROOT
 						}
 						inherit = ROOT
 					}
 				}
 			}
-			if = {
-				limit = {
-					overlord = {
-						NOT = {
+			if = { 
+				limit = { 
+					overlord = { 
+						NOT = { 
 							dynasty = "von Wittelsbach"
 						}
 					}
 				}
-				random_country = {
-					limit = {
+				random_country = { 
+					limit = { 
 						senior_union_with = ROOT
 					}
-					country_event = {
+					country_event = { 
 						id = treaty_pavia.1040
 						days = 0
 					}
@@ -904,33 +1158,39 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "EVT_AI"
 	}
 }
-country_event = {
+country_event = { 
 	id = treaty_pavia.1030
 	title = "treaty_pavia.1030.t"
 	desc = "treaty_pavia.1030.d"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "treaty_pavia.1030.a"
-		ai_chance = {
+		ai_chance = { 
 			factor = 85
 		}
+<<<<<<< HEAD
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:respected the treaty and ended the personal union:treaty_pavia.1030"
 		hidden_effect = {
 			every_country = {
 				limit = {
+=======
+		hidden_effect = { 
+			every_country = { 
+				limit = { 
+>>>>>>> submod
 					war_with = FROM
 					war_with = ROOT
 				}
 				white_peace = FROM
 				white_peace = ROOT
 			}
-			FROM = {
-				country_event = {
+			FROM = { 
+				country_event = { 
 					id = treaty_pavia.1011
 					days = 0
 				}
@@ -938,18 +1198,23 @@ country_event = {
 		}
 		custom_tooltip = treaty_pavia.1030.a.ct
 	}
-	option = {
+	option = { 
 		name = "treaty_pavia.1030.b"
-		ai_chance = {
+		ai_chance = { 
 			factor = 15
 		}
+<<<<<<< HEAD
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:have not respected the treaty and kept the PU:treaty_pavia.1030"
 		hidden_effect = {
 			FROM = {
+=======
+		hidden_effect = { 
+			FROM = { 
+>>>>>>> submod
 				set_country_flag = overlord_treaty_of_pavia_ignored
 			}
-			FROM = {
-				country_event = {
+			FROM = { 
+				country_event = { 
 					id = treaty_pavia.1022
 					days = 0
 				}
@@ -958,29 +1223,35 @@ country_event = {
 		custom_tooltip = treaty_pavia.1030.b.ct
 	}
 }
-country_event = {
+country_event = { 
 	id = treaty_pavia.1040
 	title = "treaty_pavia.1040.t"
 	desc = "treaty_pavia.1040.d"
 	picture = BAVARIA_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "treaty_pavia.1040.a"
-		ai_chance = {
+		ai_chance = { 
 			factor = 85
 		}
+<<<<<<< HEAD
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:respected the treaty and ended the personal union:treaty_pavia.1040"
 		hidden_effect = {
 			every_country = {
 				limit = {
+=======
+		hidden_effect = { 
+			every_country = { 
+				limit = { 
+>>>>>>> submod
 					war_with = FROM
 					war_with = ROOT
 				}
 				white_peace = FROM
 				white_peace = ROOT
 			}
-			FROM = {
-				country_event = {
+			FROM = { 
+				country_event = { 
 					id = treaty_pavia.1011
 					days = 0
 				}
@@ -988,18 +1259,23 @@ country_event = {
 		}
 		custom_tooltip = treaty_pavia.1040.a.ct
 	}
-	option = {
+	option = { 
 		name = "treaty_pavia.1040.b"
-		ai_chance = {
+		ai_chance = { 
 			factor = 15
 		}
+<<<<<<< HEAD
 		log = "FE-Treaty_of_Pavia:[GetYear]:[Root.GetName]:have not respected the treaty and kept the PU:treaty_pavia.1040"
 		hidden_effect = {
 			FROM = {
+=======
+		hidden_effect = { 
+			FROM = { 
+>>>>>>> submod
 				set_country_flag = overlord_treaty_of_pavia_ignored
 			}
-			FROM = {
-				country_event = {
+			FROM = { 
+				country_event = { 
 					id = treaty_pavia.1012
 					days = 0
 				}
@@ -1008,27 +1284,27 @@ country_event = {
 		custom_tooltip = treaty_pavia.1040.b.ct
 	}
 }
-province_event = {
+province_event = { 
 	id = treaty_pavia.4001
 	title = "treaty_pavia.4001.t"
 	desc = "EVT_AI"
 	picture = BAVARIA_eventPicture
-	trigger = {
-		NOT = {
-			owner = {
+	trigger = { 
+		NOT = { 
+			owner = { 
 				has_country_flag = treaty_of_pavia_ignored
 			}
 		}
-		NOT = {
-			owner = {
+		NOT = { 
+			owner = { 
 				has_country_flag = overlord_treaty_of_pavia_ignored
 			}
 		}
-		owner = {
-			PREV = {
+		owner = { 
+			PREV = { 
 				owned_by = PREV
 			}
-			OR = {
+			OR = { 
 				tag = BAV
 				tag = BAW
 				tag = BAX
@@ -1037,16 +1313,16 @@ province_event = {
 				tag = PAL
 			}
 		}
-		any_country = {
-			NOT = {
-				PREV = {
+		any_country = { 
+			NOT = { 
+				PREV = { 
 					owned_by = PREV
 				}
 			}
-			PREV = {
+			PREV = { 
 				is_core = PREV
 			}
-			OR = {
+			OR = { 
 				tag = BAV
 				tag = BAW
 				tag = BAX
@@ -1057,26 +1333,34 @@ province_event = {
 		}
 	}
 	hidden = yes
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 1
 	}
-	immediate = {
-		hidden_effect = {
-			every_country = {
-				limit = {
-					NOT = {
-						ROOT = {
+	immediate = { 
+		hidden_effect = { 
+			every_country = { 
+				limit = { 
+					NOT = { 
+						ROOT = { 
 							owned_by = PREV
 						}
 					}
-					OR = {
-						AND = {
-							monarchy_or_harem_gov = yes
+					OR = { 
+						AND = { 
+							custom_trigger_tooltip = { 
+								tooltip = is_monarchy_tt
+								OR = { 
+									government = monarchy
+									government = has_harem
+								}
+							}
 							dynasty = "von Wittelsbach"
 						}
-						NOT = { exists = yes }
+						NOT = { 
+							exists = yes
+						}
 					}
-					OR = {
+					OR = { 
 						tag = BAV
 						tag = BAW
 						tag = BAX
@@ -1084,20 +1368,20 @@ province_event = {
 						tag = BAZ
 						tag = PAL
 					}
-					ROOT = {
+					ROOT = { 
 						is_core = PREV
 					}
 				}
-				ROOT = {
+				ROOT = { 
 					remove_core = PREV
 				}
-				ROOT = {
+				ROOT = { 
 					add_claim = PREV
 				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "EVT_AI"
 	}
 }

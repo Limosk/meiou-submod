@@ -1,471 +1,4062 @@
 namespace = mec_diplomacy
-
-# DO MONTHLY
-country_event = {
+country_event = { 
 	id = mec_diplomacy.001
 	title = no_localization
 	desc = no_localization
 	picture = ai_only
-	
 	is_triggered_only = yes
 	hidden = yes
-	
-	immediate = {
-		every_country = { limit = { isValidCountry = yes }
-			Diplomacy_Do_Monthly = yes
+	immediate = { 
+		every_country = { 
+			limit = { 
+				AND = { 
+					num_of_cities = 1
+					NOT = { 
+						tag = AAA
+					}
+				}
+			}
+			set_variable = { 
+				which = nmu
+				value = 0
+			}
+			every_ally = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							dynasty = PREV
+						}
+					}
+					PREV = { 
+						change_variable = { 
+							which = nmu
+							value = 1
+						}
+					}
+				}
+			}
+			if = { 
+				limit = { 
+					total_development = 2000
+				}
+				set_variable = { 
+					which = nmr
+					value = 8
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 750
+				}
+				set_variable = { 
+					which = nmr
+					value = 6
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 400
+				}
+				set_variable = { 
+					which = nmr
+					value = 4
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 100
+				}
+				set_variable = { 
+					which = nmr
+					value = 3
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 30
+				}
+				set_variable = { 
+					which = nmr
+					value = 2
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 1
+				}
+				set_variable = { 
+					which = nmr
+					value = 2
+				}
+			}
+			if = { 
+				limit = { 
+					has_idea = flemish_ideas_6
+				}
+				change_variable = { 
+					which = nmr
+					value = 1
+				}
+			}
+			change_variable = { 
+				which = nmr
+				which = nms
+			}
+			set_variable = { 
+				which = nmt
+				which = nmr
+			}
+			subtract_variable = { 
+				which = nmt
+				which = nmu
+			}
+			set_variable = { 
+				which = nmq
+				which = nmt
+			}
+			set_variable = { 
+				which = nmt
+				value = 0
+			}
+			set_variable = { 
+				which = nmu
+				value = 0
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = exit
 	}
 }
-
-#DO_YEARLY
-country_event = {
+country_event = { 
 	id = mec_diplomacy.002
-	title = no_localization 
+	title = no_localization
 	desc = no_localization
 	picture = ai_only
-
 	is_triggered_only = yes
 	hidden = yes
-
-	immediate = {
+	immediate = { 
 		every_country = { 
-			limit = { isValidCountry = yes }
-			Diplomacy_Do_Yearly = yes
+			limit = { 
+				AND = { 
+					num_of_cities = 1
+					NOT = { 
+						tag = AAA
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = nzu
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = nzv
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = nzw
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = nzx
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = nzy
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = nzz
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = ntg
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = nth
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = nti
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = ntj
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = ntk
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = ntl
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = nuu
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = oaa
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = oab
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = ntn
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = ntm
+						which = PREV
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = oac
+						which = PREV
+					}
+				}
+			}
+			export_to_variable = { 
+				which = export
+				value = manpower
+			}
+			set_variable = { 
+				which = nne
+				which = export
+			}
+			export_to_variable = { 
+				which = export
+				value = army_size
+			}
+			set_variable = { 
+				which = nmt
+				which = export
+			}
+			change_variable = { 
+				which = nne
+				which = nmt
+			}
+			multiply_variable = { 
+				which = nne
+				which = ntm
+			}
+			export_to_variable = { 
+				which = export
+				value = modifier:discipline
+			}
+			set_variable = { 
+				which = oow
+				which = export
+			}
+			change_variable = { 
+				which = oow
+				value = 1
+			}
+			export_to_variable = { 
+				which = export
+				value = modifier:land_morale
+			}
+			set_variable = { 
+				which = oox
+				which = export
+			}
+			change_variable = { 
+				which = oox
+				value = 1
+			}
+			multiply_variable = { 
+				which = nmt
+				which = oow
+			}
+			multiply_variable = { 
+				which = nmt
+				which = oox
+			}
+			export_to_variable = { 
+				which = export
+				value = mil_tech
+			}
+			set_variable = { 
+				which = nmw
+				which = export
+			}
+			change_variable = { 
+				which = nmt
+				value = 75
+			}
+			divide_variable = { 
+				which = nmt
+				value = 60
+			}
+			multiply_variable = { 
+				which = nmt
+				which = nmt
+			}
+			multiply_variable = { 
+				which = nne
+				which = nmt
+			}
+			export_to_variable = { 
+				which = export
+				value = navy_size
+			}
+			set_variable = { 
+				which = nnf
+				which = export
+			}
+			export_to_variable = { 
+				which = export
+				value = modifier:ship_durability
+			}
+			set_variable = { 
+				which = nmt
+				which = export
+			}
+			change_variable = { 
+				which = nmt
+				value = 1
+			}
+			export_to_variable = { 
+				which = export
+				value = navy_tradition
+			}
+			set_variable = { 
+				which = nmu
+				which = export
+			}
+			divide_variable = { 
+				which = nmu
+				value = 100
+			}
+			change_variable = { 
+				which = nmu
+				value = 1
+			}
+			export_to_variable = { 
+				which = export
+				value = modifier:naval_morale
+			}
+			set_variable = { 
+				which = nmv
+				which = export
+			}
+			change_variable = { 
+				which = nmv
+				value = 1
+			}
+			multiply_variable = { 
+				which = nmt
+				which = nmu
+			}
+			multiply_variable = { 
+				which = nmt
+				which = nmv
+			}
+			multiply_variable = { 
+				which = nnf
+				which = nmt
+			}
+			export_to_variable = { 
+				which = export
+				value = trigger_value:monthly_income
+			}
+			set_variable = { 
+				which = nmt
+				which = export
+			}
+			multiply_variable = { 
+				which = nmt
+				which = oac
+			}
+			set_variable = { 
+				which = nzs
+				which = nmt
+			}
+			export_to_variable = { 
+				which = export
+				value = stability
+			}
+			set_variable = { 
+				which = nmt
+				which = export
+			}
+			change_variable = { 
+				which = nmt
+				value = 3
+			}
+			divide_variable = { 
+				which = nmt
+				value = 6
+			}
+			export_to_variable = { 
+				which = export
+				value = corruption
+			}
+			set_variable = { 
+				which = nmu
+				which = export
+			}
+			subtract_variable = { 
+				which = nmu
+				value = 100
+			}
+			divide_variable = { 
+				which = nmu
+				value = -100
+			}
+			export_to_variable = { 
+				which = export
+				value = average_unrest
+			}
+			set_variable = { 
+				which = nmv
+				which = export
+			}
+			subtract_variable = { 
+				which = nmv
+				value = 10
+			}
+			divide_variable = { 
+				which = nmv
+				value = -10
+			}
+			if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = nmv
+							value = 0
+						}
+					}
+				}
+				set_variable = { 
+					which = nmv
+					value = 0
+				}
+			}
+			else_if = { 
+				limit = { 
+					check_variable = { 
+						which = nmv
+						value = 1.001
+					}
+				}
+				set_variable = { 
+					which = nmv
+					value = 1
+				}
+			}
+			export_to_variable = { 
+				which = export
+				value = war_exhaustion
+			}
+			set_variable = { 
+				which = nmw
+				which = export
+			}
+			subtract_variable = { 
+				which = nmw
+				value = 10
+			}
+			divide_variable = { 
+				which = nmw
+				value = -10
+			}
+			if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = nmw
+							value = 0
+						}
+					}
+				}
+				set_variable = { 
+					which = nmw
+					value = 0
+				}
+			}
+			set_variable = { 
+				which = nmx
+				which = hux
+			}
+			divide_variable = { 
+				which = nmx
+				value = 50
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nmx
+						value = 1
+					}
+				}
+				set_variable = { 
+					which = nmx
+					value = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = nmx
+							value = 0
+						}
+					}
+				}
+				set_variable = { 
+					which = nmx
+					value = 0
+				}
+			}
+			set_variable = { 
+				which = nmy
+				value = 0
+			}
+			set_variable = { 
+				which = nmz
+				value = 0
+			}
+			every_owned_province = { 
+				set_variable = { 
+					which = nmy
+					which = atm
+				}
+				owner = { 
+					change_variable = { 
+						which = nmy
+						which = PREV
+					}
+					change_variable = { 
+						which = nmz
+						value = 1
+					}
+				}
+				set_variable = { 
+					which = nmy
+					value = 0
+				}
+			}
+			divide_variable = { 
+				which = nmy
+				which = nmz
+			}
+			subtract_variable = { 
+				which = nmy
+				value = 100
+			}
+			divide_variable = { 
+				which = nmy
+				value = -100
+			}
+			if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = nmy
+							value = 0
+						}
+					}
+				}
+				set_variable = { 
+					which = nmy
+					value = 0
+				}
+			}
+			set_variable = { 
+				which = nmz
+				which = asq
+			}
+			change_variable = { 
+				which = nmz
+				which = asv
+			}
+			change_variable = { 
+				which = nmz
+				which = ata
+			}
+			change_variable = { 
+				which = nmz
+				which = atf
+			}
+			change_variable = { 
+				which = nmz
+				which = atm
+			}
+			divide_variable = { 
+				which = nmz
+				value = 60
+			}
+			divide_variable = { 
+				which = nmz
+				value = 5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nmz
+						value = 1.001
+					}
+				}
+				set_variable = { 
+					which = nmz
+					value = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = nmz
+							value = 0
+						}
+					}
+				}
+				set_variable = { 
+					which = nmz
+					value = 0
+				}
+			}
+			set_variable = { 
+				which = nna
+				which = bdq
+			}
+			change_variable = { 
+				which = nna
+				which = bdr
+			}
+			change_variable = { 
+				which = nna
+				which = bds
+			}
+			change_variable = { 
+				which = nna
+				which = bdt
+			}
+			change_variable = { 
+				which = nna
+				which = bdu
+			}
+			change_variable = { 
+				which = nna
+				value = 500
+			}
+			divide_variable = { 
+				which = nna
+				value = 125
+			}
+			divide_variable = { 
+				which = nna
+				value = 5
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = nna
+						value = 1.001
+					}
+				}
+				set_variable = { 
+					which = nna
+					value = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = nna
+							value = 0
+						}
+					}
+				}
+				set_variable = { 
+					which = nna
+					value = 0
+				}
+			}
+			export_to_variable = { 
+				which = export
+				value = trigger_value:num_of_loans
+			}
+			set_variable = { 
+				which = nnb
+				which = export
+			}
+			subtract_variable = { 
+				which = nnb
+				value = 1
+			}
+			change_variable = { 
+				which = nnb
+				value = -12
+			}
+			divide_variable = { 
+				which = nnb
+				value = 12
+			}
+			if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = nnb
+							value = 0.001
+						}
+					}
+				}
+				set_variable = { 
+					which = nnb
+					value = 0
+				}
+			}
+			multiply_variable = { 
+				which = nmt
+				which = ntg
+			}
+			multiply_variable = { 
+				which = nmu
+				which = nth
+			}
+			multiply_variable = { 
+				which = nmv
+				which = nti
+			}
+			multiply_variable = { 
+				which = nmw
+				which = ntj
+			}
+			multiply_variable = { 
+				which = nmx
+				which = ntk
+			}
+			multiply_variable = { 
+				which = nmy
+				which = ntl
+			}
+			multiply_variable = { 
+				which = nmz
+				which = nuu
+			}
+			multiply_variable = { 
+				which = nna
+				which = oaa
+			}
+			multiply_variable = { 
+				which = nnb
+				which = oab
+			}
+			change_variable = { 
+				which = nmt
+				which = nmu
+			}
+			change_variable = { 
+				which = nmt
+				which = nmv
+			}
+			change_variable = { 
+				which = nmt
+				which = nmw
+			}
+			change_variable = { 
+				which = nmt
+				which = nmx
+			}
+			change_variable = { 
+				which = nmt
+				which = nmy
+			}
+			change_variable = { 
+				which = nmt
+				which = nmz
+			}
+			change_variable = { 
+				which = nmt
+				which = nna
+			}
+			change_variable = { 
+				which = nmt
+				which = nnb
+			}
+			divide_variable = { 
+				which = nmt
+				which = ntn
+			}
+			set_variable = { 
+				which = nng
+				which = nmt
+			}
+			set_variable = { 
+				which = nmt
+				which = nne
+			}
+			divide_variable = { 
+				which = nmt
+				which = nzu
+			}
+			set_variable = { 
+				which = nmu
+				which = nnf
+			}
+			divide_variable = { 
+				which = nmu
+				which = nzv
+			}
+			set_variable = { 
+				which = nmv
+				which = nzs
+			}
+			divide_variable = { 
+				which = nmv
+				which = nzw
+			}
+			multiply_variable = { 
+				which = nmt
+				which = nzx
+			}
+			multiply_variable = { 
+				which = nmu
+				which = nzy
+			}
+			multiply_variable = { 
+				which = nmv
+				which = nzz
+			}
+			set_variable = { 
+				which = nzt
+				which = nmt
+			}
+			change_variable = { 
+				which = nzt
+				which = nmu
+			}
+			change_variable = { 
+				which = nzt
+				which = nmv
+			}
+			set_variable = { 
+				which = nzu
+				value = 0
+			}
+			set_variable = { 
+				which = nzv
+				value = 0
+			}
+			set_variable = { 
+				which = nzw
+				value = 0
+			}
+			set_variable = { 
+				which = nzx
+				value = 0
+			}
+			set_variable = { 
+				which = nzy
+				value = 0
+			}
+			set_variable = { 
+				which = nzz
+				value = 0
+			}
+			set_variable = { 
+				which = ntg
+				value = 0
+			}
+			set_variable = { 
+				which = nth
+				value = 0
+			}
+			set_variable = { 
+				which = nti
+				value = 0
+			}
+			set_variable = { 
+				which = ntj
+				value = 0
+			}
+			set_variable = { 
+				which = ntk
+				value = 0
+			}
+			set_variable = { 
+				which = ntl
+				value = 0
+			}
+			set_variable = { 
+				which = nuu
+				value = 0
+			}
+			set_variable = { 
+				which = oaa
+				value = 0
+			}
+			set_variable = { 
+				which = oab
+				value = 0
+			}
+			set_variable = { 
+				which = ntn
+				value = 0
+			}
+			set_variable = { 
+				which = ntm
+				value = 0
+			}
+			set_variable = { 
+				which = oac
+				value = 0
+			}
+			if = { 
+				limit = { 
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+				}
+				every_subject_country = { 
+					set_variable = { 
+						which = nmt
+						which = nzt
+					}
+					PREV = { 
+						set_variable = { 
+							which = nmt
+							which = PREV
+						}
+						change_variable = { 
+							which = ohr
+							which = nmt
+						}
+					}
+				}
+				every_ally = { 
+					set_variable = { 
+						which = nmt
+						which = nzt
+					}
+					change_variable = { 
+						which = nmt
+						which = ohr
+					}
+					PREV = { 
+						set_variable = { 
+							which = nmt
+							which = PREV
+						}
+						change_variable = { 
+							which = ohq
+							which = nmt
+						}
+					}
+				}
+			}
+			AAA = { 
+				PREV = { 
+					set_variable = { 
+						which = okl
+						which = PREV
+					}
+				}
+			}
+			set_variable = { 
+				which = nmt
+				which = okl
+			}
+			set_variable = { 
+				which = okl
+				value = 0
+			}
+			change_variable = { 
+				which = nmt
+				which = okm
+			}
+			export_to_variable = { 
+				which = export
+				value = dip_tech
+			}
+			set_variable = { 
+				which = nmu
+				which = export
+			}
+			multiply_variable = { 
+				which = nmu
+				value = 3.5
+			}
+			change_variable = { 
+				which = nmt
+				which = nmu
+			}
+			multiply_variable = { 
+				which = nmt
+				which = okn
+			}
+			set_variable = { 
+				which = oko
+				which = nmt
+			}
+			set_variable = { 
+				which = nmt
+				value = 0
+			}
+			set_variable = { 
+				which = nmu
+				value = 0
+			}
+			set_variable = { 
+				which = nmv
+				value = 0
+			}
+			set_variable = { 
+				which = nmw
+				value = 0
+			}
+			set_variable = { 
+				which = nmx
+				value = 0
+			}
+			set_variable = { 
+				which = nmy
+				value = 0
+			}
+			set_variable = { 
+				which = nmz
+				value = 0
+			}
+			set_variable = { 
+				which = nna
+				value = 0
+			}
+			set_variable = { 
+				which = nnb
+				value = 0
+			}
+			set_variable = { 
+				which = nnc
+				value = 0
+			}
 		}
 	}
-
-	option = {
+	option = { 
 		name = exit
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mec_diplomacy.100
 	title = mec_diplomacy.100.title
 	desc = mec_diplomacy.100.desc
 	picture = DIPLOMACY_eventPicture
-
 	is_triggered_only = yes
-
-	immediate = {
-		every_country = {
-			set_key = { lhs = Diplo_Tmp0 value = 0 }
+	immediate = { 
+		every_country = { 
+			set_variable = { 
+				which = nmt
+				value = 0
+			}
 		}
-		Get_Country_Of_Type = { 
-			inp = Diplo_Tmp0 
-			mode = set_country_flag 
-			loop = every_ally 
+		every_ally = { 
+			if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = nmt
+						value = 0
+					}
+				}
+				set_country_flag = Diplo_Country_0
+				ROOT = { 
+					change_variable = { 
+						which = nmt
+						value = 1
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = nmt
+						value = 1
+					}
+				}
+				set_country_flag = Diplo_Country_1
+				ROOT = { 
+					change_variable = { 
+						which = nmt
+						value = 1
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = nmt
+						value = 2
+					}
+				}
+				set_country_flag = Diplo_Country_2
+				ROOT = { 
+					change_variable = { 
+						which = nmt
+						value = 1
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = nmt
+						value = 3
+					}
+				}
+				set_country_flag = Diplo_Country_3
+				ROOT = { 
+					change_variable = { 
+						which = nmt
+						value = 1
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = nmt
+						value = 4
+					}
+				}
+				set_country_flag = Diplo_Country_4
+				ROOT = { 
+					change_variable = { 
+						which = nmt
+						value = 1
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = nmt
+						value = 5
+					}
+				}
+				set_country_flag = Diplo_Country_5
+				ROOT = { 
+					change_variable = { 
+						which = nmt
+						value = 1
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = nmt
+						value = 6
+					}
+				}
+				set_country_flag = Diplo_Country_6
+				ROOT = { 
+					change_variable = { 
+						which = nmt
+						value = 1
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = nmt
+						value = 7
+					}
+				}
+				set_country_flag = Diplo_Country_7
+				ROOT = { 
+					change_variable = { 
+						which = nmt
+						value = 1
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = nmt
+						value = 8
+					}
+				}
+				set_country_flag = Diplo_Country_8
+				ROOT = { 
+					change_variable = { 
+						which = nmt
+						value = 1
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					is_variable_equal = { 
+						which = nmt
+						value = 9
+					}
+				}
+				set_country_flag = Diplo_Country_9
+				ROOT = { 
+					change_variable = { 
+						which = nmt
+						value = 1
+					}
+				}
+			}
 		}
 	}
-
-	option = {
+	option = { 
 		name = "Drop_Ally_0"
 		trigger = { 
-			any_ally = { has_country_flag = Diplo_Country_0 }
+			any_ally = { 
+				has_country_flag = Diplo_Country_0
+			}
 		}
-		random_ally = { limit = { has_country_flag = Diplo_Country_0 }
-			add_opinion = {
+		random_ally = { 
+			limit = { 
+				has_country_flag = Diplo_Country_0
+			}
+			add_opinion = { 
 				who = ROOT
 				modifier = alliance_broken
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "Drop_Ally_1"
 		trigger = { 
-			any_ally = { has_country_flag = Diplo_Country_1 }
+			any_ally = { 
+				has_country_flag = Diplo_Country_1
+			}
 		}
-
-		random_ally = { limit = { has_country_flag = Diplo_Country_1 }
-			add_opinion = {
+		random_ally = { 
+			limit = { 
+				has_country_flag = Diplo_Country_1
+			}
+			add_opinion = { 
 				who = ROOT
 				modifier = alliance_broken
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "Drop_Ally_2"
 		trigger = { 
-			any_ally = { has_country_flag = Diplo_Country_2 }
+			any_ally = { 
+				has_country_flag = Diplo_Country_2
+			}
 		}
-
-		random_ally = { limit = { has_country_flag = Diplo_Country_2 }
-			add_opinion = {
+		random_ally = { 
+			limit = { 
+				has_country_flag = Diplo_Country_2
+			}
+			add_opinion = { 
 				who = ROOT
 				modifier = alliance_broken
 			}
 		}
-	}	
-	option = {
+	}
+	option = { 
 		name = "Drop_Ally_3"
 		trigger = { 
-			any_ally = { has_country_flag = Diplo_Country_3 }
+			any_ally = { 
+				has_country_flag = Diplo_Country_3
+			}
 		}
-
-		random_ally = { limit = { has_country_flag = Diplo_Country_3 }
-			add_opinion = {
+		random_ally = { 
+			limit = { 
+				has_country_flag = Diplo_Country_3
+			}
+			add_opinion = { 
 				who = ROOT
 				modifier = alliance_broken
 			}
 		}
-	}	
-	option = {
+	}
+	option = { 
 		name = "Drop_Ally_4"
 		trigger = { 
-			any_ally = { has_country_flag = Diplo_Country_4 }
+			any_ally = { 
+				has_country_flag = Diplo_Country_4
+			}
 		}
-
-		random_ally = { limit = { has_country_flag = Diplo_Country_4 }
-			add_opinion = {
+		random_ally = { 
+			limit = { 
+				has_country_flag = Diplo_Country_4
+			}
+			add_opinion = { 
 				who = ROOT
 				modifier = alliance_broken
 			}
 		}
-	}	
-	option = {
+	}
+	option = { 
 		name = "Drop_Ally_5"
 		trigger = { 
-			any_ally = { has_country_flag = Diplo_Country_5 }
+			any_ally = { 
+				has_country_flag = Diplo_Country_5
+			}
 		}
-
-		random_ally = { limit = { has_country_flag = Diplo_Country_5 }
-			add_opinion = {
+		random_ally = { 
+			limit = { 
+				has_country_flag = Diplo_Country_5
+			}
+			add_opinion = { 
 				who = ROOT
 				modifier = alliance_broken
 			}
 		}
-	}	
-	option = {
+	}
+	option = { 
 		name = "Drop_Ally_6"
 		trigger = { 
-			any_ally = { has_country_flag = Diplo_Country_6 }
+			any_ally = { 
+				has_country_flag = Diplo_Country_6
+			}
 		}
-
-		random_ally = { limit = { has_country_flag = Diplo_Country_6 }
-			add_opinion = {
+		random_ally = { 
+			limit = { 
+				has_country_flag = Diplo_Country_6
+			}
+			add_opinion = { 
 				who = ROOT
 				modifier = alliance_broken
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "Drop_Ally_7"
 		trigger = { 
-			any_ally = { has_country_flag = Diplo_Country_7 }
+			any_ally = { 
+				has_country_flag = Diplo_Country_7
+			}
 		}
-
-		random_ally = { limit = { has_country_flag = Diplo_Country_7 }
-			add_opinion = {
+		random_ally = { 
+			limit = { 
+				has_country_flag = Diplo_Country_7
+			}
+			add_opinion = { 
 				who = ROOT
 				modifier = alliance_broken
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "Drop_Ally_8"
 		trigger = { 
-			any_ally = { has_country_flag = Diplo_Country_8 }
+			any_ally = { 
+				has_country_flag = Diplo_Country_8
+			}
 		}
-
-		random_ally = { limit = { has_country_flag = Diplo_Country_8 }
-			add_opinion = {
+		random_ally = { 
+			limit = { 
+				has_country_flag = Diplo_Country_8
+			}
+			add_opinion = { 
 				who = ROOT
 				modifier = alliance_broken
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "Drop_Ally_9"
 		trigger = { 
-			any_ally = { has_country_flag = Diplo_Country_9 }
+			any_ally = { 
+				has_country_flag = Diplo_Country_9
+			}
 		}
-
-		random_ally = { limit = { has_country_flag = Diplo_Country_9 }
-			add_opinion = {
+		random_ally = { 
+			limit = { 
+				has_country_flag = Diplo_Country_9
+			}
+			add_opinion = { 
 				who = ROOT
 				modifier = alliance_broken
 			}
 		}
 	}
-
-	after = {
-		Clean_Countries_Of_Type = { flag = yes }
+	after = { 
+		every_country = { 
+			limit = { 
+				always = yes
+			}
+			clr_country_flag = Diplo_Country_0
+			clr_country_flag = Diplo_Country_1
+			clr_country_flag = Diplo_Country_2
+			clr_country_flag = Diplo_Country_3
+			clr_country_flag = Diplo_Country_4
+			clr_country_flag = Diplo_Country_5
+			clr_country_flag = Diplo_Country_6
+			clr_country_flag = Diplo_Country_7
+			clr_country_flag = Diplo_Country_8
+			clr_country_flag = Diplo_Country_9
+		}
 	}
 }
-
-
-country_event = {
+country_event = { 
 	id = mec_diplomacy.101
 	title = mec_diplomacy.101.title
 	desc = mec_diplomacy.101.desc
 	picture = DIPLOMACY_eventPicture
-
 	is_triggered_only = yes
-
-	immediate = {
-		hidden_effect = {
-			Setup_Alliance_Negotiations = yes
+	immediate = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = ojr
+				value = 4
+			}
+			set_variable = { 
+				which = oke
+				value = 50
+			}
+			set_variable = { 
+				which = ojs
+				value = 1.75
+			}
+			set_variable = { 
+				which = ojt
+				value = 1.75
+			}
+			set_variable = { 
+				which = oju
+				value = -8
+			}
+			set_variable = { 
+				which = ojv
+				value = 10
+			}
+			set_variable = { 
+				which = ojw
+				value = -50
+			}
+			set_variable = { 
+				which = okf
+				value = -100
+			}
+			set_variable = { 
+				which = okg
+				value = -5
+			}
+			set_variable = { 
+				which = okh
+				value = 5
+			}
+			set_variable = { 
+				which = oki
+				value = 15
+			}
+			set_variable = { 
+				which = okj
+				value = -50
+			}
+			set_variable = { 
+				which = ojx
+				value = 4
+			}
+			set_variable = { 
+				which = ojy
+				value = 4
+			}
+			set_variable = { 
+				which = ojz
+				value = 4
+			}
+			set_variable = { 
+				which = oka
+				value = 2
+			}
+			set_variable = { 
+				which = okb
+				value = 0.75
+			}
+			set_variable = { 
+				which = okc
+				value = 0.75
+			}
+			set_variable = { 
+				which = okd
+				value = 7.5
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				set_variable = { 
+					which = oip
+					value = -25
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oip
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				export_to_variable = { 
+					which = export
+					value = opinion
+					who = event_target:alliance_negotiation_target
+					with = event_target:alliance_negotiation_root
+				}
+				set_variable = { 
+					which = oiq
+					which = export
+				}
+				subtract_variable = { 
+					which = oiq
+					which = oke
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = oiq
+								value = -200
+							}
+						}
+					}
+					set_variable = { 
+						which = oiq
+						value = -200
+					}
+				}
+				divide_variable = { 
+					which = oiq
+					which = ojr
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiq
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = no
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:diplomatic_reputation
+				}
+				set_variable = { 
+					which = oir
+					which = export
+				}
+				multiply_variable = { 
+					which = oir
+					which = ojs
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oir
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = no
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:diplomatic_reputation
+				}
+				set_variable = { 
+					which = ois
+					which = export
+				}
+				multiply_variable = { 
+					which = ois
+					which = ojt
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = ois
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				export_to_variable = { 
+					which = export
+					value = border_distance
+					who = event_target:alliance_negotiation_root
+					with = event_target:alliance_negotiation_target
+				}
+				set_variable = { 
+					which = oit
+					which = export
+				}
+				divide_variable = { 
+					which = oit
+					which = oju
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oit
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_friendly
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = ojv
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_hostile
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = ojw
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_rivalry
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = okf
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_neutral
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = okg
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_defensive
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = okh
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_threatened
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = oki
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_outraged
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = okj
+					}
+				}
+				else = { 
+					set_variable = { 
+						which = oiu
+						value = 0
+					}
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiu
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				set_variable = { 
+					which = oiv
+					which = nne
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oiv
+						which = nne
+					}
+				}
+				subtract_variable = { 
+					which = oiv
+					which = event_target:alliance_negotiation_target
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oiv
+						value = 0
+					}
+				}
+				divide_variable = { 
+					which = oiv
+					which = ojx
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiv
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				set_variable = { 
+					which = oiw
+					which = nnf
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oiw
+						which = nnf
+					}
+				}
+				subtract_variable = { 
+					which = oiw
+					which = event_target:alliance_negotiation_target
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oiw
+						value = 0
+					}
+				}
+				divide_variable = { 
+					which = oiw
+					which = ojy
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiw
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				set_variable = { 
+					which = oix
+					which = nzs
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oix
+						which = nzs
+					}
+				}
+				subtract_variable = { 
+					which = oix
+					which = event_target:alliance_negotiation_target
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oix
+						value = 0
+					}
+				}
+				divide_variable = { 
+					which = oix
+					which = ojz
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oix
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				export_to_variable = { 
+					which = export
+					value = trust
+					who = event_target:alliance_negotiation_target
+					with = event_target:alliance_negotiation_root
+				}
+				set_variable = { 
+					which = oiy
+					which = export
+				}
+				subtract_variable = { 
+					which = oiy
+					value = 50
+				}
+				multiply_variable = { 
+					which = oiy
+					which = oka
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiy
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = no
+				}
+				export_to_variable = { 
+					which = export
+					value = prestige
+				}
+				set_variable = { 
+					which = oiz
+					which = export
+				}
+				multiply_variable = { 
+					which = oiz
+					which = okb
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiz
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = no
+				}
+				export_to_variable = { 
+					which = export
+					value = prestige
+					who = event_target:alliance_negotiation_target
+				}
+				set_variable = { 
+					which = oja
+					which = export
+				}
+				multiply_variable = { 
+					which = oja
+					which = okc
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oja
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				set_variable = { 
+					which = ojb
+					which = ojq
+				}
+				divide_variable = { 
+					which = ojb
+					which = okd
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:diplomatic_reputation
+				}
+				set_variable = { 
+					which = ojc
+					which = export
+				}
+				multiply_variable = { 
+					which = ojc
+					which = ojs
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:diplomatic_reputation
+					who = event_target:alliance_negotiation_target
+				}
+				set_variable = { 
+					which = nmt
+					which = export
+				}
+				multiply_variable = { 
+					which = nmt
+					which = ojt
+				}
+				subtract_variable = { 
+					which = ojc
+					which = nmt
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:prestige
+				}
+				set_variable = { 
+					which = ojd
+					which = export
+				}
+				multiply_variable = { 
+					which = ojd
+					which = okb
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:prestige
+					who = event_target:alliance_negotiation_target
+				}
+				set_variable = { 
+					which = nmt
+					which = export
+				}
+				multiply_variable = { 
+					which = nmt
+					which = okb
+				}
+				subtract_variable = { 
+					which = ojd
+					which = nmt
+				}
+			}
+			set_variable = { 
+				which = ojp
+				which = oip
+			}
+			change_variable = { 
+				which = ojp
+				which = oiq
+			}
+			change_variable = { 
+				which = ojp
+				which = oir
+			}
+			change_variable = { 
+				which = ojp
+				which = ois
+			}
+			change_variable = { 
+				which = ojp
+				which = oit
+			}
+			change_variable = { 
+				which = ojp
+				which = oiu
+			}
+			change_variable = { 
+				which = ojp
+				which = oiv
+			}
+			change_variable = { 
+				which = ojp
+				which = oiw
+			}
+			change_variable = { 
+				which = ojp
+				which = oix
+			}
+			change_variable = { 
+				which = ojp
+				which = oiy
+			}
+			change_variable = { 
+				which = ojp
+				which = oiz
+			}
+			change_variable = { 
+				which = ojp
+				which = oja
+			}
+			change_variable = { 
+				which = ojp
+				which = ojb
+			}
+			change_variable = { 
+				which = ojp
+				which = ojc
+			}
+			change_variable = { 
+				which = ojp
+				which = ojd
+			}
 		}
 	}
-
-	option = {
+	option = { 
 		name = "mec_diplomacy.101.display"
-		trigger = {
+		trigger = { 
 			ai = no
 		}
 		custom_tooltip = AI_Reasons_Display_CTP
-		hidden_effect = { country_event = { id = mec_diplomacy.1011 } }
+		hidden_effect = { 
+			country_event = { 
+				id = mec_diplomacy.1011
+			}
+		}
 	}
-	option = {
+	option = { 
 		name = "mec_diplomacy.101.a"
-		trigger = {
-			check_key = { lhs = AI_Reasons_Outcome value = 1 }
+		trigger = { 
+			check_variable = { 
+				which = ojp
+				value = 1
+			}
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
-		hidden_effect = {
-			scaled_ducat_cost_country = { input = Diplo_Bribe_Ducats }
-		}
-		custom_tooltip = Diplo_Bribe_Ducats_CTP
-		country_event = { id = mec_diplomacy.103 }
-	}
-
-	option = {
-		name = "mec_diplomacy.101.b"
-		#trigger = {
-		#	NOT = { check_key = { lhs = AI_Reasons_Outcome value = 1 } }
-		#}
-		ai_chance = {
-			factor = 100
-			modifier = {
-				factor = 0
-				check_key = { lhs = AI_Reasons_Outcome value = 1 }
+		hidden_effect = { 
+			while = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 65536
+					}
+				}
+				add_treasury = -65536
+				subtract_variable = { 
+					which = ojq
+					value = 65536
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 32768
+					}
+				}
+				add_treasury = -32768
+				subtract_variable = { 
+					which = ojq
+					value = 32768
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 16384
+					}
+				}
+				add_treasury = -16384
+				subtract_variable = { 
+					which = ojq
+					value = 16384
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 8192
+					}
+				}
+				add_treasury = -8192
+				subtract_variable = { 
+					which = ojq
+					value = 8192
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 4096
+					}
+				}
+				add_treasury = -4096
+				subtract_variable = { 
+					which = ojq
+					value = 4096
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 2048
+					}
+				}
+				add_treasury = -2048
+				subtract_variable = { 
+					which = ojq
+					value = 2048
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 1024
+					}
+				}
+				add_treasury = -1024
+				subtract_variable = { 
+					which = ojq
+					value = 1024
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 512
+					}
+				}
+				add_treasury = -512
+				subtract_variable = { 
+					which = ojq
+					value = 512
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 256
+					}
+				}
+				add_treasury = -256
+				subtract_variable = { 
+					which = ojq
+					value = 256
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 128
+					}
+				}
+				add_treasury = -128
+				subtract_variable = { 
+					which = ojq
+					value = 128
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 64
+					}
+				}
+				add_treasury = -64
+				subtract_variable = { 
+					which = ojq
+					value = 64
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 32
+					}
+				}
+				add_treasury = -32
+				subtract_variable = { 
+					which = ojq
+					value = 32
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 16
+					}
+				}
+				add_treasury = -16
+				subtract_variable = { 
+					which = ojq
+					value = 16
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 8
+					}
+				}
+				add_treasury = -8
+				subtract_variable = { 
+					which = ojq
+					value = 8
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 4
+					}
+				}
+				add_treasury = -4
+				subtract_variable = { 
+					which = ojq
+					value = 4
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 2
+					}
+				}
+				add_treasury = -2
+				subtract_variable = { 
+					which = ojq
+					value = 2
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 1
+					}
+				}
+				add_treasury = -1
+				subtract_variable = { 
+					which = ojq
+					value = 1
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 0.5
+					}
+				}
+				add_treasury = -0.5
+				subtract_variable = { 
+					which = ojq
+					value = 0.5
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 0.25
+					}
+				}
+				add_treasury = -0.25
+				subtract_variable = { 
+					which = ojq
+					value = 0.25
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 0.125
+					}
+				}
+				add_treasury = -0.125
+				subtract_variable = { 
+					which = ojq
+					value = 0.125
+				}
+			}
+			set_variable = { 
+				which = ojq
+				value = 0
 			}
 		}
 		custom_tooltip = Diplo_Bribe_Ducats_CTP
-		country_event = { id = mec_diplomacy.102 }
+		country_event = { 
+			id = mec_diplomacy.103
+		}
 	}
-	option = {
+	option = { 
+		name = "mec_diplomacy.101.b"
+		ai_chance = { 
+			factor = 100
+			modifier = { 
+				factor = 0
+				check_variable = { 
+					which = ojp
+					value = 1
+				}
+			}
+		}
+		custom_tooltip = Diplo_Bribe_Ducats_CTP
+		country_event = { 
+			id = mec_diplomacy.102
+		}
+	}
+	option = { 
 		name = "mec_diplomacy.101.c"
-		trigger = {
-			check_key = { lhs = Diplo_Bribe_Ducats value = 1 }
+		trigger = { 
+			check_variable = { 
+				which = ojq
+				value = 1
+			}
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
-		country_event = { id = mec_diplomacy.1011 }
-		hidden_effect = { set_key = { lhs = Diplo_Bribe_Ducats value = 0 } }
+		country_event = { 
+			id = mec_diplomacy.1011
+		}
+		hidden_effect = { 
+			set_variable = { 
+				which = ojq
+				value = 0
+			}
+		}
 	}
-
-	option = {
+	option = { 
 		name = "mec_diplomacy.101.d"
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
-		add_mutual_opinion_modifier_effect = { 
-			scope_country = event_target:alliance_negotiation_target
-			opinion_modifier = failed_alliance_negotiation 
+		add_opinion = { 
+			who = event_target:alliance_negotiation_target
+			modifier = failed_alliance_negotiation
 		}
-		Clear_Alliance_Negotiations = yes
+		reverse_add_opinion = { 
+			who = event_target:alliance_negotiation_target
+			modifier = failed_alliance_negotiation
+		}
+		clear_global_event_target = alliance_negotiation_target
+		clear_global_event_target = cancel_alliance_target
+		clr_global_flag = mec_diplomacy_alliance_negotiations
 	}
 }
-
-## Mirror event of mec_diplomacy.101
-country_event = {
+country_event = { 
 	id = mec_diplomacy.1011
 	title = mec_diplomacy.101.title
 	desc = mec_diplomacy.101.desc
 	picture = DIPLOMACY_eventPicture
-
 	is_triggered_only = yes
-
-	immediate = {
-		hidden_effect = {
-			Recalculate_Alliance_Negotiations = yes
+	immediate = { 
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					always = yes
+				}
+				set_variable = { 
+					which = oip
+					value = -25
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oip
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				export_to_variable = { 
+					which = export
+					value = opinion
+					who = event_target:alliance_negotiation_target
+					with = event_target:alliance_negotiation_root
+				}
+				set_variable = { 
+					which = oiq
+					which = export
+				}
+				subtract_variable = { 
+					which = oiq
+					which = oke
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							check_variable = { 
+								which = oiq
+								value = -200
+							}
+						}
+					}
+					set_variable = { 
+						which = oiq
+						value = -200
+					}
+				}
+				divide_variable = { 
+					which = oiq
+					which = ojr
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiq
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = no
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:diplomatic_reputation
+				}
+				set_variable = { 
+					which = oir
+					which = export
+				}
+				multiply_variable = { 
+					which = oir
+					which = ojs
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oir
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = no
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:diplomatic_reputation
+				}
+				set_variable = { 
+					which = ois
+					which = export
+				}
+				multiply_variable = { 
+					which = ois
+					which = ojt
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = ois
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				export_to_variable = { 
+					which = export
+					value = border_distance
+					who = event_target:alliance_negotiation_root
+					with = event_target:alliance_negotiation_target
+				}
+				set_variable = { 
+					which = oit
+					which = export
+				}
+				divide_variable = { 
+					which = oit
+					which = oju
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oit
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_friendly
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = ojv
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_hostile
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = ojw
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_rivalry
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = okf
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_neutral
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = okg
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_defensive
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = okh
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_threatened
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = oki
+					}
+				}
+				else_if = { 
+					limit = { 
+						event_target:alliance_negotiation_target = { 
+							ai_attitude = { 
+								who = event_target:alliance_negotiation_root
+								attitude = attitude_outraged
+							}
+						}
+					}
+					set_variable = { 
+						which = oiu
+						which = okj
+					}
+				}
+				else = { 
+					set_variable = { 
+						which = oiu
+						value = 0
+					}
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiu
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				set_variable = { 
+					which = oiv
+					which = nne
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oiv
+						which = nne
+					}
+				}
+				subtract_variable = { 
+					which = oiv
+					which = event_target:alliance_negotiation_target
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oiv
+						value = 0
+					}
+				}
+				divide_variable = { 
+					which = oiv
+					which = ojx
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiv
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				set_variable = { 
+					which = oiw
+					which = nnf
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oiw
+						which = nnf
+					}
+				}
+				subtract_variable = { 
+					which = oiw
+					which = event_target:alliance_negotiation_target
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oiw
+						value = 0
+					}
+				}
+				divide_variable = { 
+					which = oiw
+					which = ojy
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiw
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				set_variable = { 
+					which = oix
+					which = nzs
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oix
+						which = nzs
+					}
+				}
+				subtract_variable = { 
+					which = oix
+					which = event_target:alliance_negotiation_target
+				}
+				event_target:alliance_negotiation_target = { 
+					set_variable = { 
+						which = oix
+						value = 0
+					}
+				}
+				divide_variable = { 
+					which = oix
+					which = ojz
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oix
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				export_to_variable = { 
+					which = export
+					value = trust
+					who = event_target:alliance_negotiation_target
+					with = event_target:alliance_negotiation_root
+				}
+				set_variable = { 
+					which = oiy
+					which = export
+				}
+				subtract_variable = { 
+					which = oiy
+					value = 50
+				}
+				multiply_variable = { 
+					which = oiy
+					which = oka
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiy
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = no
+				}
+				export_to_variable = { 
+					which = export
+					value = prestige
+				}
+				set_variable = { 
+					which = oiz
+					which = export
+				}
+				multiply_variable = { 
+					which = oiz
+					which = okb
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oiz
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = no
+				}
+				export_to_variable = { 
+					which = export
+					value = prestige
+					who = event_target:alliance_negotiation_target
+				}
+				set_variable = { 
+					which = oja
+					which = export
+				}
+				multiply_variable = { 
+					which = oja
+					which = okc
+				}
+			}
+			else = { 
+				set_variable = { 
+					which = oja
+					value = 0
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				set_variable = { 
+					which = ojb
+					which = ojq
+				}
+				divide_variable = { 
+					which = ojb
+					which = okd
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:diplomatic_reputation
+				}
+				set_variable = { 
+					which = ojc
+					which = export
+				}
+				multiply_variable = { 
+					which = ojc
+					which = ojs
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:diplomatic_reputation
+					who = event_target:alliance_negotiation_target
+				}
+				set_variable = { 
+					which = nmt
+					which = export
+				}
+				multiply_variable = { 
+					which = nmt
+					which = ojt
+				}
+				subtract_variable = { 
+					which = ojc
+					which = nmt
+				}
+			}
+			if = { 
+				limit = { 
+					always = yes
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:prestige
+				}
+				set_variable = { 
+					which = ojd
+					which = export
+				}
+				multiply_variable = { 
+					which = ojd
+					which = okb
+				}
+				export_to_variable = { 
+					which = export
+					value = modifier:prestige
+					who = event_target:alliance_negotiation_target
+				}
+				set_variable = { 
+					which = nmt
+					which = export
+				}
+				multiply_variable = { 
+					which = nmt
+					which = okb
+				}
+				subtract_variable = { 
+					which = ojd
+					which = nmt
+				}
+			}
+			set_variable = { 
+				which = ojp
+				which = oip
+			}
+			change_variable = { 
+				which = ojp
+				which = oiq
+			}
+			change_variable = { 
+				which = ojp
+				which = oir
+			}
+			change_variable = { 
+				which = ojp
+				which = ois
+			}
+			change_variable = { 
+				which = ojp
+				which = oit
+			}
+			change_variable = { 
+				which = ojp
+				which = oiu
+			}
+			change_variable = { 
+				which = ojp
+				which = oiv
+			}
+			change_variable = { 
+				which = ojp
+				which = oiw
+			}
+			change_variable = { 
+				which = ojp
+				which = oix
+			}
+			change_variable = { 
+				which = ojp
+				which = oiy
+			}
+			change_variable = { 
+				which = ojp
+				which = oiz
+			}
+			change_variable = { 
+				which = ojp
+				which = oja
+			}
+			change_variable = { 
+				which = ojp
+				which = ojb
+			}
+			change_variable = { 
+				which = ojp
+				which = ojc
+			}
+			change_variable = { 
+				which = ojp
+				which = ojd
+			}
 		}
 	}
-
-	option = {
+	option = { 
 		name = "mec_diplomacy.101.display"
-		trigger = {
+		trigger = { 
 			ai = no
 		}
 		custom_tooltip = AI_Reasons_Display_CTP
-		hidden_effect = { country_event = { id = mec_diplomacy.101 } }
+		hidden_effect = { 
+			country_event = { 
+				id = mec_diplomacy.101
+			}
+		}
 	}
-	option = {
+	option = { 
 		name = "mec_diplomacy.101.a"
-		trigger = {
-			check_key = { lhs = AI_Reasons_Outcome value = 1 }
+		trigger = { 
+			check_variable = { 
+				which = ojp
+				value = 1
+			}
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
-		hidden_effect = {
-			scaled_ducat_cost_country = { input = Diplo_Bribe_Ducats }
-		}
-		custom_tooltip = Diplo_Bribe_Ducats_CTP
-		country_event = { id = mec_diplomacy.103 }
-	}
-
-	option = {
-		name = "mec_diplomacy.101.b"
-		#trigger = {
-		#	NOT = { check_key = { lhs = AI_Reasons_Outcome value = 1 } }
-		#}
-		ai_chance = {
-			factor = 100
-			modifier = {
-				factor = 0
-				check_key = { lhs = AI_Reasons_Outcome value = 1 }
+		hidden_effect = { 
+			while = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 65536
+					}
+				}
+				add_treasury = -65536
+				subtract_variable = { 
+					which = ojq
+					value = 65536
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 32768
+					}
+				}
+				add_treasury = -32768
+				subtract_variable = { 
+					which = ojq
+					value = 32768
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 16384
+					}
+				}
+				add_treasury = -16384
+				subtract_variable = { 
+					which = ojq
+					value = 16384
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 8192
+					}
+				}
+				add_treasury = -8192
+				subtract_variable = { 
+					which = ojq
+					value = 8192
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 4096
+					}
+				}
+				add_treasury = -4096
+				subtract_variable = { 
+					which = ojq
+					value = 4096
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 2048
+					}
+				}
+				add_treasury = -2048
+				subtract_variable = { 
+					which = ojq
+					value = 2048
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 1024
+					}
+				}
+				add_treasury = -1024
+				subtract_variable = { 
+					which = ojq
+					value = 1024
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 512
+					}
+				}
+				add_treasury = -512
+				subtract_variable = { 
+					which = ojq
+					value = 512
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 256
+					}
+				}
+				add_treasury = -256
+				subtract_variable = { 
+					which = ojq
+					value = 256
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 128
+					}
+				}
+				add_treasury = -128
+				subtract_variable = { 
+					which = ojq
+					value = 128
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 64
+					}
+				}
+				add_treasury = -64
+				subtract_variable = { 
+					which = ojq
+					value = 64
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 32
+					}
+				}
+				add_treasury = -32
+				subtract_variable = { 
+					which = ojq
+					value = 32
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 16
+					}
+				}
+				add_treasury = -16
+				subtract_variable = { 
+					which = ojq
+					value = 16
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 8
+					}
+				}
+				add_treasury = -8
+				subtract_variable = { 
+					which = ojq
+					value = 8
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 4
+					}
+				}
+				add_treasury = -4
+				subtract_variable = { 
+					which = ojq
+					value = 4
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 2
+					}
+				}
+				add_treasury = -2
+				subtract_variable = { 
+					which = ojq
+					value = 2
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 1
+					}
+				}
+				add_treasury = -1
+				subtract_variable = { 
+					which = ojq
+					value = 1
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 0.5
+					}
+				}
+				add_treasury = -0.5
+				subtract_variable = { 
+					which = ojq
+					value = 0.5
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 0.25
+					}
+				}
+				add_treasury = -0.25
+				subtract_variable = { 
+					which = ojq
+					value = 0.25
+				}
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ojq
+						value = 0.125
+					}
+				}
+				add_treasury = -0.125
+				subtract_variable = { 
+					which = ojq
+					value = 0.125
+				}
+			}
+			set_variable = { 
+				which = ojq
+				value = 0
 			}
 		}
 		custom_tooltip = Diplo_Bribe_Ducats_CTP
-		country_event = { id = mec_diplomacy.102 }
+		country_event = { 
+			id = mec_diplomacy.103
+		}
 	}
-
-	option = {
+	option = { 
+		name = "mec_diplomacy.101.b"
+		ai_chance = { 
+			factor = 100
+			modifier = { 
+				factor = 0
+				check_variable = { 
+					which = ojp
+					value = 1
+				}
+			}
+		}
+		custom_tooltip = Diplo_Bribe_Ducats_CTP
+		country_event = { 
+			id = mec_diplomacy.102
+		}
+	}
+	option = { 
 		name = "mec_diplomacy.101.c"
-		trigger = {
-			check_key = { lhs = Diplo_Bribe_Ducats value = 1 }
+		trigger = { 
+			check_variable = { 
+				which = ojq
+				value = 1
+			}
 		}
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
-		country_event = { id = mec_diplomacy.1011 }
-		hidden_effect = { set_key = { lhs = Diplo_Bribe_Ducats value = 0 } }
+		country_event = { 
+			id = mec_diplomacy.1011
+		}
+		hidden_effect = { 
+			set_variable = { 
+				which = ojq
+				value = 0
+			}
+		}
 	}
-
-	option = {
+	option = { 
 		name = "mec_diplomacy.101.d"
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
-		add_mutual_opinion_modifier_effect = { 
-			scope_country = event_target:alliance_negotiation_target 
-			opinion_modifier = failed_alliance_negotiation 
+		add_opinion = { 
+			who = event_target:alliance_negotiation_target
+			modifier = failed_alliance_negotiation
 		}
-		Clear_Alliance_Negotiations = yes
+		reverse_add_opinion = { 
+			who = event_target:alliance_negotiation_target
+			modifier = failed_alliance_negotiation
+		}
+		clear_global_event_target = alliance_negotiation_target
+		clear_global_event_target = cancel_alliance_target
+		clr_global_flag = mec_diplomacy_alliance_negotiations
 	}
 }
-
-country_event = {
+country_event = { 
 	id = mec_diplomacy.102
 	title = mec_diplomacy.102.title
 	desc = mec_diplomacy.102.desc
 	picture = DIPLOMACY_eventPicture
-
 	is_triggered_only = yes
-
-	option = {
+	option = { 
 		name = "mec_diplomacy.102.a"
-		trigger = {
+		trigger = { 
 			treasury = 10
 		}
-		hidden_effect = {
-			change_key = { lhs = Diplo_Bribe_Ducats value = 10 }
-			country_event = { id = mec_diplomacy.101 }
+		hidden_effect = { 
+			change_variable = { 
+				which = ojq
+				value = 10
+			}
+			country_event = { 
+				id = mec_diplomacy.101
+			}
 		}
 	}
-	option = {
+	option = { 
 		name = "mec_diplomacy.102.b"
-		trigger = {
+		trigger = { 
 			treasury = 50
 		}
-		hidden_effect = {
-			change_key = { lhs = Diplo_Bribe_Ducats value = 50 }
-			country_event = { id = mec_diplomacy.101 }
+		hidden_effect = { 
+			change_variable = { 
+				which = ojq
+				value = 50
+			}
+			country_event = { 
+				id = mec_diplomacy.101
+			}
 		}
 	}
-	option = {
+	option = { 
 		name = "mec_diplomacy.102.c"
-		trigger = {
+		trigger = { 
 			treasury = 100
 		}
-		hidden_effect = {
-			change_key = { lhs = Diplo_Bribe_Ducats value = 100 }
-			country_event = { id = mec_diplomacy.101 }
+		hidden_effect = { 
+			change_variable = { 
+				which = ojq
+				value = 100
+			}
+			country_event = { 
+				id = mec_diplomacy.101
+			}
 		}
 	}
-	option = {
+	option = { 
 		name = "back"
-		country_event = { id = mec_diplomacy.101 }
+		country_event = { 
+			id = mec_diplomacy.101
+		}
 	}
 }
-
-
-
-country_event = {
+country_event = { 
 	id = mec_diplomacy.103
 	title = mec_diplomacy.103.title
 	desc = mec_diplomacy.103.desc
 	picture = DIPLOMACY_eventPicture
-
 	is_triggered_only = yes
-
-	option = {
+	option = { 
 		name = "mec_diplomacy.101.a"
-		hidden_effect = {
-			event_target:alliance_negotiation_target = {
-				country_event = { id = mec_diplomacy.104 days = 2 }
-				#use opinion to break alliance, because pdx wtf no break_alliance effect -> takes a while to take effect
+		hidden_effect = { 
+			event_target:alliance_negotiation_target = { 
+				country_event = { 
+					id = mec_diplomacy.104
+					days = 2
+				}
 			}
-			Diplomacy_Alliance_Limit = yes # recalc alliance limit
+			set_variable = { 
+				which = nmu
+				value = 0
+			}
+			every_ally = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							dynasty = PREV
+						}
+					}
+					PREV = { 
+						change_variable = { 
+							which = nmu
+							value = 1
+						}
+					}
+				}
+			}
+			if = { 
+				limit = { 
+					total_development = 2000
+				}
+				set_variable = { 
+					which = nmr
+					value = 8
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 750
+				}
+				set_variable = { 
+					which = nmr
+					value = 6
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 400
+				}
+				set_variable = { 
+					which = nmr
+					value = 4
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 100
+				}
+				set_variable = { 
+					which = nmr
+					value = 3
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 30
+				}
+				set_variable = { 
+					which = nmr
+					value = 2
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 1
+				}
+				set_variable = { 
+					which = nmr
+					value = 2
+				}
+			}
+			if = { 
+				limit = { 
+					has_idea = flemish_ideas_6
+				}
+				change_variable = { 
+					which = nmr
+					value = 1
+				}
+			}
+			change_variable = { 
+				which = nmr
+				which = nms
+			}
+			set_variable = { 
+				which = nmt
+				which = nmr
+			}
+			subtract_variable = { 
+				which = nmt
+				which = nmu
+			}
+			set_variable = { 
+				which = nmq
+				which = nmt
+			}
+			set_variable = { 
+				which = nmt
+				value = 0
+			}
+			set_variable = { 
+				which = nmu
+				value = 0
+			}
 		}
-		# create new alliance
 		create_alliance = event_target:alliance_negotiation_target
 	}
-
-	after = {
-		Clr_AI_Reasons = yes
+	after = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = ojr
+				value = 0
+			}
+			set_variable = { 
+				which = oke
+				value = 0
+			}
+			set_variable = { 
+				which = ojs
+				value = 0
+			}
+			set_variable = { 
+				which = ojt
+				value = 0
+			}
+			set_variable = { 
+				which = oju
+				value = 0
+			}
+			set_variable = { 
+				which = ojv
+				value = 0
+			}
+			set_variable = { 
+				which = ojw
+				value = 0
+			}
+			set_variable = { 
+				which = ojx
+				value = 0
+			}
+			set_variable = { 
+				which = ojy
+				value = 0
+			}
+			set_variable = { 
+				which = ojz
+				value = 0
+			}
+			set_variable = { 
+				which = oka
+				value = 0
+			}
+			set_variable = { 
+				which = okb
+				value = 0
+			}
+			set_variable = { 
+				which = okc
+				value = 0
+			}
+			set_variable = { 
+				which = okd
+				value = 0
+			}
+			set_variable = { 
+				which = okf
+				value = 0
+			}
+			set_variable = { 
+				which = okg
+				value = 0
+			}
+			set_variable = { 
+				which = okh
+				value = 0
+			}
+			set_variable = { 
+				which = oki
+				value = 0
+			}
+			set_variable = { 
+				which = okj
+				value = 0
+			}
+			set_variable = { 
+				which = oip
+				value = 0
+			}
+			set_variable = { 
+				which = oiq
+				value = 0
+			}
+			set_variable = { 
+				which = oir
+				value = 0
+			}
+			set_variable = { 
+				which = ois
+				value = 0
+			}
+			set_variable = { 
+				which = oit
+				value = 0
+			}
+			set_variable = { 
+				which = oiu
+				value = 0
+			}
+			set_variable = { 
+				which = oiv
+				value = 0
+			}
+			set_variable = { 
+				which = oiw
+				value = 0
+			}
+			set_variable = { 
+				which = oix
+				value = 0
+			}
+			set_variable = { 
+				which = oiy
+				value = 0
+			}
+			set_variable = { 
+				which = oiz
+				value = 0
+			}
+			set_variable = { 
+				which = oja
+				value = 0
+			}
+			set_variable = { 
+				which = ojb
+				value = 0
+			}
+			set_variable = { 
+				which = ojc
+				value = 0
+			}
+			set_variable = { 
+				which = ojd
+				value = 0
+			}
+			set_variable = { 
+				which = ojq
+				value = 0
+			}
+		}
 	}
 }
-
-# AI Event to cancel other alliances
-country_event = {
+country_event = { 
 	id = mec_diplomacy.104
 	title = mec_diplomacy.104.title
 	desc = mec_diplomacy.104.desc
 	picture = DIPLOMACY_eventPicture
-
 	is_triggered_only = yes
-	#hidden = yes
-
-	immediate = {
-		if = { limit = { ai = yes }
-			Get_Country_By_Key = { # Get weakest ally
-				scope = ally
-				compare_key = Diplo_Mil_Strength
-				exclude_scope = event_target:alliance_negotiation_target
-				output_scope = cancel_alliance_target
-				sorting = no #lowest var
+	immediate = { 
+		if = { 
+			limit = { 
+				ai = yes
 			}
-		} else = {
-			country_event = { id = mec_diplomacy.100 days = 1 }
+			random_ally = { 
+				limit = { 
+					NOT = { 
+						tag = event_target:alliance_negotiation_target
+					}
+				}
+				set_variable = { 
+					which = nmt
+					which = nne
+				}
+				PREV = { 
+					set_variable = { 
+						which = nmt
+						which = PREV
+					}
+				}
+				save_event_target_as = cancel_alliance_target
+			}
+			if = { 
+				limit = { 
+					NOT = { 
+						always = no
+					}
+				}
+				every_ally = { 
+					limit = { 
+						NOT = { 
+							tag = event_target:alliance_negotiation_target
+						}
+					}
+					set_variable = { 
+						which = nmt
+						which = nne
+					}
+					if = { 
+						limit = { 
+							NOT = { 
+								check_variable = { 
+									which = nmt
+									which = PREV
+								}
+							}
+						}
+						save_event_target_as = cancel_alliance_target
+						PREV = { 
+							set_variable = { 
+								which = nmt
+								which = PREV
+							}
+						}
+					}
+				}
+			}
+			else_if = { 
+				limit = { 
+					always = no
+				}
+				every_ally = { 
+					limit = { 
+						NOT = { 
+							tag = event_target:alliance_negotiation_target
+						}
+					}
+					set_variable = { 
+						which = nmt
+						which = nne
+					}
+					if = { 
+						limit = { 
+							check_variable = { 
+								which = nmt
+								which = PREV
+							}
+						}
+						save_event_target_as = cancel_alliance_target
+						PREV = { 
+							set_variable = { 
+								which = nmt
+								which = PREV
+							}
+						}
+					}
+				}
+			}
 		}
-
-		add_mutual_opinion_modifier_effect = {
-			scope_country = event_target:cancel_alliance_target
-			opinion_modifier = alliance_broken 
+		else = { 
+			country_event = { 
+				id = mec_diplomacy.100
+				days = 1
+			}
 		}
-
-		# recalc alliance limit for both tags
-		Diplomacy_Alliance_Limit = yes 
-		event_target:cancel_alliance_target = {
-			Diplomacy_Alliance_Limit = yes
+		add_opinion = { 
+			who = event_target:cancel_alliance_target
+			modifier = alliance_broken
+		}
+		reverse_add_opinion = { 
+			who = event_target:cancel_alliance_target
+			modifier = alliance_broken
+		}
+		set_variable = { 
+			which = nmu
+			value = 0
+		}
+		every_ally = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						dynasty = PREV
+					}
+				}
+				PREV = { 
+					change_variable = { 
+						which = nmu
+						value = 1
+					}
+				}
+			}
+		}
+		if = { 
+			limit = { 
+				total_development = 2000
+			}
+			set_variable = { 
+				which = nmr
+				value = 8
+			}
+		}
+		else_if = { 
+			limit = { 
+				total_development = 750
+			}
+			set_variable = { 
+				which = nmr
+				value = 6
+			}
+		}
+		else_if = { 
+			limit = { 
+				total_development = 400
+			}
+			set_variable = { 
+				which = nmr
+				value = 4
+			}
+		}
+		else_if = { 
+			limit = { 
+				total_development = 100
+			}
+			set_variable = { 
+				which = nmr
+				value = 3
+			}
+		}
+		else_if = { 
+			limit = { 
+				total_development = 30
+			}
+			set_variable = { 
+				which = nmr
+				value = 2
+			}
+		}
+		else_if = { 
+			limit = { 
+				total_development = 1
+			}
+			set_variable = { 
+				which = nmr
+				value = 2
+			}
+		}
+		if = { 
+			limit = { 
+				has_idea = flemish_ideas_6
+			}
+			change_variable = { 
+				which = nmr
+				value = 1
+			}
+		}
+		change_variable = { 
+			which = nmr
+			which = nms
+		}
+		set_variable = { 
+			which = nmt
+			which = nmr
+		}
+		subtract_variable = { 
+			which = nmt
+			which = nmu
+		}
+		set_variable = { 
+			which = nmq
+			which = nmt
+		}
+		set_variable = { 
+			which = nmt
+			value = 0
+		}
+		set_variable = { 
+			which = nmu
+			value = 0
+		}
+		event_target:cancel_alliance_target = { 
+			set_variable = { 
+				which = nmu
+				value = 0
+			}
+			every_ally = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							dynasty = PREV
+						}
+					}
+					PREV = { 
+						change_variable = { 
+							which = nmu
+							value = 1
+						}
+					}
+				}
+			}
+			if = { 
+				limit = { 
+					total_development = 2000
+				}
+				set_variable = { 
+					which = nmr
+					value = 8
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 750
+				}
+				set_variable = { 
+					which = nmr
+					value = 6
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 400
+				}
+				set_variable = { 
+					which = nmr
+					value = 4
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 100
+				}
+				set_variable = { 
+					which = nmr
+					value = 3
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 30
+				}
+				set_variable = { 
+					which = nmr
+					value = 2
+				}
+			}
+			else_if = { 
+				limit = { 
+					total_development = 1
+				}
+				set_variable = { 
+					which = nmr
+					value = 2
+				}
+			}
+			if = { 
+				limit = { 
+					has_idea = flemish_ideas_6
+				}
+				change_variable = { 
+					which = nmr
+					value = 1
+				}
+			}
+			change_variable = { 
+				which = nmr
+				which = nms
+			}
+			set_variable = { 
+				which = nmt
+				which = nmr
+			}
+			subtract_variable = { 
+				which = nmt
+				which = nmu
+			}
+			set_variable = { 
+				which = nmq
+				which = nmt
+			}
+			set_variable = { 
+				which = nmt
+				value = 0
+			}
+			set_variable = { 
+				which = nmu
+				value = 0
+			}
 		}
 	}
-
-	option = {
+	option = { 
 		name = EVT_AI
 	}
-
-	after = {
-		Clear_Alliance_Negotiations = yes
+	after = { 
+		clear_global_event_target = alliance_negotiation_target
+		clear_global_event_target = cancel_alliance_target
+		clr_global_flag = mec_diplomacy_alliance_negotiations
 	}
 }

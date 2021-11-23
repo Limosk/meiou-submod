@@ -1,168 +1,230 @@
-
-ifrikiya_one = {
+ifrikiya_one = { 
 	slot = 6
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = ifrikiya_ambitions
 	}
-	
-	mor_barbaresque = {
+	mor_barbaresque = { 
 		icon = mission_assemble_an_army
-		required_missions = {  }
+		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = west_maghreb_region
 			has_province_flag = barbary_port
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
+<<<<<<< HEAD
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+=======
+		trigger = { 
+			num_of_owned_provinces_with = { 
+>>>>>>> submod
 				region = west_maghreb_region
 				has_province_flag = barbary_port
 				value = 2
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "the_unknown_frontier"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	conquer_marrakech = {
+	conquer_marrakech = { 
 		icon = mission_pf_map_table
-		required_missions = { mor_barbaresque }
+		required_missions = { mor_barbaresque}
 		position = 2
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = west_maghreb_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
+<<<<<<< HEAD
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+=======
+		trigger = { 
+			num_of_owned_provinces_with = { 
+>>>>>>> submod
 				region = west_maghreb_region
 				value = 12
 			}
 		}
-		effect = {
+		effect = { 
 			add_mil_power = 100
-			334 = {
+			334 = { 
 				rename_capital = "Tangier"
 				change_province_name = "Tangier"
 			}
 		}
 	}
 }
-
-ifrikiya_two = {
+ifrikiya_two = { 
 	slot = 6
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = ifrikiya_ambitions
 	}
-	
-	alg_barbaresque = {
+	alg_barbaresque = { 
 		icon = mission_assemble_an_army
-		required_missions = {  }
+		required_missions = { }
 		position = 3
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = central_maghreb_region
 			has_province_flag = barbary_port
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
+<<<<<<< HEAD
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+=======
+		trigger = { 
+			num_of_owned_provinces_with = { 
+>>>>>>> submod
 				region = central_maghreb_region
 				has_province_flag = barbary_port
 				value = 2
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}
-	conquer_algiers = {
+	conquer_algiers = { 
 		icon = mission_pf_soldier
-		required_missions = { alg_barbaresque }
+		required_missions = { alg_barbaresque}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = central_maghreb_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
+<<<<<<< HEAD
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+=======
+		trigger = { 
+			num_of_owned_provinces_with = { 
+>>>>>>> submod
 				region = central_maghreb_region
 				value = 10
 			}
 		}
-		effect = {
+		effect = { 
 			add_army_tradition = 10
 			add_navy_tradition = 10
-			337 = {
+			337 = { 
 				rename_capital = "Oran"
 				change_province_name = "Oran"
 			}
-			350 = {
+			350 = { 
 				rename_capital = "Algers"
 				change_province_name = "Algers"
 			}
 		}
 	}
 }
-
-ifrikiya_three = {
+ifrikiya_three = { 
 	slot = 6
 	generic = no
 	ai = yes
-	potential = {
+	potential = { 
 		has_country_flag = ifrikiya_ambitions
 	}
-	
-	tun_barbaresque = {
+	tun_barbaresque = { 
 		icon = mission_assemble_an_army
-		required_missions = {  }
+		required_missions = { }
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = east_maghreb_region
 			has_province_flag = barbary_port
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
+<<<<<<< HEAD
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+=======
+		trigger = { 
+			num_of_owned_provinces_with = { 
+>>>>>>> submod
 				region = east_maghreb_region
 				has_province_flag = barbary_port
 				value = 2
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "mediterranean_ambition"
-				duration = 9125 #25 years
+				duration = 9125
 			}
 		}
 	}
-	
-	conquer_tunis = {
+	conquer_tunis = { 
 		icon = mission_pf_soldier
-		required_missions = { tun_barbaresque }
+		required_missions = { tun_barbaresque}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = east_maghreb_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
+<<<<<<< HEAD
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+=======
+		trigger = { 
+			num_of_owned_provinces_with = { 
+>>>>>>> submod
 				region = central_maghreb_region
 				value = 8
 			}
 		}
-		effect = {
-			capital_scope = {
-				add_or_extend_province_modifier_effect = { NAME = mis_prov_growth DURATION = 36560 }
+		effect = { 
+			capital_scope = { 
+				if = { 
+					limit = { 
+						has_province_modifier = mis_prov_growth
+					}
+					extend_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
+				else = { 
+					add_province_modifier = { 
+						name = mis_prov_growth
+						duration = 36560
+					}
+				}
 			}
 		}
 	}

@@ -1,796 +1,841 @@
-#By 1530 the Hohenzollerns of Brandenburg had secured the rights to succced the Gryfs in Pommerania, and the families other holdings within the empire recognized them as the senion branch of the family. This ensures that, should the Pommeranians or the other Hohenzollerns die out and Brandenburg is still ruled by Hohenzollerns, they will recieve the land
-
-country_event = {
+country_event = { 
 	id = hohenzollerns_1530.1
-	
 	title = "hohenzollerns_1530.1.t"
 	desc = "hohenzollerns_1530.1.d"
-	
 	picture = SIEGE_eventPicture
 	major = yes
 	is_triggered_only = yes
-	#hidden = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = hohenzollern_succession
 		tag = POM
-		OR = {
-			NOT = { dynasty = "Gryf" }
+		OR = { 
+			NOT = { 
+				dynasty = "Gryf"
+			}
 			is_female = yes
 		}
-		BRA = {
+		BRA = { 
 			dynasty = "von Hohenzollern"
 		}
-		PRU = {
-			OR = {
+		PRU = { 
+			OR = { 
 				exists = no
 				has_country_flag = hohenzollern_succession
 			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "hindustani_unification.2a"
 		clr_country_flag = hohenzollern_succession
-		BRA = {
+		BRA = { 
 			inherit = ROOT
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = hohenzollerns_1530.2
-	
 	title = "hohenzollerns_1530.1.t"
 	desc = "hohenzollerns_1530.1.d"
 	major = yes
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	#hidden = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = hohenzollern_succession
 		tag = POM
-		OR = {
-			NOT = { dynasty = "Gryf" }
+		OR = { 
+			NOT = { 
+				dynasty = "Gryf"
+			}
 			is_female = yes
 		}
-		PRU = {
+		PRU = { 
 			dynasty = "von Hohenzollern"
 			has_country_flag = hohenzollern_succession_secured
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "hindustani_unification.2a"
 		clr_country_flag = hohenzollern_succession
-		PRU = {
+		PRU = { 
 			inherit = ROOT
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = hohenzollerns_1530.3
-	
 	title = "hohenzollerns_1530.1.t"
 	desc = "hohenzollerns_1530.1.d"
 	major = yes
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	#hidden = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = hohenzollern_succession
-		OR = {
+		OR = { 
 			tag = BYR
 			tag = ANS
 			tag = HOH
 		}
-		OR = {
-			NOT = { dynasty = "von Hohenzollern" }
+		OR = { 
+			NOT = { 
+				dynasty = "von Hohenzollern"
+			}
 			is_female = yes
 		}
-		BRA = {
+		BRA = { 
 			dynasty = "von Hohenzollern"
 			has_country_flag = hohenzollern_succession_secured
 		}
-		PRU = {
-			OR = {
+		PRU = { 
+			OR = { 
 				exists = no
 				has_country_flag = hohenzollern_succession
 			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "hindustani_unification.2a"
 		clr_country_flag = hohenzollern_succession
-		BRA = {
+		BRA = { 
 			inherit = ROOT
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = hohenzollerns_1530.4
-	
 	title = "hohenzollerns_1530.1.t"
 	desc = "hohenzollerns_1530.1.d"
 	major = yes
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	#hidden = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = hohenzollern_succession
-		OR = {
+		OR = { 
 			tag = BYR
 			tag = ANS
 			tag = HOH
 		}
-		OR = {
-			NOT = { dynasty = "von Hohenzollern" }
+		OR = { 
+			NOT = { 
+				dynasty = "von Hohenzollern"
+			}
 			is_female = yes
 		}
-		OR = {
-			AND = {
-				PRU = {
+		OR = { 
+			AND = { 
+				PRU = { 
 					dynasty = "von Hohenzollern"
 				}
-				NOT = { exists = BRA }
+				NOT = { 
+					exists = BRA
+				}
 			}
-			PRU = {
+			PRU = { 
 				dynasty = "von Hohenzollern"
 				has_country_flag = hohenzollern_succession_secured
 			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "hindustani_unification.2a"
 		clr_country_flag = hohenzollern_succession
-		PRU = {
+		PRU = { 
 			inherit = ROOT
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = hohenzollerns_1530.5
-	
 	title = "hohenzollerns_1530.1.t"
 	desc = "hohenzollerns_1530.1.d"
 	major = yes
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	#hidden = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = hohenzollern_succession
 		tag = PRU
-		OR = {
-			NOT = { dynasty = "von Hohenzollern" }
+		OR = { 
+			NOT = { 
+				dynasty = "von Hohenzollern"
+			}
 			is_female = yes
 		}
-		BRA = {
+		BRA = { 
 			dynasty = "von Hohenzollern"
 			has_country_flag = hohenzollern_succession_secured
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "hindustani_unification.2a"
 		clr_country_flag = hohenzollern_succession
-		# every_owned_province = {
-		# 	limit = {
-		# 		region = prussia_region
-		# 	}
-		# 	remove_core = PLC
-		# 	remove_claim = PLC
-		# 	remove_core = POL
-		# 	remove_claim = POL
-		# 	remove_core = LIT
-		# 	remove_claim = LIT
-		# }
-		BRA = {
+		BRA = { 
 			inherit = ROOT
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = hohenzollerns_1530.6
-	
 	title = "hohenzollerns_1530.1.t"
 	desc = "hohenzollerns_1530.1.d"
 	major = yes
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	#hidden = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = hohenzollern_succession
 		tag = BRA
-		OR = {
-			NOT = { dynasty = "von Hohenzollern" }
+		OR = { 
+			NOT = { 
+				dynasty = "von Hohenzollern"
+			}
 			is_female = yes
 		}
-		PRU = {
+		PRU = { 
 			dynasty = "von Hohenzollern"
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "hindustani_unification.2a"
 		clr_country_flag = hohenzollern_succession
-		PRU = {
+		PRU = { 
 			inherit = ROOT
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = hohenzollerns_1530.7
-	
 	title = "hohenzollerns_1530.1.t"
 	desc = "hohenzollerns_1530.1.d"
 	major = yes
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	#hidden = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = hohenzollern_succession
 		tag = BRA
-		OR = {
-			NOT = { dynasty = "von Hohenzollern" }
+		OR = { 
+			NOT = { 
+				dynasty = "von Hohenzollern"
+			}
 			is_female = yes
 		}
-		HOH = {
+		HOH = { 
 			dynasty = "von Hohenzollern"
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "hindustani_unification.2a"
 		clr_country_flag = hohenzollern_succession
-		HOH = {
+		HOH = { 
 			inherit = ROOT
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = hohenzollerns_1530.8
-	
 	title = "hohenzollerns_1530.1.t"
 	desc = "hohenzollerns_1530.1.d"
-	
 	picture = SIEGE_eventPicture
 	major = yes
 	is_triggered_only = yes
-	#hidden = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = hohenzollern_succession
 		tag = BRA
-		OR = {
-			NOT = { dynasty = "von Hohenzollern" }
+		OR = { 
+			NOT = { 
+				dynasty = "von Hohenzollern"
+			}
 			is_female = yes
 		}
-		ANS = {
+		ANS = { 
 			dynasty = "von Hohenzollern"
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "hindustani_unification.2a"
 		clr_country_flag = hohenzollern_succession
-		ANS = {
+		ANS = { 
 			inherit = ROOT
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = hohenzollerns_1530.9
-	
 	title = "hohenzollerns_1530.1.t"
 	desc = "hohenzollerns_1530.1.d"
 	major = yes
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	#hidden = yes
-	
-	trigger = {
+	trigger = { 
 		has_country_flag = hohenzollern_succession
 		tag = BRA
-		OR = {
-			NOT = { dynasty = "von Hohenzollern" }
+		OR = { 
+			NOT = { 
+				dynasty = "von Hohenzollern"
+			}
 			is_female = yes
 		}
-		BYR = {
+		BYR = { 
 			dynasty = "von Hohenzollern"
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "hindustani_unification.2a"
 		clr_country_flag = hohenzollern_succession
-		BYR = {
+		BYR = { 
 			inherit = ROOT
 		}
 	}
 }
-
-### Second Peace of Thorn by Vorondil ###
-
-
-country_event = {			#Poland version
+country_event = { 
 	id = secondpeaceofthorn.1
 	title = "secondpeaceofthorn.1.t"
 	desc = "secondpeaceofthorn.1.d"
 	picture = SIEGE_eventPicture
-  
 	fire_only_once = yes
-  
-	trigger = {
+	trigger = { 
 		tag = POL
-		NOT = { exists = PLC }
+		NOT = { 
+			exists = PLC
+		}
 		has_country_flag = first_peace_of_thorn
 		has_country_flag = supported_prussian_confederation_flag
-		NOT = { has_country_flag = refused_peace_of_thorn }
-		TEU = {
-				NOT = { 
+		NOT = { 
+			has_country_flag = refused_peace_of_thorn
+		}
+		TEU = { 
+			NOT = { 
 				is_at_war = yes
 			}
-			is_free_or_tributary_trigger = yes
-			any_owned_province = {
-					region = prussia_region
+			AND = { 
+				OR = { 
+					is_subject = no
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+					is_subject_of_type = muscovite_tributary_state
+				}
 			}
-			NOT = { num_of_cities = 10 }
+			any_owned_province = { 
+				region = prussia_region
+			}
+			NOT = { 
+				num_of_cities = 10
+			}
 		}
 		OR = { 
-			41 = {
-						owned_by = POL
-				}
-			41 = {
-						owned_by = DNZ
-				}
-			1844 = {
-						owned_by = POL
-				}
-			1844 = {
-						owned_by = DNZ
-				}
+			41 = { 
+				owned_by = POL
+			}
+			41 = { 
+				owned_by = DNZ
+			}
+			1844 = { 
+				owned_by = POL
+			}
+			1844 = { 
+				owned_by = DNZ
+			}
 		}
 	}
-  
-	mean_time_to_happen = { months = 3 }
-  
-	option = {
+	mean_time_to_happen = { 
+		months = 3
+	}
+	option = { 
 		name = "secondpeaceofthorn.1.a"
-		every_owned_province = {
-			limit = {
-					region = prussia_region
-					owned_by = ROOT
-					NOT = { province_id = 2398 } #Chelmno
+		every_owned_province = { 
+			limit = { 
+				region = prussia_region
+				owned_by = ROOT
+				NOT = { 
+					province_id = 2398
+				}
 			}
 			cede_province = TEU
 			add_core = TEU
 		}
-		every_province = {
-			limit = {
-					region = prussia_region
-					owned_by = DNZ
-					NOT = { province_id = 2398 } #Chelmno
-				NOT = { province_id = 2355 } #Danzig
+		every_province = { 
+			limit = { 
+				region = prussia_region
+				owned_by = DNZ
+				NOT = { 
+					province_id = 2398
+				}
+				NOT = { 
+					province_id = 2355
+				}
 			}
 			cede_province = TEU
 			add_core = TEU
 		}
-		every_province = {
-			limit = {
+		every_province = { 
+			limit = { 
 				area = mazovia_area
 				owned_by = TEU
 			}
 			cede_province = ROOT
 		}
-		every_province = {
-			limit = {
+		every_province = { 
+			limit = { 
 				area = lithuania_area
 				owned_by = TEU
 			}
 			cede_province = LIT
 		}
-		if = {
-			limit = {
-				WRM = {
+		if = { 
+			limit = { 
+				WRM = { 
 					exists = yes
 					is_subject_of = TEU
 				}
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					region = prussia_region
 					owned_by = WRM
-					NOT = { province_id = 2398 } #Chelmno
-					NOT = { province_id = 2355 } #Danzig
+					NOT = { 
+						province_id = 2398
+					}
+					NOT = { 
+						province_id = 2355
+					}
 				}
 				cede_province = TEU
 				add_core = TEU
 			}
 		}
-		if = {
-			limit = {
-				2398 = {
+		if = { 
+			limit = { 
+				2398 = { 
 					owned_by = TEU
 				}
 			}
-			2398 = {
+			2398 = { 
 				cede_province = POL
 				add_core = POL
 			}
 		}
-		
-		TEU = {
+		TEU = { 
 			free_vassal = LVO
 		}
-		
-		LIT = {
-			if = {
-					limit = {
-						is_subject_of = POL
+		LIT = { 
+			if = { 
+				limit = { 
+					is_subject_of = POL
 					is_subject_of_type = permanent_union
-					}
-					every_owned_province = {
-						limit = {
-							region = prussia_region
-							owned_by = THIS
-							NOT = { province_id = 2398 } #Chelmno
+				}
+				every_owned_province = { 
+					limit = { 
+						region = prussia_region
+						owned_by = THIS
+						NOT = { 
+							province_id = 2398
 						}
-						remove_core = THIS
-						cede_province = TEU
-						add_core = TEU
 					}
+					remove_core = THIS
+					cede_province = TEU
+					add_core = TEU
+				}
 			}
 		}
-		country_event = {
+		country_event = { 
 			id = secondpeaceofthorn.2
 		}
 	}
 }
-
-country_event = {			#PLC version
+country_event = { 
 	id = secondpeaceofthorn.11
 	title = "secondpeaceofthorn.1.t"
 	desc = "secondpeaceofthorn.1.d"
 	picture = SIEGE_eventPicture
-  
 	fire_only_once = yes
-  
-	trigger = {
+	trigger = { 
 		tag = PLC
 		has_country_flag = first_peace_of_thorn
 		has_country_flag = supported_prussian_confederation_flag
-		NOT = { has_country_flag = refused_peace_of_thorn }
-		TEU = {
-				NOT = { 
+		NOT = { 
+			has_country_flag = refused_peace_of_thorn
+		}
+		TEU = { 
+			NOT = { 
 				is_at_war = yes
 			}
-			is_free_or_tributary_trigger = yes
-			any_owned_province = {
-					region = prussia_region
+			AND = { 
+				OR = { 
+					is_subject = no
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+					is_subject_of_type = muscovite_tributary_state
+				}
 			}
-			NOT = { num_of_cities = 10 }
+			any_owned_province = { 
+				region = prussia_region
+			}
+			NOT = { 
+				num_of_cities = 10
+			}
 		}
 		OR = { 
-			41 = {
-						owned_by = PLC
-				}
-			41 = {
-						owned_by = DNZ
-				}
-			1844 = {
-						owned_by = PLC
-				}
-			1844 = {
-						owned_by = DNZ
-				}
+			41 = { 
+				owned_by = PLC
+			}
+			41 = { 
+				owned_by = DNZ
+			}
+			1844 = { 
+				owned_by = PLC
+			}
+			1844 = { 
+				owned_by = DNZ
+			}
 		}
 	}
-  
-	mean_time_to_happen = { months = 3 }
-  
-	option = {
+	mean_time_to_happen = { 
+		months = 3
+	}
+	option = { 
 		name = "secondpeaceofthorn.1.a"
-		every_owned_province = {
-			limit = {
-					region = prussia_region
-					owned_by = ROOT
-					NOT = { province_id = 2398 } #Chelmno
+		every_owned_province = { 
+			limit = { 
+				region = prussia_region
+				owned_by = ROOT
+				NOT = { 
+					province_id = 2398
+				}
 			}
 			cede_province = TEU
 			add_core = TEU
 		}
-		every_province = {
-			limit = {
-					region = prussia_region
-					owned_by = DNZ
-					NOT = { province_id = 2398 } #Chelmno
-				NOT = { province_id = 2355 } #Danzig
+		every_province = { 
+			limit = { 
+				region = prussia_region
+				owned_by = DNZ
+				NOT = { 
+					province_id = 2398
+				}
+				NOT = { 
+					province_id = 2355
+				}
 			}
 			cede_province = TEU
 			add_core = TEU
 		}
-		every_province = {
-		limit = {
-			area = mazovia_area
-			owned_by = TEU
+		every_province = { 
+			limit = { 
+				area = mazovia_area
+				owned_by = TEU
+			}
+			cede_province = ROOT
 		}
-				cede_province = ROOT
-	}
-	every_province = {
-		limit = {
-			area = lithuania_area
-			owned_by = TEU
+		every_province = { 
+			limit = { 
+				area = lithuania_area
+				owned_by = TEU
+			}
+			cede_province = ROOT
 		}
-		cede_province = ROOT
-	}
-		if = {
-			limit = {
-				WRM = {
+		if = { 
+			limit = { 
+				WRM = { 
 					exists = yes
 					is_subject_of = TEU
 				}
 			}
-			every_province = {
-				limit = {
+			every_province = { 
+				limit = { 
 					region = prussia_region
 					owned_by = WRM
-					NOT = { province_id = 2398 } #Chelmno
-				NOT = { province_id = 2355 } #Danzig
+					NOT = { 
+						province_id = 2398
+					}
+					NOT = { 
+						province_id = 2355
+					}
 				}
 				cede_province = TEU
 				add_core = TEU
+			}
+		}
+		if = { 
+			limit = { 
+				2398 = { 
+					owned_by = TEU
 				}
-		}
-		if = {
-			limit = {
-					2398 = {
-						owned_by = TEU
-					}
 			}
-			2398 = {
-					cede_province = PLC
-					add_core = PLC
+			2398 = { 
+				cede_province = PLC
+				add_core = PLC
 			}
 		}
-		
-		TEU = {
+		TEU = { 
 			free_vassal = LVO
 		}
-		country_event = {
+		country_event = { 
 			id = secondpeaceofthorn.2
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = secondpeaceofthorn.2
 	title = "secondpeaceofthorn.2.t"
 	desc = "secondpeaceofthorn.2.d"
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "secondpeaceofthorn.2.a"
-		ai_chance = { factor = 100 }
-		TEU = {
-			country_event = {
+		ai_chance = { 
+			factor = 100
+		}
+		TEU = { 
+			country_event = { 
 				id = secondpeaceofthorn.3
 			}
 		}
-		
-		TEU = {
-			Effect_set_capital = { target = 41 } # Ostpreussen
-		}	
+		TEU = { 
+			if = { 
+				limit = { 
+					is_part_of_hre = yes
+					ROOT = { 
+						is_part_of_hre = no
+					}
+				}
+				set_in_empire = no
+				swap_non_generic_missions = yes
+				emperor = { 
+					add_opinion = { 
+						who = ROOT
+						modifier = hre_province_left
+					}
+				}
+				add_imperial_influence = -1
+			}
+			set_capital = 41
+			hidden_effect = { 
+				set_country_flag = tf_recalculate_communication_efficiency
+				set_country_flag = ai_tax_recalc
+			}
+		}
 		add_prestige = 15
-		hidden_effect = { vassalize = TEU }
-		create_subject = {
+		hidden_effect = { 
+			vassalize = TEU
+		}
+		create_subject = { 
 			who = DNZ
 			subject_type = decentralized_vassal
 		}
-		create_subject = {
+		create_subject = { 
 			who = TEU
 			subject_type = decentralized_vassal
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "secondpeaceofthorn.2.b"
-		ai_chance = { factor = 0 }
+		ai_chance = { 
+			factor = 0
+		}
 		add_prestige = -15
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = "claimed_whole_prussia"
 			duration = 3650
 		}
 		inherit = TEU
 		inherit = DNZ
-		country_event = {
+		country_event = { 
 			id = secondpeaceofthorn.5
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = secondpeaceofthorn.3
 	title = "secondpeaceofthorn.3.t"
 	desc = "secondpeaceofthorn.3.d"
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
-		trigger = {
+	option = { 
+		trigger = { 
 			tag = POL
-			NOT = { exists = PLC }
+			NOT = { 
+				exists = PLC
+			}
 		}
 		name = "secondpeaceofthorn.3.a"
-		ai_chance = { factor = 100 }
-		# hidden_effect = {
-		# 	country_event = {
-		# 		id = miscexpenses.001
-		# 	}
-		# }
-		if = {
-			limit = { owns = 2845 }
-			2845 = {
-					cede_province = POL
+		ai_chance = { 
+			factor = 100
+		}
+		if = { 
+			limit = { 
+				owns = 2845
+			}
+			2845 = { 
+				cede_province = POL
 				add_core = POL
 			}
 		}
-		if = {
-			limit = { owns = 43 }
-			43 = {
-					cede_province = POL
+		if = { 
+			limit = { 
+				owns = 43
+			}
+			43 = { 
+				cede_province = POL
 				add_core = POL
 			}
 		}
-		if = {
-			limit = { owns = 1844 }
-			1844 = {
-					cede_province = POL
+		if = { 
+			limit = { 
+				owns = 1844
+			}
+			1844 = { 
+				cede_province = POL
 				add_core = POL
 			}
 		}
-		if = {
-			limit = { owns = 1391 }
-			1391 = {
-					cede_province = POL
+		if = { 
+			limit = { 
+				owns = 1391
+			}
+			1391 = { 
+				cede_province = POL
 				add_core = POL
 			}
 		}
-		if = {
-			limit = { owns = 4025 }
-			4025 = {
-					cede_province = POL
+		if = { 
+			limit = { 
+				owns = 4025
+			}
+			4025 = { 
+				cede_province = POL
 				add_core = POL
 			}
 		}
-		POL = {
-			country_event = {
+		POL = { 
+			country_event = { 
 				id = secondpeaceofthorn.4
 			}
 		}
 	}
-	option = {
-		trigger = {
+	option = { 
+		trigger = { 
 			tag = PLC
 		}
 		name = "secondpeaceofthorn.3.a"
-		ai_chance = { factor = 100 }
-		# hidden_effect = {
-		# 	country_event = {
-		# 		id = miscexpenses.001
-		# 	}
-		# }
-		if = {
-			limit = { owns = 2845 }
-			2845 = {
-					cede_province = PLC
+		ai_chance = { 
+			factor = 100
+		}
+		if = { 
+			limit = { 
+				owns = 2845
+			}
+			2845 = { 
+				cede_province = PLC
 				add_core = PLC
 			}
 		}
-		if = {
-			limit = { owns = 43 }
-			43 = {
-					cede_province = PLC
+		if = { 
+			limit = { 
+				owns = 43
+			}
+			43 = { 
+				cede_province = PLC
 				add_core = PLC
 			}
 		}
-		if = {
-			limit = { owns = 1844 }
-			1844 = {
-					cede_province = PLC
+		if = { 
+			limit = { 
+				owns = 1844
+			}
+			1844 = { 
+				cede_province = PLC
 				add_core = PLC
 			}
 		}
-		if = {
-			limit = { owns = 1391 }
-			1391 = {
-					cede_province = PLC
+		if = { 
+			limit = { 
+				owns = 1391
+			}
+			1391 = { 
+				cede_province = PLC
 				add_core = PLC
 			}
 		}
-		if = {
-			limit = { owns = 4025 }
-			4025 = {
-					cede_province = PLC
+		if = { 
+			limit = { 
+				owns = 4025
+			}
+			4025 = { 
+				cede_province = PLC
 				add_core = PLC
 			}
 		}
-		PLC = {
-			country_event = {
+		PLC = { 
+			country_event = { 
 				id = secondpeaceofthorn.4
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = secondpeaceofthorn.4
 	title = "secondpeaceofthorn.4.t"
 	desc = "secondpeaceofthorn.4.d"
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "secondpeaceofthorn.4.a"
-		trigger = { tag = POL }
-		every_owned_province = {
-			limit = {
+		trigger = { 
+			tag = POL
+		}
+		every_owned_province = { 
+			limit = { 
 				region = prussia_region
 				owned_by = ROOT
-				NOT = { is_core = ROOT }
+				NOT = { 
+					is_core = ROOT
+				}
 			}
 			add_nationalism = -15
-			add_territorial_core_effect_tag = {
-				tag = POL
+			if = { 
+				limit = { 
+					is_core = POL
+				}
+				add_local_autonomy = -10
+			}
+			else = { 
+				add_territorial_core = POL
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "secondpeaceofthorn.4.a"
-		trigger = { tag = PLC }
-		every_owned_province = {
-			limit = {
+		trigger = { 
+			tag = PLC
+		}
+		every_owned_province = { 
+			limit = { 
 				region = prussia_region
 				owned_by = ROOT
-				NOT = { is_core = ROOT }
+				NOT = { 
+					is_core = ROOT
+				}
 			}
 			add_nationalism = -15
-			add_territorial_core_effect_tag = {
-				tag = PLC
+			if = { 
+				limit = { 
+					is_core = PLC
+				}
+				add_local_autonomy = -10
+			}
+			else = { 
+				add_territorial_core = PLC
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = secondpeaceofthorn.5
 	title = "secondpeaceofthorn.5.t"
 	desc = "secondpeaceofthorn.5.d"
 	picture = SIEGE_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "secondpeaceofthorn.5.a"
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				region = prussia_region
 				owned_by = ROOT
 				is_core = ROOT

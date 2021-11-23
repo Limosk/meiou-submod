@@ -1,27 +1,32 @@
 namespace = counts_feud
-
-country_event = {
+country_event = { 
 	id = counts_feud.001
 	title = "counts_feud.001.title"
 	desc = "counts_feud.001.desc"
 	picture = BAD_WITH_MONARCH_eventPicture
 	is_triggered_only = yes
 	major = yes
-	immediate = {
+	immediate = { 
 		set_country_flag = sankt_sorens_kirke
 	}
-	option = {
-		name = "counts_feud.001.opta" #Catholic contender
-		trigger = { ai = no }
-		if = {
-			limit = { religion = protestant }
-			if = {
-				limit = { has_heir = yes }
+	option = { 
+		name = "counts_feud.001.opta"
+		trigger = { 
+			ai = no
+		}
+		if = { 
+			limit = { 
+				religion = protestant
+			}
+			if = { 
+				limit = { 
+					has_heir = yes
+				}
 				exile_heir_as = feud_exiled_heir
 			}
 			exile_ruler_as = feud_exiled_ruler
 			change_religion = catholic
-			define_ruler = {
+			define_ruler = { 
 				adm = 2
 				dip = 3
 				mil = 2
@@ -30,8 +35,8 @@ country_event = {
 			}
 			set_country_flag = feud_exiled
 		}
-		else = {
-			define_exiled_ruler = {
+		else = { 
+			define_exiled_ruler = { 
 				exiled_as = contender_feud
 				name = "Christian"
 				dynasty = "af Oldenborg"
@@ -47,17 +52,21 @@ country_event = {
 			set_country_flag = feud_contender
 		}
 	}
-	option = {
-		name = "counts_feud.001.optb" #Protestant contender
-		if = {
-			limit = { religion = catholic }
-			if = {
-				limit = { has_heir = yes }
+	option = { 
+		name = "counts_feud.001.optb"
+		if = { 
+			limit = { 
+				religion = catholic
+			}
+			if = { 
+				limit = { 
+					has_heir = yes
+				}
 				exile_heir_as = feud_exiled_heir
 			}
 			exile_ruler_as = feud_exiled_ruler
 			change_religion = protestant
-			define_ruler = {
+			define_ruler = { 
 				adm = 2
 				dip = 3
 				mil = 2
@@ -66,8 +75,8 @@ country_event = {
 			}
 			set_country_flag = feud_exiled
 		}
-		else = {
-			define_exiled_ruler = {
+		else = { 
+			define_exiled_ruler = { 
 				exiled_as = contender_feud
 				name = "Christian"
 				dynasty = "af Oldenborg"
@@ -84,33 +93,32 @@ country_event = {
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = counts_feud.002
 	title = "counts_feud.002.title"
-	desc = {
-		trigger = {
+	desc = { 
+		trigger = { 
 			religion = protestant
 			has_country_flag = feud_exiled
 		}
 		desc = "counts_feud.002.desa"
 	}
-	desc = {
-		trigger = {
+	desc = { 
+		trigger = { 
 			religion = catholic
 			has_country_flag = feud_exiled
 		}
 		desc = "counts_feud.002.desb"
 	}
-	desc = {
-		trigger = {
+	desc = { 
+		trigger = { 
 			religion = protestant
 			has_country_flag = feud_contender
 		}
 		desc = "counts_feud.002.desc"
 	}
-	desc = {
-		trigger = {
+	desc = { 
+		trigger = { 
 			religion = catholic
 			has_country_flag = feud_contender
 		}
@@ -119,10 +127,10 @@ country_event = {
 	picture = BAD_WITH_MONARCH_eventPicture
 	is_triggered_only = yes
 	major = yes
-	immediate = {
+	immediate = { 
 		set_country_flag = had_counts_feud
-		12 = {
-			spawn_rebels = {
+		12 = { 
+			spawn_rebels = { 
 				type = pretender_rebels
 				size = 3
 				leader = "Christoffer"
@@ -132,80 +140,81 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "counts_feud.002.opta"
 	}
 }
-
-country_event = {
+country_event = { 
 	id = counts_feud.003
 	title = "counts_feud.003.title"
-	trigger = {
+	trigger = { 
 		tag = SWE
-		OR = {
-			AND = {
+		OR = { 
+			AND = { 
 				exists = DAN
-				DAN = {
+				DAN = { 
 					has_disaster = counts_feud
 				}
-				has_opinion = {
+				has_opinion = { 
 					who = DAN
 					value = 80
 				}
-				reverse_has_opinion = {
+				reverse_has_opinion = { 
 					who = DAN
 					value = 80
 				}
-				NOT = {
+				NOT = { 
 					war_with = DAN
 				}
-				NOT = {
+				NOT = { 
 					alliance_with = DAN
 				}
-				NOT = {
+				NOT = { 
 					is_subject_of = DAN
 				}
 			}
-			AND = {
+			AND = { 
 				exists = DEN
-				DEN = {
+				DEN = { 
 					has_disaster = counts_feud
 				}
-				has_opinion = {
+				has_opinion = { 
 					who = DEN
 					value = 80
 				}
-				reverse_has_opinion = {
+				reverse_has_opinion = { 
 					who = DEN
 					value = 80
 				}
-				NOT = {
+				NOT = { 
 					war_with = DEN
 				}
-				NOT = {
+				NOT = { 
 					alliance_with = DEN
 				}
-				NOT = {
+				NOT = { 
 					is_subject_of = DEN
 				}
 			}
 		}
 	}
-	desc = {
-		trigger = {
-			NOT = { has_ruler = "Christoffer af Oldenborg" }
+	desc = { 
+		trigger = { 
+			NOT = { 
+				has_ruler = "Christoffer af Oldenborg"
+			}
 		}
 		desc = "counts_feud.003.desa"
 	}
-	desc = {
-		trigger = {
+	desc = { 
+		trigger = { 
 			has_ruler = "Christoffer af Oldenborg"
 			has_country_flag = feud_exiled
 		}
 		desc = "counts_feud.003.desb"
 	}
-	desc = {
-		trigger = {
+	desc = { 
+		trigger = { 
 			has_ruler = "Christoffer af Oldenborg"
 			has_country_flag = feud_contender
 		}
@@ -214,10 +223,10 @@ country_event = {
 	picture = ANGRY_MOB_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "counts_feud.003.opta"
-		3720 = {
-			spawn_rebels = {
+		3720 = { 
+			spawn_rebels = { 
 				type = noble_rebels
 				size = 2
 				win = yes
@@ -226,124 +235,123 @@ country_event = {
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = counts_feud.004
 	title = "counts_feud.004.title"
 	desc = "counts_feud.004.desc"
 	picture = DIPLOMACY_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		tag = SWE
-		OR = {
-			AND = {
+		OR = { 
+			AND = { 
 				exists = DAN
-				DAN = {
+				DAN = { 
 					has_disaster = counts_feud
 				}
-				has_opinion = {
+				has_opinion = { 
 					who = DAN
 					value = 80
 				}
-				reverse_has_opinion = {
+				reverse_has_opinion = { 
 					who = DAN
 					value = 80
 				}
-				NOT = {
+				NOT = { 
 					war_with = DAN
 				}
-				NOT = {
+				NOT = { 
 					alliance_with = DAN
 				}
-				NOT = {
+				NOT = { 
 					is_subject_of = DAN
 				}
 			}
-			AND = {
+			AND = { 
 				exists = DEN
-				DEN = {
+				DEN = { 
 					has_disaster = counts_feud
 				}
-				has_opinion = {
+				has_opinion = { 
 					who = DEN
 					value = 80
 				}
-				reverse_has_opinion = {
+				reverse_has_opinion = { 
 					who = DEN
 					value = 80
 				}
-				NOT = {
+				NOT = { 
 					war_with = DEN
 				}
-				NOT = {
+				NOT = { 
 					alliance_with = DEN
 				}
-				NOT = {
+				NOT = { 
 					is_subject_of = DEN
 				}
 			}
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		days = 1
 	}
-	option = {
+	option = { 
 		name = "counts_feud.004.opta"
-		trigger = {
+		trigger = { 
 			exists = DAN
 		}
-		DAN = {
-			if = {
-				limit = {
+		DAN = { 
+			if = { 
+				limit = { 
 					has_country_flag = monarch_flag
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						continent = europe
 					}
-					add_province_modifier = {
+					add_province_modifier = { 
 						name = "pretender_organizing"
 						duration = 1825
 					}
 					custom_tooltip = pretender_organizing_tt
 					add_unrest = 5
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						continent = europe
 					}
-					add_province_modifier = {
+					add_province_modifier = { 
 						name = "pretender_organizing"
 						duration = 1825
 					}
 					custom_tooltip = pretender_organizing_tt
 					add_unrest = 5
 				}
-				country_event = {
+				country_event = { 
 					id = counts_feud.4
 				}
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_country_flag = pretender_flag
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						continent = europe
 					}
-					add_province_modifier = {
+					add_province_modifier = { 
 						name = "nobles_organizing"
 						duration = 1825
 					}
 					custom_tooltip = nobles_organizing_tt
 					add_unrest = 5
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						continent = europe
 					}
-					add_province_modifier = {
+					add_province_modifier = { 
 						name = "nobles_organizing"
 						duration = 1825
 					}
@@ -351,194 +359,194 @@ country_event = {
 					add_unrest = 5
 				}
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = SWE
 				modifier = supported_rebels
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "counts_feud.004.optb"
-		trigger = {
+		trigger = { 
 			exists = DAN
 		}
-		DAN = {
-			country_event = {
+		DAN = { 
+			country_event = { 
 				id = counts_feud.5
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = SWE
 				modifier = opinion_supported_monarch
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "counts_feud.004.opta"
-		trigger = {
+		trigger = { 
 			exists = DEN
 		}
-		DEN = {
-			if = {
-				limit = {
+		DEN = { 
+			if = { 
+				limit = { 
 					has_country_flag = monarch_flag
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						continent = europe
 					}
-					add_province_modifier = {
+					add_province_modifier = { 
 						name = "pretender_organizing"
 						duration = 1825
 					}
 					custom_tooltip = pretender_organizing_tt
 					add_unrest = 5
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						continent = europe
 					}
-					add_province_modifier = {
+					add_province_modifier = { 
 						name = "pretender_organizing"
 						duration = 1825
 					}
 					custom_tooltip = pretender_organizing_tt
 					add_unrest = 5
 				}
-				country_event = {
+				country_event = { 
 					id = counts_feud.4
 				}
 			}
-			if = {
-				limit = {
+			if = { 
+				limit = { 
 					has_country_flag = pretender_flag
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						has_province_flag = rebels_2
 					}
-					spawn_rebels = {
+					spawn_rebels = { 
 						type = noble_rebels
 						size = 1
 					}
 					clr_province_flag = rebels_2
 				}
-				random_owned_province = {
-					limit = {
+				random_owned_province = { 
+					limit = { 
 						has_province_flag = rebels_1
 					}
-					spawn_rebels = {
+					spawn_rebels = { 
 						type = noble_rebels
 						size = 1
 					}
 					clr_province_flag = rebels_1
 				}
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = SWE
 				modifier = supported_rebels
 			}
 		}
 	}
-	option = {
-		trigger = {
+	option = { 
+		trigger = { 
 			exists = DEN
 		}
 		name = "counts_feud.004.optb"
-		DEN = {
-			country_event = {
+		DEN = { 
+			country_event = { 
 				id = counts_feud.5
 			}
-			add_opinion = {
+			add_opinion = { 
 				who = SWE
 				modifier = opinion_supported_monarch
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "counts_feud.004.optc"
 		add_prestige = -5
 	}
 }
-
-country_event = {
+country_event = { 
 	id = counts_feud.005
 	title = "counts_feud.005.title"
 	desc = "counts_feud.005.desc"
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "counts_feud.005.opta"
-		tooltip = {
-			add_opinion = {
+		tooltip = { 
+			add_opinion = { 
 				who = SWE
 				modifier = supported_rebels
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = counts_feud.006
 	title = "counts_feud.006.title"
 	desc = "counts_feud.006.desc"
 	picture = DIPLOMACY_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "counts_feud.006.opta"
-		tooltip = {
-			add_opinion = {
+		tooltip = { 
+			add_opinion = { 
 				who = SWE
 				modifier = opinion_supported_monarch
 			}
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = counts_feud.007
 	title = "counts_feud.007.title"
 	desc = "counts_feud.007.desc"
 	picture = BATTLE_eventPicture
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "counts_feud.007.opta"
 		add_prestige = 5
-		every_owned_province = {
-			limit = {
+		every_owned_province = { 
+			limit = { 
 				continent = europe
 			}
 			add_unrest = 5
 		}
 	}
 }
-
-country_event = {
+country_event = { 
 	id = counts_feud.008
 	title = "counts_feud.008.title"
-	desc = {
-		trigger = {
-			NOT = { has_ruler = "Christoffer af Oldenborg" }
+	desc = { 
+		trigger = { 
+			NOT = { 
+				has_ruler = "Christoffer af Oldenborg"
+			}
 			has_country_flag = feud_exiled
 		}
 		desc = "counts_feud.008.desa"
 	}
-	desc = {
-		trigger = {
-			NOT = { has_ruler = "Christoffer af Oldenborg" }
+	desc = { 
+		trigger = { 
+			NOT = { 
+				has_ruler = "Christoffer af Oldenborg"
+			}
 			has_country_flag = feud_contender
 		}
 		desc = "counts_feud.008.desb"
 	}
-	desc = {
-		trigger = {
+	desc = { 
+		trigger = { 
 			has_ruler = "Christoffer af Oldenborg"
 			has_country_flag = feud_exiled
 		}
 		desc = "counts_feud.008.desc"
 	}
-	desc = {
-		trigger = {
+	desc = { 
+		trigger = { 
 			has_ruler = "Christoffer af Oldenborg"
 			has_country_flag = feud_contender
 		}
@@ -546,12 +554,16 @@ country_event = {
 	}
 	picture = ANGRY_MOB_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "counts_feud.003.opta"
-		if = {
-			limit = { NOT = { has_ruler = "Christoffer af Oldenborg" } }
-			14 = {
-				spawn_rebels = {
+		if = { 
+			limit = { 
+				NOT = { 
+					has_ruler = "Christoffer af Oldenborg"
+				}
+			}
+			14 = { 
+				spawn_rebels = { 
 					type = pretender_rebels
 					size = 3
 					leader = "Christoffer"
@@ -561,9 +573,9 @@ country_event = {
 				}
 			}
 		}
-		else = {
-			14 = {
-				spawn_rebels = {
+		else = { 
+			14 = { 
+				spawn_rebels = { 
 					type = pretender_rebels
 					size = 3
 					leader = "Johan"
@@ -574,72 +586,188 @@ country_event = {
 			}
 		}
 	}
-	after = {
+	after = { 
 		set_country_flag = feud_last_stand
 	}
 }
-
-country_event = {
+country_event = { 
 	id = counts_feud.100
 	title = "counts_feud.100.title"
-	desc = {
-		trigger = { NOT = { has_ruler = "Christoffer af Oldenborg" } }
+	desc = { 
+		trigger = { 
+			NOT = { 
+				has_ruler = "Christoffer af Oldenborg"
+			}
+		}
 		desc = "counts_feud.100.desa"
 	}
-	desc = {
-		trigger = { has_ruler = "Christoffer af Oldenborg" has_country_flag = feud_exiled }
+	desc = { 
+		trigger = { 
+			has_ruler = "Christoffer af Oldenborg"
+			has_country_flag = feud_exiled
+		}
 		desc = "counts_feud.100.desb"
 	}
-	desc = {
-		trigger = { has_ruler = "Christoffer af Oldenborg" has_country_flag = feud_contender }
+	desc = { 
+		trigger = { 
+			has_ruler = "Christoffer af Oldenborg"
+			has_country_flag = feud_contender
+		}
 		desc = "counts_feud.100.desc"
 	}
 	picture = COURT_eventPicture
 	is_triggered_only = yes
-	option = {
+	option = { 
 		name = "counts_feud.100.opta"
-		trigger = { NOT = { has_ruler = "Christoffer af Oldenborg" } NOT = { has_ruler = "Johan Rantzau" } }
+		trigger = { 
+			NOT = { 
+				has_ruler = "Christoffer af Oldenborg"
+			}
+			NOT = { 
+				has_ruler = "Johan Rantzau"
+			}
+		}
 	}
-	option = {
+	option = { 
 		name = "counts_feud.100.opta"
-		trigger = { has_ruler = "Christoffer af Oldenborg" has_country_flag = feud_exiled }
+		trigger = { 
+			has_ruler = "Christoffer af Oldenborg"
+			has_country_flag = feud_exiled
+		}
 		set_ruler = feud_exiled_ruler
 		set_heir = feud_exiled_heir
-		if = {
-			limit = { religion = catholic }
+		if = { 
+			limit = { 
+				religion = catholic
+			}
 			change_religion = protestant
 		}
-		else = {
+		else = { 
 			change_religion = catholic
 		}
 	}
-	option = {
+	option = { 
 		name = "counts_feud.100.opta"
-		trigger = { has_ruler = "Christoffer af Oldenborg" has_country_flag = feud_contender }
+		trigger = { 
+			has_ruler = "Christoffer af Oldenborg"
+			has_country_flag = feud_contender
+		}
 		set_ruler = contender_feud
-		if = {
-			limit = { religion = catholic }
+		if = { 
+			limit = { 
+				religion = catholic
+			}
 			change_religion = protestant
 		}
-		else = {
+		else = { 
 			change_religion = catholic
 		}
 	}
-	option = {
+	option = { 
 		name = "counts_feud.100.opta"
-		trigger = { has_ruler = "Johan Rantzau" }
-		define_ruler = {
+		trigger = { 
+			has_ruler = "Johan Rantzau"
+		}
+		define_ruler = { 
 			adm = 4
 			dip = 3
 			mil = 4
 			claim = 95
 		}
 	}
-	after = {
+	after = { 
 		clr_country_flag = feud_last_stand
 		clr_country_flag = feud_exiled
 		clr_country_flag = feud_contender
-		Stab_Add50Percent = yes
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
 		add_unrest = -5
 	}
 }

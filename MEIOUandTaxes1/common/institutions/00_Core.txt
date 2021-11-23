@@ -1,32 +1,17 @@
-#
-# remember to add graphics for relevant ones when you add to this
-# 
-# if a modifier is scaled, its multiplied with development in the province.
-
-#######################################
-# Legalism.
-# 
-# Most in the old world start with it.
-#######################################
- 
-Legalism = {
+Legalism = { 
 	penalty = 4
-	bonus = {
+	bonus = { 
 		max_absolutism = 15
 	}
-	
-	history = {
+	history = { 
 		is_year = 1000
-		NOT = {
+		NOT = { 
 			region = ireland_region
 			continent = south_america
 			continent = north_america
-			
-			# half tribal tags, problematic
-			# they have to purchase it day 0
-			AND = {
+			AND = { 
 				continent = mena
-				NOT = {
+				NOT = { 
 					region = north_anatolia_region
 					region = south_anatolia_region
 				}
@@ -74,217 +59,237 @@ Legalism = {
 			culture_group = old_turkic
 			owned_by = BLU
 		}
-		OR = {
-			NOT = { has_province_flag = tribals_control_province }
-			AND = {
-				check_key = { lhs = tribals_ratio value = 0.001 }
-				NOT = { check_key = { lhs = tribals_ratio value = 12 } }
+		OR = { 
+			NOT = { 
+				has_province_flag = tribals_control_province
 			}
-			AND = {
+			AND = { 
+				check_variable = { 
+					which = amm
+					value = 0.001
+				}
+				NOT = { 
+					check_variable = { 
+						which = amm
+						value = 12
+					}
+				}
+			}
+			AND = { 
 				culture = haussa
-				NOT = { province_id = 2921 }
+				NOT = { 
+					province_id = 2921
+				}
 			}
 		}
 	}
-
-	can_start = {
+	can_start = { 
 		always = yes
 	}
-	
-	# no need for events, as its there from the start.
-	#can_start = {	is_year = 1000	}
-	#start_chance = 100
-	#on_start = institution_events.1
-	
-	can_embrace = {
-		owner = { Inst_Can_Legalism_Embrace = yes }
-	}
-	
-	embracement_speed = {
-		modifier = {
-			factor = 1.2
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { has_institution = Legalism }
+	can_embrace = { 
+		owner = { 
+			AND = { 
+				custom_trigger_tooltip = { 
+					tooltip = Pol_Identity3NOT
+					NOT = { 
+						is_variable_equal = { 
+							which = grs
+							value = 2
+						}
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+		}
+	}
+	embracement_speed = { 
+		modifier = { 
+			factor = 1.2
+			potential = { 
+				owner = { 
+					NOT = { 
+						has_institution = Legalism
+					}
+				}
+			}
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_LEGALISM
-				Inst_Can_Legalism_Spread = yes
-				any_friendly_coast_border_province = {
+				NOT = { 
+					check_variable = { 
+						which = atc
+						value = 50.001
+					}
+				}
+				any_friendly_coast_border_province = { 
 					Legalism = 100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					has_institution = Legalism
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_LEGALISM
-				Inst_Can_Legalism_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				NOT = { 
+					check_variable = { 
+						which = atc
+						value = 50.001
+					}
+				}
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Legalism = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_LEGALISM
-
-				Inst_Can_Legalism_Spread = yes
-
+				NOT = { 
+					check_variable = { 
+						which = atc
+						value = 50.001
+					}
+				}
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Legalism
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					is_colonial_nation = yes
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = PORT_OR_CAPITAL_IN_COLONY_LEGALISM
-				OR = {
+				OR = { 
 					has_province_flag = TN_COT
 					has_port = yes
 					is_capital = yes
 				}
-				owner = {
+				owner = { 
 					is_colonial_nation = yes
-					overlord = { has_institution = Legalism }
+					overlord = { 
+						has_institution = Legalism
+					}
 				}
-				Inst_Can_Legalism_Spread = yes
+				NOT = { 
+					check_variable = { 
+						which = atc
+						value = 50.001
+					}
+				}
 			}
 		}
-
-		modifier = {
+		modifier = { 
 			factor = 6.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Legalism_6.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Legalism_3.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.6
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Legalism_1.6
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Legalism_0.8
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Legalism_0.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Legalism_0.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Legalism_0.1
 			}
 		}
 	}
-	
-	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income. (Or it has a more than long term goal...)
+	ai_will_do = { 
 		factor = 6
 	}
 }
-
-# Meritocracy. Starts in Greece, Anatolia, East Asia
-
-Meritocracy = {
+Meritocracy = { 
 	penalty = 0
-	bonus = {
-		 technology_cost = -0.20
-		
+	bonus = { 
+		technology_cost = -0.20
 		yearly_corruption = -0.30
 		administrative_efficiency = 0.05
 	}
-	
 	historical_start_date = 1000.1.1
-
-	history = {
-		OR = {
+	history = { 
+		OR = { 
 			owned_by = MNG
 			owned_by = ZOU
 			owned_by = KOR
@@ -307,1948 +312,2509 @@ Meritocracy = {
 			owned_by = OTT
 		}
 	}
-
-	can_start = {
+	can_start = { 
 		always = yes
 	}
-	
-	can_embrace = {
-		owner = { Inst_Can_Meritocracy_Embrace = yes }
-	}
-	
-	embracement_speed = {
-		modifier = {
-			factor = 1.2
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { has_institution = Meritocracy }
+	can_embrace = { 
+		owner = { 
+			AND = { 
+				has_institution = Legalism
+				custom_trigger_tooltip = { 
+					tooltip = Privilege_BUOffice2HasGreater
+					custom_trigger_tooltip = { 
+						tooltip = Privilege_BUOffice2HasGreater
+						check_variable = { 
+							which = noh
+							value = 2
+						}
+					}
+				}
+				custom_trigger_tooltip = { 
+					tooltip = Privilege_BUFarm2HasGreater
+					custom_trigger_tooltip = { 
+						tooltip = Privilege_BUFarm2HasGreater
+						check_variable = { 
+							which = noi
+							value = 2
+						}
+					}
+				}
+				custom_trigger_tooltip = { 
+					tooltip = Privilege_BUHierarchy1HasGreater
+					custom_trigger_tooltip = { 
+						tooltip = Privilege_BUHierarchy1HasGreater
+						check_variable = { 
+							which = nol
+							value = 1
+						}
+					}
+				}
+				custom_trigger_tooltip = { 
+					tooltip = Privilege_BUHire1HasGreater
+					custom_trigger_tooltip = { 
+						tooltip = Privilege_BUHire1HasGreater
+						check_variable = { 
+							which = nom
+							value = 1
+						}
+					}
+				}
+				custom_trigger_tooltip = { 
+					tooltip = Privilege_BUStructure2HasGreater
+					custom_trigger_tooltip = { 
+						tooltip = Privilege_BUStructure2HasGreater
+						check_variable = { 
+							which = noq
+							value = 2
+						}
+					}
+				}
+				custom_trigger_tooltip = { 
+					tooltip = Privilege_BUCourts2HasGreater
+					custom_trigger_tooltip = { 
+						tooltip = Privilege_BUCourts2HasGreater
+						check_variable = { 
+							which = nor
+							value = 2
+						}
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+		}
+	}
+	embracement_speed = { 
+		modifier = { 
+			factor = 1.2
+			potential = { 
+				owner = { 
+					NOT = { 
+						has_institution = Meritocracy
+					}
+				}
+			}
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_MERITOCRACY
-				Inst_Can_Meritocracy_Spread = yes
-				any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUOffice2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUOffice2HasGreater
+								check_variable = { 
+									which = noh
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUFarm2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUFarm2HasGreater
+								check_variable = { 
+									which = noi
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUHierarchy1HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUHierarchy1HasGreater
+								check_variable = { 
+									which = nol
+									value = 1
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUHire1HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUHire1HasGreater
+								check_variable = { 
+									which = nom
+									value = 1
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUStructure2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUStructure2HasGreater
+								check_variable = { 
+									which = noq
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUCourts2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUCourts2HasGreater
+								check_variable = { 
+									which = nor
+									value = 2
+								}
+							}
+						}
+					}
+				}
+				any_friendly_coast_border_province = { 
 					Meritocracy = 100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					has_institution = Meritocracy
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_MERITOCRACY
-				Inst_Can_Meritocracy_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUOffice2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUOffice2HasGreater
+								check_variable = { 
+									which = noh
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUFarm2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUFarm2HasGreater
+								check_variable = { 
+									which = noi
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUHierarchy1HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUHierarchy1HasGreater
+								check_variable = { 
+									which = nol
+									value = 1
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUHire1HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUHire1HasGreater
+								check_variable = { 
+									which = nom
+									value = 1
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUStructure2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUStructure2HasGreater
+								check_variable = { 
+									which = noq
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUCourts2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUCourts2HasGreater
+								check_variable = { 
+									which = nor
+									value = 2
+								}
+							}
+						}
+					}
+				}
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Meritocracy = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.8
-			#scale = yes
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_MERITOCRACY
-
-				Inst_Can_Meritocracy_Spread = yes
-
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUOffice2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUOffice2HasGreater
+								check_variable = { 
+									which = noh
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUFarm2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUFarm2HasGreater
+								check_variable = { 
+									which = noi
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUHierarchy1HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUHierarchy1HasGreater
+								check_variable = { 
+									which = nol
+									value = 1
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUHire1HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUHire1HasGreater
+								check_variable = { 
+									which = nom
+									value = 1
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUStructure2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUStructure2HasGreater
+								check_variable = { 
+									which = noq
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUCourts2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUCourts2HasGreater
+								check_variable = { 
+									which = nor
+									value = 2
+								}
+							}
+						}
+					}
+				}
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Meritocracy
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					is_colonial_nation = yes
 				}
-				Inst_Can_Meritocracy_Spread = yes
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUOffice2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUOffice2HasGreater
+								check_variable = { 
+									which = noh
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUFarm2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUFarm2HasGreater
+								check_variable = { 
+									which = noi
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUHierarchy1HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUHierarchy1HasGreater
+								check_variable = { 
+									which = nol
+									value = 1
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUHire1HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUHire1HasGreater
+								check_variable = { 
+									which = nom
+									value = 1
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUStructure2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUStructure2HasGreater
+								check_variable = { 
+									which = noq
+									value = 2
+								}
+							}
+						}
+						custom_trigger_tooltip = { 
+							tooltip = Privilege_BUCourts2HasGreater
+							custom_trigger_tooltip = { 
+								tooltip = Privilege_BUCourts2HasGreater
+								check_variable = { 
+									which = nor
+									value = 2
+								}
+							}
+						}
+					}
+				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = PORT_OR_CAPITAL_IN_COLONY_MERITOCRACY
-				OR = {
+				OR = { 
 					has_province_flag = TN_COT
 					has_port = yes
 					is_capital = yes
 				}
-				owner = {
+				owner = { 
 					is_colonial_nation = yes
-					overlord = { has_institution = Meritocracy }
+					overlord = { 
+						has_institution = Meritocracy
+					}
 				}
 			}
 		}
-
-		modifier = {
+		modifier = { 
 			factor = 6.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Meritocracy_6.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Meritocracy_3.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.6
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Meritocracy_1.6
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Meritocracy_0.8
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Meritocracy_0.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Meritocracy_0.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Meritocracy_0.1
 			}
 		}
 	}
-	
-	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income. (Or it has a more than long term goal...)
+	ai_will_do = { 
 		factor = 6
-		
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			is_at_war = yes
 		}
 	}
 }
-
-# Banking. Starts in Genoa, Venice and Flanders
-
-Banking = {
+Banking = { 
 	penalty = 0.25
-	bonus = {
-		#technology_cost = -1
-		
-		interest = -1	
+	bonus = { 
+		interest = -1
 		inflation_reduction = -0.01
 	}
-	
 	historical_start_date = 1350.1.1
-
-	can_start = {
+	can_start = { 
 		always = no
 	}
-
-	history = {
+	history = { 
 		always = no
 	}
-	
-	can_embrace = {
-		owner = { Inst_Can_Banking_Embrace = yes }
+	can_embrace = { 
+		owner = { 
+			AND = { 
+				has_institution = Legalism
+				custom_trigger_tooltip = { 
+					tooltip = Rights_BGCom7HasGreater
+					check_variable = { 
+						which = bbi
+						value = 2
+					}
+				}
+			}
+		}
 	}
-	
-	embracement_speed = {
-		modifier = {
+	embracement_speed = { 
+		modifier = { 
 			factor = 0.75
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { Rights_BGCom8HasGreater = yes }
-					NOT = { has_institution = Banking }
+			potential = { 
+				owner = { 
+					NOT = { 
+						check_variable = { 
+							which = bbi
+							value = 3
+						}
+					}
+					NOT = { 
+						has_institution = Banking
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_BANKING
-				Inst_Can_Banking_Spread = yes
-				any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Rights_BGCom7HasGreater
+							check_variable = { 
+								which = bbi
+								value = 2
+							}
+						}
+					}
+					NOT = { 
+						check_variable = { 
+							which = ijo
+							value = 60
+						}
+					}
+				}
+				any_friendly_coast_border_province = { 
 					Banking = 100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.4
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { Rights_BGCom8HasGreater = yes }
+			potential = { 
+				owner = { 
+					NOT = { 
+						check_variable = { 
+							which = bbi
+							value = 3
+						}
+					}
 					has_institution = Banking
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_BANKING
-				Inst_Can_Banking_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Rights_BGCom7HasGreater
+							check_variable = { 
+								which = bbi
+								value = 2
+							}
+						}
+					}
+					NOT = { 
+						check_variable = { 
+							which = ijo
+							value = 60
+						}
+					}
+				}
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Banking = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.4
-			#scale = yes
-			potential = {
-				owner = {
-					Rights_BGCom8HasGreater = yes
-					NOT = { has_institution = Banking }
+			potential = { 
+				owner = { 
+					check_variable = { 
+						which = bbi
+						value = 3
+					}
+					NOT = { 
+						has_institution = Banking
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_BANKING
-				Inst_Can_Banking_Spread = yes
-				any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Rights_BGCom7HasGreater
+							check_variable = { 
+								which = bbi
+								value = 2
+							}
+						}
+					}
+					NOT = { 
+						check_variable = { 
+							which = ijo
+							value = 60
+						}
+					}
+				}
+				any_friendly_coast_border_province = { 
 					Banking = 100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.6
-			#scale = yes
-			potential = {
-				owner = {
-					Rights_BGCom8HasGreater = yes
+			potential = { 
+				owner = { 
+					check_variable = { 
+						which = bbi
+						value = 3
+					}
 					has_institution = Banking
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_BANKING
-				Inst_Can_Banking_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Rights_BGCom7HasGreater
+							check_variable = { 
+								which = bbi
+								value = 2
+							}
+						}
+					}
+					NOT = { 
+						check_variable = { 
+							which = ijo
+							value = 60
+						}
+					}
+				}
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Banking = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { Rights_BGCom8HasGreater = yes }
+			potential = { 
+				owner = { 
+					NOT = { 
+						check_variable = { 
+							which = bbi
+							value = 3
+						}
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_BANKING
-
-				Inst_Can_Banking_Spread = yes
-
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Rights_BGCom7HasGreater
+							check_variable = { 
+								which = bbi
+								value = 2
+							}
+						}
+					}
+					NOT = { 
+						check_variable = { 
+							which = ijo
+							value = 60
+						}
+					}
+				}
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Banking
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2
-			#scale = yes
-			potential = {
-				owner = {
-					Rights_BGCom8HasGreater = yes
+			potential = { 
+				owner = { 
+					check_variable = { 
+						which = bbi
+						value = 3
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_BANKING
-
-				Inst_Can_Banking_Spread = yes
-
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Rights_BGCom7HasGreater
+							check_variable = { 
+								which = bbi
+								value = 2
+							}
+						}
+					}
+					NOT = { 
+						check_variable = { 
+							which = ijo
+							value = 60
+						}
+					}
+				}
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Banking
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					is_colonial_nation = yes
 				}
-				Inst_Can_Banking_Spread = yes
+				AND = { 
+					Legalism = 100
+					owner = { 
+						custom_trigger_tooltip = { 
+							tooltip = Rights_BGCom7HasGreater
+							check_variable = { 
+								which = bbi
+								value = 2
+							}
+						}
+					}
+					NOT = { 
+						check_variable = { 
+							which = ijo
+							value = 60
+						}
+					}
+				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = PORT_OR_CAPITAL_IN_COLONY_BANKING
-				OR = {
+				OR = { 
 					has_province_flag = TN_COT
 					has_port = yes
 					is_capital = yes
 				}
-				owner = {
+				owner = { 
 					is_colonial_nation = yes
-					overlord = { has_institution = Banking }
+					overlord = { 
+						has_institution = Banking
+					}
 				}
 			}
 		}
-
-		modifier = {
+		modifier = { 
 			factor = 6.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Banking_6.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Banking_3.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.6
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Banking_1.6
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Banking_0.8
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Banking_0.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Banking_0.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Banking_0.1
 			}
 		}
 	}
-	
-	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income. (Or it has a more than long term goal...)
+	ai_will_do = { 
 		factor = 6
-		
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			is_at_war = yes
 		}
 	}
 }
-
-#Casual Literacy. Should we make it necessary for the protestant reformation?
-
-Casual_Literacy = {
+Casual_Literacy = { 
 	penalty = 0.5
-	bonus = {
-		#technology_cost = -1
-	
+	bonus = { 
 		global_institution_spread = 0.1
 		institution_spread_from_true_faith = 0.1
 		global_autonomy = -0.01
-		
 		years_of_nationalism = 5
 	}
-	
 	historical_start_date = 1500.1.1
-	
-	can_start = {
-		hidden_trigger = { province_id = 5154 }
-		Inst_Can_Casual_Literacy_Spawn = yes
-	}
-	start_chance = 100
-	
-	on_start = institutions.004
-
-	history = {
-		always = no
-	}
-	
-	can_embrace = {
-		owner = { Inst_Can_Casual_Literacy_Embrace = yes }
-	}
-	
-	embracement_speed = {
-		modifier = {
-			factor = 1.2
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { has_institution = Casual_Literacy }
+	can_start = { 
+		hidden_trigger = { 
+			province_id = 5154
+		}
+		AND = { 
+			OR = { 
+				is_year = 1500
+				any_country = { 
+					exists = yes
+					adm_tech = 21
+					always = yes
 				}
 			}
-			custom_trigger_tooltip = {
+		}
+	}
+	start_chance = 100
+	on_start = institutions.004
+	history = { 
+		always = no
+	}
+	can_embrace = { 
+		owner = { 
+			AND = { 
+				has_institution = Legalism
+				has_institution = Banking
+			}
+		}
+	}
+	embracement_speed = { 
+		modifier = { 
+			factor = 1.2
+			potential = { 
+				owner = { 
+					NOT = { 
+						has_institution = Casual_Literacy
+					}
+				}
+			}
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_CASUAL_LITERACY
-				Inst_Can_Casual_Literacy_Spread = yes
-				any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					Banking = 100
+				}
+				any_friendly_coast_border_province = { 
 					Casual_Literacy = 100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					has_institution = Casual_Literacy
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_CASUAL_LITERACY
-				Inst_Can_Casual_Literacy_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					Banking = 100
+				}
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Casual_Literacy = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_CASUAL_LITERACY
-
-				Inst_Can_Casual_Literacy_Spread = yes
-
+				AND = { 
+					Legalism = 100
+					Banking = 100
+				}
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Casual_Literacy
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					is_colonial_nation = yes
 				}
-				Inst_Can_Casual_Literacy_Spread = yes
+				AND = { 
+					Legalism = 100
+					Banking = 100
+				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = PORT_OR_CAPITAL_IN_COLONY_CASUAL_LITERACY
-				OR = {
+				OR = { 
 					has_province_flag = TN_COT
 					has_port = yes
 					is_capital = yes
 				}
-				owner = {
+				owner = { 
 					is_colonial_nation = yes
-					overlord = { has_institution = Casual_Literacy }
+					overlord = { 
+						has_institution = Casual_Literacy
+					}
 				}
 			}
 		}
-
-		modifier = {
+		modifier = { 
 			factor = -0.2
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = INST_BASE_DECAY
 				always = yes
 			}
 		}
-
-		modifier = {
+		modifier = { 
 			factor = 6.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Casual_Literacy_6.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Casual_Literacy_3.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.6
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Casual_Literacy_1.6
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Casual_Literacy_0.8
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Casual_Literacy_0.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Casual_Literacy_0.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Casual_Literacy_0.1
 			}
 		}
 	}
-	
-	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income. (Or it has a more than long term goal...)
+	ai_will_do = { 
 		factor = 6
-		
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			is_at_war = yes
 		}
 	}
 }
-
-#The Columbian Exchange. Improved crop yields and new tax types
-
-Columbian_Exchange = {
+Columbian_Exchange = { 
 	penalty = 0.35
-	bonus = {
-		#technology_cost = -1
+	bonus = { 
 		global_trade_goods_size_modifier = 0.01
 	}
-
 	historical_start_date = 1500.1.1
-	
-	can_start = {
-		hidden_trigger = { province_id = 5154 }
-		Inst_Can_Columbian_Exchange_Spawn = yes
-	}
-	
-	on_start = institutions.005
-	
-	history = {
-		always = no
-	}
-	
-	can_embrace = {
-		owner = { Inst_Can_Columbian_Exchange_Embrace = yes }
-	}
-	
-	embracement_speed = {
-		modifier = {
-			factor = 7.68 
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { has_institution = Columbian_Exchange }
+	can_start = { 
+		hidden_trigger = { 
+			province_id = 5154
+		}
+		any_country = { 
+			exists = yes
+			OR = { 
+				is_colonial_nation = yes
+				AND = { 
+					OR = { 
+						technology_group = north_american
+						technology_group = mesoamerican
+						technology_group = south_american
+						technology_group = andean
+						technology_group = high_american
+					}
+					any_owned_province = { 
+						has_port = yes
+						NOT = { 
+							continent = south_america
+							continent = north_america
+							continent = oceania
+						}
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+		}
+	}
+	on_start = institutions.005
+	history = { 
+		always = no
+	}
+	can_embrace = { 
+		owner = { 
+			always = yes
+		}
+	}
+	embracement_speed = { 
+		modifier = { 
+			factor = 7.68
+			potential = { 
+				owner = { 
+					NOT = { 
+						has_institution = Columbian_Exchange
+					}
+				}
+			}
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_COLUMBIAN_EXCHANGE
-				Inst_Can_Columbian_Exchange_Spread = yes
-				any_friendly_coast_border_province = {
+				always = yes
+				any_friendly_coast_border_province = { 
 					Columbian_Exchange = 100
 				}
 			}
 		}
-		modifier = {
-			factor = 15.36 
-			#scale = yes
-			potential = {
-				owner = {
+		modifier = { 
+			factor = 15.36
+			potential = { 
+				owner = { 
 					has_institution = Columbian_Exchange
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_COLUMBIAN_EXCHANGE
-				Inst_Can_Columbian_Exchange_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				always = yes
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Columbian_Exchange = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
-			factor = 15.36 
-			#scale = yes
-			custom_trigger_tooltip = {
+		modifier = { 
+			factor = 15.36
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_COLUMBIAN_EXCHANGE
-
-				Inst_Can_Columbian_Exchange_Spread = yes
-
+				always = yes
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Columbian_Exchange
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
-			factor = 32 
-			#scale = yes
-			potential = {
-				owner = {
+		modifier = { 
+			factor = 32
+			potential = { 
+				owner = { 
 					is_colonial_nation = yes
 				}
-				Inst_Can_Columbian_Exchange_Spread = yes
+				always = yes
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = PORT_OR_CAPITAL_IN_COLONY_COLUMBIAN_EXCHANGE
-				OR = {
+				OR = { 
 					has_province_flag = TN_COT
 					has_port = yes
 					is_capital = yes
 				}
-				owner = {
+				owner = { 
 					is_colonial_nation = yes
-					overlord = { has_institution = Columbian_Exchange }
+					overlord = { 
+						has_institution = Columbian_Exchange
+					}
 				}
 			}
 		}
-		
-		modifier = {
+		modifier = { 
 			factor = 6.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Columbian_Exchange_6.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Columbian_Exchange_3.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.6
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Columbian_Exchange_1.6
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Columbian_Exchange_0.8
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Columbian_Exchange_0.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Columbian_Exchange_0.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Columbian_Exchange_0.1
 			}
 		}
-		
 	}
-	
-	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income. (Or it has a more than long term goal...)
+	ai_will_do = { 
 		factor = 6
-		
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			is_at_war = yes
 		}
 	}
 }
-
-# Scientific method. Arguably an anachronism, but I like my beakers of coloured liquid
-
-Scientific_Method = {
+Scientific_Method = { 
 	penalty = 0.75
-	bonus = {
-		#technology_cost = -1
-		
+	bonus = { 
 		mil_tech_cost_modifier = -0.05
 		dip_tech_cost_modifier = -0.05
 	}
-
 	historical_start_date = 1550.1.1
-
-	can_start = {
-		hidden_trigger = { province_id = 5154 }
-		Inst_Can_Scientific_Method_Spawn = yes
-	}
-	
-	start_chance = 100
-	
-	on_start = institutions.006
-
-	history = {
-		always = no
-	}
-	
-	can_embrace = {
-		owner = { Inst_Can_Scientific_Method_Embrace = yes }
-	}
-	
-	embracement_speed = {
-		modifier = {
-			factor = 1.2
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { has_institution = Scientific_Method }
+	can_start = { 
+		hidden_trigger = { 
+			province_id = 5154
+		}
+		AND = { 
+			OR = { 
+				is_year = 1620
+				any_country = { 
+					exists = yes
+					adm_tech = 27
+					AND = { 
+						has_institution = Casual_Literacy
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+		}
+	}
+	start_chance = 100
+	on_start = institutions.006
+	history = { 
+		always = no
+	}
+	can_embrace = { 
+		owner = { 
+			AND = { 
+				has_institution = Legalism
+				has_institution = Casual_Literacy
+			}
+		}
+	}
+	embracement_speed = { 
+		modifier = { 
+			factor = 1.2
+			potential = { 
+				owner = { 
+					NOT = { 
+						has_institution = Scientific_Method
+					}
+				}
+			}
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_SCIENTIFIC_METHOD
-				Inst_Can_Scientific_Method_Spread = yes
-				any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					Casual_Literacy = 100
+					owner = { 
+						adm_tech = 20
+					}
+				}
+				any_friendly_coast_border_province = { 
 					Scientific_Method = 100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					has_institution = Scientific_Method
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_SCIENTIFIC_METHOD
-				Inst_Can_Scientific_Method_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					Casual_Literacy = 100
+					owner = { 
+						adm_tech = 20
+					}
+				}
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Scientific_Method = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_SCIENTIFIC_METHOD
-
-				Inst_Can_Scientific_Method_Spread = yes
-
+				AND = { 
+					Legalism = 100
+					Casual_Literacy = 100
+					owner = { 
+						adm_tech = 20
+					}
+				}
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Scientific_Method
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					is_colonial_nation = yes
 				}
-				Inst_Can_Scientific_Method_Spread = yes
+				AND = { 
+					Legalism = 100
+					Casual_Literacy = 100
+					owner = { 
+						adm_tech = 20
+					}
+				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = PORT_OR_CAPITAL_IN_COLONY_SCIENTIFIC_METHOD
-				OR = {
+				OR = { 
 					has_province_flag = TN_COT
 					has_port = yes
 					is_capital = yes
 				}
-				owner = {
+				owner = { 
 					is_colonial_nation = yes
-					overlord = { has_institution = Scientific_Method }
+					overlord = { 
+						has_institution = Scientific_Method
+					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = -0.2
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = INST_BASE_DECAY
 				always = yes
 			}
 		}
-		
-		modifier = {
+		modifier = { 
 			factor = 6.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Scientific_Method_6.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Scientific_Method_3.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.6
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Scientific_Method_1.6
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Scientific_Method_0.8
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Scientific_Method_0.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Scientific_Method_0.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Scientific_Method_0.1
 			}
 		}
 	}
-	
-	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income. (Or it has a more than long term goal...)
+	ai_will_do = { 
 		factor = 6
-		
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			is_at_war = yes
 		}
 	}
 }
-
-#Global trade. Get your citrus on
-
-Global_Trade = {
+Global_Trade = { 
 	penalty = 0.5
-	bonus = {
-		#technology_cost = -1
-		
+	bonus = { 
 		merchants = 1
 		global_foreign_trade_power = 0.2
 		trade_range_modifier = 0.25
 	}
-
 	historical_start_date = 1600.1.1
-
-	can_start = {
-		hidden_trigger = { province_id = 5154 }
-		Inst_Can_Global_Trade_Spawn = yes
-	}
-	start_chance = 100
-	
-	on_start = institutions.007
-
-	history = {
-		always = no
-	}
-	
-	can_embrace = {
-		owner = { Inst_Can_Global_Trade_Embrace = yes }
-	}
-	
-	embracement_speed = {
-		modifier = {
-			factor = 1.2
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { has_institution = Global_Trade }
+	can_start = { 
+		hidden_trigger = { 
+			province_id = 5154
+		}
+		any_country = { 
+			exists = yes
+			AND = { 
+				has_institution = Banking
+				any_owned_province = { 
+					continent = indian_continent
+					has_local_modifier_value = { 
+						which = trade_value
+						value = 2
+					}
+				}
+				any_owned_province = { 
+					continent = southeast_asia
+					has_local_modifier_value = { 
+						which = trade_value
+						value = 2
+					}
+				}
+				any_owned_province = { 
+					continent = africa
+					has_local_modifier_value = { 
+						which = trade_value
+						value = 2
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+		}
+	}
+	start_chance = 100
+	on_start = institutions.007
+	history = { 
+		always = no
+	}
+	can_embrace = { 
+		owner = { 
+			AND = { 
+				has_institution = Legalism
+				OR = { 
+					has_institution = Banking
+					any_owned_province = { 
+						has_local_modifier_value = { 
+							which = trade_value
+							value = 2
+						}
+					}
+				}
+			}
+		}
+	}
+	embracement_speed = { 
+		modifier = { 
+			factor = 1.2
+			potential = { 
+				owner = { 
+					NOT = { 
+						has_institution = Global_Trade
+					}
+				}
+			}
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_GLOBAL_TRADE
-				Inst_Can_Global_Trade_Spread = yes
-				any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					OR = { 
+						Banking = 100
+						has_local_modifier_value = { 
+							which = trade_value
+							value = 4
+						}
+					}
+				}
+				any_friendly_coast_border_province = { 
 					Global_Trade = 100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					has_institution = Global_Trade
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_GLOBAL_TRADE
-				Inst_Can_Global_Trade_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					OR = { 
+						Banking = 100
+						has_local_modifier_value = { 
+							which = trade_value
+							value = 4
+						}
+					}
+				}
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Global_Trade = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_GLOBAL_TRADE
-
-				Inst_Can_Global_Trade_Spread = yes
-
+				AND = { 
+					Legalism = 100
+					OR = { 
+						Banking = 100
+						has_local_modifier_value = { 
+							which = trade_value
+							value = 4
+						}
+					}
+				}
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Global_Trade
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					is_colonial_nation = yes
 				}
-				Inst_Can_Global_Trade_Spread = yes
+				AND = { 
+					Legalism = 100
+					OR = { 
+						Banking = 100
+						has_local_modifier_value = { 
+							which = trade_value
+							value = 4
+						}
+					}
+				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = PORT_OR_CAPITAL_IN_COLONY_GLOBAL_TRADE
-				OR = {
+				OR = { 
 					has_province_flag = TN_COT
 					has_port = yes
 					is_capital = yes
 				}
-				owner = {
+				owner = { 
 					is_colonial_nation = yes
-					overlord = { has_institution = Global_Trade }
+					overlord = { 
+						has_institution = Global_Trade
+					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = -0.2
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = INST_BASE_DECAY
 				always = yes
 			}
 		}
-		
-		modifier = {
+		modifier = { 
 			factor = 6.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Global_Trade_6.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Global_Trade_3.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.6
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Global_Trade_1.6
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Global_Trade_0.8
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Global_Trade_0.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Global_Trade_0.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Global_Trade_0.1
 			}
 		}
 	}
-	
-	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income. (Or it has a more than long term goal...)
+	ai_will_do = { 
 		factor = 6
-		
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			is_at_war = yes
 		}
 	}
 }
-
-#Academia. Accelerates other institutions, education and permits/encourages liberalism
-
-Academia = {
+Academia = { 
 	penalty = 1.00
-	bonus = {
-		#technology_cost = -1
-		
+	bonus = { 
 		idea_cost = -0.1
 		global_institution_spread = 0.1
 		adm_tech_cost_modifier = -0.05
 		advisor_pool = 1
 	}
-
 	historical_start_date = 1650.1.1
-
-	can_start = {
-		hidden_trigger = { province_id = 5154 }
-		Inst_Can_Academia_Spawn = yes
-	}
-	start_chance = 100
-	
-	on_start = institutions.008
-
-	history = {
-		always = no
-	}
-	
-	can_embrace = {
-		owner = { Inst_Can_Academia_Embrace = yes }
-	}
-	
-	embracement_speed = {
-		modifier = {
-			factor = 1.2
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { has_institution = Academia }
+	can_start = { 
+		hidden_trigger = { 
+			province_id = 5154
+		}
+		AND = { 
+			OR = { 
+				is_year = 1710
+				any_country = { 
+					exists = yes
+					adm_tech = 36
+					has_institution = Scientific_Method
 				}
 			}
-			custom_trigger_tooltip = {
+		}
+	}
+	start_chance = 100
+	on_start = institutions.008
+	history = { 
+		always = no
+	}
+	can_embrace = { 
+		owner = { 
+			AND = { 
+				has_institution = Legalism
+				has_institution = Scientific_Method
+			}
+		}
+	}
+	embracement_speed = { 
+		modifier = { 
+			factor = 1.2
+			potential = { 
+				owner = { 
+					NOT = { 
+						has_institution = Academia
+					}
+				}
+			}
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_ACADEMIA
-				Inst_Can_Academia_Spread = yes
-				any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					Scientific_Method = 100
+					owner = { 
+						adm_tech = 30
+					}
+				}
+				any_friendly_coast_border_province = { 
 					Academia = 100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					has_institution = Academia
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_ACADEMIA
-				Inst_Can_Academia_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				AND = { 
+					Legalism = 100
+					Scientific_Method = 100
+					owner = { 
+						adm_tech = 30
+					}
+				}
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Academia = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_ACADEMIA
-
-				Inst_Can_Academia_Spread = yes
-
+				AND = { 
+					Legalism = 100
+					Scientific_Method = 100
+					owner = { 
+						adm_tech = 30
+					}
+				}
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Academia
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					is_colonial_nation = yes
 				}
-				Inst_Can_Academia_Spread = yes
+				AND = { 
+					Legalism = 100
+					Scientific_Method = 100
+					owner = { 
+						adm_tech = 30
+					}
+				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = PORT_OR_CAPITAL_IN_COLONY_ACADEMIA
-				OR = {
+				OR = { 
 					has_province_flag = TN_COT
 					has_port = yes
 					is_capital = yes
 				}
-				owner = {
+				owner = { 
 					is_colonial_nation = yes
-					overlord = { has_institution = Academia }
+					overlord = { 
+						has_institution = Academia
+					}
 				}
 			}
 		}
-		
-		modifier = {
+		modifier = { 
 			factor = 6.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Academia_6.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Academia_3.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.6
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Academia_1.6
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Academia_0.8
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Academia_0.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Academia_0.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Academia_0.1
 			}
 		}
-		
-		modifier = {
+		modifier = { 
 			factor = -0.2
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = INST_BASE_DECAY
 				always = yes
 			}
 		}
 	}
-	
-	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income. (Or it has a more than long term goal...)
+	ai_will_do = { 
 		factor = 6
-		
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			is_at_war = yes
 		}
 	}
 }
-
-#Nationalism. Improved morale etc but also.. nationalism
-
-Nationalism = {
+Nationalism = { 
 	penalty = 0.75
-	bonus = {
-		#technology_cost = -1
-		
+	bonus = { 
 		manpower_recovery_speed = 0.10
 		war_exhaustion = -0.01
 		land_morale = 0.025
 		liberty_desire = 5
-
 		years_of_nationalism = 20
 	}
-	
 	historical_start_date = 1700.1.1
-
-	can_start = {
-		hidden_trigger = { province_id = 5154 }
-		Inst_Can_Nationalism_Spawn = yes
-	}
-	start_chance = 100
-	
-	on_start = institutions.009
-
-	history = {
-		always = no
-	}
-	
-	can_embrace = {
-		owner = { Inst_Can_Nationalism_Embrace = yes }
-	}
-	
-	embracement_speed = {
-		modifier = {
-			factor = 1.2
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { has_institution = Nationalism }
+	can_start = { 
+		hidden_trigger = { 
+			province_id = 5154
+		}
+		AND = { 
+			OR = { 
+				is_year = 1740
+				any_country = { 
+					exists = yes
+					adm_tech = 42
+					has_institution = Casual_Literacy
 				}
 			}
-			custom_trigger_tooltip = {
+		}
+	}
+	start_chance = 100
+	on_start = institutions.009
+	history = { 
+		always = no
+	}
+	can_embrace = { 
+		owner = { 
+			has_institution = Casual_Literacy
+		}
+	}
+	embracement_speed = { 
+		modifier = { 
+			factor = 1.2
+			potential = { 
+				owner = { 
+					NOT = { 
+						has_institution = Nationalism
+					}
+				}
+			}
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_NATIONALISM
-				Inst_Can_Nationalism_Spread = yes
-				any_friendly_coast_border_province = {
+				Casual_Literacy = 100
+				any_friendly_coast_border_province = { 
 					Nationalism = 100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					has_institution = Nationalism
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_NATIONALISM
-				Inst_Can_Nationalism_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				Casual_Literacy = 100
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Nationalism = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_NATIONALISM
-
-				Inst_Can_Nationalism_Spread = yes
-
+				Casual_Literacy = 100
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Nationalism
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					is_colonial_nation = yes
 				}
-				Inst_Can_Nationalism_Spread = yes
+				Casual_Literacy = 100
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = PORT_OR_CAPITAL_IN_COLONY_NATIONALISM
-				OR = {
+				OR = { 
 					has_province_flag = TN_COT
 					has_port = yes
 					is_capital = yes
 				}
-				owner = {
+				owner = { 
 					is_colonial_nation = yes
-					overlord = { has_institution = Nationalism }
+					overlord = { 
+						has_institution = Nationalism
+					}
 				}
 			}
 		}
-		
-		modifier = {
+		modifier = { 
 			factor = 6.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Nationalism_6.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Nationalism_3.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.6
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Nationalism_1.6
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Nationalism_0.8
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Nationalism_0.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Nationalism_0.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Nationalism_0.1
 			}
 		}
-		
-		modifier = {
+		modifier = { 
 			factor = -0.2
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = INST_BASE_DECAY
 				always = yes
 			}
 		}
 	}
-	
-	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income. (Or it has a more than long term goal...)
+	ai_will_do = { 
 		factor = 6
-		
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			is_at_war = yes
 		}
 	}
 }
-
-#steam stronk
-
-Industrialisation = {
+Industrialisation = { 
 	penalty = 1
-	bonus = {
-		#technology_cost = -1
-		
+	bonus = { 
 		global_ship_repair = 0.1
 		reinforce_speed = 0.1
 		global_regiment_recruit_speed = -0.1
 		global_ship_recruit_speed = -0.1
 	}
-	
 	historical_start_date = 1750.1.1
-
-	can_start = {
-		hidden_trigger = { province_id = 5154 }
-		Inst_Can_Industrialisation_Spawn = yes
-	}
-	start_chance = 100
-	
-	on_start = institutions.010
-
-	history = {
-		always = no
-	}
-	
-	can_embrace = {
-		owner = { Inst_Can_Industrialisation_Embrace = yes }
-	}
-	
-	embracement_speed = {
-		modifier = {
-			factor = 1.2
-			#scale = yes
-			potential = {
-				owner = {
-					NOT = { has_institution = Industrialisation }
+	can_start = { 
+		hidden_trigger = { 
+			province_id = 5154
+		}
+		AND = { 
+			OR = { 
+				is_year = 1750
+				any_country = { 
+					exists = yes
+					adm_tech = 46
+					AND = { 
+						adm_tech = 34
+						has_institution = Banking
+						has_institution = Scientific_Method
+					}
 				}
 			}
-			custom_trigger_tooltip = {
+		}
+	}
+	start_chance = 100
+	on_start = institutions.010
+	history = { 
+		always = no
+	}
+	can_embrace = { 
+		owner = { 
+			AND = { 
+				has_institution = Banking
+				has_institution = Scientific_Method
+			}
+		}
+	}
+	embracement_speed = { 
+		modifier = { 
+			factor = 1.2
+			potential = { 
+				owner = { 
+					NOT = { 
+						has_institution = Industrialisation
+					}
+				}
+			}
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_INDUSTRIALISATION
-				Inst_Can_Industrialisation_Spread = yes
-				any_friendly_coast_border_province = {
+				AND = { 
+					owner = { 
+						adm_tech = 34
+					}
+					Banking = 100
+					Scientific_Method = 100
+					check_variable = { 
+						which = dce
+						value = 1
+					}
+				}
+				any_friendly_coast_border_province = { 
 					Industrialisation = 100
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					has_institution = Industrialisation
 				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = FRIENDLY_NEIGHBOR_OR_COAST_PROVINCE_HAS_EMBRACED_INDUSTRIALISATION
-				Inst_Can_Industrialisation_Spread = yes
-				OR = {
-					any_friendly_coast_border_province = {
+				AND = { 
+					owner = { 
+						adm_tech = 34
+					}
+					Banking = 100
+					Scientific_Method = 100
+					check_variable = { 
+						which = dce
+						value = 1
+					}
+				}
+				OR = { 
+					any_friendly_coast_border_province = { 
 						Industrialisation = 100
 					}
 					is_capital = yes
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 2.4
-			#scale = yes
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TRADE_NATION_HAS_EMBRACED_INDUSTRIALISATION
-
-				Inst_Can_Industrialisation_Spread = yes
-
+				AND = { 
+					owner = { 
+						adm_tech = 34
+					}
+					Banking = 100
+					Scientific_Method = 100
+					check_variable = { 
+						which = dce
+						value = 1
+					}
+				}
 				has_province_flag = TN_COT
-				any_country = {
+				any_country = { 
 					has_institution = Industrialisation
-
-					OR = {
+					OR = { 
 						technology_group = PREV
 						religion_group = PREV
 						culture_group = PREV
 					}
-					PREV = {
-						OR = {
+					PREV = { 
+						OR = { 
 							has_merchant = PREV
-
-							has_trade_modifier = { who = PREV key = trade_capital }
+							has_trade_modifier = { 
+								who = PREV
+								key = trade_capital
+							}
 						}
 					}
 				}
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 5
-			#scale = yes
-			potential = {
-				owner = {
+			potential = { 
+				owner = { 
 					is_colonial_nation = yes
 				}
-				Inst_Can_Industrialisation_Spread = yes
+				AND = { 
+					owner = { 
+						adm_tech = 34
+					}
+					Banking = 100
+					Scientific_Method = 100
+					check_variable = { 
+						which = dce
+						value = 1
+					}
+				}
 			}
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = PORT_OR_CAPITAL_IN_COLONY_INDUSTRIALIZATION
-				OR = {
+				OR = { 
 					has_province_flag = TN_COT
 					has_port = yes
 					is_capital = yes
 				}
-				owner = {
+				owner = { 
 					is_colonial_nation = yes
-					overlord = { has_institution = Industrialisation }
+					overlord = { 
+						has_institution = Industrialisation
+					}
 				}
 			}
 		}
-		
-		modifier = {
+		modifier = { 
 			factor = 6.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Industrialisation_6.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 3.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Industrialisation_3.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.6
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Industrialisation_1.6
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.8
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Industrialisation_0.8
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.4
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Industrialisation_0.4
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.2
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Industrialisation_0.2
 			}
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.1
-			potential = {
+			potential = { 
 				always = yes
 			}
-			
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = tooltip_institution_invent
 				has_province_flag = Inst_Progress_Industrialisation_0.1
 			}
 		}
-		
-		modifier = {
+		modifier = { 
 			factor = -0.2
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = INST_BASE_DECAY
 				always = yes
 			}
 		}
 	}
-	
-	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income. (Or it has a more than long term goal...)
+	ai_will_do = { 
 		factor = 6
-		
-		modifier = {
+		modifier = { 
 			factor = 0.25
 			is_at_war = yes
 		}
 	}
 }
-

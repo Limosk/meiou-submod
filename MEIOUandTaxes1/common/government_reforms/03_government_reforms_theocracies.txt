@@ -1,4 +1,4 @@
-theocracy_mechanic = {
+theocracy_mechanic = { 
 	has_devotion = yes
 	rulers_can_be_generals = no
 	heirs_can_be_generals = no
@@ -7,189 +7,234 @@ theocracy_mechanic = {
 	different_religion_group_acceptance = -50
 	religion = yes
 	heir = no
-	basic_reform = yes # = invisible/does not take up a slot
+	basic_reform = yes
 	valid_for_nation_designer = no
 }
-Pol_Mediumship1 = {				#Election; The leader is elected from among the senior members of the group.
+Pol_Mediumship1 = { 
 	icon = "dutch_republic"
 	allow_normal_conversion = yes
-	potential = {
+	potential = { 
 		always = yes
 	}
-	trigger = {
-		OR = {
-			NOT = { religion = catholic }
-			NOT = { is_key_equal = { lhs = Pol_Organisation value = 0 } }
+	trigger = { 
+		OR = { 
+			NOT = { 
+				religion = catholic
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = grq
+					value = 0
+				}
+			}
 		}
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 0
-	
 	has_term_election = no
-	
-	modifiers = {
-	    papal_influence = -1
+	modifiers = { 
+		papal_influence = -1
 	}
-	effect = {
-		hidden_effect = { set_key = { lhs = Pol_Mediumship value = 0 } }
+	effect = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = grp
+				value = 0
+			}
+		}
 	}
-	custom_attributes = {
+	custom_attributes = { 
 		election_on_death = yes
 	}
 }
-Pol_Mediumship2 = {				#Inheritance; The leadership is passed down in a hereditary fashion, though the specifics may vary from one succession to the next.
+Pol_Mediumship2 = { 
 	icon = "pope"
 	allow_normal_conversion = yes
 	legacy_equivalent = Theocracy_Inherited
-	potential = {
+	potential = { 
 		always = yes
 	}
-	trigger = {
-		OR = {
-			NOT = { religion = catholic }
-			NOT = { is_key_equal = { lhs = Pol_Organisation value = 0 } }
+	trigger = { 
+		OR = { 
+			NOT = { 
+				religion = catholic
+			}
+			NOT = { 
+				is_variable_equal = { 
+					which = grq
+					value = 0
+				}
+			}
 		}
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 0
-	
 	heir = yes
-	
-	modifiers = {
-	    papal_influence = -1
+	modifiers = { 
+		papal_influence = -1
 	}
-	effect = {
-		hidden_effect = { set_key = { lhs = Pol_Mediumship value = 1 } }
+	effect = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = grp
+				value = 1
+			}
+		}
 	}
 }
-Pol_Mediumship3 = {				#Appointment; The church sui juris appoints the leadership of the country, which is legally subordinate.
+Pol_Mediumship3 = { 
 	icon = "religious_leader"
 	allow_normal_conversion = yes
 	legacy_equivalent = Theocracy_Shepardic
-	potential = {
+	potential = { 
 		always = yes
 	}
-	trigger = {
-		OR = {
-			AND = {
-				religion = catholic 
-				NOT = {
+	trigger = { 
+		OR = { 
+			AND = { 
+				religion = catholic
+				NOT = { 
 					tag = PAP
 				}
 			}
-			is_key_equal = { lhs = Pol_Organisation value = 0 }
+			is_variable_equal = { 
+				which = grq
+				value = 0
+			}
 		}
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 0
-	
-	
-	modifiers = {
-	    papal_influence = 0.5
+	modifiers = { 
+		papal_influence = 0.5
 	}
-	effect = {
-		hidden_effect = { set_key = { lhs = Pol_Mediumship value = 2 } }
+	effect = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = grp
+				value = 2
+			}
+		}
 	}
 }
-Pol_Mediumship4 = {				#Conclave; The Pope is elected in conclave by an electorate of cardinals appointed by the previous popes.
+Pol_Mediumship4 = { 
 	icon = "papacy"
 	allow_normal_conversion = no
 	legacy_equivalent = Theocracy_Papal
-	potential = {
+	potential = { 
 		religion = catholic
 	}
-	trigger = {
+	trigger = { 
 		tag = PAP
 	}
 	valid_for_nation_designer = no
-	
 	papacy = yes
 	allow_convert = no
-	
-	modifiers = {
-	    papal_influence = 0.75
+	modifiers = { 
+		papal_influence = 0.75
 	}
-	effect = {
-		hidden_effect = { set_key = { lhs = Pol_Mediumship value = 3 } }
+	effect = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = grp
+				value = 3
+			}
+		}
 	}
-	custom_attributes = {
+	custom_attributes = { 
 		locked_government_type = yes
 	}
 }
-Pol_Organisation1 = {			#Local Particular; The church forms a part of a larger church sui juris, and does not exist under its own authority.
+Pol_Organisation1 = { 
 	icon = "misl_confederacy"
 	allow_normal_conversion = yes
-	potential = {
+	potential = { 
 		always = yes
 	}
-	trigger = {
+	trigger = { 
 		always = yes
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 0
-	modifiers = {
-	}
-	effect = {
-		hidden_effect = { set_key = { lhs = Pol_Organisation value = 0 } }
-		if = {
-			limit = {
+	modifiers = { }
+	effect = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = grq
+				value = 0
+			}
+		}
+		if = { 
+			limit = { 
 				religion = catholic
 			}
 			add_government_reform = Pol_Mediumship3
 		}
 	}
 }
-Pol_Organisation2 = {			#Chartered; The organisation is given constitution through a charter outlining its purpose and structure, issued by its parent religious authority.
+Pol_Organisation2 = { 
 	icon = "ottoman_government"
 	allow_normal_conversion = yes
 	legacy_equivalent = Theocracy_Proselytic
-	potential = {
+	potential = { 
 		always = yes
 	}
-	trigger = {
+	trigger = { 
 		always = yes
 	}
 	rulers_can_be_generals = yes
 	heirs_can_be_generals = yes
 	monastic = yes
-	modifiers = {
-	}
-	effect = {
-		hidden_effect = { set_key = { lhs = Pol_Organisation value = 1 } }
+	modifiers = { }
+	effect = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = grq
+				value = 1
+			}
+		}
 	}
 }
-Pol_Organisation3 = {				#Sovereign; An independent religious group, existing under its own spiritual authority and without necessary allegiance to any higher religious organisation.
+Pol_Organisation3 = { 
 	icon = "church"
 	allow_normal_conversion = yes
-	potential = {
+	potential = { 
 		always = yes
 	}
-	trigger = {
+	trigger = { 
 		always = yes
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 0
-	modifiers = {
-	}
-	effect = {
-		hidden_effect = { set_key = { lhs = Pol_Organisation value = 2 } }
+	modifiers = { }
+	effect = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = grq
+				value = 2
+			}
+		}
 	}
 }
-Pol_Organisation4 = {				#Secular; Suppress the temporal authority of the religious offices, reorganising the state to take on a largely secular form.
+Pol_Organisation4 = { 
 	icon = "nayankara_system"
 	allow_normal_conversion = yes
-	potential = {
+	potential = { 
 		always = yes
 	}
-	trigger = {
+	trigger = { 
 		always = yes
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 0
-	modifiers = {
-	}
-	effect = {
-		hidden_effect = { set_key = { lhs = Pol_Organisation value = 3 } }
+	modifiers = { }
+	effect = { 
+		hidden_effect = { 
+			set_variable = { 
+				which = grq
+				value = 3
+			}
+		}
 		change_government = monarchy
 		remove_country_modifier = Teuton_Pilgrims
 		remove_country_modifier = Livonian_Pilgrims

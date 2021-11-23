@@ -1,409 +1,720 @@
-country_decisions = {
-	burgundy_artois_marriage = {
-		potential = {
+country_decisions = { 
+	burgundy_artois_marriage = { 
+		potential = { 
 			tag = BUR
 			NOT = { is_lesser_in_union = yes }
 			is_female = no
-			NOT = { has_country_modifier = expansion_trough_marriage }
+			NOT = { 
+				has_country_modifier = expansion_trough_marriage
+			}
 			exists = ARS
-			ARS = {
+			ARS = { 
 				is_female = yes
-				monarchy_or_harem_gov = yes
-				is_at_war = no
-				ai = yes
-				OR = {
-					is_free_or_tributary_trigger = yes
-					is_subject_of = BUR
-					AND = {
-						is_subject_other_than_tributary_trigger = yes
-						overlord = { ai = yes }
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
 					}
 				}
-				NOT = { has_country_flag = bur_inherit }
+				is_at_war = no
+				ai = yes
+				OR = { 
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+					is_subject_of = BUR
+					AND = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+						}
+						overlord = { 
+							ai = yes
+						}
+					}
+				}
+				NOT = { 
+					has_country_flag = bur_inherit
+				}
 			}
 		}
-		allow = {
+		allow = { 
 			dip = 3
 			is_at_war = no
 		}
-		effect = {
-			add_ruler_modifier = { name = "expansion_trough_marriage" }
-			ARS = {
-				country_event = { id = flavor_bur.1051 days = 0 }
+		effect = { 
+			add_ruler_modifier = { 
+				name = "expansion_trough_marriage"
 			}
-			if = {
-				limit = {
-					ARS = { has_ruler = "Margarethe III" }
+			ARS = { 
+				country_event = { 
+					id = flavor_bur.1051
+					days = 0
+				}
+			}
+			if = { 
+				limit = { 
+					ARS = { 
+						has_ruler = "Margarethe III"
+					}
 				}
 				set_country_flag = margarethe_marriage
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	
-	burgundy_flanders_marriage = {
-		potential = {
+	burgundy_flanders_marriage = { 
+		potential = { 
 			tag = BUR
 			NOT = { is_lesser_in_union = yes }
 			is_female = no
-			NOT = { has_country_modifier = expansion_trough_marriage }
+			NOT = { 
+				has_country_modifier = expansion_trough_marriage
+			}
 			exists = FLA
-			FLA = {
+			FLA = { 
 				is_female = yes
-				monarchy_or_harem_gov = yes
-				ai = yes
-				OR = {
-					is_free_or_tributary_trigger = yes
-					is_subject_of = BUR
-					AND = {
-						is_subject_other_than_tributary_trigger = yes
-						overlord = { ai = yes }
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
 					}
 				}
-				NOT = { has_country_flag = bur_inherit }
+				ai = yes
+				OR = { 
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+					is_subject_of = BUR
+					AND = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+						}
+						overlord = { 
+							ai = yes
+						}
+					}
+				}
+				NOT = { 
+					has_country_flag = bur_inherit
+				}
 			}
 		}
-		allow = {
+		allow = { 
 			dip = 3
 			is_at_war = no
 		}
-		effect = {
-			add_ruler_modifier = { name = "expansion_trough_marriage" }
-			FLA = {
-				country_event = { id = flavor_bur.1051 days = 0 }
+		effect = { 
+			add_ruler_modifier = { 
+				name = "expansion_trough_marriage"
+			}
+			FLA = { 
+				country_event = { 
+					id = flavor_bur.1051
+					days = 0
+				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	
-	burgundy_hainaut_marriage = {
-		potential = {
+	burgundy_hainaut_marriage = { 
+		potential = { 
 			tag = BUR
 			NOT = { is_lesser_in_union = yes }
 			is_female = no
-			NOT = { has_country_modifier = expansion_trough_marriage }
+			NOT = { 
+				has_country_modifier = expansion_trough_marriage
+			}
 			exists = HAI
-			HAI = {
+			HAI = { 
 				is_female = yes
-				monarchy_or_harem_gov = yes
-				ai = yes
-				OR = {
-					is_free_or_tributary_trigger = yes
-					is_subject_of = BUR
-					AND = {
-						is_subject_other_than_tributary_trigger = yes
-						overlord = { ai = yes }
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
 					}
 				}
-				NOT = { has_country_flag = bur_inherit }
+				ai = yes
+				OR = { 
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+					is_subject_of = BUR
+					AND = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+						}
+						overlord = { 
+							ai = yes
+						}
+					}
+				}
+				NOT = { 
+					has_country_flag = bur_inherit
+				}
 			}
 		}
-		allow = {
+		allow = { 
 			dip = 3
 			is_at_war = no
 		}
-		effect = {
-			add_ruler_modifier = { name = "expansion_trough_marriage" }
-			HAI = {
-				country_event = { id = flavor_bur.1051 days = 1 }
+		effect = { 
+			add_ruler_modifier = { 
+				name = "expansion_trough_marriage"
+			}
+			HAI = { 
+				country_event = { 
+					id = flavor_bur.1051
+					days = 1
+				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	
-	burgundy_brabant_marriage = {
-		potential = {
+	burgundy_brabant_marriage = { 
+		potential = { 
 			tag = BUR
 			NOT = { is_lesser_in_union = yes }
 			is_female = no
-			NOT = { has_country_modifier = expansion_trough_marriage }
+			NOT = { 
+				has_country_modifier = expansion_trough_marriage
+			}
 			exists = BRB
-			BRB = {
+			BRB = { 
 				is_female = yes
-				monarchy_or_harem_gov = yes
-				ai = yes
-				OR = {
-					is_free_or_tributary_trigger = yes
-					is_subject_of = BUR
-					AND = {
-						is_subject_other_than_tributary_trigger = yes
-						overlord = { ai = yes }
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
 					}
 				}
-				NOT = { has_country_flag = bur_inherit }
+				ai = yes
+				OR = { 
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+					is_subject_of = BUR
+					AND = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+						}
+						overlord = { 
+							ai = yes
+						}
+					}
+				}
+				NOT = { 
+					has_country_flag = bur_inherit
+				}
 			}
 		}
-		allow = {
+		allow = { 
 			dip = 3
 			is_at_war = no
 		}
-		effect = {
-			add_ruler_modifier = { name = "expansion_trough_marriage" }
-			BRB = {
-				country_event = { id = flavor_bur.1051 days = 1 }
+		effect = { 
+			add_ruler_modifier = { 
+				name = "expansion_trough_marriage"
+			}
+			BRB = { 
+				country_event = { 
+					id = flavor_bur.1051
+					days = 1
+				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	
-	burgundy_holland_marriage = {
-		potential = {
+	burgundy_holland_marriage = { 
+		potential = { 
 			tag = BUR
 			NOT = { is_lesser_in_union = yes }
 			is_female = no
-			NOT = { has_country_modifier = expansion_trough_marriage }
+			NOT = { 
+				has_country_modifier = expansion_trough_marriage
+			}
 			exists = HOL
-			HOL = {
+			HOL = { 
 				is_female = yes
-				monarchy_or_harem_gov = yes
-				ai = yes
-				OR = {
-					is_free_or_tributary_trigger = yes
-					is_subject_of = BUR
-					AND = {
-						is_subject_other_than_tributary_trigger = yes
-						overlord = { ai = yes }
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
 					}
 				}
-				NOT = { has_country_flag = bur_inherit }
+				ai = yes
+				OR = { 
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+					is_subject_of = BUR
+					AND = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+						}
+						overlord = { 
+							ai = yes
+						}
+					}
+				}
+				NOT = { 
+					has_country_flag = bur_inherit
+				}
 			}
 		}
-		allow = {
+		allow = { 
 			dip = 3
 			is_at_war = no
 		}
-		effect = {
-			add_ruler_modifier = { name = "expansion_trough_marriage" }
-			HOL = {
-				country_event = { id = flavor_bur.1051 days = 1 }
+		effect = { 
+			add_ruler_modifier = { 
+				name = "expansion_trough_marriage"
+			}
+			HOL = { 
+				country_event = { 
+					id = flavor_bur.1051
+					days = 1
+				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	
-	burgundy_utrecht_marriage = {
-		potential = {
+	burgundy_utrecht_marriage = { 
+		potential = { 
 			tag = BUR
 			NOT = { is_lesser_in_union = yes }
 			is_female = no
-			NOT = { has_country_modifier = expansion_trough_marriage }
+			NOT = { 
+				has_country_modifier = expansion_trough_marriage
+			}
 			exists = UTR
-			UTR = {
+			UTR = { 
 				is_female = yes
-				monarchy_or_harem_gov = yes
-				ai = yes
-				OR = {
-					is_free_or_tributary_trigger = yes
-					is_subject_of = BUR
-					AND = {
-						is_subject_other_than_tributary_trigger = yes
-						overlord = { ai = yes }
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
 					}
 				}
-				NOT = { has_country_flag = bur_inherit }
+				ai = yes
+				OR = { 
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+					is_subject_of = BUR
+					AND = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+						}
+						overlord = { 
+							ai = yes
+						}
+					}
+				}
+				NOT = { 
+					has_country_flag = bur_inherit
+				}
 			}
 		}
-		allow = {
+		allow = { 
 			dip = 3
 			is_at_war = no
 		}
-		effect = {
-			add_ruler_modifier = { name = "expansion_trough_marriage" }
-			UTR = {
-				country_event = { id = flavor_bur.1051 days = 1 }
+		effect = { 
+			add_ruler_modifier = { 
+				name = "expansion_trough_marriage"
+			}
+			UTR = { 
+				country_event = { 
+					id = flavor_bur.1051
+					days = 1
+				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	
-	burgundy_gelre_marriage = {
-		potential = {
+	burgundy_gelre_marriage = { 
+		potential = { 
 			tag = BUR
 			NOT = { is_lesser_in_union = yes }
 			is_female = no
-			NOT = { has_country_modifier = expansion_trough_marriage }
+			NOT = { 
+				has_country_modifier = expansion_trough_marriage
+			}
 			exists = GEL
-			GEL = {
+			GEL = { 
 				is_female = yes
-				monarchy_or_harem_gov = yes
-				ai = yes
-				OR = {
-					is_free_or_tributary_trigger = yes
-					is_subject_of = BUR
-					AND = {
-						is_subject_other_than_tributary_trigger = yes
-						overlord = { ai = yes }
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
 					}
 				}
-				NOT = { has_country_flag = bur_inherit }
+				ai = yes
+				OR = { 
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+					is_subject_of = BUR
+					AND = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+						}
+						overlord = { 
+							ai = yes
+						}
+					}
+				}
+				NOT = { 
+					has_country_flag = bur_inherit
+				}
 			}
 		}
-		allow = {
+		allow = { 
 			dip = 3
 			is_at_war = no
 		}
-		effect = {
-			add_ruler_modifier = { name = "expansion_trough_marriage" }
-			GEL = {
-				country_event = { id = flavor_bur.1051 days = 1 }
+		effect = { 
+			add_ruler_modifier = { 
+				name = "expansion_trough_marriage"
+			}
+			GEL = { 
+				country_event = { 
+					id = flavor_bur.1051
+					days = 1
+				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	
-	burgundy_friesland_marriage = {
-		potential = {
+	burgundy_friesland_marriage = { 
+		potential = { 
 			tag = BUR
 			NOT = { is_lesser_in_union = yes }
 			is_female = no
-			NOT = { has_country_modifier = expansion_trough_marriage }
+			NOT = { 
+				has_country_modifier = expansion_trough_marriage
+			}
 			exists = FRI
-			FRI = {
+			FRI = { 
 				is_female = yes
-				monarchy_or_harem_gov = yes
-				ai = yes
-				OR = {
-					is_free_or_tributary_trigger = yes
-					is_subject_of = BUR
-					AND = {
-						is_subject_other_than_tributary_trigger = yes
-						overlord = { ai = yes }
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
 					}
 				}
-				NOT = { has_country_flag = bur_inherit }
+				ai = yes
+				OR = { 
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+					is_subject_of = BUR
+					AND = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+						}
+						overlord = { 
+							ai = yes
+						}
+					}
+				}
+				NOT = { 
+					has_country_flag = bur_inherit
+				}
 			}
 		}
-		allow = {
+		allow = { 
 			dip = 3
 			is_at_war = no
 		}
-		effect = {
-			add_ruler_modifier = { name = "expansion_trough_marriage" }
-			FRI = {
-				country_event = { id = flavor_bur.1051 days = 1 }
+		effect = { 
+			add_ruler_modifier = { 
+				name = "expansion_trough_marriage"
+			}
+			FRI = { 
+				country_event = { 
+					id = flavor_bur.1051
+					days = 1
+				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	
-	burgundy_luxembourg_marriage = {
-		potential = {
+	burgundy_luxembourg_marriage = { 
+		potential = { 
 			tag = BUR
 			NOT = { is_lesser_in_union = yes }
 			is_female = no
-			NOT = { has_country_modifier = expansion_trough_marriage }
+			NOT = { 
+				has_country_modifier = expansion_trough_marriage
+			}
 			exists = LUX
-			LUX = {
+			LUX = { 
 				is_female = yes
-				monarchy_or_harem_gov = yes
-				ai = yes
-				OR = {
-					is_free_or_tributary_trigger = yes
-					is_subject_of = BUR
-					AND = {
-						is_subject_other_than_tributary_trigger = yes
-						overlord = { ai = yes }
+				custom_trigger_tooltip = { 
+					tooltip = is_monarchy_tt
+					OR = { 
+						government = monarchy
+						government = has_harem
 					}
 				}
-				NOT = { has_country_flag = bur_inherit }
+				ai = yes
+				OR = { 
+					AND = { 
+						OR = { 
+							is_subject = no
+							is_subject_of_type = tributary_state
+							is_subject_of_type = close_tributary_state
+							is_subject_of_type = muscovite_tributary_state
+						}
+					}
+					is_subject_of = BUR
+					AND = { 
+						AND = { 
+							is_subject = yes
+							NOT = { 
+								is_subject_of_type = tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = close_tributary_state
+							}
+							NOT = { 
+								is_subject_of_type = muscovite_tributary_state
+							}
+						}
+						overlord = { 
+							ai = yes
+						}
+					}
+				}
+				NOT = { 
+					has_country_flag = bur_inherit
+				}
 			}
 		}
-		allow = {
+		allow = { 
 			dip = 3
 			is_at_war = no
 		}
-		effect = {
-			add_ruler_modifier = { name = "expansion_trough_marriage" }
-			LUX = {
-				country_event = { id = flavor_bur.1051 days = 1 }
+		effect = { 
+			add_ruler_modifier = { 
+				name = "expansion_trough_marriage"
+			}
+			LUX = { 
+				country_event = { 
+					id = flavor_bur.1051
+					days = 1
+				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	
-	pawn_the_county = {
-		potential = {
+	pawn_the_county = { 
+		potential = { 
 			tag = NAM
 			ai = yes
 		}
-		allow = {
+		allow = { 
 			num_of_loans = 1
-			NAM = {
+			NAM = { 
 				is_at_war = no
-				NOT = { personal_union = 1 }
-				is_free_or_tributary_trigger = yes
+				NOT = { 
+					personal_union = 1
+				}
+				AND = { 
+					OR = { 
+						is_subject = no
+						is_subject_of_type = tributary_state
+						is_subject_of_type = close_tributary_state
+						is_subject_of_type = muscovite_tributary_state
+					}
+				}
 			}
-			NOT = { has_country_flag = bur_inherit }
-		}
-		effect = {
-			BUR = {
-				country_event = { id = flavor_bur.1101 days = 1 }
+			NOT = { 
+				has_country_flag = bur_inherit
 			}
 		}
-		ai_will_do = {
+		effect = { 
+			BUR = { 
+				country_event = { 
+					id = flavor_bur.1101
+					days = 1
+				}
+			}
+		}
+		ai_will_do = { 
 			factor = 1
 		}
 	}
-	
-	#support_the_cods = {
-	#	potential = {
-	#		tag = BUR
-	#		NOT = { has_country_flag = burgundian_support }
-	#		HOL = {
-	#			has_country_modifier = cod_and_hooks
-	#		}
-	#	}
-	#	allow = {
-	#		dip = 3
-	#		is_at_war = no
-	#		mil_power = 250
-	#	}
-	#	effect = {
-	#		set_country_flag = burgundian_support
-	#	}
-	#}
-	
-	escape_clause = {
-		potential = {
+	escape_clause = { 
+		potential = { 
 			tag = BUR
 			is_subject_of_type = appanage_subject
-			#is_subject_other_than_tributary_trigger = yes
-			NOT = { has_country_flag = burgundian_escape_clause }
-			NOT = { has_country_flag = burgundian_succession_crisis }
-			NOT = { has_country_flag = bur_inherit }
+			NOT = { 
+				has_country_flag = burgundian_escape_clause
+			}
+			NOT = { 
+				has_country_flag = burgundian_succession_crisis
+			}
+			NOT = { 
+				has_country_flag = bur_inherit
+			}
 		}
-		allow = {
+		allow = { 
 			total_development = 125
 		}
-		effect = {
+		effect = { 
 			set_country_flag = burgundian_escape_clause
 			add_historical_rival = overlord
-			overlord = {
+			overlord = { 
 				add_historical_rival = ROOT
 				free_vassal = ROOT
 				add_truce_with = ROOT
-				country_event = { id = flavor_bur.1151 days = 5 }
+				country_event = { 
+					id = flavor_bur.1151
+					days = 5
+				}
 			}
 		}
-		ai_will_do = {
+		ai_will_do = { 
 			factor = 1
 		}
 	}

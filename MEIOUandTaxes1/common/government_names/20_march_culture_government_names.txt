@@ -1,8 +1,5 @@
-# For specific combinations of culture, religion and other such triggers
-# Will pick the first valid one it finds in list
-
-march_polish_monarchy_title_1 = {
-	rank = {
+march_polish_monarchy_title_1 = { 
+	rank = { 
 		1 = COUNTY
 		2 = COUNTY
 		3 = COUNTY
@@ -10,8 +7,7 @@ march_polish_monarchy_title_1 = {
 		5 = COUNTY
 		6 = COUNTY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -19,8 +15,7 @@ march_polish_monarchy_title_1 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -28,8 +23,7 @@ march_polish_monarchy_title_1 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -37,8 +31,7 @@ march_polish_monarchy_title_1 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -46,8 +39,7 @@ march_polish_monarchy_title_1 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -55,8 +47,7 @@ march_polish_monarchy_title_1 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -64,16 +55,26 @@ march_polish_monarchy_title_1 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = polish
 		is_march = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-march_polish_monarchy_title_2 = {
-	rank = {
+march_polish_monarchy_title_2 = { 
+	rank = { 
 		1 = VOIVODESHIP
 		2 = VOIVODESHIP
 		3 = VOIVODESHIP
@@ -81,8 +82,7 @@ march_polish_monarchy_title_2 = {
 		5 = VOIVODESHIP
 		6 = VOIVODESHIP
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -90,8 +90,7 @@ march_polish_monarchy_title_2 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -99,8 +98,7 @@ march_polish_monarchy_title_2 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-
-	consort_male = {
+	consort_male = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -108,8 +106,7 @@ march_polish_monarchy_title_2 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -117,9 +114,7 @@ march_polish_monarchy_title_2 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -127,8 +122,7 @@ march_polish_monarchy_title_2 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -136,16 +130,26 @@ march_polish_monarchy_title_2 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = polish
 		is_march = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-march_polish_monarchy_title_3 = {
-	rank = {
+march_polish_monarchy_title_3 = { 
+	rank = { 
 		1 = DUCHY
 		2 = DUCHY
 		3 = DUCHY
@@ -153,8 +157,7 @@ march_polish_monarchy_title_3 = {
 		5 = DUCHY
 		6 = DUCHY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -162,8 +165,7 @@ march_polish_monarchy_title_3 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -171,8 +173,7 @@ march_polish_monarchy_title_3 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -180,8 +181,7 @@ march_polish_monarchy_title_3 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -189,8 +189,7 @@ march_polish_monarchy_title_3 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -198,8 +197,7 @@ march_polish_monarchy_title_3 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -207,16 +205,26 @@ march_polish_monarchy_title_3 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = polish
 		is_march = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-march_polish_monarchy_title_4 = {
-	rank = {
+march_polish_monarchy_title_4 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -224,8 +232,7 @@ march_polish_monarchy_title_4 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -233,8 +240,7 @@ march_polish_monarchy_title_4 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -242,8 +248,7 @@ march_polish_monarchy_title_4 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -251,8 +256,7 @@ march_polish_monarchy_title_4 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = WOJEWODA
 		2 = WOJEWODA
 		3 = WOJEWODA
@@ -260,8 +264,7 @@ march_polish_monarchy_title_4 = {
 		5 = WOJEWODA
 		6 = WOJEWODA
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -269,8 +272,7 @@ march_polish_monarchy_title_4 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -278,17 +280,26 @@ march_polish_monarchy_title_4 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = polish
 		is_march = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }
-
-march_bohemian_monarchy_title_1 = {
-	rank = {
+march_bohemian_monarchy_title_1 = { 
+	rank = { 
 		1 = COUNTY
 		2 = COUNTY
 		3 = COUNTY
@@ -296,8 +307,7 @@ march_bohemian_monarchy_title_1 = {
 		5 = COUNTY
 		6 = COUNTY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -305,8 +315,7 @@ march_bohemian_monarchy_title_1 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -314,8 +323,7 @@ march_bohemian_monarchy_title_1 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -323,8 +331,7 @@ march_bohemian_monarchy_title_1 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -332,9 +339,7 @@ march_bohemian_monarchy_title_1 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -342,8 +347,7 @@ march_bohemian_monarchy_title_1 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -351,16 +355,26 @@ march_bohemian_monarchy_title_1 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = bohemian
 		is_march = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 1 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_1
+				has_country_flag = title_1
+			}
+		}
 	}
 }
-march_bohemian_monarchy_title_2 = {
-	rank = {
+march_bohemian_monarchy_title_2 = { 
+	rank = { 
 		1 = VOIVODESHIP
 		2 = VOIVODESHIP
 		3 = VOIVODESHIP
@@ -368,8 +382,7 @@ march_bohemian_monarchy_title_2 = {
 		5 = VOIVODESHIP
 		6 = VOIVODESHIP
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -377,8 +390,7 @@ march_bohemian_monarchy_title_2 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -386,8 +398,7 @@ march_bohemian_monarchy_title_2 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -395,8 +406,7 @@ march_bohemian_monarchy_title_2 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -404,9 +414,7 @@ march_bohemian_monarchy_title_2 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -414,8 +422,7 @@ march_bohemian_monarchy_title_2 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -423,16 +430,26 @@ march_bohemian_monarchy_title_2 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = bohemian
 		is_march = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 2 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_2
+				has_country_flag = title_2
+			}
+		}
 	}
 }
-march_bohemian_monarchy_title_3 = {
-	rank = {
+march_bohemian_monarchy_title_3 = { 
+	rank = { 
 		1 = DUCHY
 		2 = DUCHY
 		3 = DUCHY
@@ -440,8 +457,7 @@ march_bohemian_monarchy_title_3 = {
 		5 = DUCHY
 		6 = DUCHY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -449,8 +465,7 @@ march_bohemian_monarchy_title_3 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -458,8 +473,7 @@ march_bohemian_monarchy_title_3 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -467,8 +481,7 @@ march_bohemian_monarchy_title_3 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -476,8 +489,7 @@ march_bohemian_monarchy_title_3 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -485,8 +497,7 @@ march_bohemian_monarchy_title_3 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -494,16 +505,26 @@ march_bohemian_monarchy_title_3 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = bohemian
 		is_march = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 3 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_3
+				has_country_flag = title_3
+			}
+		}
 	}
 }
-march_bohemian_monarchy_title_4 = {
-	rank = {
+march_bohemian_monarchy_title_4 = { 
+	rank = { 
 		1 = PRINCIPALITY
 		2 = PRINCIPALITY
 		3 = PRINCIPALITY
@@ -511,8 +532,7 @@ march_bohemian_monarchy_title_4 = {
 		5 = PRINCIPALITY
 		6 = PRINCIPALITY
 	}
-	
-	ruler_male = {
+	ruler_male = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -520,8 +540,7 @@ march_bohemian_monarchy_title_4 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	ruler_female = {
+	ruler_female = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -529,8 +548,7 @@ march_bohemian_monarchy_title_4 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	consort_male = {
+	consort_male = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -538,8 +556,7 @@ march_bohemian_monarchy_title_4 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	consort_female = {
+	consort_female = { 
 		1 = VEVODA
 		2 = VEVODA
 		3 = VEVODA
@@ -547,8 +564,7 @@ march_bohemian_monarchy_title_4 = {
 		5 = VEVODA
 		6 = VEVODA
 	}
-	
-	heir_male = {
+	heir_male = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -556,8 +572,7 @@ march_bohemian_monarchy_title_4 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	heir_female = {
+	heir_female = { 
 		1 = HEIR
 		2 = HEIR
 		3 = HEIR
@@ -565,11 +580,21 @@ march_bohemian_monarchy_title_4 = {
 		5 = HEIR
 		6 = HEIR
 	}
-	
-	trigger = {
+	trigger = { 
 		primary_culture = bohemian
 		is_march = yes
-		monarchy_or_harem_gov = yes
-		title_trigger = { rank = 4 }
+		custom_trigger_tooltip = { 
+			tooltip = is_monarchy_tt
+			OR = { 
+				government = monarchy
+				government = has_harem
+			}
+		}
+		AND = { 
+			OR = { 
+				has_country_modifier = title_4
+				has_country_flag = title_4
+			}
+		}
 	}
 }

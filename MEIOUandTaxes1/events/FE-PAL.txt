@@ -1,32 +1,119 @@
 namespace = hee_PAL
-
-country_event = {
+country_event = { 
 	id = hee_PAL.1
 	title = hee_PAL.1.t
 	desc = hee_PAL.1.d
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = PAL
 		is_year = 1680
-		NOT = {
+		NOT = { 
 			is_year = 1715
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 25
-		modifier = {
+		modifier = { 
 			factor = 0.9
 			has_idea_group = innovativeness_ideas
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.9
 			has_idea_group = humanist_ideas
 		}
 	}
-	option = {
+	option = { 
 		name = hee_PAL.1.a
-		Stab_Add50Percent = yes
+		hidden_effect = { 
+			change_variable = { 
+				which = ahf
+				value = 600
+			}
+			if = { 
+				limit = { 
+					check_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				if = { 
+					limit = { 
+						stability = 3
+					}
+					set_variable = { 
+						which = ahf
+						value = 1200
+					}
+				}
+				else = { 
+					subtract_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = 1
+				}
+			}
+			else_if = { 
+				limit = { 
+					NOT = { 
+						check_variable = { 
+							which = ahf
+							value = 0
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							stability = -2
+						}
+					}
+					set_variable = { 
+						which = ahf
+						value = 0
+					}
+				}
+				else = { 
+					change_variable = { 
+						which = ahf
+						value = 1200
+					}
+					add_stability = -1
+				}
+			}
+			set_variable = { 
+				which = ahd
+				which = ahf
+			}
+			divide_variable = { 
+				which = ahd
+				value = 12
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 0.1
+			}
+			multiply_variable = { 
+				which = ahd
+				value = 10
+			}
+			set_variable = { 
+				which = lsc
+				value = 100
+			}
+			subtract_variable = { 
+				which = lsc
+				which = ahd
+			}
+		}
+		custom_tooltip = POP_StabAdd50
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 2.5
+		}
 		add_adm_power = 50
 	}
 }

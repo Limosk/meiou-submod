@@ -1,49 +1,46 @@
-
-recruitment_drive_act = {
+recruitment_drive_act = { 
 	monarch_power = MIL
-	
-	potential = {
+	potential = { 
 		mil_tech = 10
 	}
-	
-	allow = {
-		policy_trigger = yes
+	allow = { 
+		if = { 
+			limit = { 
+				always = no
+			}
+			full_idea_group = default_policy_1_ideas
+			full_idea_group = default_policy_2_ideas
+		}
 	}
-	
 	manpower_recovery_speed = 0.10
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0.1
 	}
 }
-
-centralize_the_state = { #commented out, as absolutism is resulting from state reach and AI was in disadvantage by not using that. Can be reviewed by replacing the estate interaction.
+centralize_the_state = { 
 	monarch_power = ADM
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	allow = {
-		policy_trigger = yes
+	allow = { 
+		if = { 
+			limit = { 
+				always = no
+			}
+			full_idea_group = default_policy_1_ideas
+			full_idea_group = default_policy_2_ideas
+		}
 	}
-	
-	yearly_absolutism = 0.15 #centralization has some downsides, and you are paying for this.
-	
-	ai_will_do = {
+	yearly_absolutism = 0.15
+	ai_will_do = { 
 		factor = 0.1
-		modifier = {
+		modifier = { 
 			factor = 4
 			has_country_flag = AI_Interaction_average_home_autonomy_HighInterest
 		}
-		modifier = {
+		modifier = { 
 			factor = 2
 			has_country_flag = AI_Interaction_average_home_autonomy_MedInterest
 		}
 	}
 }
-
-#######################################
-#           Policy Sliders            #
-#######################################
-# System changed to decisions and policies

@@ -1,14 +1,13 @@
-
 Placeholder3 = { 
 	cost = 1
 	time = 1
-	potential = {
+	potential = { 
 		always = yes
 	}
-	build_trigger = {
+	build_trigger = { 
 		always = no
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		has_building = Placeholder3
 	}
 	modifier = { }

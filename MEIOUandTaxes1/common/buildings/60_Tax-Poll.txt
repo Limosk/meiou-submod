@@ -1,33 +1,23 @@
-##############
-# Tax - Poll #
-##############
-
-tax_poll_no = {
+tax_poll_no = { 
 	cost = 0
-	time =  0
-	
-	potential = {
+	time = 0
+	potential = { 
 		ai = no
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		always = no
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		has_building = tax_poll_no
 	}
-	
-	modifier = {
-	}
-	
-	ai_will_do = {
+	modifier = { }
+	ai_will_do = { 
 		factor = 0
 	}
-
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = tax_poll_low
 					has_building = tax_poll_med
 					has_building = tax_poll_high
@@ -37,48 +27,53 @@ tax_poll_no = {
 		}
 	}
 }
-tax_poll_low = {
+tax_poll_low = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxPollCan = yes
+		owner = { 
+			AND = { 
+				OR = { 
+					ai = no
+					is_at_war = yes
+					num_of_loans = 3
+				}
+			}
 		}
-
-		NOT = {
+		NOT = { 
 			has_building = tax_poll_med
 			has_building = tax_poll_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxPollCan = yes
+		owner = { 
+			AND = { 
+				OR = { 
+					ai = no
+					is_at_war = yes
+					num_of_loans = 3
+				}
+			}
 		}
 	}
-	
-	modifier = {
+	modifier = { 
 		local_unrest = 6
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = tax_poll_no
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = tax_poll_med
 					has_building = tax_poll_high
 				}
@@ -87,50 +82,56 @@ tax_poll_low = {
 		}
 	}
 }
-tax_poll_med = {
+tax_poll_med = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxPollCan = yes
+		owner = { 
+			AND = { 
+				OR = { 
+					ai = no
+					is_at_war = yes
+					num_of_loans = 3
+				}
+			}
 		}
-
-		NOT = {
+		NOT = { 
 			has_building = tax_poll_high
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxPollCan = yes
+		owner = { 
+			AND = { 
+				OR = { 
+					ai = no
+					is_at_war = yes
+					num_of_loans = 3
+				}
+			}
 		}
-		NOT = {
+		NOT = { 
 			has_building = tax_poll_high
 		}
 	}
-	modifier = {
+	modifier = { 
 		local_unrest = 12
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = tax_poll_no
-        remove_building = tax_poll_low
+		remove_building = tax_poll_low
 	}
-	
-	on_destroyed = {
-		if = {
-			limit = {
-				NOT = {
+	on_destroyed = { 
+		if = { 
+			limit = { 
+				NOT = { 
 					has_building = tax_poll_high
 				}
 			}
@@ -138,41 +139,48 @@ tax_poll_med = {
 		}
 	}
 }
-tax_poll_high = {
+tax_poll_high = { 
 	cost = 0
 	time = 0
-	
-	potential = {
+	potential = { 
 		always = yes
 	}
-	
-	build_trigger = {
+	build_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxPollCan = yes
+		owner = { 
+			AND = { 
+				OR = { 
+					ai = no
+					is_at_war = yes
+					num_of_loans = 3
+				}
+			}
 		}
 	}
-	keep_trigger = {
+	keep_trigger = { 
 		is_core = ROOT
-		owner = {
-			Tax_TaxPollCan = yes
+		owner = { 
+			AND = { 
+				OR = { 
+					ai = no
+					is_at_war = yes
+					num_of_loans = 3
+				}
+			}
 		}
 	}
-	modifier = {
+	modifier = { 
 		local_unrest = 18
 	}
-	
-	ai_will_do = {
+	ai_will_do = { 
 		factor = 0
 	}
-	
-	on_built = {
+	on_built = { 
 		remove_building = tax_poll_no
-        remove_building = tax_poll_low
-        remove_building = tax_poll_med
+		remove_building = tax_poll_low
+		remove_building = tax_poll_med
 	}
-	
-	on_destroyed = {
+	on_destroyed = { 
 		add_building = tax_poll_med
 	}
 }

@@ -1,15 +1,14 @@
 name = "Red Turban Rebellion"
-war_goal = {
+war_goal = { 
 	type = superiority_chinese_unification
 	casus_belli = cb_chinese_unification
-	province = 691 #Huizhou
+	province = 691
 }
-
-1356.1.1 = {
+1356.1.1 = { 
 	add_attacker = MNG
 	add_defender = CNG
 }
-1375.1.1 = {
+1375.1.1 = { 
 	rem_attacker = MNG
 	rem_defender = CNG
 }

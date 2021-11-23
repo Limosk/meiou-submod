@@ -1,1616 +1,1945 @@
-defined_text = {
+defined_text = { 
 	name = Desire_NO
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Desire_NO
-		
-		trigger = {
-			check_key = { lhs = Prov_NOPow value = 1 }
+		trigger = { 
+			check_variable = { 
+				which = asn
+				value = 1
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Desire_BG
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Desire_BG
-		
-		trigger = {
-			check_key = { lhs = Prov_BGPow value = 1 }
+		trigger = { 
+			check_variable = { 
+				which = ass
+				value = 1
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Desire_CL
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Desire_CL
-		
-		trigger = {
-			check_key = { lhs = Prov_CLPow value = 1 }
+		trigger = { 
+			check_variable = { 
+				which = asx
+				value = 1
+			}
 		}
 	}
 }
-
-defined_text = {
+defined_text = { 
 	name = Pol_EventTargP
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = FC_NO_P
-		
-		trigger = {
-			Pol_EventNO = yes
+		trigger = { 
+			AND = { 
+				check_variable = { 
+					which = hzc
+					which = hzd
+				}
+				check_variable = { 
+					which = hzc
+					which = hze
+				}
+				check_variable = { 
+					which = hzc
+					which = hzf
+				}
+				check_variable = { 
+					which = hzc
+					which = hzg
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BG_P
-		
-		trigger = {
-			Pol_EventBG = yes
+		trigger = { 
+			AND = { 
+				check_variable = { 
+					which = hzd
+					which = hzc
+				}
+				check_variable = { 
+					which = hzd
+					which = hze
+				}
+				check_variable = { 
+					which = hzd
+					which = hzf
+				}
+				check_variable = { 
+					which = hzd
+					which = hzg
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_CL_P
-		
-		trigger = {
-			Pol_EventCL = yes
+		trigger = { 
+			AND = { 
+				check_variable = { 
+					which = hze
+					which = hzc
+				}
+				check_variable = { 
+					which = hze
+					which = hzd
+				}
+				check_variable = { 
+					which = hze
+					which = hzf
+				}
+				check_variable = { 
+					which = hze
+					which = hzg
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_TR_P
-		
-		trigger = {
-			Pol_EventTR = yes
+		trigger = { 
+			AND = { 
+				check_variable = { 
+					which = hzf
+					which = hzc
+				}
+				check_variable = { 
+					which = hzf
+					which = hzd
+				}
+				check_variable = { 
+					which = hzf
+					which = hze
+				}
+				check_variable = { 
+					which = hzf
+					which = hzg
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BU_P
-		
-		trigger = {
-			Pol_EventBU = yes
+		trigger = { 
+			AND = { 
+				check_variable = { 
+					which = hzg
+					which = hzc
+				}
+				check_variable = { 
+					which = hzg
+					which = hzd
+				}
+				check_variable = { 
+					which = hzg
+					which = hze
+				}
+				check_variable = { 
+					which = hzg
+					which = hzf
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_EventTargS
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = FC_NO_S
-		
-		trigger = {
-			Pol_EventNO = yes
+		trigger = { 
+			AND = { 
+				check_variable = { 
+					which = hzc
+					which = hzd
+				}
+				check_variable = { 
+					which = hzc
+					which = hze
+				}
+				check_variable = { 
+					which = hzc
+					which = hzf
+				}
+				check_variable = { 
+					which = hzc
+					which = hzg
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BG_S
-		
-		trigger = {
-			Pol_EventBG = yes
+		trigger = { 
+			AND = { 
+				check_variable = { 
+					which = hzd
+					which = hzc
+				}
+				check_variable = { 
+					which = hzd
+					which = hze
+				}
+				check_variable = { 
+					which = hzd
+					which = hzf
+				}
+				check_variable = { 
+					which = hzd
+					which = hzg
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_CL_S
-		
-		trigger = {
-			Pol_EventCL = yes
+		trigger = { 
+			AND = { 
+				check_variable = { 
+					which = hze
+					which = hzc
+				}
+				check_variable = { 
+					which = hze
+					which = hzd
+				}
+				check_variable = { 
+					which = hze
+					which = hzf
+				}
+				check_variable = { 
+					which = hze
+					which = hzg
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_TR_S
-		
-		trigger = {
-			Pol_EventTR = yes
+		trigger = { 
+			AND = { 
+				check_variable = { 
+					which = hzf
+					which = hzc
+				}
+				check_variable = { 
+					which = hzf
+					which = hzd
+				}
+				check_variable = { 
+					which = hzf
+					which = hze
+				}
+				check_variable = { 
+					which = hzf
+					which = hzg
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BU_S
-		
-		trigger = {
-			Pol_EventBU = yes
+		trigger = { 
+			AND = { 
+				check_variable = { 
+					which = hzg
+					which = hzc
+				}
+				check_variable = { 
+					which = hzg
+					which = hzd
+				}
+				check_variable = { 
+					which = hzg
+					which = hze
+				}
+				check_variable = { 
+					which = hzg
+					which = hzf
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_UI_NO
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_UI_NO
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_NO
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_UI_BG
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_UI_BG
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_BG
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_UI_CL
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_UI_CL
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_CL
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_UI_TR
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_UI_TR
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_TR
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_UI_BU
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_UI_BU
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_BU
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_NO_BG
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_NO_BG
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_BG
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_NO_CL
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_NO_CL
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_CL
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_NO_TR
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_NO_TR
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_TR
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_NO_BU
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_NO_BU
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_BU
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_NO_State
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_NO_State
-		
-		trigger = {
+		trigger = { 
 			always = yes
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_BG_NO
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_BG_NO
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_NO
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_BG_CL
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_BG_CL
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_CL
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_BG_TR
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_BG_TR
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_TR
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_BG_BU
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_BG_BU
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_BU
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_BG_State
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_BG_State
-		
-		trigger = {
+		trigger = { 
 			always = yes
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_CL_NO
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_CL_NO
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_NO
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_CL_BG
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_CL_BG
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_BG
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_CL_TR
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_CL_TR
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_TR
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_CL_BU
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_CL_BU
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_BU
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_CL_State
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_CL_State
-		
-		trigger = {
+		trigger = { 
 			always = yes
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_TR_NO
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_TR_NO
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_NO
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_TR_BG
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_TR_BG
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_BG
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_TR_CL
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_TR_CL
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_CL
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_TR_BU
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_TR_BU
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_BU
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_TR_State
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_TR_State
-		
-		trigger = {
+		trigger = { 
 			always = yes
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_BU_NO
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_BU_NO
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_NO
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_BU_BG
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_BU_BG
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_BG
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_BU_CL
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_BU_CL
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_CL
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_BU_TR
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_BU_TR
-		
-		trigger = {
+		trigger = { 
 			has_faction = FC_TR
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_BU_State
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Pol_BU_State
-		
-		trigger = {
+		trigger = { 
 			always = yes
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_NO_BG_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = NO_AllyBG
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = NO_RivalBG
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = NO_AllyBG }
-			NOT = { has_country_modifier = NO_RivalBG }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = NO_AllyBG
+			}
+			NOT = { 
+				has_country_modifier = NO_RivalBG
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_NO_BG
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_NO_BG_G
-		
-		trigger = {
-			check_key = { lhs = NO_RelationBG value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bcv
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_NO_BG_Y
-		
-		trigger = {
-			is_key_equal = { lhs = NO_RelationBG value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bcv
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_NO_BG_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = NO_RelationBG value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bcv
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_NO_CL_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = NO_AllyCL
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = NO_RivalCL
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = NO_AllyCL }
-			NOT = { has_country_modifier = NO_RivalCL }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = NO_AllyCL
+			}
+			NOT = { 
+				has_country_modifier = NO_RivalCL
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_NO_CL
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_NO_CL_G
-		
-		trigger = {
-			check_key = { lhs = NO_RelationCL value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bcw
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_NO_CL_Y
-		
-		trigger = {
-			is_key_equal = { lhs = NO_RelationCL value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bcw
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_NO_CL_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = NO_RelationCL value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bcw
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_NO_TR_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = NO_AllyTR
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = NO_RivalTR
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = NO_AllyTR }
-			NOT = { has_country_modifier = NO_RivalTR }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = NO_AllyTR
+			}
+			NOT = { 
+				has_country_modifier = NO_RivalTR
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_NO_TR
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_NO_TR_G
-		
-		trigger = {
-			check_key = { lhs = NO_RelationTR value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bcx
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_NO_TR_Y
-		
-		trigger = {
-			is_key_equal = { lhs = NO_RelationTR value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bcx
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_NO_TR_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = NO_RelationTR value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bcx
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_NO_BU_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = NO_AllyBU
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = NO_RivalBU
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = NO_AllyBU }
-			NOT = { has_country_modifier = NO_RivalBU }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = NO_AllyBU
+			}
+			NOT = { 
+				has_country_modifier = NO_RivalBU
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_NO_BU
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_NO_BU_G
-		
-		trigger = {
-			check_key = { lhs = NO_RelationBU value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bcy
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_NO_BU_Y
-		
-		trigger = {
-			is_key_equal = { lhs = NO_RelationBU value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bcy
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_NO_BU_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = NO_RelationBU value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bcy
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_NO_State_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = NO_AllyState
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = NO_RivalState
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = NO_AllyState }
-			NOT = { has_country_modifier = NO_RivalState }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = NO_AllyState
+			}
+			NOT = { 
+				has_country_modifier = NO_RivalState
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_NO_State
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_NO_State_G
-		
-		trigger = {
-			check_key = { lhs = NO_RelationState value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bdq
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_NO_State_Y
-		
-		trigger = {
-			is_key_equal = { lhs = NO_RelationState value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bdq
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_NO_State_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = NO_RelationState value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bdq
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_BG_CL_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = BG_AllyCL
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = BG_RivalCL
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = BG_AllyCL }
-			NOT = { has_country_modifier = BG_RivalCL }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = BG_AllyCL
+			}
+			NOT = { 
+				has_country_modifier = BG_RivalCL
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_BG_CL
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_BG_CL_G
-		
-		trigger = {
-			check_key = { lhs = BG_RelationCL value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bcz
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_BG_CL_Y
-		
-		trigger = {
-			is_key_equal = { lhs = BG_RelationCL value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bcz
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_BG_CL_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = BG_RelationCL value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bcz
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_BG_TR_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = BG_AllyTR
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = BG_RivalTR
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = BG_AllyTR }
-			NOT = { has_country_modifier = BG_RivalTR }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = BG_AllyTR
+			}
+			NOT = { 
+				has_country_modifier = BG_RivalTR
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_BG_TR
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_BG_TR_G
-		
-		trigger = {
-			check_key = { lhs = BG_RelationTR value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bda
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_BG_TR_Y
-		
-		trigger = {
-			is_key_equal = { lhs = BG_RelationTR value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bda
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_BG_TR_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = BG_RelationTR value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bda
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_BG_BU_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = BG_AllyBU
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = BG_RivalBU
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = BG_AllyBU }
-			NOT = { has_country_modifier = BG_RivalBU }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = BG_AllyBU
+			}
+			NOT = { 
+				has_country_modifier = BG_RivalBU
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_BG_BU
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_BG_BU_G
-		
-		trigger = {
-			check_key = { lhs = BG_RelationBU value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bdb
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_BG_BU_Y
-		
-		trigger = {
-			is_key_equal = { lhs = BG_RelationBU value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bdb
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_BG_BU_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = BG_RelationBU value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bdb
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_BG_State_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = BG_AllyState
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = BG_RivalState
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = BG_AllyState }
-			NOT = { has_country_modifier = BG_RivalState }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = BG_AllyState
+			}
+			NOT = { 
+				has_country_modifier = BG_RivalState
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_BG_State
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_BG_State_G
-		
-		trigger = {
-			check_key = { lhs = BG_RelationState value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bdr
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_BG_State_Y
-		
-		trigger = {
-			is_key_equal = { lhs = BG_RelationState value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bdr
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_BG_State_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = BG_RelationState value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bdr
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_CL_TR_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = CL_AllyTR
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = CL_RivalTR
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = CL_AllyTR }
-			NOT = { has_country_modifier = CL_RivalTR }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = CL_AllyTR
+			}
+			NOT = { 
+				has_country_modifier = CL_RivalTR
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_CL_TR
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_CL_TR_G
-		
-		trigger = {
-			check_key = { lhs = CL_RelationTR value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bdc
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_CL_TR_Y
-		
-		trigger = {
-			is_key_equal = { lhs = CL_RelationTR value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bdc
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_CL_TR_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = CL_RelationTR value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bdc
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_CL_BU_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = CL_AllyBU
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = CL_RivalBU
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = CL_AllyBU }
-			NOT = { has_country_modifier = CL_RivalBU }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = CL_AllyBU
+			}
+			NOT = { 
+				has_country_modifier = CL_RivalBU
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_CL_BU
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_CL_BU_G
-		
-		trigger = {
-			check_key = { lhs = CL_RelationBU value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bdd
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_CL_BU_Y
-		
-		trigger = {
-			is_key_equal = { lhs = CL_RelationBU value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bdd
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_CL_BU_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = CL_RelationBU value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bdd
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_CL_State_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = CL_AllyState
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = CL_RivalState
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = CL_AllyState }
-			NOT = { has_country_modifier = CL_RivalState }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = CL_AllyState
+			}
+			NOT = { 
+				has_country_modifier = CL_RivalState
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_CL_State
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_CL_State_G
-		
-		trigger = {
-			check_key = { lhs = CL_RelationState value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bds
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_CL_State_Y
-		
-		trigger = {
-			is_key_equal = { lhs = CL_RelationState value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bds
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_CL_State_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = CL_RelationState value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bds
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_TR_BU_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = TR_AllyBU
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = TR_RivalBU
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = TR_AllyBU }
-			NOT = { has_country_modifier = TR_RivalBU }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = TR_AllyBU
+			}
+			NOT = { 
+				has_country_modifier = TR_RivalBU
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_TR_BU
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_TR_BU_G
-		
-		trigger = {
-			check_key = { lhs = TR_RelationBU value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bde
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_TR_BU_Y
-		
-		trigger = {
-			is_key_equal = { lhs = TR_RelationBU value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bde
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_TR_BU_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = TR_RelationBU value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bde
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_TR_State_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = TR_AllyState
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = TR_RivalState
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = TR_AllyState }
-			NOT = { has_country_modifier = TR_RivalState }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = TR_AllyState
+			}
+			NOT = { 
+				has_country_modifier = TR_RivalState
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_TR_State
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_TR_State_G
-		
-		trigger = {
-			check_key = { lhs = TR_RelationState value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bdt
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_TR_State_Y
-		
-		trigger = {
-			is_key_equal = { lhs = TR_RelationState value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bdt
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_TR_State_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = TR_RelationState value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bdt
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_BU_State_Type
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_Allied
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = BU_AllyState
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Rivalry
-		
-		trigger = {
+		trigger = { 
 			has_country_modifier = BU_RivalState
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_Neutral
-		
-		trigger = {
-			NOT = { has_country_modifier = BU_AllyState }
-			NOT = { has_country_modifier = BU_RivalState }
+		trigger = { 
+			NOT = { 
+				has_country_modifier = BU_AllyState
+			}
+			NOT = { 
+				has_country_modifier = BU_RivalState
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Rel_BU_State
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Rel_BU_State_G
-		
-		trigger = {
-			check_key = { lhs = BU_RelationState value = 0.001 }
+		trigger = { 
+			check_variable = { 
+				which = bdu
+				value = 0.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_BU_State_Y
-		
-		trigger = {
-			is_key_equal = { lhs = BU_RelationState value = 0 }
+		trigger = { 
+			is_variable_equal = { 
+				which = bdu
+				value = 0
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Rel_BU_State_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = BU_RelationState value = 0 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bdu
+					value = 0
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Ruler_ImpactCol
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Ruler_ImpactCol_R
-		
-		trigger = {
-			check_key = { lhs = Ruler_Impact value = 66.001 }
+		trigger = { 
+			check_variable = { 
+				which = hux
+				value = 66.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Ruler_ImpactCol_Y
-		
-		trigger = {
-			NOT = { check_key = { lhs = Ruler_Impact value = 66.001 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = hux
+					value = 66.001
+				}
+			}
 		}
 	}
-	#text = {
-	#	localisation_key = Ruler_ImpactCol_G
-	#	
-	#	trigger = {
-	#		NOT = { check_key = { lhs = Ruler_Impact value = 33 } }
-	#	}
-	#}
 }
-defined_text = {
+defined_text = { 
 	name = Ruler_PowerCol
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = Ruler_PowerCol_G
-		
-		trigger = {
-			check_key = { lhs = Ruler_Power value = 66.001 }
+		trigger = { 
+			check_variable = { 
+				which = bcn
+				value = 66.001
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Ruler_PowerCol_Y
-		
-		trigger = {
-			check_key = { lhs = Ruler_Power value = 33 }
-			NOT = { check_key = { lhs = Ruler_Power value = 66.001 } }
+		trigger = { 
+			check_variable = { 
+				which = bcn
+				value = 33
+			}
+			NOT = { 
+				check_variable = { 
+					which = bcn
+					value = 66.001
+				}
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = Ruler_PowerCol_R
-		
-		trigger = {
-			NOT = { check_key = { lhs = Ruler_Power value = 33 } }
+		trigger = { 
+			NOT = { 
+				check_variable = { 
+					which = bcn
+					value = 33
+				}
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_AlignmentP
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = FC_NO_P
-		
-		trigger = {
-			is_key_equal = { lhs = State_Alignment value = 1 }
+		trigger = { 
+			is_variable_equal = { 
+				which = hxn
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BG_P
-		
-		trigger = {
-			is_key_equal = { lhs = State_Alignment value = 2 }
+		trigger = { 
+			is_variable_equal = { 
+				which = hxn
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_CL_P
-		
-		trigger = {
-			is_key_equal = { lhs = State_Alignment value = 3 }
+		trigger = { 
+			is_variable_equal = { 
+				which = hxn
+				value = 3
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_TR_P
-		
-		trigger = {
-			is_key_equal = { lhs = State_Alignment value = 4 }
+		trigger = { 
+			is_variable_equal = { 
+				which = hxn
+				value = 4
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BU_P
-		
-		trigger = {
-			is_key_equal = { lhs = State_Alignment value = 5 }
+		trigger = { 
+			is_variable_equal = { 
+				which = hxn
+				value = 5
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = Pol_AlignmentS
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = FC_NO_S
-		
-		trigger = {
-			is_key_equal = { lhs = State_Alignment value = 1 }
+		trigger = { 
+			is_variable_equal = { 
+				which = hxn
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BG_S
-		
-		trigger = {
-			is_key_equal = { lhs = State_Alignment value = 2 }
+		trigger = { 
+			is_variable_equal = { 
+				which = hxn
+				value = 2
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_CL_S
-		
-		trigger = {
-			is_key_equal = { lhs = State_Alignment value = 3 }
+		trigger = { 
+			is_variable_equal = { 
+				which = hxn
+				value = 3
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_TR_S
-		
-		trigger = {
-			is_key_equal = { lhs = State_Alignment value = 4 }
+		trigger = { 
+			is_variable_equal = { 
+				which = hxn
+				value = 4
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BU_S
-		
-		trigger = {
-			is_key_equal = { lhs = State_Alignment value = 5 }
+		trigger = { 
+			is_variable_equal = { 
+				which = hxn
+				value = 5
+			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = RivalryPartner1_P
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = FC_NO_P
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 1 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 2 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 3 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 4 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 1
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 2
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 3
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 4
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BG_P
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 5 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 6 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 7 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 5
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 6
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 7
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_CL_P
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 8 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 9 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 8
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 9
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_TR_P
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 10 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 10
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BU_P
-		
-		trigger = {
+		trigger = { 
 			always = no
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = RivalryPartner2_P
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = FC_NO_P
-		
-		trigger = {
+		trigger = { 
 			always = no
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BG_P
-		
-		trigger = {
-			is_key_equal = { lhs = Pol_RivalryFocus value = 1 }
+		trigger = { 
+			is_variable_equal = { 
+				which = iae
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_CL_P
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 2 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 5 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 2
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 5
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_TR_P
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 3 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 6 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 8 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 3
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 6
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 8
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BU_P
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 4 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 7 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 9 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 10 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 4
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 7
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 9
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 10
+				}
 			}
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = RivalryPartner1_S
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = FC_NO_S
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 1 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 2 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 3 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 4 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 1
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 2
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 3
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 4
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BG_S
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 5 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 6 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 7 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 5
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 6
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 7
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_CL_S
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 8 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 9 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 8
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 9
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_TR_S
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 10 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 10
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BU_S
-		
-		trigger = {
+		trigger = { 
 			always = no
 		}
 	}
 }
-defined_text = {
+defined_text = { 
 	name = RivalryPartner2_S
 	random = no
-	
-	text = {
+	text = { 
 		localisation_key = FC_NO_S
-		
-		trigger = {
+		trigger = { 
 			always = no
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BG_S
-		
-		trigger = {
-			is_key_equal = { lhs = Pol_RivalryFocus value = 1 }
+		trigger = { 
+			is_variable_equal = { 
+				which = iae
+				value = 1
+			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_CL_S
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 2 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 5 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 2
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 5
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_TR_S
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 3 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 6 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 8 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 3
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 6
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 8
+				}
 			}
 		}
 	}
-	text = {
+	text = { 
 		localisation_key = FC_BU_S
-		
-		trigger = {
-			OR = {
-				is_key_equal = { lhs = Pol_RivalryFocus value = 4 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 7 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 9 }
-				is_key_equal = { lhs = Pol_RivalryFocus value = 10 }
+		trigger = { 
+			OR = { 
+				is_variable_equal = { 
+					which = iae
+					value = 4
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 7
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 9
+				}
+				is_variable_equal = { 
+					which = iae
+					value = 10
+				}
 			}
 		}
 	}

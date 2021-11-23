@@ -1,422 +1,422 @@
-ruthenia_one = {
+ruthenia_one = { 
 	slot = 2
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = p_of_smo
 			has_country_flag = p_of_plt
 		}
 	}
 	has_country_shield = yes
-	smo_unify_smolensk = {
+	smo_unify_smolensk = { 
 		icon = mission_unite_home_region
-		required_missions = {}
+		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = smolensk_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
+		trigger = { 
 			is_subject = no
-			smolensk_area = {
+			smolensk_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_muscovy_tver = {
+	smo_muscovy_tver = { 
 		icon = mission_cannons_firing
-		required_missions = { smo_unify_smolensk }
+		required_missions = { smo_unify_smolensk}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = moscow_area
 				area = tver_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			moscow_area = {
+		trigger = { 
+			moscow_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			tver_area = {
+			tver_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_yaroslav_suzdal = {
+	smo_yaroslav_suzdal = { 
 		icon = mission_cannons_firing
-		required_missions = { smo_muscovy_tver }
+		required_missions = { smo_muscovy_tver}
 		position = 3
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = yaroslav_area
 				area = suzdal_area
 				province_id = 290
 				province_id = 1291
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			yaroslav_area = {
+		trigger = { 
+			yaroslav_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			suzdal_area = {
+			suzdal_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			290 = {
+			290 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1291 = {
+			1291 = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_subjugate_novgorod = {
+	smo_subjugate_novgorod = { 
 		icon = mission_cannons_firing
-		required_missions = { smo_yaroslav_suzdal }
+		required_missions = { smo_yaroslav_suzdal}
 		position = 4
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = north_russia_region
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					country_or_non_sovereign_subject_holds = ROOT
 					is_empty = yes
 				}
 			}
 		}
-		trigger = {
-			north_russia_region = {
+		trigger = { 
+			north_russia_region = { 
 				type = all
-				OR = {
+				OR = { 
 					country_or_non_sovereign_subject_holds = ROOT
 					is_empty = yes
 				}
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_estonia_livonia = {
+	smo_estonia_livonia = { 
 		icon = mission_cannons_firing
-		required_missions = { smo_subjugate_novgorod }
+		required_missions = { smo_subjugate_novgorod}
 		position = 5
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = baltic_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			baltic_region = {
+		trigger = { 
+			baltic_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {
-			add_country_modifier = {
+		effect = { 
+			add_country_modifier = { 
 				name = "baltic_ambition_new"
 				duration = 5475
 			}
 		}
 	}
-	smo_finland_region = {
+	smo_finland_region = { 
 		icon = mission_cannons_firing
-		required_missions = { smo_estonia_livonia }
+		required_missions = { smo_estonia_livonia}
 		position = 6
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			region = finland_region
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			finland_region = {
+		trigger = { 
+			finland_region = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
 }
-ruthenia_two = {
+ruthenia_two = { 
 	slot = 3
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = p_of_smo
 			has_country_flag = p_of_plt
 		}
 	}
 	has_country_shield = yes
-	smo_oka_ryazan = {
+	smo_oka_ryazan = { 
 		icon = mission_cannons_firing
-		required_missions = { smo_unify_smolensk }
+		required_missions = { smo_unify_smolensk}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = briansk_area
 				area = ryazan_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
+		trigger = { 
 			is_subject = no
-			briansk_area = {
+			briansk_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			ryazan_area = {
+			ryazan_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_astrakhan_region = {
+	smo_astrakhan_region = { 
 		icon = mission_non-western_cavalry_raid
-		required_missions = { smo_oka_ryazan }
+		required_missions = { smo_oka_ryazan}
 		position = 3
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = lower_don_area
 				area = astrakhan_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			lower_don_area = {
+		trigger = { 
+			lower_don_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			astrakhan_area = {
+			astrakhan_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_mordovia_region = {
+	smo_mordovia_region = { 
 		icon = mission_non-western_cavalry_raid
-		required_missions = { smo_astrakhan_region }
+		required_missions = { smo_astrakhan_region}
 		position = 4
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = nogai_area
 				area = mordovia_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			nogai_area = {
+		trigger = { 
+			nogai_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			mordovia_area = {
+			mordovia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_punish_horde = {
+	smo_punish_horde = { 
 		icon = mission_non-western_cavalry_raid
-		required_missions = { smo_mordovia_region }
+		required_missions = { smo_mordovia_region}
 		position = 5
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = kazakhstan_area
 				area = ishim_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			kazakhstan_area = {
+		trigger = { 
+			kazakhstan_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			ishim_area = {
+			ishim_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
 }
-ruthenia_three = {
+ruthenia_three = { 
 	slot = 4
 	generic = no
 	ai = yes
-	potential = {
-		OR = {
+	potential = { 
+		OR = { 
 			has_country_flag = p_of_smo
 			has_country_flag = p_of_plt
 		}
 	}
 	has_country_shield = yes
-	smo_white_ruthenia = {
+	smo_white_ruthenia = { 
 		icon = mission_unite_home_region
-		required_missions = {}
+		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
+		provinces_to_highlight = { 
 			area = white_ruthenia_area
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			white_ruthenia_area = {
+		trigger = { 
+			white_ruthenia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_black_ruthenia = {
+	smo_black_ruthenia = { 
 		icon = mission_assemble_an_army
-		required_missions = { smo_white_ruthenia }
+		required_missions = { smo_white_ruthenia}
 		position = 2
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = black_ruthenia_area
 				area = polesie_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			black_ruthenia_area = {
+		trigger = { 
+			black_ruthenia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			polesie_area = {
+			polesie_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_red_ruthenia = {
+	smo_red_ruthenia = { 
 		icon = mission_assemble_an_army
-		required_missions = { smo_black_ruthenia }
+		required_missions = { smo_black_ruthenia}
 		position = 3
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = red_ruthenia_area
 				area = podolia_volhynia_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			red_ruthenia_area = {
+		trigger = { 
+			red_ruthenia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			podolia_volhynia_area = {
+			podolia_volhynia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_malaya_rus = {
+	smo_malaya_rus = { 
 		icon = mission_cannons_firing
-		required_missions = { smo_red_ruthenia }
+		required_missions = { smo_red_ruthenia}
 		position = 4
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = west_dniepr_area
 				area = east_dniepr_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			west_dniepr_area = {
+		trigger = { 
+			west_dniepr_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			east_dniepr_area = {
+			east_dniepr_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_north_crimea = {
+	smo_north_crimea = { 
 		icon = mission_cossack_cavalry
-		required_missions = { smo_malaya_rus }
+		required_missions = { smo_malaya_rus}
 		position = 5
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = zaporizhia_area
 				area = sloboda_ukraine_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			zaporizhia_area = {
+		trigger = { 
+			zaporizhia_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			sloboda_ukraine_area = {
+			sloboda_ukraine_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
-	smo_south_crimea = {
+	smo_south_crimea = { 
 		icon = mission_cossack_cavalry
-		required_missions = { smo_north_crimea }
+		required_missions = { smo_north_crimea}
 		position = 6
-		provinces_to_highlight = {
-			OR = {
+		provinces_to_highlight = { 
+			OR = { 
 				area = crimea_area
 				area = azov_area
 			}
-			NOT = {
+			NOT = { 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		trigger = {
-			crimea_area = {
+		trigger = { 
+			crimea_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			azov_area = {
+			azov_area = { 
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		effect = {}
+		effect = { }
 	}
 }

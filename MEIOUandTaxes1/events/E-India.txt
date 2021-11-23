@@ -1,61 +1,80 @@
 namespace = India
-
-country_event = {
+country_event = { 
 	id = India.01
 	title = India.01.t
 	desc = India.01.desc
 	picture = KING_SICK_IN_BED_eventPicture
-	
 	fire_only_once = yes
-	
-	trigger = {
+	trigger = { 
 		tag = DLH
 		exists = yes
 		is_year = 1359
-		BNG = {
+		BNG = { 
 			exists = yes
 			is_subject = yes
 		}
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 1
 	}
-	
-	option = {
+	option = { 
 		name = "India.01.a"
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
 		add_prestige = 25
 		BNG = { 
 			grant_independence = yes
 		}
-		ORI = {
+		ORI = { 
 			grant_independence = yes
 		}
-		declare_war_with_cb = {
+		declare_war_with_cb = { 
 			who = BNG
 			casus_belli = cb_core
 			war_goal_province = 2693
 		}
-		BNG = {
-			country_event = {
+		BNG = { 
+			country_event = { 
 				id = India.02
 				days = 1
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "India.01.b"
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 		add_prestige = -25
-		Stab_Subtract1 = yes
-		BNG = {
-			every_owned_province = {
-				limit = {
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -1
+			}
+		}
+		tooltip = { 
+			add_stability = -1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -5
+		}
+		BNG = { 
+			every_owned_province = { 
+				limit = { 
 					is_core = DLH
 				}
 				remove_core = DLH
@@ -63,149 +82,742 @@ country_event = {
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = India.02
 	title = India.02.t
 	desc = India.02.desc
 	picture = BATTLE_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "India.02.a"
-		add_country_modifier = { name = defence_of_bengal  duration = 1000 }
+		add_country_modifier = { 
+			name = defence_of_bengal
+			duration = 1000
+		}
 	}
 }
-country_event = {
+country_event = { 
 	id = India.03
 	title = India.03.t
 	desc = India.03.desc
 	picture = BATTLE_eventPicture
-	
 	is_triggered_only = yes
-	
-	trigger = {
+	trigger = { 
 		tag = DLH
 		has_disaster = TwilightOfHindustan
-		NOT = { has_global_flag = DLH_Collapse }
-	}
-	
-	immediate = {
-		if = {
-			limit = {
-				NOT = { exists = AHM }
-			}
-			AHM = { clr_country_flag = POP_Init }
+		NOT = { 
+			has_global_flag = DLH_Collapse
 		}
 	}
-	
-	option = {
+	immediate = { 
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = AHM
+				}
+			}
+			AHM = { 
+				clr_country_flag = POP_Init
+			}
+		}
+	}
+	option = { 
 		name = "India.03.a"
-		Delhi_Collapse = yes
-		hidden_effect = {
-			AHM = {
-				add_country_modifier = { name = blessing_of_god duration = 1825 }
+		hidden_effect = { 
+			set_global_flag = DLH_Collapse
+		}
+		add_country_modifier = { 
+			name = firoz_death
+			duration = 1825
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -3
+			}
+		}
+		tooltip = { 
+			add_stability = -3
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -15
+		}
+		add_legitimacy = -25
+		every_country = { 
+			limit = { 
+				is_subject_of = DLH
+				OR = { 
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+				}
+			}
+			grant_independence = yes
+		}
+		every_country = { 
+			limit = { 
+				is_subject_of = DLH
+				OR = { 
+					is_subject_of_type = daimyo_vassal
+					is_subject_of_type = custom_vassal
+					is_subject_of_type = vassal
+				}
+			}
+			grant_independence = yes
+			add_liberty_desire = 50
+		}
+		every_country = { 
+			limit = { 
+				is_subject_of = DLH
+				OR = { 
+					is_subject_of_type = decentralized_vassal
+					is_subject_of_type = rebellious_decentralized_vassal
+				}
+			}
+			hidden_effect = { 
+				set_country_flag = DLH_Successor
+			}
+			grant_independence = yes
+			PREV = { 
+				add_casus_belli = { 
+					target = PREV
+					type = cb_disloyal_vassal
+					months = 60
+				}
+			}
+			add_casus_belli = { 
+				target = PREV
+				type = cb_annex
+				months = 120
+			}
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = AHM
+				}
+			}
+			every_owned_province = { 
+				limit = { 
+					AND = { 
+						OR = { 
+							is_city = yes
+							is_colony = yes
+						}
+						has_province_flag = Data
+					}
+					is_core = AHM
+				}
+				cede_province = AHM
+				hidden_effect = { 
+					AHM = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
+			}
+		}
+		else = { 
+			AHM = { 
+				grant_independence = yes
+			}
+		}
+		AHM = { 
+			hidden_effect = { 
+				set_country_flag = DLH_Successor
+			}
+			add_casus_belli = { 
+				target = PREV
+				type = cb_annex
+				months = 120
+			}
+		}
+		hidden_effect = { 
+			AHM = { 
+				define_ruler = { 
+					name = "Malik Sarwar"
+					dynasty = "Sharqi"
+					ADM = 5
+					DIP = 3
+					MIL = 4
+					age = 50
+				}
+				define_heir = { 
+					name = "Mubarak Shah"
+					dynasty = "Sharqi"
+					ADM = 3
+					DIP = 3
+					MIL = 3
+					age = 20
+				}
+				remove_country_modifier = title_1
+				remove_country_modifier = title_2
+				remove_country_modifier = title_3
+				remove_country_modifier = title_5
+				remove_country_modifier = title_6
+				add_country_modifier = { 
+					name = title_4
+					duration = -1
+				}
+				clr_country_flag = title_1
+				clr_country_flag = title_2
+				clr_country_flag = title_3
+				clr_country_flag = title_4
+				clr_country_flag = title_5
+				clr_country_flag = title_6
+			}
+		}
+		add_casus_belli = { 
+			target = AHM
+			type = cb_disloyal_vassal
+			months = 60
+		}
+		if = { 
+			limit = { 
+				exists = BNG
+			}
+			every_owned_province = { 
+				limit = { 
+					is_core = BNG
+				}
+				cede_province = BNG
+			}
+		}
+		every_owned_province = { 
+			add_local_autonomy = 25
+		}
+		hidden_effect = { 
+			AHM = { 
+				add_country_modifier = { 
+					name = blessing_of_god
+					duration = 1825
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "India.03.b"
-		Delhi_Collapse = yes
+		hidden_effect = { 
+			set_global_flag = DLH_Collapse
+		}
+		add_country_modifier = { 
+			name = firoz_death
+			duration = 1825
+		}
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -3
+			}
+		}
+		tooltip = { 
+			add_stability = -3
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -15
+		}
+		add_legitimacy = -25
+		every_country = { 
+			limit = { 
+				is_subject_of = DLH
+				OR = { 
+					is_subject_of_type = tributary_state
+					is_subject_of_type = close_tributary_state
+				}
+			}
+			grant_independence = yes
+		}
+		every_country = { 
+			limit = { 
+				is_subject_of = DLH
+				OR = { 
+					is_subject_of_type = daimyo_vassal
+					is_subject_of_type = custom_vassal
+					is_subject_of_type = vassal
+				}
+			}
+			grant_independence = yes
+			add_liberty_desire = 50
+		}
+		every_country = { 
+			limit = { 
+				is_subject_of = DLH
+				OR = { 
+					is_subject_of_type = decentralized_vassal
+					is_subject_of_type = rebellious_decentralized_vassal
+				}
+			}
+			hidden_effect = { 
+				set_country_flag = DLH_Successor
+			}
+			grant_independence = yes
+			PREV = { 
+				add_casus_belli = { 
+					target = PREV
+					type = cb_disloyal_vassal
+					months = 60
+				}
+			}
+			add_casus_belli = { 
+				target = PREV
+				type = cb_annex
+				months = 120
+			}
+		}
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = AHM
+				}
+			}
+			every_owned_province = { 
+				limit = { 
+					AND = { 
+						OR = { 
+							is_city = yes
+							is_colony = yes
+						}
+						has_province_flag = Data
+					}
+					is_core = AHM
+				}
+				cede_province = AHM
+				hidden_effect = { 
+					AHM = { 
+						export_to_variable = { 
+							which = export
+							value = religion
+						}
+						set_variable = { 
+							which = kdt
+							which = export
+						}
+						if = { 
+							limit = { 
+								is_variable_equal = { 
+									which = kdt
+									value = -1
+								}
+							}
+							capital_scope = { 
+								owner = { 
+									change_religion = PREV
+								}
+							}
+						}
+						set_variable = { 
+							which = kdt
+							value = 0
+						}
+						force_converted = yes
+					}
+				}
+			}
+		}
+		else = { 
+			AHM = { 
+				grant_independence = yes
+			}
+		}
+		AHM = { 
+			hidden_effect = { 
+				set_country_flag = DLH_Successor
+			}
+			add_casus_belli = { 
+				target = PREV
+				type = cb_annex
+				months = 120
+			}
+		}
+		hidden_effect = { 
+			AHM = { 
+				define_ruler = { 
+					name = "Malik Sarwar"
+					dynasty = "Sharqi"
+					ADM = 5
+					DIP = 3
+					MIL = 4
+					age = 50
+				}
+				define_heir = { 
+					name = "Mubarak Shah"
+					dynasty = "Sharqi"
+					ADM = 3
+					DIP = 3
+					MIL = 3
+					age = 20
+				}
+				remove_country_modifier = title_1
+				remove_country_modifier = title_2
+				remove_country_modifier = title_3
+				remove_country_modifier = title_5
+				remove_country_modifier = title_6
+				add_country_modifier = { 
+					name = title_4
+					duration = -1
+				}
+				clr_country_flag = title_1
+				clr_country_flag = title_2
+				clr_country_flag = title_3
+				clr_country_flag = title_4
+				clr_country_flag = title_5
+				clr_country_flag = title_6
+			}
+		}
+		add_casus_belli = { 
+			target = AHM
+			type = cb_disloyal_vassal
+			months = 60
+		}
+		if = { 
+			limit = { 
+				exists = BNG
+			}
+			every_owned_province = { 
+				limit = { 
+					is_core = BNG
+				}
+				cede_province = BNG
+			}
+		}
+		every_owned_province = { 
+			add_local_autonomy = 25
+		}
 		switch_tag = AHM
 	}
-	after = {
+	after = { 
 		set_country_flag = TwilightEclipse
-		AHM = {
-			if = {
-				limit = {
-					owns = 2210 #Juanapur
+		AHM = { 
+			if = { 
+				limit = { 
+					owns = 2210
 				}
-				Effect_set_capital = { target=2210 } #Juanapur
+				if = { 
+					limit = { 
+						is_part_of_hre = yes
+						ROOT = { 
+							is_part_of_hre = no
+						}
+					}
+					set_in_empire = no
+					swap_non_generic_missions = yes
+					emperor = { 
+						add_opinion = { 
+							who = ROOT
+							modifier = hre_province_left
+						}
+					}
+					add_imperial_influence = -1
+				}
+				set_capital = 2210
+				hidden_effect = { 
+					set_country_flag = tf_recalculate_communication_efficiency
+					set_country_flag = ai_tax_recalc
+				}
 			}
-			hidden_effect = {
-				if = {
-					limit = {
+			hidden_effect = { 
+				if = { 
+					limit = { 
 						ai = no
 					}
-					add_country_modifier = { name = blessing_of_god duration = 1825 }
-				}
-				if = {
-					limit = {
-						NOT = { has_country_flag = POP_Init }
+					add_country_modifier = { 
+						name = blessing_of_god
+						duration = 1825
 					}
-					delhi_government_change = yes
-					country_event = { id = Init.1 }
+				}
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_flag = POP_Init
+						}
+					}
+					change_government = monarchy
+					hidden_effect = { 
+						hidden_effect = { 
+							set_variable = { 
+								which = bba
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbc
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbe
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbg
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbi
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbk
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbo
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbs
+								value = -1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbq
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbu
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bca
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = khx
+								value = 2
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = khy
+								value = 2
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = khz
+								value = 2
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = kia
+								value = 2
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = auy
+								value = 3
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = kid
+								value = 3
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = kie
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = kif
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = kig
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = lqy
+								value = 3
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = lqz
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Succession5
+					add_government_reform = Pol_Family3
+					add_government_reform = Pol_Nobility1
+					add_government_reform = Pol_Structure2
+					add_government_reform = Pol_Centralisation2
+					add_government_reform = Pol_Autonomy1
+					add_government_reform = Pol_Provincial1
+					add_government_reform = Pol_Military1
+					add_government_reform = Pol_Privileges1
+					country_event = { 
+						id = Init.1
+					}
 				}
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = India.04
 	title = India.04.t
 	desc = India.04.desc
 	picture = BATTLE_eventPicture
-	
 	fire_only_once = yes
-	
-	trigger = {
+	trigger = { 
 		tag = TIM
 		exists = yes
 		war_with = DLH
-		controls = 2112 #Multan
-		MUL = {
-			OR = {
-				NOT = { exists = yes }
+		controls = 2112
+		MUL = { 
+			OR = { 
+				NOT = { 
+					exists = yes
+				}
 				is_subject_of = DLH
 			}
 		}
 	}
-	
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		months = 1
 	}
-	
-	immediate = {
-		if = {
-			limit = {
-				NOT = { exists = MUL }
+	immediate = { 
+		if = { 
+			limit = { 
+				NOT = { 
+					exists = MUL
+				}
 			}
-			MUL = { clr_country_flag = POP_Init }
+			MUL = { 
+				clr_country_flag = POP_Init
+			}
 		}
 	}
-	
-	option = {
+	option = { 
 		name = "India.04.a"
-		ai_chance = {
+		ai_chance = { 
 			factor = 100
 		}
-		DLH = {
+		DLH = { 
 			add_legitimacy = -15
-			if = {
-				limit = {
-					NOT = { exists = MUL }
+			if = { 
+				limit = { 
+					NOT = { 
+						exists = MUL
+					}
 				}
-				every_owned_province = {
-					limit = {
-						isValidProv = yes
+				every_owned_province = { 
+					limit = { 
+						AND = { 
+							OR = { 
+								is_city = yes
+								is_colony = yes
+							}
+							has_province_flag = Data
+						}
 						is_core = MUL
-						NOT = { area = upper_doab_area }
+						NOT = { 
+							area = upper_doab_area
+						}
 					}
 					cede_province = MUL
 				}
 			}
-			else = {
-				MUL = { grant_independence = yes }
+			else = { 
+				MUL = { 
+					grant_independence = yes
+				}
 			}
 		}
-		hidden_effect = { MUL = { set_key = { lhs = Vassal_Type value = 10 } } }
-		create_subject = {
+		hidden_effect = { 
+			MUL = { 
+				set_variable = { 
+					which = hro
+					value = 10
+				}
+			}
+		}
+		create_subject = { 
 			subject_type = daimyo_vassal
 			who = MUL
 		}
-		hidden_effect = {
-			MUL = {
-				define_ruler = {
+		hidden_effect = { 
+			MUL = { 
+				define_ruler = { 
 					name = "Khizr Khan"
 					dynasty = "Sayyid"
 					ADM = 5
@@ -213,34 +825,48 @@ country_event = {
 					MIL = 3
 					age = 28
 				}
-				if = {
-					limit = {
+				if = { 
+					limit = { 
 						NOT = { 
-							OR = {
-								has_country_modifier = title_4 
-								has_country_modifier = title_5 
-								has_country_modifier = title_6 
+							OR = { 
+								has_country_modifier = title_4
+								has_country_modifier = title_5
+								has_country_modifier = title_6
 							}
 						}
 					}
-					change_title_4 = yes
+					remove_country_modifier = title_1
+					remove_country_modifier = title_2
+					remove_country_modifier = title_3
+					remove_country_modifier = title_5
+					remove_country_modifier = title_6
+					add_country_modifier = { 
+						name = title_4
+						duration = -1
+					}
+					clr_country_flag = title_1
+					clr_country_flag = title_2
+					clr_country_flag = title_3
+					clr_country_flag = title_4
+					clr_country_flag = title_5
+					clr_country_flag = title_6
 				}
 			}
 		}
-		hidden_effect = {
-			DLH = {
-				add_casus_belli = {
+		hidden_effect = { 
+			DLH = { 
+				add_casus_belli = { 
 					target = MUL
 					type = cb_annex
 					months = 120
 				}
-				country_event = {
+				country_event = { 
 					id = India.05
 				}
 			}
-			MUL = {
+			MUL = { 
 				set_country_flag = DLH_Successor
-				add_casus_belli = {
+				add_casus_belli = { 
 					target = DLH
 					type = cb_annex
 					months = 240
@@ -248,79 +874,265 @@ country_event = {
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "India.04.b"
-		ai_chance = {
+		ai_chance = { 
 			factor = 0
 		}
 	}
-	after = {
-		MUL = {
-			if = {
-				limit = {
-					owns = 2112 #Multan
+	after = { 
+		MUL = { 
+			if = { 
+				limit = { 
+					owns = 2112
 				}
-				Effect_set_capital = { target=2112 }
-			}
-			hidden_effect = {
-				if = {
-					limit = {
-						NOT = { has_country_flag = POP_Init }
+				if = { 
+					limit = { 
+						is_part_of_hre = yes
+						ROOT = { 
+							is_part_of_hre = no
+						}
 					}
-					delhi_government_change = yes
-					country_event = { id = Init.1 }
+					set_in_empire = no
+					swap_non_generic_missions = yes
+					emperor = { 
+						add_opinion = { 
+							who = ROOT
+							modifier = hre_province_left
+						}
+					}
+					add_imperial_influence = -1
+				}
+				set_capital = 2112
+				hidden_effect = { 
+					set_country_flag = tf_recalculate_communication_efficiency
+					set_country_flag = ai_tax_recalc
+				}
+			}
+			hidden_effect = { 
+				if = { 
+					limit = { 
+						NOT = { 
+							has_country_flag = POP_Init
+						}
+					}
+					change_government = monarchy
+					hidden_effect = { 
+						hidden_effect = { 
+							set_variable = { 
+								which = bba
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbc
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbe
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbg
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbi
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbk
+								value = 0
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbo
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbs
+								value = -1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbq
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bbu
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = bca
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = khx
+								value = 2
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = khy
+								value = 2
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = khz
+								value = 2
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = kia
+								value = 2
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = auy
+								value = 3
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = kid
+								value = 3
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = kie
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = kif
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = kig
+								value = 1
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = lqy
+								value = 3
+							}
+						}
+						hidden_effect = { 
+							set_variable = { 
+								which = lqz
+								value = 3
+							}
+						}
+					}
+					add_government_reform = Pol_Succession5
+					add_government_reform = Pol_Family3
+					add_government_reform = Pol_Nobility1
+					add_government_reform = Pol_Structure2
+					add_government_reform = Pol_Centralisation2
+					add_government_reform = Pol_Autonomy1
+					add_government_reform = Pol_Provincial1
+					add_government_reform = Pol_Military1
+					add_government_reform = Pol_Privileges1
+					country_event = { 
+						id = Init.1
+					}
 				}
 			}
 		}
 	}
 }
-country_event = {
+country_event = { 
 	id = India.05
 	title = India.05.t
 	desc = India.05.desc
 	picture = BATTLE_eventPicture
-	
 	is_triggered_only = yes
-	
-	
-	option = {
+	option = { 
 		name = "India.05.a"
-		hidden_effect = {
-			MUL = {
-				add_country_modifier = { name = blessing_of_god duration = 1825 }
+		hidden_effect = { 
+			MUL = { 
+				add_country_modifier = { 
+					name = blessing_of_god
+					duration = 1825
+				}
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = "India.05.b"
 		switch_tag = MUL
 	}
 }
-country_event = {
+country_event = { 
 	id = India.06
 	title = India.06.t
 	desc = India.06.desc
 	picture = BATTLE_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "India.06.a"
 	}
 }
-country_event = {
+country_event = { 
 	id = India.07
 	title = India.07.t
 	desc = India.07.desc
 	picture = BATTLE_eventPicture
-	
 	is_triggered_only = yes
-	
-	option = {
+	option = { 
 		name = "India.07.a"
 		add_prestige = 25
-		Stab_Add1 = yes
-		hidden_effect = {
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					stability = 3
+				}
+				set_variable = { 
+					which = ahf
+					value = 1200
+				}
+			}
+			else = { 
+				add_stability = 1
+			}
+		}
+		tooltip = { 
+			add_stability = 1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = 5
+		}
+		hidden_effect = { 
 			clr_country_flag = Twilight
 			set_country_flag = TwilightOver
 		}

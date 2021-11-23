@@ -1,24 +1,39 @@
 namespace = flavor_hsa
 namespace = hee_HSA
+<<<<<<< HEAD
 
 country_event = {
 	id = flavor_hsa.1 #Georg Giese
+=======
+country_event = { 
+	id = flavor_hsa.1
+>>>>>>> submod
 	title = "flavor_hsa.EVTNAME1"
 	desc = "flavor_hsa.EVTDESC1"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
+<<<<<<< HEAD
 	trigger = {
 		is_year = 1520
 		NOT = { is_year = 1562 }
 		owns = 2355 #Gdansk/Danzig
+=======
+	trigger = { 
+		tag = HSA
+		is_year = 1520
+		NOT = { 
+			is_year = 1562
+		}
+		owns = 2355
+>>>>>>> submod
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
 	}
-	option = {
+	option = { 
 		name = "flavor_hsa.EVTOPTA1"
 		add_prestige = 10
-		define_advisor = {
+		define_advisor = { 
 			type = trader_BG
 			name = "Georg Giese"
 			culture = prussian
@@ -27,6 +42,7 @@ country_event = {
 		}
 	}
 }
+<<<<<<< HEAD
 country_event = {
 	id = flavor_hsa.2 #Shipbuilding technology
 	#TODO: rework, possibly tying it with skill or Ship industry efficiency, impact on relations with Low Countries tags
@@ -44,59 +60,131 @@ country_event = {
 	}
 	mean_time_to_happen = {
 		years = 50
+=======
+country_event = { 
+	id = flavor_hsa.2
+	title = "flavor_hsa.EVTNAME2"
+	desc = "flavor_hsa.EVTDESC2"
+	picture = SHIP_SAILING_eventPicture
+	trigger = { 
+		tag = HSA
+		NOT = { 
+			is_year = 1500
+		}
+		owns = 2355
+		owns = 45
+		NOT = { 
+			has_ruler_modifier = hsa_stop_shipbuilding_technology
+		}
+		NOT = { 
+			has_ruler_modifier = hsa_spread_shipbuilding_technology
+		}
+		NED = { 
+			NOT = { 
+				has_opinion = { 
+					who = ROOT
+					value = 50
+				}
+			}
+			NOT = { 
+				junior_union_with = ROOT
+			}
+			NOT = { 
+				senior_union_with = ROOT
+			}
+			NOT = { 
+				vassal_of = ROOT
+			}
+			NOT = { 
+				overlord_of = ROOT
+			}
+			NOT = { 
+				alliance_with = ROOT
+			}
+		}
 	}
-	option = {
+	mean_time_to_happen = { 
+		years = 166
+>>>>>>> submod
+	}
+	option = { 
 		name = "flavor_hsa.EVTOPTA2"
-		add_ruler_modifier = {
+		add_ruler_modifier = { 
 			name = hsa_stop_shipbuilding_technology
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hsa.EVTOPTB2"
-		add_ruler_modifier = {
+		add_ruler_modifier = { 
 			name = hsa_spread_shipbuilding_technology
 		}
 	}
 }
+<<<<<<< HEAD
 country_event = {
 	id = flavor_hsa.3 #Tagfahrt
 	#TODO: rework
+=======
+country_event = { 
+	id = flavor_hsa.3
+>>>>>>> submod
 	title = "flavor_hsa.EVTNAME3"
 	desc = "flavor_hsa.EVTDESC3"
 	picture = ELECTION_REPUBLICAN_eventPicture
 	is_triggered_only = yes
-	trigger = {
+	trigger = { 
 		tag = HSA
+<<<<<<< HEAD
 		NOT = { stability = 1 }
 		NOT = { has_ruler_modifier = hsa_trade_reform }
 		NOT = { has_ruler_modifier = hsa_economic_reform }
 		NOT = { has_ruler_modifier = hsa_military_reform }
+=======
+		NOT = { 
+			stability = 1
+		}
+		NOT = { 
+			has_ruler_modifier = hsa_trade_reform
+		}
+		NOT = { 
+			has_ruler_modifier = hsa_economic_reform
+		}
+		NOT = { 
+			has_ruler_modifier = hsa_military_reform
+		}
+>>>>>>> submod
 	}
-	option = {
+	option = { 
 		name = "flavor_hsa.EVTOPTA3"
-		add_ruler_modifier = {
+		add_ruler_modifier = { 
 			name = hsa_trade_reform
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hsa.EVTOPTB3"
-		add_ruler_modifier = {
+		add_ruler_modifier = { 
 			name = hsa_economic_reform
 		}
 	}
-	option = {
+	option = { 
 		name = "flavor_hsa.EVTOPTC3"
-		add_ruler_modifier = {
+		add_ruler_modifier = { 
 			name = hsa_military_reform
 		}
 	}
 }
+<<<<<<< HEAD
 country_event = {
 	id = flavor_hsa.4 #Heinrich Sudermann
+=======
+country_event = { 
+	id = flavor_hsa.4
+>>>>>>> submod
 	title = "flavor_hsa.EVTNAME4"
 	desc = "flavor_hsa.EVTDESC4"
 	picture = ADVISOR_eventPicture
 	fire_only_once = yes
+<<<<<<< HEAD
 	trigger = {
 		OR = {
 			tag = HSA
@@ -104,16 +192,35 @@ country_event = {
 				tag = FRL
 				is_trade_league_leader = yes
 			}
+=======
+	trigger = { 
+		tag = HSA
+		is_year = 1556
+		NOT = { 
+			is_year = 1591
+>>>>>>> submod
 		}
 		is_year = 1556
 		NOT = { is_year = 1591 }
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 16
+<<<<<<< HEAD
+=======
+		modifier = { 
+			factor = 0.8
+			owns = 85
+		}
+>>>>>>> submod
 	}
-	option = {
+	option = { 
 		name = "flavor_hsa.EVTOPTA4"
+<<<<<<< HEAD
 		define_advisor = {
+=======
+		add_dip_power = 100
+		define_advisor = { 
+>>>>>>> submod
 			type = statesman_BG
 			name = "Heinrich Sudermann"
 			culture = hessian
@@ -122,12 +229,18 @@ country_event = {
 		}
 	}
 }
+<<<<<<< HEAD
 country_event = {
 	id = hee_HSA.1 #Hamburg Invites the English
+=======
+country_event = { 
+	id = hee_HSA.1
+>>>>>>> submod
 	title = hee_HSA.1.t
 	desc = hee_HSA.1.d
 	picture = CORRUPTION_eventPicture
 	fire_only_once = yes
+<<<<<<< HEAD
 	trigger = {
 		owns_core_province = 44
 		OR = {
@@ -146,51 +259,64 @@ country_event = {
 			exists = ENG
 			exists = GBR
 			exists = UEF
+=======
+	trigger = { 
+		tag = HSA
+		is_year = 1550
+		NOT = { 
+			is_year = 1600
+>>>>>>> submod
 		}
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 20
-		modifier = {
+		modifier = { 
 			factor = 0.8
 			num_of_loans = 3
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.7
 			num_of_loans = 5
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.5
 			num_of_loans = 10
 		}
-		modifier = {
+		modifier = { 
 			factor = 0.7
-			reverse_has_opinion = {
+			reverse_has_opinion = { 
 				who = ENG
 				value = 100
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = hee_HSA.1.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 25
 		}
+<<<<<<< HEAD
 		#TODO: transfer of wealth between residents of London and Hamburg instead of treasury injection?
 		add_treasury = 75
 		44 = {
+=======
+		add_treasury = 30
+		44 = { 
+>>>>>>> submod
 			add_local_autonomy = 30
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = hee_english_hamburg
 				duration = 10390 #30 years
 			}
 		}
 	}
-	option = {
+	option = { 
 		name = hee_HSA.1.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 75
-			modifier = {
+			modifier = { 
 				factor = 5
+<<<<<<< HEAD
 				OR = {
 					has_opinion = {
 						who = ENG
@@ -204,15 +330,21 @@ country_event = {
 						who = UEF
 						value = 100
 					}
+=======
+				has_opinion = { 
+					who = ENG
+					value = 100
+>>>>>>> submod
 				}
 			}
 		}
-		44 = {
-			add_province_modifier = {
+		44 = { 
+			add_province_modifier = { 
 				name = hee_english_thrown_out
 				duration = 3650
 			}
 		}
+<<<<<<< HEAD
 		random_country = {
 			limit = {
 				OR = {
@@ -236,6 +368,11 @@ country_event = {
 				who = ROOT
 				modifier = hee_english_rejected
 			}
+=======
+		reverse_add_opinion = { 
+			who = ENG
+			modifier = hee_english_rejected
+>>>>>>> submod
 		}
 	}
 }

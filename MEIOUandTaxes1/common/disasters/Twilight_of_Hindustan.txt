@@ -1,51 +1,70 @@
-TwilightOfHindustan = {
-	potential = {
+TwilightOfHindustan = { 
+	potential = { 
 		tag = DLH
-		hidden_trigger = {
-			NOT = { has_country_flag = TwilightOver }
+		hidden_trigger = { 
+			NOT = { 
+				has_country_flag = TwilightOver
+			}
 		}
 	}
-	can_start = {
-		hidden_trigger = { has_country_flag = Twilight }
-		hidden_trigger = { NOT = { has_country_flag = TwilightOver } }
+	can_start = { 
+		hidden_trigger = { 
+			has_country_flag = Twilight
+		}
+		hidden_trigger = { 
+			NOT = { 
+				has_country_flag = TwilightOver
+			}
+		}
 		has_any_disaster = no
 	}
-	can_stop = {
-		hidden_trigger = {
-			NOT = { has_country_flag = Twilight }
+	can_stop = { 
+		hidden_trigger = { 
+			NOT = { 
+				has_country_flag = Twilight
+			}
 		}
 		has_any_disaster = yes
 	}
-	progress = {
-		modifier = {
+	progress = { 
+		modifier = { 
 			factor = 100
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { 
 				tooltip = TwilightContinues
 				has_country_flag = Twilight
 			}
 		}
 	}
-	can_end = {
-		custom_trigger_tooltip = {
+	can_end = { 
+		custom_trigger_tooltip = { 
 			tooltip = TwilightEndReqs
-			NOT = {
-				OR = {
+			NOT = { 
+				OR = { 
 					corruption = 30
-					NOT = { check_key = { lhs = Ruler_Skill value = 9 } }
-					AND = {
-						NOT = { check_key = { lhs = Ruler_Skill value = 12 } }
+					NOT = { 
+						check_variable = { 
+							which = huo
+							value = 9
+						}
+					}
+					AND = { 
+						NOT = { 
+							check_variable = { 
+								which = huo
+								value = 12
+							}
+						}
 						corruption = 20
 					}
 				}
 			}
 		}
-		NOT = {
+		NOT = { 
 			has_spawned_rebels = pretender_rebels
 		}
 		is_at_war = no
 	}
-	
-	modifier = {
+	modifier = { 
 		reduced_liberty_desire = -25
 		yearly_corruption = 0.50
 		global_autonomy = 0.30
@@ -56,10 +75,9 @@ TwilightOfHindustan = {
 	}
 	on_start = India.06
 	on_end = India.07
-	on_monthly = {
-		events = {
-		}
-		random_events = {
+	on_monthly = { 
+		events = { }
+		random_events = { 
 			1000 = 0
 		}
 	}

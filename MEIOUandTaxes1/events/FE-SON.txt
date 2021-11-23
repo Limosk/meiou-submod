@@ -1,31 +1,46 @@
 namespace = hee_SON
+<<<<<<< HEAD
 
 country_event = {
 	id = hee_SON.1 #General Muhammad Ture
+=======
+country_event = { 
+	id = hee_SON.1
+>>>>>>> submod
 	title = hee_SON.1.t
 	desc = hee_SON.1.d
 	picture = AFRICAN_WARRIORS_eventPicture
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = SON
+<<<<<<< HEAD
 		NOT = { is_year = 1490 }
+=======
+		NOT = { 
+			is_year = 1490
+		}
+>>>>>>> submod
 		is_year = 1480
 	}
-	mean_time_to_happen = {
+	mean_time_to_happen = { 
 		years = 8
 	}
-	option = {
+	option = { 
 		name = hee_SON.1.a
+<<<<<<< HEAD
 		log = "FE-SON:[GetYear]:[Root.GetName]:Muhammad Ture became a general:hee_SON.1"
 		define_general = {
+=======
+		define_general = { 
+>>>>>>> submod
 			name = "Muhammad Ture"
 			fire = 3
 			shock = 5
 			manuever = 4
 			siege = 2
 		}
-		hidden_effect = {
-			add_country_modifier = {
+		hidden_effect = { 
+			add_country_modifier = { 
 				name = hee_general_ture
 				duration = 7300
 				hidden = yes
@@ -33,14 +48,20 @@ country_event = {
 		}
 	}
 }
+<<<<<<< HEAD
 country_event = {
 	id = hee_SON.2 #The Heretic Heir
+=======
+country_event = { 
+	id = hee_SON.2
+>>>>>>> submod
 	title = hee_SON.2.t
 	desc = hee_SON.2.d
 	picture = muslim_mosque
 	fire_only_once = yes
-	trigger = {
+	trigger = { 
 		tag = SON
+<<<<<<< HEAD
 		NOT = { is_year = 1510 }
 		is_year = 1485
 		religion = sunni
@@ -48,39 +69,59 @@ country_event = {
 	mean_time_to_happen = {
 		years = 25
 		modifier = {
+=======
+		NOT = { 
+			is_year = 1510
+		}
+		is_year = 1485
+		religion = sunni
+	}
+	mean_time_to_happen = { 
+		years = 30
+		modifier = { 
+>>>>>>> submod
 			factor = 0.6
 			has_country_flag = hee_general_ture
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.3
 			ADM = 5
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.2
 			DIP = 5
 		}
-		modifier = {
+		modifier = { 
 			factor = 1.2
 			MIL = 5
 		}
 	}
+<<<<<<< HEAD
 	immediate = {
 		hidden_effect = {
 			set_heir_religion = west_african_pagan_reformed
 		}
 	}
 	option = {
+=======
+	option = { 
+>>>>>>> submod
 		name = hee_SON.2.a
-		ai_chance = {
+		ai_chance = { 
 			factor = 85
 		}
-		add_country_modifier = {
+		add_country_modifier = { 
 			name = ruler_deposed
 			duration = -1
 			hidden = yes
 		}
+<<<<<<< HEAD
 		define_ruler = {
 			name = "Muhammad"
+=======
+		define_ruler = { 
+			name = "Askia Muhammad"
+>>>>>>> submod
 			dynasty = "Askia"
 			adm = 6
 			dip = 5
@@ -113,41 +154,73 @@ country_event = {
 			limit = { has_heir = yes }
 			kill_heir = yes
 		}
+<<<<<<< HEAD
 		#add_piety = 0.15
 		Stab_Subtract1 = yes
 		random_owned_province = {
 			limit = {
 				NOT = {
+=======
+		kill_heir = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -1
+			}
+		}
+		tooltip = { 
+			add_stability = -1
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -5
+		}
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
+>>>>>>> submod
 					has_province_modifier = pretender_organizing
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
 			custom_tooltip = pretender_organizing_tt
 			add_unrest = 5
 		}
-		random_owned_province = {
-			limit = {
-				NOT = {
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
 					has_province_modifier = pretender_organizing
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
 			custom_tooltip = pretender_organizing_tt
 			add_unrest = 5
 		}
-		random_owned_province = {
-			limit = {
-				NOT = {
+		random_owned_province = { 
+			limit = { 
+				NOT = { 
 					has_province_modifier = pretender_organizing
 				}
 			}
-			add_province_modifier = {
+			add_province_modifier = { 
 				name = "pretender_organizing"
 				duration = 1825
 			}
@@ -155,17 +228,17 @@ country_event = {
 			add_unrest = 5
 		}
 	}
-	option = {
+	option = { 
 		name = hee_SON.2.b
-		ai_chance = {
+		ai_chance = { 
 			factor = 15
 		}
 		kill_ruler = yes
-		if = {
-			limit = {
+		if = { 
+			limit = { 
 				has_heir = no
 			}
-			define_ruler = {
+			define_ruler = { 
 				name = "Baru"
 				dynasty = "Sonni"
 				age = 15
@@ -175,6 +248,30 @@ country_event = {
 		log = "FE-SON:[GetYear]:[Root.GetName]:refused to give Muhammad Ture a throne:hee_SON.2"
 		log = "FE-SON:[GetYear]:[Root.GetName]:changed religion to west_african_pagan_reformed:hee_SON.2"
 		change_religion = west_african_pagan_reformed
-		Stab_Subtract2 = yes
+		hidden_effect = { 
+			if = { 
+				limit = { 
+					NOT = { 
+						stability = -2
+					}
+				}
+				set_variable = { 
+					which = ahf
+					value = 0
+				}
+			}
+			else = { 
+				add_stability = -2
+			}
+		}
+		tooltip = { 
+			add_stability = -2
+		}
+		if = { 
+			limit = { 
+				is_emperor_of_china = yes
+			}
+			add_mandate = -10
+		}
 	}
 }
